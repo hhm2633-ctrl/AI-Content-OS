@@ -1,0 +1,21 @@
+{
+    "project": {
+        "name": "AI-Content-OS",
+        "version": "1.0.0"
+    },
+
+    "system": {
+        "language": "ko",
+        "timezone": "Asia/Seoul"
+    },
+
+    "workflow": {
+        "retry_count": 3,
+        "auto_save": true
+    },
+
+    "logging": {
+        "enabled": true,
+        "level": "INFO"
+    }
+}

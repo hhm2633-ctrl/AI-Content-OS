@@ -1,12 +1,11 @@
 """
 AI-Content-OS
-
 Main Entry Point
-
 Version: 1.0
 """
 
 from datetime import datetime
+from src.workflow_engine import WorkflowEngine
 
 
 def banner():
@@ -20,11 +19,11 @@ def banner():
 def main():
     banner()
 
-    print("System Status")
-    print("--------------------")
-    print("Workflow Engine : Not Loaded")
-    print("Modules         : Not Loaded")
-    print("Configuration   : Not Loaded")
+    engine = WorkflowEngine()
+    engine.start()
+    engine.run()
+    engine.stop()
+
     print()
     print("AI-Content-OS Ready.")
 
