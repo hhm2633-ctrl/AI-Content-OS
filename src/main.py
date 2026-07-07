@@ -4,7 +4,10 @@ Main Entry Point
 Version: 1.0
 """
 
+import json
 from datetime import datetime
+from pathlib import Path
+
 from src.workflow_engine import WorkflowEngine
 
 
@@ -16,13 +19,22 @@ def banner():
     print()
 
 
+def load_config():
+    config_path = Path("config/settings.json")
+
+    with open(config_path, "r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    return config
+
+
 def main():
     banner()
 
-    engine = WorkflowEngine()
-    engine.start()
+    config = load_config()
+
+    engine = WorkflowEngine(config)
     engine.run()
-    engine.stop()
 
     print()
     print("AI-Content-OS Ready.")

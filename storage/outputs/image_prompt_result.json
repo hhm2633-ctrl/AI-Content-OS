@@ -1,0 +1,34 @@
+{
+  "title": "AI content automation",
+  "image_prompts": [
+    {
+      "slide": 1,
+      "text": "1장: 문제 제기",
+      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 1장: 문제 제기. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
+      "negative_prompt": "blurry, low quality, distorted face, broken hands, unreadable text, watermark, logo, messy layout, excessive details",
+      "size": "1024x1024"
+    },
+    {
+      "slide": 2,
+      "text": "2장: 핵심 정보 설명",
+      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 2장: 핵심 정보 설명. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
+      "negative_prompt": "blurry, low quality, distorted face, broken hands, unreadable text, watermark, logo, messy layout, excessive details",
+      "size": "1024x1024"
+    },
+    {
+      "slide": 3,
+      "text": "3장: 사람들이 관심 가질 포인트",
+      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 3장: 사람들이 관심 가질 포인트. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
+      "negative_prompt": "blurry, low quality, distorted face, broken hands, unreadable text, watermark, logo, messy layout, excessive details",
+      "size": "1024x1024"
+    },
+    {
+      "slide": 4,
+      "text": "4장: 요약 및 행동 유도",
+      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 4장: 요약 및 행동 유도. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
+      "negative_prompt": "blurry, low quality, distorted face, broken hands, unreadable text, watermark, logo, messy layout, excessive details",
+      "size": "1024x1024"
+    }
+  ],
+  "status": "image_prompts_created"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "AI content automation",
+  "card_news": [
+    {
+      "slide": 1,
+      "card_news_path": "storage\\card_news\\card_news_1.png",
+      "status": "card_news_created"
+    },
+    {
+      "slide": 2,
+      "card_news_path": "storage\\card_news\\card_news_2.png",
+      "status": "card_news_created"
+    },
+    {
+      "slide": 3,
+      "card_news_path": "storage\\card_news\\card_news_3.png",
+      "status": "card_news_created"
+    },
+    {
+      "slide": 4,
+      "card_news_path": "storage\\card_news\\card_news_4.png",
+      "status": "card_news_created"
+    }
+  ],
+  "status": "card_news_completed"
+}
