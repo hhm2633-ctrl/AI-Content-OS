@@ -1,89 +1,87 @@
-"""
-Image Generation Module
-AI-Content-OS
-
-OpenAI Images API를 사용해 카드뉴스용 이미지를 생성하고
-storage/images 폴더에 PNG 파일로 저장한다.
-"""
-
-import base64
-import json
 import os
-from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from dotenv import load_dotenv
-from openai import OpenAI
-
-from modules.base_module import BaseModule
+try:
+    from modules.base_module import BaseModule
+except ImportError:
+    from src.base_module import BaseModule
 
 
 class ImageGenerationModule(BaseModule):
-    def __init__(self, config):
-        super().__init__(config)
+    """
+    ImageGenerationModule
 
-        load_dotenv()
+    역할:
+    - ImagePromptModule 결과를 받아 이미지 생성 결과 구조를 만든다.
+    - 현재 단계에서는 실제 이미지 API 호출 전 단계로, 안전한 placeholder 구조를 생성한다.
+    - 나중에 OpenAI Images API를 붙일 때 이 파일만 확장하면 된다.
+    """
 
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        try:
+            super().__init__(config=config)
+        except TypeError:
+            super().__init__()
 
-        self.output_dir = Path("storage/outputs")
-        self.image_dir = Path("storage/images")
+        self.config = config or getattr(self, "config", {}) or {}
 
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.image_dir.mkdir(parents=True, exist_ok=True)
+        self.output_dir = (
+            self.config.get("output_dir")
+            or self.config.get("image_output_dir")
+            or os.path.join("storage", "images")
+        )
 
-    def run(self, image_prompt_result):
+        os.makedirs(self.output_dir, exist_ok=True)
+
+    def run(self, image_prompt_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         print("Image Generation Module Started")
 
-        title = image_prompt_result.get("title", "")
+        image_prompt_result = image_prompt_result or {}
+
+        title = image_prompt_result.get("title", "AI content automation")
         image_prompts = image_prompt_result.get("image_prompts", [])
 
-        generated_images = []
-
-        for item in image_prompts:
-            slide_number = item.get("slide")
-            image_prompt = item.get("image_prompt")
-
-            print(f"Generating image for slide {slide_number}...")
-
-            response = self.client.images.generate(
-                model="gpt-image-1",
-                prompt=image_prompt,
-                size="1024x1024",
-                quality="medium",
-                n=1
-            )
-
-            image_base64 = response.data[0].b64_json
-            image_bytes = base64.b64decode(image_base64)
-
-            image_filename = f"card_slide_{slide_number}.png"
-            image_path = self.image_dir / image_filename
-
-            with open(image_path, "wb") as image_file:
-                image_file.write(image_bytes)
-
-            generated_image = {
-                "slide": slide_number,
-                "image_prompt": image_prompt,
-                "image_path": str(image_path),
-                "status": "image_generated"
-            }
-
-            generated_images.append(generated_image)
-
-            print(f"Image Saved: {image_path}")
+        generated_images = self._create_placeholder_results(image_prompts)
 
         result = {
             "title": title,
-            "generated_images": generated_images,
-            "status": "image_generation_completed"
+            "images": generated_images,
+            "status": "image_generation_prepared",
         }
 
-        output_path = self.output_dir / "image_generation_result.json"
-
-        with open(output_path, "w", encoding="utf-8") as file:
-            json.dump(result, file, ensure_ascii=False, indent=2)
-
-        print("Image Generation Result Saved:", output_path)
-
+        print("Image Generation Module Finished")
         return result
+
+    def _create_placeholder_results(
+        self,
+        image_prompts: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        images = []
+
+        if not image_prompts:
+            image_prompts = [
+                {
+                    "page": 1,
+                    "prompt": "Clean modern AI content automation concept image, no text",
+                    "style": "clean modern instagram card news",
+                    "ratio": "1:1",
+                }
+            ]
+
+        for item in image_prompts:
+            page = item.get("page", len(images) + 1)
+            prompt = item.get("prompt", "")
+
+            filename = f"image_page_{page}.png"
+            file_path = os.path.join(self.output_dir, filename)
+
+            images.append(
+                {
+                    "page": page,
+                    "prompt": prompt,
+                    "image_path": file_path,
+                    "status": "placeholder_ready",
+                }
+            )
+
+        return images

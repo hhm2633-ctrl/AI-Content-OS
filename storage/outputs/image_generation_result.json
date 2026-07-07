@@ -1,30 +1,4 @@
 {
-  "title": "AI content automation",
-  "generated_images": [
-    {
-      "slide": 1,
-      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 1장: 문제 제기. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
-      "image_path": "storage\\images\\card_slide_1.png",
-      "status": "image_generated"
-    },
-    {
-      "slide": 2,
-      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 2장: 핵심 정보 설명. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
-      "image_path": "storage\\images\\card_slide_2.png",
-      "status": "image_generated"
-    },
-    {
-      "slide": 3,
-      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 3장: 사람들이 관심 가질 포인트. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
-      "image_path": "storage\\images\\card_slide_3.png",
-      "status": "image_generated"
-    },
-    {
-      "slide": 4,
-      "image_prompt": "Create a realistic Korean Instagram card news image. Topic: AI content automation. Slide message: 4장: 요약 및 행동 유도. Style: clean, modern, high readability, social media optimized, professional editorial design, 1:1 square ratio, no text inside image.",
-      "image_path": "storage\\images\\card_slide_4.png",
-      "status": "image_generated"
-    }
-  ],
+  "images": [],
   "status": "image_generation_completed"
 }

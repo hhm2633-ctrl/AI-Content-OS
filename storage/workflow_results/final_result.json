@@ -1,0 +1,177 @@
+{
+  "research_result": {
+    "topic": "AI content automation",
+    "summary": "AI content automation refers to the use of artificial intelligence technologies to create, manage, and optimize digital content with minimal human intervention, enhancing efficiency and consistency in content production.",
+    "key_points": [
+      "AI tools can generate written, visual, and audio content based on given inputs or data patterns.",
+      "Automation helps streamline repetitive tasks like content scheduling, personalization, and distribution.",
+      "It enables faster content production and can support large-scale content strategies while maintaining quality."
+    ],
+    "audience_interest": [
+      "개인과 기업 모두 시간과 비용을 절약할 수 있는 방법에 대한 관심",
+      "콘텐츠 마케팅과 디지털 미디어 분야에서 효율성을 높이는 최신 기술에 대한 이해"
+    ],
+    "content_angle": "AI가 콘텐츠 제작 과정을 어떻게 변화시키고, 실무에서 활용할 수 있는 구체적인 사례와 장점을 중심으로 설명",
+    "status": "research_completed"
+  },
+  "content_result": {
+    "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+    "slides": [
+      {
+        "page": 1,
+        "headline": "AI 콘텐츠 자동화란?",
+        "body": "인공지능이 글, 이미지, 음성 등 디지털 콘텐츠를 스스로 만들고 관리하는 기술입니다."
+      },
+      {
+        "page": 2,
+        "headline": "자동화가 돕는 일상",
+        "body": "반복되는 스케줄링, 맞춤형 콘텐츠 제공, 배포 과정을 자동으로 처리해 시간과 노력을 줄여줍니다."
+      },
+      {
+        "page": 3,
+        "headline": "빠르고 일관된 콘텐츠 생산",
+        "body": "많은 양의 콘텐츠를 빠르게 만들면서도 일정한 품질을 유지할 수 있습니다."
+      },
+      {
+        "page": 4,
+        "headline": "누구에게 필요할까요?",
+        "body": "개인과 기업 모두, 콘텐츠 마케팅과 디지털 미디어 효율을 높이고 싶은 분들에게 유용합니다."
+      }
+    ],
+    "caption": "AI 콘텐츠 자동화가 만드는 변화, 이제는 누구나 쉽게 콘텐츠를 빠르고 효율적으로 관리할 수 있습니다.",
+    "hashtags": [
+      "#AI콘텐츠",
+      "#콘텐츠자동화",
+      "#카드뉴스"
+    ],
+    "status": "content_created"
+  },
+  "image_prompt_result": {
+    "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+    "image_prompts": [
+      {
+        "page": 1,
+        "prompt": "abstract digital interface with flowing lines and icons representing text, images, and audio content, soft blue and white color palette, minimalistic futuristic design",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 2,
+        "prompt": "conceptual illustration of automated scheduling and content delivery, calendar icons, connected nodes, subtle motion effect, pastel tones with clean white background",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 3,
+        "prompt": "stack of digital content cards arranged neatly with fast motion blur effect, consistent shapes and colors symbolizing uniform quality, sleek tech-inspired background in light shades",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 4,
+        "prompt": "diverse abstract shapes symbolizing individuals and businesses connected by digital network lines, harmonious color scheme with soft gradients, clean and professional style",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      }
+    ],
+    "status": "image_prompts_created"
+  },
+  "image_generation_result": {
+    "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+    "images": [
+      {
+        "page": 1,
+        "prompt": "abstract digital interface with flowing lines and icons representing text, images, and audio content, soft blue and white color palette, minimalistic futuristic design",
+        "image_path": "storage\\images\\image_page_1.png",
+        "status": "placeholder_ready"
+      },
+      {
+        "page": 2,
+        "prompt": "conceptual illustration of automated scheduling and content delivery, calendar icons, connected nodes, subtle motion effect, pastel tones with clean white background",
+        "image_path": "storage\\images\\image_page_2.png",
+        "status": "placeholder_ready"
+      },
+      {
+        "page": 3,
+        "prompt": "stack of digital content cards arranged neatly with fast motion blur effect, consistent shapes and colors symbolizing uniform quality, sleek tech-inspired background in light shades",
+        "image_path": "storage\\images\\image_page_3.png",
+        "status": "placeholder_ready"
+      },
+      {
+        "page": 4,
+        "prompt": "diverse abstract shapes symbolizing individuals and businesses connected by digital network lines, harmonious color scheme with soft gradients, clean and professional style",
+        "image_path": "storage\\images\\image_page_4.png",
+        "status": "placeholder_ready"
+      }
+    ],
+    "status": "image_generation_prepared"
+  },
+  "card_news_result": {
+    "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+    "card_news_files": [
+      {
+        "page": 1,
+        "file_path": "storage\\card_news\\card_news_1.png",
+        "status": "created"
+      },
+      {
+        "page": 2,
+        "file_path": "storage\\card_news\\card_news_2.png",
+        "status": "created"
+      },
+      {
+        "page": 3,
+        "file_path": "storage\\card_news\\card_news_3.png",
+        "status": "created"
+      },
+      {
+        "page": 4,
+        "file_path": "storage\\card_news\\card_news_4.png",
+        "status": "created"
+      }
+    ],
+    "caption": "AI 콘텐츠 자동화가 만드는 변화, 이제는 누구나 쉽게 콘텐츠를 빠르고 효율적으로 관리할 수 있습니다.",
+    "hashtags": [
+      "#AI콘텐츠",
+      "#콘텐츠자동화",
+      "#카드뉴스"
+    ],
+    "status": "card_news_created"
+  },
+  "publishing_result": {
+    "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+    "platform": "manual_ready",
+    "card_news_files": [
+      {
+        "page": 1,
+        "file_path": "storage\\card_news\\card_news_1.png",
+        "status": "created"
+      },
+      {
+        "page": 2,
+        "file_path": "storage\\card_news\\card_news_2.png",
+        "status": "created"
+      },
+      {
+        "page": 3,
+        "file_path": "storage\\card_news\\card_news_3.png",
+        "status": "created"
+      },
+      {
+        "page": 4,
+        "file_path": "storage\\card_news\\card_news_4.png",
+        "status": "created"
+      }
+    ],
+    "caption": "AI 콘텐츠 자동화가 만드는 변화, 이제는 누구나 쉽게 콘텐츠를 빠르고 효율적으로 관리할 수 있습니다.",
+    "hashtags": [
+      "#AI콘텐츠",
+      "#콘텐츠자동화",
+      "#카드뉴스"
+    ],
+    "created_at": "2026-07-07 20:30:41",
+    "status": "publishing_ready",
+    "result_file": "storage\\publishing\\publishing_result.json"
+  },
+  "status": "workflow_completed"
+}

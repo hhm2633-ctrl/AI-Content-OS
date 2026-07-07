@@ -1,21 +1,25 @@
 {
-    "project": {
-        "name": "AI-Content-OS",
-        "version": "1.0.0"
-    },
-
-    "system": {
-        "language": "ko",
-        "timezone": "Asia/Seoul"
-    },
-
-    "workflow": {
-        "retry_count": 3,
-        "auto_save": true
-    },
-
-    "logging": {
-        "enabled": true,
-        "level": "INFO"
-    }
+  "topic": "AI content automation",
+  "llm": {
+    "model": "gpt-4.1-mini",
+    "temperature": 0.7,
+    "max_retries": 3,
+    "retry_delay": 2
+  },
+  "research": {
+    "topic": "AI content automation"
+  },
+  "content": {},
+  "image_prompt": {},
+  "image_generation": {
+    "output_dir": "storage/images"
+  },
+  "card_news": {
+    "output_dir": "storage/card_news",
+    "width": 1080,
+    "height": 1080
+  },
+  "publishing": {
+    "output_dir": "storage/publishing"
+  }
 }

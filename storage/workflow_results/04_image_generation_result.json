@@ -1,0 +1,30 @@
+{
+  "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
+  "images": [
+    {
+      "page": 1,
+      "prompt": "abstract digital interface with flowing lines and icons representing text, images, and audio content, soft blue and white color palette, minimalistic futuristic design",
+      "image_path": "storage\\images\\image_page_1.png",
+      "status": "placeholder_ready"
+    },
+    {
+      "page": 2,
+      "prompt": "conceptual illustration of automated scheduling and content delivery, calendar icons, connected nodes, subtle motion effect, pastel tones with clean white background",
+      "image_path": "storage\\images\\image_page_2.png",
+      "status": "placeholder_ready"
+    },
+    {
+      "page": 3,
+      "prompt": "stack of digital content cards arranged neatly with fast motion blur effect, consistent shapes and colors symbolizing uniform quality, sleek tech-inspired background in light shades",
+      "image_path": "storage\\images\\image_page_3.png",
+      "status": "placeholder_ready"
+    },
+    {
+      "page": 4,
+      "prompt": "diverse abstract shapes symbolizing individuals and businesses connected by digital network lines, harmonious color scheme with soft gradients, clean and professional style",
+      "image_path": "storage\\images\\image_page_4.png",
+      "status": "placeholder_ready"
+    }
+  ],
+  "status": "image_generation_prepared"
+}

@@ -1,149 +1,255 @@
-"""
-Card News Module
-AI-Content-OS
+import os
+from typing import Any, Dict, List, Optional
 
-AI 생성 이미지 위에 카드뉴스용 텍스트를 합성하여
-최종 업로드용 PNG 이미지를 만든다.
-"""
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    Image = None
+    ImageDraw = None
+    ImageFont = None
 
-import json
-from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
-
-from modules.base_module import BaseModule
+try:
+    from modules.base_module import BaseModule
+except ImportError:
+    from src.base_module import BaseModule
 
 
 class CardNewsModule(BaseModule):
-    def __init__(self, config):
-        super().__init__(config)
+    """
+    CardNewsModule
 
-        self.output_dir = Path("storage/outputs")
-        self.card_news_dir = Path("storage/card_news")
+    역할:
+    - ContentModule 결과와 ImageGenerationModule 결과를 받아 카드뉴스 PNG 파일 생성
+    - 현재는 안정적인 기본 카드뉴스 이미지 생성 구조
+    """
 
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.card_news_dir.mkdir(parents=True, exist_ok=True)
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        try:
+            super().__init__(config=config)
+        except TypeError:
+            super().__init__()
 
-        self.canvas_size = (1024, 1024)
+        self.config = config or getattr(self, "config", {}) or {}
 
-    def get_font(self, size):
-        font_candidates = [
-            "C:/Windows/Fonts/malgun.ttf",
-            "C:/Windows/Fonts/malgunbd.ttf",
-            "C:/Windows/Fonts/arial.ttf"
-        ]
-
-        for font_path in font_candidates:
-            if Path(font_path).exists():
-                return ImageFont.truetype(font_path, size)
-
-        return ImageFont.load_default()
-
-    def wrap_text(self, draw, text, font, max_width):
-        words = text.split()
-        lines = []
-        current_line = ""
-
-        for word in words:
-            test_line = current_line + " " + word if current_line else word
-            bbox = draw.textbbox((0, 0), test_line, font=font)
-            test_width = bbox[2] - bbox[0]
-
-            if test_width <= max_width:
-                current_line = test_line
-            else:
-                if current_line:
-                    lines.append(current_line)
-                current_line = word
-
-        if current_line:
-            lines.append(current_line)
-
-        return lines
-
-    def draw_text_box(self, image, title, body_text):
-        draw = ImageDraw.Draw(image, "RGBA")
-
-        title_font = self.get_font(54)
-        body_font = self.get_font(42)
-
-        box_x = 70
-        box_y = 690
-        box_width = 884
-        box_height = 260
-
-        draw.rounded_rectangle(
-            (box_x, box_y, box_x + box_width, box_y + box_height),
-            radius=35,
-            fill=(255, 255, 255, 230)
+        self.output_dir = (
+            self.config.get("output_dir")
+            or self.config.get("card_news_output_dir")
+            or os.path.join("storage", "card_news")
         )
 
-        title_lines = self.wrap_text(draw, title, title_font, 760)
-        body_lines = self.wrap_text(draw, body_text, body_font, 780)
+        self.width = int(self.config.get("width", 1080))
+        self.height = int(self.config.get("height", 1080))
 
-        y = box_y + 35
+        os.makedirs(self.output_dir, exist_ok=True)
 
-        for line in title_lines[:1]:
-            draw.text((box_x + 45, y), line, font=title_font, fill=(20, 20, 20, 255))
-            y += 70
-
-        for line in body_lines[:2]:
-            draw.text((box_x + 45, y), line, font=body_font, fill=(50, 50, 50, 255))
-            y += 55
-
-        return image
-
-    def run(self, content_result, image_generation_result):
+    def run(
+        self,
+        content_result: Optional[Dict[str, Any]] = None,
+        image_generation_result: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         print("Card News Module Started")
 
-        title = content_result.get("title", "AI-Content-OS")
-        body = content_result.get("body", [])
-        generated_images = image_generation_result.get("generated_images", [])
-
-        card_news_items = []
-
-        for item in generated_images:
-            slide_number = item.get("slide")
-            image_path = Path(item.get("image_path"))
-
-            if not image_path.exists():
-                print(f"Image not found: {image_path}")
-                continue
-
-            body_text = body[slide_number - 1] if slide_number - 1 < len(body) else ""
-
-            base_image = Image.open(image_path).convert("RGB")
-            base_image = base_image.resize(self.canvas_size)
-
-            card_image = self.draw_text_box(
-                image=base_image,
-                title=title,
-                body_text=body_text
+        if Image is None:
+            raise ImportError(
+                "Pillow가 설치되어 있지 않습니다. PowerShell에서 py -m pip install pillow 실행 후 다시 시도하세요."
             )
 
-            output_filename = f"card_news_{slide_number}.png"
-            output_path = self.card_news_dir / output_filename
+        content_result = content_result or {}
+        image_generation_result = image_generation_result or {}
 
-            card_image.save(output_path)
+        title = content_result.get("title", "AI Content OS")
+        slides = content_result.get("slides", [])
 
-            card_news_items.append({
-                "slide": slide_number,
-                "card_news_path": str(output_path),
-                "status": "card_news_created"
-            })
+        if not slides:
+            slides = self._fallback_slides(title)
 
-            print(f"Card News Saved: {output_path}")
+        card_news_files = []
+
+        for slide in slides:
+            page = int(slide.get("page", len(card_news_files) + 1))
+            headline = str(slide.get("headline", f"{page}장 제목"))
+            body = str(slide.get("body", ""))
+
+            file_path = os.path.join(self.output_dir, f"card_news_{page}.png")
+
+            self._create_card_image(
+                file_path=file_path,
+                page=page,
+                title=title,
+                headline=headline,
+                body=body,
+            )
+
+            card_news_files.append(
+                {
+                    "page": page,
+                    "file_path": file_path,
+                    "status": "created",
+                }
+            )
+
+            print(f"Card News Saved: {file_path}")
 
         result = {
             "title": title,
-            "card_news": card_news_items,
-            "status": "card_news_completed"
+            "card_news_files": card_news_files,
+            "caption": content_result.get("caption", ""),
+            "hashtags": content_result.get("hashtags", []),
+            "status": "card_news_created",
         }
 
-        output_path = self.output_dir / "card_news_result.json"
-
-        with open(output_path, "w", encoding="utf-8") as file:
-            json.dump(result, file, ensure_ascii=False, indent=2)
-
-        print("Card News Result Saved:", output_path)
-
+        print("Card News Module Finished")
         return result
+
+    def _create_card_image(
+        self,
+        file_path: str,
+        page: int,
+        title: str,
+        headline: str,
+        body: str,
+    ) -> None:
+        image = Image.new("RGB", (self.width, self.height), color=(248, 248, 248))
+        draw = ImageDraw.Draw(image)
+
+        title_font = self._load_font(46)
+        headline_font = self._load_font(72)
+        body_font = self._load_font(40)
+        page_font = self._load_font(30)
+
+        margin = 90
+
+        draw.rectangle(
+            [(0, 0), (self.width, 150)],
+            fill=(28, 28, 28),
+        )
+
+        draw.text(
+            (margin, 48),
+            self._safe_text(title, 28),
+            font=title_font,
+            fill=(255, 255, 255),
+        )
+
+        draw.text(
+            (self.width - 170, 52),
+            f"{page}/4",
+            font=page_font,
+            fill=(255, 255, 255),
+        )
+
+        headline_lines = self._wrap_text(headline, max_chars=12)
+        y = 260
+
+        for line in headline_lines[:3]:
+            draw.text(
+                (margin, y),
+                line,
+                font=headline_font,
+                fill=(20, 20, 20),
+            )
+            y += 90
+
+        y += 40
+
+        body_lines = self._wrap_text(body, max_chars=21)
+
+        for line in body_lines[:8]:
+            draw.text(
+                (margin, y),
+                line,
+                font=body_font,
+                fill=(60, 60, 60),
+            )
+            y += 58
+
+        draw.rectangle(
+            [(margin, self.height - 120), (self.width - margin, self.height - 112)],
+            fill=(28, 28, 28),
+        )
+
+        draw.text(
+            (margin, self.height - 85),
+            "AI-Content-OS",
+            font=page_font,
+            fill=(80, 80, 80),
+        )
+
+        image.save(file_path)
+
+    def _load_font(self, size: int):
+        font_candidates = [
+            "C:/Windows/Fonts/malgun.ttf",
+            "C:/Windows/Fonts/malgunbd.ttf",
+            "C:/Windows/Fonts/arial.ttf",
+        ]
+
+        for font_path in font_candidates:
+            try:
+                if os.path.exists(font_path):
+                    return ImageFont.truetype(font_path, size)
+            except Exception:
+                pass
+
+        return ImageFont.load_default()
+
+    def _wrap_text(self, text: str, max_chars: int) -> List[str]:
+        text = str(text).replace("\n", " ").strip()
+
+        if not text:
+            return [""]
+
+        words = text.split(" ")
+        lines = []
+        current = ""
+
+        for word in words:
+            if len(current) + len(word) + 1 <= max_chars:
+                current = f"{current} {word}".strip()
+            else:
+                if current:
+                    lines.append(current)
+                current = word
+
+        if current:
+            lines.append(current)
+
+        final_lines = []
+        for line in lines:
+            if len(line) <= max_chars:
+                final_lines.append(line)
+            else:
+                for i in range(0, len(line), max_chars):
+                    final_lines.append(line[i:i + max_chars])
+
+        return final_lines
+
+    def _safe_text(self, text: str, max_chars: int) -> str:
+        text = str(text).replace("\n", " ").strip()
+        if len(text) <= max_chars:
+            return text
+        return text[:max_chars - 3] + "..."
+
+    def _fallback_slides(self, title: str) -> List[Dict[str, Any]]:
+        return [
+            {
+                "page": 1,
+                "headline": "콘텐츠 자동화 시작",
+                "body": "AI를 활용하면 카드뉴스 제작 과정을 더 빠르고 안정적으로 만들 수 있습니다.",
+            },
+            {
+                "page": 2,
+                "headline": "핵심은 구조입니다",
+                "body": "리서치, 글쓰기, 이미지, 카드뉴스, 발행 단계를 나누어야 오류를 줄일 수 있습니다.",
+            },
+            {
+                "page": 3,
+                "headline": "처음은 작게",
+                "body": "처음부터 완전 자동화를 목표로 하기보다 카드뉴스 한 세트를 정확히 만드는 것이 중요합니다.",
+            },
+            {
+                "page": 4,
+                "headline": "반복하며 개선",
+                "body": "출력물을 확인하고 문구와 디자인을 조금씩 개선하면 운영 가능한 시스템이 됩니다.",
+            },
+        ]

@@ -1,363 +1,191 @@
-# PROJECT_STATE.md
+# AI-Content-OS 현재 개발 상태
 
-# AI-Content-OS
+## 실행 명령어
 
-Version: v0.1
-Status: Foundation
-Last Updated: 2026-07-07
+Windows PowerShell에서는 항상 아래 명령어를 사용한다.
 
----
+```powershell
+py -m src.main
+```
 
-# Current Phase
-
-Foundation (Day 0)
-
-프로젝트의 기반 설계 단계
-
-현재는 코드 개발보다 프로젝트 구조와 문서 설계를 우선한다.
+`python -m src.main` 사용 금지.
+현재 PC에서는 `python` 명령어가 인식되지 않는다.
 
 ---
 
-# Overall Progress
+## 현재 완료된 것
 
-Project Planning
-
-██████████░░░░░░░░░░ 50%
-
-Architecture
-
-██░░░░░░░░░░░░░░░░░░ 10%
-
-Development
-
-░░░░░░░░░░░░░░░░░░░░ 0%
-
-Testing
-
-░░░░░░░░░░░░░░░░░░░░ 0%
-
-Deployment
-
-░░░░░░░░░░░░░░░░░░░░ 0%
-
-Commercial Operation
-
-░░░░░░░░░░░░░░░░░░░░ 0%
+* GitHub 저장소 생성 완료
+* GitHub Desktop 연동 완료
+* VS Code 개발환경 구축 완료
+* Python 3.13 설치 완료
+* `.env` 생성 완료
+* `requirements.txt` 생성 완료
+* `config/settings.json` 생성 완료
+* 전체 기본 폴더 구조 생성 완료
 
 ---
 
-# Current Mission
+## 현재 폴더 구조
 
-20일 안에
+```text
+config/
+  settings.json
 
-Instagram 카드뉴스 자동화 시스템을 구축한다.
+modules/
+  base_module.py
+  research/
+    research_module.py
+  content/
+    content_module.py
+  image_prompt/
+    image_prompt_module.py
+  image_generation/
+    image_generation_module.py
+  card_news/
+    card_news_module.py
+  publishing/
+    publishing_module.py
 
-이를 기반으로
+src/
+  main.py
+  workflow_engine.py
+  llm_client.py
 
-YouTube Shorts
-
-Smart Store
-
-Coupang
-
-Affiliate
-
-까지 확장 가능한 기반을 만든다.
+storage/
+  outputs/
+  images/
+  card_news/
+```
 
 ---
 
-# Current Focus
+## 현재 Workflow
 
-현재 집중하는 영역
-
-★★★★★
-
-Project Foundation
-
-★★★★★
-
-Architecture
-
-★★★★★
-
-Workflow Design
-
-★★★★☆
-
-Content Engine
-
-★★★☆☆
-
-Renderer
-
-★★☆☆☆
-
+```text
+Research
+↓
+Content
+↓
+Image Prompt
+↓
+Image Generation
+↓
+Card News
+↓
 Publishing
+```
 
 ---
 
-# Completed
+## 현재 정상 생성되는 결과물
 
-✅ GitHub Repository 생성
+```text
+storage/outputs/research_result.json
+storage/outputs/content_result.json
+storage/outputs/image_prompt_result.json
+storage/outputs/image_generation_result.json
+storage/outputs/card_news_result.json
+storage/outputs/publishing_result.json
 
-✅ AI_CONTEXT.md 작성
+storage/images/card_slide_1.png
+storage/images/card_slide_2.png
+storage/images/card_slide_3.png
+storage/images/card_slide_4.png
 
-✅ CURRENT_TASK.md 작성
-
-✅ DECISIONS.md 작성
-
----
-
-# In Progress
-
-PROJECT_BIBLE.md
-
-SYSTEM_ARCHITECTURE.md
-
-MASTER_JSON.md
-
-WORKFLOW.md
-
----
-
-# Pending
-
-Renderer
-
-Crawler
-
-Publishing Engine
-
-Analytics Engine
-
-Content Engine
-
-Automation Engine
-
-Deployment
+storage/card_news/card_news_1.png
+storage/card_news/card_news_2.png
+storage/card_news/card_news_3.png
+storage/card_news/card_news_4.png
+```
 
 ---
 
-# Current Architecture (Planned)
+## 완료된 리팩토링
 
-Topic Discovery
-
-↓
-
-Research Engine
-
-↓
-
-Fact Collection
-
-↓
-
-Master JSON
-
-↓
-
-Content Engine
-
-↓
-
-Template Engine
-
-↓
-
-Renderer
-
-↓
-
-Publishing Engine
-
-↓
-
-Analytics
-
-↓
-
-Feedback
-
-↓
-
-Continuous Improvement
+* `BaseModule`에서 `self.config = config` 저장 완료
+* 모든 모듈이 `BaseModule(config)` 구조를 사용하도록 통일 완료
+* `ResearchModule` LLMClient 연결 완료
+* `ContentModule` LLMClient 연결 완료
+* `ImagePromptModule` LLMClient 연결 완료
+* `ImageGenerationModule` config 기반 구조 정리 완료
+* `CardNewsModule` config 기반 구조 정리 완료
+* `PublishingModule` config 기반 구조 정리 완료
+* `WorkflowEngine` 전체 흐름 정리 완료
+* `main.py` config 로딩 구조 정리 완료
+* `settings.json`에 `llm`, `storage`, `research`, `content`, `image_prompt`, `image_generation`, `card_news`, `publishing` 설정 구역 생성 완료
 
 ---
 
-# Technology Candidates
+## 현재 중요한 상태
 
-Python
+현재 `LLMClient`는 아직 실제 OpenAI API를 호출하지 않는다.
 
-Playwright
+현재 상태는:
 
-FastAPI
+```text
+llm.enabled = false
+```
 
-Supabase
-
-PostgreSQL
-
-Firecrawl
-
-Jina AI
-
-Claude API
-
-Gemini API
-
-OpenRouter
-
-GitHub
-
-Docker
-
-Cloud Server
+이므로 fake response를 반환하는 테스트 구조다.
 
 ---
 
-# Legacy Assets
+## 다음 작업
 
-분석 예정 자료
+다음 작업은 반드시 여기서부터 시작한다.
 
-Claude
+```text
+src/llm_client.py
+```
 
-Gemini
+를 실제 OpenAI API 연결 구조로 교체한다.
 
-Manus
+목표:
 
-Notion
+```text
+ResearchModule
+ContentModule
+ImagePromptModule
+```
 
-PDF
-
-Python Source
-
-Prompt
-
-Workflow
-
-HTML Templates
+이 실제 GPT 응답을 사용하게 만든다.
 
 ---
 
-# Current Risks
+## 앞으로의 개발 원칙
 
-프로젝트 범위가 매우 크다.
-
-우선순위를 잃으면 개발 기간이 크게 증가할 수 있다.
-
-항상 MVP 중심으로 개발한다.
-
----
-
-# Current Rule
-
-절대
-
-새 기능부터 만들지 않는다.
-
-반드시
-
-문서
-
-↓
-
-설계
-
-↓
-
-검토
-
-↓
-
-코드
-
-↓
-
-테스트
-
-↓
-
-Commit
-
-↓
-
-CHANGELOG
-
-순서로 진행한다.
+* 컴퓨터 초보 기준으로 한 단계씩 진행
+* 항상 전체 수정본 제공
+* 기존 파일 수정 시 반드시 전체 코드 제공
+* 임시 코드, 연습용 코드 작성 금지
+* 최종 AI-Content-OS에서 사용할 구조만 개발
+* 아키텍처를 먼저 생각하고 기능을 추가
+* 기존 구조를 자주 뒤엎지 않음
+* Windows 실행 명령어는 항상 `py` 사용
 
 ---
 
-# AI Roles
+## 다음 채팅 시작 문장
 
-Project Owner
+AI-Content-OS 개발 계속.
 
-hongmyoung han
+현재 `PROJECT_STATE.md` 기준으로 이어서 진행한다.
 
-ChatGPT
+중요:
+Windows PowerShell에서는 항상 `py -m src.main` 명령어를 사용한다.
+`python -m src.main` 사용 금지.
 
-Chief Technology Officer (CTO)
+현재 완료:
+BaseModule 구조 통일 완료.
+WorkflowEngine 정리 완료.
+main.py 정리 완료.
+settings.json config 구조 완료.
+ResearchModule, ContentModule, ImagePromptModule은 LLMClient에 연결 완료.
+ImageGenerationModule, CardNewsModule, PublishingModule은 config 기반 구조로 정리 완료.
+.env와 requirements.txt는 이미 생성 완료.
 
-- Architecture
-- Documentation
-- Technical Decision
-- Project Management
-- Code Review
+현재 다음 작업:
+`src/llm_client.py`를 실제 OpenAI API 연결 구조로 전체 교체한다.
 
-Claude
-
-Lead Software Engineer
-
-Gemini
-
-Vision Engineer
-
-Manus
-
-Research Assistant
-
----
-
-# Next Milestone
-
-M1
-
-Foundation Complete
-
-조건
-
-PROJECT_BIBLE.md 완료
-
-SYSTEM_ARCHITECTURE.md 완료
-
-MASTER_JSON.md 완료
-
-WORKFLOW.md 완료
-
----
-
-# Current Save Point
-
-프로젝트는 현재 Foundation 단계에 있다.
-
-아직 코드 작성은 시작하지 않았다.
-
-현재 모든 작업은 장기적인 유지보수를 고려한 설계와 문서 작성에 집중하고 있다.
-
----
-
-# Notes For Any AI
-
-이 프로젝트는 일반적인 자동화 프로젝트가 아니다.
-
-AI 기반 콘텐츠 운영 플랫폼(AI Content Operating System)을 구축하는 프로젝트이다.
-
-답변 시에는 항상
-
-- 유지보수성
-- 확장성
-- 비용
-- 안정성
-- 운영성
-
-을 함께 고려한다.
-
-단기적인 구현보다 장기적인 프로젝트 품질을 우선한다.
+항상 전체 수정본으로 제공해줘.

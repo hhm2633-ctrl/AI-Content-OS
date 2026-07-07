@@ -1,52 +1,68 @@
-"""
-Publishing Module
-AI-Content-OS
-
-카드뉴스 결과물을 실제 업로드 직전 상태로 정리한다.
-현재 단계에서는 Instagram API를 호출하지 않고,
-게시 준비용 JSON 파일을 생성한다.
-"""
-
 import json
-from pathlib import Path
+import os
+from datetime import datetime
+from typing import Any, Dict, Optional
 
-from modules.base_module import BaseModule
+try:
+    from modules.base_module import BaseModule
+except ImportError:
+    from src.base_module import BaseModule
 
 
 class PublishingModule(BaseModule):
-    def __init__(self, config):
-        super().__init__(config)
+    """
+    PublishingModule
 
-        self.output_dir = Path("storage/outputs")
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+    역할:
+    - 카드뉴스 결과물을 실제 발행 전 단계로 정리
+    - caption, hashtags, 파일 경로를 JSON으로 저장
+    - 나중에 Instagram, 블로그, 쇼츠 업로드 모듈로 확장 가능
+    """
 
-    def run(self, content_result, card_news_result):
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        try:
+            super().__init__(config=config)
+        except TypeError:
+            super().__init__()
+
+        self.config = config or getattr(self, "config", {}) or {}
+
+        self.output_dir = (
+            self.config.get("output_dir")
+            or self.config.get("publishing_output_dir")
+            or os.path.join("storage", "publishing")
+        )
+
+        os.makedirs(self.output_dir, exist_ok=True)
+
+    def run(self, card_news_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         print("Publishing Module Started")
 
-        title = content_result.get("title", "")
-        body = content_result.get("body", [])
-        card_news = card_news_result.get("card_news", [])
+        card_news_result = card_news_result or {}
 
-        caption_lines = []
-        caption_lines.append(title)
-        caption_lines.append("")
-        caption_lines.extend(body)
-        caption_lines.append("")
-        caption_lines.append("#AI #콘텐츠자동화 #카드뉴스 #인스타그램 #부업")
+        title = card_news_result.get("title", "AI Content OS")
+        card_news_files = card_news_result.get("card_news_files", [])
+        caption = card_news_result.get("caption", "")
+        hashtags = card_news_result.get("hashtags", [])
 
-        result = {
-            "platform": "instagram",
+        publishing_result = {
             "title": title,
-            "caption": "\n".join(caption_lines),
-            "images": [item.get("card_news_path") for item in card_news],
-            "status": "publishing_ready"
+            "platform": "manual_ready",
+            "card_news_files": card_news_files,
+            "caption": caption,
+            "hashtags": hashtags,
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "status": "publishing_ready",
         }
 
-        output_path = self.output_dir / "publishing_result.json"
+        file_path = os.path.join(self.output_dir, "publishing_result.json")
 
-        with open(output_path, "w", encoding="utf-8") as file:
-            json.dump(result, file, ensure_ascii=False, indent=2)
+        with open(file_path, "w", encoding="utf-8") as file:
+            json.dump(publishing_result, file, ensure_ascii=False, indent=2)
 
-        print("Publishing Result Saved:", output_path)
+        publishing_result["result_file"] = file_path
 
-        return result
+        print(f"Publishing Result Saved: {file_path}")
+        print("Publishing Module Finished")
+
+        return publishing_result
