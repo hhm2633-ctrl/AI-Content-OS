@@ -4,27 +4,31 @@
   "images": [
     {
       "index": 1,
-      "prompt": "한 손에 스마트폰을 들고 밝은 표정의 청년이 자동화의 상징인 기계 장치나 컴퓨터 화면을 바라보는 장면. 배경은 부드러운 색상으로 구성되어 있어 시선을 끌 수 있는 요소가 있는 디자인.",
-      "image_path": "storage/generated_images/ai_image_1.png",
-      "status": "generated"
+      "prompt": "eye-catching modern workspace with floating digital cards and automation flow, topic: 콘텐츠, 아직 손으로만 만드세요?, modern Korean Instagram card news background, clean composition, premium minimal style, soft lighting, 1:1 square image, no text, no logo, no watermark, no people faces, usable as card news background",
+      "image_path": null,
+      "status": "failed",
+      "error": "Connection error."
     },
     {
       "index": 2,
-      "prompt": "어두운 방에서 고민하는 표정의 청년이 여러 가지 부업 관련 서적이나 자료를 앞에 두고 머리를 감싸고 있는 모습. 복잡한 문제를 상징하는 요소들이 주변에 배치되어 있음.",
-      "image_path": "storage/generated_images/ai_image_2.png",
-      "status": "generated"
+      "prompt": "busy desk with scattered notes, repeated tasks, laptop screen glow, clean realistic mood, topic: 문제는 시간이 너무 많이 든다는 것, modern Korean Instagram card news background, clean composition, premium minimal style, soft lighting, 1:1 square image, no text, no logo, no watermark, no people faces, usable as card news background",
+      "image_path": null,
+      "status": "failed",
+      "error": "Connection error."
     },
     {
       "index": 3,
-      "prompt": "효율적으로 작업하는 모습을 보여주는 청년이 노트북 앞에서 자동화 프로그램을 사용하고 있는 장면. 화면에는 차트와 그래프가 보이며, 배경은 깔끔하고 정돈된 느낌.",
-      "image_path": "storage/generated_images/ai_image_3.png",
-      "status": "generated"
+      "prompt": "organized automation pipeline, connected blocks, simple dashboard, calm productive mood, topic: 그래서 흐름을 나눠야 합니다, modern Korean Instagram card news background, clean composition, premium minimal style, soft lighting, 1:1 square image, no text, no logo, no watermark, no people faces, usable as card news background",
+      "image_path": null,
+      "status": "failed",
+      "error": "Connection error."
     },
     {
       "index": 4,
-      "prompt": "밝은 미래를 상징하는 모습으로 청년이 목표를 향해 나아가는 모습. 주변에는 성공을 상징하는 아이콘들이 배치되어 있으며, 긍정적인 에너지를 주는 색상으로 구성되어 있음.",
-      "image_path": "storage/generated_images/ai_image_4.png",
-      "status": "generated"
+      "prompt": "finished content calendar, clean checklist, soft light, sense of completion, topic: 작게 만들고 계속 개선하세요, modern Korean Instagram card news background, clean composition, premium minimal style, soft lighting, 1:1 square image, no text, no logo, no watermark, no people faces, usable as card news background",
+      "image_path": null,
+      "status": "failed",
+      "error": "Connection error."
     }
   ]
 }

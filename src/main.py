@@ -6,6 +6,7 @@ from typing import Any, Dict
 from dotenv import load_dotenv
 
 from src.workflow_engine import WorkflowEngine
+from scripts.update_project_snapshot import update_docs_after_workflow
 
 
 def load_settings() -> Dict[str, Any]:
@@ -40,6 +41,18 @@ def main():
 
     engine = WorkflowEngine(config)
     result = engine.run()
+
+    if result.get("status") == "workflow_completed":
+        try:
+            update_docs_after_workflow(
+                workflow_result=result,
+                change_message="Workflow completed and project snapshot refreshed.",
+                update_changelog=True,
+            )
+            print("Project snapshot updated.")
+        except Exception as error:
+            print("Project snapshot update failed. Workflow result is preserved.")
+            print(error)
 
     print("")
     print("Final Status:", result.get("status"))
