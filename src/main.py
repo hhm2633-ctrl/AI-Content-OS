@@ -9,21 +9,21 @@ from src.workflow_engine import WorkflowEngine
 
 
 def load_settings() -> Dict[str, Any]:
-    settings_path = Path("settings.json")
+    settings_path = Path("config/settings.json")
 
     if not settings_path.exists():
-        print("settings.json 없음. 기본 config로 실행합니다.")
+        print("config/settings.json 없음. 기본 config로 실행합니다.")
         return {}
 
     try:
         with open(settings_path, "r", encoding="utf-8") as file:
             settings = json.load(file)
 
-        print("settings.json 로드 완료.")
+        print("config/settings.json 로드 완료.")
         return settings
 
     except Exception as error:
-        print("settings.json 로드 실패. 기본 config로 실행합니다.")
+        print("config/settings.json 로드 실패. 기본 config로 실행합니다.")
         print(error)
         return {}
 
@@ -34,7 +34,7 @@ def main():
     load_dotenv()
 
     if not os.getenv("OPENAI_API_KEY"):
-        print("WARNING: OPENAI_API_KEY가 없습니다. .env 파일을 확인하세요.")
+        print("WARNING: OPENAI_API_KEY가 없습니다. fallback으로 실행합니다.")
 
     config = load_settings()
 

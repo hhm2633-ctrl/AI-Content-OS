@@ -1,0 +1,233 @@
+{
+  "status": "workflow_completed",
+  "trend": {
+    "status": "success",
+    "message": "trend_collection_completed",
+    "count": 8,
+    "trends": [
+      {
+        "rank": 1,
+        "keyword": "AI 자동화",
+        "score": 119,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435587"
+      },
+      {
+        "rank": 2,
+        "keyword": "인스타 카드뉴스",
+        "score": 118,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435618"
+      },
+      {
+        "rank": 3,
+        "keyword": "부업 자동화",
+        "score": 117,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435621"
+      },
+      {
+        "rank": 4,
+        "keyword": "콘텐츠 자동화",
+        "score": 116,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435622"
+      },
+      {
+        "rank": 5,
+        "keyword": "스마트스토어 자동화",
+        "score": 115,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435624"
+      },
+      {
+        "rank": 6,
+        "keyword": "AI 이미지 생성",
+        "score": 104,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435625"
+      },
+      {
+        "rank": 7,
+        "keyword": "블로그 자동화",
+        "score": 103,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435626"
+      },
+      {
+        "rank": 8,
+        "keyword": "쇼츠 자동화",
+        "score": 112,
+        "source": "local_fallback_trend_source",
+        "collected_at": "2026-07-08T13:57:54.435627"
+      }
+    ]
+  },
+  "topic": {
+    "status": "success",
+    "message": "topic_selection_completed",
+    "selected_topic": {
+      "keyword": "AI 자동화",
+      "title": "AI 자동화 지금 시작해야 하는 이유",
+      "angle": "초보자도 이해할 수 있는 실전형 카드뉴스",
+      "target": "부업, 자동화, 콘텐츠 수익화에 관심 있는 사람",
+      "reason": "현재 프로젝트 방향과 수익화 가능성이 높은 주제",
+      "score": 119,
+      "source": "local_fallback_trend_source"
+    },
+    "created_at": "2026-07-08T13:57:54.437893"
+  },
+  "research": {
+    "status": "success",
+    "message": "research_completed",
+    "keyword": "AI 자동화",
+    "title": "AI 자동화 지금 시작해야 하는 이유",
+    "summary": "AI 자동화 주제는 카드뉴스, 블로그, 쇼츠로 확장하기 좋은 자동화 콘텐츠 주제입니다.",
+    "key_points": [
+      "AI 자동화는 초보자도 관심을 가질 수 있는 주제입니다.",
+      "카드뉴스 형식으로 짧고 명확하게 전달하기 좋습니다.",
+      "인스타그램 다계정 운영과 연결하기 좋습니다.",
+      "향후 블로그, 쇼츠, 상품 연결 콘텐츠로 확장할 수 있습니다."
+    ],
+    "topic_angle": "초보자도 이해할 수 있는 실전형 카드뉴스",
+    "target": "부업, 자동화, 콘텐츠 수익화에 관심 있는 사람",
+    "source": "local_fallback_trend_source",
+    "created_at": "2026-07-08T13:57:54.439498"
+  },
+  "content": {
+    "title": "AI 콘텐츠 자동화의 모든 것",
+    "slides": [
+      {
+        "page": 1,
+        "headline": "AI 자동화란?",
+        "body": "AI 기술을 활용해 콘텐츠 제작을 자동화하는 방법입니다."
+      },
+      {
+        "page": 2,
+        "headline": "초보자도 쉽게 접근 가능",
+        "body": "AI 자동화는 누구나 관심을 가질 수 있는 주제입니다."
+      },
+      {
+        "page": 3,
+        "headline": "카드뉴스로 효과적 전달",
+        "body": "짧고 명확한 카드뉴스 형식으로 쉽게 소통할 수 있습니다."
+      },
+      {
+        "page": 4,
+        "headline": "다양한 콘텐츠 확장 가능",
+        "body": "블로그, 쇼츠 등 다양한 형식으로 연결할 수 있습니다."
+      }
+    ],
+    "caption": "AI 콘텐츠 자동화로 새로운 가능성을 열어보세요! #AI콘텐츠 #콘텐츠자동화 #카드뉴스",
+    "hashtags": [
+      "#AI콘텐츠",
+      "#콘텐츠자동화",
+      "#카드뉴스"
+    ],
+    "status": "content_created"
+  },
+  "image_prompt": {
+    "title": "AI 콘텐츠 자동화의 모든 것",
+    "image_prompts": [
+      {
+        "page": 1,
+        "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 2,
+        "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 3,
+        "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      },
+      {
+        "page": 4,
+        "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
+        "style": "clean modern instagram card news",
+        "ratio": "1:1"
+      }
+    ],
+    "status": "image_prompts_created"
+  },
+  "image_generation": {
+    "module": "ImageGenerationModule",
+    "status": "image_generation_completed",
+    "images": [
+      {
+        "index": 1,
+        "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
+        "image_path": "storage/generated_images/ai_image_1.png",
+        "status": "generated"
+      },
+      {
+        "index": 2,
+        "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
+        "image_path": "storage/generated_images/ai_image_2.png",
+        "status": "generated"
+      },
+      {
+        "index": 3,
+        "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
+        "image_path": "storage/generated_images/ai_image_3.png",
+        "status": "generated"
+      },
+      {
+        "index": 4,
+        "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
+        "image_path": "storage/generated_images/ai_image_4.png",
+        "status": "generated"
+      }
+    ]
+  },
+  "card_news": {
+    "module": "CardNewsModule",
+    "status": "card_news_completed",
+    "cards": [
+      {
+        "index": 1,
+        "card_path": "storage/card_news/card_news_1.png",
+        "source_image": "storage/generated_images/ai_image_1.png",
+        "status": "created"
+      },
+      {
+        "index": 2,
+        "card_path": "storage/card_news/card_news_2.png",
+        "source_image": "storage/generated_images/ai_image_2.png",
+        "status": "created"
+      },
+      {
+        "index": 3,
+        "card_path": "storage/card_news/card_news_3.png",
+        "source_image": "storage/generated_images/ai_image_3.png",
+        "status": "created"
+      },
+      {
+        "index": 4,
+        "card_path": "storage/card_news/card_news_4.png",
+        "source_image": "storage/generated_images/ai_image_4.png",
+        "status": "created"
+      }
+    ]
+  },
+  "publishing": {
+    "module": "PublishingModule",
+    "status": "publishing_ready",
+    "platform": "instagram_manual_upload",
+    "card_count": 4,
+    "card_paths": [
+      "storage/card_news/card_news_1.png",
+      "storage/card_news/card_news_2.png",
+      "storage/card_news/card_news_3.png",
+      "storage/card_news/card_news_4.png"
+    ],
+    "caption": "오늘의 AI 카드뉴스\n\nAI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n#AI #자동화 #콘텐츠자동화 #카드뉴스 #인스타그램 #부업 #수익화",
+    "next_action": "카드뉴스 이미지를 확인한 뒤 인스타그램에 수동 업로드"
+  }
+}

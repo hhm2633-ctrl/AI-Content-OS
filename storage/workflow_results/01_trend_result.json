@@ -1,0 +1,63 @@
+{
+  "status": "success",
+  "message": "trend_collection_completed",
+  "count": 8,
+  "trends": [
+    {
+      "rank": 1,
+      "keyword": "AI 자동화",
+      "score": 119,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435587"
+    },
+    {
+      "rank": 2,
+      "keyword": "인스타 카드뉴스",
+      "score": 118,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435618"
+    },
+    {
+      "rank": 3,
+      "keyword": "부업 자동화",
+      "score": 117,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435621"
+    },
+    {
+      "rank": 4,
+      "keyword": "콘텐츠 자동화",
+      "score": 116,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435622"
+    },
+    {
+      "rank": 5,
+      "keyword": "스마트스토어 자동화",
+      "score": 115,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435624"
+    },
+    {
+      "rank": 6,
+      "keyword": "AI 이미지 생성",
+      "score": 104,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435625"
+    },
+    {
+      "rank": 7,
+      "keyword": "블로그 자동화",
+      "score": 103,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435626"
+    },
+    {
+      "rank": 8,
+      "keyword": "쇼츠 자동화",
+      "score": 112,
+      "source": "local_fallback_trend_source",
+      "collected_at": "2026-07-08T13:57:54.435627"
+    }
+  ]
+}

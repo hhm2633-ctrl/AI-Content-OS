@@ -1,0 +1,30 @@
+{
+  "title": "AI 콘텐츠 자동화의 모든 것",
+  "image_prompts": [
+    {
+      "page": 1,
+      "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
+      "style": "clean modern instagram card news",
+      "ratio": "1:1"
+    },
+    {
+      "page": 2,
+      "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
+      "style": "clean modern instagram card news",
+      "ratio": "1:1"
+    },
+    {
+      "page": 3,
+      "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
+      "style": "clean modern instagram card news",
+      "ratio": "1:1"
+    },
+    {
+      "page": 4,
+      "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
+      "style": "clean modern instagram card news",
+      "ratio": "1:1"
+    }
+  ],
+  "status": "image_prompts_created"
+}

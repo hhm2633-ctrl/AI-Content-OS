@@ -1,43 +1,19 @@
 {
-  "research": {
-    "topic": "AI content automation",
-    "llm": {
-      "model": "gpt-4o-mini",
-      "temperature": 0.7,
-      "max_tokens": 1500,
-      "retry_count": 2,
-      "retry_delay": 2
-    }
+  "project_name": "AI-Content-OS",
+  "mode": "local_mvp",
+  "topic": {
+    "auto_select": true,
+    "default_keyword": "AI content automation",
+    "max_trends": 10
   },
-  "content": {
-    "llm": {
-      "model": "gpt-4o-mini",
-      "temperature": 0.7,
-      "max_tokens": 1800,
-      "retry_count": 2,
-      "retry_delay": 2
-    }
-  },
-  "image_prompt": {
-    "llm": {
-      "model": "gpt-4o-mini",
-      "temperature": 0.8,
-      "max_tokens": 1500,
-      "retry_count": 2,
-      "retry_delay": 2
-    }
-  },
-  "image_generation": {
-    "image_model": "gpt-image-1",
-    "image_size": "1024x1024",
-    "image_count": 4
-  },
-  "card_news": {
-    "width": 1080,
-    "height": 1080,
-    "brand_name": "AI-Content-OS"
-  },
-  "publishing": {
-    "platform": "instagram_manual_upload"
-  }
+  "trend_sources": [
+    "AI 자동화",
+    "인스타 카드뉴스",
+    "부업 자동화",
+    "콘텐츠 자동화",
+    "스마트스토어 자동화",
+    "AI 이미지 생성",
+    "블로그 자동화",
+    "쇼츠 자동화"
+  ]
 }

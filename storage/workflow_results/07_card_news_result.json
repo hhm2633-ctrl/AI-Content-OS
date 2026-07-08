@@ -1,0 +1,30 @@
+{
+  "module": "CardNewsModule",
+  "status": "card_news_completed",
+  "cards": [
+    {
+      "index": 1,
+      "card_path": "storage/card_news/card_news_1.png",
+      "source_image": "storage/generated_images/ai_image_1.png",
+      "status": "created"
+    },
+    {
+      "index": 2,
+      "card_path": "storage/card_news/card_news_2.png",
+      "source_image": "storage/generated_images/ai_image_2.png",
+      "status": "created"
+    },
+    {
+      "index": 3,
+      "card_path": "storage/card_news/card_news_3.png",
+      "source_image": "storage/generated_images/ai_image_3.png",
+      "status": "created"
+    },
+    {
+      "index": 4,
+      "card_path": "storage/card_news/card_news_4.png",
+      "source_image": "storage/generated_images/ai_image_4.png",
+      "status": "created"
+    }
+  ]
+}
