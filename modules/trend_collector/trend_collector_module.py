@@ -28,6 +28,11 @@ class TrendCollectorModule:
             "collector_version": "trend_source_manager_v1",
             "count": len(selected_trends),
             "total_collected": len(raw_trends),
+            "fallback_used": self.source_manager.last_collection_summary.get(
+                "fallback_used",
+                False
+            ),
+            "collection_summary": self.source_manager.last_collection_summary,
             "trends": selected_trends,
             "collected_at": datetime.now().isoformat()
         }
@@ -66,8 +71,15 @@ class TrendCollectorModule:
                 "source": item.get("source_id", "unknown"),
                 "source_name": item.get("source_name", "unknown"),
                 "source_type": item.get("source_type", "unknown"),
+                "link": item.get("link", ""),
+                "summary": item.get("summary", ""),
+                "publisher": item.get("publisher", ""),
+                "published_at": item.get("published_at", ""),
+                "query": item.get("query", ""),
+                "collection_method": item.get("collection_method", "unknown"),
+                "is_fallback": bool(item.get("is_fallback", False)),
                 "trend_reason": item.get("trend_reason", ""),
-                "collected_at": datetime.now().isoformat()
+                "collected_at": item.get("collected_at", datetime.now().isoformat())
             })
 
         ranked.sort(

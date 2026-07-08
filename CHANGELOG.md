@@ -11,3 +11,15 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-08 16:06:43
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-08 16:06:58
+
+- Change: Added dedicated Naver News trend collector with fallback-aware trend results.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
