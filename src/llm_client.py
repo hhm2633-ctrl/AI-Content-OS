@@ -1,175 +1,171 @@
+import json
 import os
 import time
+from pathlib import Path
 from typing import Any, Dict, Optional
 
-from dotenv import load_dotenv
 from openai import OpenAI
 
 
 class LLMClient:
     """
-    AI-Content-OS 공통 LLM 클라이언트
+    AI-Content-OS LLMClient
+
+    역할:
+    - OpenAI 텍스트 생성 공통 클라이언트
+    - 모든 모듈이 같은 방식으로 LLM을 호출하도록 통일
+    - 실패 시 재시도
+    - 응답 로그 저장
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
-        load_dotenv()
-
         self.config = config or {}
 
         self.api_key = os.getenv("OPENAI_API_KEY")
+        self.model = self.config.get("model", "gpt-4o-mini")
+        self.temperature = float(self.config.get("temperature", 0.7))
+        self.max_tokens = int(self.config.get("max_tokens", 1500))
+        self.retry_count = int(self.config.get("retry_count", 2))
+        self.retry_delay = float(self.config.get("retry_delay", 2))
+
+        self.log_dir = Path("storage/llm_logs")
+        self.log_dir.mkdir(parents=True, exist_ok=True)
+
         if not self.api_key:
-            raise ValueError(
-                "OPENAI_API_KEY가 없습니다. .env 파일에 OPENAI_API_KEY를 넣어주세요."
-            )
+            print("WARNING: OPENAI_API_KEY가 없습니다. .env 파일을 확인하세요.")
 
         self.client = OpenAI(api_key=self.api_key)
 
-        self.model = (
-            self.config.get("model")
-            or self.config.get("llm_model")
-            or os.getenv("OPENAI_MODEL")
-            or "gpt-4.1-mini"
-        )
-
-        self.temperature = float(
-            self.config.get("temperature", os.getenv("OPENAI_TEMPERATURE", 0.7))
-        )
-
-        self.max_retries = int(
-            self.config.get("max_retries", os.getenv("OPENAI_MAX_RETRIES", 3))
-        )
-
-        self.retry_delay = float(
-            self.config.get("retry_delay", os.getenv("OPENAI_RETRY_DELAY", 2))
-        )
-
     def generate_text(
         self,
-        prompt: Optional[str] = None,
-        system_prompt: Optional[str] = None,
-        user_prompt: Optional[str] = None,
-        model: Optional[str] = None,
+        system_prompt: str,
+        user_prompt: str,
         temperature: Optional[float] = None,
-        **kwargs: Any,
+        max_tokens: Optional[int] = None,
     ) -> str:
         """
-        텍스트 생성 함수
+        기존 모듈 호환용 메서드
 
-        지원 방식:
-        - generate_text(prompt="...")
-        - generate_text(user_prompt="...")
-        - generate_text(system_prompt="...", user_prompt="...")
+        ContentModule, ImagePromptModule, ResearchModule이 사용한다.
         """
 
-        final_prompt = user_prompt if user_prompt is not None else prompt
-
-        if final_prompt is None:
-            final_prompt = kwargs.get("input") or kwargs.get("message")
-
-        if not final_prompt or not str(final_prompt).strip():
-            raise ValueError("prompt 또는 user_prompt가 비어 있습니다.")
-
-        selected_model = model or self.model
-        selected_temperature = (
+        used_temperature = (
             self.temperature if temperature is None else float(temperature)
         )
 
-        input_messages = []
-
-        if system_prompt:
-            input_messages.append(
-                {
-                    "role": "system",
-                    "content": str(system_prompt),
-                }
-            )
-
-        input_messages.append(
-            {
-                "role": "user",
-                "content": str(final_prompt),
-            }
+        used_max_tokens = (
+            self.max_tokens if max_tokens is None else int(max_tokens)
         )
 
         last_error = None
 
-        for attempt in range(1, self.max_retries + 1):
+        for attempt in range(1, self.retry_count + 2):
             try:
-                response = self.client.responses.create(
-                    model=selected_model,
-                    input=input_messages,
-                    temperature=selected_temperature,
+                print(f"LLM Request Started: attempt {attempt}")
+
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {
+                            "role": "system",
+                            "content": system_prompt.strip(),
+                        },
+                        {
+                            "role": "user",
+                            "content": user_prompt.strip(),
+                        },
+                    ],
+                    temperature=used_temperature,
+                    max_tokens=used_max_tokens,
                 )
 
-                text = getattr(response, "output_text", None)
+                text = response.choices[0].message.content or ""
 
-                if not text:
-                    raise RuntimeError("OpenAI 응답은 왔지만 output_text가 비어 있습니다.")
+                self._save_log(
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
+                    response_text=text,
+                    status="success",
+                    error_message=None,
+                )
 
+                print("LLM Request Finished")
                 return text.strip()
 
             except Exception as error:
                 last_error = error
-                print(
-                    f"[LLMClient] OpenAI 호출 실패 "
-                    f"({attempt}/{self.max_retries}): {error}"
+                print(f"LLM Request Failed: attempt {attempt}")
+                print(error)
+
+                self._save_log(
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
+                    response_text="",
+                    status="failed",
+                    error_message=str(error),
                 )
 
-                if attempt < self.max_retries:
+                if attempt <= self.retry_count:
                     time.sleep(self.retry_delay)
 
-        raise RuntimeError(f"OpenAI 호출 최종 실패: {last_error}")
+        print("LLM Request Completely Failed")
 
-    def generate(
-        self,
-        prompt: Optional[str] = None,
-        system_prompt: Optional[str] = None,
-        user_prompt: Optional[str] = None,
-        model: Optional[str] = None,
-        temperature: Optional[float] = None,
-        **kwargs: Any,
-    ) -> str:
-        return self.generate_text(
-            prompt=prompt,
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-            model=model,
-            temperature=temperature,
-            **kwargs,
+        return json.dumps(
+            {
+                "status": "llm_failed",
+                "error": str(last_error),
+            },
+            ensure_ascii=False,
         )
 
-    def chat(
+    def generate_json(
         self,
-        prompt: Optional[str] = None,
-        system_prompt: Optional[str] = None,
-        user_prompt: Optional[str] = None,
-        model: Optional[str] = None,
-        temperature: Optional[float] = None,
-        **kwargs: Any,
-    ) -> str:
-        return self.generate_text(
-            prompt=prompt,
+        system_prompt: str,
+        user_prompt: str,
+        fallback: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        JSON 응답이 필요한 모듈에서 사용할 수 있는 보조 메서드
+        아직 기존 모듈을 깨지 않기 위해 선택 기능으로 둔다.
+        """
+
+        text = self.generate_text(
             system_prompt=system_prompt,
             user_prompt=user_prompt,
-            model=model,
-            temperature=temperature,
-            **kwargs,
         )
 
-    def complete(
+        try:
+            return json.loads(text)
+        except Exception:
+            if fallback is not None:
+                return fallback
+
+            return {
+                "status": "json_parse_failed",
+                "raw_text": text,
+            }
+
+    def _save_log(
         self,
-        prompt: Optional[str] = None,
-        system_prompt: Optional[str] = None,
-        user_prompt: Optional[str] = None,
-        model: Optional[str] = None,
-        temperature: Optional[float] = None,
-        **kwargs: Any,
-    ) -> str:
-        return self.generate_text(
-            prompt=prompt,
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-            model=model,
-            temperature=temperature,
-            **kwargs,
-        )
+        system_prompt: str,
+        user_prompt: str,
+        response_text: str,
+        status: str,
+        error_message: Optional[str],
+    ) -> None:
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        log_path = self.log_dir / f"llm_log_{timestamp}.json"
+
+        log_data = {
+            "status": status,
+            "model": self.model,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+            "system_prompt": system_prompt,
+            "user_prompt": user_prompt,
+            "response_text": response_text,
+            "error_message": error_message,
+        }
+
+        with open(log_path, "w", encoding="utf-8") as file:
+            json.dump(log_data, file, ensure_ascii=False, indent=2)

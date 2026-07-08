@@ -1,35 +1,14 @@
 {
-  "title": "AI 콘텐츠 자동화, 이렇게 달라집니다",
-  "platform": "manual_ready",
-  "card_news_files": [
-    {
-      "page": 1,
-      "file_path": "storage\\card_news\\card_news_1.png",
-      "status": "created"
-    },
-    {
-      "page": 2,
-      "file_path": "storage\\card_news\\card_news_2.png",
-      "status": "created"
-    },
-    {
-      "page": 3,
-      "file_path": "storage\\card_news\\card_news_3.png",
-      "status": "created"
-    },
-    {
-      "page": 4,
-      "file_path": "storage\\card_news\\card_news_4.png",
-      "status": "created"
-    }
-  ],
-  "caption": "AI 콘텐츠 자동화가 만드는 변화, 이제는 누구나 쉽게 콘텐츠를 빠르고 효율적으로 관리할 수 있습니다.",
-  "hashtags": [
-    "#AI콘텐츠",
-    "#콘텐츠자동화",
-    "#카드뉴스"
-  ],
-  "created_at": "2026-07-07 20:30:41",
+  "module": "PublishingModule",
   "status": "publishing_ready",
-  "result_file": "storage\\publishing\\publishing_result.json"
+  "platform": "instagram_manual_upload",
+  "card_count": 4,
+  "card_paths": [
+    "storage/card_news/card_news_1.png",
+    "storage/card_news/card_news_2.png",
+    "storage/card_news/card_news_3.png",
+    "storage/card_news/card_news_4.png"
+  ],
+  "caption": "오늘의 AI 카드뉴스\n\nAI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n#AI #자동화 #콘텐츠자동화 #카드뉴스 #인스타그램 #부업 #수익화",
+  "next_action": "카드뉴스 이미지를 확인한 뒤 인스타그램에 수동 업로드"
 }

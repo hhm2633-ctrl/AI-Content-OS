@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "max_candidates": 30,
+  "max_selected_topics": 3,
+  "minimum_score": 80,
+  "duplicate_similarity": 0.85,
+  "human_review": true,
+  "fallback_enabled": true,
+  "allowed_categories": [
+    "AI",
+    "부업",
+    "경제",
+    "생활",
+    "쇼핑",
+    "트렌드"
+  ],
+  "blocked_categories": [
+    "도박",
+    "성인",
+    "불법",
+    "혐오",
+    "정치선동"
+  ]
+}

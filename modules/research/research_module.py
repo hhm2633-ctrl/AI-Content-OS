@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from typing import Any, Dict, Optional
 
 try:
@@ -14,61 +15,81 @@ class ResearchModule(BaseModule):
     ResearchModule
 
     역할:
-    - 카드뉴스 주제 리서치
-    - 핵심 정보 정리
-    - ContentModule에 넘길 research_result 생성
+    - 카드뉴스 주제의 기초 리서치 생성
+    - 현재는 안정적인 LLM 기반 리서치 구조
+    - 이후 뉴스/커뮤니티 크롤링 모듈과 연결 가능
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None, llm_client: Optional[LLMClient] = None):
+    def __init__(
+        self,
+        config: Optional[Dict[str, Any]] = None,
+        llm_client: Optional[LLMClient] = None,
+    ):
         try:
             super().__init__(config=config)
         except TypeError:
             super().__init__()
 
         self.config = config or getattr(self, "config", {}) or {}
+
         self.llm_client = llm_client or getattr(self, "llm_client", None) or LLMClient(
             self.config.get("llm", self.config)
         )
 
-        self.topic = (
-            self.config.get("topic")
-            or self.config.get("default_topic")
-            or "AI content automation"
+        self.default_topic = self.config.get(
+            "topic",
+            "AI content automation",
         )
 
-    def run(self, topic: Optional[str] = None) -> Dict[str, Any]:
+    def run(self) -> Dict[str, Any]:
         print("Research Module Started")
 
-        selected_topic = topic or self.topic
+        topic = self.default_topic
+        today = datetime.now().strftime("%Y-%m-%d")
 
         system_prompt = """
-너는 카드뉴스 콘텐츠를 만들기 위한 전문 리서처다.
-초보자도 이해할 수 있게 핵심만 정리한다.
-과장된 정보, 확인되지 않은 정보, 투자 조언처럼 보이는 표현은 피한다.
+너는 인스타그램 카드뉴스용 리서치 전문가다.
+초보자가 이해할 수 있도록 쉽게 정리한다.
+허위 정보, 과장된 수익 보장, 투자 권유 표현은 피한다.
 반드시 JSON 형식으로만 답변한다.
 """
 
         user_prompt = f"""
-다음 주제로 카드뉴스 제작용 리서치를 해줘.
+오늘 날짜:
+{today}
 
-주제:
-{selected_topic}
+리서치 주제:
+{topic}
+
+아래 목적에 맞게 카드뉴스 제작용 리서치를 만들어줘.
+
+목적:
+- 인스타그램 카드뉴스 제작
+- 초보자가 이해 가능한 쉬운 설명
+- 사람들이 저장하거나 공유할 만한 정보
+- 부업, 자동화, 콘텐츠 제작 관점에서 활용 가능
 
 아래 JSON 형식으로만 답변해줘.
 
 {{
-  "topic": "주제명",
-  "summary": "핵심 요약",
+  "topic": "{topic}",
+  "summary": "주제에 대한 짧은 요약",
   "key_points": [
     "핵심 포인트 1",
     "핵심 포인트 2",
-    "핵심 포인트 3"
+    "핵심 포인트 3",
+    "핵심 포인트 4"
   ],
   "audience_interest": [
     "사람들이 관심 가질 이유 1",
-    "사람들이 관심 가질 이유 2"
+    "사람들이 관심 가질 이유 2",
+    "사람들이 관심 가질 이유 3"
   ],
   "content_angle": "카드뉴스로 풀어갈 관점",
+  "risk_notes": [
+    "주의할 점 1",
+    "주의할 점 2"
+  ],
   "status": "research_completed"
 }}
 """
@@ -78,27 +99,59 @@ class ResearchModule(BaseModule):
             user_prompt=user_prompt,
         )
 
-        research_result = self._safe_json_parse(llm_response, selected_topic)
+        research_result = self._safe_json_parse(
+            text=llm_response,
+            topic=topic,
+            today=today,
+        )
 
         print("Research Module Finished")
         return research_result
 
-    def _safe_json_parse(self, text: str, topic: str) -> Dict[str, Any]:
+    def _safe_json_parse(
+        self,
+        text: str,
+        topic: str,
+        today: str,
+    ) -> Dict[str, Any]:
         try:
-            return json.loads(text)
+            result = json.loads(text)
+
+            if "topic" not in result:
+                result["topic"] = topic
+
+            if "status" not in result:
+                result["status"] = "research_completed"
+
+            result["created_at"] = today
+
+            return result
+
         except Exception:
             return {
                 "topic": topic,
-                "summary": text.strip(),
+                "summary": (
+                    "AI 콘텐츠 자동화는 주제 선정, 리서치, 문안 작성, 이미지 생성, "
+                    "카드뉴스 제작 과정을 나누어 반복 작업을 줄이는 방식입니다."
+                ),
                 "key_points": [
-                    "AI를 활용해 콘텐츠 제작 시간을 줄일 수 있다.",
-                    "반복 작업을 자동화하면 여러 계정 운영이 쉬워진다.",
-                    "카드뉴스는 짧고 빠르게 소비되는 콘텐츠에 적합하다.",
+                    "처음부터 완전 자동화를 목표로 하기보다 작은 흐름부터 만드는 것이 중요합니다.",
+                    "카드뉴스 제작은 주제, 문안, 이미지, 발행 순서로 나누면 관리하기 쉽습니다.",
+                    "AI는 반복 작업을 줄이는 도구이며, 최종 검수는 사람이 해야 합니다.",
+                    "수익화보다 먼저 꾸준히 발행 가능한 시스템을 만드는 것이 우선입니다.",
                 ],
                 "audience_interest": [
-                    "부업이나 자동화에 관심 있는 사람이 많다.",
-                    "AI로 수익화를 시도하려는 사람이 늘고 있다.",
+                    "콘텐츠 제작 시간을 줄일 수 있습니다.",
+                    "초보자도 작은 자동화 흐름부터 시작할 수 있습니다.",
+                    "인스타그램, 블로그, 쇼츠 등 여러 채널로 확장할 수 있습니다.",
                 ],
-                "content_angle": "초보자도 이해할 수 있는 AI 콘텐츠 자동화 소개",
+                "content_angle": (
+                    "AI 콘텐츠 자동화를 초보자가 하루 한 개 카드뉴스부터 시작하는 관점으로 설명합니다."
+                ),
+                "risk_notes": [
+                    "AI 결과물은 반드시 사람이 검수해야 합니다.",
+                    "수익 보장처럼 보이는 표현은 피해야 합니다.",
+                ],
+                "created_at": today,
                 "status": "research_completed",
             }

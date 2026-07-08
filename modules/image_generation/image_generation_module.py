@@ -1,87 +1,115 @@
 import os
-from typing import Any, Dict, List, Optional
+import base64
+from pathlib import Path
+from typing import Any, Dict, List
 
-try:
-    from modules.base_module import BaseModule
-except ImportError:
-    from src.base_module import BaseModule
+from openai import OpenAI
+
+from modules.base_module import BaseModule
 
 
 class ImageGenerationModule(BaseModule):
-    """
-    ImageGenerationModule
+    def __init__(self, config=None):
+        super().__init__(config)
 
-    역할:
-    - ImagePromptModule 결과를 받아 이미지 생성 결과 구조를 만든다.
-    - 현재 단계에서는 실제 이미지 API 호출 전 단계로, 안전한 placeholder 구조를 생성한다.
-    - 나중에 OpenAI Images API를 붙일 때 이 파일만 확장하면 된다.
-    """
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
-        try:
-            super().__init__(config=config)
-        except TypeError:
-            super().__init__()
+        self.image_dir = Path("storage/generated_images")
+        self.image_dir.mkdir(parents=True, exist_ok=True)
 
-        self.config = config or getattr(self, "config", {}) or {}
+    def _extract_prompts(self, image_prompt_result: Dict[str, Any]) -> List[str]:
+        prompts = []
 
-        self.output_dir = (
-            self.config.get("output_dir")
-            or self.config.get("image_output_dir")
-            or os.path.join("storage", "images")
+        if isinstance(image_prompt_result, dict):
+            if isinstance(image_prompt_result.get("image_prompts"), list):
+                prompts = image_prompt_result.get("image_prompts")
+
+            elif isinstance(image_prompt_result.get("prompts"), list):
+                prompts = image_prompt_result.get("prompts")
+
+            elif isinstance(image_prompt_result.get("result"), list):
+                prompts = image_prompt_result.get("result")
+
+        clean_prompts = []
+
+        for item in prompts:
+            if isinstance(item, str):
+                clean_prompts.append(item)
+
+            elif isinstance(item, dict):
+                prompt = (
+                    item.get("prompt")
+                    or item.get("image_prompt")
+                    or item.get("description")
+                    or item.get("text")
+                )
+
+                if prompt:
+                    clean_prompts.append(prompt)
+
+        if not clean_prompts:
+            clean_prompts = [
+                "Modern Korean Instagram card news image, AI content automation theme, clean and professional, square format",
+                "AI content workflow dashboard, modern digital workspace, clean Korean startup mood, square format",
+                "Social media content planning desk, realistic clean style, bright lighting, square format",
+                "Instagram card news background, modern minimal design, content creator style, square format",
+            ]
+
+        return clean_prompts[:4]
+
+    def _generate_image(self, prompt: str, index: int) -> Dict[str, Any]:
+        print(f"OpenAI Image API Generating: ai_image_{index}.png")
+
+        response = self.client.images.generate(
+            model="gpt-image-1",
+            prompt=prompt,
+            size="1024x1024",
+            n=1,
         )
 
-        os.makedirs(self.output_dir, exist_ok=True)
+        image_base64 = response.data[0].b64_json
+        image_bytes = base64.b64decode(image_base64)
 
-    def run(self, image_prompt_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        image_path = self.image_dir / f"ai_image_{index}.png"
+
+        with open(image_path, "wb") as file:
+            file.write(image_bytes)
+
+        return {
+            "index": index,
+            "prompt": prompt,
+            "image_path": str(image_path).replace("\\", "/"),
+            "status": "generated",
+        }
+
+    def run(self, image_prompt_result: Dict[str, Any]) -> Dict[str, Any]:
         print("Image Generation Module Started")
 
-        image_prompt_result = image_prompt_result or {}
+        prompts = self._extract_prompts(image_prompt_result)
+        images = []
 
-        title = image_prompt_result.get("title", "AI content automation")
-        image_prompts = image_prompt_result.get("image_prompts", [])
+        for index, prompt in enumerate(prompts, start=1):
+            try:
+                image_result = self._generate_image(prompt, index)
+                images.append(image_result)
 
-        generated_images = self._create_placeholder_results(image_prompts)
+            except Exception as error:
+                print(f"Image Generation Failed: ai_image_{index}.png")
+                print(error)
+
+                images.append({
+                    "index": index,
+                    "prompt": prompt,
+                    "image_path": None,
+                    "status": "failed",
+                    "error": str(error),
+                })
 
         result = {
-            "title": title,
-            "images": generated_images,
-            "status": "image_generation_prepared",
+            "module": "ImageGenerationModule",
+            "status": "image_generation_completed",
+            "images": images,
         }
 
         print("Image Generation Module Finished")
         return result
-
-    def _create_placeholder_results(
-        self,
-        image_prompts: List[Dict[str, Any]],
-    ) -> List[Dict[str, Any]]:
-        images = []
-
-        if not image_prompts:
-            image_prompts = [
-                {
-                    "page": 1,
-                    "prompt": "Clean modern AI content automation concept image, no text",
-                    "style": "clean modern instagram card news",
-                    "ratio": "1:1",
-                }
-            ]
-
-        for item in image_prompts:
-            page = item.get("page", len(images) + 1)
-            prompt = item.get("prompt", "")
-
-            filename = f"image_page_{page}.png"
-            file_path = os.path.join(self.output_dir, filename)
-
-            images.append(
-                {
-                    "page": page,
-                    "prompt": prompt,
-                    "image_path": file_path,
-                    "status": "placeholder_ready",
-                }
-            )
-
-        return images

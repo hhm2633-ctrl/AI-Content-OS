@@ -1,255 +1,263 @@
-import os
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-try:
-    from PIL import Image, ImageDraw, ImageFont
-except ImportError:
-    Image = None
-    ImageDraw = None
-    ImageFont = None
+from PIL import Image, ImageDraw, ImageFont
 
-try:
-    from modules.base_module import BaseModule
-except ImportError:
-    from src.base_module import BaseModule
+from modules.base_module import BaseModule
 
 
 class CardNewsModule(BaseModule):
-    """
-    CardNewsModule
+    def __init__(self, config=None):
+        super().__init__(config)
 
-    역할:
-    - ContentModule 결과와 ImageGenerationModule 결과를 받아 카드뉴스 PNG 파일 생성
-    - 현재는 안정적인 기본 카드뉴스 이미지 생성 구조
-    """
+        self.card_dir = Path("storage/card_news")
+        self.card_dir.mkdir(parents=True, exist_ok=True)
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
-        try:
-            super().__init__(config=config)
-        except TypeError:
-            super().__init__()
+        self.width = 1080
+        self.height = 1080
 
-        self.config = config or getattr(self, "config", {}) or {}
-
-        self.output_dir = (
-            self.config.get("output_dir")
-            or self.config.get("card_news_output_dir")
-            or os.path.join("storage", "card_news")
-        )
-
-        self.width = int(self.config.get("width", 1080))
-        self.height = int(self.config.get("height", 1080))
-
-        os.makedirs(self.output_dir, exist_ok=True)
-
-    def run(
-        self,
-        content_result: Optional[Dict[str, Any]] = None,
-        image_generation_result: Optional[Dict[str, Any]] = None,
-    ) -> Dict[str, Any]:
-        print("Card News Module Started")
-
-        if Image is None:
-            raise ImportError(
-                "Pillow가 설치되어 있지 않습니다. PowerShell에서 py -m pip install pillow 실행 후 다시 시도하세요."
-            )
-
-        content_result = content_result or {}
-        image_generation_result = image_generation_result or {}
-
-        title = content_result.get("title", "AI Content OS")
-        slides = content_result.get("slides", [])
-
-        if not slides:
-            slides = self._fallback_slides(title)
-
-        card_news_files = []
-
-        for slide in slides:
-            page = int(slide.get("page", len(card_news_files) + 1))
-            headline = str(slide.get("headline", f"{page}장 제목"))
-            body = str(slide.get("body", ""))
-
-            file_path = os.path.join(self.output_dir, f"card_news_{page}.png")
-
-            self._create_card_image(
-                file_path=file_path,
-                page=page,
-                title=title,
-                headline=headline,
-                body=body,
-            )
-
-            card_news_files.append(
-                {
-                    "page": page,
-                    "file_path": file_path,
-                    "status": "created",
-                }
-            )
-
-            print(f"Card News Saved: {file_path}")
-
-        result = {
-            "title": title,
-            "card_news_files": card_news_files,
-            "caption": content_result.get("caption", ""),
-            "hashtags": content_result.get("hashtags", []),
-            "status": "card_news_created",
-        }
-
-        print("Card News Module Finished")
-        return result
-
-    def _create_card_image(
-        self,
-        file_path: str,
-        page: int,
-        title: str,
-        headline: str,
-        body: str,
-    ) -> None:
-        image = Image.new("RGB", (self.width, self.height), color=(248, 248, 248))
-        draw = ImageDraw.Draw(image)
-
-        title_font = self._load_font(46)
-        headline_font = self._load_font(72)
-        body_font = self._load_font(40)
-        page_font = self._load_font(30)
-
-        margin = 90
-
-        draw.rectangle(
-            [(0, 0), (self.width, 150)],
-            fill=(28, 28, 28),
-        )
-
-        draw.text(
-            (margin, 48),
-            self._safe_text(title, 28),
-            font=title_font,
-            fill=(255, 255, 255),
-        )
-
-        draw.text(
-            (self.width - 170, 52),
-            f"{page}/4",
-            font=page_font,
-            fill=(255, 255, 255),
-        )
-
-        headline_lines = self._wrap_text(headline, max_chars=12)
-        y = 260
-
-        for line in headline_lines[:3]:
-            draw.text(
-                (margin, y),
-                line,
-                font=headline_font,
-                fill=(20, 20, 20),
-            )
-            y += 90
-
-        y += 40
-
-        body_lines = self._wrap_text(body, max_chars=21)
-
-        for line in body_lines[:8]:
-            draw.text(
-                (margin, y),
-                line,
-                font=body_font,
-                fill=(60, 60, 60),
-            )
-            y += 58
-
-        draw.rectangle(
-            [(margin, self.height - 120), (self.width - margin, self.height - 112)],
-            fill=(28, 28, 28),
-        )
-
-        draw.text(
-            (margin, self.height - 85),
-            "AI-Content-OS",
-            font=page_font,
-            fill=(80, 80, 80),
-        )
-
-        image.save(file_path)
-
-    def _load_font(self, size: int):
+    def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
+            "C:/Windows/Fonts/malgunbd.ttf" if bold else "C:/Windows/Fonts/malgun.ttf",
             "C:/Windows/Fonts/malgun.ttf",
-            "C:/Windows/Fonts/malgunbd.ttf",
             "C:/Windows/Fonts/arial.ttf",
         ]
 
         for font_path in font_candidates:
-            try:
-                if os.path.exists(font_path):
-                    return ImageFont.truetype(font_path, size)
-            except Exception:
-                pass
+            if Path(font_path).exists():
+                return ImageFont.truetype(font_path, size)
 
         return ImageFont.load_default()
 
-    def _wrap_text(self, text: str, max_chars: int) -> List[str]:
+    def _wrap_text(self, text: str, font, max_width: int) -> List[str]:
         text = str(text).replace("\n", " ").strip()
-
-        if not text:
-            return [""]
-
-        words = text.split(" ")
         lines = []
-        current = ""
+        current_line = ""
 
-        for word in words:
-            if len(current) + len(word) + 1 <= max_chars:
-                current = f"{current} {word}".strip()
+        for char in text:
+            test_line = current_line + char
+            bbox = font.getbbox(test_line)
+            test_width = bbox[2] - bbox[0]
+
+            if test_width <= max_width:
+                current_line = test_line
             else:
-                if current:
-                    lines.append(current)
-                current = word
+                if current_line:
+                    lines.append(current_line)
+                current_line = char
 
-        if current:
-            lines.append(current)
+        if current_line:
+            lines.append(current_line)
 
-        final_lines = []
-        for line in lines:
-            if len(line) <= max_chars:
-                final_lines.append(line)
-            else:
-                for i in range(0, len(line), max_chars):
-                    final_lines.append(line[i:i + max_chars])
+        return lines
 
-        return final_lines
+    def _extract_title_and_body(self, content_result: Dict[str, Any]):
+        title = "AI-Content-OS 카드뉴스"
 
-    def _safe_text(self, text: str, max_chars: int) -> str:
-        text = str(text).replace("\n", " ").strip()
-        if len(text) <= max_chars:
-            return text
-        return text[:max_chars - 3] + "..."
-
-    def _fallback_slides(self, title: str) -> List[Dict[str, Any]]:
-        return [
-            {
-                "page": 1,
-                "headline": "콘텐츠 자동화 시작",
-                "body": "AI를 활용하면 카드뉴스 제작 과정을 더 빠르고 안정적으로 만들 수 있습니다.",
-            },
-            {
-                "page": 2,
-                "headline": "핵심은 구조입니다",
-                "body": "리서치, 글쓰기, 이미지, 카드뉴스, 발행 단계를 나누어야 오류를 줄일 수 있습니다.",
-            },
-            {
-                "page": 3,
-                "headline": "처음은 작게",
-                "body": "처음부터 완전 자동화를 목표로 하기보다 카드뉴스 한 세트를 정확히 만드는 것이 중요합니다.",
-            },
-            {
-                "page": 4,
-                "headline": "반복하며 개선",
-                "body": "출력물을 확인하고 문구와 디자인을 조금씩 개선하면 운영 가능한 시스템이 됩니다.",
-            },
+        body = [
+            "1장: 문제 제기",
+            "2장: 핵심 정보 설명",
+            "3장: 사람들이 관심 가질 포인트",
+            "4장: 요약 및 행동 유도",
         ]
+
+        if isinstance(content_result, dict):
+            if content_result.get("title"):
+                title = str(content_result.get("title"))
+
+            if isinstance(content_result.get("body"), list):
+                body = content_result.get("body")
+
+            elif isinstance(content_result.get("cards"), list):
+                body = content_result.get("cards")
+
+            elif isinstance(content_result.get("content"), list):
+                body = content_result.get("content")
+
+        clean_body = []
+
+        for item in body:
+            if isinstance(item, str):
+                clean_body.append(item)
+
+            elif isinstance(item, dict):
+                text = (
+                    item.get("text")
+                    or item.get("body")
+                    or item.get("content")
+                    or item.get("description")
+                    or str(item)
+                )
+                clean_body.append(text)
+
+        return title, clean_body[:4]
+
+    def _extract_image_paths(self, image_generation_result: Dict[str, Any]) -> List[str]:
+        image_paths = []
+
+        if isinstance(image_generation_result, dict):
+            images = image_generation_result.get("images", [])
+
+            if isinstance(images, list):
+                for item in images:
+                    if isinstance(item, dict):
+                        image_path = item.get("image_path")
+
+                        if image_path and Path(image_path).exists():
+                            image_paths.append(image_path)
+
+        return image_paths
+
+    def _create_background(self, image_path: Optional[str]):
+        if image_path and Path(image_path).exists():
+            image = Image.open(image_path).convert("RGB")
+            image = image.resize((self.width, self.height))
+        else:
+            image = Image.new("RGB", (self.width, self.height), (235, 235, 235))
+
+        image = image.convert("RGBA")
+
+        dark_overlay = Image.new(
+            "RGBA",
+            (self.width, self.height),
+            (0, 0, 0, 65),
+        )
+
+        image.alpha_composite(dark_overlay)
+
+        return image.convert("RGB")
+
+    def _draw_card(self, image, page_number: int, title: str, body_text: str):
+        draw = ImageDraw.Draw(image)
+
+        page_font = self._get_font(36, bold=True)
+        title_font = self._get_font(56, bold=True)
+        body_font = self._get_font(42)
+        brand_font = self._get_font(28)
+
+        margin = 70
+        box_top = 590
+        box_bottom = 990
+        box_left = margin
+        box_right = self.width - margin
+
+        draw.rounded_rectangle(
+            [box_left, box_top, box_right, box_bottom],
+            radius=42,
+            fill=(255, 255, 255),
+        )
+
+        draw.text(
+            (box_left + 40, box_top + 35),
+            f"{page_number:02d}",
+            font=page_font,
+            fill=(100, 100, 100),
+        )
+
+        title_lines = self._wrap_text(
+            title,
+            title_font,
+            box_right - box_left - 80,
+        )
+
+        body_lines = self._wrap_text(
+            body_text,
+            body_font,
+            box_right - box_left - 80,
+        )
+
+        y = box_top + 90
+
+        for line in title_lines[:2]:
+            draw.text(
+                (box_left + 40, y),
+                line,
+                font=title_font,
+                fill=(20, 20, 20),
+            )
+            y += 68
+
+        y += 20
+
+        for line in body_lines[:3]:
+            draw.text(
+                (box_left + 40, y),
+                line,
+                font=body_font,
+                fill=(45, 45, 45),
+            )
+            y += 56
+
+        draw.text(
+            (box_left + 40, box_bottom - 55),
+            "AI-Content-OS",
+            font=brand_font,
+            fill=(130, 130, 130),
+        )
+
+        return image
+
+    def _create_card(
+        self,
+        page_number: int,
+        title: str,
+        body_text: str,
+        image_path: Optional[str],
+    ) -> str:
+        image = self._create_background(image_path)
+        image = self._draw_card(image, page_number, title, body_text)
+
+        output_path = self.card_dir / f"card_news_{page_number}.png"
+        image.save(output_path)
+
+        print(f"Card News Saved: {output_path}")
+
+        return str(output_path).replace("\\", "/")
+
+    def run(
+        self,
+        content_result: Dict[str, Any],
+        image_generation_result: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        print("Card News Module Started")
+
+        title, body_list = self._extract_title_and_body(content_result)
+        image_paths = self._extract_image_paths(image_generation_result)
+
+        cards = []
+
+        for index in range(4):
+            body_text = (
+                body_list[index]
+                if index < len(body_list)
+                else f"{index + 1}장 카드뉴스 내용"
+            )
+
+            image_path = (
+                image_paths[index]
+                if index < len(image_paths)
+                else None
+            )
+
+            card_path = self._create_card(
+                page_number=index + 1,
+                title=title,
+                body_text=body_text,
+                image_path=image_path,
+            )
+
+            cards.append({
+                "index": index + 1,
+                "card_path": card_path,
+                "source_image": image_path,
+                "status": "created",
+            })
+
+        result = {
+            "module": "CardNewsModule",
+            "status": "card_news_completed",
+            "cards": cards,
+        }
+
+        print("Card News Module Finished")
+        return result

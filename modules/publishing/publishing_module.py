@@ -1,68 +1,69 @@
 import json
-import os
-from datetime import datetime
-from typing import Any, Dict, Optional
+from pathlib import Path
+from typing import Any, Dict, List
 
-try:
-    from modules.base_module import BaseModule
-except ImportError:
-    from src.base_module import BaseModule
+from modules.base_module import BaseModule
 
 
 class PublishingModule(BaseModule):
-    """
-    PublishingModule
+    def __init__(self, config=None):
+        super().__init__(config)
 
-    역할:
-    - 카드뉴스 결과물을 실제 발행 전 단계로 정리
-    - caption, hashtags, 파일 경로를 JSON으로 저장
-    - 나중에 Instagram, 블로그, 쇼츠 업로드 모듈로 확장 가능
-    """
+        self.publishing_dir = Path("storage/publishing")
+        self.publishing_dir.mkdir(parents=True, exist_ok=True)
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
-        try:
-            super().__init__(config=config)
-        except TypeError:
-            super().__init__()
+    def _extract_card_paths(self, card_news_result: Dict[str, Any]) -> List[str]:
+        card_paths = []
 
-        self.config = config or getattr(self, "config", {}) or {}
+        if isinstance(card_news_result, dict):
+            cards = card_news_result.get("cards", [])
 
-        self.output_dir = (
-            self.config.get("output_dir")
-            or self.config.get("publishing_output_dir")
-            or os.path.join("storage", "publishing")
+            if isinstance(cards, list):
+                for item in cards:
+                    if isinstance(item, dict):
+                        card_path = item.get("card_path")
+
+                        if card_path:
+                            card_paths.append(card_path)
+
+        return card_paths
+
+    def _create_caption(self) -> str:
+        caption = (
+            "오늘의 AI 카드뉴스\n\n"
+            "AI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n"
+            "#AI #자동화 #콘텐츠자동화 #카드뉴스 #인스타그램 #부업 #수익화"
         )
 
-        os.makedirs(self.output_dir, exist_ok=True)
+        return caption
 
-    def run(self, card_news_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def run(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
         print("Publishing Module Started")
 
-        card_news_result = card_news_result or {}
+        card_paths = self._extract_card_paths(card_news_result)
+        caption = self._create_caption()
 
-        title = card_news_result.get("title", "AI Content OS")
-        card_news_files = card_news_result.get("card_news_files", [])
-        caption = card_news_result.get("caption", "")
-        hashtags = card_news_result.get("hashtags", [])
-
-        publishing_result = {
-            "title": title,
-            "platform": "manual_ready",
-            "card_news_files": card_news_files,
-            "caption": caption,
-            "hashtags": hashtags,
-            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        result = {
+            "module": "PublishingModule",
             "status": "publishing_ready",
+            "platform": "instagram_manual_upload",
+            "card_count": len(card_paths),
+            "card_paths": card_paths,
+            "caption": caption,
+            "next_action": "카드뉴스 이미지를 확인한 뒤 인스타그램에 수동 업로드",
         }
 
-        file_path = os.path.join(self.output_dir, "publishing_result.json")
+        result_path = self.publishing_dir / "publishing_result.json"
+        caption_path = self.publishing_dir / "caption.txt"
 
-        with open(file_path, "w", encoding="utf-8") as file:
-            json.dump(publishing_result, file, ensure_ascii=False, indent=2)
+        with open(result_path, "w", encoding="utf-8") as file:
+            json.dump(result, file, ensure_ascii=False, indent=2)
 
-        publishing_result["result_file"] = file_path
+        with open(caption_path, "w", encoding="utf-8") as file:
+            file.write(caption)
 
-        print(f"Publishing Result Saved: {file_path}")
+        print(f"Publishing Result Saved: {result_path}")
+        print(f"Caption Saved: {caption_path}")
         print("Publishing Module Finished")
 
-        return publishing_result
+        return result

@@ -2,6 +2,8 @@ import json
 import os
 from typing import Any, Dict, Optional
 
+from modules.trend_collector.trend_collector_module import TrendCollectorModule
+from modules.topic_engine.topic_engine_module import TopicEngineModule
 from modules.research.research_module import ResearchModule
 from modules.content.content_module import ContentModule
 from modules.image_prompt.image_prompt_module import ImagePromptModule
@@ -11,32 +13,37 @@ from modules.publishing.publishing_module import PublishingModule
 
 
 class WorkflowEngine:
-    """
-    AI-Content-OS Workflow Engine
-
-    실행 순서:
-    1. ResearchModule
-    2. ContentModule
-    3. ImagePromptModule
-    4. ImageGenerationModule
-    5. CardNewsModule
-    6. PublishingModule
-    """
-
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
 
-        self.research_module = ResearchModule(self.config.get("research", self.config))
-        self.content_module = ContentModule(self.config.get("content", self.config))
+        self.trend_collector_module = TrendCollectorModule(
+            self.config.get("trend_collector", self.config)
+        )
+
+        self.topic_engine_module = TopicEngineModule(
+            self.config.get("topic_engine", self.config)
+        )
+
+        self.research_module = ResearchModule(
+            self.config.get("research", self.config)
+        )
+
+        self.content_module = ContentModule(
+            self.config.get("content", self.config)
+        )
+
         self.image_prompt_module = ImagePromptModule(
             self.config.get("image_prompt", self.config)
         )
+
         self.image_generation_module = ImageGenerationModule(
             self.config.get("image_generation", self.config)
         )
+
         self.card_news_module = CardNewsModule(
             self.config.get("card_news", self.config)
         )
+
         self.publishing_module = PublishingModule(
             self.config.get("publishing", self.config)
         )
@@ -45,6 +52,12 @@ class WorkflowEngine:
         print("=" * 50)
         print("Workflow Engine Started")
         print("=" * 50)
+
+        trend_result = self.trend_collector_module.run()
+        self._save_step_result("00_trend_result.json", trend_result)
+
+        topic_result = self.topic_engine_module.run(trend_result)
+        self._save_step_result("00_topic_result.json", topic_result)
 
         research_result = self.research_module.run()
         self._save_step_result("01_research_result.json", research_result)
@@ -68,6 +81,8 @@ class WorkflowEngine:
         self._save_step_result("06_publishing_result.json", publishing_result)
 
         final_result = {
+            "trend_result": trend_result,
+            "topic_result": topic_result,
             "research_result": research_result,
             "content_result": content_result,
             "image_prompt_result": image_prompt_result,

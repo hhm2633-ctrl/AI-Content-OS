@@ -1,0 +1,26 @@
+{
+  "news": {
+    "enabled": true,
+    "priority": 1
+  },
+  "community": {
+    "enabled": true,
+    "priority": 2
+  },
+  "google_trends": {
+    "enabled": true,
+    "priority": 3
+  },
+  "youtube": {
+    "enabled": true,
+    "priority": 4
+  },
+  "reddit": {
+    "enabled": false,
+    "priority": 5
+  },
+  "manual": {
+    "enabled": true,
+    "priority": 99
+  }
+}

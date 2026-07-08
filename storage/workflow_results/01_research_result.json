@@ -1,15 +1,22 @@
 {
   "topic": "AI content automation",
-  "summary": "AI content automation refers to the use of artificial intelligence technologies to create, manage, and optimize digital content with minimal human intervention, enhancing efficiency and consistency in content production.",
+  "summary": "AI 콘텐츠 자동화는 인공지능 기술을 활용하여 콘텐츠를 생성, 편집, 관리하는 과정으로, 시간과 노력을 절약할 수 있습니다.",
   "key_points": [
-    "AI tools can generate written, visual, and audio content based on given inputs or data patterns.",
-    "Automation helps streamline repetitive tasks like content scheduling, personalization, and distribution.",
-    "It enables faster content production and can support large-scale content strategies while maintaining quality."
+    "AI를 사용하면 블로그 글, 소셜 미디어 포스트, 마케팅 자료 등을 자동으로 생성할 수 있습니다.",
+    "자동화된 콘텐츠 제작은 일관성을 유지하며, 빠른 피드백을 받을 수 있는 장점이 있습니다.",
+    "기존 콘텐츠를 분석하여 최적의 키워드와 주제를 추천받을 수 있습니다.",
+    "AI 도구는 사용자 맞춤형 콘텐츠를 제공하여 개인 또는 기업의 특성에 맞게 조정할 수 있습니다."
   ],
   "audience_interest": [
-    "개인과 기업 모두 시간과 비용을 절약할 수 있는 방법에 대한 관심",
-    "콘텐츠 마케팅과 디지털 미디어 분야에서 효율성을 높이는 최신 기술에 대한 이해"
+    "부업으로 수익을 올리고 싶은 사람들에게 유용합니다.",
+    "시간을 절약하여 더 많은 프로젝트를 진행하고 싶은 사람들에게 매력적입니다.",
+    "디지털 마케팅에 관심 있는 사람들에게 최신 기술을 활용할 수 있는 기회를 제공합니다."
   ],
-  "content_angle": "AI가 콘텐츠 제작 과정을 어떻게 변화시키고, 실무에서 활용할 수 있는 구체적인 사례와 장점을 중심으로 설명",
-  "status": "research_completed"
+  "content_angle": "AI 콘텐츠 자동화의 기본 개념과 이점, 활용 방법을 쉽게 설명하며 초보자가 쉽게 이해할 수 있도록 구성합니다.",
+  "risk_notes": [
+    "AI 생성 콘텐츠의 품질이 항상 일정하지 않을 수 있으므로 검토가 필요합니다.",
+    "저작권 및 윤리적 문제를 고려하여 AI 도구 사용 시 주의해야 합니다."
+  ],
+  "status": "research_completed",
+  "created_at": "2026-07-08"
 }

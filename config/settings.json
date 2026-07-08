@@ -1,25 +1,43 @@
 {
-  "topic": "AI content automation",
-  "llm": {
-    "model": "gpt-4.1-mini",
-    "temperature": 0.7,
-    "max_retries": 3,
-    "retry_delay": 2
-  },
   "research": {
-    "topic": "AI content automation"
+    "topic": "AI content automation",
+    "llm": {
+      "model": "gpt-4o-mini",
+      "temperature": 0.7,
+      "max_tokens": 1500,
+      "retry_count": 2,
+      "retry_delay": 2
+    }
   },
-  "content": {},
-  "image_prompt": {},
+  "content": {
+    "llm": {
+      "model": "gpt-4o-mini",
+      "temperature": 0.7,
+      "max_tokens": 1800,
+      "retry_count": 2,
+      "retry_delay": 2
+    }
+  },
+  "image_prompt": {
+    "llm": {
+      "model": "gpt-4o-mini",
+      "temperature": 0.8,
+      "max_tokens": 1500,
+      "retry_count": 2,
+      "retry_delay": 2
+    }
+  },
   "image_generation": {
-    "output_dir": "storage/images"
+    "image_model": "gpt-image-1",
+    "image_size": "1024x1024",
+    "image_count": 4
   },
   "card_news": {
-    "output_dir": "storage/card_news",
     "width": 1080,
-    "height": 1080
+    "height": 1080,
+    "brand_name": "AI-Content-OS"
   },
   "publishing": {
-    "output_dir": "storage/publishing"
+    "platform": "instagram_manual_upload"
   }
 }
