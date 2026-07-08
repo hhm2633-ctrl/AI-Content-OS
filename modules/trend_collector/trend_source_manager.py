@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
+from modules.trend_collector.nate_pann_collector import NatePannCollector
 from modules.trend_collector.naver_news_collector import NaverNewsCollector
 
 
@@ -9,12 +10,18 @@ class TrendSourceManager:
     def __init__(self, config: Dict[str, Any] = None):
         self.config = config or {}
         self.source_config = self._load_source_config()
+        self.nate_pann_collector = NatePannCollector()
         self.naver_news_collector = NaverNewsCollector()
         self.last_collection_summary = self._empty_collection_summary()
 
     def _empty_collection_summary(self) -> Dict[str, Any]:
         return {
             "naver_news": {
+                "attempted": False,
+                "success": False,
+                "count": 0,
+            },
+            "nate_pann": {
                 "attempted": False,
                 "success": False,
                 "count": 0,
@@ -86,6 +93,16 @@ class TrendSourceManager:
                 collected.extend(self._collect_naver_news(source))
                 continue
 
+            if source_id == "nate_pann":
+                nate_results = self._collect_nate_pann(source)
+
+                if nate_results:
+                    collected.extend(nate_results)
+                else:
+                    self._mark_fallback("nate_pann")
+                    collected.extend(self._placeholder_collect(source))
+                continue
+
             if source_id == "manual":
                 if not collected:
                     collected.extend(self.build_manual_trends())
@@ -124,6 +141,21 @@ class TrendSourceManager:
             print("Naver News Empty. Other sources or manual fallback will be used.")
 
         print("Naver News Collect Finished")
+        return results
+
+    def _collect_nate_pann(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        print("Nate Pann Collect Started")
+        self.last_collection_summary["nate_pann"]["attempted"] = True
+
+        results = self.nate_pann_collector.collect(source=source)
+
+        self.last_collection_summary["nate_pann"]["count"] = len(results)
+        self.last_collection_summary["nate_pann"]["success"] = bool(results)
+
+        if not results:
+            print("Nate Pann Empty. Placeholder fallback will be used.")
+
+        print("Nate Pann Collect Finished")
         return results
 
     def build_manual_trends(self) -> List[Dict[str, Any]]:

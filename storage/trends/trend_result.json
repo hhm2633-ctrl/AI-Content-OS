@@ -11,6 +11,11 @@
       "success": false,
       "count": 0
     },
+    "nate_pann": {
+      "attempted": true,
+      "success": false,
+      "count": 0
+    },
     "fallback_used": true,
     "fallback_sources": [
       "nate_pann",
@@ -42,7 +47,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "네이트판 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857128"
+      "collected_at": "2026-07-08T16:11:19.337618"
     },
     {
       "rank": 2,
@@ -63,7 +68,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "FM코리아 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857264"
+      "collected_at": "2026-07-08T16:11:19.337728"
     },
     {
       "rank": 3,
@@ -84,7 +89,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "디시인사이드 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857285"
+      "collected_at": "2026-07-08T16:11:19.337739"
     },
     {
       "rank": 4,
@@ -105,7 +110,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "네이트판 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857225"
+      "collected_at": "2026-07-08T16:11:19.337698"
     },
     {
       "rank": 5,
@@ -126,7 +131,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "네이트판 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857239"
+      "collected_at": "2026-07-08T16:11:19.337706"
     },
     {
       "rank": 6,
@@ -147,7 +152,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "보배드림 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857246"
+      "collected_at": "2026-07-08T16:11:19.337711"
     },
     {
       "rank": 7,
@@ -168,7 +173,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "보배드림 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857253"
+      "collected_at": "2026-07-08T16:11:19.337715"
     },
     {
       "rank": 8,
@@ -189,7 +194,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "보배드림 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857258"
+      "collected_at": "2026-07-08T16:11:19.337723"
     },
     {
       "rank": 9,
@@ -210,7 +215,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "Google Trends placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857319"
+      "collected_at": "2026-07-08T16:11:19.337817"
     },
     {
       "rank": 10,
@@ -231,8 +236,8 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "FM코리아 placeholder trend",
-      "collected_at": "2026-07-08T16:05:20.857274"
+      "collected_at": "2026-07-08T16:11:19.337731"
     }
   ],
-  "collected_at": "2026-07-08T16:05:20.857374"
+  "collected_at": "2026-07-08T16:11:19.337864"
 }
