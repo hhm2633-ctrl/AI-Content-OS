@@ -3,154 +3,251 @@
   "trend": {
     "status": "success",
     "message": "trend_collection_completed",
-    "count": 8,
+    "collector_version": "trend_source_manager_v1",
+    "count": 10,
+    "total_collected": 29,
     "trends": [
       {
         "rank": 1,
-        "keyword": "AI 자동화",
-        "score": 119,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435587"
+        "keyword": "청년 부업 자동화",
+        "score": 238,
+        "base_score": 98,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 20,
+        "source": "naver_news",
+        "source_name": "네이버 뉴스",
+        "source_type": "news",
+        "trend_reason": "네이버 뉴스 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411823"
       },
       {
         "rank": 2,
-        "keyword": "인스타 카드뉴스",
-        "score": 118,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435618"
+        "keyword": "콘텐츠 수익화",
+        "score": 237,
+        "base_score": 97,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 20,
+        "source": "naver_news",
+        "source_name": "네이버 뉴스",
+        "source_type": "news",
+        "trend_reason": "네이버 뉴스 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411828"
       },
       {
         "rank": 3,
-        "keyword": "부업 자동화",
-        "score": 117,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435621"
+        "keyword": "AI 서비스 경쟁",
+        "score": 229,
+        "base_score": 99,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 10,
+        "source": "naver_news",
+        "source_name": "네이버 뉴스",
+        "source_type": "news",
+        "trend_reason": "네이버 뉴스 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411751"
       },
       {
         "rank": 4,
-        "keyword": "콘텐츠 자동화",
-        "score": 116,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435622"
+        "keyword": "요즘 사람들 부업 고민",
+        "score": 229,
+        "base_score": 99,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 10,
+        "source": "nate_pann",
+        "source_name": "네이트판",
+        "source_type": "community",
+        "trend_reason": "네이트판 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411830"
       },
       {
         "rank": 5,
-        "keyword": "스마트스토어 자동화",
-        "score": 115,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435624"
+        "keyword": "AI 밈 콘텐츠",
+        "score": 229,
+        "base_score": 99,
+        "weight": 20,
+        "tier": 1,
+        "keyword_bonus": 20,
+        "source": "fmkorea",
+        "source_name": "FM코리아",
+        "source_type": "community",
+        "trend_reason": "FM코리아 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411856"
       },
       {
         "rank": 6,
-        "keyword": "AI 이미지 생성",
-        "score": 104,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435625"
+        "keyword": "AI 그림 자동화",
+        "score": 229,
+        "base_score": 99,
+        "weight": 20,
+        "tier": 1,
+        "keyword_bonus": 20,
+        "source": "dcinside",
+        "source_name": "디시인사이드",
+        "source_type": "community",
+        "trend_reason": "디시인사이드 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.412065"
       },
       {
         "rank": 7,
-        "keyword": "블로그 자동화",
-        "score": 103,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435626"
+        "keyword": "직장인 퇴사 준비",
+        "score": 228,
+        "base_score": 98,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 10,
+        "source": "nate_pann",
+        "source_name": "네이트판",
+        "source_type": "community",
+        "trend_reason": "네이트판 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411832"
       },
       {
         "rank": 8,
-        "keyword": "쇼츠 자동화",
-        "score": 112,
-        "source": "local_fallback_trend_source",
-        "collected_at": "2026-07-08T13:57:54.435627"
+        "keyword": "생활비 부담",
+        "score": 227,
+        "base_score": 97,
+        "weight": 30,
+        "tier": 1,
+        "keyword_bonus": 10,
+        "source": "nate_pann",
+        "source_name": "네이트판",
+        "source_type": "community",
+        "trend_reason": "네이트판 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411834"
+      },
+      {
+        "rank": 9,
+        "keyword": "쇼츠 수익화",
+        "score": 227,
+        "base_score": 97,
+        "weight": 20,
+        "tier": 1,
+        "keyword_bonus": 20,
+        "source": "fmkorea",
+        "source_name": "FM코리아",
+        "source_type": "community",
+        "trend_reason": "FM코리아 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411862"
+      },
+      {
+        "rank": 10,
+        "keyword": "자영업 현실",
+        "score": 224,
+        "base_score": 99,
+        "weight": 25,
+        "tier": 1,
+        "keyword_bonus": 10,
+        "source": "bobaedream",
+        "source_name": "보배드림",
+        "source_type": "community",
+        "trend_reason": "보배드림 placeholder trend",
+        "collected_at": "2026-07-08T14:47:59.411851"
       }
-    ]
+    ],
+    "collected_at": "2026-07-08T14:47:59.412517"
   },
   "topic": {
     "status": "success",
     "message": "topic_selection_completed",
     "selected_topic": {
-      "keyword": "AI 자동화",
-      "title": "AI 자동화 지금 시작해야 하는 이유",
+      "keyword": "청년 부업 자동화",
+      "title": "청년 부업 자동화 지금 시작해야 하는 이유",
       "angle": "초보자도 이해할 수 있는 실전형 카드뉴스",
       "target": "부업, 자동화, 콘텐츠 수익화에 관심 있는 사람",
       "reason": "현재 프로젝트 방향과 수익화 가능성이 높은 주제",
-      "score": 119,
-      "source": "local_fallback_trend_source"
+      "score": 238,
+      "source": "naver_news"
     },
-    "created_at": "2026-07-08T13:57:54.437893"
+    "created_at": "2026-07-08T14:47:59.414601"
   },
   "research": {
     "status": "success",
     "message": "research_completed",
-    "keyword": "AI 자동화",
-    "title": "AI 자동화 지금 시작해야 하는 이유",
-    "summary": "AI 자동화 주제는 카드뉴스, 블로그, 쇼츠로 확장하기 좋은 자동화 콘텐츠 주제입니다.",
+    "keyword": "청년 부업 자동화",
+    "title": "청년 부업 자동화 지금 시작해야 하는 이유",
+    "summary": "청년 부업 자동화 주제는 카드뉴스, 블로그, 쇼츠로 확장하기 좋은 자동화 콘텐츠 주제입니다.",
     "key_points": [
-      "AI 자동화는 초보자도 관심을 가질 수 있는 주제입니다.",
+      "청년 부업 자동화는 초보자도 관심을 가질 수 있는 주제입니다.",
       "카드뉴스 형식으로 짧고 명확하게 전달하기 좋습니다.",
       "인스타그램 다계정 운영과 연결하기 좋습니다.",
       "향후 블로그, 쇼츠, 상품 연결 콘텐츠로 확장할 수 있습니다."
     ],
     "topic_angle": "초보자도 이해할 수 있는 실전형 카드뉴스",
     "target": "부업, 자동화, 콘텐츠 수익화에 관심 있는 사람",
-    "source": "local_fallback_trend_source",
-    "created_at": "2026-07-08T13:57:54.439498"
+    "source": "naver_news",
+    "created_at": "2026-07-08T14:47:59.415838"
   },
   "content": {
-    "title": "AI 콘텐츠 자동화의 모든 것",
+    "title": "청년 부업 자동화 지금 시작해야 하는 이유",
     "slides": [
       {
         "page": 1,
-        "headline": "AI 자동화란?",
-        "body": "AI 기술을 활용해 콘텐츠 제작을 자동화하는 방법입니다."
+        "role": "hook",
+        "headline": "부업, 이제는 자동화로!",
+        "body": "청년 부업, 자동화로 더 쉽게 시작해보세요!"
       },
       {
         "page": 2,
-        "headline": "초보자도 쉽게 접근 가능",
-        "body": "AI 자동화는 누구나 관심을 가질 수 있는 주제입니다."
+        "role": "problem",
+        "headline": "부업, 너무 어렵지 않나요?",
+        "body": "부업을 시작하고 싶지만 막막한 초보자 분들 많죠?"
       },
       {
         "page": 3,
-        "headline": "카드뉴스로 효과적 전달",
-        "body": "짧고 명확한 카드뉴스 형식으로 쉽게 소통할 수 있습니다."
+        "role": "solution",
+        "headline": "자동화로 간편하게!",
+        "body": "카드뉴스와 블로그로 콘텐츠를 쉽게 만들고 자동화하세요!"
       },
       {
         "page": 4,
-        "headline": "다양한 콘텐츠 확장 가능",
-        "body": "블로그, 쇼츠 등 다양한 형식으로 연결할 수 있습니다."
+        "role": "cta",
+        "headline": "지금 바로 시작해요!",
+        "body": "이 카드뉴스를 저장하고, 더 많은 팁을 받아보세요!"
       }
     ],
-    "caption": "AI 콘텐츠 자동화로 새로운 가능성을 열어보세요! #AI콘텐츠 #콘텐츠자동화 #카드뉴스",
+    "caption": "부업 자동화의 시작! 초보자도 쉽게 접근할 수 있는 방법을 알아보세요. 함께 성장해요!",
     "hashtags": [
       "#AI콘텐츠",
       "#콘텐츠자동화",
-      "#카드뉴스"
+      "#카드뉴스",
+      "#부업준비",
+      "#인스타콘텐츠"
     ],
     "status": "content_created"
   },
   "image_prompt": {
-    "title": "AI 콘텐츠 자동화의 모든 것",
+    "title": "청년 부업 자동화 지금 시작해야 하는 이유",
     "image_prompts": [
       {
         "page": 1,
-        "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
-        "style": "clean modern instagram card news",
+        "role": "hook",
+        "prompt": "한 손에 스마트폰을 들고 밝은 표정의 청년이 자동화의 상징인 기계 장치나 컴퓨터 화면을 바라보는 장면. 배경은 부드러운 색상으로 구성되어 있어 시선을 끌 수 있는 요소가 있는 디자인.",
+        "style": "clean modern instagram card news background",
         "ratio": "1:1"
       },
       {
         "page": 2,
-        "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
-        "style": "clean modern instagram card news",
+        "role": "problem",
+        "prompt": "어두운 방에서 고민하는 표정의 청년이 여러 가지 부업 관련 서적이나 자료를 앞에 두고 머리를 감싸고 있는 모습. 복잡한 문제를 상징하는 요소들이 주변에 배치되어 있음.",
+        "style": "clean modern instagram card news background",
         "ratio": "1:1"
       },
       {
         "page": 3,
-        "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
-        "style": "clean modern instagram card news",
+        "role": "solution",
+        "prompt": "효율적으로 작업하는 모습을 보여주는 청년이 노트북 앞에서 자동화 프로그램을 사용하고 있는 장면. 화면에는 차트와 그래프가 보이며, 배경은 깔끔하고 정돈된 느낌.",
+        "style": "clean modern instagram card news background",
         "ratio": "1:1"
       },
       {
         "page": 4,
-        "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
-        "style": "clean modern instagram card news",
+        "role": "cta",
+        "prompt": "밝은 미래를 상징하는 모습으로 청년이 목표를 향해 나아가는 모습. 주변에는 성공을 상징하는 아이콘들이 배치되어 있으며, 긍정적인 에너지를 주는 색상으로 구성되어 있음.",
+        "style": "clean modern instagram card news background",
         "ratio": "1:1"
       }
     ],
@@ -162,25 +259,25 @@
     "images": [
       {
         "index": 1,
-        "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
+        "prompt": "한 손에 스마트폰을 들고 밝은 표정의 청년이 자동화의 상징인 기계 장치나 컴퓨터 화면을 바라보는 장면. 배경은 부드러운 색상으로 구성되어 있어 시선을 끌 수 있는 요소가 있는 디자인.",
         "image_path": "storage/generated_images/ai_image_1.png",
         "status": "generated"
       },
       {
         "index": 2,
-        "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
+        "prompt": "어두운 방에서 고민하는 표정의 청년이 여러 가지 부업 관련 서적이나 자료를 앞에 두고 머리를 감싸고 있는 모습. 복잡한 문제를 상징하는 요소들이 주변에 배치되어 있음.",
         "image_path": "storage/generated_images/ai_image_2.png",
         "status": "generated"
       },
       {
         "index": 3,
-        "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
+        "prompt": "효율적으로 작업하는 모습을 보여주는 청년이 노트북 앞에서 자동화 프로그램을 사용하고 있는 장면. 화면에는 차트와 그래프가 보이며, 배경은 깔끔하고 정돈된 느낌.",
         "image_path": "storage/generated_images/ai_image_3.png",
         "status": "generated"
       },
       {
         "index": 4,
-        "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
+        "prompt": "밝은 미래를 상징하는 모습으로 청년이 목표를 향해 나아가는 모습. 주변에는 성공을 상징하는 아이콘들이 배치되어 있으며, 긍정적인 에너지를 주는 색상으로 구성되어 있음.",
         "image_path": "storage/generated_images/ai_image_4.png",
         "status": "generated"
       }
@@ -189,29 +286,34 @@
   "card_news": {
     "module": "CardNewsModule",
     "status": "card_news_completed",
+    "title": "청년 부업 자동화 지금 시작해야 하는 이유",
     "cards": [
       {
         "index": 1,
         "card_path": "storage/card_news/card_news_1.png",
         "source_image": "storage/generated_images/ai_image_1.png",
+        "headline": "부업, 이제는 자동화로!",
         "status": "created"
       },
       {
         "index": 2,
         "card_path": "storage/card_news/card_news_2.png",
         "source_image": "storage/generated_images/ai_image_2.png",
+        "headline": "부업, 너무 어렵지 않나요?",
         "status": "created"
       },
       {
         "index": 3,
         "card_path": "storage/card_news/card_news_3.png",
         "source_image": "storage/generated_images/ai_image_3.png",
+        "headline": "자동화로 간편하게!",
         "status": "created"
       },
       {
         "index": 4,
         "card_path": "storage/card_news/card_news_4.png",
         "source_image": "storage/generated_images/ai_image_4.png",
+        "headline": "지금 바로 시작해요!",
         "status": "created"
       }
     ]
@@ -219,7 +321,8 @@
   "publishing": {
     "module": "PublishingModule",
     "status": "publishing_ready",
-    "platform": "instagram_manual_upload",
+    "platform": "instagram",
+    "upload_mode": "manual",
     "card_count": 4,
     "card_paths": [
       "storage/card_news/card_news_1.png",
@@ -227,7 +330,21 @@
       "storage/card_news/card_news_3.png",
       "storage/card_news/card_news_4.png"
     ],
-    "caption": "오늘의 AI 카드뉴스\n\nAI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n#AI #자동화 #콘텐츠자동화 #카드뉴스 #인스타그램 #부업 #수익화",
-    "next_action": "카드뉴스 이미지를 확인한 뒤 인스타그램에 수동 업로드"
+    "caption": "청년 부업 자동화 지금 시작해야 하는 이유\n\nAI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n저장해두고 하나씩 따라가면 콘텐츠 자동화 흐름을 이해할 수 있습니다.\n\n더 좋은 자동화 구조를 계속 테스트하고 개선합니다.",
+    "hashtags": [
+      "#AI",
+      "#자동화",
+      "#콘텐츠자동화",
+      "#카드뉴스",
+      "#인스타그램",
+      "#부업",
+      "#수익화",
+      "#AI콘텐츠",
+      "#콘텐츠제작"
+    ],
+    "full_caption": "청년 부업 자동화 지금 시작해야 하는 이유\n\nAI-Content-OS가 자동으로 생성한 카드뉴스입니다.\n\n저장해두고 하나씩 따라가면 콘텐츠 자동화 흐름을 이해할 수 있습니다.\n\n더 좋은 자동화 구조를 계속 테스트하고 개선합니다.\n\n#AI #자동화 #콘텐츠자동화 #카드뉴스 #인스타그램 #부업 #수익화 #AI콘텐츠 #콘텐츠제작",
+    "publish_queue_path": "storage/publishing/publish_queue.json",
+    "next_action": "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드",
+    "created_at": "2026-07-08T14:50:34.121761"
   }
 }

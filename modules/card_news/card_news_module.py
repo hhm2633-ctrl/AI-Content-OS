@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from modules.base_module import BaseModule
 
@@ -29,68 +29,104 @@ class CardNewsModule(BaseModule):
 
         return ImageFont.load_default()
 
+    def _text_width(self, text: str, font) -> int:
+        bbox = font.getbbox(text)
+        return bbox[2] - bbox[0]
+
     def _wrap_text(self, text: str, font, max_width: int) -> List[str]:
         text = str(text).replace("\n", " ").strip()
+
+        if not text:
+            return []
+
+        words = text.split(" ")
         lines = []
         current_line = ""
 
-        for char in text:
-            test_line = current_line + char
-            bbox = font.getbbox(test_line)
-            test_width = bbox[2] - bbox[0]
+        for word in words:
+            test_line = word if not current_line else current_line + " " + word
 
-            if test_width <= max_width:
+            if self._text_width(test_line, font) <= max_width:
                 current_line = test_line
             else:
                 if current_line:
                     lines.append(current_line)
-                current_line = char
+                current_line = word
 
         if current_line:
             lines.append(current_line)
 
-        return lines
+        final_lines = []
 
-    def _extract_title_and_body(self, content_result: Dict[str, Any]):
-        title = "AI-Content-OS 카드뉴스"
+        for line in lines:
+            if self._text_width(line, font) <= max_width:
+                final_lines.append(line)
+            else:
+                current = ""
+                for char in line:
+                    test = current + char
+                    if self._text_width(test, font) <= max_width:
+                        current = test
+                    else:
+                        if current:
+                            final_lines.append(current)
+                        current = char
+                if current:
+                    final_lines.append(current)
 
-        body = [
-            "1장: 문제 제기",
-            "2장: 핵심 정보 설명",
-            "3장: 사람들이 관심 가질 포인트",
-            "4장: 요약 및 행동 유도",
+        return final_lines
+
+    def _extract_slides(self, content_result: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if isinstance(content_result, dict):
+            slides = content_result.get("slides", [])
+
+            if isinstance(slides, list) and slides:
+                clean_slides = []
+
+                for index, slide in enumerate(slides[:4]):
+                    if isinstance(slide, dict):
+                        clean_slides.append({
+                            "page": slide.get("page", index + 1),
+                            "role": slide.get("role", "card"),
+                            "headline": str(slide.get("headline", f"{index + 1}장 제목")),
+                            "body": str(slide.get("body", f"{index + 1}장 본문")),
+                        })
+
+                if clean_slides:
+                    return clean_slides
+
+        return [
+            {
+                "page": 1,
+                "role": "hook",
+                "headline": "콘텐츠, 아직 손으로만 만드세요?",
+                "body": "반복 작업을 줄이고 카드뉴스 제작 속도를 높이는 구조가 필요합니다.",
+            },
+            {
+                "page": 2,
+                "role": "problem",
+                "headline": "문제는 시간이 너무 많이 든다는 것",
+                "body": "주제 찾기, 글쓰기, 이미지 만들기, 발행 준비를 매번 손으로 하면 금방 지칩니다.",
+            },
+            {
+                "page": 3,
+                "role": "solution",
+                "headline": "그래서 흐름을 나눠야 합니다",
+                "body": "주제 선택, 리서치, 문안 작성, 이미지 생성, 카드뉴스 제작을 모듈로 나누면 안정적으로 반복할 수 있습니다.",
+            },
+            {
+                "page": 4,
+                "role": "cta",
+                "headline": "작게 만들고 계속 개선하세요",
+                "body": "처음 목표는 완벽한 자동화가 아니라 매일 돌아가는 구조입니다.",
+            },
         ]
 
-        if isinstance(content_result, dict):
-            if content_result.get("title"):
-                title = str(content_result.get("title"))
+    def _extract_title(self, content_result: Dict[str, Any]) -> str:
+        if isinstance(content_result, dict) and content_result.get("title"):
+            return str(content_result.get("title"))
 
-            if isinstance(content_result.get("body"), list):
-                body = content_result.get("body")
-
-            elif isinstance(content_result.get("cards"), list):
-                body = content_result.get("cards")
-
-            elif isinstance(content_result.get("content"), list):
-                body = content_result.get("content")
-
-        clean_body = []
-
-        for item in body:
-            if isinstance(item, str):
-                clean_body.append(item)
-
-            elif isinstance(item, dict):
-                text = (
-                    item.get("text")
-                    or item.get("body")
-                    or item.get("content")
-                    or item.get("description")
-                    or str(item)
-                )
-                clean_body.append(text)
-
-        return title, clean_body[:4]
+        return "AI-Content-OS 카드뉴스"
 
     def _extract_image_paths(self, image_generation_result: Dict[str, Any]) -> List[str]:
         image_paths = []
@@ -101,99 +137,197 @@ class CardNewsModule(BaseModule):
             if isinstance(images, list):
                 for item in images:
                     if isinstance(item, dict):
-                        image_path = item.get("image_path")
+                        image_path = item.get("image_path") or item.get("path")
 
                         if image_path and Path(image_path).exists():
                             image_paths.append(image_path)
 
+                    elif isinstance(item, str) and Path(item).exists():
+                        image_paths.append(item)
+
         return image_paths
 
-    def _create_background(self, image_path: Optional[str]):
+    def _create_background(self, image_path: Optional[str], page_number: int):
         if image_path and Path(image_path).exists():
             image = Image.open(image_path).convert("RGB")
             image = image.resize((self.width, self.height))
+            image = image.filter(ImageFilter.GaussianBlur(radius=1.2))
         else:
-            image = Image.new("RGB", (self.width, self.height), (235, 235, 235))
+            base_colors = [
+                (226, 233, 240),
+                (235, 235, 228),
+                (226, 238, 232),
+                (238, 232, 226),
+            ]
+            image = Image.new("RGB", (self.width, self.height), base_colors[(page_number - 1) % 4])
 
         image = image.convert("RGBA")
 
-        dark_overlay = Image.new(
+        overlay = Image.new(
             "RGBA",
             (self.width, self.height),
-            (0, 0, 0, 65),
+            (0, 0, 0, 75),
         )
+        image.alpha_composite(overlay)
 
-        image.alpha_composite(dark_overlay)
+        light_layer = Image.new(
+            "RGBA",
+            (self.width, self.height),
+            (255, 255, 255, 35),
+        )
+        image.alpha_composite(light_layer)
 
         return image.convert("RGB")
 
-    def _draw_card(self, image, page_number: int, title: str, body_text: str):
-        draw = ImageDraw.Draw(image)
+    def _draw_top_badge(self, draw, page_number: int, role: str):
+        badge_font = self._get_font(30, bold=True)
 
-        page_font = self._get_font(36, bold=True)
-        title_font = self._get_font(56, bold=True)
-        body_font = self._get_font(42)
-        brand_font = self._get_font(28)
+        role_labels = {
+            "hook": "HOOK",
+            "problem": "PROBLEM",
+            "solution": "SOLUTION",
+            "cta": "SAVE",
+        }
 
-        margin = 70
-        box_top = 590
-        box_bottom = 990
-        box_left = margin
-        box_right = self.width - margin
+        label = role_labels.get(role, "CARD")
+        badge_text = f"{page_number:02d}  {label}"
+
+        x1, y1 = 70, 65
+        x2, y2 = 360, 125
 
         draw.rounded_rectangle(
-            [box_left, box_top, box_right, box_bottom],
-            radius=42,
+            [x1, y1, x2, y2],
+            radius=30,
             fill=(255, 255, 255),
         )
 
         draw.text(
-            (box_left + 40, box_top + 35),
-            f"{page_number:02d}",
-            font=page_font,
-            fill=(100, 100, 100),
+            (x1 + 28, y1 + 13),
+            badge_text,
+            font=badge_font,
+            fill=(30, 30, 30),
         )
 
-        title_lines = self._wrap_text(
-            title,
-            title_font,
-            box_right - box_left - 80,
+    def _draw_card_box(self, draw):
+        box_left = 65
+        box_top = 555
+        box_right = self.width - 65
+        box_bottom = 990
+
+        shadow_offset = 10
+
+        draw.rounded_rectangle(
+            [
+                box_left + shadow_offset,
+                box_top + shadow_offset,
+                box_right + shadow_offset,
+                box_bottom + shadow_offset,
+            ],
+            radius=45,
+            fill=(0, 0, 0),
         )
 
-        body_lines = self._wrap_text(
-            body_text,
-            body_font,
-            box_right - box_left - 80,
+        draw.rounded_rectangle(
+            [box_left, box_top, box_right, box_bottom],
+            radius=45,
+            fill=(255, 255, 255),
         )
 
-        y = box_top + 90
+        return box_left, box_top, box_right, box_bottom
 
-        for line in title_lines[:2]:
+    def _draw_text_content(
+        self,
+        draw,
+        title: str,
+        headline: str,
+        body: str,
+        box_left: int,
+        box_top: int,
+        box_right: int,
+        box_bottom: int,
+    ):
+        small_font = self._get_font(28)
+        headline_font = self._get_font(60, bold=True)
+        body_font = self._get_font(39)
+        brand_font = self._get_font(26, bold=True)
+
+        max_width = box_right - box_left - 80
+
+        title_text = title[:38]
+        draw.text(
+            (box_left + 40, box_top + 34),
+            title_text,
+            font=small_font,
+            fill=(120, 120, 120),
+        )
+
+        headline_lines = self._wrap_text(headline, headline_font, max_width)
+        body_lines = self._wrap_text(body, body_font, max_width)
+
+        y = box_top + 88
+
+        for line in headline_lines[:2]:
             draw.text(
                 (box_left + 40, y),
                 line,
-                font=title_font,
-                fill=(20, 20, 20),
+                font=headline_font,
+                fill=(18, 18, 18),
             )
-            y += 68
+            y += 73
 
-        y += 20
+        y += 24
 
-        for line in body_lines[:3]:
+        for line in body_lines[:4]:
             draw.text(
                 (box_left + 40, y),
                 line,
                 font=body_font,
                 fill=(45, 45, 45),
             )
-            y += 56
+            y += 53
 
         draw.text(
             (box_left + 40, box_bottom - 55),
             "AI-Content-OS",
             font=brand_font,
-            fill=(130, 130, 130),
+            fill=(120, 120, 120),
         )
+
+    def _draw_bottom_line(self, draw):
+        draw.rounded_rectangle(
+            [70, 1015, 1010, 1025],
+            radius=5,
+            fill=(255, 255, 255),
+        )
+
+    def _draw_card(
+        self,
+        image,
+        page_number: int,
+        title: str,
+        slide: Dict[str, Any],
+    ):
+        draw = ImageDraw.Draw(image)
+
+        role = slide.get("role", "card")
+        headline = slide.get("headline", f"{page_number}장 제목")
+        body = slide.get("body", f"{page_number}장 본문")
+
+        self._draw_top_badge(draw, page_number, role)
+        box_left, box_top, box_right, box_bottom = self._draw_card_box(draw)
+
+        self._draw_text_content(
+            draw=draw,
+            title=title,
+            headline=headline,
+            body=body,
+            box_left=box_left,
+            box_top=box_top,
+            box_right=box_right,
+            box_bottom=box_bottom,
+        )
+
+        self._draw_bottom_line(draw)
 
         return image
 
@@ -201,11 +335,11 @@ class CardNewsModule(BaseModule):
         self,
         page_number: int,
         title: str,
-        body_text: str,
+        slide: Dict[str, Any],
         image_path: Optional[str],
     ) -> str:
-        image = self._create_background(image_path)
-        image = self._draw_card(image, page_number, title, body_text)
+        image = self._create_background(image_path, page_number)
+        image = self._draw_card(image, page_number, title, slide)
 
         output_path = self.card_dir / f"card_news_{page_number}.png"
         image.save(output_path)
@@ -221,28 +355,26 @@ class CardNewsModule(BaseModule):
     ) -> Dict[str, Any]:
         print("Card News Module Started")
 
-        title, body_list = self._extract_title_and_body(content_result)
+        title = self._extract_title(content_result)
+        slides = self._extract_slides(content_result)
         image_paths = self._extract_image_paths(image_generation_result)
 
         cards = []
 
         for index in range(4):
-            body_text = (
-                body_list[index]
-                if index < len(body_list)
-                else f"{index + 1}장 카드뉴스 내용"
-            )
+            slide = slides[index] if index < len(slides) else {
+                "page": index + 1,
+                "role": "card",
+                "headline": f"{index + 1}장 제목",
+                "body": f"{index + 1}장 본문",
+            }
 
-            image_path = (
-                image_paths[index]
-                if index < len(image_paths)
-                else None
-            )
+            image_path = image_paths[index] if index < len(image_paths) else None
 
             card_path = self._create_card(
                 page_number=index + 1,
                 title=title,
-                body_text=body_text,
+                slide=slide,
                 image_path=image_path,
             )
 
@@ -250,12 +382,14 @@ class CardNewsModule(BaseModule):
                 "index": index + 1,
                 "card_path": card_path,
                 "source_image": image_path,
+                "headline": slide.get("headline", ""),
                 "status": "created",
             })
 
         result = {
             "module": "CardNewsModule",
             "status": "card_news_completed",
+            "title": title,
             "cards": cards,
         }
 

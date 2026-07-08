@@ -1,28 +1,32 @@
 {
-  "title": "AI 콘텐츠 자동화의 모든 것",
+  "title": "요즘 사람들 부업 고민 지금 시작해야 하는 이유",
   "image_prompts": [
     {
       "page": 1,
-      "prompt": "AI 기술을 상징하는 추상적인 이미지, 기계 학습 알고리즘을 나타내는 그래픽 요소와 디지털 콘텐츠 제작을 연상시키는 아이콘들이 조화롭게 배치된 디자인",
-      "style": "clean modern instagram card news",
+      "role": "hook",
+      "prompt": "부업을 고민하는 사람들을 상징하는 오픈된 손과 여러 다양한 아이템(책, 노트북, 커피컵)이 배치된 이미지, 부드러운 자연광이 비추는 느낌",
+      "style": "clean modern instagram card news background",
       "ratio": "1:1"
     },
     {
       "page": 2,
-      "prompt": "다양한 사람들의 손이 스마트폰을 사용하여 AI 콘텐츠를 탐색하는 모습, 누구나 쉽게 접근할 수 있는 느낌을 주는 밝고 친근한 색상 사용",
-      "style": "clean modern instagram card news",
+      "role": "problem",
+      "prompt": "경제적 압박을 느끼는 사람의 뒷모습, 고개를 숙이고 있는 모습, 주변에 쌓인 청구서와 돈에 대한 이미지",
+      "style": "clean modern instagram card news background",
       "ratio": "1:1"
     },
     {
       "page": 3,
-      "prompt": "카드뉴스 형식의 콘텐츠가 화면에 나타나는 모습, 짧고 명확한 정보 전달을 상징하는 시각적 요소들과 함께 소통을 상징하는 아이콘 배치",
-      "style": "clean modern instagram card news",
+      "role": "solution",
+      "prompt": "노트북 앞에서 즐겁게 작업하는 손의 모습, 주변에 블로그와 관련된 아이콘(펜, 카메라 등)이 보이는 이미지",
+      "style": "clean modern instagram card news background",
       "ratio": "1:1"
     },
     {
       "page": 4,
-      "prompt": "다양한 콘텐츠 형식이 연결된 모습을 나타내는 그래픽, 블로그, 쇼츠, 포드캐스트 아이콘들이 서로 연결된 느낌으로 표현된 다채로운 디자인",
-      "style": "clean modern instagram card news",
+      "role": "cta",
+      "prompt": "사람이 스마트폰을 들고 미소짓고 있는 모습, 주변에 여러 가지 팁과 아이디어의 아이콘들이 떠다니는 이미지",
+      "style": "clean modern instagram card news background",
       "ratio": "1:1"
     }
   ],

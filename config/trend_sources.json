@@ -1,26 +1,103 @@
 {
-  "news": {
-    "enabled": true,
-    "priority": 1
-  },
-  "community": {
-    "enabled": true,
-    "priority": 2
-  },
-  "google_trends": {
-    "enabled": true,
-    "priority": 3
-  },
-  "youtube": {
-    "enabled": true,
-    "priority": 4
-  },
-  "reddit": {
-    "enabled": false,
-    "priority": 5
-  },
-  "manual": {
-    "enabled": true,
-    "priority": 99
-  }
+  "sources": [
+    {
+      "source_id": "naver_news",
+      "name": "네이버 뉴스",
+      "enabled": true,
+      "tier": 1,
+      "weight": 30,
+      "type": "news",
+      "priority_reason": "국내 이슈 신뢰도와 확산 확인"
+    },
+    {
+      "source_id": "nate_pann",
+      "name": "네이트판",
+      "enabled": true,
+      "tier": 1,
+      "weight": 30,
+      "type": "community",
+      "priority_reason": "생활 밀착 이슈와 감정 반응이 빠름"
+    },
+    {
+      "source_id": "bobaedream",
+      "name": "보배드림",
+      "enabled": true,
+      "tier": 1,
+      "weight": 25,
+      "type": "community",
+      "priority_reason": "사회 이슈, 자영업, 생활형 이슈 반응이 빠름"
+    },
+    {
+      "source_id": "fmkorea",
+      "name": "FM코리아",
+      "enabled": true,
+      "tier": 1,
+      "weight": 20,
+      "type": "community",
+      "priority_reason": "밈, 유머, 빠른 확산성 확인"
+    },
+    {
+      "source_id": "dcinside",
+      "name": "디시인사이드",
+      "enabled": true,
+      "tier": 1,
+      "weight": 20,
+      "type": "community",
+      "priority_reason": "초기 반응과 확산 가능성 확인"
+    },
+    {
+      "source_id": "ppomppu",
+      "name": "뽐뿌",
+      "enabled": true,
+      "tier": 1,
+      "weight": 18,
+      "type": "community",
+      "priority_reason": "소비, 절약, 쇼핑, 실속형 주제 확인"
+    },
+    {
+      "source_id": "google_trends",
+      "name": "Google Trends",
+      "enabled": true,
+      "tier": 2,
+      "weight": 20,
+      "type": "search",
+      "priority_reason": "검색량 기반 보조 지표"
+    },
+    {
+      "source_id": "youtube",
+      "name": "YouTube",
+      "enabled": true,
+      "tier": 2,
+      "weight": 15,
+      "type": "video",
+      "priority_reason": "영상 콘텐츠 확장성 확인"
+    },
+    {
+      "source_id": "reddit",
+      "name": "Reddit",
+      "enabled": false,
+      "tier": 2,
+      "weight": 10,
+      "type": "community",
+      "priority_reason": "해외 트렌드 참고용"
+    },
+    {
+      "source_id": "x",
+      "name": "X",
+      "enabled": false,
+      "tier": 2,
+      "weight": 10,
+      "type": "social",
+      "priority_reason": "실시간 글로벌 이슈 참고용"
+    },
+    {
+      "source_id": "manual",
+      "name": "Manual Fallback",
+      "enabled": true,
+      "tier": 99,
+      "weight": 5,
+      "type": "manual",
+      "priority_reason": "인터넷 수집 실패 시 workflow 유지"
+    }
+  ]
 }
