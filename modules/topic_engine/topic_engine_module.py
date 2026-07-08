@@ -13,9 +13,12 @@ class TopicEngineModule:
         print("Topic Engine Module Started")
 
         trend_result = trend_result or {}
+        trend_selected_topic = trend_result.get("selected_topic", {})
         trends = trend_result.get("trends", [])
 
-        if trends:
+        if trend_selected_topic:
+            selected_topic = self._from_trend_selected_topic(trend_selected_topic)
+        elif trends:
             selected_topic = self._select_best_topic(trends)
         else:
             selected_topic = self._fallback_topic()
@@ -31,6 +34,22 @@ class TopicEngineModule:
 
         print("Topic Engine Module Finished")
         return result
+
+    def _from_trend_selected_topic(self, trend_selected_topic):
+        title = trend_selected_topic.get("title", "AI content automation")
+
+        return {
+            "keyword": title,
+            "title": f"{title} 지금 시작해야 하는 이유",
+            "angle": "quality_score 기반으로 자동 선택된 카드뉴스 주제",
+            "target": "AI 자동화와 콘텐츠 운영에 관심 있는 사람",
+            "reason": trend_selected_topic.get("picked_reason", ""),
+            "score": trend_selected_topic.get("quality_score", 0),
+            "quality_score": trend_selected_topic.get("quality_score", 0),
+            "selection_reason": trend_selected_topic.get("selection_reason", ""),
+            "collection_method": trend_selected_topic.get("collection_method", ""),
+            "source": trend_selected_topic.get("source", "unknown")
+        }
 
     def _select_best_topic(self, trends):
         sorted_trends = sorted(

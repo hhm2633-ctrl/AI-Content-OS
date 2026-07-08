@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "model": "gpt-4o-mini",
+  "temperature": 0.7,
+  "max_tokens": 1500,
+  "system_prompt": "\n너는 인스타그램 카드뉴스용 이미지 프롬프트 전문가다.\n이미지에는 글자를 넣지 않는다.\n사람 얼굴, 브랜드 로고, 저작권 캐릭터는 피한다.\n한국어 카드뉴스 배경으로 쓰기 좋은 깔끔한 이미지를 기획한다.\n반드시 JSON 형식으로만 답변한다.\n",
+  "user_prompt": "\n아래 카드뉴스 내용을 바탕으로 슬라이드별 이미지 생성 프롬프트 4개를 만들어줘.\n\n카드뉴스 제목:\nAI 자동화 지금 시작해야 하는 이유\n\n슬라이드:\n[{'page': 1, 'role': 'hook', 'headline': '콘텐츠, 아직 손으로만 만드세요?', 'body': 'AI 자동화는 반복 작업을 줄이고 카드뉴스 제작 속도를 높이는 핵심 구조입니다.'}, {'page': 2, 'role': 'problem', 'headline': '문제는 시간이 너무 많이 든다는 것', 'body': '주제 찾기, 글쓰기, 이미지 만들기, 발행 준비를 매번 손으로 하면 금방 지칩니다.'}, {'page': 3, 'role': 'solution', 'headline': '그래서 흐름을 나눠야 합니다', 'body': '주제 선택, 리서치, 문안 작성, 이미지 생성, 카드뉴스 제작을 모듈로 나누면 안정적으로 반복할 수 있습니다.'}, {'page': 4, 'role': 'cta', 'headline': '작게 만들고 계속 개선하세요', 'body': '처음 목표는 완벽한 자동화가 아니라 매일 돌아가는 구조입니다. 저장하고 하나씩 따라오세요.'}]\n\n조건:\n- 1장은 시선 끄는 후킹 이미지\n- 2장은 문제 상황 이미지\n- 3장은 해결 구조 이미지\n- 4장은 정리/행동 유도 이미지\n- 이미지 안에는 글자 없음\n- 로고 없음\n- 워터마크 없음\n- 1:1 정사각형\n- 전체 톤은 통일\n\n아래 JSON 형식으로만 답변해줘.\n\n{\n  \"title\": \"카드뉴스 제목\",\n  \"image_prompts\": [\n    {\n      \"page\": 1,\n      \"role\": \"hook\",\n      \"prompt\": \"이미지 생성 프롬프트\",\n      \"style\": \"clean modern instagram card news background\",\n      \"ratio\": \"1:1\"\n    },\n    {\n      \"page\": 2,\n      \"role\": \"problem\",\n      \"prompt\": \"이미지 생성 프롬프트\",\n      \"style\": \"clean modern instagram card news background\",\n      \"ratio\": \"1:1\"\n    },\n    {\n      \"page\": 3,\n      \"role\": \"solution\",\n      \"prompt\": \"이미지 생성 프롬프트\",\n      \"style\": \"clean modern instagram card news background\",\n      \"ratio\": \"1:1\"\n    },\n    {\n      \"page\": 4,\n      \"role\": \"cta\",\n      \"prompt\": \"이미지 생성 프롬프트\",\n      \"style\": \"clean modern instagram card news background\",\n      \"ratio\": \"1:1\"\n    }\n  ],\n  \"status\": \"image_prompts_created\"\n}\n",
+  "response_text": "",
+  "error_message": "Connection error."
+}

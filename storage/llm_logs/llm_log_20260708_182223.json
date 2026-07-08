@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "model": "gpt-4o-mini",
+  "temperature": 0.7,
+  "max_tokens": 1500,
+  "system_prompt": "\n너는 인스타그램 카드뉴스 전문 기획자이자 카피라이터다.\n초보자가 바로 이해할 수 있게 짧고 강하게 쓴다.\n허위 수익 보장, 과장 광고, 투자 권유 표현은 피한다.\n각 슬라이드는 headline과 body를 반드시 분리한다.\n반드시 JSON 형식으로만 답변한다.\n",
+  "user_prompt": "\n아래 리서치 내용을 바탕으로 인스타그램 카드뉴스 4장을 만들어줘.\n\n주제:\nAI 자동화\n\n제목:\nAI 자동화\n\n요약:\nAI 자동화 is a useful topic for card news, blog, and shorts content automation.\n\n핵심 포인트:\n['AI 자동화 can attract beginners interested in practical automation.', 'It is suitable for a short and clear card news format.', 'It can connect naturally to Instagram content operations.', 'It can later expand into blog, shorts, and product-linked content.']\n\n타깃:\n\n\n콘텐츠 관점:\n\n\n조건:\n- 1장은 강한 후킹\n- 2장은 문제 설명\n- 3장은 해결 구조\n- 4장은 저장/팔로우 유도\n- headline은 짧게\n- body는 1~2문장\n- 초보자 말투\n- 너무 어려운 용어 금지\n\n아래 JSON 형식으로만 답변해줘.\n\n{\n  \"title\": \"카드뉴스 전체 제목\",\n  \"slides\": [\n    {\n      \"page\": 1,\n      \"role\": \"hook\",\n      \"headline\": \"1장 제목\",\n      \"body\": \"1장 본문\"\n    },\n    {\n      \"page\": 2,\n      \"role\": \"problem\",\n      \"headline\": \"2장 제목\",\n      \"body\": \"2장 본문\"\n    },\n    {\n      \"page\": 3,\n      \"role\": \"solution\",\n      \"headline\": \"3장 제목\",\n      \"body\": \"3장 본문\"\n    },\n    {\n      \"page\": 4,\n      \"role\": \"cta\",\n      \"headline\": \"4장 제목\",\n      \"body\": \"4장 본문\"\n    }\n  ],\n  \"caption\": \"인스타그램 본문 캡션\",\n  \"hashtags\": [\"#AI콘텐츠\", \"#콘텐츠자동화\", \"#카드뉴스\", \"#부업준비\", \"#인스타콘텐츠\"],\n  \"status\": \"content_created\"\n}\n",
+  "response_text": "",
+  "error_message": "Connection error."
+}

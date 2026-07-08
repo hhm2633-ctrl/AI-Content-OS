@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-08T16:12:55
+Updated at: 2026-07-08T18:24:01
 
 ## Execution Command
 
@@ -35,6 +35,9 @@ Do not use `python -m src.main` for this project.
 ```text
 AI-Content-OS/
 |-- .agents/
+|-- .codex/
+|   `-- skills/
+|       `-- ai-content-os-dev/
 |-- config/
 |   |-- publishing.json
 |   |-- README.md
@@ -50,6 +53,7 @@ AI-Content-OS/
 |   |-- MONETIZATION.md
 |   |-- PROJECT_VISION.md
 |   |-- RELEASE_RULE.md
+|   |-- SPRINT_01.md
 |   |-- SYSTEM_ARCHITECTURE.md
 |   |-- TECH_STACK.md
 |   |-- TOPIC_ENGINE_SPEC.md
@@ -85,7 +89,13 @@ AI-Content-OS/
 |   |   |-- __init__.py
 |   |   |-- nate_pann_collector.py
 |   |   |-- naver_news_collector.py
+|   |   |-- retry_policy.py
+|   |   |-- source_health_tracker.py
+|   |   |-- top_topic_picker.py
 |   |   |-- trend_collector_module.py
+|   |   |-- trend_engine_guard.py
+|   |   |-- trend_quality_scorer.py
+|   |   |-- trend_run_recorder.py
 |   |   `-- trend_source_manager.py
 |   |-- base_module.py
 |   `-- README.md
@@ -103,7 +113,9 @@ AI-Content-OS/
 |   `-- workflow_engine.py
 |-- storage/
 |   |-- cache/
-|   |   `-- .gitkeep
+|   |   |-- .gitkeep
+|   |   |-- nate_pann_cache.json
+|   |   `-- naver_news_cache.json
 |   |-- card_news/
 |   |   |-- card_news_1.png
 |   |   |-- card_news_2.png
@@ -155,7 +167,73 @@ AI-Content-OS/
 |   |   |-- llm_log_20260708_161146.json
 |   |   |-- llm_log_20260708_161153.json
 |   |   |-- llm_log_20260708_161203.json
-|   |   `-- llm_log_20260708_161212.json
+|   |   |-- llm_log_20260708_161212.json
+|   |   |-- llm_log_20260708_162524.json
+|   |   |-- llm_log_20260708_162533.json
+|   |   |-- llm_log_20260708_162543.json
+|   |   |-- llm_log_20260708_162550.json
+|   |   |-- llm_log_20260708_162600.json
+|   |   |-- llm_log_20260708_162609.json
+|   |   |-- llm_log_20260708_163509.json
+|   |   |-- llm_log_20260708_163519.json
+|   |   |-- llm_log_20260708_163528.json
+|   |   |-- llm_log_20260708_163536.json
+|   |   |-- llm_log_20260708_163545.json
+|   |   |-- llm_log_20260708_163554.json
+|   |   |-- llm_log_20260708_163939.json
+|   |   |-- llm_log_20260708_163948.json
+|   |   |-- llm_log_20260708_163958.json
+|   |   |-- llm_log_20260708_164005.json
+|   |   |-- llm_log_20260708_164015.json
+|   |   |-- llm_log_20260708_164024.json
+|   |   |-- llm_log_20260708_165802.json
+|   |   |-- llm_log_20260708_165811.json
+|   |   |-- llm_log_20260708_165821.json
+|   |   |-- llm_log_20260708_165828.json
+|   |   |-- llm_log_20260708_165837.json
+|   |   |-- llm_log_20260708_165847.json
+|   |   |-- llm_log_20260708_170352.json
+|   |   |-- llm_log_20260708_170401.json
+|   |   |-- llm_log_20260708_170410.json
+|   |   |-- llm_log_20260708_170418.json
+|   |   |-- llm_log_20260708_170427.json
+|   |   |-- llm_log_20260708_170437.json
+|   |   |-- llm_log_20260708_172520.json
+|   |   |-- llm_log_20260708_172529.json
+|   |   |-- llm_log_20260708_172539.json
+|   |   |-- llm_log_20260708_172546.json
+|   |   |-- llm_log_20260708_172556.json
+|   |   |-- llm_log_20260708_172605.json
+|   |   |-- llm_log_20260708_173828.json
+|   |   |-- llm_log_20260708_173838.json
+|   |   |-- llm_log_20260708_173847.json
+|   |   |-- llm_log_20260708_173855.json
+|   |   |-- llm_log_20260708_173904.json
+|   |   |-- llm_log_20260708_173913.json
+|   |   |-- llm_log_20260708_175542.json
+|   |   |-- llm_log_20260708_175552.json
+|   |   |-- llm_log_20260708_175601.json
+|   |   |-- llm_log_20260708_175608.json
+|   |   |-- llm_log_20260708_175618.json
+|   |   |-- llm_log_20260708_175627.json
+|   |   |-- llm_log_20260708_180731.json
+|   |   |-- llm_log_20260708_180741.json
+|   |   |-- llm_log_20260708_180750.json
+|   |   |-- llm_log_20260708_180758.json
+|   |   |-- llm_log_20260708_180807.json
+|   |   |-- llm_log_20260708_180816.json
+|   |   |-- llm_log_20260708_181538.json
+|   |   |-- llm_log_20260708_181547.json
+|   |   |-- llm_log_20260708_181556.json
+|   |   |-- llm_log_20260708_181604.json
+|   |   |-- llm_log_20260708_181613.json
+|   |   |-- llm_log_20260708_181622.json
+|   |   |-- llm_log_20260708_182223.json
+|   |   |-- llm_log_20260708_182233.json
+|   |   |-- llm_log_20260708_182242.json
+|   |   |-- llm_log_20260708_182249.json
+|   |   |-- llm_log_20260708_182259.json
+|   |   `-- llm_log_20260708_182308.json
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -178,8 +256,15 @@ AI-Content-OS/
 |   |   |-- .gitkeep
 |   |   `-- topic_result.json
 |   |-- trends/
+|   |   |-- snapshots/
 |   |   |-- .gitkeep
-|   |   `-- trend_result.json
+|   |   |-- collector_statistics.json
+|   |   |-- last_safe_trend_result.json
+|   |   |-- selected_topic.json
+|   |   |-- source_health.json
+|   |   |-- trend_engine_status.json
+|   |   |-- trend_result.json
+|   |   `-- trend_run_log.jsonl
 |   |-- workflow_results/
 |   |   |-- 01_research_result.json
 |   |   |-- 01_trend_result.json
@@ -208,12 +293,14 @@ AI-Content-OS/
 |   `-- README.md
 |-- .env
 |-- .gitignore
+|-- AGENTS.md
 |-- AI_CONTEXT.md
 |-- CHANGELOG.md
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md
 |-- MODULE_SPEC.md
+|-- MODULE_STATUS.md
 |-- PROJECT_BIBLE.md
 |-- PROJECT_SNAPSHOT.md
 |-- PROJECT_STATE.md

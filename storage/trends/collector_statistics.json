@@ -1,0 +1,27 @@
+{
+  "updated_at": "2026-07-08T18:22:15.217638",
+  "sources": [
+    {
+      "source": "nate_pann",
+      "total_attempts": 4,
+      "total_success": 0,
+      "total_failures": 4,
+      "last_success_at": null,
+      "last_failure_at": "2026-07-08T18:22:15.217638",
+      "last_failed_reason": "connection_refused",
+      "last_collection_method": "settings_keyword_fallback",
+      "total_fallback_used": 3
+    },
+    {
+      "source": "naver_news",
+      "total_attempts": 4,
+      "total_success": 0,
+      "total_failures": 4,
+      "last_success_at": null,
+      "last_failure_at": "2026-07-08T18:22:15.217638",
+      "last_failed_reason": "connection_refused",
+      "last_collection_method": "settings_keyword_fallback",
+      "total_fallback_used": 3
+    }
+  ]
+}
