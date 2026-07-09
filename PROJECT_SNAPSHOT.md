@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T13:45:54
+Updated at: 2026-07-09T14:19:32
 
 ## Execution Command
 
@@ -73,6 +73,7 @@ AI-Content-OS/
 |   |-- card_news/
 |   |   |-- __init__.py
 |   |   |-- card_news_module.py
+|   |   |-- card_news_quality_checker.py
 |   |   |-- highlight_engine.py
 |   |   |-- layout_rule_engine.py
 |   |   |-- layout_selector.py
@@ -158,7 +159,7 @@ AI-Content-OS/
 |   |   |-- nate_pann_cache.json
 |   |   `-- naver_news_cache.json
 |   |-- card_news/
-|   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (5 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- content/
 |   |   `-- (1 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- generated_images/
@@ -168,7 +169,7 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   `-- (148 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (160 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -197,7 +198,7 @@ AI-Content-OS/
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (10 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (12 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -243,10 +244,10 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script maintained.
-- Sprint 7 CardNews layout-aware PNG rendering completed.
-- CardNewsModule applies `layout_result` metadata to actual PNG rendering and records `rendering_result`.
-- `layout_result.layout_type` and `rendering_result.layout_type` are linked in the latest workflow result.
-- Rendering fallback remains safe: failures use default CardNews rendering and keep `workflow_completed`.
+- Sprint 8 CardNews Quality QA v1 completed.
+- CardNewsModule records `card_news_quality` with `qa_score`, pass/fail status, checks, warnings, and recommendations.
+- Latest QA score is `0.85`, passed the `0.6` threshold, and reflects fallback penalty handling.
+- `storage/card_news/card_news_quality.json` is generated as a runtime output and remains excluded from commit targets.
 - Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.

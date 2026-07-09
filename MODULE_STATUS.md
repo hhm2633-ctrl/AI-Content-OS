@@ -30,6 +30,7 @@
 - Content Intelligence v1
 - CardNews Layout Intelligence v1
 - CardNews layout-aware PNG rendering v1
+- CardNews Quality QA v1
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
@@ -82,6 +83,7 @@
 - Sprint 5 snapshot generator and runtime storage tracking cleanup verified with `py -m src.main`
 - Sprint 6 CardNews Layout Intelligence v1 verified with `py -m src.main`
 - Sprint 7 CardNews layout-aware PNG rendering verified with `py -m src.main`
+- Sprint 8 CardNews Quality QA v1 verified with `py -m src.main`
 
 ## Sprint 3 Completed
 
@@ -156,6 +158,22 @@
 - Partial rendering fallback is recorded with `rendering_result.fallback_used: true`.
 - Latest run generated 4 layout-aware card news PNG files and maintained PublishingModule handoff.
 
+## Sprint 8 Completed
+
+- CardNewsModule now adds `card_news_quality` to card news results.
+- CardNews Quality QA helper:
+  - `CardNewsQualityChecker`
+- QA output fields:
+  - `qa_score`
+  - `passed`
+  - `checks`
+  - `warnings`
+  - `recommendations`
+- Runtime QA output is saved to `storage/card_news/card_news_quality.json`.
+- QA scoring checks PNG existence/count/size/resolution plus `layout_result` and `rendering_result` status.
+- `layout_result.fallback_used=True` or `rendering_result.fallback_used=True` applies a QA score penalty.
+- QA failures return safe default QA fields and do not break `card_news_completed` or `workflow_completed`.
+
 ## Verification
 
 - Compile command: `py -m compileall src modules scripts`
@@ -175,12 +193,15 @@
 - Latest CardNews result includes all required `layout_result` fields
 - Latest CardNews result includes all required `rendering_result` fields
 - Latest `layout_result.layout_type` matches `rendering_result.layout_type`
+- Latest CardNews result includes all required `card_news_quality` fields
+- Latest QA score is `0.85` and passed the `0.6` threshold
+- Latest run generated `storage/card_news/card_news_quality.json`
 - Latest run generated 4 card news PNG files
 
 ## Next
 
 - M2 Content Engine enhancement
-- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering helpers, and fallback fields
+- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Source Health dashboard
 - Collector Statistics dashboard
@@ -190,5 +211,5 @@
 
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
-- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering failures must be recorded as fallback events, not workflow failures.
+- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering/QA failures must be recorded as fallback events, not workflow failures.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.

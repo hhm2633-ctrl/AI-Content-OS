@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Optional
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from modules.base_module import BaseModule
+from modules.card_news.card_news_quality_checker import CardNewsQualityChecker
 from modules.card_news.highlight_engine import HighlightEngine
 from modules.card_news.layout_rule_engine import LayoutRuleEngine
 from modules.card_news.layout_selector import LayoutSelector
@@ -25,6 +26,7 @@ class CardNewsModule(BaseModule):
         self.layout_rule_engine = LayoutRuleEngine(self.config)
         self.slide_designer = SlideDesigner(self.config)
         self.highlight_engine = HighlightEngine(self.config)
+        self.quality_checker = CardNewsQualityChecker(self.config)
 
     def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
@@ -756,9 +758,47 @@ class CardNewsModule(BaseModule):
             total_cards=len(cards),
             rendering_notes=rendering_notes,
         )
+        result["card_news_quality"] = self._build_card_news_quality(result)
 
         print("Card News Module Finished")
         return result
+
+    def _build_card_news_quality(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
+        try:
+            quality_result = self.quality_checker.check(card_news_result)
+        except Exception as error:
+            print(f"CardNews QA Failed: {error}")
+            quality_result = {
+                "qa_score": 0.0,
+                "passed": False,
+                "checks": {},
+                "warnings": [f"QA 모듈 호출 실패: {error}"],
+                "recommendations": ["QA 모듈 호출 실패 - 수동 확인이 필요합니다."],
+            }
+
+        if not isinstance(quality_result, dict):
+            quality_result = {
+                "qa_score": 0.0,
+                "passed": False,
+                "checks": {},
+                "warnings": ["QA 모듈이 dict를 반환하지 않아 안전 값으로 대체함."],
+                "recommendations": ["QA 모듈 반환값을 확인하세요."],
+            }
+
+        try:
+            self._save_quality_result(quality_result)
+        except Exception as error:
+            print(f"Card News Quality Save Failed: {error}")
+
+        return quality_result
+
+    def _save_quality_result(self, quality_result: Dict[str, Any]) -> None:
+        path = self.card_dir / "card_news_quality.json"
+
+        with open(path, "w", encoding="utf-8") as file:
+            json.dump(quality_result, file, ensure_ascii=False, indent=2)
+
+        print(f"Card News Quality Saved: {path}")
 
     def _build_layout_context(
         self,

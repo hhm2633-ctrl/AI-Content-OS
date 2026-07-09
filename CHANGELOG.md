@@ -290,3 +290,27 @@
 - Compile result: success
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 14:15:39
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 8 Codex merge)
+
+- Change: Added CardNews Quality QA v1 to `CardNewsModule`.
+- Added/verified: `CardNewsQualityChecker` and `storage/card_news/card_news_quality.json` runtime output.
+- Output: Card news results now include `card_news_quality.qa_score`, `passed`, `checks`, `warnings`, and `recommendations`.
+- Verification: latest QA score was `0.85`, passed the `0.6` threshold, and reflected `layout_result` plus `rendering_result`.
+- Fallback: QA checker failures return safe QA fields and do not break `card_news_completed` or `workflow_completed`.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 14:19:32
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
