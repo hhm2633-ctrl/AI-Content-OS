@@ -31,6 +31,7 @@
 - CardNews Layout Intelligence v1
 - CardNews layout-aware PNG rendering v1
 - CardNews Quality QA v1
+- CardNews Design Quality v1
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
@@ -84,6 +85,7 @@
 - Sprint 6 CardNews Layout Intelligence v1 verified with `py -m src.main`
 - Sprint 7 CardNews layout-aware PNG rendering verified with `py -m src.main`
 - Sprint 8 CardNews Quality QA v1 verified with `py -m src.main`
+- Sprint 9 CardNews Design Quality v1 verified with `py -m src.main`
 
 ## Sprint 3 Completed
 
@@ -174,6 +176,24 @@
 - `layout_result.fallback_used=True` or `rendering_result.fallback_used=True` applies a QA score penalty.
 - QA failures return safe default QA fields and do not break `card_news_completed` or `workflow_completed`.
 
+## Sprint 9 Completed
+
+- CardNewsModule now optimizes slide text before PNG rendering.
+- CardNews Design Quality helper:
+  - `CardNewsTextOptimizer`
+- CardNews results now include `design_quality_result` fields:
+  - `text_optimized`
+  - `headline_trimmed_count`
+  - `body_trimmed_count`
+  - `duplicate_removed_count`
+  - `cta_optimized`
+  - `readability_warnings`
+  - `fallback_used`
+- CardNews QA checks include `design_quality_exists`.
+- Latest run produced `design_quality_result.text_optimized: true`, `headline_trimmed_count: 1`, `body_trimmed_count: 1`, and `fallback_used: false`.
+- Tethering workflow run completed in 138.54 seconds without timeout exit 124.
+- Naver News, Nate Pann, LLM Content, LLM ImagePrompt, and Image API fallback/status handling remained active and did not break `workflow_completed`.
+
 ## Verification
 
 - Compile command: `py -m compileall src modules scripts`
@@ -194,6 +214,8 @@
 - Latest CardNews result includes all required `rendering_result` fields
 - Latest `layout_result.layout_type` matches `rendering_result.layout_type`
 - Latest CardNews result includes all required `card_news_quality` fields
+- Latest CardNews result includes all required `design_quality_result` fields
+- Latest CardNews QA checks include `design_quality_exists: true`
 - Latest QA score is `0.85` and passed the `0.6` threshold
 - Latest run generated `storage/card_news/card_news_quality.json`
 - Latest run generated 4 card news PNG files
@@ -201,7 +223,7 @@
 ## Next
 
 - M2 Content Engine enhancement
-- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA helpers, and fallback fields
+- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Source Health dashboard
 - Collector Statistics dashboard
@@ -211,5 +233,5 @@
 
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
-- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering/QA failures must be recorded as fallback events, not workflow failures.
+- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering/QA/design quality failures must be recorded as fallback events, not workflow failures.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.

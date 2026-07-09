@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from modules.base_module import BaseModule
 from modules.card_news.card_news_quality_checker import CardNewsQualityChecker
+from modules.card_news.card_news_text_optimizer import CardNewsTextOptimizer
 from modules.card_news.highlight_engine import HighlightEngine
 from modules.card_news.layout_rule_engine import LayoutRuleEngine
 from modules.card_news.layout_selector import LayoutSelector
@@ -27,6 +28,7 @@ class CardNewsModule(BaseModule):
         self.slide_designer = SlideDesigner(self.config)
         self.highlight_engine = HighlightEngine(self.config)
         self.quality_checker = CardNewsQualityChecker(self.config)
+        self.text_optimizer = CardNewsTextOptimizer(self.config)
 
     def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
@@ -712,11 +714,15 @@ class CardNewsModule(BaseModule):
         layout_result = self._build_layout_result(content_result, slides)
         layout_context, rendering_notes = self._build_layout_context(layout_result)
 
+        optimized = self._optimize_slides_for_rendering(slides)
+        rendering_slides = optimized.get("slides") or slides
+        design_quality_result = self._build_design_quality_result(optimized)
+
         cards = []
         layout_applied_count = 0
 
         for index in range(4):
-            slide = slides[index] if index < len(slides) else {
+            slide = rendering_slides[index] if index < len(rendering_slides) else {
                 "page": index + 1,
                 "role": "card",
                 "headline": f"{index + 1}장 제목",
@@ -758,10 +764,50 @@ class CardNewsModule(BaseModule):
             total_cards=len(cards),
             rendering_notes=rendering_notes,
         )
+        result["design_quality_result"] = design_quality_result
         result["card_news_quality"] = self._build_card_news_quality(result)
 
         print("Card News Module Finished")
         return result
+
+    def _optimize_slides_for_rendering(self, slides: List[Dict[str, Any]]) -> Dict[str, Any]:
+        fallback_result = {
+            "slides": list(slides or []),
+            "text_optimized": False,
+            "headline_trimmed_count": 0,
+            "body_trimmed_count": 0,
+            "duplicate_removed_count": 0,
+            "cta_optimized": False,
+            "readability_warnings": [],
+            "fallback_used": True,
+        }
+
+        try:
+            optimized = self.text_optimizer.optimize(slides)
+        except Exception as error:
+            print(f"CardNews Text Optimizer Failed, using original slide text: {error}")
+            fallback_result["readability_warnings"] = [f"Text Optimizer 호출 실패: {error}"]
+            return fallback_result
+
+        if not isinstance(optimized, dict) or not isinstance(optimized.get("slides"), list):
+            print("CardNews Text Optimizer returned an invalid result, using original slide text.")
+            fallback_result["readability_warnings"] = [
+                "Text Optimizer가 올바른 결과를 반환하지 않아 원본 slide로 대체함."
+            ]
+            return fallback_result
+
+        return optimized
+
+    def _build_design_quality_result(self, optimized: Dict[str, Any]) -> Dict[str, Any]:
+        return {
+            "text_optimized": bool(optimized.get("text_optimized", False)),
+            "headline_trimmed_count": int(optimized.get("headline_trimmed_count", 0) or 0),
+            "body_trimmed_count": int(optimized.get("body_trimmed_count", 0) or 0),
+            "duplicate_removed_count": int(optimized.get("duplicate_removed_count", 0) or 0),
+            "cta_optimized": bool(optimized.get("cta_optimized", False)),
+            "readability_warnings": list(optimized.get("readability_warnings", []) or []),
+            "fallback_used": bool(optimized.get("fallback_used", False)),
+        }
 
     def _build_card_news_quality(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
         try:

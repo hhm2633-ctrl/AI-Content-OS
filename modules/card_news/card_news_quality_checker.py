@@ -60,9 +60,11 @@ class CardNewsQualityChecker:
 
         layout_result = card_news_result.get("layout_result")
         rendering_result = card_news_result.get("rendering_result")
+        design_quality_result = card_news_result.get("design_quality_result")
 
         layout_result_exists = isinstance(layout_result, dict) and bool(layout_result)
         rendering_result_exists = isinstance(rendering_result, dict) and bool(rendering_result)
+        design_quality_exists = isinstance(design_quality_result, dict) and bool(design_quality_result)
 
         warnings: List[str] = []
 
@@ -97,6 +99,7 @@ class CardNewsQualityChecker:
             "fallback_used": fallback_used,
             "highlight_exists": highlight_exists,
             "cta_slide_exists": cta_slide_exists,
+            "design_quality_exists": design_quality_exists,
         }
 
         self._collect_warnings(

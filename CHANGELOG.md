@@ -314,3 +314,22 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 14:37:25
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 9 Codex merge)
+
+- Change: Added CardNews Design Quality v1 text optimization before PNG rendering.
+- Added/verified: `CardNewsTextOptimizer` and `design_quality_result` in CardNews results.
+- Output: `design_quality_result` includes text optimization status, headline/body trim counts, duplicate removal count, CTA optimization status, readability warnings, and fallback status.
+- Verification: `card_news_quality.checks.design_quality_exists` is `true`; latest Design Quality optimized text with 1 headline trim and 1 body trim.
+- Tethering run: `py -m src.main` completed with exit code 0 in 138.54 seconds; no timeout wrapper exit 124 occurred.
+- Fallback status: Naver News, Nate Pann, Content LLM, ImagePrompt LLM, and Image API still used fallback/status handling, but workflow remained `workflow_completed`.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
