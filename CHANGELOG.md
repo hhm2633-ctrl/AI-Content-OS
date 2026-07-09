@@ -273,3 +273,20 @@
 - Compile result: success
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 13:45:54
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 7 Codex merge)
+
+- Change: Applied `layout_result` metadata to actual CardNews PNG rendering inside `CardNewsModule`.
+- Output: Card news results now include `rendering_result.layout_applied`, `layout_type`, `highlight_applied`, `cta_area_applied`, `fallback_used`, and `rendering_notes`.
+- Verification: `layout_result.layout_type` and `rendering_result.layout_type` matched in the latest run.
+- Fallback: Partial or full layout-aware rendering failure falls back to default CardNews rendering and records `rendering_result.fallback_used: true`.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
