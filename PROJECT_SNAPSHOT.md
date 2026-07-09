@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T12:40:15
+Updated at: 2026-07-09T13:02:36
 
 ## Execution Command
 
@@ -21,7 +21,7 @@ Do not use `python -m src.main` for this project.
 - Topic selection: success
 - Pattern selection: pattern_selected
 - Research: success
-- Content generation: content_created with `content_intelligence`
+- Content generation: content_created
 - Image prompt generation: image_prompts_created
 - Image generation: image_generation_completed
 - Card news rendering: card_news_completed
@@ -154,155 +154,17 @@ AI-Content-OS/
 |   |   |-- nate_pann_cache.json
 |   |   `-- naver_news_cache.json
 |   |-- card_news/
-|   |   |-- card_news_1.png
-|   |   |-- card_news_2.png
-|   |   |-- card_news_3.png
-|   |   `-- card_news_4.png
+|   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- content/
-|   |   `-- content_history.json
+|   |   `-- (1 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- generated_images/
-|   |   |-- ai_image_1.png
-|   |   |-- ai_image_2.png
-|   |   |-- ai_image_3.png
-|   |   `-- ai_image_4.png
+|   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- history/
 |   |   `-- .gitkeep
 |   |-- images/
-|   |   |-- card_slide_1.png
-|   |   |-- card_slide_2.png
-|   |   |-- card_slide_3.png
-|   |   `-- card_slide_4.png
+|   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   |-- llm_log_20260708_121621.json
-|   |   |-- llm_log_20260708_121624.json
-|   |   |-- llm_log_20260708_121631.json
-|   |   |-- llm_log_20260708_122845.json
-|   |   |-- llm_log_20260708_122849.json
-|   |   |-- llm_log_20260708_122855.json
-|   |   |-- llm_log_20260708_135801.json
-|   |   |-- llm_log_20260708_135807.json
-|   |   |-- llm_log_20260708_141726.json
-|   |   |-- llm_log_20260708_141734.json
-|   |   |-- llm_log_20260708_142643.json
-|   |   |-- llm_log_20260708_142649.json
-|   |   |-- llm_log_20260708_144805.json
-|   |   |-- llm_log_20260708_144813.json
-|   |   |-- llm_log_20260708_150438.json
-|   |   |-- llm_log_20260708_150446.json
-|   |   |-- llm_log_20260708_155354.json
-|   |   |-- llm_log_20260708_155404.json
-|   |   |-- llm_log_20260708_155413.json
-|   |   |-- llm_log_20260708_155420.json
-|   |   |-- llm_log_20260708_155430.json
-|   |   |-- llm_log_20260708_155440.json
-|   |   |-- llm_log_20260708_160529.json
-|   |   |-- llm_log_20260708_160538.json
-|   |   |-- llm_log_20260708_160547.json
-|   |   |-- llm_log_20260708_160554.json
-|   |   |-- llm_log_20260708_160604.json
-|   |   |-- llm_log_20260708_160613.json
-|   |   |-- llm_log_20260708_161127.json
-|   |   |-- llm_log_20260708_161137.json
-|   |   |-- llm_log_20260708_161146.json
-|   |   |-- llm_log_20260708_161153.json
-|   |   |-- llm_log_20260708_161203.json
-|   |   |-- llm_log_20260708_161212.json
-|   |   |-- llm_log_20260708_162524.json
-|   |   |-- llm_log_20260708_162533.json
-|   |   |-- llm_log_20260708_162543.json
-|   |   |-- llm_log_20260708_162550.json
-|   |   |-- llm_log_20260708_162600.json
-|   |   |-- llm_log_20260708_162609.json
-|   |   |-- llm_log_20260708_163509.json
-|   |   |-- llm_log_20260708_163519.json
-|   |   |-- llm_log_20260708_163528.json
-|   |   |-- llm_log_20260708_163536.json
-|   |   |-- llm_log_20260708_163545.json
-|   |   |-- llm_log_20260708_163554.json
-|   |   |-- llm_log_20260708_163939.json
-|   |   |-- llm_log_20260708_163948.json
-|   |   |-- llm_log_20260708_163958.json
-|   |   |-- llm_log_20260708_164005.json
-|   |   |-- llm_log_20260708_164015.json
-|   |   |-- llm_log_20260708_164024.json
-|   |   |-- llm_log_20260708_165802.json
-|   |   |-- llm_log_20260708_165811.json
-|   |   |-- llm_log_20260708_165821.json
-|   |   |-- llm_log_20260708_165828.json
-|   |   |-- llm_log_20260708_165837.json
-|   |   |-- llm_log_20260708_165847.json
-|   |   |-- llm_log_20260708_170352.json
-|   |   |-- llm_log_20260708_170401.json
-|   |   |-- llm_log_20260708_170410.json
-|   |   |-- llm_log_20260708_170418.json
-|   |   |-- llm_log_20260708_170427.json
-|   |   |-- llm_log_20260708_170437.json
-|   |   |-- llm_log_20260708_172520.json
-|   |   |-- llm_log_20260708_172529.json
-|   |   |-- llm_log_20260708_172539.json
-|   |   |-- llm_log_20260708_172546.json
-|   |   |-- llm_log_20260708_172556.json
-|   |   |-- llm_log_20260708_172605.json
-|   |   |-- llm_log_20260708_173828.json
-|   |   |-- llm_log_20260708_173838.json
-|   |   |-- llm_log_20260708_173847.json
-|   |   |-- llm_log_20260708_173855.json
-|   |   |-- llm_log_20260708_173904.json
-|   |   |-- llm_log_20260708_173913.json
-|   |   |-- llm_log_20260708_175542.json
-|   |   |-- llm_log_20260708_175552.json
-|   |   |-- llm_log_20260708_175601.json
-|   |   |-- llm_log_20260708_175608.json
-|   |   |-- llm_log_20260708_175618.json
-|   |   |-- llm_log_20260708_175627.json
-|   |   |-- llm_log_20260708_180731.json
-|   |   |-- llm_log_20260708_180741.json
-|   |   |-- llm_log_20260708_180750.json
-|   |   |-- llm_log_20260708_180758.json
-|   |   |-- llm_log_20260708_180807.json
-|   |   |-- llm_log_20260708_180816.json
-|   |   |-- llm_log_20260708_181538.json
-|   |   |-- llm_log_20260708_181547.json
-|   |   |-- llm_log_20260708_181556.json
-|   |   |-- llm_log_20260708_181604.json
-|   |   |-- llm_log_20260708_181613.json
-|   |   |-- llm_log_20260708_181622.json
-|   |   |-- llm_log_20260708_182223.json
-|   |   |-- llm_log_20260708_182233.json
-|   |   |-- llm_log_20260708_182242.json
-|   |   |-- llm_log_20260708_182249.json
-|   |   |-- llm_log_20260708_182259.json
-|   |   |-- llm_log_20260708_182308.json
-|   |   |-- llm_log_20260709_115549.json
-|   |   |-- llm_log_20260709_115559.json
-|   |   |-- llm_log_20260709_115608.json
-|   |   |-- llm_log_20260709_115616.json
-|   |   |-- llm_log_20260709_115625.json
-|   |   |-- llm_log_20260709_115634.json
-|   |   |-- llm_log_20260709_120044.json
-|   |   |-- llm_log_20260709_120054.json
-|   |   |-- llm_log_20260709_120103.json
-|   |   |-- llm_log_20260709_120110.json
-|   |   |-- llm_log_20260709_120120.json
-|   |   |-- llm_log_20260709_120129.json
-|   |   |-- llm_log_20260709_120440.json
-|   |   |-- llm_log_20260709_120449.json
-|   |   |-- llm_log_20260709_120459.json
-|   |   |-- llm_log_20260709_120506.json
-|   |   |-- llm_log_20260709_120516.json
-|   |   |-- llm_log_20260709_120525.json
-|   |   |-- llm_log_20260709_122440.json
-|   |   |-- llm_log_20260709_122450.json
-|   |   |-- llm_log_20260709_122459.json
-|   |   |-- llm_log_20260709_122507.json
-|   |   |-- llm_log_20260709_122516.json
-|   |   |-- llm_log_20260709_122526.json
-|   |   |-- llm_log_20260709_123901.json
-|   |   |-- llm_log_20260709_123910.json
-|   |   |-- llm_log_20260709_123919.json
-|   |   |-- llm_log_20260709_123927.json
-|   |   |-- llm_log_20260709_123936.json
-|   |   `-- llm_log_20260709_123945.json
+|   |   `-- (136 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -331,6 +193,7 @@ AI-Content-OS/
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
+|   |   |   `-- (8 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -340,29 +203,7 @@ AI-Content-OS/
 |   |   |-- trend_result.json
 |   |   `-- trend_run_log.jsonl
 |   |-- workflow_results/
-|   |   |-- 01_research_result.json
-|   |   |-- 01_trend_result.json
-|   |   |-- 02_content_result.json
-|   |   |-- 02_topic_result.json
-|   |   |-- 03_image_prompt_result.json
-|   |   |-- 03_pattern_result.json
-|   |   |-- 03_research_result.json
-|   |   |-- 04_content_result.json
-|   |   |-- 04_image_generation_result.json
-|   |   |-- 04_research_result.json
-|   |   |-- 05_card_news_result.json
-|   |   |-- 05_content_result.json
-|   |   |-- 05_image_prompt_result.json
-|   |   |-- 06_image_generation_result.json
-|   |   |-- 06_image_prompt_result.json
-|   |   |-- 06_publishing_result.json
-|   |   |-- 07_card_news_result.json
-|   |   |-- 07_image_generation_result.json
-|   |   |-- 08_card_news_result.json
-|   |   |-- 08_publishing_result.json
-|   |   |-- 09_publishing_result.json
-|   |   |-- 99_final_result.json
-|   |   `-- final_result.json
+|   |   `-- (23 runtime file(s) omitted; gitignored, see .gitignore)
 |   `-- README.md
 |-- templates/
 |   |-- card_news_template.json
@@ -396,16 +237,16 @@ AI-Content-OS/
 
 ## Current Work
 
-- Project status document auto-update script added.
-- Sprint 4 Content Intelligence v1 completed.
-- ContentModule result includes `content_intelligence` with quality, duplicate, brand, publishing, recommendation, and detail fields.
-- `storage/content/content_history.json` is generated for duplicate-risk checks and remains excluded from commit targets.
+- Project status document auto-update script maintained.
+- Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.
+- Runtime storage directories are collapsed in the project tree instead of listing every generated file.
+- Runtime storage outputs are gitignored and excluded from commit targets.
 - Keep fallback-first workflow behavior intact.
 
 ## Protected Rules
 
 - Keep existing WorkflowEngine structure.
 - Use `py -m src.main` as the execution command.
+- Do not use `python -m src.main`.
 - Keep `workflow_completed` from regressing.
 - Keep fallback behavior for internet, LLM, and image failures.
-- Content Intelligence calculation failures must fall back to safe default fields, not workflow failure.

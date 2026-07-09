@@ -239,3 +239,20 @@
 - Compile result: success
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 5 Codex cleanup)
+
+- Change: Corrected `scripts/update_project_snapshot.py` so generated snapshots include `PatternEngineModule` in the current WorkflowEngine sequence.
+- Change: Collapsed noisy runtime-output directories in the generated project tree summary instead of listing every runtime file.
+- Change: Updated `.gitignore` runtime exclusions and untracked generated storage outputs from Git without deleting local files.
+- Storage policy: keep `storage/README.md` and required `.gitkeep` placeholders; exclude runtime JSON/JSONL/PNG/log outputs.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 13:00:43
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

@@ -18,6 +18,19 @@ EXCLUDED_DIRS = {
     ".ruff_cache",
 }
 
+# Runtime-output directories (see .gitignore) whose file-by-file listing would
+# otherwise flood the project tree below. Only the directory itself is shown;
+# individual files are summarized instead of enumerated.
+TRUNCATED_RUNTIME_DIRS = {
+    "storage/content",
+    "storage/llm_logs",
+    "storage/trends/snapshots",
+    "storage/workflow_results",
+    "storage/generated_images",
+    "storage/card_news",
+    "storage/images",
+}
+
 EXECUTION_COMMAND = "py -m src.main"
 
 
@@ -62,6 +75,22 @@ def iter_project_tree(max_depth: int = 3) -> Iterable[str]:
             yield f"{prefix}{connector}{label}"
 
             if entry.is_dir():
+                relative_path = entry.relative_to(ROOT).as_posix()
+
+                if relative_path in TRUNCATED_RUNTIME_DIRS:
+                    try:
+                        file_count = sum(1 for item in entry.rglob("*") if item.is_file())
+                    except Exception:
+                        file_count = 0
+
+                    if file_count:
+                        yield (
+                            f"{prefix}{child_prefix}`-- "
+                            f"({file_count} runtime file(s) omitted; gitignored, see .gitignore)"
+                        )
+
+                    continue
+
                 yield from walk(entry, prefix + child_prefix, depth + 1)
 
     yield f"{ROOT.name}/"
@@ -69,9 +98,13 @@ def iter_project_tree(max_depth: int = 3) -> Iterable[str]:
 
 
 def get_workflow_summary(workflow_result: Dict[str, Any]) -> Dict[str, Any]:
+    # Keep this list in sync with WorkflowEngine.run()'s actual call sequence
+    # (src/workflow_engine.py). It intentionally does not derive the list
+    # dynamically to avoid depending on WorkflowEngine internals.
     modules = [
         "trend",
         "topic",
+        "pattern",
         "research",
         "content",
         "image_prompt",
@@ -99,6 +132,7 @@ def collect_recent_completed_features(workflow_summary: Dict[str, Any]) -> List[
     labels = {
         "trend": "Trend collection",
         "topic": "Topic selection",
+        "pattern": "Pattern selection",
         "research": "Research",
         "content": "Content generation",
         "image_prompt": "Image prompt generation",
@@ -125,10 +159,14 @@ def build_snapshot(workflow_result: Dict[str, Any]) -> str:
     recent_features = collect_recent_completed_features(workflow_summary)
     tree_lines = list(iter_project_tree())
 
+    # Keep this string in sync with WorkflowEngine.run()'s actual call sequence
+    # (src/workflow_engine.py) -- this is the exact bug Sprint 5 corrected:
+    # PatternEngineModule was wired into the pipeline but this line still
+    # skipped straight from TopicEngineModule to ResearchModule.
     module_lines = [
-        "TrendCollectorModule -> TopicEngineModule -> ResearchModule -> "
-        "ContentModule -> ImagePromptModule -> ImageGenerationModule -> "
-        "CardNewsModule -> PublishingModule"
+        "TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> "
+        "ResearchModule -> ContentModule -> ImagePromptModule -> "
+        "ImageGenerationModule -> CardNewsModule -> PublishingModule"
     ]
 
     snapshot_lines = [
@@ -170,13 +208,17 @@ def build_snapshot(workflow_result: Dict[str, Any]) -> str:
         "",
         "## Current Work",
         "",
-        "- Project status document auto-update script added.",
+        "- Project status document auto-update script maintained.",
+        "- Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.",
+        "- Runtime storage directories are collapsed in the project tree instead of listing every generated file.",
+        "- Runtime storage outputs are gitignored and excluded from commit targets.",
         "- Keep fallback-first workflow behavior intact.",
         "",
         "## Protected Rules",
         "",
         "- Keep existing WorkflowEngine structure.",
         "- Use `py -m src.main` as the execution command.",
+        "- Do not use `python -m src.main`.",
         "- Keep `workflow_completed` from regressing.",
         "- Keep fallback behavior for internet, LLM, and image failures.",
         "",

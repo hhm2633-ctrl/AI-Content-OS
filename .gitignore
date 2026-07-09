@@ -5,6 +5,7 @@ __pycache__/
 
 storage/**
 !storage/
+!storage/README.md
 !storage/cache/
 !storage/cache/.gitkeep
 !storage/history/
@@ -17,8 +18,16 @@ storage/**
 !storage/topics/.gitkeep
 !storage/trends/
 !storage/trends/.gitkeep
-storage/images/
+
+# Explicit runtime-output call-outs (Sprint 5). Already covered by the
+# storage/** blanket rule above; kept explicit here for readability/auditing
+# so it's obvious at a glance which runtime outputs are never git-tracked.
 storage/content/
 storage/llm_logs/
 storage/trends/snapshots/
+storage/workflow_results/
+storage/generated_images/
+storage/card_news/
+storage/images/
+
 logs/

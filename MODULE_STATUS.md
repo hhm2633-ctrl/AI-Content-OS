@@ -77,6 +77,7 @@
 - Sprint 2 Pattern Engine workflow linkage verified with `py -m src.main`
 - Sprint 3 Pattern -> Research -> Content linkage verified with `py -m src.main`
 - Sprint 4 Content Intelligence v1 verified with `py -m src.main`
+- Sprint 5 snapshot generator and runtime storage tracking cleanup verified with `py -m src.main`
 
 ## Sprint 3 Completed
 
@@ -114,6 +115,14 @@
 - `storage/content/content_history.json` is generated for duplicate-risk checks.
 - Content Intelligence calculation failures return safe defaults and do not break `workflow_completed`.
 
+## Sprint 5 Completed
+
+- `scripts/update_project_snapshot.py` includes `PatternEngineModule` in the generated Current WorkflowEngine line.
+- Generated `PROJECT_SNAPSHOT.md` collapses noisy runtime-output directories instead of enumerating every generated file.
+- `.gitignore` excludes runtime storage outputs including workflow results, logs, generated images, card images, and snapshots.
+- Runtime storage outputs were removed from Git tracking with `git rm --cached` while keeping local files on disk.
+- Tracked storage placeholders are limited to required stable files such as `storage/README.md` and `.gitkeep` files.
+
 ## Verification
 
 - Compile command: `py -m compileall src modules scripts`
@@ -129,11 +138,13 @@
 - Latest Content result records LLM fallback with `fallback_used: true` when API calls fail
 - Latest Content result includes all required `content_intelligence` fields
 - Latest run generated `storage/content/content_history.json`
+- Latest generated `PROJECT_SNAPSHOT.md` includes `PatternEngineModule` and runtime tree omission markers
 
 ## Next
 
 - M2 Content Engine enhancement
 - Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, and fallback fields
+- Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior
