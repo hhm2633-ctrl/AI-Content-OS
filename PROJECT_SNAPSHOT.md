@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T14:37:25
+Updated at: 2026-07-09T15:22:17
 
 ## Execution Command
 
@@ -80,7 +80,8 @@ AI-Content-OS/
 |   |   |-- layout_selector.py
 |   |   `-- slide_designer.py
 |   |-- common/
-|   |   `-- __init__.py
+|   |   |-- __init__.py
+|   |   `-- service_diagnostic.py
 |   |-- content/
 |   |   |-- brand_rule_evaluator.py
 |   |   |-- content_duplicate_detector.py
@@ -170,7 +171,7 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   `-- (166 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (174 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -194,12 +195,14 @@ AI-Content-OS/
 |   |   `-- publishing_result.json
 |   |-- research/
 |   |   `-- research_result.json
+|   |-- runtime/
+|   |   `-- service_diagnostic.json
 |   |-- topics/
 |   |   |-- .gitkeep
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (13 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (14 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -245,11 +248,11 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script maintained.
-- Sprint 9 CardNews Design Quality v1 completed.
-- CardNewsModule optimizes slide text before PNG rendering and records `design_quality_result`.
-- Latest `design_quality_result` has `text_optimized: true`, `headline_trimmed_count: 1`, `body_trimmed_count: 1`, `cta_optimized: true`, and `fallback_used: false`.
-- `card_news_quality.checks.design_quality_exists` is `true`.
-- Tethering workflow run completed in 138.54 seconds without timeout exit 124; external fallbacks still used status/fallback paths and preserved `workflow_completed`.
+- Network Stability Patch completed.
+- OpenAI LLM and Image API requests retry up to 3 times with backoff before existing fallback.
+- Naver News and Nate Pann collection now go through 3 retry attempts before cache/settings fallback.
+- Latest `py -m src.main` completed in 357.66 seconds with `workflow_completed`.
+- Latest diagnostics/summary show retry_count records for LLM, Image, Naver News, and Nate Pann fallbacks.
 - Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.

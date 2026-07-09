@@ -200,6 +200,11 @@
 - Compile result: success
 - Workflow command: `py -m src.main`
 - Workflow result: `workflow_completed`
+- Latest Network Stability Patch run completed in 357.66 seconds.
+- Latest LLM service diagnostics record `retry_count: 3` before fallback.
+- Latest Image service diagnostic records `retry_count: 3` before fallback.
+- Latest Naver News collection summary records `retry_count: 3` before settings fallback.
+- Latest Nate Pann collection summary records `retry_count: 3` before settings fallback.
 - Required pattern files generated:
   - `storage/pattern/pattern_result.json`
   - `storage/pattern/pattern_history.json`
@@ -234,4 +239,5 @@
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
 - Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering/QA/design quality failures must be recorded as fallback events, not workflow failures.
+- OpenAI, Naver News, and Nate Pann transient connection failures should retry with backoff before fallback.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.

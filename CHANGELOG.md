@@ -333,3 +333,23 @@
 - Compile result: success
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 15:22:17
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Network Stability Patch)
+
+- Change: Strengthened retry/backoff handling for OpenAI LLM, OpenAI Image API, and trend collectors.
+- LLM retry: connection-style failures now retry up to 3 times with 2s, 5s, and 10s backoff before existing fallback.
+- Image retry: each image request retries up to 3 times with 2s, 5s, and 10s backoff before marking that image failed.
+- Trend retry: retry policy now guarantees 3 retries with short backoff before cache/settings fallback.
+- Logging: raw error output was reduced; retry logs record `retry_count` and `final_error_type`.
+- Verification: latest `py -m src.main` completed with `workflow_completed` in 357.66 seconds.
+- Observed fallback: Naver News, Nate Pann, LLM, and Image API still used fallback/status handling; workflow did not fail.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

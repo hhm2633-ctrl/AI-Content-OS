@@ -7,11 +7,14 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from urllib.error import HTTPError, URLError
 
+from modules.common.service_diagnostic import ServiceDiagnostic
+
 
 class NatePannCollector:
     def __init__(self, timeout: int = 8, max_items: int = 10):
         self.timeout = timeout
         self.max_items = max_items
+        self.service_diagnostic = ServiceDiagnostic()
         self.last_status = self._empty_status()
         self.endpoints = [
             {
@@ -37,9 +40,17 @@ class NatePannCollector:
             "error_message": "",
             "failed_reason": "",
             "fallback_reason": "",
+            "final_error_type": "",
             "collection_method": "",
             "used_cache": False,
             "cache_path": "",
+            "service_diagnostic": {
+                "service": "nate_pann",
+                "status": "ok",
+                "error_type": "",
+                "safe_message": "",
+                "api_key_present": None,
+            },
         }
 
     def collect(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -76,10 +87,10 @@ class NatePannCollector:
                     {
                         "endpoint": endpoint["label"],
                         "reason": reason,
-                        "message": str(error),
+                        "message": reason,
                     }
                 )
-                print(f"Nate Pann Collect Failed: {endpoint['label']} / {error}")
+                print(f"Nate Pann Collect Failed: {endpoint['label']} / final_error_type={reason}")
 
         deduped = self._dedupe(results)[:self.max_items]
         self.last_status["success"] = bool(deduped)
@@ -89,15 +100,39 @@ class NatePannCollector:
             self.last_status["collection_method"] = "nate_pann_html"
         elif errors:
             self.last_status["failed_reason"] = self._primary_failed_reason(errors)
+            self.last_status["final_error_type"] = self.last_status["failed_reason"]
             self.last_status["error_message"] = "; ".join(
-                f"{item['endpoint']}: {item['reason']} ({item['message']})"
+                f"{item['endpoint']}: {item['reason']}"
                 for item in errors[:5]
             )
         else:
             self.last_status["failed_reason"] = "empty_result"
+            self.last_status["final_error_type"] = "empty_result"
             self.last_status["error_message"] = "Nate Pann returned no items."
 
+        self._record_diagnostic()
+
         return deduped
+
+    def _record_diagnostic(self) -> None:
+        try:
+            if self.last_status.get("success"):
+                diagnostic = self.service_diagnostic.build_diagnostic_from_reason(
+                    service="nate_pann",
+                    reason="",
+                    status="ok",
+                )
+            else:
+                diagnostic = self.service_diagnostic.build_diagnostic_from_reason(
+                    service="nate_pann",
+                    reason=self.last_status.get("failed_reason", "unknown_error"),
+                    status="fallback_used",
+                )
+                self.service_diagnostic.record(diagnostic)
+
+            self.last_status["service_diagnostic"] = diagnostic
+        except Exception as error:
+            print(f"Nate Pann Service Diagnostic Failed: {error}")
 
     def _fetch_url(self, url: str) -> str:
         request = urllib.request.Request(

@@ -8,11 +8,14 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from urllib.error import HTTPError, URLError
 
+from modules.common.service_diagnostic import ServiceDiagnostic
+
 
 class NaverNewsCollector:
     def __init__(self, timeout: int = 8, max_items_per_query: int = 5):
         self.timeout = timeout
         self.max_items_per_query = max_items_per_query
+        self.service_diagnostic = ServiceDiagnostic()
         self.last_status = self._empty_status()
 
     def _empty_status(self) -> Dict[str, Any]:
@@ -24,9 +27,17 @@ class NaverNewsCollector:
             "error_message": "",
             "failed_reason": "",
             "fallback_reason": "",
+            "final_error_type": "",
             "collection_method": "",
             "used_cache": False,
             "cache_path": "",
+            "service_diagnostic": {
+                "service": "naver_news",
+                "status": "ok",
+                "error_type": "",
+                "safe_message": "",
+                "api_key_present": None,
+            },
         }
 
     def collect(
@@ -44,15 +55,14 @@ class NaverNewsCollector:
                 results.extend(self._collect_by_query(query=query, source=source))
             except Exception as error:
                 reason = self._classify_error(error)
-                error_message = str(error)
                 errors.append(
                     {
                         "query": query,
                         "reason": reason,
-                        "message": error_message,
+                        "message": reason,
                     }
                 )
-                print(f"Naver News Collect Failed: {query} / {error}")
+                print(f"Naver News Collect Failed: {query} / final_error_type={reason}")
 
         deduped = self._dedupe(results)
         self.last_status["success"] = bool(deduped)
@@ -65,15 +75,39 @@ class NaverNewsCollector:
             )
         elif errors:
             self.last_status["failed_reason"] = self._primary_failed_reason(errors)
+            self.last_status["final_error_type"] = self.last_status["failed_reason"]
             self.last_status["error_message"] = "; ".join(
-                f"{item['query']}: {item['reason']} ({item['message']})"
+                f"{item['query']}: {item['reason']}"
                 for item in errors[:5]
             )
         else:
             self.last_status["failed_reason"] = "no_results"
+            self.last_status["final_error_type"] = "no_results"
             self.last_status["error_message"] = "Naver News returned no parsable items."
 
+        self._record_diagnostic()
+
         return deduped
+
+    def _record_diagnostic(self) -> None:
+        try:
+            if self.last_status.get("success"):
+                diagnostic = self.service_diagnostic.build_diagnostic_from_reason(
+                    service="naver_news",
+                    reason="",
+                    status="ok",
+                )
+            else:
+                diagnostic = self.service_diagnostic.build_diagnostic_from_reason(
+                    service="naver_news",
+                    reason=self.last_status.get("failed_reason", "unknown_error"),
+                    status="fallback_used",
+                )
+                self.service_diagnostic.record(diagnostic)
+
+            self.last_status["service_diagnostic"] = diagnostic
+        except Exception as error:
+            print(f"Naver News Service Diagnostic Failed: {error}")
 
     def _collect_by_query(
         self,

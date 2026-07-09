@@ -46,6 +46,13 @@ class TrendSourceManager:
                 "retry_count": 0,
                 "cache_age_seconds": None,
                 "cache_expired": False,
+                "service_diagnostic": {
+                    "service": "naver_news",
+                    "status": "ok",
+                    "error_type": "",
+                    "safe_message": "",
+                    "api_key_present": None,
+                },
             },
             "nate_pann": {
                 "source": "nate_pann",
@@ -62,6 +69,13 @@ class TrendSourceManager:
                 "retry_count": 0,
                 "cache_age_seconds": None,
                 "cache_expired": False,
+                "service_diagnostic": {
+                    "service": "nate_pann",
+                    "status": "ok",
+                    "error_type": "",
+                    "safe_message": "",
+                    "api_key_present": None,
+                },
             },
             "fallback_used": False,
             "fallback_sources": [],
@@ -714,6 +728,7 @@ class TrendSourceManager:
                 "retry_count": int(status.get("retry_count", summary.get("retry_count", 0)) or 0),
                 "cache_age_seconds": status.get("cache_age_seconds", summary.get("cache_age_seconds")),
                 "cache_expired": bool(status.get("cache_expired", summary.get("cache_expired", False))),
+                "service_diagnostic": status.get("service_diagnostic", summary.get("service_diagnostic")),
             }
         )
 
@@ -735,6 +750,7 @@ class TrendSourceManager:
                 "retry_count": int(status.get("retry_count", summary.get("retry_count", 0)) or 0),
                 "cache_age_seconds": status.get("cache_age_seconds", summary.get("cache_age_seconds")),
                 "cache_expired": bool(status.get("cache_expired", summary.get("cache_expired", False))),
+                "service_diagnostic": status.get("service_diagnostic", summary.get("service_diagnostic")),
             }
         )
 
