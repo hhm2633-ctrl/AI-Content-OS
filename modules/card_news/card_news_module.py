@@ -1,9 +1,14 @@
+import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from modules.base_module import BaseModule
+from modules.card_news.highlight_engine import HighlightEngine
+from modules.card_news.layout_rule_engine import LayoutRuleEngine
+from modules.card_news.layout_selector import LayoutSelector
+from modules.card_news.slide_designer import SlideDesigner
 
 
 class CardNewsModule(BaseModule):
@@ -15,6 +20,11 @@ class CardNewsModule(BaseModule):
 
         self.width = 1080
         self.height = 1080
+
+        self.layout_selector = LayoutSelector(self.config)
+        self.layout_rule_engine = LayoutRuleEngine(self.config)
+        self.slide_designer = SlideDesigner(self.config)
+        self.highlight_engine = HighlightEngine(self.config)
 
     def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
@@ -393,5 +403,113 @@ class CardNewsModule(BaseModule):
             "cards": cards,
         }
 
+        result["layout_result"] = self._build_layout_result(content_result, slides)
+
         print("Card News Module Finished")
         return result
+
+    def _build_layout_result(
+        self,
+        content_result: Dict[str, Any],
+        slides: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        try:
+            return self._compute_layout_result(content_result or {}, slides or [])
+        except Exception as error:
+            print(f"Layout Intelligence Failed, using default layout: {error}")
+            return self._default_layout_result(slides)
+
+    def _compute_layout_result(
+        self,
+        content_result: Dict[str, Any],
+        slides: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        topic_intelligence = self._load_topic_intelligence()
+        brand_profile = self._load_brand_profile()
+        content_intelligence = content_result.get("content_intelligence") or {}
+        pattern_meta = content_result.get("pattern_prompt_meta") or {}
+
+        selection = self.layout_selector.select(
+            pattern_meta=pattern_meta,
+            topic_intelligence=topic_intelligence,
+            brand_profile=brand_profile,
+            content_intelligence=content_intelligence,
+        )
+        layout_type = selection.get("layout_type", "bold_ai")
+
+        rule = self.layout_rule_engine.get_rule(layout_type)
+        slide_designs = self.slide_designer.design(slides, rule)
+        highlight_result = self.highlight_engine.highlight(content_result, topic_intelligence)
+
+        return {
+            "layout_type": layout_type,
+            "slide_count": len(slides),
+            "highlight_keywords": highlight_result.get("highlight_keywords", []),
+            "title_style": rule.get("title_style"),
+            "body_style": rule.get("body_style"),
+            "image_ratio": rule.get("image_ratio"),
+            "cta_position": rule.get("cta_position"),
+            "selection_reason": selection.get("reason", ""),
+            "slide_designs": slide_designs,
+            "slide_highlights": highlight_result.get("slide_highlights", []),
+            "fallback_used": bool(selection.get("fallback_used", False)) or bool(rule.get("fallback_used", False)),
+        }
+
+    def _default_layout_result(self, slides: Optional[List[Dict[str, Any]]]) -> Dict[str, Any]:
+        slides = slides or []
+
+        try:
+            default_rule = self.layout_rule_engine.get_rule(LayoutSelector.DEFAULT_LAYOUT)
+        except Exception:
+            default_rule = {}
+
+        return {
+            "layout_type": LayoutSelector.DEFAULT_LAYOUT,
+            "slide_count": len(slides),
+            "highlight_keywords": [],
+            "title_style": default_rule.get("title_style", "sans_black_bold"),
+            "body_style": default_rule.get("body_style", "sans_white_medium"),
+            "image_ratio": default_rule.get("image_ratio", "1:1"),
+            "cta_position": default_rule.get("cta_position", "bottom_center"),
+            "selection_reason": "Layout Intelligence 계산 실패로 기존 CardNews 기본 레이아웃을 사용함.",
+            "slide_designs": [],
+            "slide_highlights": [],
+            "fallback_used": True,
+        }
+
+    def _load_topic_intelligence(self) -> Dict[str, Any]:
+        path = Path("storage/research/research_result.json")
+
+        if not path.exists():
+            return {}
+
+        try:
+            with open(path, "r", encoding="utf-8") as file:
+                data = json.load(file)
+
+            if isinstance(data, dict):
+                topic_intelligence = data.get("topic_intelligence")
+
+                if isinstance(topic_intelligence, dict):
+                    return topic_intelligence
+        except Exception as error:
+            print(f"Topic Intelligence Load Failed: {error}")
+
+        return {}
+
+    def _load_brand_profile(self) -> Dict[str, Any]:
+        path = Path("config/brand_profile.json")
+
+        if not path.exists():
+            return {}
+
+        try:
+            with open(path, "r", encoding="utf-8") as file:
+                data = json.load(file)
+
+            if isinstance(data, dict):
+                return data
+        except Exception as error:
+            print(f"Brand Profile Load Failed: {error}")
+
+        return {}

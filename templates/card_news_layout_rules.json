@@ -1,0 +1,85 @@
+{
+  "default_layout": "bold_ai",
+  "layouts": {
+    "notebook": {
+      "title_style": "handwritten_bold",
+      "body_style": "ruled_notes",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#e63946",
+      "background_tone": "light_paper"
+    },
+    "dark_editorial": {
+      "title_style": "serif_white_bold",
+      "body_style": "serif_light_gray",
+      "image_ratio": "4:5",
+      "cta_position": "bottom_right",
+      "highlight_color": "#f4c95d",
+      "background_tone": "dark"
+    },
+    "bold_ai": {
+      "title_style": "sans_black_bold",
+      "body_style": "sans_white_medium",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#ffd60a",
+      "background_tone": "dark_gradient"
+    },
+    "character_diary": {
+      "title_style": "rounded_soft",
+      "body_style": "rounded_casual",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_left",
+      "highlight_color": "#ff8fa3",
+      "background_tone": "pastel"
+    },
+    "comparison": {
+      "title_style": "split_header",
+      "body_style": "two_column",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#457b9d",
+      "background_tone": "split_light_dark"
+    },
+    "tutorial": {
+      "title_style": "numbered_step_bold",
+      "body_style": "step_by_step",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#2a9d8f",
+      "background_tone": "light_clean"
+    },
+    "checklist": {
+      "title_style": "checkbox_bold",
+      "body_style": "checklist_items",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#06d6a0",
+      "background_tone": "light_clean"
+    },
+    "timeline": {
+      "title_style": "sequential_bold",
+      "body_style": "timeline_marker",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_right",
+      "highlight_color": "#f77f00",
+      "background_tone": "light_gradient"
+    },
+    "warning": {
+      "title_style": "alert_bold",
+      "body_style": "warning_box",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#d62828",
+      "background_tone": "warning_light"
+    },
+    "number_list": {
+      "title_style": "big_number_bold",
+      "body_style": "ranked_list",
+      "image_ratio": "1:1",
+      "cta_position": "bottom_center",
+      "highlight_color": "#3a86ff",
+      "background_tone": "light_clean"
+    }
+  }
+}

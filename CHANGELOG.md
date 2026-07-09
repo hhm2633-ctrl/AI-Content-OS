@@ -256,3 +256,20 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 13:22:59
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 6 Codex merge)
+
+- Change: Merged CardNews Layout Intelligence v1 into `CardNewsModule` without changing the WorkflowEngine sequence.
+- Added/verified: `LayoutSelector`, `LayoutRuleEngine`, `SlideDesigner`, `HighlightEngine`, and `templates/card_news_layout_rules.json`.
+- Output: Card news results now include `layout_result` with layout type, style metadata, slide designs, highlights, and fallback status.
+- Fallback: Layout Intelligence calculation failures return a safe default `layout_result` with `fallback_used: true` instead of raising workflow failures.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

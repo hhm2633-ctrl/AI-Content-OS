@@ -28,6 +28,7 @@
 - Research Module pattern_result linkage
 - Content Module pattern-aware prompt linkage
 - Content Intelligence v1
+- CardNews Layout Intelligence v1
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
@@ -78,6 +79,7 @@
 - Sprint 3 Pattern -> Research -> Content linkage verified with `py -m src.main`
 - Sprint 4 Content Intelligence v1 verified with `py -m src.main`
 - Sprint 5 snapshot generator and runtime storage tracking cleanup verified with `py -m src.main`
+- Sprint 6 CardNews Layout Intelligence v1 verified with `py -m src.main`
 
 ## Sprint 3 Completed
 
@@ -123,6 +125,20 @@
 - Runtime storage outputs were removed from Git tracking with `git rm --cached` while keeping local files on disk.
 - Tracked storage placeholders are limited to required stable files such as `storage/README.md` and `.gitkeep` files.
 
+## Sprint 6 Completed
+
+- CardNewsModule now adds `layout_result` to card news results.
+- Layout Intelligence helper modules:
+  - `LayoutSelector`
+  - `LayoutRuleEngine`
+  - `SlideDesigner`
+  - `HighlightEngine`
+- Layout rule template:
+  - `templates/card_news_layout_rules.json`
+- `layout_result` includes layout type, slide count, highlight keywords, title/body style, image ratio, CTA position, selection reason, slide designs, slide highlights, and fallback status.
+- Layout Intelligence failures return a safe default layout with `fallback_used: true` and do not break `workflow_completed`.
+- Existing card PNG generation and PublishingModule handoff remain operational.
+
 ## Verification
 
 - Compile command: `py -m compileall src modules scripts`
@@ -139,11 +155,13 @@
 - Latest Content result includes all required `content_intelligence` fields
 - Latest run generated `storage/content/content_history.json`
 - Latest generated `PROJECT_SNAPSHOT.md` includes `PatternEngineModule` and runtime tree omission markers
+- Latest CardNews result includes all required `layout_result` fields
+- Latest run generated 4 card news PNG files
 
 ## Next
 
 - M2 Content Engine enhancement
-- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, and fallback fields
+- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Source Health dashboard
 - Collector Statistics dashboard
@@ -153,5 +171,5 @@
 
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
-- Internet, LLM, image, Pattern Engine, Content prompt, and Content Intelligence failures must be recorded as fallback events, not workflow failures.
+- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence failures must be recorded as fallback events, not workflow failures.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.

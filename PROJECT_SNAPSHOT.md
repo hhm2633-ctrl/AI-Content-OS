@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T13:02:36
+Updated at: 2026-07-09T13:22:59
 
 ## Execution Command
 
@@ -72,7 +72,11 @@ AI-Content-OS/
 |-- modules/
 |   |-- card_news/
 |   |   |-- __init__.py
-|   |   `-- card_news_module.py
+|   |   |-- card_news_module.py
+|   |   |-- highlight_engine.py
+|   |   |-- layout_rule_engine.py
+|   |   |-- layout_selector.py
+|   |   `-- slide_designer.py
 |   |-- common/
 |   |   `-- __init__.py
 |   |-- content/
@@ -164,7 +168,7 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   `-- (136 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (142 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -193,7 +197,7 @@ AI-Content-OS/
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (8 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (9 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -206,6 +210,7 @@ AI-Content-OS/
 |   |   `-- (23 runtime file(s) omitted; gitignored, see .gitignore)
 |   `-- README.md
 |-- templates/
+|   |-- card_news_layout_rules.json
 |   |-- card_news_template.json
 |   `-- publishing_template.json
 |-- tests/
@@ -238,6 +243,9 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script maintained.
+- Sprint 6 CardNews Layout Intelligence v1 completed.
+- CardNewsModule now records `layout_result` with layout selection, style metadata, slide designs, highlights, and fallback status.
+- Layout Intelligence failure uses safe default layout metadata and does not regress `workflow_completed`.
 - Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.
