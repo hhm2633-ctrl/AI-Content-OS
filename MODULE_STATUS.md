@@ -2,11 +2,12 @@
 
 ## Completed
 
-- WorkflowEngine 정상
-- `workflow_completed` 정상
-- Project snapshot/changelog 자동 업데이트
+- WorkflowEngine operational
+- `workflow_completed` maintained
+- Project snapshot/changelog auto-update
 - TrendCollector
 - TopicEngine
+- PatternEngineModule connected to WorkflowEngine
 - Research
 - Content
 - ImagePrompt
@@ -15,46 +16,109 @@
 - Publishing
 - Publishing v2
 - Trend Source Manager v1
-- 네이버 뉴스 수집기 운영형 fallback/cache
-- 네이트판 수집기 운영형 fallback/cache
+- Naver News collector fallback/cache
+- Nate Pann collector fallback/cache
 - Trend Quality Scoring v1
 - Selection Reason v1
 - Top Topic Picker
 - Duplicate Removal v1
 - `selected_topic.json`
-- `trend_result.json` selected_topic 포함
-- Research Module selected_topic 연동
+- `trend_result.json` includes `selected_topic`
+- Research Module selected_topic linkage
+- Research Module pattern_result linkage
+- Content Module pattern-aware prompt linkage
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
 - Cache TTL v1
-- Source Health retry/cache TTL 필드 기록
-- Collector Statistics fallback 사용 횟수 누적
-- `trend_result.json` trend_engine_status 포함
+- Source Health retry/cache TTL fields
+- Collector Statistics fallback counts
+- `trend_result.json` includes `trend_engine_status`
 - Trend Run Log v1
 - Trend Result Snapshot v1
 - Trend Recovery Summary v1
 - Last Safe Trend Result v1
 - Trend Engine Guard v1
 
+## Sprint 2 Completed
+
+- Topic Intelligence helpers added in `modules/topic_engine/`:
+  - `KeywordWeightEngine`
+  - `TopicClassifier`
+  - `TopicCluster`
+  - `ConfidenceScorer`
+- Pattern Engine added in `modules/pattern_engine/`:
+  - `PatternEngineModule`
+  - `PatternSelector`
+  - `HookSelector`
+  - `CTASelector`
+  - `LayoutSelector`
+  - `PatternResultWriter`
+- `PatternEngineModule` is connected after `TopicEngineModule` and before `ResearchModule`.
+- Pattern outputs are saved under `storage/pattern/`:
+  - `pattern_result.json`
+  - `pattern_history.json`
+  - `pattern_statistics.json`
+- `ResearchModule` reads `pattern_result.json` additively.
+- Research results include:
+  - `pattern_result_available`
+  - `topic_intelligence`
+  - `pattern_plan`
+- Pattern Engine failure is handled as a fallback event, not a workflow failure.
+
 ## Operational Complete
 
-- Sprint 1 Trend Engine 운영형 완료
-- 수집 실패는 fallback/cache/retry/status/log/snapshot 흐름으로 처리
-- `workflow_completed` 유지
-- `selected_topic.json` 및 Research selected_topic 연동 유지
-- `trend_run_log.jsonl`, `trend_engine_status.json`, `last_safe_trend_result.json` 보존
+- Sprint 1 Trend Engine operational complete
+- Collection failures are handled through fallback/cache/retry/status/log/snapshot flow
+- `workflow_completed` maintained
+- `selected_topic.json` and Research selected_topic linkage maintained
+- `trend_run_log.jsonl`, `trend_engine_status.json`, and `last_safe_trend_result.json` maintained
+- Sprint 2 Pattern Engine workflow linkage verified with `py -m src.main`
+- Sprint 3 Pattern -> Research -> Content linkage verified with `py -m src.main`
+
+## Sprint 3 Completed
+
+- Content Engine reads Research output containing:
+  - `pattern_result_available`
+  - `topic_intelligence`
+  - `pattern_plan`
+- Content Engine builds pattern-aware prompts through:
+  - `ContentPromptBuilder`
+  - `PatternPromptRouter`
+  - `HookStrategy`
+  - `CTAStrategy`
+  - `SlideStrategy`
+- Pattern prompt guide files are available under `prompts/patterns/`.
+- `config/brand_profile.json` is used by the Content prompt builder, with in-code fallback if loading fails.
+- Content LLM failure is recorded as fallback copy generation, not workflow failure.
+- ImagePrompt LLM failure is recorded as fallback prompt generation, not workflow failure.
+- ImageGeneration API failure is recorded as failed image items and `fallback_used`, not workflow failure.
+
+## Verification
+
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Workflow command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Required pattern files generated:
+  - `storage/pattern/pattern_result.json`
+  - `storage/pattern/pattern_history.json`
+  - `storage/pattern/pattern_statistics.json`
+- Latest Research result includes `pattern_result_available: true`
+- Latest Content result includes `prompt_source: pattern_aware`
+- Latest Content result records LLM fallback with `fallback_used: true` when API calls fail
 
 ## Next
 
-- M2 Content Engine 고도화
+- M2 Content Engine enhancement
+- Add focused unit checks for ContentPromptBuilder and fallback fields
 - Source Health dashboard
 - Collector Statistics dashboard
-- 마지막 안전 결과 기반 자동 복구 연동 고도화
+- Improve final safe-result recovery behavior
 
 ## Notes
 
-- 실행 명령은 `py -m src.main`만 사용한다.
-- `python -m src.main`은 사용하지 않는다.
-- 인터넷/LLM/이미지 실패는 workflow 실패가 아니라 fallback 이벤트로 기록한다.
-- 네이버 뉴스와 네이트판 상태는 독립적으로 기록한다.
+- Always run the project with `py -m src.main`.
+- Do not use `python -m src.main`.
+- Internet, LLM, image, Pattern Engine, and Content prompt failures must be recorded as fallback events, not workflow failures.
+- Keep Naver News and Nate Pann fallback/cache behavior intact.

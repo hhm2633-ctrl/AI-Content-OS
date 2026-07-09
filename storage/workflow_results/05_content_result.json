@@ -1,0 +1,48 @@
+{
+  "title": "AI 자동화 지금 시작해야 하는 이유",
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "콘텐츠, 아직 손으로만 만드세요?",
+      "body": "AI 자동화는 반복 작업을 줄이고 카드뉴스 제작 속도를 높이는 핵심 구조입니다."
+    },
+    {
+      "page": 2,
+      "role": "problem",
+      "headline": "문제는 시간이 너무 많이 든다는 것",
+      "body": "주제 찾기, 글쓰기, 이미지 만들기, 발행 준비를 매번 손으로 하면 금방 지칩니다."
+    },
+    {
+      "page": 3,
+      "role": "solution",
+      "headline": "그래서 흐름을 나눠야 합니다",
+      "body": "주제 선택, 리서치, 문안 작성, 이미지 생성, 카드뉴스 제작을 모듈로 나누면 안정적으로 반복할 수 있습니다."
+    },
+    {
+      "page": 4,
+      "role": "cta",
+      "headline": "작게 만들고 계속 개선하세요",
+      "body": "처음 목표는 완벽한 자동화가 아니라 매일 돌아가는 구조입니다. 저장하고 하나씩 따라오세요."
+    }
+  ],
+  "caption": "AI 자동화는 처음부터 완벽하게 만들기보다, 작은 구조부터 자동화하는 것이 중요합니다. 저장해두고 하나씩 따라가세요.",
+  "hashtags": [
+    "#AI콘텐츠",
+    "#콘텐츠자동화",
+    "#카드뉴스",
+    "#부업준비",
+    "#인스타콘텐츠"
+  ],
+  "status": "content_created",
+  "fallback_used": true,
+  "fallback_reason": "llm_or_json_parse_failed: Connection error.",
+  "prompt_source": "pattern_aware",
+  "pattern_prompt_meta": {
+    "pattern_type": "warning",
+    "hook_type": "attention",
+    "cta_type": "save",
+    "layout_type": "dark_editorial",
+    "prompt_source": "prompt_file"
+  }
+}

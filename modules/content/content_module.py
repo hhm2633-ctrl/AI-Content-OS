@@ -7,6 +7,7 @@ except ImportError:
     from src.base_module import BaseModule
 
 from src.llm_client import LLMClient
+from modules.content.content_prompt_builder import ContentPromptBuilder
 
 
 class ContentModule(BaseModule):
@@ -20,6 +21,7 @@ class ContentModule(BaseModule):
         self.llm_client = llm_client or getattr(self, "llm_client", None) or LLMClient(
             self.config.get("llm", self.config)
         )
+        self.prompt_builder = ContentPromptBuilder(self.config)
 
     def run(self, research_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         print("Content Module Started")
@@ -33,7 +35,45 @@ class ContentModule(BaseModule):
         target = research_result.get("target", "AI 자동화와 부업에 관심 있는 초보자")
         topic_angle = research_result.get("topic_angle", "")
 
-        system_prompt = """
+        prompt_source = "legacy"
+        prompt_meta: Dict[str, Any] = {}
+
+        try:
+            pattern_aware_prompt = self.prompt_builder.build(research_result)
+        except Exception as error:
+            print(f"Content Prompt Builder Failed, falling back to legacy prompt: {error}")
+            pattern_aware_prompt = None
+
+        if pattern_aware_prompt:
+            system_prompt = pattern_aware_prompt["system_prompt"]
+            user_prompt = pattern_aware_prompt["user_prompt"]
+            prompt_source = "pattern_aware"
+            prompt_meta = pattern_aware_prompt.get("meta", {})
+        else:
+            system_prompt = self._legacy_system_prompt()
+            user_prompt = self._legacy_user_prompt(
+                keyword=keyword,
+                title=title,
+                summary=summary,
+                key_points=key_points,
+                target=target,
+                topic_angle=topic_angle,
+            )
+
+        llm_response = self.llm_client.generate_text(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+        )
+
+        content_result = self._safe_json_parse(llm_response, keyword)
+        content_result["prompt_source"] = prompt_source
+        content_result["pattern_prompt_meta"] = prompt_meta
+
+        print("Content Module Finished")
+        return content_result
+
+    def _legacy_system_prompt(self) -> str:
+        return """
 너는 인스타그램 카드뉴스 전문 기획자이자 카피라이터다.
 초보자가 바로 이해할 수 있게 짧고 강하게 쓴다.
 허위 수익 보장, 과장 광고, 투자 권유 표현은 피한다.
@@ -41,7 +81,16 @@ class ContentModule(BaseModule):
 반드시 JSON 형식으로만 답변한다.
 """
 
-        user_prompt = f"""
+    def _legacy_user_prompt(
+        self,
+        keyword: str,
+        title: str,
+        summary: str,
+        key_points: Any,
+        target: str,
+        topic_angle: str,
+    ) -> str:
+        return f"""
 아래 리서치 내용을 바탕으로 인스타그램 카드뉴스 4장을 만들어줘.
 
 주제:
@@ -108,16 +157,6 @@ class ContentModule(BaseModule):
 }}
 """
 
-        llm_response = self.llm_client.generate_text(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-        )
-
-        content_result = self._safe_json_parse(llm_response, keyword)
-
-        print("Content Module Finished")
-        return content_result
-
     def _safe_json_parse(self, text: str, keyword: str) -> Dict[str, Any]:
         try:
             result = json.loads(text)
@@ -125,11 +164,16 @@ class ContentModule(BaseModule):
             if not isinstance(result, dict):
                 raise ValueError("LLM result is not dict")
 
+            if result.get("status") == "llm_failed":
+                raise ValueError(result.get("error", "llm_failed"))
+
             if "slides" not in result or not isinstance(result["slides"], list):
                 raise ValueError("slides missing")
 
             result["slides"] = self._normalize_slides(result["slides"], keyword)
             result["status"] = "content_created"
+            result["fallback_used"] = False
+            result["fallback_reason"] = ""
 
             if not result.get("title"):
                 result["title"] = f"{keyword} 카드뉴스"
@@ -142,13 +186,15 @@ class ContentModule(BaseModule):
 
             return result
 
-        except Exception:
+        except Exception as error:
             return {
                 "title": f"{keyword} 지금 시작해야 하는 이유",
                 "slides": self._fallback_slides(keyword),
                 "caption": f"{keyword}는 처음부터 완벽하게 만들기보다, 작은 구조부터 자동화하는 것이 중요합니다. 저장해두고 하나씩 따라가세요.",
                 "hashtags": ["#AI콘텐츠", "#콘텐츠자동화", "#카드뉴스", "#부업준비", "#인스타콘텐츠"],
                 "status": "content_created",
+                "fallback_used": True,
+                "fallback_reason": f"llm_or_json_parse_failed: {error}",
             }
 
     def _normalize_slides(self, slides, keyword: str):

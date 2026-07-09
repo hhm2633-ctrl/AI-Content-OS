@@ -9,12 +9,14 @@ class ResearchModule:
         self.output_dir = Path("storage/research")
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.selected_topic_path = Path("storage/trends/selected_topic.json")
+        self.pattern_result_path = Path("storage/pattern/pattern_result.json")
 
     def run(self, topic_result=None):
         print("Research Module Started")
 
         topic_result = topic_result or {}
         selected_topic = self._load_selected_topic() or topic_result.get("selected_topic", {})
+        pattern_result = self._load_pattern_result()
 
         keyword = (
             selected_topic.get("title")
@@ -46,6 +48,9 @@ class ResearchModule:
                 if selected_topic.get("_loaded_from_selected_topic_json")
                 else "topic_result"
             ),
+            "topic_intelligence": pattern_result.get("topic_intelligence", {}),
+            "pattern_plan": pattern_result.get("pattern_plan", {}),
+            "pattern_result_available": bool(pattern_result),
             "created_at": datetime.now().isoformat(),
         }
 
@@ -76,6 +81,23 @@ class ResearchModule:
         except Exception as error:
             print(f"Selected Topic Load Failed: {error}")
             return None
+
+    def _load_pattern_result(self):
+        if not self.pattern_result_path.exists():
+            return {}
+
+        try:
+            with open(self.pattern_result_path, "r", encoding="utf-8") as file:
+                pattern_result = json.load(file)
+
+            if not isinstance(pattern_result, dict):
+                return {}
+
+            return pattern_result
+
+        except Exception as error:
+            print(f"Pattern Result Load Failed: {error}")
+            return {}
 
     def _save_result(self, result):
         file_path = self.output_dir / "research_result.json"

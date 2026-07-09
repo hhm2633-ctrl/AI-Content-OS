@@ -125,22 +125,29 @@ class ImagePromptModule(BaseModule):
             if not isinstance(result, dict):
                 raise ValueError("LLM result is not dict")
 
+            if result.get("status") == "llm_failed":
+                raise ValueError(result.get("error", "llm_failed"))
+
             if "image_prompts" not in result or not isinstance(result["image_prompts"], list):
                 raise ValueError("image_prompts missing")
 
             result["image_prompts"] = self._normalize_prompts(result["image_prompts"], title, slides)
             result["status"] = "image_prompts_created"
+            result["fallback_used"] = False
+            result["fallback_reason"] = ""
 
             if not result.get("title"):
                 result["title"] = title
 
             return result
 
-        except Exception:
+        except Exception as error:
             return {
                 "title": title,
                 "image_prompts": self._fallback_prompts(title, slides),
                 "status": "image_prompts_created",
+                "fallback_used": True,
+                "fallback_reason": f"llm_or_json_parse_failed: {error}",
             }
 
     def _normalize_prompts(self, prompts, title: str, slides: List[Dict[str, Any]]):

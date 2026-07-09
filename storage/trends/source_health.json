@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T18:22:15.217638",
+  "updated_at": "2026-07-09T12:24:32.963160",
   "records": [
     {
       "source": "naver_news",
@@ -120,6 +120,134 @@
       "cache_age_seconds": null,
       "cache_expired": false,
       "checked_at": "2026-07-08T18:22:15.217638"
+    },
+    {
+      "source": "naver_news",
+      "attempted": true,
+      "success": false,
+      "count": 5,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/naver_news_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T11:55:39.489144"
+    },
+    {
+      "source": "nate_pann",
+      "attempted": true,
+      "success": false,
+      "count": 8,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/nate_pann_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T11:55:39.489144"
+    },
+    {
+      "source": "naver_news",
+      "attempted": true,
+      "success": false,
+      "count": 5,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/naver_news_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:00:36.578105"
+    },
+    {
+      "source": "nate_pann",
+      "attempted": true,
+      "success": false,
+      "count": 8,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/nate_pann_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:00:36.578105"
+    },
+    {
+      "source": "naver_news",
+      "attempted": true,
+      "success": false,
+      "count": 5,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/naver_news_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:04:31.334547"
+    },
+    {
+      "source": "nate_pann",
+      "attempted": true,
+      "success": false,
+      "count": 8,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/nate_pann_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:04:31.334547"
+    },
+    {
+      "source": "naver_news",
+      "attempted": true,
+      "success": false,
+      "count": 5,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/naver_news_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:24:32.963160"
+    },
+    {
+      "source": "nate_pann",
+      "attempted": true,
+      "success": false,
+      "count": 8,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/nate_pann_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:24:32.963160"
     }
   ],
   "latest": {
@@ -137,7 +265,7 @@
       "retry_count": 2,
       "cache_age_seconds": null,
       "cache_expired": false,
-      "checked_at": "2026-07-08T18:22:15.217638"
+      "checked_at": "2026-07-09T12:24:32.963160"
     },
     "nate_pann": {
       "source": "nate_pann",
@@ -153,7 +281,7 @@
       "retry_count": 2,
       "cache_age_seconds": null,
       "cache_expired": false,
-      "checked_at": "2026-07-08T18:22:15.217638"
+      "checked_at": "2026-07-09T12:24:32.963160"
     }
   }
 }

@@ -3,7 +3,7 @@
   "count": 1,
   "items": [
     {
-      "queue_id": "publish_20260708_182338",
+      "queue_id": "publish_20260709_122555",
       "platform": "instagram",
       "upload_mode": "manual",
       "account_id": "account_01",
@@ -31,7 +31,7 @@
       "schedule_enabled": false,
       "scheduled_time": "09:00",
       "status": "ready_for_manual_upload",
-      "created_at": "2026-07-08T18:23:38.000880",
+      "created_at": "2026-07-09T12:25:55.688238",
       "next_action": "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드"
     }
   ]

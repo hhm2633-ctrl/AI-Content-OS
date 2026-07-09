@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-08T18:24:01
+Updated at: 2026-07-09T12:25:55
 
 ## Execution Command
 
@@ -19,8 +19,9 @@ Do not use `python -m src.main` for this project.
 
 - Trend collection: success
 - Topic selection: success
+- Pattern selection: pattern_selected
 - Research: success
-- Content generation: content_created
+- Content generation: content_created (`pattern_aware` prompt path verified)
 - Image prompt generation: image_prompts_created
 - Image generation: image_generation_completed
 - Card news rendering: card_news_completed
@@ -28,7 +29,7 @@ Do not use `python -m src.main` for this project.
 
 ## Current WorkflowEngine
 
-- TrendCollectorModule -> TopicEngineModule -> ResearchModule -> ContentModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule
+- TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule
 
 ## Current Project Tree
 
@@ -38,7 +39,15 @@ AI-Content-OS/
 |-- .codex/
 |   `-- skills/
 |       `-- ai-content-os-dev/
+|-- benchmark/
+|   |-- AI_CONTENT_STRATEGY.md
+|   |-- CONTENT_PATTERNS.md
+|   |-- CTA_LIBRARY.md
+|   |-- HOOK_LIBRARY.md
+|   |-- INSTAGRAM_BENCHMARK.md
+|   `-- TOOLS_AND_FUNNEL_REFERENCES.md
 |-- config/
+|   |-- brand_profile.json
 |   |-- publishing.json
 |   |-- README.md
 |   |-- settings.json
@@ -67,13 +76,26 @@ AI-Content-OS/
 |   |-- common/
 |   |   `-- __init__.py
 |   |-- content/
-|   |   `-- content_module.py
+|   |   |-- content_module.py
+|   |   |-- content_prompt_builder.py
+|   |   |-- cta_strategy.py
+|   |   |-- hook_strategy.py
+|   |   |-- pattern_prompt_router.py
+|   |   `-- slide_strategy.py
 |   |-- image_generation/
 |   |   |-- __init__.py
 |   |   `-- image_generation_module.py
 |   |-- image_prompt/
 |   |   |-- __init__.py
 |   |   `-- image_prompt_module.py
+|   |-- pattern_engine/
+|   |   |-- __init__.py
+|   |   |-- cta_selector.py
+|   |   |-- hook_selector.py
+|   |   |-- layout_selector.py
+|   |   |-- pattern_engine_module.py
+|   |   |-- pattern_result_writer.py
+|   |   `-- pattern_selector.py
 |   |-- publishing/
 |   |   |-- __init__.py
 |   |   `-- publishing_module.py
@@ -83,6 +105,10 @@ AI-Content-OS/
 |   |   `-- topic_engine.py
 |   |-- topic_engine/
 |   |   |-- __init__.py
+|   |   |-- confidence_score.py
+|   |   |-- keyword_weight.py
+|   |   |-- topic_classifier.py
+|   |   |-- topic_cluster.py
 |   |   `-- topic_engine_module.py
 |   |-- trend/
 |   |-- trend_collector/
@@ -100,6 +126,13 @@ AI-Content-OS/
 |   |-- base_module.py
 |   `-- README.md
 |-- prompts/
+|   |-- patterns/
+|   |   |-- comparison_prompt.md
+|   |   |-- number_list_prompt.md
+|   |   |-- resource_prompt.md
+|   |   |-- story_prompt.md
+|   |   |-- tutorial_prompt.md
+|   |   `-- warning_prompt.md
 |   |-- content_prompt.md
 |   |-- image_prompt.md
 |   |-- README.md
@@ -233,7 +266,31 @@ AI-Content-OS/
 |   |   |-- llm_log_20260708_182242.json
 |   |   |-- llm_log_20260708_182249.json
 |   |   |-- llm_log_20260708_182259.json
-|   |   `-- llm_log_20260708_182308.json
+|   |   |-- llm_log_20260708_182308.json
+|   |   |-- llm_log_20260709_115549.json
+|   |   |-- llm_log_20260709_115559.json
+|   |   |-- llm_log_20260709_115608.json
+|   |   |-- llm_log_20260709_115616.json
+|   |   |-- llm_log_20260709_115625.json
+|   |   |-- llm_log_20260709_115634.json
+|   |   |-- llm_log_20260709_120044.json
+|   |   |-- llm_log_20260709_120054.json
+|   |   |-- llm_log_20260709_120103.json
+|   |   |-- llm_log_20260709_120110.json
+|   |   |-- llm_log_20260709_120120.json
+|   |   |-- llm_log_20260709_120129.json
+|   |   |-- llm_log_20260709_120440.json
+|   |   |-- llm_log_20260709_120449.json
+|   |   |-- llm_log_20260709_120459.json
+|   |   |-- llm_log_20260709_120506.json
+|   |   |-- llm_log_20260709_120516.json
+|   |   |-- llm_log_20260709_120525.json
+|   |   |-- llm_log_20260709_122440.json
+|   |   |-- llm_log_20260709_122450.json
+|   |   |-- llm_log_20260709_122459.json
+|   |   |-- llm_log_20260709_122507.json
+|   |   |-- llm_log_20260709_122516.json
+|   |   `-- llm_log_20260709_122526.json
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -245,6 +302,11 @@ AI-Content-OS/
 |   |   |-- image_prompt_result.json
 |   |   |-- publishing_result.json
 |   |   `-- research_result.json
+|   |-- pattern/
+|   |   |-- .gitkeep
+|   |   |-- pattern_history.json
+|   |   |-- pattern_result.json
+|   |   `-- pattern_statistics.json
 |   |-- publishing/
 |   |   |-- caption.txt
 |   |   |-- hashtags.txt
@@ -271,15 +333,22 @@ AI-Content-OS/
 |   |   |-- 02_content_result.json
 |   |   |-- 02_topic_result.json
 |   |   |-- 03_image_prompt_result.json
+|   |   |-- 03_pattern_result.json
 |   |   |-- 03_research_result.json
 |   |   |-- 04_content_result.json
 |   |   |-- 04_image_generation_result.json
+|   |   |-- 04_research_result.json
 |   |   |-- 05_card_news_result.json
+|   |   |-- 05_content_result.json
 |   |   |-- 05_image_prompt_result.json
 |   |   |-- 06_image_generation_result.json
+|   |   |-- 06_image_prompt_result.json
 |   |   |-- 06_publishing_result.json
 |   |   |-- 07_card_news_result.json
+|   |   |-- 07_image_generation_result.json
+|   |   |-- 08_card_news_result.json
 |   |   |-- 08_publishing_result.json
+|   |   |-- 09_publishing_result.json
 |   |   |-- 99_final_result.json
 |   |   `-- final_result.json
 |   `-- README.md
@@ -296,6 +365,8 @@ AI-Content-OS/
 |-- AGENTS.md
 |-- AI_CONTEXT.md
 |-- CHANGELOG.md
+|-- CLAUDE.md
+|-- CODEX_RULES.md
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md
@@ -314,6 +385,9 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script added.
+- Sprint 3 Content Engine linkage completed.
+- PatternEngineModule output flows into ResearchModule, then ContentModule builds a pattern-aware prompt.
+- Content, ImagePrompt, ImageGeneration, and Pattern fallback events are recorded in result JSON files.
 - Keep fallback-first workflow behavior intact.
 
 ## Protected Rules
@@ -322,3 +396,5 @@ AI-Content-OS/
 - Use `py -m src.main` as the execution command.
 - Keep `workflow_completed` from regressing.
 - Keep fallback behavior for internet, LLM, and image failures.
+- Pattern Engine failures must save fallback pattern results and continue to ResearchModule.
+- Content Engine must fall back to safe copy if LLM or prompt parsing fails.

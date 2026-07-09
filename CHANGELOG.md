@@ -167,3 +167,57 @@
 - Change: Completed Sprint 1 Part 5: final Trend Engine operational audit and Sprint 1 closure report.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 2 Draft, manual entry)
+
+- Change: Added Sprint 2 draft skeleton: Topic Intelligence helpers (`modules/topic_engine/keyword_weight.py`, `topic_cluster.py`, `topic_classifier.py`, `confidence_score.py`) and a new standalone `modules/pattern_engine/` (PatternEngineModule, pattern/hook/cta/layout selectors, pattern_result_writer). Added minimal, additive `pattern_result.json` read support to `ResearchModule` without changing its existing `selected_topic` priority flow. `WorkflowEngine` was NOT modified; Pattern Engine is not yet wired into the pipeline.
+- Execution command: `py -m compileall src modules scripts` (only; `py -m src.main` intentionally not run in this step; full workflow execution is deferred to the Codex stage per Sprint 2 instructions)
+- Compile result: success (see report below)
+- Workflow result: not run this step; last known result remains `workflow_completed` (unaffected, since no existing module's call signature or WorkflowEngine sequence changed)
+
+## 2026-07-09 11:57:04
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 2 Codex apply)
+
+- Change: Connected `PatternEngineModule` into `WorkflowEngine` after `TopicEngineModule` and before `ResearchModule`. Added workflow-level pattern fallback handling so Pattern Engine failures write a safe pattern result and continue the pipeline.
+- Output: `storage/pattern/pattern_result.json`, `storage/pattern/pattern_history.json`, and `storage/pattern/pattern_statistics.json` generated.
+- Research linkage: `ResearchModule` result includes `pattern_result_available`, `topic_intelligence`, and `pattern_plan`.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- External failure handling observed: Naver News, Nate Pann, LLM, and image API connection failures were recorded as fallback events; workflow completed.
+
+## 2026-07-09 12:01:59
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 12:05:55
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Sprint 2 final verification: Pattern Engine connected in workflow, `pattern_result.json` generated with fallback use recorded, and Research result includes `pattern_result_available: true`.
+
+## 2026-07-09 12:25:55
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 3 Codex merge)
+
+- Change: Merged Content Engine pattern-aware prompt routing into the current repository flow without changing the WorkflowEngine sequence. Pattern Engine output now reaches Research, and Content uses `pattern_plan` / `topic_intelligence` to build a pattern-aware prompt.
+- Added/verified: `ContentPromptBuilder`, `PatternPromptRouter`, `HookStrategy`, `CTAStrategy`, `SlideStrategy`, pattern prompt guide files, and `config/brand_profile.json`.
+- Fallback recording: Content and ImagePrompt LLM failures now record `fallback_used` and `fallback_reason`; ImageGeneration records `fallback_used` when image API calls fail.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Final verification: internet collection, LLM, image API, and Pattern fallback paths were recorded as fallback events rather than `workflow_failed`.

@@ -1,0 +1,35 @@
+{
+  "module": "CardNewsModule",
+  "status": "card_news_completed",
+  "title": "AI 자동화 지금 시작해야 하는 이유",
+  "cards": [
+    {
+      "index": 1,
+      "card_path": "storage/card_news/card_news_1.png",
+      "source_image": null,
+      "headline": "콘텐츠, 아직 손으로만 만드세요?",
+      "status": "created"
+    },
+    {
+      "index": 2,
+      "card_path": "storage/card_news/card_news_2.png",
+      "source_image": null,
+      "headline": "문제는 시간이 너무 많이 든다는 것",
+      "status": "created"
+    },
+    {
+      "index": 3,
+      "card_path": "storage/card_news/card_news_3.png",
+      "source_image": null,
+      "headline": "그래서 흐름을 나눠야 합니다",
+      "status": "created"
+    },
+    {
+      "index": 4,
+      "card_path": "storage/card_news/card_news_4.png",
+      "source_image": null,
+      "headline": "작게 만들고 계속 개선하세요",
+      "status": "created"
+    }
+  ]
+}

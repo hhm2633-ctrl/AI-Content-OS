@@ -109,6 +109,8 @@ class ImageGenerationModule(BaseModule):
             "module": "ImageGenerationModule",
             "status": "image_generation_completed",
             "images": images,
+            "fallback_used": any(image.get("status") != "generated" for image in images),
+            "fallback_reason": "image_api_failed" if any(image.get("status") != "generated" for image in images) else "",
         }
 
         print("Image Generation Module Finished")
