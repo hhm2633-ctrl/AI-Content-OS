@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T19:12:35
+Updated at: 2026-07-09T19:27:30
 
 ## Execution Command
 
@@ -18,6 +18,7 @@ Do not use `python -m src.main` for this project.
 ## Recent Completed Features
 
 - Trend collection: success
+- Trend sources: Naver News, Nate Pann, FMKorea, Bobaedream
 - Topic selection: success
 - Pattern selection: pattern_selected
 - Research: success
@@ -25,7 +26,6 @@ Do not use `python -m src.main` for this project.
 - Image prompt generation: image_prompts_created
 - Image generation: image_generation_completed
 - Card news rendering: card_news_completed
-- Card news layout quality scoring: layout/highlight/readability scores verified
 - Publishing preparation: publishing_ready
 
 ## Current WorkflowEngine
@@ -167,6 +167,8 @@ AI-Content-OS/
 |   |-- trend/
 |   |-- trend_collector/
 |   |   |-- __init__.py
+|   |   |-- bobaedream_collector.py
+|   |   |-- fmkorea_collector.py
 |   |   |-- nate_pann_collector.py
 |   |   |-- naver_news_collector.py
 |   |   |-- retry_policy.py
@@ -201,6 +203,8 @@ AI-Content-OS/
 |-- storage/
 |   |-- cache/
 |   |   |-- .gitkeep
+|   |   |-- bobaedream_cache.json
+|   |   |-- fmkorea_cache.json
 |   |   |-- nate_pann_cache.json
 |   |   `-- naver_news_cache.json
 |   |-- card_news/
@@ -214,7 +218,7 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   `-- (206 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (214 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -245,7 +249,7 @@ AI-Content-OS/
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (18 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (19 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json

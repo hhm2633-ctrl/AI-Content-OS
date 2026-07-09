@@ -62,7 +62,7 @@ class SourceHealthTracker:
     ) -> List[Dict[str, Any]]:
         records = []
 
-        for source in ["naver_news", "nate_pann"]:
+        for source in ["naver_news", "nate_pann", "fmkorea", "bobaedream"]:
             status = collection_summary.get(source, {})
 
             if not isinstance(status, dict):

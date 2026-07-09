@@ -44,6 +44,8 @@
 - Trend Source Manager v1
 - Naver News collector fallback/cache
 - Nate Pann collector fallback/cache
+- FMKorea collector fallback/cache
+- Bobaedream collector fallback/cache
 - Trend Quality Scoring v1
 - Selection Reason v1
 - Top Topic Picker
@@ -234,6 +236,7 @@
 - Latest Image service diagnostic records `retry_count: 3` before fallback.
 - Latest Naver News collection summary records `retry_count: 3` before settings fallback.
 - Latest Nate Pann collection summary records `retry_count: 3` before settings fallback.
+- Latest Trend collection summary includes `fmkorea` and `bobaedream` source health records.
 - Required pattern files generated:
   - `storage/pattern/pattern_result.json`
   - `storage/pattern/pattern_history.json`
