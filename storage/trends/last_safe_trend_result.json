@@ -51,7 +51,7 @@
     ]
   },
   "source_health_summary": {
-    "updated_at": "2026-07-09T12:24:32.963160",
+    "updated_at": "2026-07-09T12:38:53.135347",
     "source_health_path": "storage/trends/source_health.json",
     "collector_statistics_path": "storage/trends/collector_statistics.json",
     "latest": {
@@ -69,7 +69,7 @@
         "retry_count": 2,
         "cache_age_seconds": null,
         "cache_expired": false,
-        "checked_at": "2026-07-09T12:24:32.963160"
+        "checked_at": "2026-07-09T12:38:53.135347"
       },
       "nate_pann": {
         "source": "nate_pann",
@@ -85,31 +85,31 @@
         "retry_count": 2,
         "cache_age_seconds": null,
         "cache_expired": false,
-        "checked_at": "2026-07-09T12:24:32.963160"
+        "checked_at": "2026-07-09T12:38:53.135347"
       }
     },
     "statistics": [
       {
         "source": "nate_pann",
-        "total_attempts": 8,
+        "total_attempts": 9,
         "total_success": 0,
-        "total_failures": 8,
+        "total_failures": 9,
         "last_success_at": null,
-        "last_failure_at": "2026-07-09T12:24:32.963160",
+        "last_failure_at": "2026-07-09T12:38:53.135347",
         "last_failed_reason": "connection_refused",
         "last_collection_method": "settings_keyword_fallback",
-        "total_fallback_used": 7
+        "total_fallback_used": 8
       },
       {
         "source": "naver_news",
-        "total_attempts": 8,
+        "total_attempts": 9,
         "total_success": 0,
-        "total_failures": 8,
+        "total_failures": 9,
         "last_success_at": null,
-        "last_failure_at": "2026-07-09T12:24:32.963160",
+        "last_failure_at": "2026-07-09T12:38:53.135347",
         "last_failed_reason": "connection_refused",
         "last_collection_method": "settings_keyword_fallback",
-        "total_fallback_used": 7
+        "total_fallback_used": 8
       }
     ]
   },
@@ -127,13 +127,13 @@
     "selected_topic_available": true,
     "workflow_safe": true,
     "guard_checked": true,
-    "guard_checked_at": "2026-07-09T12:24:32.965292",
+    "guard_checked_at": "2026-07-09T12:38:53.137151",
     "operational_status": "trend_engine_operational_complete",
     "recovery_mode": "fallback_safe",
     "recovery_reason": "connection_refused",
     "recommended_action": "check_source_health_if_repeated",
     "last_safe_result_available": true,
-    "updated_at": "2026-07-09T12:24:32.970143",
+    "updated_at": "2026-07-09T12:38:53.142233",
     "sprint": "sprint_1",
     "sprint_status": "completed",
     "trend_engine_operational": true,
@@ -147,7 +147,7 @@
     "collection_method": "settings_keyword_fallback",
     "picked_reason": "실시간 수집 실패 상황에서 quality_score가 높은 fallback 후보로 선택함.",
     "is_fallback": true,
-    "picked_at": "2026-07-09T12:24:32.962105"
+    "picked_at": "2026-07-09T12:38:53.134699"
   },
   "trends": [
     {
@@ -169,7 +169,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "FM코리아 placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959700",
+      "collected_at": "2026-07-09T12:38:53.133428",
       "quality_score": 63,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 국내 커뮤니티 반응형 주제로 판단됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -192,7 +192,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "Google Trends placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959737",
+      "collected_at": "2026-07-09T12:38:53.133444",
       "quality_score": 63,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 검색 관심도 기반 주제로 판단됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -215,7 +215,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "Google Trends placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959741",
+      "collected_at": "2026-07-09T12:38:53.133446",
       "quality_score": 63,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 검색 관심도 기반 주제로 판단됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -238,7 +238,7 @@
       "collection_method": "settings_keyword_fallback",
       "is_fallback": true,
       "trend_reason": "Naver News settings fallback: connection_refused",
-      "collected_at": "2026-07-09T12:24:13.588031",
+      "collected_at": "2026-07-09T12:38:33.817919",
       "quality_score": 61,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 뉴스 기반 이슈로 확장 가능함; fallback 데이터라 신뢰도는 낮지만 기본 주제로 사용 가능."
     },
@@ -261,7 +261,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "YouTube placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959744",
+      "collected_at": "2026-07-09T12:38:53.133447",
       "quality_score": 60,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -284,7 +284,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "YouTube placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959751",
+      "collected_at": "2026-07-09T12:38:53.133451",
       "quality_score": 60,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -307,7 +307,7 @@
       "collection_method": "settings_keyword_fallback",
       "is_fallback": true,
       "trend_reason": "Nate Pann settings fallback: connection_refused",
-      "collected_at": "2026-07-09T12:24:32.959479",
+      "collected_at": "2026-07-09T12:38:53.133333",
       "quality_score": 57,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 국내 커뮤니티 반응형 주제로 판단됨; fallback 데이터라 신뢰도는 낮지만 기본 주제로 사용 가능."
     },
@@ -330,7 +330,7 @@
       "collection_method": "placeholder_fallback",
       "is_fallback": true,
       "trend_reason": "FM코리아 placeholder trend",
-      "collected_at": "2026-07-09T12:24:32.959707",
+      "collected_at": "2026-07-09T12:38:53.133431",
       "quality_score": 57,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 콘텐츠화하기 좋은 키워드가 포함됨; 국내 커뮤니티 반응형 주제로 판단됨; placeholder fallback이라 우선순위는 낮음."
     },
@@ -353,7 +353,7 @@
       "collection_method": "settings_keyword_fallback",
       "is_fallback": true,
       "trend_reason": "Naver News settings fallback: connection_refused",
-      "collected_at": "2026-07-09T12:24:13.588207",
+      "collected_at": "2026-07-09T12:38:33.818043",
       "quality_score": 55,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 뉴스 기반 이슈로 확장 가능함; fallback 데이터라 신뢰도는 낮지만 기본 주제로 사용 가능."
     },
@@ -376,10 +376,10 @@
       "collection_method": "settings_keyword_fallback",
       "is_fallback": true,
       "trend_reason": "Naver News settings fallback: connection_refused",
-      "collected_at": "2026-07-09T12:24:13.588212",
+      "collected_at": "2026-07-09T12:38:33.818048",
       "quality_score": 55,
       "selection_reason": "제목 길이가 카드뉴스 주제로 적절함; 뉴스 기반 이슈로 확장 가능함; fallback 데이터라 신뢰도는 낮지만 기본 주제로 사용 가능."
     }
   ],
-  "collected_at": "2026-07-09T12:24:32.965281"
+  "collected_at": "2026-07-09T12:38:53.137142"
 }

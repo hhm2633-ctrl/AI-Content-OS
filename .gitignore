@@ -3,5 +3,22 @@
 __pycache__/
 *.pyc
 
+storage/**
+!storage/
+!storage/cache/
+!storage/cache/.gitkeep
+!storage/history/
+!storage/history/.gitkeep
+!storage/logs/
+!storage/logs/.gitkeep
+!storage/memory/
+!storage/memory/.gitkeep
+!storage/topics/
+!storage/topics/.gitkeep
+!storage/trends/
+!storage/trends/.gitkeep
 storage/images/
+storage/content/
+storage/llm_logs/
+storage/trends/snapshots/
 logs/

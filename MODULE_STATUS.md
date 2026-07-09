@@ -27,6 +27,7 @@
 - Research Module selected_topic linkage
 - Research Module pattern_result linkage
 - Content Module pattern-aware prompt linkage
+- Content Intelligence v1
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
@@ -75,6 +76,7 @@
 - `trend_run_log.jsonl`, `trend_engine_status.json`, and `last_safe_trend_result.json` maintained
 - Sprint 2 Pattern Engine workflow linkage verified with `py -m src.main`
 - Sprint 3 Pattern -> Research -> Content linkage verified with `py -m src.main`
+- Sprint 4 Content Intelligence v1 verified with `py -m src.main`
 
 ## Sprint 3 Completed
 
@@ -94,6 +96,24 @@
 - ImagePrompt LLM failure is recorded as fallback prompt generation, not workflow failure.
 - ImageGeneration API failure is recorded as failed image items and `fallback_used`, not workflow failure.
 
+## Sprint 4 Completed
+
+- ContentModule adds `content_intelligence` to content results.
+- Content Intelligence fields:
+  - `quality_score`
+  - `duplicate_risk`
+  - `brand_rule_passed`
+  - `publishing_hint`
+  - `recommendations`
+  - `details`
+- Content Intelligence helper modules:
+  - `ContentQualityScorer`
+  - `ContentDuplicateDetector`
+  - `PublishingHintGenerator`
+  - `BrandRuleEvaluator`
+- `storage/content/content_history.json` is generated for duplicate-risk checks.
+- Content Intelligence calculation failures return safe defaults and do not break `workflow_completed`.
+
 ## Verification
 
 - Compile command: `py -m compileall src modules scripts`
@@ -107,11 +127,13 @@
 - Latest Research result includes `pattern_result_available: true`
 - Latest Content result includes `prompt_source: pattern_aware`
 - Latest Content result records LLM fallback with `fallback_used: true` when API calls fail
+- Latest Content result includes all required `content_intelligence` fields
+- Latest run generated `storage/content/content_history.json`
 
 ## Next
 
 - M2 Content Engine enhancement
-- Add focused unit checks for ContentPromptBuilder and fallback fields
+- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, and fallback fields
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior
@@ -120,5 +142,5 @@
 
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
-- Internet, LLM, image, Pattern Engine, and Content prompt failures must be recorded as fallback events, not workflow failures.
+- Internet, LLM, image, Pattern Engine, Content prompt, and Content Intelligence failures must be recorded as fallback events, not workflow failures.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.

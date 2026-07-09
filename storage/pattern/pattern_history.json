@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09T12:24:32.980233",
+  "updated_at": "2026-07-09T12:38:53.150651",
   "records": [
     {
       "recorded_at": "2026-07-09T11:55:39.516855",
@@ -42,6 +42,19 @@
     },
     {
       "recorded_at": "2026-07-09T12:24:32.980229",
+      "status": "pattern_selected",
+      "selected_topic_title": "AI 자동화 지금 시작해야 하는 이유",
+      "category": "부업",
+      "cluster": "side_income_cluster",
+      "confidence_score": 0.61,
+      "pattern_type": "warning",
+      "hook_type": "attention",
+      "cta_type": "save",
+      "layout_type": "dark_editorial",
+      "fallback_used": true
+    },
+    {
+      "recorded_at": "2026-07-09T12:38:53.150647",
       "status": "pattern_selected",
       "selected_topic_title": "AI 자동화 지금 시작해야 하는 이유",
       "category": "부업",

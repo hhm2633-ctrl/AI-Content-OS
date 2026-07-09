@@ -50,5 +50,5 @@
     "reason": "category '부업' 기준으로 'warning' 패턴을 선택함. pattern_type 'warning' 기준으로 'attention' 훅을 선택함. pattern_type 'warning' 기준으로 'save' CTA를 선택함. category '부업' 기준으로 'dark_editorial' 레이아웃을 선택함."
   },
   "fallback_used": true,
-  "created_at": "2026-07-09T12:24:32.978883"
+  "created_at": "2026-07-09T12:38:53.149738"
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09T12:24:32.963160",
+  "updated_at": "2026-07-09T12:38:53.135347",
   "records": [
     {
       "source": "naver_news",
@@ -248,6 +248,38 @@
       "cache_age_seconds": null,
       "cache_expired": false,
       "checked_at": "2026-07-09T12:24:32.963160"
+    },
+    {
+      "source": "naver_news",
+      "attempted": true,
+      "success": false,
+      "count": 5,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/naver_news_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:38:53.135347"
+    },
+    {
+      "source": "nate_pann",
+      "attempted": true,
+      "success": false,
+      "count": 8,
+      "failed_reason": "connection_refused",
+      "fallback_reason": "connection_refused",
+      "collection_method": "settings_keyword_fallback",
+      "used_cache": false,
+      "cache_path": "storage/cache/nate_pann_cache.json",
+      "retry_enabled": true,
+      "retry_count": 2,
+      "cache_age_seconds": null,
+      "cache_expired": false,
+      "checked_at": "2026-07-09T12:38:53.135347"
     }
   ],
   "latest": {
@@ -265,7 +297,7 @@
       "retry_count": 2,
       "cache_age_seconds": null,
       "cache_expired": false,
-      "checked_at": "2026-07-09T12:24:32.963160"
+      "checked_at": "2026-07-09T12:38:53.135347"
     },
     "nate_pann": {
       "source": "nate_pann",
@@ -281,7 +313,7 @@
       "retry_count": 2,
       "cache_age_seconds": null,
       "cache_expired": false,
-      "checked_at": "2026-07-09T12:24:32.963160"
+      "checked_at": "2026-07-09T12:38:53.135347"
     }
   }
 }

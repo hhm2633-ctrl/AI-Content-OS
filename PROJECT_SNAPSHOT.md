@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T12:25:55
+Updated at: 2026-07-09T12:40:15
 
 ## Execution Command
 
@@ -21,7 +21,7 @@ Do not use `python -m src.main` for this project.
 - Topic selection: success
 - Pattern selection: pattern_selected
 - Research: success
-- Content generation: content_created (`pattern_aware` prompt path verified)
+- Content generation: content_created with `content_intelligence`
 - Image prompt generation: image_prompts_created
 - Image generation: image_generation_completed
 - Card news rendering: card_news_completed
@@ -76,11 +76,15 @@ AI-Content-OS/
 |   |-- common/
 |   |   `-- __init__.py
 |   |-- content/
+|   |   |-- brand_rule_evaluator.py
+|   |   |-- content_duplicate_detector.py
 |   |   |-- content_module.py
 |   |   |-- content_prompt_builder.py
+|   |   |-- content_quality_scorer.py
 |   |   |-- cta_strategy.py
 |   |   |-- hook_strategy.py
 |   |   |-- pattern_prompt_router.py
+|   |   |-- publishing_hint_generator.py
 |   |   `-- slide_strategy.py
 |   |-- image_generation/
 |   |   |-- __init__.py
@@ -154,6 +158,8 @@ AI-Content-OS/
 |   |   |-- card_news_2.png
 |   |   |-- card_news_3.png
 |   |   `-- card_news_4.png
+|   |-- content/
+|   |   `-- content_history.json
 |   |-- generated_images/
 |   |   |-- ai_image_1.png
 |   |   |-- ai_image_2.png
@@ -290,7 +296,13 @@ AI-Content-OS/
 |   |   |-- llm_log_20260709_122459.json
 |   |   |-- llm_log_20260709_122507.json
 |   |   |-- llm_log_20260709_122516.json
-|   |   `-- llm_log_20260709_122526.json
+|   |   |-- llm_log_20260709_122526.json
+|   |   |-- llm_log_20260709_123901.json
+|   |   |-- llm_log_20260709_123910.json
+|   |   |-- llm_log_20260709_123919.json
+|   |   |-- llm_log_20260709_123927.json
+|   |   |-- llm_log_20260709_123936.json
+|   |   `-- llm_log_20260709_123945.json
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -385,9 +397,9 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script added.
-- Sprint 3 Content Engine linkage completed.
-- PatternEngineModule output flows into ResearchModule, then ContentModule builds a pattern-aware prompt.
-- Content, ImagePrompt, ImageGeneration, and Pattern fallback events are recorded in result JSON files.
+- Sprint 4 Content Intelligence v1 completed.
+- ContentModule result includes `content_intelligence` with quality, duplicate, brand, publishing, recommendation, and detail fields.
+- `storage/content/content_history.json` is generated for duplicate-risk checks and remains excluded from commit targets.
 - Keep fallback-first workflow behavior intact.
 
 ## Protected Rules
@@ -396,5 +408,4 @@ AI-Content-OS/
 - Use `py -m src.main` as the execution command.
 - Keep `workflow_completed` from regressing.
 - Keep fallback behavior for internet, LLM, and image failures.
-- Pattern Engine failures must save fallback pattern results and continue to ResearchModule.
-- Content Engine must fall back to safe copy if LLM or prompt parsing fails.
+- Content Intelligence calculation failures must fall back to safe default fields, not workflow failure.

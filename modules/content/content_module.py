@@ -8,6 +8,10 @@ except ImportError:
 
 from src.llm_client import LLMClient
 from modules.content.content_prompt_builder import ContentPromptBuilder
+from modules.content.brand_rule_evaluator import BrandRuleEvaluator
+from modules.content.content_duplicate_detector import ContentDuplicateDetector
+from modules.content.content_quality_scorer import ContentQualityScorer
+from modules.content.publishing_hint_generator import PublishingHintGenerator
 
 
 class ContentModule(BaseModule):
@@ -22,6 +26,11 @@ class ContentModule(BaseModule):
             self.config.get("llm", self.config)
         )
         self.prompt_builder = ContentPromptBuilder(self.config)
+
+        self.quality_scorer = ContentQualityScorer(self.config)
+        self.duplicate_detector = ContentDuplicateDetector(self.config)
+        self.publishing_hint_generator = PublishingHintGenerator(self.config)
+        self.brand_rule_evaluator = BrandRuleEvaluator(self.config)
 
     def run(self, research_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         print("Content Module Started")
@@ -68,9 +77,102 @@ class ContentModule(BaseModule):
         content_result = self._safe_json_parse(llm_response, keyword)
         content_result["prompt_source"] = prompt_source
         content_result["pattern_prompt_meta"] = prompt_meta
+        content_result["content_intelligence"] = self._build_content_intelligence(
+            content_result=content_result,
+            research_result=research_result,
+            prompt_meta=prompt_meta,
+        )
 
         print("Content Module Finished")
         return content_result
+
+    def _build_content_intelligence(
+        self,
+        content_result: Dict[str, Any],
+        research_result: Dict[str, Any],
+        prompt_meta: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        try:
+            quality_result = self.quality_scorer.score(content_result, research_result)
+            duplicate_result = self.duplicate_detector.check(content_result)
+            brand_result = self.brand_rule_evaluator.evaluate(content_result)
+
+            pattern_plan = research_result.get("pattern_plan") or {}
+            cta_type = prompt_meta.get("cta_type") if isinstance(prompt_meta, dict) else None
+
+            publishing_hint = self.publishing_hint_generator.generate(
+                content_result,
+                pattern_plan=pattern_plan,
+                cta_type=cta_type,
+            )
+
+            recommendations = self._build_recommendations(quality_result, duplicate_result, brand_result)
+
+            self.duplicate_detector.record(content_result)
+
+            return {
+                "quality_score": quality_result.get("quality_score", 0.0),
+                "duplicate_risk": duplicate_result.get("duplicate_risk", "low"),
+                "brand_rule_passed": brand_result.get("brand_rule_passed", False),
+                "publishing_hint": publishing_hint,
+                "recommendations": recommendations,
+                "details": {
+                    "quality": quality_result,
+                    "duplicate": duplicate_result,
+                    "brand_rule": brand_result,
+                },
+            }
+
+        except Exception as error:
+            print(f"Content Intelligence Build Failed: {error}")
+
+            return {
+                "quality_score": 0.0,
+                "duplicate_risk": "low",
+                "brand_rule_passed": False,
+                "publishing_hint": {},
+                "details": {
+                    "quality": {},
+                    "duplicate": {},
+                    "brand_rule": {},
+                    "error": str(error),
+                },
+                "recommendations": ["content_intelligence 계산 실패 - 수동 검수 필요"],
+            }
+
+    def _build_recommendations(
+        self,
+        quality_result: Dict[str, Any],
+        duplicate_result: Dict[str, Any],
+        brand_result: Dict[str, Any],
+    ) -> list:
+        recommendations = []
+
+        quality_score = quality_result.get("quality_score", 0.0)
+        if quality_score < 0.5:
+            recommendations.append("quality_score가 낮습니다. headline/body를 더 구체적으로 다시 작성하세요.")
+
+        checks = quality_result.get("checks", {})
+        if not checks.get("hook_present", True):
+            recommendations.append("hook 슬라이드가 빈약합니다. 후킹 문구를 보강하세요.")
+        if not checks.get("cta_present", True):
+            recommendations.append("CTA 슬라이드가 빈약합니다. 행동 유도 문구를 보강하세요.")
+        if not checks.get("topic_reflected", True):
+            recommendations.append("선택된 주제 키워드가 콘텐츠에 잘 드러나지 않습니다.")
+
+        duplicate_risk = duplicate_result.get("duplicate_risk", "low")
+        if duplicate_risk == "high":
+            recommendations.append("최근 콘텐츠와 매우 유사합니다. 주제/문구를 다시 검토하세요.")
+        elif duplicate_risk == "medium":
+            recommendations.append("최근 콘텐츠와 유사도가 있습니다. 차별점을 강화하세요.")
+
+        if not brand_result.get("brand_rule_passed", True):
+            recommendations.append("브랜드 금지 표현 또는 과장 표현이 감지되었습니다. 문구를 수정하세요.")
+
+        if not recommendations:
+            recommendations.append("특별한 개선 필요 사항이 없습니다.")
+
+        return recommendations
 
     def _legacy_system_prompt(self) -> str:
         return """

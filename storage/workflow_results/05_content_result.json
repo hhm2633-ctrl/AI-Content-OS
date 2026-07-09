@@ -44,5 +44,57 @@
     "cta_type": "save",
     "layout_type": "dark_editorial",
     "prompt_source": "prompt_file"
+  },
+  "content_intelligence": {
+    "quality_score": 0.7,
+    "duplicate_risk": "low",
+    "brand_rule_passed": true,
+    "publishing_hint": {
+      "recommended_action": "save",
+      "caption_direction": "저장 필요성을 강조하는 문장을 캡션 앞부분에 배치하세요.",
+      "hashtag_direction": "경고/주의 관련 해시태그(#주의사항 #실수방지)를 우선 배치하세요.",
+      "checklist": [
+        "제목과 첫 슬라이드 헤드라인이 일치/자연스러운지 확인",
+        "슬라이드 4장의 오탈자와 줄바꿈을 확인",
+        "허위/과장 표현이 없는지 다시 확인",
+        "caption과 hashtag가 계정 톤에 맞는지 확인",
+        "이미지와 텍스트가 겹치지 않는지 카드뉴스 미리보기로 확인"
+      ],
+      "reason": "cta_type 'save' 기준으로 'save' 행동을 추천함."
+    },
+    "recommendations": [
+      "특별한 개선 필요 사항이 없습니다."
+    ],
+    "details": {
+      "quality": {
+        "quality_score": 0.7,
+        "checks": {
+          "hook_present": true,
+          "cta_present": true,
+          "structure_complete": true,
+          "topic_reflected": true,
+          "pattern_reflected": true,
+          "caption_ok": true,
+          "hashtags_ok": true,
+          "thin_slide_count": 0,
+          "duplicate_slide_penalty": 0,
+          "fallback_used": true
+        },
+        "reason": "hook 슬라이드 확인됨(+15); cta 슬라이드 확인됨(+15); 4개 슬라이드 구조 완성(+20); selected_topic 키워드 반영됨(+15); pattern_plan 기반 prompt 사용됨(+15); caption 충분함(+10); hashtags 충분함(+10); fallback_used=True 감점(-30)."
+      },
+      "duplicate": {
+        "duplicate_risk": "low",
+        "similarity_score": 0.0,
+        "matched_title": "",
+        "checked_against": 0,
+        "reason": "최근 0건과 비교해 최대 유사도 0.0로 'low' 판정."
+      },
+      "brand_rule": {
+        "brand_rule_passed": true,
+        "violations": [],
+        "tone_match": true,
+        "reason": "위반 사항 없음."
+      }
+    }
   }
 }

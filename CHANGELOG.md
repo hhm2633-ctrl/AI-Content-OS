@@ -221,3 +221,21 @@
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
 - Final verification: internet collection, LLM, image API, and Pattern fallback paths were recorded as fallback events rather than `workflow_failed`.
+
+## 2026-07-09 12:40:15
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Sprint 4 Codex merge)
+
+- Change: Merged Content Intelligence v1 into `ContentModule`.
+- Added/verified: `ContentQualityScorer`, `ContentDuplicateDetector`, `PublishingHintGenerator`, and `BrandRuleEvaluator`.
+- Output: Content results now include `content_intelligence.quality_score`, `duplicate_risk`, `brand_rule_passed`, `publishing_hint`, `recommendations`, and `details`.
+- History: `storage/content/content_history.json` is generated for duplicate-risk checks and excluded from commit targets.
+- Fallback: Content Intelligence calculation failures return safe default fields instead of raising workflow failures.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

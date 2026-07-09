@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-07-09T12:24:32.981054",
-  "total_runs": 4,
-  "total_fallback_used": 2,
+  "updated_at": "2026-07-09T12:38:53.151389",
+  "total_runs": 5,
+  "total_fallback_used": 3,
   "pattern_type": {
-    "warning": 4
+    "warning": 5
   },
   "hook_type": {
-    "attention": 4
+    "attention": 5
   },
   "cta_type": {
-    "save": 4
+    "save": 5
   },
   "layout_type": {
-    "dark_editorial": 4
+    "dark_editorial": 5
   }
 }

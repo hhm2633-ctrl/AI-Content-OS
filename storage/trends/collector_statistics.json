@@ -1,27 +1,27 @@
 {
-  "updated_at": "2026-07-09T12:24:32.963160",
+  "updated_at": "2026-07-09T12:38:53.135347",
   "sources": [
     {
       "source": "nate_pann",
-      "total_attempts": 8,
+      "total_attempts": 9,
       "total_success": 0,
-      "total_failures": 8,
+      "total_failures": 9,
       "last_success_at": null,
-      "last_failure_at": "2026-07-09T12:24:32.963160",
+      "last_failure_at": "2026-07-09T12:38:53.135347",
       "last_failed_reason": "connection_refused",
       "last_collection_method": "settings_keyword_fallback",
-      "total_fallback_used": 7
+      "total_fallback_used": 8
     },
     {
       "source": "naver_news",
-      "total_attempts": 8,
+      "total_attempts": 9,
       "total_success": 0,
-      "total_failures": 8,
+      "total_failures": 9,
       "last_success_at": null,
-      "last_failure_at": "2026-07-09T12:24:32.963160",
+      "last_failure_at": "2026-07-09T12:38:53.135347",
       "last_failed_reason": "connection_refused",
       "last_collection_method": "settings_keyword_fallback",
-      "total_fallback_used": 7
+      "total_fallback_used": 8
     }
   ]
 }
