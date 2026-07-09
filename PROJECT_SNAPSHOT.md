@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T15:22:17
+Updated at: 2026-07-09T19:12:35
 
 ## Execution Command
 
@@ -25,6 +25,7 @@ Do not use `python -m src.main` for this project.
 - Image prompt generation: image_prompts_created
 - Image generation: image_generation_completed
 - Card news rendering: card_news_completed
+- Card news layout quality scoring: layout/highlight/readability scores verified
 - Publishing preparation: publishing_ready
 
 ## Current WorkflowEngine
@@ -36,9 +37,43 @@ Do not use `python -m src.main` for this project.
 ```text
 AI-Content-OS/
 |-- .agents/
+|-- .ai/
+|   |-- architecture/
+|   |   `-- system_architecture.md
+|   |-- decision/
+|   |   `-- decision_engine.md
+|   |-- knowledge/
+|   |   `-- knowledge_system.md
+|   |-- prompts/
+|   |   `-- README.md
+|   |-- rules/
+|   |   |-- ai_roles.md
+|   |   |-- project_rules.md
+|   |   `-- workflow_protection.md
+|   |-- templates/
+|   |   |-- sprint_template.md
+|   |   `-- task_template.md
+|   |-- workflows/
+|   |   |-- development_workflow.md
+|   |   `-- sprint_workflow.md
+|   `-- README.md
+|-- .claude/
+|   `-- skills/
+|       |-- domain/
+|       |-- architecture.md
+|       |-- large_implementation.md
+|       |-- planning.md
+|       |-- refactoring.md
+|       |-- research.md
+|       `-- review.md
 |-- .codex/
 |   `-- skills/
-|       `-- ai-content-os-dev/
+|       |-- ai-content-os-commit-check/
+|       |-- ai-content-os-dev/
+|       |-- ai-content-os-doc-update/
+|       |-- ai-content-os-research/
+|       |-- ai-content-os-retry-audit/
+|       `-- ai-content-os-sprint/
 |-- benchmark/
 |   |-- AI_CONTENT_STRATEGY.md
 |   |-- CONTENT_PATTERNS.md
@@ -54,10 +89,18 @@ AI-Content-OS/
 |   |-- topic_engine.json
 |   `-- trend_sources.json
 |-- docs/
+|   |-- RESEARCH/
+|   |   |-- AlphaCut.md
+|   |   |-- Claude_Codex_Workflow.md
+|   |   `-- Claude_Instagram_Audit.md
+|   |-- AI_PLANNER.md
 |   |-- AI_RULES.md
+|   |-- AUDIT_ENGINE.md
+|   |-- COMPETITOR_ENGINE.md
 |   |-- COST.md
 |   |-- DEPLOYMENT.md
 |   |-- DIRECTORY_STRUCTURE.md
+|   |-- KNOWLEDGE_ENGINE.md
 |   |-- MASTER_JSON.md
 |   |-- MONETIZATION.md
 |   |-- PROJECT_VISION.md
@@ -171,7 +214,7 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- llm_logs/
-|   |   `-- (174 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (206 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -202,7 +245,7 @@ AI-Content-OS/
 |   |   `-- topic_result.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (14 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (18 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -236,6 +279,7 @@ AI-Content-OS/
 |-- MODULE_SPEC.md
 |-- MODULE_STATUS.md
 |-- PROJECT_BIBLE.md
+|-- PROJECT_MASTER.md
 |-- PROJECT_SNAPSHOT.md
 |-- PROJECT_STATE.md
 |-- README.md
@@ -248,11 +292,6 @@ AI-Content-OS/
 ## Current Work
 
 - Project status document auto-update script maintained.
-- Network Stability Patch completed.
-- OpenAI LLM and Image API requests retry up to 3 times with backoff before existing fallback.
-- Naver News and Nate Pann collection now go through 3 retry attempts before cache/settings fallback.
-- Latest `py -m src.main` completed in 357.66 seconds with `workflow_completed`.
-- Latest diagnostics/summary show retry_count records for LLM, Image, Naver News, and Nate Pann fallbacks.
 - Sprint 5 snapshot generator correction completed: PatternEngineModule is included in the current WorkflowEngine line.
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.

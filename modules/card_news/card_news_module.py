@@ -717,6 +717,7 @@ class CardNewsModule(BaseModule):
         optimized = self._optimize_slides_for_rendering(slides)
         rendering_slides = optimized.get("slides") or slides
         design_quality_result = self._build_design_quality_result(optimized)
+        self._apply_layout_quality_score(layout_result, design_quality_result)
 
         cards = []
         layout_applied_count = 0
@@ -807,7 +808,35 @@ class CardNewsModule(BaseModule):
             "cta_optimized": bool(optimized.get("cta_optimized", False)),
             "readability_warnings": list(optimized.get("readability_warnings", []) or []),
             "fallback_used": bool(optimized.get("fallback_used", False)),
+            "ratio_adjusted_count": int(optimized.get("ratio_adjusted_count", 0) or 0),
+            "readability_score": float(optimized.get("readability_score", 0.0) or 0.0),
+            "slide_readability": list(optimized.get("slide_readability", []) or []),
         }
+
+    def _apply_layout_quality_score(
+        self,
+        layout_result: Dict[str, Any],
+        design_quality_result: Dict[str, Any],
+    ) -> None:
+        """
+        Layout Score(Layout 적합도) + Highlight Score(Highlight 적합도) +
+        Readability Score를 하나의 layout_quality_score로 합산해 layout_result에
+        추가한다 (additive, 기존 필드는 건드리지 않음). 실패해도 layout_result는
+        _compute_layout_result/_default_layout_result가 이미 채운 기본값을 유지한다.
+        """
+        try:
+            readability_score = float(design_quality_result.get("readability_score", 0.0) or 0.0)
+            layout_score = float(layout_result.get("layout_score", 0.0) or 0.0)
+            highlight_score = float(layout_result.get("highlight_score", 0.0) or 0.0)
+
+            layout_result["readability_score"] = round(readability_score, 4)
+            layout_result["layout_quality_score"] = round(
+                (layout_score + highlight_score + readability_score) / 3, 4
+            )
+        except Exception as error:
+            print(f"Layout Quality Score Merge Failed: {error}")
+            layout_result.setdefault("readability_score", 0.0)
+            layout_result.setdefault("layout_quality_score", 0.0)
 
     def _build_card_news_quality(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
         try:
@@ -969,6 +998,9 @@ class CardNewsModule(BaseModule):
             "slide_designs": slide_designs,
             "slide_highlights": highlight_result.get("slide_highlights", []),
             "fallback_used": bool(selection.get("fallback_used", False)) or bool(rule.get("fallback_used", False)),
+            "layout_score": float(selection.get("layout_score", 0.0) or 0.0),
+            "layout_score_reason": selection.get("layout_score_reason", ""),
+            "highlight_score": float(highlight_result.get("highlight_score", 0.0) or 0.0),
         }
 
     def _default_layout_result(self, slides: Optional[List[Dict[str, Any]]]) -> Dict[str, Any]:
@@ -991,6 +1023,9 @@ class CardNewsModule(BaseModule):
             "slide_designs": [],
             "slide_highlights": [],
             "fallback_used": True,
+            "layout_score": 0.0,
+            "layout_score_reason": "Layout Intelligence 계산 실패로 0.0 처리함.",
+            "highlight_score": 0.0,
         }
 
     def _load_topic_intelligence(self) -> Dict[str, Any]:

@@ -4,6 +4,8 @@ from typing import Any, Dict, List, Optional, Tuple
 
 class CardNewsTextOptimizer:
     """
+    Slide Balance Engine v2 (CardNews Layout Intelligence Sprint 2).
+
     카드뉴스 렌더링 직전에 slide headline/body 텍스트를 규칙 기반으로 다듬는다.
 
     - headline이 너무 길면 카드뉴스용으로 짧게 정리 (단어 경계에서 자연스럽게 자름)
@@ -11,6 +13,10 @@ class CardNewsTextOptimizer:
     - 빈 문장 제거
     - 슬라이드 내 중복 문장 제거
     - CTA(role="cta") 슬라이드는 더 짧고 명확하게(문장 수를 더 엄격히) 정리
+    - (Sprint 2) headline/body 길이 비율이 TITLE_BODY_RATIO_MIN~MAX 범위를 벗어나면
+      body를 비율에 맞게 추가로 정리한다 ("제목/본문 비율 최적화").
+    - (Sprint 2) 슬라이드별/전체 readability_score(0.0~1.0)를 계산해 반환한다
+      ("가독성 점수 추가").
 
     LLM을 호출하지 않고 정규식/문자열 연산만 사용한다. content_result 원본이나
     입력으로 받은 slides 리스트/딕셔너리를 직접 변형하지 않고, 항상 새 리스트/딕셔너리를
@@ -19,9 +25,14 @@ class CardNewsTextOptimizer:
     """
 
     HEADLINE_MAX_LENGTH = 18
+    HEADLINE_MIN_LENGTH = 4
     BODY_LINE_MAX_LENGTH = 24
     BODY_MAX_SENTENCES = 3
     CTA_MAX_SENTENCES = 2
+
+    # body 길이는 headline 길이의 이 배수 범위 안에 있는 것을 이상적으로 본다.
+    TITLE_BODY_RATIO_MIN = 1.2
+    TITLE_BODY_RATIO_MAX = 6.0
 
     # 문장 종결 부호(.!?。！？) 뒤 공백 또는 줄바꿈 기준으로 문장을 나눈다.
     SENTENCE_SPLIT_PATTERN = re.compile(r"(?<=[.!?。!?])\s+|\n+")
@@ -42,6 +53,9 @@ class CardNewsTextOptimizer:
                 "cta_optimized": False,
                 "readability_warnings": [f"Text Optimizer 실패: {error}"],
                 "fallback_used": True,
+                "readability_score": 0.0,
+                "slide_readability": [],
+                "ratio_adjusted_count": 0,
             }
 
     def _optimize(self, slides: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -50,8 +64,10 @@ class CardNewsTextOptimizer:
         headline_trimmed_count = 0
         body_trimmed_count = 0
         duplicate_removed_count = 0
+        ratio_adjusted_count = 0
         cta_optimized = False
         warnings: List[str] = []
+        slide_readability: List[Dict[str, Any]] = []
 
         for slide in slides:
             if not isinstance(slide, dict):
@@ -100,9 +116,29 @@ class CardNewsTextOptimizer:
                         f"{page}장 CTA 문장이 {self.CTA_MAX_SENTENCES}개를 초과해 더 짧게 정리함."
                     )
 
+            optimized_body, ratio_adjusted, ratio_value = self._balance_title_body_ratio(
+                optimized_headline, optimized_body
+            )
+
+            if ratio_adjusted:
+                ratio_adjusted_count += 1
+                warnings.append(
+                    f"{page}장 제목/본문 비율({ratio_value})이 범위를 벗어나 body를 추가로 정리함."
+                )
+
             new_slide["headline"] = optimized_headline
             new_slide["body"] = optimized_body
             optimized_slides.append(new_slide)
+
+            slide_readability.append(
+                self._score_slide_readability(page, optimized_headline, optimized_body)
+            )
+
+        readability_score = (
+            round(sum(item["score"] for item in slide_readability) / len(slide_readability), 4)
+            if slide_readability
+            else 0.0
+        )
 
         return {
             "slides": optimized_slides,
@@ -113,6 +149,55 @@ class CardNewsTextOptimizer:
             "cta_optimized": cta_optimized,
             "readability_warnings": warnings,
             "fallback_used": False,
+            "ratio_adjusted_count": ratio_adjusted_count,
+            "readability_score": readability_score,
+            "slide_readability": slide_readability,
+        }
+
+    def _balance_title_body_ratio(self, headline: str, body: str) -> Tuple[str, bool, float]:
+        headline_length = len(headline.strip())
+        body_length = len(body.strip())
+
+        if headline_length == 0 or body_length == 0:
+            return body, False, 0.0
+
+        ratio = round(body_length / headline_length, 2)
+
+        if ratio <= self.TITLE_BODY_RATIO_MAX:
+            return body, False, ratio
+
+        max_body_length = int(headline_length * self.TITLE_BODY_RATIO_MAX)
+        adjusted_body = self._trim_naturally(body, max_body_length)
+
+        return adjusted_body, True, ratio
+
+    def _score_slide_readability(self, page: Any, headline: str, body: str) -> Dict[str, Any]:
+        headline = headline.strip()
+        body = body.strip()
+
+        headline_length = len(headline)
+        body_length = len(body)
+
+        headline_ok = self.HEADLINE_MIN_LENGTH <= headline_length <= self.HEADLINE_MAX_LENGTH
+        body_ok = 0 < body_length <= self.BODY_LINE_MAX_LENGTH * self.BODY_MAX_SENTENCES
+
+        ratio = round(body_length / headline_length, 2) if headline_length else 0.0
+        ratio_ok = headline_length > 0 and body_length > 0 and (
+            self.TITLE_BODY_RATIO_MIN <= ratio <= self.TITLE_BODY_RATIO_MAX
+        )
+
+        score = 0.0
+        score += 0.4 if headline_ok else 0.0
+        score += 0.4 if body_ok else 0.0
+        score += 0.2 if ratio_ok else 0.0
+
+        return {
+            "page": page,
+            "headline_ok": headline_ok,
+            "body_ok": body_ok,
+            "ratio_ok": ratio_ok,
+            "ratio": ratio,
+            "score": round(score, 4),
         }
 
     def _optimize_headline(self, headline: str) -> Tuple[str, bool]:

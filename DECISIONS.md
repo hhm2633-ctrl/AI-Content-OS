@@ -199,3 +199,21 @@ AI는
 날짜와 함께 계속 추가한다.
 
 절대로 삭제하지 않는다.
+# 2026-07-09 External Research Handling
+
+Decision
+
+External materials are analyzed by ChatGPT CTO first.
+
+Claude and Codex do not re-analyze raw external materials by default. They use the analyzed GitHub documents as project context.
+
+Reason
+
+This keeps project knowledge stable, reduces duplicate AI cost, and prevents raw-source interpretation drift during implementation.
+
+Applied Documents
+
+- `docs/KNOWLEDGE_ENGINE.md`
+- `docs/RESEARCH/AlphaCut.md`
+- `docs/RESEARCH/Claude_Instagram_Audit.md`
+- `docs/RESEARCH/Claude_Codex_Workflow.md`

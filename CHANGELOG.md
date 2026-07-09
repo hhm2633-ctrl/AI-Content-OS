@@ -340,6 +340,16 @@
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
 
+## 2026-07-09 (Research Knowledge Update)
+
+- Change: Added Research Knowledge Base documents for AlphaCut, Instagram audit structure, and Claude/Codex workflow routing.
+- Added planning documents: `KNOWLEDGE_ENGINE`, `COMPETITOR_ENGINE`, `AUDIT_ENGINE`, and `AI_PLANNER`.
+- Decision: external materials are analyzed by ChatGPT CTO; Claude/Codex use the saved analysis documents instead of re-analyzing raw sources by default.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
 ## 2026-07-09 (Network Stability Patch)
 
 - Change: Strengthened retry/backoff handling for OpenAI LLM, OpenAI Image API, and trend collectors.
@@ -353,3 +363,114 @@
 - Compile result: success
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-09 17:09:24
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 (Codex Skill System)
+
+- Change: Added AI-Content-OS Codex Skill System for reusable Sprint, commit, research, retry audit, and documentation workflows.
+- Added skills under `.codex/skills/`.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Workflow result: not run; this Sprint only adds Skill/docs and must not modify `storage/**`
+
+## 2026-07-09 (Claude Skill System)
+
+- Change: Added AI-Content-OS Claude Skill System for architecture context, large implementation, refactoring, research handling, planning, and review workflows.
+- Added skills under `.claude/skills/`: `architecture.md`, `large_implementation.md`, `refactoring.md`, `research.md`, `planning.md`, `review.md`.
+- Updated `CLAUDE.md`, `PROJECT_MASTER.md`, and `MODULE_STATUS.md` to reference the Claude Skill System.
+- Compile command: not applicable (documentation-only Sprint, no Python files changed)
+- Workflow result: not run; this Sprint only adds Skill/project docs and must not modify `storage/**` or any module code
+
+## 2026-07-09 (Claude Developer Kit v1)
+
+- Change: Formalized the Claude Skill System into the AI-Content-OS Claude Developer Kit v1.
+- Deepened `.claude/skills/architecture.md` with an explicit project-structure summary and the real 9-module `WorkflowEngine` sequence (TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule).
+- Deepened `.claude/skills/large_implementation.md` with an explicit "Claude does not push to the repository" rule.
+- Deepened `.claude/skills/refactoring.md` with explicit function-name and file-move-minimization rules.
+- Deepened `.claude/skills/research.md` with an explicit "implement from the Research document only" rule and the full external-material list (PDF/video/UI/service/site).
+- Deepened `.claude/skills/planning.md` with explicit Git Diff review and doc-update responsibilities under Codex.
+- Reframed `CLAUDE.md` and `PROJECT_MASTER.md` sections as "Claude Developer Kit" (with the Claude Skill System as its core mechanism) instead of duplicating a separate section.
+- Updated `MODULE_STATUS.md` Operational Support entry to "Claude Developer Kit v1" while keeping the six skill names as a single sub-list (no duplicate bullet list).
+- Compile command: not applicable (documentation-only Sprint, no Python files changed)
+- Workflow result: not run; this Sprint only edits Skill/project docs and must not modify `storage/**`, `.env`, or any module code
+
+## 2026-07-09 (Claude Developer Kit v2 -- Domain Skill)
+
+- Change: Built the AI-Content-OS Claude Domain Skill (Claude Developer Kit v2) under `.claude/skills/domain/`.
+- Added `cardnews.md`, `trend_engine.md`, `topic_engine.md`, `pattern_engine.md`, `content_engine.md`, `image_engine.md`, `publishing_engine.md`, `debug.md`, `performance.md`, `testing.md`.
+- Each engine skill documents the real module/class names, fallback/retry/cache chains, and known gaps (e.g. no Image Engine cache yet, `image_ratio` not yet applied to actual cropping) so future implementation work starts from accurate context instead of re-deriving it.
+- `cardnews.md` records the hard rule to reuse the existing 10-type Layout Engine (`templates/card_news_layout_rules.json`) instead of inventing new layout types.
+- `pattern_engine.md` explicitly calls out the `LayoutSelector` name collision between `modules/pattern_engine/` (5 layout types) and `modules/card_news/` (10 layout types).
+- `performance.md` references the observed 357.66s Network Stability Patch run as a concrete cost example for retry tuning decisions.
+- Updated `CLAUDE.md`, `PROJECT_MASTER.md`, and `MODULE_STATUS.md` to reference the Claude Domain Skill without duplicating the existing Claude Developer Kit v1 sections.
+- Compile command: not applicable (documentation-only Sprint, no Python files changed)
+- Workflow result: not run; this Sprint only adds Domain Skill/project docs and must not modify `storage/**`, `.env`, or any module code
+
+## 2026-07-09 (AI Developer Kit Foundation v1)
+
+- Change: Built the AI-Content-OS AI Developer Kit Foundation v1 under `.ai/` -- shared, AI-agnostic project infrastructure sitting above the Codex Skill System and Claude Developer Kit.
+- Added `.ai/README.md`, `.ai/architecture/system_architecture.md`, `.ai/workflows/development_workflow.md`, `.ai/workflows/sprint_workflow.md`, `.ai/rules/project_rules.md`, `.ai/rules/ai_roles.md`, `.ai/rules/workflow_protection.md`, `.ai/prompts/README.md`, `.ai/templates/task_template.md`, `.ai/templates/sprint_template.md`, `.ai/knowledge/knowledge_system.md`, `.ai/decision/decision_engine.md`.
+- `system_architecture.md` documents the real 9-module WorkflowEngine sequence, the file-direct-read convention used by `ResearchModule`/`PatternEngineModule`/`CardNewsModule`, and the actual (not aspirational) engine-to-engine data flow.
+- `workflow_protection.md` consolidates the real fallback/retry/cache mechanisms (RetryPolicy, ImageGenerationModule retry/backoff, ServiceDiagnostic error_type taxonomy, storage/cache and storage/runtime files) into one AI-agnostic reference.
+- `decision_engine.md` and the `task_template.md`/`sprint_template.md` pair give ChatGPT CTO a reusable format for writing future Sprint instructions consistent with how this project's Sprints have actually been structured.
+- Content was written to complement, not duplicate, the existing `.claude/skills/` and `.claude/skills/domain/` files -- `.ai/` holds the AI-agnostic facts/rules/templates, while `.claude/skills/` keeps the Claude-specific consumption procedures.
+- Updated `PROJECT_MASTER.md` and `MODULE_STATUS.md` to reference the AI Developer Kit. `CLAUDE.md` was intentionally not modified this Sprint (not in scope).
+- Compile command: not applicable (documentation-only Sprint, no Python files changed)
+- Workflow result: not run; this Sprint only adds `.ai/` docs and project docs and must not modify `storage/**`, `.env`, or any module code
+
+## 2026-07-09 18:39:14
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 18:39:46
+
+- Change: Safely reflected Claude Content Engine updates for Hook/CTA strategy lines, hook_score/cta_score metadata, and Content Score weighting.
+- WorkflowEngine: unchanged.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Execution time: 360.97 seconds
+- Latest content quality score: 0.66
+
+## 2026-07-09 18:57:52
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 18:57:52 (Claude Content Engine Reflection)
+
+- Change: Re-verified Claude Content Engine updates within the allowed file scope.
+- WorkflowEngine: unchanged.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Execution time: 360.92 seconds
+- Latest content quality score: 0.66
+
+## 2026-07-09 19:12:35
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-09 19:12:35 (Claude CardNews Layout Quality Reflection)
+
+- Change: Re-verified Claude CardNews updates within the allowed file scope.
+- CardNews: layout_score, highlight_score, readability_score, and layout_quality_score are reflected additively.
+- WorkflowEngine: unchanged.
+- Compile command: `py -m compileall src modules scripts`
+- Compile result: success
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+- Execution time: 360.60 seconds
+- Latest CardNews result: `card_news_completed`, layout `notebook`, QA score `0.85`

@@ -49,3 +49,18 @@
 - Blog article workflow
 - SmartStore/Coupang content workflow
 - 채널별 재가공 파이프라인
+# Research Knowledge / Planning Engines
+
+- Knowledge Engine: external material analysis workflow and project asset documentation
+- Competitor Engine: competitor account/service pattern analysis
+- Audit Engine: my account audit, competitor comparison, blind spot detection
+- AI Planner: AI task routing, cost control, sprint ROI review
+
+# Later Roadmap
+
+- Timeline Engine
+- Animation Engine
+- Video Renderer
+- PDF Report
+
+These are roadmap items only and should not replace the current card news MVP priority.

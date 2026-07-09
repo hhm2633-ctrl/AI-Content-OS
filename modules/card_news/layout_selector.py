@@ -1,8 +1,10 @@
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 class LayoutSelector:
     """
+    Layout Engine v2 (CardNews Layout Intelligence Sprint 2).
+
     Pattern(pattern_prompt_meta), Topic(topic_intelligence), Brand Profile,
     Content Intelligence를 종합해 카드뉴스에 가장 적합한 layout_type을 선택한다.
 
@@ -10,8 +12,35 @@ class LayoutSelector:
     (notebook, dark_editorial, bold_ai, character_diary, comparison, tutorial,
     checklist, timeline, warning, number_list)이다.
 
+    Sprint 2 개선 (가중치 기반 스코어링으로 재설계):
+    - pattern_type 매칭이 여전히 가장 강한 신호(+0.5)다 (Pattern별 최적 Layout 선택).
+    - category 매칭에 topic_intelligence.confidence_score를 곱해 신뢰도가 높을수록
+      더 크게 반영한다(Topic별 Layout 가중치). 추가로 topic_intelligence.keywords에
+      포함된 단어(비교/순위/주의/방법/후기 등)로 세부 layout에 소폭 가점한다.
+    - brand_profile에 명시적 preferred_layout 필드가 있으면 우선 반영하고
+      (Brand별 Layout 선호도), 없으면 기존 voice 기반 휴리스틱(친근한 말투 ->
+      character_diary)을 더 작은 가중치로 사용한다.
+    - 모든 layout_type에 대해 가중치를 합산해 가장 높은 점수의 layout을 선택하고,
+      그 점수를 0.0~1.0으로 정규화한 layout_score/layout_score_reason을 결과에
+      추가한다 (Layout Score).
+    - 기존 안전장치(quality_score 낮음/브랜드 위반/중복 위험 높음 -> SAFE_LAYOUT
+      강제 대체)는 그대로 유지한다.
+
     계산에 실패해도 예외를 던지지 않고 안전한 기본 레이아웃(bold_ai)을 반환한다.
     """
+
+    ALL_LAYOUTS: List[str] = [
+        "notebook",
+        "dark_editorial",
+        "bold_ai",
+        "character_diary",
+        "comparison",
+        "tutorial",
+        "checklist",
+        "timeline",
+        "warning",
+        "number_list",
+    ]
 
     PATTERN_TYPE_LAYOUT_MAP = {
         "warning": "warning",
@@ -30,6 +59,39 @@ class LayoutSelector:
         "쇼핑": "bold_ai",
         "트렌드": "dark_editorial",
     }
+
+    # topic_intelligence.keywords에 특정 단어가 포함되면 세부적으로 어울리는
+    # layout_type에 소폭 가점한다 (category보다 더 세밀한 topic 신호).
+    KEYWORD_LAYOUT_HINTS = {
+        "비교": "comparison",
+        "대신": "comparison",
+        "vs": "comparison",
+        "순위": "number_list",
+        "랭킹": "number_list",
+        "베스트": "number_list",
+        "주의": "warning",
+        "경고": "warning",
+        "위험": "warning",
+        "방법": "tutorial",
+        "단계": "tutorial",
+        "가이드": "tutorial",
+        "후기": "character_diary",
+        "일기": "character_diary",
+        "경험담": "character_diary",
+        "체크리스트": "checklist",
+        "준비물": "checklist",
+        "타임라인": "timeline",
+        "일정": "timeline",
+    }
+
+    PATTERN_MATCH_WEIGHT = 0.5
+    CATEGORY_BASE_WEIGHT = 0.2
+    CATEGORY_CONFIDENCE_WEIGHT = 0.15
+    KEYWORD_HINT_WEIGHT = 0.08
+    KEYWORD_HINT_MAX_TOTAL_WEIGHT = 0.24
+    BRAND_PREFERENCE_WEIGHT = 0.3
+    BRAND_VOICE_HEURISTIC_WEIGHT = 0.12
+    SAFETY_OVERRIDE_LAYOUT_SCORE = 0.3
 
     DEFAULT_LAYOUT = "bold_ai"
     SAFE_LAYOUT = "notebook"
@@ -58,6 +120,8 @@ class LayoutSelector:
                 "reason": "레이아웃 선택 계산 실패로 기본 레이아웃을 사용함.",
                 "source": "error_fallback",
                 "fallback_used": True,
+                "layout_score": 0.0,
+                "layout_score_reason": "레이아웃 선택 실패로 0.0 처리함.",
             }
 
     def _select(
@@ -68,19 +132,21 @@ class LayoutSelector:
         content_intelligence: Dict[str, Any],
     ) -> Dict[str, Any]:
         pattern_type = str(pattern_meta.get("pattern_type", ""))
-        category = str(topic_intelligence.get("category", ""))
 
-        if pattern_type in self.PATTERN_TYPE_LAYOUT_MAP:
-            layout_type = self.PATTERN_TYPE_LAYOUT_MAP[pattern_type]
-            source = "pattern_type"
-            reason = f"pattern_type '{pattern_type}' 기준으로 '{layout_type}' 레이아웃을 선택함."
-        elif category in self.CATEGORY_LAYOUT_MAP:
-            layout_type = self.CATEGORY_LAYOUT_MAP[category]
-            source = "category"
-            reason = f"category '{category}' 기준으로 '{layout_type}' 레이아웃을 선택함."
+        scores, reasons = self._score_layouts(pattern_type, topic_intelligence, brand_profile)
+
+        layout_type = max(scores, key=scores.get)
+        top_score = scores[layout_type]
+
+        if top_score <= 0.0:
+            layout_type = self.DEFAULT_LAYOUT
+            source = "default_fallback"
+            reason = "pattern_type/topic/brand 신호가 없어 기본 레이아웃을 사용함."
+            layout_score = 0.0
         else:
-            layout_type, reason = self._brand_default(brand_profile)
-            source = "brand_profile_default"
+            source = "weighted_selection"
+            reason = "; ".join(reasons) + "."
+            layout_score = round(min(1.0, top_score), 4)
 
         risk_reason = self._risk_reason(content_intelligence)
 
@@ -88,28 +154,89 @@ class LayoutSelector:
             layout_type = self.SAFE_LAYOUT
             source = "safety_override"
             reason = f"{risk_reason} 안전한 '{self.SAFE_LAYOUT}' 레이아웃으로 대체함."
+            layout_score = self.SAFETY_OVERRIDE_LAYOUT_SCORE
 
         return {
             "layout_type": layout_type,
             "reason": reason,
             "source": source,
-            "fallback_used": source in ("brand_profile_default", "safety_override", "error_fallback"),
+            "fallback_used": source in ("default_fallback", "safety_override", "error_fallback"),
+            "layout_score": layout_score,
+            "layout_score_reason": reason,
         }
 
-    def _brand_default(self, brand_profile: Dict[str, Any]) -> Tuple[str, str]:
-        voice = str(brand_profile.get("voice", ""))
+    def _score_layouts(
+        self,
+        pattern_type: str,
+        topic_intelligence: Dict[str, Any],
+        brand_profile: Dict[str, Any],
+    ) -> Tuple[Dict[str, float], List[str]]:
+        scores: Dict[str, float] = {layout: 0.0 for layout in self.ALL_LAYOUTS}
+        reasons: List[str] = []
 
-        if any(word in voice for word in ("친근", "편안", "다정")):
-            layout_type = "character_diary"
+        # --- Pattern별 최적 Layout 선택 (가장 강한 신호) ---
+        if pattern_type in self.PATTERN_TYPE_LAYOUT_MAP:
+            layout = self.PATTERN_TYPE_LAYOUT_MAP[pattern_type]
+            scores[layout] += self.PATTERN_MATCH_WEIGHT
+            reasons.append(
+                f"pattern_type '{pattern_type}' -> '{layout}'(+{self.PATTERN_MATCH_WEIGHT:.2f})"
+            )
+
+        # --- Topic별 Layout 가중치: category를 confidence_score로 가중 ---
+        category = str(topic_intelligence.get("category", ""))
+        confidence_score = topic_intelligence.get("confidence_score")
+        confidence = float(confidence_score) if isinstance(confidence_score, (int, float)) else 0.5
+        confidence = max(0.0, min(1.0, confidence))
+
+        if category in self.CATEGORY_LAYOUT_MAP:
+            layout = self.CATEGORY_LAYOUT_MAP[category]
+            weight = round(self.CATEGORY_BASE_WEIGHT + self.CATEGORY_CONFIDENCE_WEIGHT * confidence, 4)
+            scores[layout] += weight
+            reasons.append(
+                f"category '{category}'(confidence={confidence}) -> '{layout}'(+{weight:.4f})"
+            )
+
+        # --- Topic별 Layout 가중치: keyword 세부 신호 ---
+        keywords = topic_intelligence.get("keywords", [])
+        keyword_weight_used = 0.0
+
+        if isinstance(keywords, list):
+            matched_layouts: List[str] = []
+
+            for keyword in keywords:
+                keyword_text = str(keyword or "")
+
+                for trigger, layout in self.KEYWORD_LAYOUT_HINTS.items():
+                    if trigger in keyword_text and keyword_weight_used < self.KEYWORD_HINT_MAX_TOTAL_WEIGHT:
+                        scores[layout] += self.KEYWORD_HINT_WEIGHT
+                        keyword_weight_used += self.KEYWORD_HINT_WEIGHT
+                        matched_layouts.append(layout)
+                        break
+
+            if matched_layouts:
+                reasons.append(
+                    f"topic keyword 세부 신호로 {matched_layouts} 레이아웃에 가점(+{self.KEYWORD_HINT_WEIGHT:.2f}/건)"
+                )
+
+        # --- Brand별 Layout 선호도 반영 ---
+        preferred_layout = str(brand_profile.get("preferred_layout", "")).strip()
+
+        if preferred_layout in self.ALL_LAYOUTS:
+            scores[preferred_layout] += self.BRAND_PREFERENCE_WEIGHT
+            reasons.append(
+                f"brand_profile.preferred_layout '{preferred_layout}'(+{self.BRAND_PREFERENCE_WEIGHT:.2f})"
+            )
         else:
-            layout_type = self.DEFAULT_LAYOUT
+            voice = str(brand_profile.get("voice", ""))
 
-        reason = (
-            "pattern_type/category 정보가 없어 brand_profile voice "
-            f"('{voice}') 기준으로 '{layout_type}' 레이아웃을 사용함."
-        )
+            if any(word in voice for word in ("친근", "편안", "다정")):
+                scores["character_diary"] += self.BRAND_VOICE_HEURISTIC_WEIGHT
+                reasons.append(
+                    f"brand voice('{voice}') 친근한 말투 -> 'character_diary'"
+                    f"(+{self.BRAND_VOICE_HEURISTIC_WEIGHT:.2f})"
+                )
 
-        return layout_type, reason
+        return scores, reasons
 
     def _risk_reason(self, content_intelligence: Dict[str, Any]) -> str:
         quality_score = content_intelligence.get("quality_score")

@@ -93,9 +93,11 @@ class ContentModule(BaseModule):
         prompt_meta: Dict[str, Any],
     ) -> Dict[str, Any]:
         try:
-            quality_result = self.quality_scorer.score(content_result, research_result)
-            duplicate_result = self.duplicate_detector.check(content_result)
             brand_result = self.brand_rule_evaluator.evaluate(content_result)
+            quality_result = self.quality_scorer.score(
+                content_result, research_result, prompt_meta, brand_result
+            )
+            duplicate_result = self.duplicate_detector.check(content_result)
 
             pattern_plan = research_result.get("pattern_plan") or {}
             cta_type = prompt_meta.get("cta_type") if isinstance(prompt_meta, dict) else None

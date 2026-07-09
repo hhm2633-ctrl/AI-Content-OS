@@ -99,3 +99,21 @@ The repo root and `docs/` hold many planning documents (`SYSTEM_ARCHITECTURE.md`
 - Keep the fallback-first contract intact for any code touching network/LLM/image calls: fallback events must be recorded in the result JSON (see `collection_summary`, `fallback_used`, `trend_engine_status` fields), not thrown as exceptions that kill the workflow.
 - Prefer one larger, related batch of changes ("Sprint") over many tiny commits, per the documented workflow philosophy (`docs/` -> design -> architecture review -> code -> test -> commit -> changelog).
 - `.env` holds `OPENAI_API_KEY` and is gitignored. Never commit it or print its contents.
+
+## Claude Developer Kit
+
+AI-Content-OS ships a project-specific **Claude Developer Kit**: a fixed set of working rules for how Claude
+should approach this repository, so instructions don't need to be repeated every Sprint. Its core is the
+**Claude Skill System** at `.claude/skills/` (parallel to the Codex skill system in `.codex/skills/`).
+Consult the matching skill file before starting the corresponding kind of work:
+
+- `.claude/skills/architecture.md` — **Architecture**: how to read project state before any task (`PROJECT_MASTER.md` -> `PROJECT_SNAPSHOT.md` -> `MODULE_STATUS.md` -> `ROADMAP.md` -> `AGENTS.md` -> `CURRENT_TASK.md` -> `DECISIONS.md`), the real `WorkflowEngine` module sequence, and the WorkflowEngine/Windows execution rules that must never change.
+- `.claude/skills/large_implementation.md` — **Large Implementation**: when a task is Claude's responsibility (8+ files, new modules, complex refactors), the "always full file, never partial patches" rule for this non-developer project owner, and that Claude does not push changes to the repository itself.
+- `.claude/skills/refactoring.md` — **Refactoring**: structure-preservation rules (no renaming WorkflowEngine/folders/modules/classes/functions, minimize file moves) for cleanup work.
+- `.claude/skills/research.md` — **Research**: external material handling — ChatGPT CTO analyzes raw sources (PDF/video/UI/service/site) first; Claude only consumes and implements from the resulting GitHub Research docs (`docs/`, `docs/RESEARCH/`) and does not re-analyze raw material.
+- `.claude/skills/planning.md` — **Planning**: Sprint ROI triage (card-news MVP first, everything else to `ROADMAP.md`) and the Claude-designs/Codex-ships (repository, compile, test, git diff, doc updates) division of labor.
+- `.claude/skills/review.md` — **Review**: end-of-Sprint checklist (compile, workflow run when allowed, `workflow_completed`, `PROJECT_SNAPSHOT.md`/`CHANGELOG.md`/`MODULE_STATUS.md`) and the reminder that final repository reflection (`git add`/`commit`/`push`) belongs to Codex.
+
+On top of these cross-cutting skills, `.claude/skills/domain/` holds a **Domain Skill** per engine — consult the matching one before implementing inside that engine: `cardnews.md`, `trend_engine.md`, `topic_engine.md`, `pattern_engine.md`, `content_engine.md`, `image_engine.md`, `publishing_engine.md`, plus cross-cutting `debug.md`, `performance.md`, and `testing.md`. These capture the real module names, fallback chains, and known gaps for each engine so Claude doesn't need to re-derive them from scratch every Sprint.
+
+Claude's six roles under this kit are: **Architecture, Large Implementation, Refactoring, Research, Planning, Review.**

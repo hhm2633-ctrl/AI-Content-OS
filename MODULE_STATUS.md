@@ -1,3 +1,29 @@
+# Planning Additions
+
+- Knowledge Engine: Planning
+- Competitor Engine: Planning
+- Audit Engine: Planning
+- AI Planner: Planning
+
+# Operational Support
+
+- Codex Skill System: Planning/Operational Support
+- `ai-content-os-sprint` skill
+- `ai-content-os-commit-check` skill
+- `ai-content-os-research` skill
+- `ai-content-os-retry-audit` skill
+- `ai-content-os-doc-update` skill
+- Claude Developer Kit v1: Planning/Operational Support (`.claude/skills/`, documentation only, no code)
+  - Claude Skill System skills: `architecture`, `large_implementation`, `refactoring`, `research`, `planning`, `review`
+- Claude Domain Skill (Developer Kit v2): Planning/Operational Support (`.claude/skills/domain/`, documentation only, no code)
+  - Engine skills: `cardnews`, `trend_engine`, `topic_engine`, `pattern_engine`, `content_engine`, `image_engine`, `publishing_engine`
+  - Cross-cutting skills: `debug`, `performance`, `testing`
+- AI Developer Kit Foundation v1: Planning/Operational Support (`.ai/`, shared AI-agnostic infrastructure, documentation only, no code)
+  - `architecture/system_architecture.md`, `workflows/development_workflow.md`, `workflows/sprint_workflow.md`
+  - `rules/project_rules.md`, `rules/ai_roles.md`, `rules/workflow_protection.md`
+  - `prompts/README.md`, `templates/task_template.md`, `templates/sprint_template.md`
+  - `knowledge/knowledge_system.md`, `decision/decision_engine.md`
+
 # AI-Content-OS Module Status
 
 ## Completed
@@ -28,10 +54,13 @@
 - Research Module pattern_result linkage
 - Content Module pattern-aware prompt linkage
 - Content Intelligence v1
+- Hook Engine v1 metadata reflected in Content prompts and Content Score
+- CTA Engine v1 metadata reflected in Content prompts and Content Score
 - CardNews Layout Intelligence v1
 - CardNews layout-aware PNG rendering v1
 - CardNews Quality QA v1
 - CardNews Design Quality v1
+- CardNews Layout Quality Scoring v2
 - Source Health v1
 - Collector Statistics v1
 - Retry Policy v1
@@ -213,6 +242,8 @@
 - Latest Content result includes `prompt_source: pattern_aware`
 - Latest Content result records LLM fallback with `fallback_used: true` when API calls fail
 - Latest Content result includes all required `content_intelligence` fields
+- Latest Content result includes `hook_score`, `cta_score`, and `pattern_fallback_used` quality checks
+- Latest Content quality score is `0.66`
 - Latest run generated `storage/content/content_history.json`
 - Latest generated `PROJECT_SNAPSHOT.md` includes `PatternEngineModule` and runtime tree omission markers
 - Latest CardNews result includes all required `layout_result` fields
@@ -220,6 +251,7 @@
 - Latest `layout_result.layout_type` matches `rendering_result.layout_type`
 - Latest CardNews result includes all required `card_news_quality` fields
 - Latest CardNews result includes all required `design_quality_result` fields
+- Latest CardNews result includes additive `layout_score`, `highlight_score`, `readability_score`, and `layout_quality_score`
 - Latest CardNews QA checks include `design_quality_exists: true`
 - Latest QA score is `0.85` and passed the `0.6` threshold
 - Latest run generated `storage/card_news/card_news_quality.json`

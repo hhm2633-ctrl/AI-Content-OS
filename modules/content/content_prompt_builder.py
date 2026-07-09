@@ -13,6 +13,10 @@ class ContentPromptBuilder:
     selected_topic/research_result/pattern_plan/hook/cta/slide_strategy/brand_profile을
     모두 사용해 ContentModule의 system_prompt/user_prompt를 만든다.
 
+    Hook Engine v1(HookStrategy)/CTA Engine v1(CTAStrategy)이 만든 hook_line/cta_line을
+    프롬프트에 참고 예시로 포함하고, hook_score/cta_score를 meta에 담아 Content Score
+    계산(ContentQualityScorer)에서 재사용할 수 있게 한다.
+
     research_result에 pattern_plan이 없으면 build()는 None을 반환하며, 호출자인
     ContentModule은 기존(legacy) 방식으로 자동 복귀해야 한다. 이 클래스는 내부에서
     예외를 던지지 않는다 (build()가 항상 dict 또는 None을 반환).
@@ -47,8 +51,18 @@ class ContentPromptBuilder:
         target = research_result.get("target", "AI 자동화와 부업에 관심 있는 초보자")
         topic_angle = research_result.get("topic_angle", "")
 
-        hook_result = self.hook_strategy.select(pattern_plan, topic_intelligence)
-        cta_result = self.cta_strategy.select(pattern_plan, topic_intelligence)
+        hook_result = self.hook_strategy.select(
+            pattern_plan,
+            topic_intelligence,
+            self.brand_profile,
+            str(keyword),
+        )
+        cta_result = self.cta_strategy.select(
+            pattern_plan,
+            topic_intelligence,
+            self.brand_profile,
+            str(keyword),
+        )
         slide_plan = self.slide_strategy.build(pattern_plan.get("pattern_type", "resource"))
         prompt_guide = self.pattern_prompt_router.get_guide(pattern_plan.get("pattern_type", "resource"))
 
@@ -63,6 +77,8 @@ class ContentPromptBuilder:
             pattern_plan=pattern_plan,
             topic_intelligence=topic_intelligence,
             slide_plan=slide_plan,
+            hook_result=hook_result,
+            cta_result=cta_result,
         )
 
         return {
@@ -71,9 +87,15 @@ class ContentPromptBuilder:
             "meta": {
                 "pattern_type": slide_plan.get("pattern_type", pattern_plan.get("pattern_type", "resource")),
                 "hook_type": hook_result.get("hook_type"),
+                "hook_line": hook_result.get("hook_line"),
+                "hook_score": hook_result.get("hook_score"),
                 "cta_type": cta_result.get("cta_type"),
+                "cta_line": cta_result.get("cta_line"),
+                "cta_score": cta_result.get("cta_score"),
                 "layout_type": pattern_plan.get("layout_type", ""),
                 "prompt_source": prompt_guide.get("source"),
+                "pattern_fallback_used": bool(pattern_plan.get("fallback_used", False)),
+                "platform": cta_result.get("platform", "instagram"),
             },
         }
 
@@ -94,7 +116,9 @@ class ContentPromptBuilder:
 
 패턴 가이드: {prompt_guide.get("guide", "")}
 Hook 전략: '{hook_result.get("hook_type")}' 타입의 훅을 사용한다. ({hook_result.get("reason", "")})
+Hook 참고 예시(그대로 베끼지 말고 참고만): {hook_result.get("hook_line", "")}
 CTA 전략: '{cta_result.get("cta_type")}' 타입의 CTA를 사용한다. ({cta_result.get("reason", "")})
+CTA 참고 예시(그대로 베끼지 말고 참고만): {cta_result.get("cta_line", "")}
 
 초보자가 바로 이해할 수 있게 짧고 강하게 쓴다.
 다음 표현은 피한다: {banned_words_text}.
@@ -113,6 +137,8 @@ CTA 전략: '{cta_result.get("cta_type")}' 타입의 CTA를 사용한다. ({cta_
         pattern_plan: Dict[str, Any],
         topic_intelligence: Dict[str, Any],
         slide_plan: Dict[str, Any],
+        hook_result: Dict[str, Any],
+        cta_result: Dict[str, Any],
     ) -> str:
         slides = slide_plan.get("slides", [])
         slide_lines = [
@@ -158,6 +184,14 @@ Topic Intelligence:
 - confidence_score: {topic_intelligence.get("confidence_score", "")}
 - keywords: {keywords}
 
+Hook 참고 (1장 headline에 참고):
+- hook_type: {hook_result.get("hook_type", "")}
+- hook_line 예시: {hook_result.get("hook_line", "")}
+
+CTA 참고 (4장 headline/body에 참고):
+- cta_type: {cta_result.get("cta_type", "")}
+- cta_line 예시: {cta_result.get("cta_line", "")}
+
 슬라이드 구조 (반드시 이 역할 순서와 목적을 따를 것):
 {slide_structure_text}
 
@@ -166,6 +200,7 @@ Topic Intelligence:
 - body는 1~2문장
 - 초보자 말투
 - 너무 어려운 용어 금지
+- Hook/CTA 참고 예시는 그대로 복사하지 말고 주제에 맞게 자연스럽게 다시 쓸 것
 
 아래 JSON 형식으로만 답변해줘.
 
