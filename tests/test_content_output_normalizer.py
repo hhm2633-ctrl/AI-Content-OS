@@ -150,6 +150,63 @@ class TestContentOutputNormalizer(unittest.TestCase):
         result = self.normalizer.normalize(data, "테스트키워드", fallback_slides)
         self.assertLessEqual(len(result["slides"][0]["headline"]), ContentOutputNormalizer.MAX_HEADLINE_LENGTH)
 
+    def test_body_too_long_is_trimmed(self):
+        data = make_valid_result()
+        data["slides"][2]["body"] = "나" * 300
+        result = self.normalizer.normalize(data, "테스트키워드", fallback_slides)
+        self.assertLessEqual(len(result["slides"][2]["body"]), ContentOutputNormalizer.MAX_BODY_LENGTH)
+        self.assertTrue(result["slides"][2]["body"].endswith("…"))
+
+    def test_all_slides_too_short_counts_as_no_real_content(self):
+        """
+        Codex 독립 검수(Sprint 14-2)에서 발견된 회귀 테스트: 슬라이드 후보가
+        "존재"하더라도(비어있지 않음) headline/body가 둘 다 최소 길이 미만이면
+        결국 전부 fallback 문구로 대체된다 - 이 경우 실제로는 살아남은 LLM
+        콘텐츠가 하나도 없으므로 fallback_used는 True여야 한다. 예전 구현은
+        "후보가 있었다"는 사실만으로 real_content_used_count를 올려서
+        fallback_used가 잘못 False로 나올 수 있었다.
+        """
+        data = {
+            "title": "t",
+            "slides": [
+                {"page": 1, "role": "hook", "headline": "a", "body": "ok"},
+                {"page": 2, "role": "problem", "headline": "b", "body": "no"},
+                {"page": 3, "role": "solution", "headline": "c", "body": "hi"},
+                {"page": 4, "role": "cta", "headline": "d", "body": "go"},
+            ],
+            "caption": "c",
+            "hashtags": ["#a", "#b", "#c"],
+        }
+        result = self.normalizer.normalize(data, "테스트키워드", fallback_slides)
+        self._assert_stable_schema(result)
+        self.assertTrue(result["fallback_used"])
+        self.assertEqual(result["fallback_reason"], "no_usable_llm_slide_content")
+        # 짧은 원본 문구는 전부 폴백으로 대체되어 결과에 남아있으면 안 된다.
+        for slide in result["slides"]:
+            self.assertNotIn(slide["headline"], ("a", "b", "c", "d"))
+
+    def test_partial_real_content_when_only_body_survives_length_check(self):
+        """
+        headline은 너무 짧아 fallback으로 대체되지만 body는 충분히 길어 그대로
+        살아남는 슬라이드가 하나라도 있으면, 그 슬라이드는 실제 콘텐츠를
+        일부 보존한 것이므로 fallback_used는 False여야 한다.
+        """
+        data = {
+            "title": "t",
+            "slides": [
+                {"page": 1, "role": "hook", "headline": "a", "body": "이 본문은 충분히 길어서 살아남아야 합니다"},
+                {"page": 2, "role": "problem", "headline": "b", "body": "no"},
+                {"page": 3, "role": "solution", "headline": "c", "body": "hi"},
+                {"page": 4, "role": "cta", "headline": "d", "body": "go"},
+            ],
+            "caption": "c",
+            "hashtags": ["#a", "#b", "#c"],
+        }
+        result = self.normalizer.normalize(data, "테스트키워드", fallback_slides)
+        self._assert_stable_schema(result)
+        self.assertFalse(result["fallback_used"])
+        self.assertEqual(result["slides"][0]["body"], "이 본문은 충분히 길어서 살아남아야 합니다")
+
     # ---- hashtags 정규화 ----
 
     def test_hashtags_string_normalized_to_list(self):

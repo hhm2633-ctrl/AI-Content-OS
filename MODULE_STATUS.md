@@ -512,6 +512,34 @@ follow-up check found `tests/` didn't exist at all, so `py -m unittest discover 
   PNGs generated, `publishing_result.status: "publishing_ready"`, Naver News/Nate Pann fallback
   events still occurred as normal (fallback-first contract intact).
 
+### Sprint 14-2 Independent Review (Codex MCP) — one more real bug found and fixed
+
+Per instruction, this round was reviewed independently via Codex MCP (`mcp__codex__codex`)
+rather than Claude self-approving. Codex read the repo fresh, ran the verification commands
+itself, and returned verdict **BLOCKED** with two findings — both real, both fixed:
+
+1. **Tracked `.pyc` files**: `modules/content/__pycache__/content_module.cpython-313.pyc` (and,
+   on inspection, 4 other stale tracked `.pyc` files elsewhere in the repo — `modules/base_module`,
+   `modules/research/research_module`, `src/main`, `src/workflow_engine`) were committed even
+   though `.gitignore` already excludes `__pycache__/`/`*.pyc` — they were tracked before that
+   rule existed and never cleaned up. Fixed with `git rm --cached` on all 5 (files remain on
+   disk; only removed from git tracking).
+2. **Real `fallback_used` logic bug** in `ContentOutputNormalizer._normalize()`: a slide counted
+   toward `real_content_used_count` as soon as *any* non-empty candidate text was found for its
+   role, **before** `_clean_text()` checked whether that text actually met the minimum length. A
+   slide with a too-short-but-non-empty headline/body (e.g. `"a"`/`"ok"`) could get counted as
+   "real content used" even though both fields were then fully replaced by fallback text inside
+   `_clean_text()` — meaning `fallback_used` could come back `false` when zero real LLM content
+   actually survived, contradicting the documented contract. Fixed by having `_clean_text()`
+   return `(text, is_real)` and only counting a slide as real when at least one of
+   headline/body actually survived the length check (not merely "a candidate existed").
+   Added 2 regression tests: `test_all_slides_too_short_counts_as_no_real_content` (all 4 slides
+   too short -> `fallback_used: true`) and `test_partial_real_content_when_only_body_survives_length_check`
+   (one slide's body survives -> `fallback_used: false`) — test suite is now 33 tests, all `ok`.
+   Codex's other 9 review items (validator correctness, ContentModule wiring, test strength,
+   full workflow, CardNews/Publishing compatibility, unrelated-changes check, runtime storage
+   tracking) all passed on first review with no changes needed.
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"

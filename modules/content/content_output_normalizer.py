@@ -1,5 +1,5 @@
 import re
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 
 class ContentOutputNormalizer(object):
@@ -81,28 +81,36 @@ class ContentOutputNormalizer(object):
         for index, role in enumerate(self.CANONICAL_ROLE_ORDER):
             fallback_slide = fallback_slides[index]
             source: Optional[Dict[str, str]] = None
+            has_candidate = False
 
             if role in candidates_by_role:
                 source = candidates_by_role[role]
-                real_content_used_count += 1
+                has_candidate = True
             elif unmatched:
                 source = unmatched.pop(0)
-                real_content_used_count += 1
+                has_candidate = True
                 notes.append(f"page {index + 1} ({role}) filled from a mistagged/unlabeled slide")
             else:
                 source = {"headline": fallback_slide["headline"], "body": fallback_slide["body"]}
                 notes.append(f"page {index + 1} ({role}) had no usable content; used fallback")
 
-            headline = self._clean_text(
-                source.get("headline"), fallback_slide["headline"],
+            headline, headline_is_real = self._clean_text(
+                source.get("headline") if has_candidate else None, fallback_slide["headline"],
                 self.MIN_HEADLINE_LENGTH, self.MAX_HEADLINE_LENGTH,
                 notes, index + 1, "headline",
             )
-            body = self._clean_text(
-                source.get("body"), fallback_slide["body"],
+            body, body_is_real = self._clean_text(
+                source.get("body") if has_candidate else None, fallback_slide["body"],
                 self.MIN_BODY_LENGTH, self.MAX_BODY_LENGTH,
                 notes, index + 1, "body",
             )
+
+            # 후보가 있었더라도 headline/body 둘 다 너무 짧아 결국 fallback으로
+            # 대체됐다면 이 슬라이드는 실질적으로 "실제 콘텐츠 사용"이 아니다
+            # (Codex 독립 검수에서 발견: 후보 존재 여부만으로 카운트하면
+            # 부실한 텍스트도 real_content로 잘못 집계될 수 있었음).
+            if has_candidate and (headline_is_real or body_is_real):
+                real_content_used_count += 1
 
             normalized_slides.append({
                 "page": index + 1,
@@ -166,18 +174,26 @@ class ContentOutputNormalizer(object):
         notes: List[str],
         page: int,
         field_name: str,
-    ) -> str:
+    ) -> Tuple[str, bool]:
+        """
+        Returns (text, is_real): `is_real` is False exactly when `value` was
+        missing/too-short and had to be replaced by `fallback_value` - i.e. when
+        none of the caller's real candidate text actually survived. Trimming for
+        being too long still counts as real (it's genuine content, just cut).
+        """
         text = str(value or "").strip()
+        is_real = True
 
         if not text or len(text) < min_len:
             notes.append(f"page {page} {field_name} missing/too short; used fallback")
             text = fallback_value
+            is_real = False
 
         if len(text) > max_len:
             notes.append(f"page {page} {field_name} too long; trimmed to {max_len} chars")
             text = text[: max_len - 1].rstrip() + "…"
 
-        return text
+        return text, is_real
 
     def _build_full_fallback(
         self,
