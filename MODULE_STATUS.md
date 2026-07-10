@@ -18,14 +18,16 @@ only Engine still in Planning.** Everything else below is implemented and verifi
 
 ## Planning
 
-- **AI Planner** — its **Decision Engine v1** (`modules/ai_planner/planner_decision_engine.py`)
-  was implemented in Sprint 15-1 — see the Sprint 15-1 entry below. It computes real
-  `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`/
-  `knowledge_priority`/`competitor_reference`/`content_strategy` values via transparent,
-  deterministic rules (reusing `PatternEngineModule`'s own classes + real Historical Input
-  aggregation) — no LLM, no external API, no fabricated values. What remains Planning is only
-  **`WorkflowEngine` wiring** (instantiation + `run()` call at the documented connection point) —
-  deliberately out of scope through Sprint 15-1.
+- **AI Planner** — its **Decision Engine v1** (`modules/ai_planner/planner_decision_engine.py`,
+  Sprint 15-1) computes real `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/
+  `selected_image_strategy`/`knowledge_priority`/`competitor_reference`/`content_strategy` values
+  via transparent, deterministic rules — no LLM, no external API, no fabricated values. Its
+  **Consumer Layer** (`consumer_contract.py`/`planner_consumer_adapter.py`, Sprint 15-2) defines
+  how existing Engines could safely treat that output as a verified hint (never a forced
+  command) — see the Sprint 15-1/15-2 entries below. What remains Planning is: (1)
+  `WorkflowEngine` wiring (instantiation + `run()` call), and (2) actually calling the Consumer
+  Layer from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/Knowledge consumption
+  code — both deliberately out of scope through Sprint 15-2.
 - Audit Engine's Competitor Comparison + Blind Spot Detection stages (extension of the
   already-implemented Audit Engine, pending Competitor Engine history accumulation across
   multiple runs — not a separate Engine).
@@ -760,6 +762,85 @@ wired into `WorkflowEngine` (explicit Sprint scope limit).
   functional issue, and `src/workflow_engine.py` edits were kept out of scope to minimize risk to
   the Protected Core file).
 
+## Sprint 15-2 Completed (AI Planner Consumer Layer)
+
+Implements how existing Engines may safely *consume* `planner_result` — still without wiring
+`AIPlannerModule` into `WorkflowEngine` and without any real Engine calling this layer yet.
+
+**CTO decision encoded**: Planner results are **verified hints, not forced commands**. Existing
+Engine selection logic and fallback are never removed. Consumption requires ALL four gates:
+(1) `planner_result` valid (`schema_valid=True`, `status="planner_decided"`), (2)
+`planner_confidence` at/above threshold, (3) Consumer Engine actually supports the hinted value,
+(4) no conflict with the Engine's own existing safety rules. Failing any gate → keep the
+Engine's existing value/logic unchanged.
+
+- New `modules/ai_planner/consumer_contract.py` (`PlannerConsumerContract`) — the shared,
+  Engine-agnostic gate logic: `is_result_valid()`, `meets_confidence_threshold()` (constant
+  `MIN_CONFIDENCE_FOR_HINT_APPLICATION = 0.5`, chosen from Sprint 15-1's observed confidence
+  values — ~0.35 for a topic that fell back to the default "트렌드" category vs. ~0.6-0.9 for a
+  genuinely classified one), `is_value_supported()`, `should_apply_hint()` (scalar fields:
+  `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`),
+  and `should_apply_list_hint()` (list fields: `knowledge_priority`/`competitor_reference` — these
+  are priority/reference hints, not exclusive choices, so they have no "safety conflict" concept,
+  only validity/confidence/per-item support checks). Never raises; any gate failure or malformed
+  input safely resolves to "do not apply".
+- New `modules/ai_planner/planner_consumer_adapter.py` (`PlannerConsumerAdapter`) — per-field
+  `resolve_*` methods that pick between the Planner's hint and an already-computed Engine default
+  (the Adapter never re-runs Pattern/Hook/CTA/Image Strategy selection itself, only chooses
+  between two pre-computed candidates):
+  - `resolve_pattern(planner_result, engine_pattern_type, topic_confidence_score, blocked)` —
+    supported values = `PatternSelector.PATTERN_TYPES`; safety conflict = `blocked` OR
+    `topic_confidence_score < PatternSelector.LOW_CONFIDENCE_THRESHOLD` (the real, existing
+    Pattern Engine safety rule that forces a safe "resource" pattern under uncertain
+    classification — reused here, not reinvented).
+  - `resolve_hook(...)`/`resolve_cta(...)` — supported values = `HookSelector.HOOK_TYPES`/
+    `CTASelector.CTA_TYPES`; safety conflict = the same `blocked` flag (a blocked category must
+    never accept any Planner hint, hook/cta included).
+  - `resolve_image_strategy(planner_result, engine_content_type)` — supported values =
+    `ImageSourceSelector.SOURCE_PRIORITY` keys (education/tutorial/ai_tools/news/community/
+    shopping/review/promotion); no established safety-conflict concept exists for content_type
+    classification, so `safety_conflict=False` always (documented as an explicit, reasoned
+    choice, not an oversight).
+  - `resolve_knowledge_priority(...)`/`resolve_competitor_reference(...)` — list hints filtered
+    to real, checkable membership (`KnowledgeExtractor.KNOWLEDGE_TYPES` for the 10 real knowledge
+    types; non-blank strings for competitor account identifiers, since accounts aren't a fixed
+    enum).
+  - Every method wrapped in try/except; any failure returns the Engine's own default value
+    unchanged (`hint_applied: False`, `source: "engine_default"`).
+- `modules/ai_planner/planner_interface.py`: added `get_consumer_adapter()` — a convenience
+  accessor returning a `PlannerConsumerAdapter` instance for a future Sprint's actual Engine
+  integration; does not itself decide anything.
+- `src/workflow_engine.py` and the real `PatternEngineModule`/`ContentModule`/
+  `ImageStrategyModule`/`KnowledgeInterface` consumption code paths: **not modified**. No Engine
+  calls this Consumer Layer yet — this Sprint only implements the consumption *rules*, per
+  explicit Sprint scope ("이번 Sprint에서는 소비 규칙만 구현한다").
+- **Tests** (new, `tests/test_ai_planner_consumer_contract.py`, 24 tests;
+  `tests/test_ai_planner_consumer_adapter.py`, 21 tests; full `test_ai_planner_*.py` suite now
+  92 tests total, all local/no network/no LLM): all four gates individually and in combination,
+  the core invariant that a rejected hint always returns the Engine's original value/logic
+  unchanged (never blanked, never altered), per-field supported-value filtering against each
+  Engine's real enum, the shared `blocked`-safety-conflict propagating to Pattern/Hook/CTA
+  consistently, list-hint item filtering, and never-raises behavior across garbage/malformed
+  `planner_result` values (`None`, non-dict, missing fields, non-numeric confidence).
+  Run via `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v` → **Ran 92 tests, OK**.
+- Verified with `py -m compileall -f src modules scripts tests` (success) and `py -m src.main`
+  (`workflow_completed`, unchanged 17-stage order confirming AI Planner still does not execute,
+  4 CardNews PNGs, `publishing_ready`).
+- **Independent Codex MCP review** (thread `019f4af3-0ec6-7580-b66f-9c7df1b027b1`): first pass
+  returned **CONDITIONAL PASS** — the scalar resolvers (`resolve_pattern`/`resolve_hook`/
+  `resolve_cta`/`resolve_image_strategy`) correctly preserved the Engine's own default on
+  rejection, but `resolve_knowledge_priority`/`resolve_competitor_reference` had no
+  Engine-supplied default parameter at all and always collapsed to `[]` on rejection — Codex
+  judged this inconsistent with the "existing Engine value never removed" invariant (harmless
+  today since nothing calls them yet, but a latent trap for whoever wires them in later). Fixed
+  by adding an `engine_default` parameter to both methods; on rejection they now return that
+  default (or `[]` if none was supplied) instead of an unconditional `[]`, with 2 new regression
+  tests plus a never-raises test (bringing `test_ai_planner_consumer_adapter.py` to 21 tests,
+  `test_ai_planner_consumer_contract.py` to 24 tests, suite total 92). Re-submitted — Codex
+  confirmed the code fix directly but flagged a leftover stale test-count sentence in this same
+  `MODULE_STATUS.md` entry (now corrected above) as the only remaining issue → final verdict
+  **APPROVED**.
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
@@ -767,8 +848,10 @@ wired into `WorkflowEngine` (explicit Sprint scope limit).
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs
 - Real Instagram Graph API connection for Analytics Engine — see ROADMAP.md "Requires External API"; until then `quality_trend` remains based on real local Performance Score history only
-- AI Planner: Decision Engine v1 implemented (Sprint 15-1); only `WorkflowEngine` wiring
-  (instantiation + `run()` call at the documented connection point) remains
+- AI Planner: Decision Engine v1 (Sprint 15-1) and Consumer Layer (Sprint 15-2) implemented;
+  remaining: `WorkflowEngine` wiring (instantiation + `run()` call) and actually calling
+  `PlannerConsumerAdapter` from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/
+  Knowledge consumption code
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior

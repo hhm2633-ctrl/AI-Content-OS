@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T15:23:07
+Updated at: 2026-07-10T16:47:16
 
 ## Execution Command
 
@@ -128,6 +128,8 @@ AI-Content-OS/
 |-- modules/
 |   |-- ai_planner/
 |   |   |-- __init__.py
+|   |   |-- consumer_contract.py
+|   |   |-- planner_consumer_adapter.py
 |   |   |-- planner_contract.py
 |   |   |-- planner_decision_engine.py
 |   |   |-- planner_interface.py
@@ -346,7 +348,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (304 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (324 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -386,7 +388,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (44 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (48 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -403,6 +405,8 @@ AI-Content-OS/
 |   |-- card_news_template.json
 |   `-- publishing_template.json
 |-- tests/
+|   |-- test_ai_planner_consumer_adapter.py
+|   |-- test_ai_planner_consumer_contract.py
 |   |-- test_ai_planner_context.py
 |   |-- test_ai_planner_contract.py
 |   |-- test_ai_planner_decision_engine.py

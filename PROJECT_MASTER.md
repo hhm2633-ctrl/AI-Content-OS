@@ -42,12 +42,13 @@ implemented vs. still Planning.
 
 ## Planning Additions
 
-- AI Planner — its Decision Engine v1 (`modules/ai_planner/planner_decision_engine.py`) was
-  implemented in Sprint 15-1 (see "AI Planner Contract" below); the only remaining Planning item
-  is `WorkflowEngine` wiring (instantiation + `run()` call), deliberately out of scope through
-  Sprint 15-1.
+- AI Planner — its Decision Engine v1 (Sprint 15-1) and Consumer Layer (Sprint 15-2) are
+  implemented (see "AI Planner Contract" below); the remaining Planning items are
+  `WorkflowEngine` wiring (instantiation + `run()` call) and actually calling the Consumer Layer
+  from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/Knowledge consumption code —
+  both deliberately out of scope through Sprint 15-2.
 
-## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A; Decision Engine v1 added Sprint 15-1)
+## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A; Decision Engine v1 added Sprint 15-1; Consumer Layer added Sprint 15-2)
 
 AI Planner is designed to eventually become the central coordinating Engine across Pattern
 Engine, Knowledge Engine, Competitor Engine, Image Strategy, Content Engine, Brand DNA Engine,
@@ -98,9 +99,26 @@ split into genuinely-available **Runtime Inputs** (from the current run, pre-Pla
   random values — any unexpected failure falls back to `build_undecided_result()` (kept as the
   exception-safety net, not the normal path). Still never fabricates a decision that isn't
   traceable to a real input.
+- `modules/ai_planner/consumer_contract.py` (`PlannerConsumerContract`, added Sprint 15-2) — the
+  CTO decision that Planner output is a **verified hint, never a forced command**, encoded as
+  four AND-gates: `is_result_valid()` (schema-valid + actually decided), `meets_confidence_threshold()`
+  (`planner_confidence >= MIN_CONFIDENCE_FOR_HINT_APPLICATION = 0.5`), `is_value_supported()`
+  (the hinted value must be a member of the Consumer Engine's own real enum), and a caller-supplied
+  `safety_conflict` flag (the Consumer Engine's own existing safety rule, e.g. Pattern Engine's
+  low-confidence-forces-"resource" fallback or a blocked category) — any gate failing means "keep
+  the existing Engine value/logic," never an exception.
+- `modules/ai_planner/planner_consumer_adapter.py` (`PlannerConsumerAdapter`, added Sprint 15-2) —
+  per-field `resolve_pattern`/`resolve_hook`/`resolve_cta`/`resolve_image_strategy`/
+  `resolve_knowledge_priority`/`resolve_competitor_reference` methods that choose between the
+  Planner's hint and an already-computed Engine default (it never re-runs Pattern/Hook/CTA/Image
+  Strategy selection itself). Supported-value sets are the real Engine enums
+  (`PatternSelector.PATTERN_TYPES`, `HookSelector.HOOK_TYPES`, `CTASelector.CTA_TYPES`,
+  `ImageSourceSelector.SOURCE_PRIORITY` keys, `KnowledgeExtractor.KNOWLEDGE_TYPES`) — nothing
+  invented. **No real Engine calls this layer yet** — `planner_interface.py` only exposes a
+  `get_consumer_adapter()` accessor for a future Sprint's actual integration.
 
-See `MODULE_STATUS.md`'s Sprint 15-0, Sprint 15-0A, and Sprint 15-1 entries for full detail and
-Codex's independent review results.
+See `MODULE_STATUS.md`'s Sprint 15-0, Sprint 15-0A, Sprint 15-1, and Sprint 15-2 entries for full
+detail and Codex's independent review results.
 
 ## Research Knowledge Base
 

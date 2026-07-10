@@ -60,16 +60,22 @@
 - Brand DNA Engine: v1 implemented (Sprint 12) — tracks actually-used hook/cta/layout/color per run on top of `config/brand_profile.json`
 - Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine's duplicate_check (Sprint 13) — records recent topic/hook/cta/layout/image combinations and flags repeat risk (does not block generation)
 - AI Planner: **Contract defined (Sprint 15-0), dependency-repaired (Sprint 15-0A), Decision
-  Engine v1 implemented (Sprint 15-1)**: input is split into Runtime (`trend_result`,
-  `topic_result`, `brand_profile` — available at the Planner's actual pre-Pattern-Engine
-  position) and Historical (`knowledge_history`, `trend_memory_history`, `competitor_history`,
-  `brand_dna_history`, `performance_history` — read from existing local storage, not the
-  current run). `modules/ai_planner/planner_decision_engine.py::PlannerDecisionEngine` computes
-  real `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/
-  `selected_image_strategy`/`knowledge_priority`/`competitor_reference`/`content_strategy`
-  values via transparent rules (reusing `PatternEngineModule`'s real classes + real Historical
-  Input aggregation, no LLM/external API/random values). What remains Planning is only
-  `WorkflowEngine` wiring (instantiation + `run()` call at the documented connection point).
+  Engine v1 implemented (Sprint 15-1), Consumer Layer implemented (Sprint 15-2)**: input is
+  split into Runtime (`trend_result`, `topic_result`, `brand_profile` — available at the
+  Planner's actual pre-Pattern-Engine position) and Historical (`knowledge_history`,
+  `trend_memory_history`, `competitor_history`, `brand_dna_history`, `performance_history` —
+  read from existing local storage, not the current run). `PlannerDecisionEngine` computes real
+  `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`/
+  `knowledge_priority`/`competitor_reference`/`content_strategy` values via transparent rules
+  (reusing `PatternEngineModule`'s real classes + real Historical Input aggregation, no
+  LLM/external API/random values). `modules/ai_planner/consumer_contract.py`
+  (`PlannerConsumerContract`) + `planner_consumer_adapter.py` (`PlannerConsumerAdapter`) define
+  how a Consumer Engine could safely treat that output as a verified hint (never a forced
+  command) via four gates: validity, confidence threshold, supported-value membership, and no
+  conflict with the Engine's own existing safety rules. What remains Planning is: (1)
+  `WorkflowEngine` wiring (instantiation + `run()` call at the documented connection point), and
+  (2) actually calling `PlannerConsumerAdapter` from `PatternEngineModule`/`ContentModule`/
+  `ImageStrategyModule`/Knowledge consumption code.
 
 # Requires External API (do not implement without explicit approval)
 

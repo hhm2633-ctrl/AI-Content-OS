@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from modules.ai_planner.planner_contract import PlannerContract
+from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter
 from modules.brand_dna_engine.brand_dna_interface import BrandDNAInterface
 from modules.brand_dna_engine.brand_profile_loader import BrandProfileLoader
 from modules.competitor_engine.competitor_interface import CompetitorInterface
@@ -13,7 +14,8 @@ from modules.trend_memory.trend_memory_interface import TrendMemoryInterface
 
 class PlannerInterface(object):
     """
-    AI Planner - Interface (Sprint 15-0, Architecture Only; extended Sprint 15-0A).
+    AI Planner - Interface (Sprint 15-0, Architecture Only; extended Sprint 15-0A;
+    Consumer Adapter accessor added Sprint 15-2).
 
     다른 Engine/향후 Sprint/Codex 검수가 AI Planner의 계약과(존재한다면) 최신
     결과를 조회할 수 있도록 준비하는 읽기 전용 API.
@@ -73,6 +75,16 @@ class PlannerInterface(object):
         except Exception as error:
             print(f"Planner Interface get_contract Failed: {error}")
             return {}
+
+    def get_consumer_adapter(self) -> PlannerConsumerAdapter:
+        """
+        Sprint 15-2에서 추가. 향후 Sprint가 Pattern/Content/Image Strategy/
+        Knowledge Engine에서 Planner 결과를 실제로 소비하려 할 때, 이 Interface
+        하나로 `PlannerConsumerAdapter`까지 얻을 수 있도록 편의 메서드로
+        노출한다. 이 메서드 자체는 어떤 판단도 하지 않는다 - 인스턴스 생성만
+        한다.
+        """
+        return PlannerConsumerAdapter()
 
     def load_historical_inputs(self) -> Dict[str, Any]:
         """

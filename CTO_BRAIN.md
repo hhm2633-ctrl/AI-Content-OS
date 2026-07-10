@@ -75,7 +75,7 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-1 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-2 갱신)
 
 - ~~`scripts/update_project_snapshot.py`의 `module_lines` 하드코딩 문자열이 Sprint 13
   재정렬을 반영하지 못함~~ — Sprint 14-1에서 수정 완료 (`MODULE_STATUS.md` Sprint 14-1 항목
@@ -92,11 +92,16 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
   PlannerDecisionEngine`)을 구현했다 - `PatternEngineModule`이 실제로 쓰는 규칙 기반 클래스를
   재사용해 `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`를 계산하고,
   Historical Input을 실제로 정렬/필터링해 `knowledge_priority`/`competitor_reference`를
-  만든다. LLM/외부 API/무작위 값 없음. 남은 것은 WorkflowEngine 실제 연결(인스턴스화 +
-  run() 호출)뿐이며, 이는 이번 Sprint 범위 밖으로 명시적으로 남겨졌다 - 연결 전 하위 Engine이
-  이 Output을 실제로 어떻게 소비할지(Pattern/Content/Image Strategy Engine의 판단을 대체할지,
-  참고만 할지) CTO 결정이 필요하다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개
-  개념인 "AI 작업 분담 라우팅"을 설명하며 `modules/ai_planner/`와 이름만 같음에 유의).
+  만든다. LLM/외부 API/무작위 값 없음. Sprint 15-2에서 그 소비 방식에 대한 CTO 결정이
+  내려졌다 - Planner 결과는 **강제 명령이 아니라 검증된 힌트**이며, 기존 Engine의 선택
+  로직/fallback은 절대 대체하지 않는다. `consumer_contract.py::PlannerConsumerContract` +
+  `planner_consumer_adapter.py::PlannerConsumerAdapter`가 이를 4단계 게이트(결과 유효성/
+  planner_confidence 기준(0.5)/Consumer Engine 지원값/기존 안전 규칙 충돌 여부)로 구현했다.
+  남은 것은 (1) WorkflowEngine 실제 연결(인스턴스화 + run() 호출)과 (2)
+  PatternEngineModule/ContentModule/ImageStrategyModule/Knowledge 소비 코드가
+  `PlannerConsumerAdapter`를 실제로 호출하도록 연결하는 것 - 둘 다 이번 Sprint 범위 밖으로
+  명시적으로 남겨졌다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개 개념인
+  "AI 작업 분담 라우팅"을 설명하며 `modules/ai_planner/`와 이름만 같음에 유의).
 - Offline-First 원칙 위반 여부는 매 Sprint 시작 전 `ROADMAP.md`의 "Requires External API"
   섹션과 대조해 확인할 것.
 
