@@ -88,23 +88,42 @@ class TestPlannerContract(unittest.TestCase):
 
     # ---- 요구사항 10: WorkflowEngine에 실제 import/인스턴스/run 호출이 없음 ----
 
-    def test_workflow_engine_has_no_real_ai_planner_wiring(self):
+    def test_workflow_engine_wires_ai_planner_between_topic_and_pattern(self):
+        """
+        Sprint 15-0/15-0A에서는 `WorkflowEngine`에 실제 연결이 없어야 한다는 것이
+        회귀 방지 대상이었다. Sprint 15-3에서 CTO가 명시적으로 실제 연결을
+        지시했으므로, 이 테스트는 그 반대 - 즉 실제 import/instantiation/실행
+        호출이 TopicEngineModule 다음, PatternEngineModule 이전 위치에 실제로
+        존재하는지 - 를 검증하는 것으로 뒤집혔다(의도적인 semantics 반전이며
+        버그가 아니다).
+        """
         source = WORKFLOW_ENGINE_PATH.read_text(encoding="utf-8")
 
-        code_only_lines = [
-            line for line in source.splitlines()
-            if not line.strip().startswith("#")
-        ]
+        # 주석에 설명용으로 같은 메서드/호출 이름이 등장할 수 있으므로(예:
+        # "_run_ai_planner()/self._run_pattern_engine() below"), 위치 비교는
+        # 코드 라인만 대상으로 한다 - 주석 문구가 실제 호출 순서 판정을 오염시키지
+        # 않도록 한다.
+        code_only_lines = [line for line in source.splitlines() if not line.strip().startswith("#")]
         code_only = "\n".join(code_only_lines)
 
-        self.assertNotIn("import AIPlannerModule", code_only)
-        self.assertNotIn("from modules.ai_planner", code_only)
-        self.assertNotIn("AIPlannerModule(", code_only)
-        self.assertNotIn(".ai_planner_module.run(", code_only)
+        self.assertIn("from modules.ai_planner.planner_module import AIPlannerModule", code_only)
+        self.assertIn("self.ai_planner_module = AIPlannerModule(", code_only)
+        self.assertIn("self.ai_planner_module.run(context)", code_only)
 
-        # 주석 자체는 존재해야 한다 (연결 위치 표시) - 주석까지 사라지면 안 된다.
-        self.assertIn("AI Planner", source)
-        self.assertIn("Architecture Only", source)
+        topic_engine_call_index = code_only.index("self.topic_engine.run(")
+        planner_call_index = code_only.index("self._run_ai_planner(")
+        pattern_engine_call_index = code_only.index("self._run_pattern_engine(")
+
+        self.assertLess(
+            topic_engine_call_index,
+            planner_call_index,
+            "AI Planner는 TopicEngineModule 실행 이후에 호출되어야 한다.",
+        )
+        self.assertLess(
+            planner_call_index,
+            pattern_engine_call_index,
+            "AI Planner는 PatternEngineModule 실행 이전에 호출되어야 한다.",
+        )
 
     def test_describe_exposes_full_contract(self):
         described = PlannerContract.describe()

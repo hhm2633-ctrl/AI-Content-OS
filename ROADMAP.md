@@ -59,23 +59,24 @@
 - Analytics Engine: v2 implemented (Sprint 13) — Sprint 12's fabricated views/saves/comments/shares/CTR/follow/DM predictions (`is_measured: false`) were removed; replaced with an honest `quality_trend` (improving/declining/stable) computed by comparing this run's real Performance Score against the real historical average in `storage/performance_score/`. Real Instagram Graph API metrics are Planning — see "Requires External API" below.
 - Brand DNA Engine: v1 implemented (Sprint 12) — tracks actually-used hook/cta/layout/color per run on top of `config/brand_profile.json`
 - Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine's duplicate_check (Sprint 13) — records recent topic/hook/cta/layout/image combinations and flags repeat risk (does not block generation)
-- AI Planner: **Contract defined (Sprint 15-0), dependency-repaired (Sprint 15-0A), Decision
-  Engine v1 implemented (Sprint 15-1), Consumer Layer implemented (Sprint 15-2)**: input is
-  split into Runtime (`trend_result`, `topic_result`, `brand_profile` — available at the
-  Planner's actual pre-Pattern-Engine position) and Historical (`knowledge_history`,
-  `trend_memory_history`, `competitor_history`, `brand_dna_history`, `performance_history` —
-  read from existing local storage, not the current run). `PlannerDecisionEngine` computes real
-  `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`/
+- AI Planner: **fully implemented (Sprint 15-0 → 15-3), no remaining Planning items.** Contract
+  (Sprint 15-0/15-0A) split input into Runtime (`trend_result`, `topic_result`, `brand_profile` —
+  available at the Planner's actual pre-Pattern-Engine position) and Historical
+  (`knowledge_history`, `trend_memory_history`, `competitor_history`, `brand_dna_history`,
+  `performance_history` — read from existing local storage, not the current run).
+  `PlannerDecisionEngine` (Sprint 15-1) computes real `selected_pattern`/
+  `selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`/
   `knowledge_priority`/`competitor_reference`/`content_strategy` values via transparent rules
   (reusing `PatternEngineModule`'s real classes + real Historical Input aggregation, no
-  LLM/external API/random values). `modules/ai_planner/consumer_contract.py`
-  (`PlannerConsumerContract`) + `planner_consumer_adapter.py` (`PlannerConsumerAdapter`) define
-  how a Consumer Engine could safely treat that output as a verified hint (never a forced
-  command) via four gates: validity, confidence threshold, supported-value membership, and no
-  conflict with the Engine's own existing safety rules. What remains Planning is: (1)
-  `WorkflowEngine` wiring (instantiation + `run()` call at the documented connection point), and
-  (2) actually calling `PlannerConsumerAdapter` from `PatternEngineModule`/`ContentModule`/
-  `ImageStrategyModule`/Knowledge consumption code.
+  LLM/external API/random values). `PlannerConsumerContract`/`PlannerConsumerAdapter`
+  (Sprint 15-2) define how a Consumer Engine safely treats that output as a verified hint (never
+  a forced command) via four gates: validity, confidence threshold, supported-value membership,
+  and no conflict with the Engine's own existing safety rules. **Sprint 15-3** wired
+  `AIPlannerModule` into `WorkflowEngine` (runs between `TopicEngineModule` and
+  `PatternEngineModule`, returns `None` — not an exception — on any failure) and connected the
+  Consumer Adapter into `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/
+  `KnowledgeModule`, each recording a `planner_consumption.*` metadata entry and none of them
+  losing their own existing selection logic or fallback behavior.
 
 # Requires External API (do not implement without explicit approval)
 

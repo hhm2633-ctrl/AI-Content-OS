@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.base_module import BaseModule
 from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 from modules.pattern_engine.cta_selector import CTASelector
@@ -23,6 +24,16 @@ class PatternEngineModule(BaseModule):
     WorkflowEngine runs this after TopicEngineModule and before ResearchModule.
     Missing inputs or calculation failures are converted into fallback pattern
     results instead of workflow failures.
+
+    Sprint 15-3: optionally accepts `planner_result` (AI Planner's Output, now
+    actually executed between TopicEngineModule and this module). It never
+    replaces `PatternSelector`/`HookSelector`/`CTASelector`/`LayoutSelector` -
+    it only decides, via `PlannerConsumerAdapter.resolve_pattern()`, whether the
+    already-computed `engine_pattern_type` should be swapped for the Planner's
+    hint (only when valid/confident/supported/not conflicting with the existing
+    low-confidence or blocked-category safety rules). `result["planner_consumption"]["pattern"]`
+    records what happened either way. If `planner_result` is `None` or the hint
+    is rejected, behavior is identical to before this Sprint.
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
@@ -52,14 +63,20 @@ class PatternEngineModule(BaseModule):
         # 축적된 Knowledge DB의 상위 pattern/layout 항목을 참고 정보로만 덧붙인다.
         self.knowledge_interface = KnowledgeInterface()
 
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): 기존 PatternSelector
+        # 선택 로직은 그대로 두고, planner_result가 유효/충분히 확신할 만하고
+        # 안전 규칙과 충돌하지 않을 때만 pattern_type을 Planner Hint로 대체한다.
+        self.planner_consumer_adapter = PlannerConsumerAdapter()
+
     def run(
         self,
         selected_topic: Optional[Dict[str, Any]] = None,
         trend_result: Optional[Dict[str, Any]] = None,
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         print("Pattern Engine Module Started")
 
-        result = self._build_result(selected_topic, trend_result)
+        result = self._build_result(selected_topic, trend_result, planner_result)
         result = self._apply_knowledge_consumption(result)
 
         try:
@@ -153,6 +170,7 @@ class PatternEngineModule(BaseModule):
         self,
         selected_topic: Optional[Dict[str, Any]],
         trend_result: Optional[Dict[str, Any]],
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         try:
             selected_topic = selected_topic or self._load_json(self.selected_topic_path)
@@ -173,7 +191,7 @@ class PatternEngineModule(BaseModule):
                 else:
                     return self._fallback_result(reason="selected_topic_missing")
 
-            return self._build_pattern_result(selected_topic, trends)
+            return self._build_pattern_result(selected_topic, trends, planner_result)
 
         except Exception as error:
             return self._fallback_result(reason=f"pattern_engine_error: {error}")
@@ -182,6 +200,7 @@ class PatternEngineModule(BaseModule):
         self,
         selected_topic: Dict[str, Any],
         trends: Any,
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         keywords, keyword_weights = self.keyword_weight_engine.compute_weights(
             selected_topic,
@@ -210,6 +229,12 @@ class PatternEngineModule(BaseModule):
             "category": category,
             "cluster": cluster,
             "confidence_score": confidence_score,
+            # blocked는 Sprint 15-3에서 추가된 필드다 - 이전에는 이 함수의 로컬
+            # 변수로만 존재해 ResearchModule/ContentModule 등 하위 소비자가 실제
+            # blocked 상태를 알 방법이 없었다. AI Planner Consumer Adapter가
+            # Content Engine 단계에서도 동일한 안전 규칙(차단 카테고리)을 적용할
+            # 수 있도록 추가한 것으로, 기존 필드는 하나도 바꾸지 않는다.
+            "blocked": blocked,
             "reason": " ".join(
                 filter(
                     None,
@@ -223,7 +248,20 @@ class PatternEngineModule(BaseModule):
         }
 
         pattern_type_result = self.pattern_selector.select(category, cluster, confidence_score)
-        pattern_type = pattern_type_result.get("pattern_type", "resource")
+        engine_pattern_type = pattern_type_result.get("pattern_type", "resource")
+
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): PatternSelector의
+        # 기존 선택은 그대로 계산해 두고, Planner Hint가 유효/충분히 확신할 만하고
+        # 지원되는 값이며 안전 규칙(차단 카테고리/낮은 confidence)과 충돌하지
+        # 않을 때만 이 값으로 교체한다. 그 외에는 항상 engine_pattern_type을 그대로
+        # 쓴다 - PatternSelector 자체를 대체하거나 제거하지 않는다.
+        pattern_consumption = self.planner_consumer_adapter.resolve_pattern(
+            planner_result=planner_result,
+            engine_pattern_type=engine_pattern_type,
+            topic_confidence_score=confidence_score,
+            blocked=blocked,
+        )
+        pattern_type = pattern_consumption.get("pattern_type", engine_pattern_type)
 
         hook_result = self.hook_selector.select(category, pattern_type)
         cta_result = self.cta_selector.select(category, pattern_type)
@@ -254,12 +292,26 @@ class PatternEngineModule(BaseModule):
             or "fallback" in collection_method
         )
 
+        planner_requested_pattern = (
+            planner_result.get("selected_pattern") if isinstance(planner_result, dict) else None
+        )
+
         return {
             "status": "pattern_selected",
             "selected_topic": selected_topic,
             "topic_intelligence": topic_intelligence,
             "pattern_plan": pattern_plan,
             "fallback_used": fallback_used,
+            "planner_consumption": {
+                "pattern": build_consumption_metadata(
+                    planner_result=planner_result,
+                    hint_applied=bool(pattern_consumption.get("hint_applied")),
+                    requested_value=planner_requested_pattern,
+                    original_value=engine_pattern_type,
+                    final_value=pattern_type,
+                    reason=pattern_consumption.get("reason", ""),
+                ),
+            },
             "created_at": datetime.now().isoformat(),
         }
 
@@ -275,6 +327,7 @@ class PatternEngineModule(BaseModule):
                 "category": "trend",
                 "cluster": "general_trend_cluster",
                 "confidence_score": 0.0,
+                "blocked": False,
                 "reason": f"fallback: {reason}",
             },
             "pattern_plan": {

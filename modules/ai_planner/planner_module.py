@@ -9,7 +9,7 @@ from modules.ai_planner.planning_result_schema import build_undecided_result, va
 
 class AIPlannerModule(BaseModule):
     """
-    AI Planner - Decision Engine v1 (Sprint 15-1).
+    AI Planner - Decision Engine v1 (Sprint 15-1; wired into WorkflowEngine Sprint 15-3).
 
     Sprint 15-0/15-0A는 Contract만 정의하는 Architecture-only Sprint였다 - 이
     클래스는 항상 `build_undecided_result()`(전부 None/[]/0.0)를 반환하는
@@ -27,9 +27,13 @@ class AIPlannerModule(BaseModule):
       정렬/필터링한 결과다. 어떤 계산이 실패해도 예외를 던지지 않고
       `build_undecided_result()`(정직한 "판단 실패" 상태)로 안전하게 대체된다.
 
-    `WorkflowEngine`에는 여전히 연결되지 않는다 (Sprint 15-1의 명시적 범위 제한:
-    "아직 WorkflowEngine에는 실제 연결하지 않는다") - `src/workflow_engine.py`에는
-    연결 위치를 나타내는 주석만 있고, 실제 인스턴스화/실행 호출은 없다.
+    Sprint 15-3에서 `WorkflowEngine`에 실제로 연결됐다 - `WorkflowEngine.__init__`이
+    이 클래스를 인스턴스화하고, `WorkflowEngine._run_ai_planner()`가
+    `TopicEngineModule` 다음/`PatternEngineModule` 이전에 `run()`을 호출한다.
+    실패하면 예외를 던지지 않고 `None`을 반환해(그 호출자 쪽 책임) 하위 Engine
+    전부가 Planner 없이 실행됐을 때와 동일하게 동작한다 - 이 클래스는 여전히
+    "Hint Layer"일 뿐 하위 Engine의 선택 로직을 대체하지 않는다
+    (`modules/ai_planner/planner_consumer_adapter.py::PlannerConsumerAdapter` 참고).
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):

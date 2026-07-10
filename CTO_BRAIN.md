@@ -75,7 +75,7 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-2 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-3 갱신)
 
 - ~~`scripts/update_project_snapshot.py`의 `module_lines` 하드코딩 문자열이 Sprint 13
   재정렬을 반영하지 못함~~ — Sprint 14-1에서 수정 완료 (`MODULE_STATUS.md` Sprint 14-1 항목
@@ -97,10 +97,14 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
   로직/fallback은 절대 대체하지 않는다. `consumer_contract.py::PlannerConsumerContract` +
   `planner_consumer_adapter.py::PlannerConsumerAdapter`가 이를 4단계 게이트(결과 유효성/
   planner_confidence 기준(0.5)/Consumer Engine 지원값/기존 안전 규칙 충돌 여부)로 구현했다.
-  남은 것은 (1) WorkflowEngine 실제 연결(인스턴스화 + run() 호출)과 (2)
-  PatternEngineModule/ContentModule/ImageStrategyModule/Knowledge 소비 코드가
-  `PlannerConsumerAdapter`를 실제로 호출하도록 연결하는 것 - 둘 다 이번 Sprint 범위 밖으로
-  명시적으로 남겨졌다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개 개념인
+  **Sprint 15-3(AI Planner 마지막 Sprint)에서 실제 통합을 완료했다** - `WorkflowEngine`이
+  `AIPlannerModule`을 실제로 인스턴스화하고 `TopicEngineModule` 다음/`PatternEngineModule`
+  이전에 `run()`을 호출하며(실패 시 예외 없이 `None` 반환, 하위 Engine 전부 기존과 동일하게
+  동작), `PatternEngineModule`/`ContentModule`(`ContentPromptBuilder`)/`ImageStrategyModule`/
+  `KnowledgeModule`이 각각 `PlannerConsumerAdapter`를 실제로 호출해 `planner_consumption.*`
+  메타데이터를 기록한다. 실제 `py -m src.main` 실행으로 Planner 실행/Hint 적용/
+  workflow_completed를 확인했다. AI Planner 관련 작업은 이제 완료됐다 - 더 이상 별도 감시
+  항목이 아니다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개 개념인
   "AI 작업 분담 라우팅"을 설명하며 `modules/ai_planner/`와 이름만 같음에 유의).
 - Offline-First 원칙 위반 여부는 매 Sprint 시작 전 `ROADMAP.md`의 "Requires External API"
   섹션과 대조해 확인할 것.

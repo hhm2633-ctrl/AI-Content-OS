@@ -1,9 +1,10 @@
 # Engine Status (Implemented vs. Planning)
 
 Corrected 2026-07-10 (Sprint 14-0 doc audit): this section was previously titled "Planning
-Additions" even though almost everything in it was already implemented. **AI Planner is the
-only Engine still in Planning.** Everything else below is implemented and verified against
-`src/workflow_engine.py`.
+Additions" even though almost everything in it was already implemented. AI Planner was the
+last Engine still in Planning; **Sprint 15-3 completed its `WorkflowEngine` wiring and Consumer
+Layer integration**, so it has moved to Implemented below. Everything in this section is
+implemented and verified against `src/workflow_engine.py`.
 
 ## Implemented
 
@@ -15,19 +16,16 @@ only Engine still in Planning.** Everything else below is implemented and verifi
 - Brand DNA Engine: v1 implemented (Sprint 12)
 - Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine (Sprint 13)
 - Performance Score: v1 implemented (Sprint 12, shared by Audit/Learning/Analytics)
+- **AI Planner**: Contract (Sprint 15-0/15-0A), Decision Engine v1 (Sprint 15-1), Consumer Layer
+  (Sprint 15-2), and actual `WorkflowEngine` wiring + Consumer Layer integration into
+  Pattern/Content/Image Strategy/Knowledge (Sprint 15-3) are all complete — see the Sprint 15-3
+  entry below for the full integration. AI Planner runs as a **Hint Layer** between
+  `TopicEngineModule` and `PatternEngineModule`; every downstream Engine independently decides
+  (via `PlannerConsumerAdapter`) whether to use its hints, and none of their own selection logic
+  or fallback behavior was removed.
 
 ## Planning
 
-- **AI Planner** — its **Decision Engine v1** (`modules/ai_planner/planner_decision_engine.py`,
-  Sprint 15-1) computes real `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/
-  `selected_image_strategy`/`knowledge_priority`/`competitor_reference`/`content_strategy` values
-  via transparent, deterministic rules — no LLM, no external API, no fabricated values. Its
-  **Consumer Layer** (`consumer_contract.py`/`planner_consumer_adapter.py`, Sprint 15-2) defines
-  how existing Engines could safely treat that output as a verified hint (never a forced
-  command) — see the Sprint 15-1/15-2 entries below. What remains Planning is: (1)
-  `WorkflowEngine` wiring (instantiation + `run()` call), and (2) actually calling the Consumer
-  Layer from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/Knowledge consumption
-  code — both deliberately out of scope through Sprint 15-2.
 - Audit Engine's Competitor Comparison + Blind Spot Detection stages (extension of the
   already-implemented Audit Engine, pending Competitor Engine history accumulation across
   multiple runs — not a separate Engine).
@@ -841,6 +839,141 @@ Engine's existing value/logic unchanged.
   `MODULE_STATUS.md` entry (now corrected above) as the only remaining issue → final verdict
   **APPROVED**.
 
+## Sprint 15-3 Completed (AI Planner Workflow Integration — final AI Planner Sprint)
+
+Wires `AIPlannerModule` into `WorkflowEngine` for real and connects the Consumer Layer
+(Sprint 15-2) into the actual Pattern/Content/Image Strategy/Knowledge Engines. **CTO decision
+encoded throughout**: Planner output is a **verified hint, never a forced command** — no
+existing Engine's selection logic or fallback was removed, and if the Planner is unavailable,
+raises, or its hint fails any gate, every downstream Engine behaves exactly as it did before
+this Sprint.
+
+- `src/workflow_engine.py`: real `from modules.ai_planner.planner_module import AIPlannerModule`
+  import, `self.ai_planner_module = AIPlannerModule(self.config)` in `__init__`, and a new
+  `_run_ai_planner(trend_result, topic_result)` method called between
+  `self.topic_engine.run()` and `self._run_pattern_engine()` — builds a `PlanningContext` from
+  real Runtime Input (`trend_result`/`topic_result`) plus real Historical Input
+  (`self.ai_planner_module.interface.load_historical_inputs()`/`load_brand_profile()`, reused
+  unchanged from Sprint 15-0A) and calls `self.ai_planner_module.run(context)`. **Returns `None`
+  on any exception** — never propagates, matching "Planner Exception → 기존 Workflow 그대로."
+  `planner_result` is threaded through to `_run_pattern_engine()`, `ContentModule.run()`,
+  `ImageStrategyModule.run()`, and `_run_knowledge_engine()` (all as an added optional trailing
+  argument, default `None`), and included in `final_result["planner"]`.
+- `modules/pattern_engine/pattern_engine_module.py`: `run()` gained an optional `planner_result`
+  parameter. After `PatternSelector.select()` computes its own `pattern_type` as before,
+  `PlannerConsumerAdapter.resolve_pattern()` decides whether to swap it for the Planner's hint
+  (gated on validity/confidence/support/the *same* `blocked`/`LOW_CONFIDENCE_THRESHOLD` safety
+  rule Pattern Engine already enforced) — the merged value then feeds
+  `HookSelector`/`CTASelector`/`LayoutSelector` exactly as before, so hook/cta/layout stay
+  internally consistent with whichever pattern_type won. Result gains
+  `planner_consumption.pattern`. Also added `topic_intelligence.blocked` (previously a local
+  variable never exposed to downstream consumers — a purely additive field so Content Engine
+  could apply the same safety rule without duplicating `TopicClassifier`'s blocked-category
+  logic).
+- `modules/content/hook_strategy.py`/`cta_strategy.py`: each `select()` gained an optional
+  `hook_type_override`/`cta_type_override` parameter (default `None` = 100% unchanged existing
+  behavior). When supplied and a member of the class's own `HOOK_TYPES`/`CTA_TYPES`, it's used
+  in place of the pattern-based selection, but `hook_line`/`cta_line` generation and scoring
+  still run through the exact same code — an override away from the pattern-ideal type
+  naturally scores lower via the *existing* scoring rule, not a new one. `CTAStrategy`'s
+  platform-override step was guarded to never re-clobber an applied Planner override.
+  `modules/content/content_prompt_builder.py`: `build()` gained an optional `planner_result`
+  parameter; computes each Engine's own baseline hook/cta first, then asks
+  `PlannerConsumerAdapter.resolve_hook()`/`resolve_cta()` (safety conflict = the new
+  `topic_intelligence.blocked`) whether to re-run `select()` with the override. A separate
+  `content_strategy` hint (freeform text, no enum) is gated only by
+  `PlannerConsumerContract.is_result_valid()`/`meets_confidence_threshold()` (reused directly,
+  no new judgment logic) and appended as a labeled reference line in the system prompt — the
+  LLM's required JSON schema is untouched. `meta.planner_consumption` records `hook`/`cta`/
+  `content_strategy`. `modules/content/content_module.py`: `run()` gained an optional
+  `planner_result` parameter, passed through; `content_result["planner_consumption"]["content"]`
+  is copied up from the prompt builder's `meta`, or — for the legacy prompt path (no
+  `pattern_plan`), where the Consumer Adapter is never even invoked — an honest
+  `planner_mode: "unavailable"` record is written instead of fabricating one.
+- `modules/image_strategy/image_strategy_module.py`: `run()` gained an optional
+  `planner_result` parameter. `ContentTypeClassifier.classify()` still computes its own
+  `content_type` as before; `PlannerConsumerAdapter.resolve_image_strategy()` (supported values =
+  `ImageSourceSelector.SOURCE_PRIORITY` keys, no safety-conflict concept — documented as a
+  reasoned choice, not a gap) decides whether to swap it. Because the merge only changes *which*
+  `content_type` bucket is used, and `ImageSourceSelector`/`AIImageDecision`'s real-image-first,
+  AI-image-last-resort logic runs unchanged afterward, the Planner has no way to force
+  `need_ai_image=True` — it can only nudge which existing priority chain is consulted. Result
+  gains `planner_consumption.image_strategy`.
+- `modules/knowledge_engine/knowledge_module.py`: `run()` gained an optional `planner_result`
+  parameter. New `_apply_planner_priority_boost()` calls
+  `PlannerConsumerAdapter.resolve_knowledge_priority()` and, only for **this run's newly
+  extracted `scored_items`**, adds a small `+0.05` bonus to `overall_score` for items whose
+  `type` is in the accepted priority list — `KnowledgeRanker.rank()` is still the only thing
+  that sorts (called completely unmodified, immediately after). The full-DB re-rank step
+  (`globally_ranked_records`) is **not** touched, so historical records' real accumulated scores
+  are never retroactively altered by an ephemeral per-run hint. Result gains
+  `planner_consumption.knowledge`.
+- `modules/card_news/card_news_module.py`: `run()` (signature unchanged — `content_result`/
+  `image_strategy_result` were already passed in) now also builds
+  `result["planner_influence"]` by summarizing the `planner_consumption` sub-dicts already
+  recorded by Content/Image Strategy — no new selection, no rendering change.
+  `modules/publishing/publishing_module.py`: `run()` (signature unchanged) copies that summary
+  into `result["planner_strategy"]` — no change to caption/hashtag/queue generation.
+- **Metadata Contract**: every consumption point uses the shared
+  `modules/ai_planner/planner_consumer_adapter.py::build_consumption_metadata()` helper (pure
+  formatting, no judgment logic) so `planner_consumption.*` has an identical shape everywhere:
+  `planner_available`, `planner_applied`, `planner_mode` (`"unavailable"`/`"fallback"`/
+  `"preferred"`), `planner_confidence`, `requested_value`, `original_value`, `final_value`,
+  `reason`, `fallback_used` (`= not planner_applied` — distinct from other Engines'
+  "computation itself failed" `fallback_used` meaning, documented in the helper's docstring to
+  avoid confusion).
+- **Workflow Protection verified live** (`storage/workflow_results/` from an actual
+  `py -m src.main` run): `02b_planner_result.json` shows a real decided result
+  (`selected_pattern: "number_list"`, `planner_confidence: 0.87`); `03_pattern_result.json`,
+  `05_content_result.json`, `05b_image_strategy_result.json`, `10_knowledge_result.json` all
+  show `planner_consumption` with `planner_applied: true` and correct `requested_value`/
+  `original_value`/`final_value` (e.g. Content Engine's own CTA baseline `"share"` was
+  legitimately overridden to the Planner's `"save"`, proving the mechanism isn't a no-op);
+  `08_card_news_result.json.planner_influence.any_hint_applied` and
+  `09_publishing_result.json.planner_strategy.any_hint_applied` are both `true`;
+  `99_final_result.json.planner.status == "planner_decided"`.
+- **Tests**: existing `test_ai_planner_*.py` (92 tests) and `test_content_output_*.py`
+  (33 tests) suites re-run unchanged and pass — one *intentional* update:
+  `tests/test_ai_planner_contract.py::test_workflow_engine_has_no_real_ai_planner_wiring` (a
+  Sprint 15-0A regression guard asserting no wiring existed) was renamed to
+  `test_workflow_engine_wires_ai_planner_between_topic_and_pattern` and rewritten to assert the
+  opposite — that real import/instantiation/execution now exist, in the correct order — since
+  Sprint 15-3's explicit purpose is to add exactly that wiring. New
+  `tests/test_workflow_planner_integration.py` (14 tests, all local/offline — a lightweight
+  stub is used instead of a full `WorkflowEngine()` instance for `_run_ai_planner`/
+  `_run_pattern_engine` tests, since constructing the full engine pulls in `ContentModule`'s
+  `LLMClient`, which raises without an API key even before any network call): Planner execution
+  position (static source order check), Planner exception/`None` recovery, each of the four
+  Consumer Engines applying a hint and recording metadata, `blocked`-category rejection,
+  identical `pattern_type` output with vs. without a (low-confidence, rejected) Planner result,
+  and never-raises behavior across `None`/malformed `planner_result` for every integration
+  point. Full combined run: `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v`
+  (92 OK), `-p "test_content_output_*.py" -v` (33 OK), `-p "test_workflow_planner_integration.py"
+  -v` (14 OK).
+- Verified with `py -m compileall -f src modules scripts tests` (success) and `py -m src.main`
+  (`workflow_completed`; **AI Planner actually executes now** — `"AI Planner Module Started
+  (Decision Engine v1)"`/`"...Finished..."` appear in the run log, unlike every prior Sprint;
+  unchanged 17-Engine order otherwise; 4 CardNews PNGs; `publishing_ready`).
+- **Independent Codex MCP review** (thread `019f4b1c-2905-7030-811f-feeebe9fa19b`): first pass
+  returned **CONDITIONAL PASS** — one real bug found: `CardNewsModule._build_planner_influence()`
+  checked `content_consumption.get("planner_applied")` directly, but unlike
+  `image_strategy_result`'s flat `planner_consumption.image_strategy`,
+  `content_result["planner_consumption"]["content"]` is nested
+  (`{"hook": {...}, "cta": {...}, "content_strategy": {...}}`) — so `any_hint_applied` silently
+  evaluated to `False` for Content's contribution regardless of whether a hook/cta/
+  content_strategy hint was actually applied (the live verification run's `any_hint_applied:
+  true` only happened to be correct because Image Strategy's flat check passed independently,
+  masking the bug). Fixed by checking each nested `content_consumption` sub-entry's
+  `planner_applied` instead of the (nonexistent) top-level key; `PublishingModule` inherited the
+  fix automatically since it only copies CardNews's already-correct summary. Also addressed two
+  non-blocking Codex notes: a stale `planner_module.py` docstring still claiming no
+  `WorkflowEngine` connection (updated), and added the suggested CardNews/Publishing
+  planner-summary tests plus a `PatternEngineModule` blocked-category rejection integration test
+  (bringing `test_workflow_planner_integration.py` to 19 tests). Re-verified
+  `py -m compileall`, all three required test-discovery commands, and `py -m src.main`
+  (`workflow_completed`) after the fix. Re-submitted — Codex confirmed the fix directly resolves
+  the bug (not a symptom patch) and found no new issues → final verdict **APPROVED**.
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
@@ -848,10 +981,10 @@ Engine's existing value/logic unchanged.
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs
 - Real Instagram Graph API connection for Analytics Engine — see ROADMAP.md "Requires External API"; until then `quality_trend` remains based on real local Performance Score history only
-- AI Planner: Decision Engine v1 (Sprint 15-1) and Consumer Layer (Sprint 15-2) implemented;
-  remaining: `WorkflowEngine` wiring (instantiation + `run()` call) and actually calling
-  `PlannerConsumerAdapter` from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/
-  Knowledge consumption code
+- AI Planner: fully implemented and wired (Sprint 15-0 → 15-3) — no remaining Planner work.
+  Future consideration (not scheduled): tuning `MIN_CONFIDENCE_FOR_HINT_APPLICATION`/the Brand
+  DNA override observation threshold once more real runs accumulate and hint-acceptance rates
+  can be observed in practice.
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior

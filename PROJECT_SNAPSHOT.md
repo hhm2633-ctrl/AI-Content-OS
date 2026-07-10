@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T16:47:16
+Updated at: 2026-07-10T17:34:01
 
 ## Execution Command
 
@@ -348,7 +348,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (324 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (344 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -388,7 +388,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (48 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (52 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -398,7 +398,7 @@ AI-Content-OS/
 |   |   |-- trend_result.json
 |   |   `-- trend_run_log.jsonl
 |   |-- workflow_results/
-|   |   `-- (38 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (39 runtime file(s) omitted; gitignored, see .gitignore)
 |   `-- README.md
 |-- templates/
 |   |-- card_news_layout_rules.json
@@ -413,7 +413,8 @@ AI-Content-OS/
 |   |-- test_ai_planner_module.py
 |   |-- test_ai_planner_schema.py
 |   |-- test_content_output_normalizer.py
-|   `-- test_content_output_validator.py
+|   |-- test_content_output_validator.py
+|   `-- test_workflow_planner_integration.py
 |-- utils/
 |   `-- __init__.py
 |-- workflows/

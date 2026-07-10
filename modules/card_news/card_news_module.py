@@ -775,9 +775,62 @@ class CardNewsModule(BaseModule):
         self._apply_knowledge_consumption(result)
         result["card_news_quality"] = self._build_card_news_quality(result)
         result["image_sourcing_status"] = self._build_image_sourcing_status(image_strategy_result or {}, cards)
+        result["planner_influence"] = self._build_planner_influence(content_result, image_strategy_result)
 
         print("Card News Module Finished")
         return result
+
+    def _build_planner_influence(
+        self,
+        content_result: Dict[str, Any],
+        image_strategy_result: Optional[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """
+        AI Planner Consumer Adapter 실제 연결(Sprint 15-3): CardNewsModule 자체는
+        Planner Hint를 소비하지 않는다(고를 만한 새로운 선택지가 없음) - 대신
+        이미 Content/Image Strategy 단계에서 기록된 `planner_consumption`을
+        모아 "이번 카드뉴스에 Planner 영향이 실제로 있었는지"만 요약한다.
+        렌더링 로직은 전혀 건드리지 않는다.
+        """
+        try:
+            content_consumption = {}
+            if isinstance(content_result, dict):
+                content_consumption = (content_result.get("planner_consumption") or {}).get("content", {}) or {}
+
+            image_strategy_consumption = {}
+            if isinstance(image_strategy_result, dict):
+                image_strategy_consumption = (
+                    image_strategy_result.get("planner_consumption") or {}
+                ).get("image_strategy", {}) or {}
+
+            # content_consumption은 image_strategy_consumption과 달리 평평한 단일
+            # 메타데이터 dict가 아니라 {"hook": {...}, "cta": {...},
+            # "content_strategy": {...}} 형태로 중첩되어 있다(Content Engine이 세
+            # 가지를 독립적으로 판정하므로) - 최상위에 "planner_applied" 키가 직접
+            # 있는 게 아니라 각 하위 항목 안에 있다. Codex 검수에서 지적된 대로,
+            # 하위 항목을 확인하지 않으면 Content가 실제로 Hint를 적용했어도
+            # any_hint_applied가 항상 False로 잘못 계산된다.
+            content_hint_applied = any(
+                bool(item.get("planner_applied"))
+                for item in content_consumption.values()
+                if isinstance(item, dict)
+            )
+
+            any_hint_applied = content_hint_applied or bool(image_strategy_consumption.get("planner_applied"))
+
+            return {
+                "any_hint_applied": any_hint_applied,
+                "content": content_consumption,
+                "image_strategy": image_strategy_consumption,
+            }
+        except Exception as error:
+            print(f"Card News Planner Influence Summary Failed: {error}")
+            return {
+                "any_hint_applied": False,
+                "content": {},
+                "image_strategy": {},
+                "reason": f"planner_influence 계산 실패: {error}",
+            }
 
     def _build_image_sourcing_status(
         self,

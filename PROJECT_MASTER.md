@@ -11,6 +11,8 @@ instruction):
 
 - Trend collection
 - Topic selection
+- AI Planner (Hint Layer, wired Sprint 15-3 — see "AI Planner Contract" below; never a forced
+  decision, every downstream Engine keeps its own selection logic and fallback)
 - Pattern selection
 - Research
 - Content generation
@@ -42,13 +44,11 @@ implemented vs. still Planning.
 
 ## Planning Additions
 
-- AI Planner — its Decision Engine v1 (Sprint 15-1) and Consumer Layer (Sprint 15-2) are
-  implemented (see "AI Planner Contract" below); the remaining Planning items are
-  `WorkflowEngine` wiring (instantiation + `run()` call) and actually calling the Consumer Layer
-  from `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/Knowledge consumption code —
-  both deliberately out of scope through Sprint 15-2.
+No remaining Planning items from the original list — AI Planner (the last one) completed its
+`WorkflowEngine` wiring and Consumer Layer integration in Sprint 15-3 (see "AI Planner Contract"
+below and `MODULE_STATUS.md`'s Sprint 15-3 entry).
 
-## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A; Decision Engine v1 added Sprint 15-1; Consumer Layer added Sprint 15-2)
+## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A; Decision Engine v1 added Sprint 15-1; Consumer Layer added Sprint 15-2; wired into WorkflowEngine Sprint 15-3)
 
 AI Planner is designed to eventually become the central coordinating Engine across Pattern
 Engine, Knowledge Engine, Competitor Engine, Image Strategy, Content Engine, Brand DNA Engine,
@@ -86,8 +86,10 @@ split into genuinely-available **Runtime Inputs** (from the current run, pre-Pla
 - `modules/ai_planner/planner_module.py` (`AIPlannerModule`) — a thin entry point that
   normalizes any input into a `PlanningContext` and delegates to
   `planner_decision_engine.py::PlannerDecisionEngine` for the real decision, then validates the
-  result with `validate_schema()`. Not wired into `WorkflowEngine`; only a comment marks the
-  intended connection point (after `TopicEngineModule`, before `PatternEngineModule`).
+  result with `validate_schema()`. **Wired into `WorkflowEngine` since Sprint 15-3** —
+  `WorkflowEngine.__init__` instantiates it, and `WorkflowEngine._run_ai_planner()` calls
+  `run()` between `TopicEngineModule` and `PatternEngineModule`, returning `None` (not raising)
+  on any failure.
 - `modules/ai_planner/planner_decision_engine.py` (`PlannerDecisionEngine`, added Sprint 15-1) —
   the actual Decision Engine. Computes `selected_pattern`/`selected_hook_strategy`/
   `selected_cta_strategy` by reusing the exact same rule-based classes `PatternEngineModule`
@@ -114,11 +116,19 @@ split into genuinely-available **Runtime Inputs** (from the current run, pre-Pla
   Strategy selection itself). Supported-value sets are the real Engine enums
   (`PatternSelector.PATTERN_TYPES`, `HookSelector.HOOK_TYPES`, `CTASelector.CTA_TYPES`,
   `ImageSourceSelector.SOURCE_PRIORITY` keys, `KnowledgeExtractor.KNOWLEDGE_TYPES`) — nothing
-  invented. **No real Engine calls this layer yet** — `planner_interface.py` only exposes a
-  `get_consumer_adapter()` accessor for a future Sprint's actual integration.
+  invented. **Actually called since Sprint 15-3** by `PatternEngineModule.run()`
+  (`resolve_pattern`), `ContentPromptBuilder.build()` (`resolve_hook`/`resolve_cta`),
+  `ImageStrategyModule.run()` (`resolve_image_strategy`), and `KnowledgeModule.run()`
+  (`resolve_knowledge_priority`, applied as a small `overall_score` boost to this run's newly
+  extracted items only — `KnowledgeRanker` still does all the actual sorting). Every one of
+  these Engines keeps its own existing selection logic/fallback fully intact; the Adapter only
+  chooses between the Engine's own already-computed value and the Planner's hint, and every
+  consumption point records a `planner_consumption.*` entry built by the shared
+  `build_consumption_metadata()` helper (`planner_available`/`planner_applied`/`planner_mode`/
+  `planner_confidence`/`requested_value`/`original_value`/`final_value`/`reason`/`fallback_used`).
 
-See `MODULE_STATUS.md`'s Sprint 15-0, Sprint 15-0A, Sprint 15-1, and Sprint 15-2 entries for full
-detail and Codex's independent review results.
+See `MODULE_STATUS.md`'s Sprint 15-0, Sprint 15-0A, Sprint 15-1, Sprint 15-2, and Sprint 15-3
+entries for full detail and Codex's independent review results.
 
 ## Research Knowledge Base
 

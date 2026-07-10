@@ -109,6 +109,7 @@ class HookStrategy:
         topic_intelligence: Optional[Dict[str, Any]] = None,
         brand_profile: Optional[Dict[str, Any]] = None,
         keyword: str = "",
+        hook_type_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
             return self._select(
@@ -116,6 +117,7 @@ class HookStrategy:
                 topic_intelligence or {},
                 brand_profile or {},
                 str(keyword or ""),
+                hook_type_override,
             )
         except Exception:
             return {
@@ -132,11 +134,20 @@ class HookStrategy:
         topic_intelligence: Dict[str, Any],
         brand_profile: Dict[str, Any],
         keyword: str,
+        hook_type_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         pattern_type = str(pattern_plan.get("pattern_type", ""))
         upstream_hook = str(pattern_plan.get("hook_type", ""))
 
-        if pattern_type in self.PATTERN_HOOK_MAP:
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): hook_type_override는
+        # ContentPromptBuilder가 PlannerConsumerAdapter.resolve_hook()으로 이미
+        # "적용해도 안전하다"고 판정한 값만 넘긴다 - 이 클래스는 그 판단을 하지
+        # 않고, 넘어온 값이 실제로 이 클래스가 아는 hook_type인지만 다시 확인한다
+        # (이중 방어). override가 없거나 알 수 없는 값이면 기존 로직을 그대로 쓴다.
+        if hook_type_override and hook_type_override in self.HOOK_TYPES:
+            hook_type = hook_type_override
+            reason = f"AI Planner Hint에 따라 '{hook_type}' 훅으로 재지정함."
+        elif pattern_type in self.PATTERN_HOOK_MAP:
             hook_type = self.PATTERN_HOOK_MAP[pattern_type]
             reason = (
                 f"pattern_type '{pattern_type}' 콘텐츠 목적에 맞춰 Content Engine이 "

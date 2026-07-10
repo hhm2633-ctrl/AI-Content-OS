@@ -133,6 +133,7 @@ class CTAStrategy:
         topic_intelligence: Optional[Dict[str, Any]] = None,
         brand_profile: Optional[Dict[str, Any]] = None,
         keyword: str = "",
+        cta_type_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         try:
             return self._select(
@@ -140,6 +141,7 @@ class CTAStrategy:
                 topic_intelligence or {},
                 brand_profile or {},
                 str(keyword or ""),
+                cta_type_override,
             )
         except Exception:
             return {
@@ -157,13 +159,22 @@ class CTAStrategy:
         topic_intelligence: Dict[str, Any],
         brand_profile: Dict[str, Any],
         keyword: str,
+        cta_type_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         pattern_type = str(pattern_plan.get("pattern_type", ""))
         upstream_cta = str(pattern_plan.get("cta_type", ""))
         layout_type = str(pattern_plan.get("layout_type", ""))
         platform = self._load_platform()
 
-        if pattern_type in self.PATTERN_CTA_MAP:
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): cta_type_override는
+        # ContentPromptBuilder가 PlannerConsumerAdapter.resolve_cta()로 이미
+        # "적용해도 안전하다"고 판정한 값만 넘긴다 - 이 클래스는 넘어온 값이 실제로
+        # 이 클래스가 아는 cta_type인지만 다시 확인한다(이중 방어). override가
+        # 없거나 알 수 없는 값이면 기존 로직을 그대로 쓴다.
+        if cta_type_override and cta_type_override in self.CTA_TYPES:
+            cta_type = cta_type_override
+            reason = f"AI Planner Hint에 따라 '{cta_type}' CTA로 재지정함."
+        elif pattern_type in self.PATTERN_CTA_MAP:
             cta_type = self.PATTERN_CTA_MAP[pattern_type]
             reason = (
                 f"pattern_type '{pattern_type}' 콘텐츠 목적에 맞춰 Content Engine이 "
@@ -176,8 +187,13 @@ class CTAStrategy:
             cta_type = self.DEFAULT_CTA_TYPE
             reason = "pattern_type/cta_type 정보가 부족해 기본 CTA로 대체함."
 
+        planner_hint_applied = bool(cta_type_override and cta_type_override in self.CTA_TYPES)
         platform_overrides = self.PLATFORM_CTA_OVERRIDES.get(platform, {})
-        if pattern_type in platform_overrides:
+
+        # AI Planner Hint가 이미 적용된 경우, platform override가 그 위에 다시
+        # 덮어쓰지 않는다 - 플랫폼 매핑은 "Pattern Engine 기본값"을 위한 보정이지
+        # 이미 검증되어 채택된 Planner Hint를 대체할 규칙이 아니다.
+        if not planner_hint_applied and pattern_type in platform_overrides:
             overridden_cta = platform_overrides[pattern_type]
             if overridden_cta != cta_type:
                 cta_type = overridden_cta

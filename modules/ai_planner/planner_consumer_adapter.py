@@ -19,10 +19,11 @@ class PlannerConsumerAdapter(object):
     호출자가 이미 실행한 결과를 그대로 인자로 받는다. 선택 기준은 전부
     `consumer_contract.py::PlannerConsumerContract`에 있다.
 
-    아직 어떤 실제 Engine(`PatternEngineModule`/`ContentModule`/
-    `ImageStrategyModule`/`KnowledgeInterface` 소비 코드)도 이 Adapter를
-    호출하지 않는다 - Sprint 15-2의 범위는 "소비 규칙 구현"이며, 실제 Engine
-    통합과 `WorkflowEngine`에서의 `AIPlannerModule` 실행은 여전히 범위 밖이다.
+    Sprint 15-2에서는 어떤 실제 Engine도 이 Adapter를 호출하지 않았다("소비 규칙
+    구현"만이 범위였다). Sprint 15-3에서 `PatternEngineModule`/`ContentModule`/
+    `ImageStrategyModule`/`KnowledgeModule`이 실제로 이 Adapter를 호출하도록
+    연결됐고, `WorkflowEngine`도 `AIPlannerModule`을 실제로 실행한다 - 자세한
+    통합 지점은 각 모듈의 `run()`과 `src/workflow_engine.py`를 참고.
 
     모든 메서드는 예외를 던지지 않는다 - 어떤 이유로든 판정이 실패하면 항상
     Engine의 기존 기본값을 그대로 반환한다(Hint 미적용과 동일하게 취급).
@@ -227,4 +228,74 @@ class PlannerConsumerAdapter(object):
             "hint_applied": False,
             "source": "engine_default",
             "reason": reason,
+        }
+
+
+def build_consumption_metadata(
+    planner_result: Optional[Dict[str, Any]],
+    hint_applied: bool,
+    requested_value: Any,
+    original_value: Any,
+    final_value: Any,
+    reason: str,
+) -> Dict[str, Any]:
+    """
+    AI Planner Consumption Metadata (Sprint 15-3).
+
+    각 Consumer Engine(Pattern/Content/Image Strategy/Knowledge)이 `planner_consumption`
+    필드에 기록할 표준 형태를 한 곳에서 만든다 - 필드 이름/의미가 Engine마다
+    제각각이 되는 것을 막기 위한 순수 포맷팅 헬퍼다(판단 로직 없음, 새 Engine
+    아님). 예외를 던지지 않는다.
+
+    - `planner_available`: 이번 실행에서 Planner가 실제로 판단을 냈는가
+      (`status == "planner_decided"`) - Planner가 실패했거나(`None`) 아직
+      결정하지 못한 경우(`planner_not_decided`) `False`.
+    - `planner_mode`: "unavailable"(Planner 결과 없음) / "fallback"(Planner는
+      있었지만 게이트를 통과 못해 미적용) / "preferred"(Hint 적용됨).
+    - `fallback_used`: Hint가 적용되지 않아 기존 Engine 기본값을 그대로 썼는가
+      (`not hint_applied`) - 다른 Engine들의 "계산 자체가 실패했다"는 의미의
+      `fallback_used`와는 별개로, 여기서는 "Planner Hint 대신 기존 Engine 값을
+      썼다"는 뜻이다.
+    """
+    try:
+        planner_available = (
+            isinstance(planner_result, dict) and planner_result.get("status") == "planner_decided"
+        )
+
+        planner_confidence = 0.0
+        if isinstance(planner_result, dict):
+            try:
+                planner_confidence = float(planner_result.get("planner_confidence", 0.0) or 0.0)
+            except (TypeError, ValueError):
+                planner_confidence = 0.0
+
+        if not planner_available:
+            planner_mode = "unavailable"
+        elif hint_applied:
+            planner_mode = "preferred"
+        else:
+            planner_mode = "fallback"
+
+        return {
+            "planner_available": planner_available,
+            "planner_applied": bool(hint_applied),
+            "planner_mode": planner_mode,
+            "planner_confidence": planner_confidence,
+            "requested_value": requested_value,
+            "original_value": original_value,
+            "final_value": final_value,
+            "reason": reason,
+            "fallback_used": not bool(hint_applied),
+        }
+    except Exception as error:
+        return {
+            "planner_available": False,
+            "planner_applied": False,
+            "planner_mode": "unavailable",
+            "planner_confidence": 0.0,
+            "requested_value": requested_value,
+            "original_value": original_value,
+            "final_value": original_value,
+            "reason": f"consumption metadata 생성 실패: {error}",
+            "fallback_used": True,
         }

@@ -1,6 +1,7 @@
 from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
+from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.base_module import BaseModule
 from modules.knowledge_engine.duplicate_detector import KnowledgeDuplicateDetector
 from modules.knowledge_engine.knowledge_classifier import KnowledgeClassifier
@@ -52,6 +53,13 @@ class KnowledgeModule(BaseModule):
         # Interface는 다른 Engine이 향후 재사용할 수 있도록 준비만 해 둔다.
         self.interface = KnowledgeInterface(self.storage, self.index)
 
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): KnowledgeRanker는
+        # 그대로 두고, planner_result.knowledge_priority가 유효/충분히 확신할
+        # 만하면 이번 실행에서 새로 추출된 항목 중 그 타입에 해당하는 것만
+        # overall_score에 소폭 boost를 준다("Priority Boost만 적용"). 정렬 자체는
+        # 항상 KnowledgeRanker가 그대로 수행한다("Ranker 제거 금지").
+        self.planner_consumer_adapter = PlannerConsumerAdapter()
+
         try:
             self.storage.ensure_exists()
         except Exception as error:
@@ -67,6 +75,7 @@ class KnowledgeModule(BaseModule):
         publishing_result: Optional[Dict[str, Any]] = None,
         trend_result: Optional[Dict[str, Any]] = None,
         topic_result: Optional[Dict[str, Any]] = None,
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         print("Knowledge Module Started")
 
@@ -82,7 +91,7 @@ class KnowledgeModule(BaseModule):
         }
 
         try:
-            result = self._build_result(context)
+            result = self._build_result(context, planner_result)
         except Exception as error:
             print(f"Knowledge Module Failed, safe fallback returned: {error}")
             result = self._fallback_result(reason=f"knowledge_module_exception: {error}")
@@ -90,11 +99,66 @@ class KnowledgeModule(BaseModule):
         print("Knowledge Module Finished")
         return result
 
-    def _build_result(self, context: Dict[str, Any]) -> Dict[str, Any]:
+    PLANNER_PRIORITY_BOOST_AMOUNT = 0.05
+
+    def _apply_planner_priority_boost(
+        self,
+        scored_items: List[Dict[str, Any]],
+        planner_result: Optional[Dict[str, Any]],
+    ) -> "tuple[List[Dict[str, Any]], Dict[str, Any]]":
+        """
+        이번 실행에서 새로 추출/점수화된 `scored_items`에만 boost를 적용한다 -
+        이미 storage에 누적된 과거 레코드의 실제 historical overall_score는
+        건드리지 않는다(전체 DB 재정렬 단계는 그대로 실제 점수 기준으로 동작).
+        """
+        try:
+            resolution = self.planner_consumer_adapter.resolve_knowledge_priority(
+                planner_result=planner_result,
+                engine_default=[],
+            )
+            boosted_types = set(resolution.get("knowledge_priority") or [])
+
+            if not boosted_types:
+                return scored_items, resolution
+
+            boosted_items = []
+            for item in scored_items:
+                item = dict(item)
+
+                if item.get("type") in boosted_types:
+                    score = dict(item.get("score") or {})
+                    try:
+                        original_score = float(score.get("overall_score", 0.0) or 0.0)
+                    except (TypeError, ValueError):
+                        original_score = 0.0
+
+                    score["overall_score"] = round(min(1.0, original_score + self.PLANNER_PRIORITY_BOOST_AMOUNT), 4)
+                    score["planner_priority_boost_applied"] = True
+                    item["score"] = score
+
+                boosted_items.append(item)
+
+            return boosted_items, resolution
+        except Exception as error:
+            print(f"Knowledge Planner Priority Boost Failed: {error}")
+            return scored_items, {
+                "hint_applied": False,
+                "reason": f"priority_boost_error: {error}",
+                "knowledge_priority": [],
+            }
+
+    def _build_result(
+        self,
+        context: Dict[str, Any],
+        planner_result: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         extracted_items = self.extractor.extract(context)
         classified_items = self.classifier.classify(extracted_items, context)
         checked_items = self.duplicate_detector.check(classified_items)
         scored_items = self.scorer.score(checked_items, context)
+        scored_items, planner_priority_resolution = self._apply_planner_priority_boost(
+            scored_items, planner_result
+        )
         ranked_items = self.ranker.rank(scored_items)
 
         upsert_summary = self.storage.upsert(ranked_items)
@@ -134,6 +198,10 @@ class KnowledgeModule(BaseModule):
             for item in ranked_items[:5]
         ]
 
+        planner_requested_priority = (
+            planner_result.get("knowledge_priority") if isinstance(planner_result, dict) else None
+        )
+
         return {
             "status": "knowledge_extracted",
             "extracted_count": len(ranked_items),
@@ -145,6 +213,16 @@ class KnowledgeModule(BaseModule):
             "statistics": statistics,
             "fallback_used": run_fallback_used,
             "reason": "",
+            "planner_consumption": {
+                "knowledge": build_consumption_metadata(
+                    planner_result=planner_result,
+                    hint_applied=bool(planner_priority_resolution.get("hint_applied")),
+                    requested_value=planner_requested_priority,
+                    original_value=[],
+                    final_value=planner_priority_resolution.get("knowledge_priority", []),
+                    reason=planner_priority_resolution.get("reason", ""),
+                ),
+            },
             "created_at": datetime.now().isoformat(),
         }
 

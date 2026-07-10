@@ -8,6 +8,7 @@ try:
 except ImportError:
     from src.base_module import BaseModule
 
+from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.image_strategy.ai_image_decision import AIImageDecision
 from modules.image_strategy.content_type_classifier import ContentTypeClassifier
 from modules.image_strategy.image_source_selector import ImageSourceSelector
@@ -46,14 +47,23 @@ class ImageStrategyModule(BaseModule):
         # 축적된 Knowledge DB의 상위 image_strategy/tool 참고 정보만 결과에 덧붙인다.
         self.knowledge_interface = KnowledgeInterface()
 
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): ContentTypeClassifier의
+        # 기존 분류는 그대로 두고, Planner Hint가 유효/충분히 확신할 만하고 지원되는
+        # content_type일 때만 그 값으로 교체한다. 이 교체는 어떤 content_type을
+        # 쓸지에만 영향을 주며, ImageSourceSelector/AIImageDecision의 "실제 이미지
+        # 우선, AI 이미지는 마지막 수단" 로직 자체는 그대로 실행되므로 Planner가
+        # AI 이미지 생성을 강제로 켤 수 없다.
+        self.planner_consumer_adapter = PlannerConsumerAdapter()
+
     def run(
         self,
         content_result: Optional[Dict[str, Any]] = None,
         research_result: Optional[Dict[str, Any]] = None,
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         print("Image Strategy Module Started")
 
-        result = self._build_result(content_result or {}, research_result or {})
+        result = self._build_result(content_result or {}, research_result or {}, planner_result)
         result["knowledge_reference"] = self._build_knowledge_reference()
 
         try:
@@ -78,15 +88,26 @@ class ImageStrategyModule(BaseModule):
         self,
         content_result: Dict[str, Any],
         research_result: Dict[str, Any],
+        planner_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         try:
             classification = self.content_type_classifier.classify(research_result, content_result)
-            content_type = classification.get("content_type", "education")
+            engine_content_type = classification.get("content_type", "education")
+
+            image_consumption = self.planner_consumer_adapter.resolve_image_strategy(
+                planner_result=planner_result,
+                engine_content_type=engine_content_type,
+            )
+            content_type = image_consumption.get("content_type", engine_content_type)
 
             source_result = self.image_source_selector.select(content_type)
             decision = self.ai_image_decision.decide(content_type, source_result)
 
             need_ai_image = bool(decision.get("need_ai_image", True))
+
+            planner_requested_image_strategy = (
+                planner_result.get("selected_image_strategy") if isinstance(planner_result, dict) else None
+            )
 
             return {
                 "status": "image_strategy_completed",
@@ -106,6 +127,16 @@ class ImageStrategyModule(BaseModule):
                     or source_result.get("fallback_used")
                     or decision.get("fallback_used")
                 ),
+                "planner_consumption": {
+                    "image_strategy": build_consumption_metadata(
+                        planner_result=planner_result,
+                        hint_applied=bool(image_consumption.get("hint_applied")),
+                        requested_value=planner_requested_image_strategy,
+                        original_value=engine_content_type,
+                        final_value=content_type,
+                        reason=image_consumption.get("reason", ""),
+                    ),
+                },
                 "created_at": datetime.now().isoformat(),
             }
 

@@ -14,9 +14,11 @@ Engines). The two concepts share a name but are different systems:
 - `modules/ai_planner/` (`PlannerContract`, `PlanningContext`, `AIPlannerModule`,
   `PlannerDecisionEngine`, `PlannerConsumerContract`, `PlannerConsumerAdapter`): **Contract
   defined in Sprint 15-0, dependency-repaired in Sprint 15-0A, Decision Engine v1 implemented in
-  Sprint 15-1, Consumer Layer implemented in Sprint 15-2** — see `MODULE_STATUS.md`'s
-  Sprint 15-0/15-0A/15-1/15-2 entries. It is still not connected to `WorkflowEngine`, and no
-  real Engine calls the Consumer Layer yet.
+  Sprint 15-1, Consumer Layer implemented in Sprint 15-2, wired into `WorkflowEngine` and
+  actually consumed by Pattern/Content/Image Strategy/Knowledge Engines in Sprint 15-3 (the
+  final AI Planner Sprint)** — see `MODULE_STATUS.md`'s Sprint 15-0/15-0A/15-1/15-2/15-3
+  entries. AI Planner runs as a Hint Layer between `TopicEngineModule` and
+  `PatternEngineModule`; it never replaces any Engine's own selection logic or fallback.
 
 Do not conflate the two when reading Sprint history — "AI Planner: Contract defined" in
 `ROADMAP.md`/`MODULE_STATUS.md` refers to `modules/ai_planner/`, not this document's routing

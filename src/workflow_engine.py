@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from modules.ai_planner.planner_module import AIPlannerModule
+from modules.ai_planner.planning_context import PlanningContext
 from modules.trend_collector.trend_collector_module import TrendCollectorModule
 from modules.topic_engine.topic_engine_module import TopicEngineModule
 from modules.pattern_engine.pattern_engine_module import PatternEngineModule
@@ -30,10 +32,14 @@ class WorkflowEngine:
 
         self.trend_collector = TrendCollectorModule(self.config)
         self.topic_engine = TopicEngineModule(self.config)
-        # AI Planner (Sprint 15-0, Architecture Only): future connection point.
-        # self.ai_planner_module = AIPlannerModule(self.config) will be instantiated
-        # here once a real Decision Engine exists. Not instantiated yet - see
+        # AI Planner (Sprint 15-3): actually wired in. Runs after TopicEngineModule
+        # and before PatternEngineModule as a Hint Layer only - see
         # modules/ai_planner/planner_contract.py (PlannerContract.WORKFLOW_INTEGRATION_NOTE).
+        # Its (optional) output is threaded through to Pattern/Content/Image
+        # Strategy/Knowledge below, which each decide independently (via
+        # PlannerConsumerAdapter) whether to use it - it never replaces their own
+        # selection logic.
+        self.ai_planner_module = AIPlannerModule(self.config)
         self.pattern_engine = PatternEngineModule(self.config)
         self.research_module = ResearchModule(self.config)
         self.content_module = ContentModule(self.config)
@@ -63,23 +69,23 @@ class WorkflowEngine:
             topic_result = self.topic_engine.run(trend_result)
             self._save_workflow_result("02_topic_result.json", topic_result)
 
-            # AI Planner (Sprint 15-0, Architecture Only): future connection point.
-            # planner_result = self.ai_planner_module.run(PlanningContext(...)) would run
-            # here, after TopicEngineModule and before PatternEngineModule, so its
-            # coordination decisions (pattern/hook/cta/image_strategy/content_strategy)
-            # could inform the Engines that follow. Not connected yet - no Decision
-            # Engine exists (modules/ai_planner/planner_module.py is a Skeleton only).
+            # AI Planner (Sprint 15-3): Hint Layer only. Runs after TopicEngineModule,
+            # before PatternEngineModule. If it raises or returns nothing usable,
+            # planner_result is None and every downstream Engine below runs exactly as
+            # it did before this Sprint (see _run_ai_planner()'s try/except).
+            planner_result = self._run_ai_planner(trend_result, topic_result)
+            self._save_workflow_result("02b_planner_result.json", planner_result or {})
 
-            pattern_result = self._run_pattern_engine(topic_result, trend_result)
+            pattern_result = self._run_pattern_engine(topic_result, trend_result, planner_result)
             self._save_workflow_result("03_pattern_result.json", pattern_result)
 
             research_result = self.research_module.run(topic_result)
             self._save_workflow_result("04_research_result.json", research_result)
 
-            content_result = self.content_module.run(research_result)
+            content_result = self.content_module.run(research_result, planner_result)
             self._save_workflow_result("05_content_result.json", content_result)
 
-            image_strategy_result = self.image_strategy_module.run(content_result, research_result)
+            image_strategy_result = self.image_strategy_module.run(content_result, research_result, planner_result)
             self._save_workflow_result("05b_image_strategy_result.json", image_strategy_result)
 
             image_prompt_result = self.image_prompt_module.run(content_result, image_strategy_result)
@@ -107,6 +113,7 @@ class WorkflowEngine:
                 image_strategy_result=image_strategy_result,
                 card_news_result=card_news_result,
                 publishing_result=publishing_result,
+                planner_result=planner_result,
             )
             self._save_workflow_result("10_knowledge_result.json", knowledge_result)
 
@@ -186,6 +193,7 @@ class WorkflowEngine:
                 "status": "workflow_completed",
                 "trend": trend_result,
                 "topic": topic_result,
+                "planner": planner_result,
                 "pattern": pattern_result,
                 "research": research_result,
                 "content": content_result,
@@ -227,7 +235,32 @@ class WorkflowEngine:
 
             return error_result
 
-    def _run_pattern_engine(self, topic_result, trend_result):
+    def _run_ai_planner(self, trend_result, topic_result):
+        """
+        AI Planner (Sprint 15-3): Hint Layer 실행. 실패하거나 예외가 나면 반드시
+        `None`을 반환한다 - 호출자(및 이 결과를 받는 모든 하위 Engine의
+        PlannerConsumerAdapter)는 `None`을 "Planner 없음"과 동일하게 다뤄
+        기존 로직을 그대로 사용한다("Planner Result 없음 -> 기존 Engine 그대로"
+        절대 규칙). 이 메서드 자체가 예외를 던지는 일은 없다.
+        """
+        try:
+            interface = self.ai_planner_module.interface
+            historical_inputs = interface.load_historical_inputs()
+            brand_profile = interface.load_brand_profile()
+
+            context = PlanningContext(
+                trend_result=trend_result if isinstance(trend_result, dict) else {},
+                topic_result=topic_result if isinstance(topic_result, dict) else {},
+                brand_profile=brand_profile,
+                **historical_inputs,
+            )
+
+            return self.ai_planner_module.run(context)
+        except Exception as error:
+            print(f"AI Planner Fallback Used (Workflow continues unaffected): {error}")
+            return None
+
+    def _run_pattern_engine(self, topic_result, trend_result, planner_result=None):
         try:
             selected_topic = {}
 
@@ -237,6 +270,7 @@ class WorkflowEngine:
             return self.pattern_engine.run(
                 selected_topic=selected_topic,
                 trend_result=trend_result,
+                planner_result=planner_result,
             )
 
         except Exception as error:
@@ -249,6 +283,7 @@ class WorkflowEngine:
                     "category": "trend",
                     "cluster": "general_trend_cluster",
                     "confidence_score": 0.0,
+                    "blocked": False,
                     "reason": f"fallback: pattern_engine_error: {error}",
                 },
                 "pattern_plan": {
@@ -279,6 +314,7 @@ class WorkflowEngine:
         image_strategy_result,
         card_news_result,
         publishing_result,
+        planner_result=None,
     ):
         try:
             return self.knowledge_module.run(
@@ -290,6 +326,7 @@ class WorkflowEngine:
                 publishing_result=publishing_result,
                 trend_result=trend_result,
                 topic_result=topic_result,
+                planner_result=planner_result,
             )
         except Exception as error:
             print(f"Knowledge Engine Fallback Used: {error}")

@@ -136,6 +136,25 @@ class PublishingModule(BaseModule):
             "enabled": True
         }
 
+    def _resolve_planner_strategy(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        AI Planner Consumer Adapter 실제 연결(Sprint 15-3): PublishingModule은
+        실제 게시 동작(캡션/해시태그/큐 생성 로직)을 전혀 바꾸지 않는다 - 상위
+        단계(CardNewsModule)가 이미 요약해 둔 `planner_influence`를 그대로
+        복사해 메타데이터로만 기록한다.
+        """
+        influence = card_news_result.get("planner_influence") if isinstance(card_news_result, dict) else None
+
+        if isinstance(influence, dict) and influence:
+            return influence
+
+        return {
+            "any_hint_applied": False,
+            "content": {},
+            "image_strategy": {},
+            "reason": "card_news_result에 planner_influence가 없어 기본값을 사용함.",
+        }
+
     def _resolve_image_sourcing_status(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
         status = card_news_result.get("image_sourcing_status") if isinstance(card_news_result, dict) else None
 
@@ -243,6 +262,7 @@ class PublishingModule(BaseModule):
             "image_sourcing_status": image_sourcing_status,
             "manual_image_required": manual_image_required,
             "next_action": next_action,
+            "planner_strategy": self._resolve_planner_strategy(card_news_result),
             "created_at": datetime.now().isoformat()
         }
 

@@ -46,7 +46,11 @@ class ContentModule(BaseModule):
         # 복사 금지 문구 포함). 프롬프트 빌더/파싱 로직 자체는 바꾸지 않는다.
         self.knowledge_interface = KnowledgeInterface()
 
-    def run(self, research_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def run(
+        self,
+        research_result: Optional[Dict[str, Any]] = None,
+        planner_result: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         print("Content Module Started")
 
         research_result = research_result or {}
@@ -62,7 +66,7 @@ class ContentModule(BaseModule):
         prompt_meta: Dict[str, Any] = {}
 
         try:
-            pattern_aware_prompt = self.prompt_builder.build(research_result)
+            pattern_aware_prompt = self.prompt_builder.build(research_result, planner_result)
         except Exception as error:
             print(f"Content Prompt Builder Failed, falling back to legacy prompt: {error}")
             pattern_aware_prompt = None
@@ -98,6 +102,30 @@ class ContentModule(BaseModule):
             research_result=research_result,
             prompt_meta=prompt_meta,
         )
+
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): ContentPromptBuilder가
+        # 이미 계산해 둔 hook/cta/content_strategy consumption 기록을 그대로
+        # content_result로 끌어올린다. legacy 경로(pattern_plan이 없어
+        # pattern_aware_prompt가 None인 경우)는 ConsumerAdapter가 아예 호출되지
+        # 않았으므로, 그 사실을 정직하게 기록한다(가짜로 "적용 안 됨"을 꾸며내지
+        # 않고 "왜 없는지"를 남긴다).
+        if prompt_source == "pattern_aware" and isinstance(prompt_meta.get("planner_consumption"), dict):
+            content_result["planner_consumption"] = {"content": prompt_meta["planner_consumption"]}
+        else:
+            content_result["planner_consumption"] = {
+                "content": {
+                    "planner_available": isinstance(planner_result, dict)
+                    and planner_result.get("status") == "planner_decided",
+                    "planner_applied": False,
+                    "planner_mode": "unavailable",
+                    "planner_confidence": 0.0,
+                    "requested_value": None,
+                    "original_value": None,
+                    "final_value": None,
+                    "reason": "legacy 프롬프트 경로(pattern_plan 없음)라 Planner Hint를 평가하지 않음.",
+                    "fallback_used": True,
+                }
+            }
 
         knowledge_items = knowledge_guidance["knowledge_items"]
         content_result["knowledge_used"] = bool(knowledge_items)

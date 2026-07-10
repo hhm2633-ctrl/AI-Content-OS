@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from modules.ai_planner.consumer_contract import PlannerConsumerContract
+from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.content.cta_strategy import CTAStrategy
 from modules.content.hook_strategy import HookStrategy
 from modules.content.pattern_prompt_router import PatternPromptRouter
@@ -30,14 +32,31 @@ class ContentPromptBuilder:
         self.slide_strategy = SlideStrategy(self.config)
         self.brand_profile = self._load_brand_profile()
 
-    def build(self, research_result: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): 기존 HookStrategy/
+        # CTAStrategy 선택 로직은 그대로 두고, planner_result가 유효/충분히
+        # 확신할 만하고 안전 규칙과 충돌하지 않을 때만 hook/cta를 Planner Hint로
+        # 재지정한다. Brand Rule(BrandRuleEvaluator의 banned_words 검사)은 이
+        # 클래스가 건드리지 않는 ContentModule._build_content_intelligence()
+        # 단계에서 정규화된 content_result에 대해 그대로, 그리고 나중에 실행되므로
+        # 항상 우선 적용된다(Sprint 요구사항: "Brand Rule 우선 유지").
+        self.planner_consumer_adapter = PlannerConsumerAdapter()
+
+    def build(
+        self,
+        research_result: Optional[Dict[str, Any]],
+        planner_result: Optional[Dict[str, Any]] = None,
+    ) -> Optional[Dict[str, Any]]:
         try:
-            return self._build(research_result or {})
+            return self._build(research_result or {}, planner_result)
         except Exception as error:
             print(f"Content Prompt Builder Failed: {error}")
             return None
 
-    def _build(self, research_result: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    def _build(
+        self,
+        research_result: Dict[str, Any],
+        planner_result: Optional[Dict[str, Any]] = None,
+    ) -> Optional[Dict[str, Any]]:
         pattern_plan = research_result.get("pattern_plan") or {}
         topic_intelligence = research_result.get("topic_intelligence") or {}
 
@@ -51,22 +70,60 @@ class ContentPromptBuilder:
         target = research_result.get("target", "AI 자동화와 부업에 관심 있는 초보자")
         topic_angle = research_result.get("topic_angle", "")
 
-        hook_result = self.hook_strategy.select(
+        blocked = bool(topic_intelligence.get("blocked", False))
+
+        engine_hook_result = self.hook_strategy.select(
             pattern_plan,
             topic_intelligence,
             self.brand_profile,
             str(keyword),
         )
-        cta_result = self.cta_strategy.select(
+        engine_cta_result = self.cta_strategy.select(
             pattern_plan,
             topic_intelligence,
             self.brand_profile,
             str(keyword),
         )
+
+        hook_consumption = self.planner_consumer_adapter.resolve_hook(
+            planner_result=planner_result,
+            engine_hook_type=engine_hook_result.get("hook_type", HookStrategy.DEFAULT_HOOK_TYPE),
+            blocked=blocked,
+        )
+        cta_consumption = self.planner_consumer_adapter.resolve_cta(
+            planner_result=planner_result,
+            engine_cta_type=engine_cta_result.get("cta_type", CTAStrategy.DEFAULT_CTA_TYPE),
+            blocked=blocked,
+        )
+
+        if hook_consumption.get("hint_applied"):
+            hook_result = self.hook_strategy.select(
+                pattern_plan,
+                topic_intelligence,
+                self.brand_profile,
+                str(keyword),
+                hook_type_override=hook_consumption.get("hook_type"),
+            )
+        else:
+            hook_result = engine_hook_result
+
+        if cta_consumption.get("hint_applied"):
+            cta_result = self.cta_strategy.select(
+                pattern_plan,
+                topic_intelligence,
+                self.brand_profile,
+                str(keyword),
+                cta_type_override=cta_consumption.get("cta_type"),
+            )
+        else:
+            cta_result = engine_cta_result
+
+        content_strategy_hint = self._resolve_content_strategy_hint(planner_result)
+
         slide_plan = self.slide_strategy.build(pattern_plan.get("pattern_type", "resource"))
         prompt_guide = self.pattern_prompt_router.get_guide(pattern_plan.get("pattern_type", "resource"))
 
-        system_prompt = self._build_system_prompt(prompt_guide, hook_result, cta_result)
+        system_prompt = self._build_system_prompt(prompt_guide, hook_result, cta_result, content_strategy_hint)
         user_prompt = self._build_user_prompt(
             keyword=keyword,
             title=title,
@@ -79,6 +136,10 @@ class ContentPromptBuilder:
             slide_plan=slide_plan,
             hook_result=hook_result,
             cta_result=cta_result,
+        )
+
+        planner_content_strategy = (
+            planner_result.get("content_strategy") if isinstance(planner_result, dict) else None
         )
 
         return {
@@ -96,17 +157,85 @@ class ContentPromptBuilder:
                 "prompt_source": prompt_guide.get("source"),
                 "pattern_fallback_used": bool(pattern_plan.get("fallback_used", False)),
                 "platform": cta_result.get("platform", "instagram"),
+                "planner_consumption": {
+                    "hook": build_consumption_metadata(
+                        planner_result=planner_result,
+                        hint_applied=bool(hook_consumption.get("hint_applied")),
+                        requested_value=(
+                            planner_result.get("selected_hook_strategy")
+                            if isinstance(planner_result, dict) else None
+                        ),
+                        original_value=engine_hook_result.get("hook_type"),
+                        final_value=hook_result.get("hook_type"),
+                        reason=hook_consumption.get("reason", ""),
+                    ),
+                    "cta": build_consumption_metadata(
+                        planner_result=planner_result,
+                        hint_applied=bool(cta_consumption.get("hint_applied")),
+                        requested_value=(
+                            planner_result.get("selected_cta_strategy")
+                            if isinstance(planner_result, dict) else None
+                        ),
+                        original_value=engine_cta_result.get("cta_type"),
+                        final_value=cta_result.get("cta_type"),
+                        reason=cta_consumption.get("reason", ""),
+                    ),
+                    "content_strategy": build_consumption_metadata(
+                        planner_result=planner_result,
+                        hint_applied=bool(content_strategy_hint),
+                        requested_value=planner_content_strategy,
+                        original_value=None,
+                        final_value=content_strategy_hint,
+                        reason=(
+                            "Planner content_strategy를 system_prompt 참고 문구로 추가함."
+                            if content_strategy_hint
+                            else "Planner content_strategy가 없거나 조건을 충족하지 않아 추가하지 않음."
+                        ),
+                    ),
+                },
             },
         }
+
+    def _resolve_content_strategy_hint(self, planner_result: Optional[Dict[str, Any]]) -> Optional[str]:
+        """
+        content_strategy는 pattern/hook/cta처럼 고정된 enum이 아니라 자유 텍스트
+        요약이라 PlannerConsumerAdapter의 enum 기반 게이트가 맞지 않는다. 대신
+        `PlannerConsumerContract`의 공용 유효성/confidence 게이트만 그대로
+        재사용한다(새 판단 로직을 만들지 않음) - 유효하고 충분히 확신할 만한
+        경우에만 system_prompt에 참고 문구로 덧붙인다. 최종 JSON 스키마는
+        바꾸지 않는다(참고 문구만 추가).
+        """
+        try:
+            if not PlannerConsumerContract.is_result_valid(planner_result):
+                return None
+
+            if not PlannerConsumerContract.meets_confidence_threshold(planner_result):
+                return None
+
+            content_strategy = planner_result.get("content_strategy")
+
+            if not isinstance(content_strategy, str) or not content_strategy.strip():
+                return None
+
+            return content_strategy.strip()
+        except Exception:
+            return None
 
     def _build_system_prompt(
         self,
         prompt_guide: Dict[str, Any],
         hook_result: Dict[str, Any],
         cta_result: Dict[str, Any],
+        content_strategy_hint: Optional[str] = None,
     ) -> str:
         banned_words = self.brand_profile.get("banned_words", [])
         banned_words_text = ", ".join(banned_words) if banned_words else "허위 수익 보장, 과장 광고, 투자 권유"
+
+        content_strategy_line = (
+            f"\nAI Planner 참고 전략(강제 아님, 참고만): {content_strategy_hint}\n"
+            if content_strategy_hint
+            else ""
+        )
 
         return f"""
 너는 인스타그램 카드뉴스 전문 기획자이자 카피라이터다.
@@ -119,7 +248,7 @@ Hook 전략: '{hook_result.get("hook_type")}' 타입의 훅을 사용한다. ({h
 Hook 참고 예시(그대로 베끼지 말고 참고만): {hook_result.get("hook_line", "")}
 CTA 전략: '{cta_result.get("cta_type")}' 타입의 CTA를 사용한다. ({cta_result.get("reason", "")})
 CTA 참고 예시(그대로 베끼지 말고 참고만): {cta_result.get("cta_line", "")}
-
+{content_strategy_line}
 초보자가 바로 이해할 수 있게 짧고 강하게 쓴다.
 다음 표현은 피한다: {banned_words_text}.
 각 슬라이드는 headline과 body를 반드시 분리한다.
