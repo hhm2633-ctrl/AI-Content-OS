@@ -59,7 +59,12 @@
 - Analytics Engine: v2 implemented (Sprint 13) — Sprint 12's fabricated views/saves/comments/shares/CTR/follow/DM predictions (`is_measured: false`) were removed; replaced with an honest `quality_trend` (improving/declining/stable) computed by comparing this run's real Performance Score against the real historical average in `storage/performance_score/`. Real Instagram Graph API metrics are Planning — see "Requires External API" below.
 - Brand DNA Engine: v1 implemented (Sprint 12) — tracks actually-used hook/cta/layout/color per run on top of `config/brand_profile.json`
 - Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine's duplicate_check (Sprint 13) — records recent topic/hook/cta/layout/image combinations and flags repeat risk (does not block generation)
-- AI Planner: AI task routing, cost control, sprint ROI review — Planning
+- AI Planner: AI task routing, cost control, sprint ROI review — **Contract defined (Sprint
+  15-0)**: input (`PlanningContext`), output (`planning_result_schema.REQUIRED_FIELDS`), and
+  intended `WorkflowEngine` connection point are fixed in `modules/ai_planner/`
+  (`PlannerContract`), but the actual Decision Engine coordinating Pattern/Knowledge/
+  Competitor/Image Strategy/Content/Brand DNA/Trend Memory Engines is still Planning and not
+  connected to `WorkflowEngine`.
 
 # Requires External API (do not implement without explicit approval)
 

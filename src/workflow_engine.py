@@ -30,6 +30,10 @@ class WorkflowEngine:
 
         self.trend_collector = TrendCollectorModule(self.config)
         self.topic_engine = TopicEngineModule(self.config)
+        # AI Planner (Sprint 15-0, Architecture Only): future connection point.
+        # self.ai_planner_module = AIPlannerModule(self.config) will be instantiated
+        # here once a real Decision Engine exists. Not instantiated yet - see
+        # modules/ai_planner/planner_contract.py (PlannerContract.WORKFLOW_INTEGRATION_NOTE).
         self.pattern_engine = PatternEngineModule(self.config)
         self.research_module = ResearchModule(self.config)
         self.content_module = ContentModule(self.config)
@@ -58,6 +62,13 @@ class WorkflowEngine:
 
             topic_result = self.topic_engine.run(trend_result)
             self._save_workflow_result("02_topic_result.json", topic_result)
+
+            # AI Planner (Sprint 15-0, Architecture Only): future connection point.
+            # planner_result = self.ai_planner_module.run(PlanningContext(...)) would run
+            # here, after TopicEngineModule and before PatternEngineModule, so its
+            # coordination decisions (pattern/hook/cta/image_strategy/content_strategy)
+            # could inform the Engines that follow. Not connected yet - no Decision
+            # Engine exists (modules/ai_planner/planner_module.py is a Skeleton only).
 
             pattern_result = self._run_pattern_engine(topic_result, trend_result)
             self._save_workflow_result("03_pattern_result.json", pattern_result)

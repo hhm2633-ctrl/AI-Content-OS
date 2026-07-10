@@ -19,7 +19,10 @@ only Engine still in Planning.** Everything else below is implemented and verifi
 ## Planning
 
 - **AI Planner** — AI task routing, cost control, Sprint ROI review (`docs/AI_PLANNER.md`). The
-  only Engine from the original Planning Additions list not yet implemented.
+  only Engine from the original Planning Additions list not yet implemented as a Decision
+  Engine. Its **Contract** (input/output/schema/`WorkflowEngine` connection point) was defined
+  in Sprint 15-0 under `modules/ai_planner/` — see the Sprint 15-0 entry below. No decision
+  logic exists and it is not connected into `WorkflowEngine`.
 - Audit Engine's Competitor Comparison + Blind Spot Detection stages (extension of the
   already-implemented Audit Engine, pending Competitor Engine history accumulation across
   multiple runs — not a separate Engine).
@@ -539,6 +542,57 @@ itself, and returned verdict **BLOCKED** with two findings — both real, both f
    Codex's other 9 review items (validator correctness, ContentModule wiring, test strength,
    full workflow, CardNews/Publishing compatibility, unrelated-changes check, runtime storage
    tracking) all passed on first review with no changes needed.
+
+## Sprint 15-0 Completed (AI Planner Architecture — Contract Only)
+
+Design-first Sprint per explicit instruction: define the AI Planner **Contract** (input/output/
+schema/`WorkflowEngine` connection point) before any decision logic. No new Decision Engine, no
+placeholders that fabricate plausible-looking decisions, no actual `WorkflowEngine` wiring.
+
+- New `modules/ai_planner/` package (contract-only, deliberately narrower than the full Engine
+  Standard — no `*_storage.py`/`*_history.py`/`*_score.py`, per this Sprint's explicit file list):
+  - `planner_contract.py` (`PlannerContract`) — single source of truth: `COORDINATED_ENGINES`
+    (pattern_engine, knowledge_engine, competitor_engine, image_strategy, content_engine,
+    brand_dna_engine, trend_memory), `INPUT_FIELDS`, `OUTPUT_FIELDS`,
+    `WORKFLOW_INTEGRATION_NOTE`, and `NOT_IN_SCOPE_THIS_SPRINT`, all exposed via a `describe()`
+    classmethod for Codex/future Sprints to introspect.
+  - `planning_context.py` (`PlanningContext`) — the 8-field Input Contract: `trend_result`,
+    `topic_result`, `pattern_result`, `knowledge_result`, `trend_memory_result`,
+    `competitor_result`, `brand_profile`, `image_strategy_result`. Plain class with
+    `to_dict()`/`from_dict()`, matching every input to an already-real WorkflowEngine stage
+    output — no new collection/generation logic.
+  - `planning_result_schema.py` — the Output Contract: `REQUIRED_FIELDS` (10 fields:
+    `selected_pattern`, `selected_hook_strategy`, `selected_cta_strategy`,
+    `selected_image_strategy`, `knowledge_priority`, `competitor_reference`,
+    `content_strategy`, `planner_confidence`, `planner_reason`, `planner_version`),
+    `build_undecided_result(reason)` (all decision fields explicitly `None`/`[]`/`0.0` — an
+    honest "not decided" state, not a fabricated-looking value, per the Sprint 13 Offline-First
+    honesty standard), and `validate_schema(result)` (presence-only check, no exceptions).
+  - `planner_interface.py` (`PlannerInterface`) — read-only `get_latest_result()` (reads
+    `storage/planner/planner_result.json` if present; returns `{}` for now since nothing writes
+    there yet — no `*_storage.py` exists this Sprint) and `get_contract()`.
+  - `planner_module.py` (`AIPlannerModule`, Skeleton) — accepts an optional `PlanningContext`,
+    returns `build_undecided_result()` plus a `schema_valid` flag from `validate_schema()`. Never
+    reads the context's actual field values for decision-making (verified: passing a fully
+    populated `PlanningContext` still returns `selected_pattern: None` etc. — confirmed by a
+    standalone verification script, not committed, since this Sprint adds no test requirement).
+    Writes nothing to disk.
+  - `storage/planner/.gitkeep` — directory reserved for a future Storage class; `.gitignore`
+    updated to allow-list `storage/planner/`/`storage/planner/.gitkeep` (the existing
+    `storage/**` blanket-ignore rule required an explicit exception, matching the pattern
+    already used for `storage/cache/`, `storage/history/`, etc.).
+- `src/workflow_engine.py`: **comment-only** connection points added, no import/instantiation/
+  execution — one in `__init__` (where `self.ai_planner_module` would be created) and one in
+  `run()` (between `TopicEngineModule` and `PatternEngineModule`, matching
+  `PlannerContract.WORKFLOW_INTEGRATION_NOTE`'s stated rationale: Planner decisions need to
+  exist before Pattern/Content/Image Strategy run in order to influence them).
+- Verified with `py -m compileall -f src modules scripts tests` (success, `modules/ai_planner/`
+  files appear in the output) and `py -m src.main` (`workflow_completed` — unaffected, since
+  nothing was actually wired in).
+- **Independent Codex MCP review** (Architecture Review, Interface Review, Schema Review,
+  Repository Consistency) — see verdict and any findings recorded by Codex at commit time
+  (this entry is written before that round completes; if Codex requested changes, they are
+  folded into this same Sprint 15-0 entry rather than a separate correction section).
 
 ## Next
 
