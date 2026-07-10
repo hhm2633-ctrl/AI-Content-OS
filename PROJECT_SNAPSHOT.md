@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T10:26:38
+Updated at: 2026-07-10T11:31:02
 
 ## Execution Command
 
@@ -28,25 +28,17 @@ Do not use `python -m src.main` for this project.
 - Card news rendering: card_news_completed
 - Publishing preparation: publishing_ready
 - Knowledge extraction: knowledge_extracted
+- Trend memory record: trend_memory_recorded
 - Performance score: performance_score_completed
 - Content audit: audit_completed
 - Learning engine: learning_completed
 - Analytics prediction: analytics_completed
 - Brand DNA update: brand_dna_updated
-- Trend memory record: trend_memory_recorded
 - Competitor profile: competitor_profile_built
 
 ## Current WorkflowEngine
 
 - TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImageStrategyModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule -> KnowledgeModule -> TrendMemoryModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> CompetitorEngineModule
-
-Verified 2026-07-10 (Sprint 14-0 doc audit) directly against `src/workflow_engine.py`'s actual
-`WorkflowEngine.run()` call sequence. Note: `scripts/update_project_snapshot.py`'s hardcoded
-`module_lines` string (which regenerates this line on every `py -m src.main` run) still has the
-pre-Sprint-13 order (`TrendMemoryModule` listed after `BrandDNAEngineModule` instead of right
-after `KnowledgeModule`) — this is a known generator bug tracked in `MODULE_STATUS.md`'s Next
-section and must be fixed in that script (code) in a future Sprint, or this line will revert to
-the wrong order on the next run.
 
 ## Current Project Tree
 
@@ -344,7 +336,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (240 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (244 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -382,7 +374,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (27 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (29 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -410,6 +402,7 @@ AI-Content-OS/
 |-- CHANGELOG.md
 |-- CLAUDE.md
 |-- CODEX_RULES.md
+|-- CTO_BRAIN.md
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md

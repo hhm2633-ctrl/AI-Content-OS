@@ -101,6 +101,11 @@ def get_workflow_summary(workflow_result: Dict[str, Any]) -> Dict[str, Any]:
     # Keep this list in sync with WorkflowEngine.run()'s actual call sequence
     # (src/workflow_engine.py). It intentionally does not derive the list
     # dynamically to avoid depending on WorkflowEngine internals.
+    #
+    # Sprint 14-1 fix: Sprint 13 moved TrendMemoryModule to run right after
+    # KnowledgeModule (so Audit Engine's duplicate_check can consume its
+    # topic_repeat_risk), but this list still had it after brand_dna. Verified
+    # directly against WorkflowEngine.run()'s actual call order, not guessed.
     modules = [
         "trend",
         "topic",
@@ -113,12 +118,12 @@ def get_workflow_summary(workflow_result: Dict[str, Any]) -> Dict[str, Any]:
         "card_news",
         "publishing",
         "knowledge",
+        "trend_memory",
         "performance_score",
         "audit",
         "learning",
         "analytics",
         "brand_dna",
-        "trend_memory",
         "competitor",
     ]
 
@@ -181,13 +186,18 @@ def build_snapshot(workflow_result: Dict[str, Any]) -> str:
     # (src/workflow_engine.py) -- this is the exact bug Sprint 5 corrected:
     # PatternEngineModule was wired into the pipeline but this line still
     # skipped straight from TopicEngineModule to ResearchModule.
+    #
+    # Sprint 14-1 fix: Sprint 13 moved TrendMemoryModule to run right after
+    # KnowledgeModule (so Audit Engine's duplicate_check can consume its
+    # topic_repeat_risk), but this line still had it after BrandDNAEngineModule.
+    # Verified directly against WorkflowEngine.run()'s actual call order.
     module_lines = [
         "TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> "
         "ResearchModule -> ContentModule -> ImageStrategyModule -> "
         "ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> "
-        "PublishingModule -> KnowledgeModule -> PerformanceScoreModule -> "
-        "AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> "
-        "BrandDNAEngineModule -> TrendMemoryModule -> CompetitorEngineModule"
+        "PublishingModule -> KnowledgeModule -> TrendMemoryModule -> "
+        "PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> "
+        "AnalyticsEngineModule -> BrandDNAEngineModule -> CompetitorEngineModule"
     ]
 
     snapshot_lines = [
