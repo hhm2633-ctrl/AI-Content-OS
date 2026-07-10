@@ -6,22 +6,44 @@ AI-Content-OS is a content operating system for automated trend research, card n
 
 ## Current Core
 
+Protected pipeline (`src/workflow_engine.py::WorkflowEngine`, never reordered without explicit
+instruction):
+
 - Trend collection
 - Topic selection
 - Pattern selection
 - Research
 - Content generation
+- Image strategy selection (real-image-first decision, added Sprint 10)
 - Image prompt generation
 - Image generation
 - Card news rendering and QA
 - Publishing preparation
 
+Intelligence Layer (additive bonus stages after Publishing, added Sprint 11–13; may be
+reordered among themselves when a real data dependency requires it):
+
+- Knowledge Engine — extraction/classification/scoring/ranking of reusable Hook/CTA/Pattern/
+  Layout/Brand/Workflow/Prompt Pattern/Tool/Image Strategy/Funnel knowledge; consumed by
+  Pattern Engine, Content Module, CardNews Module, Audit Engine, and Learning Engine
+- Trend Memory — records recent topic/hook/cta/layout/image combinations, flags repeat risk
+- Performance Score — composite hook/cta/layout/brand/image score, shared by Audit/Learning/
+  Analytics
+- Audit Engine — 9-check content audit (hook/cta/pattern/layout/brand/image strategy/
+  duplicate/save inducement/comment inducement)
+- Learning Engine — `internal_learning_score` (audit + performance + knowledge, real local
+  data only) promotes high-performing patterns into a reinforced Learning Memory
+- Analytics Engine — honest local `quality_trend`, no fabricated SNS metrics
+- Brand DNA Engine — tracks actually-used hook/cta/layout/color per run
+- Competitor Engine — offline-first competitor profiles parsed from `benchmark/*.md` docs
+
+See `MODULE_STATUS.md` for the full Sprint-by-Sprint history and `ROADMAP.md` for what's
+implemented vs. still Planning.
+
 ## Planning Additions
 
-- Knowledge Engine
-- Competitor Engine
-- Audit Engine
-- AI Planner
+- AI Planner (AI task routing / cost control / Sprint ROI review) — the only Engine from the
+  original Planning Additions list not yet implemented; see `docs/AI_PLANNER.md`.
 
 ## Research Knowledge Base
 
@@ -49,7 +71,10 @@ Claude Developer Kit v1 added. This is the project-specific framework (documenta
 defines how Claude approaches recurring AI-Content-OS work: project understanding, large implementation,
 refactoring, Sprint planning, and external-research handling.
 
-Its core mechanism is the **Claude Skill System** under `.claude/skills/`.
+Its core mechanism is the **Claude Skill System** under `.claude/skills/`. The entry-point
+skill is `.claude/skills/cto_operating_system/SKILL.md`, which points to the project-root
+`PROJECT_OPERATING_SYSTEM.md` (the top-level operating reference and Mandatory Reading Order)
+and is read before any other skill file.
 
 Claude roles:
 

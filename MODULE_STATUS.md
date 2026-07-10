@@ -1,29 +1,49 @@
-# Planning Additions
+# Engine Status (Implemented vs. Planning)
+
+Corrected 2026-07-10 (Sprint 14-0 doc audit): this section was previously titled "Planning
+Additions" even though almost everything in it was already implemented. **AI Planner is the
+only Engine still in Planning.** Everything else below is implemented and verified against
+`src/workflow_engine.py`.
+
+## Implemented
 
 - Knowledge Engine: v1 implemented (Sprint 11); real active consumption (not just passive reference) in Pattern/Content/CardNews/Audit/Learning (Sprint 13)
 - Competitor Engine: v2 implemented (Sprint 13, offline-first) — Instagram placeholder removed, replaced with real `INSTAGRAM_BENCHMARK.md`/`TOOLS_AND_FUNNEL_REFERENCES.md` parsing
-- Audit Engine: v2 implemented (Sprint 13) — 9 real checks incl. Pattern/Image Strategy match, save/comment inducement; Competitor Comparison/Blind Spot Detection still Planning
+- Audit Engine: v2 implemented (Sprint 13) — 9 real checks incl. Pattern/Image Strategy match, save/comment inducement (Competitor Comparison/Blind Spot Detection extensions listed under Planning below)
 - Learning Engine: v2 implemented (Sprint 13) — `internal_learning_score` (audit+performance+knowledge, all real local data, no fabricated performance)
-- Analytics Engine: v2 implemented (Sprint 13) — fabricated SNS metrics removed, replaced with honest local `quality_trend`; real Instagram Graph API connection still Planning (see ROADMAP.md "Requires External API")
+- Analytics Engine: v2 implemented (Sprint 13) — fabricated SNS metrics removed, replaced with honest local `quality_trend` (real Instagram Graph API connection listed under Planning below)
 - Brand DNA Engine: v1 implemented (Sprint 12)
 - Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine (Sprint 13)
 - Performance Score: v1 implemented (Sprint 12, shared by Audit/Learning/Analytics)
-- AI Planner: Planning
+
+## Planning
+
+- **AI Planner** — AI task routing, cost control, Sprint ROI review (`docs/AI_PLANNER.md`). The
+  only Engine from the original Planning Additions list not yet implemented.
+- Audit Engine's Competitor Comparison + Blind Spot Detection stages (extension of the
+  already-implemented Audit Engine, pending Competitor Engine history accumulation across
+  multiple runs — not a separate Engine).
+- Real Instagram Graph API connection for Analytics Engine (see `ROADMAP.md` "Requires External API").
+- Real-time Instagram competitor account scanning for Competitor Engine (see `ROADMAP.md` "Requires External API").
 
 # Operational Support
 
-- Codex Skill System: Planning/Operational Support
+The following are documentation-only / no-code systems. They are real and in active use — not
+"planning" in the sense of not-yet-built — but they contain no `modules/` code of their own.
+
+- Codex Skill System: Operational Support
 - `ai-content-os-sprint` skill
 - `ai-content-os-commit-check` skill
 - `ai-content-os-research` skill
 - `ai-content-os-retry-audit` skill
 - `ai-content-os-doc-update` skill
-- Claude Developer Kit v1: Planning/Operational Support (`.claude/skills/`, documentation only, no code)
+- Claude Developer Kit v1: Operational Support (`.claude/skills/`, documentation only, no code)
   - Claude Skill System skills: `architecture`, `large_implementation`, `refactoring`, `research`, `planning`, `review`
-- Claude Domain Skill (Developer Kit v2): Planning/Operational Support (`.claude/skills/domain/`, documentation only, no code)
+- CTO Operating System entry-point skill: Operational Support (`.claude/skills/cto_operating_system/SKILL.md`, read before any other Claude skill) — points to the project-root `PROJECT_OPERATING_SYSTEM.md` and its Mandatory Reading Order
+- Claude Domain Skill (Developer Kit v2): Operational Support (`.claude/skills/domain/`, documentation only, no code)
   - Engine skills: `cardnews`, `trend_engine`, `topic_engine`, `pattern_engine`, `content_engine`, `image_engine`, `publishing_engine`
   - Cross-cutting skills: `debug`, `performance`, `testing`
-- AI Developer Kit Foundation v1: Planning/Operational Support (`.ai/`, shared AI-agnostic infrastructure, documentation only, no code)
+- AI Developer Kit Foundation v1: Operational Support (`.ai/`, shared AI-agnostic infrastructure, documentation only, no code)
   - `architecture/system_architecture.md`, `workflows/development_workflow.md`, `workflows/sprint_workflow.md`
   - `rules/project_rules.md`, `rules/ai_roles.md`, `rules/workflow_protection.md`
   - `prompts/README.md`, `templates/task_template.md`, `templates/sprint_template.md`
@@ -345,10 +365,58 @@ Goal: with no API/login/token, make every Sprint 12 structure actually do someth
 - `WorkflowEngine` pipeline reordered among the Sprint-12 bonus stages only (core 10-stage protected pipeline untouched): `... -> PublishingModule -> KnowledgeModule -> TrendMemoryModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> CompetitorEngineModule`. `storage/workflow_results/` numbering updated (`11_trend_memory_result.json` through `17_competitor_result.json`).
 - Verified with `py -m compileall -f src modules scripts` (success, forced full recompile) and `py -m src.main` (`workflow_completed`). Latest run: Pattern Engine `confidence_score` boosted `0.72 -> 0.77` from Knowledge match; CardNews `layout_quality_score` boosted `0.6833 -> 0.7133`; `audit_score: 0.7552` (9 checks, `image_strategy_check` correctly failed with `manual_image_required: true`); `internal_learning_score: 0.7762` (`audit=0.7552*0.4 + performance=0.8587*0.35 + knowledge=0.6945*0.25`); Analytics `quality_trend: "stable"` (real 3-run historical average, no fabricated metrics); `competitor_profiles.json` has 14 real account profiles; `publish_queue.json` correctly carries `manual_image_required: true` with a 2-item checklist.
 
+## Sprint 14-0 Completed (Documentation Alignment Audit)
+
+Goal: make `PROJECT_MASTER.md`, `PROJECT_SNAPSHOT.md`, `MODULE_STATUS.md`, `ROADMAP.md`,
+`CURRENT_TASK.md`, and `CTO_BRAIN.md` match the actual repository state, judged by the code
+(no code changes made this Sprint; `py -m compileall`/`py -m src.main` intentionally not run).
+
+- **Found and fixed a real doc/code conflict**: `PROJECT_SNAPSHOT.md`'s "Current WorkflowEngine"
+  line had `TrendMemoryModule` positioned after `BrandDNAEngineModule` (the pre-Sprint-13 order).
+  The actual `src/workflow_engine.py` runs `TrendMemoryModule` immediately after `KnowledgeModule`
+  (moved there in Sprint 13 specifically so Audit Engine's `duplicate_check` could consume its
+  output). Traced the root cause to `scripts/update_project_snapshot.py`'s hardcoded
+  `module_lines` string (line ~184-191), which was never updated for the Sprint 13 reorder —
+  this is a **code bug**, out of scope to fix this Sprint (docs-only), tracked below.
+  `PROJECT_SNAPSHOT.md` was hand-corrected to the true order for now; it will revert to the
+  wrong order on the next `py -m src.main` run until the script itself is fixed.
+- **`PROJECT_MASTER.md` was the most stale of the six**: its "Current Core" list predated even
+  Sprint 10 (no Image Strategy) and "Planning Additions" still listed Knowledge Engine,
+  Competitor Engine, and Audit Engine as not-yet-built — all three (plus Learning/Analytics/
+  Brand DNA/Trend Memory/Performance Score) have been implemented since Sprint 11-13. Rewrote
+  "Current Core" to list the protected pipeline + Intelligence Layer, and reduced "Planning
+  Additions" to AI Planner only.
+- **`MODULE_STATUS.md`'s top section was self-contradictory**: titled "Planning Additions" but
+  8 of 9 listed items were already implemented, and "Operational Support" entries were labeled
+  "Planning/Operational Support" despite already existing. Split into "Engine Status
+  (Implemented vs. Planning)" with explicit Implemented/Planning subsections, and dropped the
+  misleading "Planning/" prefix from Operational Support entries (they are real, existing,
+  documentation-only systems — not unbuilt).
+- **`CURRENT_TASK.md` described a project that no longer exists**: "Sprint 01 - Foundation",
+  unchecked boxes for `PROJECT_BIBLE.md`/`SYSTEM_ARCHITECTURE.md`/`WORKFLOW.md`/`MASTER_JSON.md`
+  (all four exist in the repo today), and a "Legacy Migration" checklist superseded by the
+  `research.md` skill workflow established in `DECISIONS.md` (2026-07-09). Rewritten to reflect
+  Sprint 13 completion and the actual `MODULE_STATUS.md`/`ROADMAP.md` "Next" items.
+- **`CTO_BRAIN.md` did not exist**, despite being referenced as a Mandatory Reading Order item
+  in `PROJECT_OPERATING_SYSTEM.md`, `CLAUDE.md`, and every recent Sprint's "반드시 먼저 읽기"
+  list. Created it as the CTO's own current-state operating summary (architecture snapshot,
+  Engine inventory, standing risks/watch items) so that reading order item is no longer a
+  dangling reference.
+- `ROADMAP.md` was already accurate (Engine statuses and "Requires External API" section both
+  correctly reflect Sprint 13's real state) — no content changes needed there beyond
+  confirming consistency with the corrected documents above.
+- **AI Planner status confirmed**: it is the only Engine marked Planning across all six
+  documents after this audit (previously `PROJECT_MASTER.md` also listed Knowledge/Competitor/
+  Audit Engine as Planning — now corrected).
+
 ## Next
 
+- **Fix `scripts/update_project_snapshot.py`'s hardcoded `module_lines` string** (code change,
+  requires a Sprint that permits touching scripts) so the "Current WorkflowEngine" line
+  auto-generates in the correct order (`TrendMemoryModule` right after `KnowledgeModule`) instead
+  of reverting to the stale Sprint-12 order on every `py -m src.main` run.
 - M2 Content Engine enhancement
-- Real image sourcing automation (news thumbnail fetch, community post/comment capture, product image lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
+- Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
 - Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs

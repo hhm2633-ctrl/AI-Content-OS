@@ -38,7 +38,15 @@ Do not use `python -m src.main` for this project.
 
 ## Current WorkflowEngine
 
-- TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImageStrategyModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule -> KnowledgeModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> TrendMemoryModule -> CompetitorEngineModule
+- TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImageStrategyModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule -> KnowledgeModule -> TrendMemoryModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> CompetitorEngineModule
+
+Verified 2026-07-10 (Sprint 14-0 doc audit) directly against `src/workflow_engine.py`'s actual
+`WorkflowEngine.run()` call sequence. Note: `scripts/update_project_snapshot.py`'s hardcoded
+`module_lines` string (which regenerates this line on every `py -m src.main` run) still has the
+pre-Sprint-13 order (`TrendMemoryModule` listed after `BrandDNAEngineModule` instead of right
+after `KnowledgeModule`) — this is a known generator bug tracked in `MODULE_STATUS.md`'s Next
+section and must be fixed in that script (code) in a future Sprint, or this line will revert to
+the wrong order on the next run.
 
 ## Current Project Tree
 
