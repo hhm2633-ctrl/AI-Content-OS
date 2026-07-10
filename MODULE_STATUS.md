@@ -594,6 +594,84 @@ placeholders that fabricate plausible-looking decisions, no actual `WorkflowEngi
   (this entry is written before that round completes; if Codex requested changes, they are
   folded into this same Sprint 15-0 entry rather than a separate correction section).
 
+## Sprint 15-0A Completed (AI Planner Contract Dependency Repair)
+
+Structural bug-fix to the Sprint 15-0 Contract, not a Sprint 15-1 implementation. Sprint 15-0
+placed `AIPlannerModule` between `TopicEngineModule` and `PatternEngineModule`, but its
+`PlanningContext` required `pattern_result`, `knowledge_result`, `trend_memory_result`,
+`competitor_result`, and `image_strategy_result` — all produced by stages that run **after**
+that position. This was unimplementable without passing empty dicts, filling future-stage
+results with placeholders, or reordering the Workflow — all three explicitly forbidden.
+
+- **Fix**: AI Planner v1 re-scoped as a **Pre-Planning Engine**. Position unchanged
+  (`TrendCollectorModule -> TopicEngineModule -> AIPlannerModule -> PatternEngineModule`); only
+  the Input Contract changed.
+  - **Runtime Inputs** (directly receivable at this position in the current run):
+    `trend_result`, `topic_result`, `brand_profile`.
+  - **Historical Inputs** (read from local storage, accumulated past-run data, not current-run
+    results): `knowledge_history`, `trend_memory_history`, `competitor_history`,
+    `brand_dna_history`, `performance_history`. Verified before naming that the backing storage
+    genuinely exists: `storage/knowledge/knowledge_history.json`,
+    `storage/trend_memory/trend_memory_history.json`,
+    `storage/performance_score/performance_score_history.json`,
+    `storage/brand_dna/brand_dna_history.json`, `storage/competitor/competitor_history.json`.
+  - Removed from Planner Input entirely: `pattern_result`, `knowledge_result`,
+    `trend_memory_result`, `competitor_result`, `image_strategy_result` (now listed in
+    `PlannerContract.FORBIDDEN_FUTURE_STAGE_INPUT_FIELDS` as an explicit regression guard).
+- `planner_contract.py`: added `RUNTIME_INPUT_FIELDS`, `HISTORICAL_INPUT_FIELDS`,
+  `FORBIDDEN_FUTURE_STAGE_INPUT_FIELDS`; `INPUT_FIELDS` is now their concatenation;
+  `VERSION` bumped to `"0.2.0-contract-only"`.
+  `planning_context.py`: `PlanningContext` constructor rewritten to the 3 Runtime + 5 Historical
+  fields; `to_dict()`/`from_dict()` updated to match; `from_dict()` still never raises on
+  invalid input (coerces to `{}`).
+  `planning_result_schema.py`: `REQUIRED_FIELDS` (10 fields) unchanged; added
+  `TARGET_ENGINE_BY_FIELD` mapping each selectable output field to its downstream Engine
+  (`selected_pattern` -> Pattern Engine, `selected_hook_strategy`/`selected_cta_strategy`/
+  `content_strategy` -> Content Engine, `selected_image_strategy` -> Image Strategy Engine,
+  `knowledge_priority` -> Knowledge Engine, `competitor_reference` -> Competitor Engine);
+  `PLANNER_VERSION` bumped to match. `build_undecided_result()`/`validate_schema()` logic
+  unchanged (still honest/undecided, no exceptions).
+  `planner_module.py`: docstring updated only; `_build_undecided_result()` logic unchanged
+  (still never fabricates a decision, verified even when Historical Input is fully populated
+  with real past data).
+  `planner_interface.py`: rewritten to add `load_historical_inputs()`, which instantiates and
+  reuses the existing `KnowledgeInterface`, `TrendMemoryInterface`, `CompetitorInterface`,
+  `BrandDNAInterface`, `PerformanceScoreInterface` — no new storage structure invented, no
+  circular import (verified: these Engine Interfaces do not import `modules.ai_planner`).
+- `src/workflow_engine.py`: **not modified**. The Sprint 15-0 comment-only connection points
+  already described the correct position (`TopicEngineModule -> AIPlannerModule ->
+  PatternEngineModule`) — only the input contract was wrong, not the workflow position.
+- **Tests** (new, `tests/test_ai_planner_*.py`, 30 tests total, all local/no network/no LLM):
+  `test_ai_planner_contract.py` (9 — Runtime/Historical field correctness, `INPUT_FIELDS` vs.
+  `PlanningContext` field match, all 5 forbidden future-stage fields absent, Output vs. schema
+  match, `WorkflowEngine` has no real `AIPlannerModule` import/instantiation/`run()` call while
+  its explanatory comment remains, `describe()` completeness), `test_ai_planner_context.py`
+  (6 — default-empty construction, Runtime/Historical field acceptance, to_dict/from_dict
+  round-trip, `from_dict` never raises on 6 garbage inputs, forbidden/unknown keys ignored),
+  `test_ai_planner_schema.py` (7 — `build_undecided_result` honesty/completeness/never-raises,
+  `validate_schema` pass/each-missing-field-detected/never-raises, `TARGET_ENGINE_BY_FIELD`
+  coverage), `test_ai_planner_module.py` (8 — Skeleton never fabricates a decision regardless
+  of empty/Runtime-only/Historical-only/fully-populated context, `run()` never raises, interface
+  exposed). Run via `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v` ->
+  **Ran 30 tests in 0.010s, OK**.
+- Verified with `py -m compileall -f src modules scripts tests` (success) and `py -m src.main`
+  (`workflow_completed`, unchanged 17-stage order confirming AI Planner still does not execute,
+  4 CardNews PNGs, `publishing_ready`).
+- **Independent Codex MCP review** (thread `019f4a7a-6c78-7d73-a017-d5c37d3e4e93`): first pass
+  returned **CONDITIONAL PASS** — everything checked out except one ambiguity: `brand_profile`
+  was classified as a Runtime Input but is not actually a `WorkflowEngine.run()` stage output
+  (unlike `trend_result`/`topic_result`); it is static config (`config/brand_profile.json`) with
+  no explicit loader wired into the Planner layer. Fixed by adding
+  `PlannerInterface.load_brand_profile()` (reuses the existing
+  `modules/brand_dna_engine/brand_profile_loader.py::BrandProfileLoader` — no new storage/loader
+  invented), clarifying `planner_contract.py`/`planning_context.py` docstrings that
+  `brand_profile` is grouped with Runtime Inputs because it is unconditionally available at the
+  Planner's position, not because a prior stage produced it, and adding a regression test
+  (`test_interface_load_brand_profile_never_raises_and_returns_dict`, bringing the suite to 31
+  tests). Re-verified `py -m compileall -f modules\ai_planner tests\test_ai_planner_module.py`
+  and `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v` (31 tests, OK) after the
+  fix.
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"

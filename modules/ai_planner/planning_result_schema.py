@@ -1,9 +1,11 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-PLANNER_VERSION = "0.1.0-contract-only"
+PLANNER_VERSION = "0.2.0-contract-only"
 
 # AI Planner - Output Contract (Sprint 15-0). PlannerContract.OUTPUT_FIELDS와 반드시 일치한다.
+# Sprint 15-0A에서 재확인: 이 필드들은 이번 실행의 "미래 결과를 흉내내는 값"이
+# 아니라, 하위 Engine에 실제로 전달 가능한 계획/힌트 값이어야 한다.
 REQUIRED_FIELDS: List[str] = [
     "selected_pattern",
     "selected_hook_strategy",
@@ -16,6 +18,19 @@ REQUIRED_FIELDS: List[str] = [
     "planner_reason",
     "planner_version",
 ]
+
+# 각 Output 필드가 실제로 전달될 하위 Engine (Sprint 15-0A, Codex Schema Review 참고용).
+# planner_confidence/planner_reason/planner_version은 Planner 자신의 메타데이터라
+# 특정 하위 Engine으로 전달되지 않으므로 이 맵에 없다.
+TARGET_ENGINE_BY_FIELD: Dict[str, str] = {
+    "selected_pattern": "pattern_engine",  # PatternEngineModule의 pattern_type 힌트
+    "selected_hook_strategy": "content_engine",  # ContentModule의 hook 전략 힌트
+    "selected_cta_strategy": "content_engine",  # ContentModule의 cta 전략 힌트
+    "selected_image_strategy": "image_strategy",  # ImageStrategyModule의 content_type/전략 힌트
+    "knowledge_priority": "knowledge_engine",  # KnowledgeInterface 조회 시 우선순위 힌트
+    "competitor_reference": "competitor_engine",  # 참고할 competitor profile 식별자 목록
+    "content_strategy": "content_engine",  # ContentPromptBuilder에 전달할 전략 요약
+}
 
 
 def build_undecided_result(reason: str) -> Dict[str, Any]:

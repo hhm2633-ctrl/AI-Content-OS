@@ -48,32 +48,50 @@ implemented vs. still Planning.
   defined in Sprint 15-0 under `modules/ai_planner/` — see "AI Planner Contract" below. No
   actual decision logic exists yet, and it is not connected into `WorkflowEngine`.
 
-## AI Planner Contract (Sprint 15-0, Architecture Only)
+## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A)
 
 AI Planner is designed to eventually become the central coordinating Engine across Pattern
 Engine, Knowledge Engine, Competitor Engine, Image Strategy, Content Engine, Brand DNA Engine,
-and Trend Memory. Sprint 15-0 defined the **contract only** — no decision logic:
+and Trend Memory. Sprint 15-0 defined the **contract only** — no decision logic. Sprint 15-0A
+fixed a structural defect in that Contract: it originally required `pattern_result`,
+`knowledge_result`, `trend_memory_result`, `competitor_result`, and `image_strategy_result` as
+Planner inputs, but the Planner's intended `WorkflowEngine` position (after `TopicEngineModule`,
+before `PatternEngineModule`) runs **before** all five of those stages produce their results —
+making the original Contract unimplementable without placeholders or reordering the Workflow
+(both forbidden). Sprint 15-0A re-scoped AI Planner v1 as a **Pre-Planning Engine** with inputs
+split into genuinely-available **Runtime Inputs** (from the current run, pre-Planner) and
+**Historical Inputs** (accumulated past-run data read from existing Engine Interfaces):
 
 - `modules/ai_planner/planner_contract.py` (`PlannerContract`) — single source of truth for
-  the coordinated-Engine list, Input/Output field lists, and the intended `WorkflowEngine`
+  the coordinated-Engine list, `RUNTIME_INPUT_FIELDS`/`HISTORICAL_INPUT_FIELDS`/`INPUT_FIELDS`,
+  `FORBIDDEN_FUTURE_STAGE_INPUT_FIELDS`, Output field list, and the intended `WorkflowEngine`
   connection point (documented via `PlannerContract.describe()`).
-- `modules/ai_planner/planning_context.py` (`PlanningContext`) — the 8-field Input Contract:
-  `trend_result`, `topic_result`, `pattern_result`, `knowledge_result`, `trend_memory_result`,
-  `competitor_result`, `brand_profile`, `image_strategy_result`.
-- `modules/ai_planner/planning_result_schema.py` — the Output Contract (`REQUIRED_FIELDS`):
-  `selected_pattern`, `selected_hook_strategy`, `selected_cta_strategy`,
-  `selected_image_strategy`, `knowledge_priority`, `competitor_reference`, `content_strategy`,
-  `planner_confidence`, `planner_reason`, `planner_version`; plus `build_undecided_result()`
-  and `validate_schema()`.
+- `modules/ai_planner/planning_context.py` (`PlanningContext`) — the corrected Input Contract:
+  3 Runtime fields (`trend_result`, `topic_result`, `brand_profile`) + 5 Historical fields
+  (`knowledge_history`, `trend_memory_history`, `competitor_history`, `brand_dna_history`,
+  `performance_history`). `pattern_result`/`knowledge_result`/`trend_memory_result`/
+  `competitor_result`/`image_strategy_result` are no longer accepted.
+- `modules/ai_planner/planning_result_schema.py` — the Output Contract (`REQUIRED_FIELDS`,
+  unchanged from Sprint 15-0): `selected_pattern`, `selected_hook_strategy`,
+  `selected_cta_strategy`, `selected_image_strategy`, `knowledge_priority`,
+  `competitor_reference`, `content_strategy`, `planner_confidence`, `planner_reason`,
+  `planner_version`; plus `build_undecided_result()`, `validate_schema()`, and (added
+  Sprint 15-0A) `TARGET_ENGINE_BY_FIELD` mapping each selectable field to the downstream Engine
+  it is meant for.
 - `modules/ai_planner/planner_interface.py` (`PlannerInterface`) — read-only API for future
-  Engines/Sprints, consistent with every other Engine's `*_interface.py` pattern.
+  Engines/Sprints; now also exposes `load_historical_inputs()` (added Sprint 15-0A), which reuses
+  the existing `KnowledgeInterface`/`TrendMemoryInterface`/`CompetitorInterface`/
+  `BrandDNAInterface`/`PerformanceScoreInterface` to read real accumulated `storage/` data —
+  no new storage structure was invented.
 - `modules/ai_planner/planner_module.py` (`AIPlannerModule`) — a Skeleton that accepts a
   `PlanningContext` and returns a schema-valid but fully **undecided** result (`selected_*` and
   `content_strategy` are `None`, `planner_confidence: 0.0`) — never a fabricated-looking
-  decision. Not wired into `WorkflowEngine`; only a comment marks the intended connection point
-  (after `TopicEngineModule`, before `PatternEngineModule`).
+  decision, even when Historical Input is filled with real past data. Not wired into
+  `WorkflowEngine`; only a comment marks the intended connection point (after
+  `TopicEngineModule`, before `PatternEngineModule`).
 
-See `MODULE_STATUS.md`'s Sprint 15-0 entry for full detail and Codex's independent review result.
+See `MODULE_STATUS.md`'s Sprint 15-0 and Sprint 15-0A entries for full detail and Codex's
+independent review results.
 
 ## Research Knowledge Base
 
