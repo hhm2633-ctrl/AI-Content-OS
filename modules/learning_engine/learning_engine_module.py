@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from modules.base_module import BaseModule
+from modules.common.metadata_standard import SOURCE_LOCAL_QUALITY, SOURCE_RUNTIME, build_standard_metadata
 from modules.learning_engine.learning_history import LearningHistory
 from modules.learning_engine.learning_interface import LearningInterface
 from modules.learning_engine.learning_score import LearningScorer
@@ -29,6 +30,16 @@ class LearningEngineModule(BaseModule):
 
     이 Engine은 외부 네트워크/LLM을 호출하지 않으며, 계산 실패 시 승격 없이 안전한
     기본 결과를 반환한다.
+
+    Self Reference Guard 검증 (Sprint 16-0, Intelligence Feedback Safety Audit):
+    `run()`/`_build_result()`는 `knowledge_result`/`performance_score_result`/
+    `audit_result` 3개만 입력으로 받는다 - `planner_result`나 AI Planner의 어떤
+    출력도 파라미터로 받지 않으며, `internal_learning_score`는 항상 이 3개
+    입력에서 실제로 계산된 값에서만 나온다. 즉 Learning Engine은 "Planner
+    Decision을 무조건 강화"할 수 없다 - Planner를 아예 참조하지 않기 때문이다.
+    이 사실은 `evidence_metadata`/`planner_evidence_used: False` 필드로 결과에
+    명시적으로 기록되며, `tests/test_intelligence_feedback_safety.py`가 이
+    시그니처(파라미터 이름 목록에 "planner"가 없는지)를 회귀 테스트로 고정한다.
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
@@ -139,6 +150,30 @@ class LearningEngineModule(BaseModule):
             ),
             "reason": selection.get("reason", ""),
             "fallback_used": False,
+            # Learning 검증 (Sprint 16-0): internal_learning_score의 3개 구성
+            # 요소가 전부 이번 실행에서 실제로 계산된 로컬 품질 대리 지표임을
+            # 명시한다. Evidence가 실제로 없으면(모두 계산 실패) Learning
+            # Score를 올릴 근거 자체가 없다는 점도 이 metadata로 드러난다.
+            "evidence_metadata": {
+                "audit_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY, confidence=None, note="Audit Engine이 이번 실행에서 실제로 계산."
+                ),
+                "performance_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY, confidence=None, note="Performance Score Engine이 이번 실행에서 실제로 계산."
+                ),
+                "knowledge_score": build_standard_metadata(
+                    source=SOURCE_RUNTIME,
+                    confidence=None,
+                    note="이번 실행에서 Knowledge Engine이 추출한 top_knowledge의 실제 overall_score 평균.",
+                ),
+            },
+            # Self Reference Guard 검증 (Sprint 16-0): Learning Engine은
+            # AI Planner의 어떤 출력도 입력으로 받지 않는다 - internal_learning_
+            # score는 항상 audit/performance/knowledge 3개의 실제 계산값에서만
+            # 나온다. 이 필드는 항상 False이며, 향후 누군가 실수로 Planner
+            # Decision을 강화 근거로 추가하면 이 값과 그 근거를 함께 갱신해야
+            # 한다(회귀 테스트로 고정됨).
+            "planner_evidence_used": False,
             "created_at": datetime.now().isoformat(),
         }
 
@@ -161,6 +196,12 @@ class LearningEngineModule(BaseModule):
             "knowledge_used": False,
             "knowledge_items": [],
             "knowledge_influence": "",
+            "evidence_metadata": {
+                "audit_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note="계산 실패로 기본값 사용."),
+                "performance_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note="계산 실패로 기본값 사용."),
+                "knowledge_score": build_standard_metadata(source=SOURCE_RUNTIME, confidence=None, note="계산 실패로 기본값 사용."),
+            },
+            "planner_evidence_used": False,
             "reason": reason,
             "fallback_used": True,
             "created_at": datetime.now().isoformat(),

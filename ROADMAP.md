@@ -77,6 +77,14 @@
   Consumer Adapter into `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/
   `KnowledgeModule`, each recording a `planner_consumption.*` metadata entry and none of them
   losing their own existing selection logic or fallback behavior.
+- **Intelligence Feedback Safety (Sprint 16-0, no new Engine)**: a Feedback Audit of the actual
+  `Planner → Content/Pattern/Image Strategy/Knowledge → Brand DNA/Performance Score/Learning/
+  Analytics → storage → Planner` path found two real self-reinforcing loops (Brand DNA→Planner
+  via `total_observations`; Knowledge→Planner via a persisted score-boosting bug in Sprint
+  15-3's "Priority Boost") and closed both — see `MODULE_STATUS.md`'s Sprint 16-0 entry.
+  Analytics/Learning/Performance Score/Content also gained explicit source-labeled metadata
+  (`measurement_metadata`/`evidence_metadata`/`planner_used`+family/`engine_influence`) built on
+  a new shared `modules/common/metadata_standard.py` helper.
 
 # Requires External API (do not implement without explicit approval)
 

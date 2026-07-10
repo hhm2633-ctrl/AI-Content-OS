@@ -278,9 +278,14 @@ class TestWorkflowEngineAIPlannerWiring(unittest.TestCase):
         self.assertEqual(result["status"], "image_strategy_completed")
         self.assertFalse(result["planner_consumption"]["image_strategy"]["planner_applied"])
 
-    # ---- Knowledge Consumer 호출 (Priority Boost) + Metadata ----
+    # ---- Knowledge Consumer 호출 (Priority Preview, Sprint 16-0 이후 이름 변경) + Metadata ----
+    # 참고: Sprint 15-3의 최초 구현은 이 hint를 실제 overall_score를 올리는
+    # "Priority Boost"로 적용했으나, Sprint 16-0 Self Reference Guard에서 그
+    # 방식이 Knowledge->Planner 순환 참조를 만든다는 것이 밝혀져 제거됐다. 지금은
+    # 실제 점수를 전혀 바꾸지 않는 진단 전용 `planner_priority_preview`만 남는다
+    # (자세한 내용은 tests/test_intelligence_feedback_safety.py 참고).
 
-    def test_knowledge_module_applies_priority_boost_without_removing_ranker(self):
+    def test_knowledge_module_records_planner_priority_consumption_without_removing_ranker(self):
         module = KnowledgeModule()
         planner_result = _decided_planner_result(knowledge_priority=["hook", "cta"])
 
@@ -304,6 +309,7 @@ class TestWorkflowEngineAIPlannerWiring(unittest.TestCase):
         # KnowledgeRanker가 여전히 실제로 호출되고 있음을 간접 확인한다: 결과에
         # rank가 매겨진 top_knowledge 구조가 그대로 남아 있어야 한다.
         self.assertIn("top_knowledge", result)
+        self.assertIn("planner_priority_preview", result)
 
     def test_knowledge_module_handles_none_planner_result(self):
         module = KnowledgeModule()

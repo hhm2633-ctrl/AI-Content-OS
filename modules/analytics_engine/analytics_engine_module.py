@@ -6,6 +6,12 @@ from modules.analytics_engine.analytics_history import AnalyticsHistory
 from modules.analytics_engine.analytics_interface import AnalyticsInterface
 from modules.analytics_engine.analytics_predictor import AnalyticsPredictor
 from modules.analytics_engine.analytics_storage import AnalyticsStorage
+from modules.common.metadata_standard import (
+    SOURCE_ESTIMATED,
+    SOURCE_HISTORICAL,
+    SOURCE_LOCAL_QUALITY,
+    build_standard_metadata,
+)
 from modules.performance_score.performance_score_interface import PerformanceScoreInterface
 
 
@@ -66,16 +72,50 @@ class AnalyticsEngineModule(BaseModule):
         performance_statistics = self.performance_score_interface.get_statistics()
 
         trend_result = self.predictor.compute(performance_score_result, audit_result, performance_statistics)
+        sample_size = trend_result.get("sample_size", 0)
 
         result = {
             "status": "analytics_completed",
             "current_performance_score": trend_result.get("current_performance_score", 0.0),
             "current_audit_score": trend_result.get("current_audit_score", 0.0),
             "historical_average_performance_score": trend_result.get("historical_average_performance_score"),
-            "sample_size": trend_result.get("sample_size", 0),
+            "sample_size": sample_size,
             "quality_trend": trend_result.get("quality_trend", "insufficient_history"),
             "reason": trend_result.get("reason", ""),
             "fallback_used": False,
+            # Analytics 검증 (Sprint 16-0): 실제 측정값/로컬 품질/추정값을 명확히
+            # 구분한다 - 이 필드들이 실제 SNS 실측처럼 보이면 안 된다는 Sprint 13
+            # Offline-First 원칙을 Metadata 수준에서 다시 한번 강제한다.
+            "measurement_metadata": {
+                # 이번 실행에서 실제로 계산된 내부 품질 대리 지표 - 실제 외부
+                # 성과 지표가 아니다.
+                "current_performance_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY,
+                    confidence=None,
+                    note="Performance Score Engine이 이번 실행에서 실제로 계산한 내부 품질 점수 (실제 SNS 성과 아님).",
+                ),
+                "current_audit_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY,
+                    confidence=None,
+                    note="Audit Engine이 이번 실행에서 실제로 계산한 내부 품질 점수 (실제 SNS 성과 아님).",
+                ),
+                # storage/performance_score/에 실제로 누적된 과거 평균 - 이번
+                # 실행 값이 아니다.
+                "historical_average_performance_score": build_standard_metadata(
+                    source=SOURCE_HISTORICAL,
+                    confidence=None,
+                    sample_size=sample_size,
+                    note="storage/performance_score/performance_score_statistics.json에 실제로 누적된 과거 평균.",
+                ),
+                # 위 두 실측/이력 값을 비교해 추론한 판단 - 그 자체는 측정값이
+                # 아니라 추정치다.
+                "quality_trend": build_standard_metadata(
+                    source=SOURCE_ESTIMATED,
+                    confidence=None,
+                    sample_size=sample_size,
+                    note="local_quality 값과 historical 평균을 비교해 추론한 추세 - 실측값이 아님.",
+                ),
+            },
             "created_at": datetime.now().isoformat(),
         }
 
@@ -93,6 +133,20 @@ class AnalyticsEngineModule(BaseModule):
             "historical_average_performance_score": None,
             "sample_size": 0,
             "quality_trend": "insufficient_history",
+            "measurement_metadata": {
+                "current_performance_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY, confidence=None, note="계산 실패로 안전한 기본값(0.0) 사용."
+                ),
+                "current_audit_score": build_standard_metadata(
+                    source=SOURCE_LOCAL_QUALITY, confidence=None, note="계산 실패로 안전한 기본값(0.0) 사용."
+                ),
+                "historical_average_performance_score": build_standard_metadata(
+                    source=SOURCE_HISTORICAL, confidence=None, sample_size=0, note="계산 실패로 이력을 읽지 못함."
+                ),
+                "quality_trend": build_standard_metadata(
+                    source=SOURCE_ESTIMATED, confidence=None, sample_size=0, note="계산 실패로 추세를 판단하지 않음."
+                ),
+            },
             "reason": reason,
             "fallback_used": True,
             "created_at": datetime.now().isoformat(),

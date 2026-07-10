@@ -197,6 +197,23 @@ class PlannerDecisionEngine(object):
             "created_at": datetime.now().isoformat(),
         }
 
+    def _independent_brand_dna_observations(self, brand_dna_history: Dict[str, Any]) -> int:
+        """
+        Self Reference Guard (Sprint 16-0): `total_observations`에는 이전 실행에서
+        이 Planner 자신의 Hint가 적용되어 만들어진 관찰도 섞여 있을 수 있다
+        (`brand_dna_history.planner_influenced_observations`, Sprint 16-0에서
+        BrandDNATracker/BrandDNAStorage에 추가됨). 그 관찰들을 "실제 독립적인
+        브랜드 사용 패턴 증거"로 세면, Planner가 자신이 과거에 추천한 값을
+        미래에 다시 근거 데이터로 사용하는 순환 참조가 생긴다. override 여부는
+        반드시 `total_observations - planner_influenced_observations`(독립
+        관찰 수)만으로 판단한다.
+        """
+        total_observations = self._to_int(brand_dna_history.get("total_observations"), default=0)
+        planner_influenced_observations = self._to_int(
+            brand_dna_history.get("planner_influenced_observations"), default=0
+        )
+        return max(0, total_observations - planner_influenced_observations)
+
     def _select_hook_with_history(
         self,
         baseline_hook_type: str,
@@ -204,21 +221,22 @@ class PlannerDecisionEngine(object):
     ) -> Tuple[str, str, bool]:
         brand_dna_history = self._safe_dict(brand_dna_history)
         dominant_hook_type = str(brand_dna_history.get("dominant_hook_type") or "")
-        total_observations = self._to_int(brand_dna_history.get("total_observations"), default=0)
+        independent_observations = self._independent_brand_dna_observations(brand_dna_history)
 
         if (
             dominant_hook_type
             and dominant_hook_type in HookSelector.HOOK_TYPES
-            and total_observations >= MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE
+            and independent_observations >= MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE
         ):
             note = (
-                f"Brand DNA 이력(실제 관측 {total_observations}회)에서 가장 많이 쓰인 hook_type "
-                f"'{dominant_hook_type}'을 pattern 기반 기본값 '{baseline_hook_type}' 대신 채택함."
+                f"Brand DNA 이력(독립 관측 {independent_observations}회 - Planner 영향 관측 제외)에서 "
+                f"가장 많이 쓰인 hook_type '{dominant_hook_type}'을 pattern 기반 기본값 "
+                f"'{baseline_hook_type}' 대신 채택함."
             )
             return dominant_hook_type, note, True
 
         note = (
-            f"Brand DNA 이력이 부족(관측 {total_observations}회 < "
+            f"Brand DNA 독립 이력이 부족(Planner 영향 관측 제외 {independent_observations}회 < "
             f"{MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE}회)하여 pattern 기반 기본값 hook_type "
             f"'{baseline_hook_type}'을 그대로 사용함."
         )
@@ -231,21 +249,22 @@ class PlannerDecisionEngine(object):
     ) -> Tuple[str, str, bool]:
         brand_dna_history = self._safe_dict(brand_dna_history)
         dominant_cta_type = str(brand_dna_history.get("dominant_cta_type") or "")
-        total_observations = self._to_int(brand_dna_history.get("total_observations"), default=0)
+        independent_observations = self._independent_brand_dna_observations(brand_dna_history)
 
         if (
             dominant_cta_type
             and dominant_cta_type in CTASelector.CTA_TYPES
-            and total_observations >= MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE
+            and independent_observations >= MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE
         ):
             note = (
-                f"Brand DNA 이력(실제 관측 {total_observations}회)에서 가장 많이 쓰인 cta_type "
-                f"'{dominant_cta_type}'을 pattern 기반 기본값 '{baseline_cta_type}' 대신 채택함."
+                f"Brand DNA 이력(독립 관측 {independent_observations}회 - Planner 영향 관측 제외)에서 "
+                f"가장 많이 쓰인 cta_type '{dominant_cta_type}'을 pattern 기반 기본값 "
+                f"'{baseline_cta_type}' 대신 채택함."
             )
             return dominant_cta_type, note, True
 
         note = (
-            f"Brand DNA 이력이 부족(관측 {total_observations}회 < "
+            f"Brand DNA 독립 이력이 부족(Planner 영향 관측 제외 {independent_observations}회 < "
             f"{MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE}회)하여 pattern 기반 기본값 cta_type "
             f"'{baseline_cta_type}'을 그대로 사용함."
         )

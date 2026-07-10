@@ -75,7 +75,7 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-3 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 16-0 갱신)
 
 - ~~`scripts/update_project_snapshot.py`의 `module_lines` 하드코딩 문자열이 Sprint 13
   재정렬을 반영하지 못함~~ — Sprint 14-1에서 수정 완료 (`MODULE_STATUS.md` Sprint 14-1 항목
@@ -106,6 +106,18 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
   workflow_completed를 확인했다. AI Planner 관련 작업은 이제 완료됐다 - 더 이상 별도 감시
   항목이 아니다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개 개념인
   "AI 작업 분담 라우팅"을 설명하며 `modules/ai_planner/`와 이름만 같음에 유의).
+- **Intelligence Feedback Safety (Sprint 16-0)**: Sprint 15-3이 Planner Hint를 실제 Engine에
+  연결하면서 생긴 실제 순환 참조 2건을 Feedback Audit으로 발견해 수정했다 - (1) Brand DNA→
+  Planner: pattern_plan.hook_type/cta_type이 Planner Hint 영향을 받을 수 있는데도
+  total_observations를 그대로 override 근거로 썼던 문제(→ planner_influenced_observations
+  카운터로 "독립 관찰 수"만 근거로 삼도록 수정), (2) Knowledge→Planner: "Priority Boost"가
+  실제 overall_score를 영구히 부풀려 저장해 다음 실행의 Planner가 자신의 과거 힌트를 실제
+  성과처럼 재사용하던 문제(→ score 변형 제거, 순수 진단용 `planner_priority_preview`로 대체).
+  Analytics/Learning/Performance Score/Content에 출처(runtime/historical/estimated/
+  local_quality)가 명확한 Metadata를 추가했고, 새 Engine은 만들지 않았다
+  (`modules/common/metadata_standard.py`는 공통 유틸리티일 뿐). 이 항목도 이제 완료됐다 -
+  향후 남은 것은 나머지 Engine(Audit/Trend Memory/Competitor 등)의 기존 metadata를 이
+  표준으로 점진적으로 리팩터링하는 것뿐이며 예정된 작업은 아니다.
 - Offline-First 원칙 위반 여부는 매 Sprint 시작 전 `ROADMAP.md`의 "Requires External API"
   섹션과 대조해 확인할 것.
 

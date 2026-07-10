@@ -7,6 +7,7 @@ except ImportError:
     from src.base_module import BaseModule
 
 from src.llm_client import LLMClient
+from modules.common.metadata_standard import SOURCE_HISTORICAL, SOURCE_RUNTIME, build_standard_metadata
 from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 from modules.content.content_prompt_builder import ContentPromptBuilder
 from modules.content.brand_rule_evaluator import BrandRuleEvaluator
@@ -136,8 +137,81 @@ class ContentModule(BaseModule):
             else "참고할 만큼 점수가 높은 Knowledge 항목이 아직 없어 프롬프트를 그대로 사용함."
         )
 
+        content_result["engine_influence"] = self._build_engine_influence(
+            content_result=content_result,
+            prompt_source=prompt_source,
+            prompt_meta=prompt_meta,
+            knowledge_items=knowledge_items,
+        )
+
         print("Content Module Finished")
         return content_result
+
+    def _build_engine_influence(
+        self,
+        content_result: Dict[str, Any],
+        prompt_source: str,
+        prompt_meta: Dict[str, Any],
+        knowledge_items: Any,
+    ) -> Dict[str, Any]:
+        """
+        Content 영향도 Metadata (Sprint 16-0): Planner/Knowledge/Brand/Pattern이
+        이번 실행의 프롬프트/결과에 실제로 얼마나 영향을 줬는지 한 곳에 모은다.
+        각 값은 이미 계산되어 있는 실제 필드만 참조하며, 새로운 판단 로직을
+        추가하지 않는다.
+        """
+        try:
+            planner_consumption = (content_result.get("planner_consumption") or {}).get("content", {}) or {}
+            planner_applied = any(
+                bool(entry.get("planner_applied"))
+                for entry in planner_consumption.values()
+                if isinstance(entry, dict)
+            )
+
+            content_intelligence = content_result.get("content_intelligence") or {}
+            brand_rule_passed = content_intelligence.get("brand_rule_passed")
+
+            pattern_fallback_used = bool(prompt_meta.get("pattern_fallback_used", False)) if isinstance(
+                prompt_meta, dict
+            ) else False
+
+            return {
+                "planner": {
+                    "applied": planner_applied,
+                    # planner_consumption은 이미 그 자체로 표준 형태
+                    # (planner_available/planner_applied/planner_mode/...)이므로
+                    # 여기서 중복된 구조를 새로 만들지 않고 그대로 참조한다.
+                    "detail": planner_consumption,
+                },
+                "knowledge": build_standard_metadata(
+                    source=SOURCE_HISTORICAL,
+                    confidence=None,
+                    used=bool(knowledge_items),
+                    items_count=len(knowledge_items) if isinstance(knowledge_items, list) else 0,
+                    note="Knowledge DB에서 실제로 조회한 상위 Hook/CTA 참고 예시를 프롬프트에 추가했는지 여부.",
+                ),
+                "brand": build_standard_metadata(
+                    source=SOURCE_RUNTIME,
+                    confidence=None,
+                    passed=brand_rule_passed,
+                    note="BrandRuleEvaluator가 이번 실행 생성 콘텐츠에 대해 실제로 평가한 결과.",
+                ),
+                "pattern": build_standard_metadata(
+                    source=SOURCE_RUNTIME,
+                    confidence=None,
+                    prompt_source=prompt_source,
+                    fallback_used=pattern_fallback_used,
+                    note="Pattern Engine의 pattern_plan이 이번 프롬프트 구성에 실제로 반영됐는지 여부.",
+                ),
+            }
+        except Exception as error:
+            return {
+                "planner": {"applied": False, "detail": {}},
+                "knowledge": build_standard_metadata(source=SOURCE_HISTORICAL, confidence=None, used=False),
+                "brand": build_standard_metadata(source=SOURCE_RUNTIME, confidence=None, passed=None),
+                "pattern": build_standard_metadata(source=SOURCE_RUNTIME, confidence=None, prompt_source="legacy"),
+                "error": f"engine_influence 계산 실패: {error}",
+            }
 
     def _fetch_knowledge_guidance(self) -> Dict[str, Any]:
         try:

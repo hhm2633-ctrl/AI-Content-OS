@@ -974,6 +974,170 @@ this Sprint.
   (`workflow_completed`) after the fix. Re-submitted — Codex confirmed the fix directly resolves
   the bug (not a symptom patch) and found no new issues → final verdict **APPROVED**.
 
+## Sprint 16-0 Completed (Intelligence Feedback Safety)
+
+No new Engine created — this Sprint strengthens the feedback quality, self-reference safety,
+and metadata honesty of the existing Intelligence Layer Engines that Sprint 15-3 wired together.
+
+### Feedback Audit (actual code, not the intended design)
+
+Traced the real feedback path `Planner → Pattern/Content/Image Strategy/Knowledge → Brand DNA/
+Performance Score/Learning/Analytics → (storage) → Planner`:
+
+- **Real Runtime Sources** (current-run data): `trend_result`/`topic_result` (Planner's own
+  Runtime Input), `content_result`/`card_news_result`/`image_strategy_result` (Performance
+  Score, Content engine_influence).
+- **Real Historical Sources** (accumulated past-run storage): `knowledge_history`,
+  `trend_memory_history`, `competitor_history`, `brand_dna_history`, `performance_history` (all
+  five already correctly scoped as Historical Input since Sprint 15-0A).
+- **Self Reference found (real, not hypothetical) — Brand DNA → Planner**:
+  `BrandDNATracker.observe()` reads `pattern_plan.hook_type`/`cta_type` from
+  `PatternEngineModule`'s output. Since Sprint 15-3, that `pattern_plan` may itself already
+  reflect an AI Planner hint (`PlannerConsumerAdapter.resolve_pattern()`). `BrandDNAStorage`
+  accumulates this into `dominant_hook_type`/`dominant_cta_type`, which
+  `PlannerDecisionEngine._select_hook_with_history()`/`_select_cta_with_history()` then reads
+  back as "real accumulated brand preference" to justify overriding the *next* run's hook/cta —
+  meaning the Planner could reinforce its own past recommendation as if it were independent
+  evidence, with no natural ceiling.
+- **Circular Feedback found (real, introduced by Sprint 15-3, fixed this Sprint) — Knowledge →
+  Planner**: `KnowledgeModule`'s original "Priority Boost" mutated the *actual*
+  `score.overall_score` of this run's newly-extracted items matching
+  `planner_result.knowledge_priority` by `+0.05`, and that mutated value was then permanently
+  persisted via `self.storage.upsert(ranked_items)`. `KnowledgeStorage.update_score_statistics()`
+  recomputes `average_overall_score_by_type` from `self.storage.load_all()` — which now includes
+  the inflated record — so the boosted average would compound across every future run, and the
+  next run's `PlannerDecisionEngine._rank_knowledge_priority()` would read that inflated
+  historical average as if it were genuine accumulated quality, not partly Planner-caused.
+- No other circular path found: `AnalyticsEngineModule`/`LearningEngineModule`/
+  `LearningSelector`/`AuditEngineModule` never receive `planner_result` as an input at all (`git
+  grep`/signature inspection confirmed) — there was no pre-existing Planner→Analytics→Planner or
+  Planner→Learning→Planner loop; the two loops above were the only real ones.
+
+### Self Reference Guard (fixes)
+
+- `modules/knowledge_engine/knowledge_module.py`: removed the score-mutating "Priority Boost"
+  entirely. Ranking/persistence now always uses the real, unmodified `KnowledgeRanker.rank()`
+  output — `overall_score` is never altered by a Planner hint. Replaced with
+  `_build_planner_priority_preview()`, a purely diagnostic, non-mutating method that reads the
+  already-real-ranked `ranked_items` and returns (without changing) the subset matching the
+  Planner's accepted `knowledge_priority` types, exposed as a new, separate
+  `planner_priority_preview` result field. `top_knowledge` (what `LearningSelector`/Audit Engine
+  actually consume for `knowledge_score`) is completely unaffected by any Planner hint, closing
+  the Knowledge→Planner loop entirely.
+- `modules/brand_dna_engine/brand_dna_tracker.py`/`brand_dna_storage.py`/
+  `brand_dna_engine_module.py`: `BrandDNATracker.observe()` gained a `planner_influenced: bool`
+  parameter; `BrandDNAEngineModule` computes it from
+  `pattern_result.planner_consumption.pattern.planner_applied` (already recorded since
+  Sprint 15-3) and passes it through. `BrandDNAStorage` now tracks a parallel
+  `planner_influenced_observations` counter alongside `total_observations`.
+  `modules/ai_planner/planner_decision_engine.py`: the Brand DNA override gate
+  (`_select_hook_with_history`/`_select_cta_with_history`) now requires
+  `total_observations - planner_influenced_observations >=
+  MIN_BRAND_DNA_OBSERVATIONS_FOR_OVERRIDE` (a new `_independent_brand_dna_observations()`
+  helper) instead of raw `total_observations` — so the Planner can only trust Brand DNA's
+  dominant hook/cta once enough *independent* (non-Planner-caused) observations exist. Verified
+  live: after Sprint 15-3's hint was applied once, `brand_dna_statistics.json` shows
+  `total_observations: 30, planner_influenced_observations: 1` — the counter correctly
+  distinguishes the one Planner-influenced run from the 29 pre-Sprint-15-3 independent ones.
+
+### Analytics Verification
+
+`AnalyticsEngineModule`/`analytics_predictor.py` were already Offline-First-compliant (no
+fabricated SNS metrics, Sprint 13) but had no explicit per-field source labeling. Added
+`measurement_metadata` with one entry per output field, each built via the new shared
+`build_standard_metadata()` helper: `current_performance_score`/`current_audit_score` →
+`source: "local_quality"` (explicitly labeled as internal quality proxies, not real
+measurements — directly addresses "가짜 실측처럼 보이면 안 된다"), `historical_average_
+performance_score` → `source: "historical"`, `quality_trend` → `source: "estimated"` (it's an
+inference from comparing the other two, not a direct measurement). Present on both the success
+path and the exception-fallback path.
+
+### Learning Verification
+
+Confirmed (via `inspect.signature` in a new regression test, not just reading the code) that
+`LearningEngineModule.run()`/`LearningSelector.select()` take no `planner_result` parameter and
+never did — `internal_learning_score` is always `audit_score*0.4 + performance_score*0.35 +
+knowledge_score*0.25`, all three computed fresh from this run's real local values. Added
+`evidence_metadata` (per-component `source` labels: `audit_score`/`performance_score` →
+`"local_quality"`, `knowledge_score` → `"runtime"`) and an explicit `planner_evidence_used:
+False` field (always `False`, on both the success and fallback paths) so the "Learning never
+reinforces Planner Decisions unconditionally" guarantee is visible in every result, not just
+implied by the absence of a parameter.
+
+### Performance Score
+
+Added `planner_used`/`planner_helpful`/`planner_rejected`/`planner_reason`, computed from the
+`planner_consumption` metadata already recorded by Content/Image Strategy (Sprint 15-3) — no new
+`WorkflowEngine` wiring needed since `PerformanceScoreModule.run()` already receives
+`content_result`/`card_news_result`/`image_strategy_result`. `planner_used`/`planner_rejected`
+are independent booleans (both can be `True` in the same run — e.g. hook hint applied, cta hint
+rejected — this is real, expected behavior, not a bug). `planner_helpful` is deliberately
+conservative: `planner_used AND overall_performance_score >= 0.7` — the `reason` string
+explicitly labels this a same-run correlation observation, not a proven causal claim, so it can
+never be read as "Planner caused this quality."
+
+### Content Metadata
+
+`ContentModule` gained `engine_influence` (`planner`/`knowledge`/`brand`/`pattern` sub-keys) built
+from fields that already existed (`planner_consumption`, `knowledge_used`/`knowledge_items`,
+`content_intelligence.brand_rule_passed`, `prompt_source`/`pattern_fallback_used`) — no new
+judgment logic. `planner` intentionally references the existing `planner_consumption` structure
+directly rather than wrapping it in the new standard again (avoids the "중복 구조" the CTO asked
+to eliminate); `knowledge`/`brand`/`pattern` use the new shared `build_standard_metadata()`.
+
+### Metadata Standardization
+
+New `modules/common/metadata_standard.py` (`build_standard_metadata()`, `SOURCE_RUNTIME`/
+`SOURCE_HISTORICAL`/`SOURCE_ESTIMATED`/`SOURCE_LOCAL_QUALITY`/`VALID_SOURCES`) — a pure
+formatting helper (no new Engine, consistent with the existing `modules/common/
+service_diagnostic.py` pattern) reused by every new metadata field added this Sprint
+(Analytics/Learning/Content), so future Sprints have one shared shape
+(`metadata_version`/`source`/`confidence`/`generated_at`) to extend instead of inventing another
+one. Full retrofit of every pre-existing Engine's ad-hoc metadata is not attempted this Sprint
+(out of scope/too risky for a safety-hardening Sprint) — noted as a future consideration.
+
+### Tests
+
+New `tests/test_intelligence_feedback_safety.py`, 42 tests, all local/no network/no LLM:
+`TestBrandDNASelfReferenceGuard` (7 — tracker flag recording, engine module detection from
+`planner_consumption`, the override-gate regression proving `total_observations` alone is no
+longer sufficient, independent-observation override still works, missing-field backward
+compatibility, negative-clamping), `TestKnowledgeFeedbackLoop` (7 — priority preview never
+mutates input scores, only includes matching types, uses real not-boosted scores, empty when no
+priority types, never raises on malformed items, resolver never raises, `top_knowledge` stays
+separate from `planner_priority_preview`), `TestAnalyticsSourceMetadata` (4),
+`TestLearningSourceVerification` (5, including the signature-inspection regression),
+`TestPlannerMetadataOnPerformanceScore` (7, including the "both used and rejected can be true"
+case), `TestContentEngineInfluenceMetadata` (7), `TestMetadataStandardization` (5, including a
+cross-Engine `metadata_version` consistency check). Full suite:
+`py -m unittest discover -s tests -v` → **186 tests, OK** (144 pre-existing + 42 new — no
+existing test deleted or weakened).
+- Verified with `py -m compileall -f src modules scripts tests` (success) and `py -m src.main`
+  (`workflow_completed`; Planner executes normally; unchanged 17-stage order; 4 CardNews PNGs;
+  `publishing_ready`; spot-checked `storage/brand_dna/brand_dna_statistics.json` showing the new
+  `planner_influenced_observations` counter and `storage/workflow_results/10_knowledge_result.json`
+  showing `planner_priority_preview` with real, unboosted scores separate from `top_knowledge`).
+- **Independent Codex MCP review** (thread `019f4b4c-226e-7a30-a5db-9ced208dbd15`): first pass
+  returned **CONDITIONAL PASS** — both Self Reference Guard fixes verified genuine (Brand DNA's
+  `planner_influenced` flag traces to a real `planner_consumption.pattern.planner_applied`
+  signal and degrades safely on pre-Sprint-16-0 storage; the Knowledge score-mutation path is
+  fully removed and `top_knowledge`/the global re-rank/`update_score_statistics()` all operate
+  on real, never-boosted data), but found one real gap: `src/workflow_engine.py`'s
+  `_empty_performance_score_result()`/`_empty_learning_result()`/`_empty_analytics_result()` —
+  the outer `_run_safe()` emergency fallbacks used when a module's own internal
+  `run()`/`_fallback_result()` doesn't catch an exception — still returned the pre-Sprint-16-0
+  shape, missing `planner_used`/`planner_helpful`/`planner_rejected`/`planner_reason`,
+  `evidence_metadata`/`planner_evidence_used`, and `measurement_metadata` respectively. Fixed by
+  mirroring the same metadata shapes (via the same `build_standard_metadata()` helper) into all
+  three `_empty_*` methods. Also renamed a stale test
+  (`test_knowledge_module_applies_priority_boost_without_removing_ranker` →
+  `test_knowledge_module_records_planner_priority_consumption_without_removing_ranker`) whose
+  name/comment still referenced the removed "Priority Boost" mechanism (non-blocking per Codex,
+  fixed anyway for clarity). Re-verified `py -m compileall`, full `py -m unittest discover -s
+  tests -v` (186 tests, OK), and `py -m src.main` (`workflow_completed`) after the fix.
+  Re-submitted — Codex independently re-probed the `_empty_*` fallback shapes directly and
+  confirmed they now match the module-level fallbacks → final verdict **APPROVED**.
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"

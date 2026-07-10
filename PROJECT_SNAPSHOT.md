@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T17:34:01
+Updated at: 2026-07-10T18:25:44
 
 ## Execution Command
 
@@ -170,6 +170,7 @@ AI-Content-OS/
 |   |   `-- slide_designer.py
 |   |-- common/
 |   |   |-- __init__.py
+|   |   |-- metadata_standard.py
 |   |   `-- service_diagnostic.py
 |   |-- competitor_engine/
 |   |   |-- __init__.py
@@ -348,7 +349,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (344 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (366 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -388,7 +389,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (52 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (57 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -414,6 +415,7 @@ AI-Content-OS/
 |   |-- test_ai_planner_schema.py
 |   |-- test_content_output_normalizer.py
 |   |-- test_content_output_validator.py
+|   |-- test_intelligence_feedback_safety.py
 |   `-- test_workflow_planner_integration.py
 |-- utils/
 |   `-- __init__.py

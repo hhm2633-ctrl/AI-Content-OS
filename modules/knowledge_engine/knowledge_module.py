@@ -53,11 +53,19 @@ class KnowledgeModule(BaseModule):
         # Interface는 다른 Engine이 향후 재사용할 수 있도록 준비만 해 둔다.
         self.interface = KnowledgeInterface(self.storage, self.index)
 
-        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): KnowledgeRanker는
-        # 그대로 두고, planner_result.knowledge_priority가 유효/충분히 확신할
-        # 만하면 이번 실행에서 새로 추출된 항목 중 그 타입에 해당하는 것만
-        # overall_score에 소폭 boost를 준다("Priority Boost만 적용"). 정렬 자체는
-        # 항상 KnowledgeRanker가 그대로 수행한다("Ranker 제거 금지").
+        # AI Planner Consumer Adapter 실제 연결(Sprint 15-3; Self Reference Guard
+        # 수정 Sprint 16-0): KnowledgeRanker는 그대로 두고 실제 overall_score도
+        # 전혀 건드리지 않는다. Sprint 15-3의 최초 구현은 planner_result.
+        # knowledge_priority가 통과하면 이번 실행 항목의 overall_score를 실제로
+        # +0.05 올린 뒤 그 값을 storage.upsert()로 영구 저장했는데, 이것이
+        # average_overall_score_by_type(Historical Input)에 스며들어 다음 실행의
+        # Planner가 "자신이 과거에 추천했다는 이유만으로 부풀려진 점수"를 실제
+        # 성과처럼 다시 읽는 Circular Feedback을 만들었다(Sprint 16-0 Feedback
+        # Audit에서 발견). 이제는 실제 score를 절대 바꾸지 않고, "Planner가
+        # 우선순위로 지정한 타입이 실제 상위 항목과 얼마나 일치하는지"만 별도의
+        # 진단 전용 필드(`planner_priority_preview`)로 보여준다 - `top_knowledge`
+        # (Learning/Audit이 실제로 소비하는 필드)와 storage에 저장되는 값은 전혀
+        # 영향받지 않는다.
         self.planner_consumer_adapter = PlannerConsumerAdapter()
 
         try:
@@ -99,53 +107,60 @@ class KnowledgeModule(BaseModule):
         print("Knowledge Module Finished")
         return result
 
-    PLANNER_PRIORITY_BOOST_AMOUNT = 0.05
+    PLANNER_PRIORITY_PREVIEW_LIMIT = 5
 
-    def _apply_planner_priority_boost(
+    def _resolve_planner_priority(
         self,
-        scored_items: List[Dict[str, Any]],
         planner_result: Optional[Dict[str, Any]],
-    ) -> "tuple[List[Dict[str, Any]], Dict[str, Any]]":
-        """
-        이번 실행에서 새로 추출/점수화된 `scored_items`에만 boost를 적용한다 -
-        이미 storage에 누적된 과거 레코드의 실제 historical overall_score는
-        건드리지 않는다(전체 DB 재정렬 단계는 그대로 실제 점수 기준으로 동작).
-        """
+    ) -> Dict[str, Any]:
         try:
-            resolution = self.planner_consumer_adapter.resolve_knowledge_priority(
+            return self.planner_consumer_adapter.resolve_knowledge_priority(
                 planner_result=planner_result,
                 engine_default=[],
             )
-            boosted_types = set(resolution.get("knowledge_priority") or [])
-
-            if not boosted_types:
-                return scored_items, resolution
-
-            boosted_items = []
-            for item in scored_items:
-                item = dict(item)
-
-                if item.get("type") in boosted_types:
-                    score = dict(item.get("score") or {})
-                    try:
-                        original_score = float(score.get("overall_score", 0.0) or 0.0)
-                    except (TypeError, ValueError):
-                        original_score = 0.0
-
-                    score["overall_score"] = round(min(1.0, original_score + self.PLANNER_PRIORITY_BOOST_AMOUNT), 4)
-                    score["planner_priority_boost_applied"] = True
-                    item["score"] = score
-
-                boosted_items.append(item)
-
-            return boosted_items, resolution
         except Exception as error:
-            print(f"Knowledge Planner Priority Boost Failed: {error}")
-            return scored_items, {
+            print(f"Knowledge Planner Priority Resolution Failed: {error}")
+            return {
                 "hint_applied": False,
-                "reason": f"priority_boost_error: {error}",
+                "reason": f"priority_resolution_error: {error}",
                 "knowledge_priority": [],
             }
+
+    def _build_planner_priority_preview(
+        self,
+        ranked_items: List[Dict[str, Any]],
+        priority_types: List[str],
+    ) -> List[Dict[str, Any]]:
+        """
+        Self Reference Guard (Sprint 16-0): 이 미리보기는 순수 진단용이다 -
+        `ranked_items`의 실제 `overall_score`/순서를 그대로 읽기만 하고 절대
+        수정하지 않는다. `KnowledgeRanker`가 이미 실제 점수 기준으로 매긴 순위를
+        그대로 사용해, Planner가 우선순위로 지정한 타입에 해당하는 항목만
+        골라서 보여준다 - "Planner Hint가 실제로 상위권과 얼마나 일치하는지"를
+        투명하게 보여줄 뿐, 어떤 순위나 점수도 바꾸지 않는다. 이 결과는
+        `top_knowledge`(Learning/Audit이 실제로 소비)와 완전히 분리되어 있으며
+        storage에도 저장되지 않는다.
+        """
+        try:
+            if not priority_types:
+                return []
+
+            priority_set = set(priority_types)
+            matched = [
+                {
+                    "knowledge_id": item.get("knowledge_id"),
+                    "type": item.get("type"),
+                    "title": item.get("title"),
+                    "overall_score": (item.get("score") or {}).get("overall_score", 0.0),
+                    "rank": item.get("rank"),
+                }
+                for item in ranked_items
+                if item.get("type") in priority_set
+            ]
+            return matched[: self.PLANNER_PRIORITY_PREVIEW_LIMIT]
+        except Exception as error:
+            print(f"Knowledge Planner Priority Preview Failed: {error}")
+            return []
 
     def _build_result(
         self,
@@ -156,10 +171,12 @@ class KnowledgeModule(BaseModule):
         classified_items = self.classifier.classify(extracted_items, context)
         checked_items = self.duplicate_detector.check(classified_items)
         scored_items = self.scorer.score(checked_items, context)
-        scored_items, planner_priority_resolution = self._apply_planner_priority_boost(
-            scored_items, planner_result
-        )
         ranked_items = self.ranker.rank(scored_items)
+
+        planner_priority_resolution = self._resolve_planner_priority(planner_result)
+        planner_priority_preview = self._build_planner_priority_preview(
+            ranked_items, planner_priority_resolution.get("knowledge_priority", [])
+        )
 
         upsert_summary = self.storage.upsert(ranked_items)
 
@@ -210,6 +227,7 @@ class KnowledgeModule(BaseModule):
             "total_knowledge_count": upsert_summary.get("total_count", 0),
             "by_type": by_type_count,
             "top_knowledge": top_knowledge,
+            "planner_priority_preview": planner_priority_preview,
             "statistics": statistics,
             "fallback_used": run_fallback_used,
             "reason": "",
@@ -248,6 +266,7 @@ class KnowledgeModule(BaseModule):
             "total_knowledge_count": statistics.get("total_knowledge_count", 0),
             "by_type": {},
             "top_knowledge": [],
+            "planner_priority_preview": [],
             "statistics": statistics,
             "fallback_used": True,
             "reason": reason,

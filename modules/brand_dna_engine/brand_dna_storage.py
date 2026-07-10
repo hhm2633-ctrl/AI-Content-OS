@@ -28,6 +28,16 @@ class BrandDNAStorage(object):
         dna["brand_profile"] = brand_profile
         dna["total_observations"] = int(dna.get("total_observations", 0)) + 1
 
+        # Self Reference Guard (Sprint 16-0): total_observations 중 이번 관찰이
+        # AI Planner Hint의 영향을 받은 것이었는지 별도로 센다. AI Planner가
+        # 나중에 이 dominant_hook_type/dominant_cta_type을 "실제 브랜드 사용
+        # 패턴"으로 신뢰하려면, Planner 자신이 만들어낸 관찰이 아닌 "독립
+        # 관찰"(total_observations - planner_influenced_observations)이 충분히
+        # 쌓여 있어야 한다 - 그렇지 않으면 Planner가 자신의 과거 추천을 미래의
+        # 근거 데이터로 재사용하는 순환 참조가 생긴다.
+        if observation.get("planner_influenced"):
+            dna["planner_influenced_observations"] = int(dna.get("planner_influenced_observations", 0)) + 1
+
         for field in ("hook_type", "cta_type", "layout_type", "highlight_color"):
             value = observation.get(field, "")
 
@@ -65,6 +75,7 @@ class BrandDNAStorage(object):
         statistics = {
             "updated_at": dna.get("updated_at"),
             "total_observations": dna.get("total_observations", 0),
+            "planner_influenced_observations": dna.get("planner_influenced_observations", 0),
             "brand_rule_passed_count": dna.get("brand_rule_passed_count", 0),
             "brand_rule_violation_count": dna.get("brand_rule_violation_count", 0),
             "dominant_hook_type": dna.get("dominant_hook_type", ""),
@@ -79,6 +90,7 @@ class BrandDNAStorage(object):
         return {
             "updated_at": None,
             "total_observations": 0,
+            "planner_influenced_observations": 0,
             "brand_rule_passed_count": 0,
             "brand_rule_violation_count": 0,
             "dominant_hook_type": "",
@@ -98,6 +110,7 @@ class BrandDNAStorage(object):
             "updated_at": None,
             "brand_profile": {},
             "total_observations": 0,
+            "planner_influenced_observations": 0,
             "hook_type_frequency": {},
             "cta_type_frequency": {},
             "layout_type_frequency": {},

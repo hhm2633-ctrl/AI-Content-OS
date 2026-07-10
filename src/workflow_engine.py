@@ -3,6 +3,13 @@ from pathlib import Path
 
 from modules.ai_planner.planner_module import AIPlannerModule
 from modules.ai_planner.planning_context import PlanningContext
+from modules.common.metadata_standard import (
+    SOURCE_ESTIMATED,
+    SOURCE_HISTORICAL,
+    SOURCE_LOCAL_QUALITY,
+    SOURCE_RUNTIME,
+    build_standard_metadata,
+)
 from modules.trend_collector.trend_collector_module import TrendCollectorModule
 from modules.topic_engine.topic_engine_module import TopicEngineModule
 from modules.pattern_engine.pattern_engine_module import PatternEngineModule
@@ -358,10 +365,18 @@ class WorkflowEngine:
             return empty_result_fn(reason=f"{engine_label.lower().replace(' ', '_')}_error: {error}")
 
     def _empty_performance_score_result(self, reason):
+        # Sprint 16-0: 이 WorkflowEngine 레벨 안전망은 PerformanceScoreModule 자신의
+        # run()/_fallback_result()가 잡지 못한 완전한 예외 상황에서만 쓰인다 - 그런
+        # 경우에도 Codex 검수 지적대로 Metadata 표준 필드가 빠지면 안 되므로 동일하게
+        # 채운다.
         return {
             "status": "performance_score_completed",
             "hook_score": 0.5, "cta_score": 0.5, "layout_score": 0.5,
             "brand_score": 0.5, "image_score": 0.5, "overall_performance_score": 0.5,
+            "planner_used": False,
+            "planner_helpful": False,
+            "planner_rejected": False,
+            "planner_reason": f"Performance Score 완전 실패로 Planner 적용 여부를 판정하지 않음: {reason}",
             "fallback_used": True,
             "reason": reason,
         }
@@ -396,6 +411,12 @@ class WorkflowEngine:
             "knowledge_used": False,
             "knowledge_items": [],
             "knowledge_influence": "",
+            "evidence_metadata": {
+                "audit_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note=f"완전 실패: {reason}"),
+                "performance_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note=f"완전 실패: {reason}"),
+                "knowledge_score": build_standard_metadata(source=SOURCE_RUNTIME, confidence=None, note=f"완전 실패: {reason}"),
+            },
+            "planner_evidence_used": False,
             "fallback_used": True,
             "reason": reason,
         }
@@ -408,6 +429,12 @@ class WorkflowEngine:
             "historical_average_performance_score": None,
             "sample_size": 0,
             "quality_trend": "insufficient_history",
+            "measurement_metadata": {
+                "current_performance_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note=f"완전 실패: {reason}"),
+                "current_audit_score": build_standard_metadata(source=SOURCE_LOCAL_QUALITY, confidence=None, note=f"완전 실패: {reason}"),
+                "historical_average_performance_score": build_standard_metadata(source=SOURCE_HISTORICAL, confidence=None, sample_size=0, note=f"완전 실패: {reason}"),
+                "quality_trend": build_standard_metadata(source=SOURCE_ESTIMATED, confidence=None, sample_size=0, note=f"완전 실패: {reason}"),
+            },
             "fallback_used": True,
             "reason": reason,
         }

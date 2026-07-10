@@ -65,7 +65,15 @@ class BrandDNAEngineModule(BaseModule):
         content_intelligence = content_result.get("content_intelligence") or {}
         brand_rule_passed = bool(content_intelligence.get("brand_rule_passed", True))
 
-        observation = self.tracker.observe(pattern_plan, layout_result, brand_rule_passed)
+        # Self Reference Guard (Sprint 16-0): 이번 실행의 pattern_type/hook_type/
+        # cta_type이 AI Planner Hint로 대체된 결과였는지 확인한다
+        # (PatternEngineModule.planner_consumption.pattern.planner_applied, Sprint
+        # 15-3에서 실제로 기록되기 시작한 필드). 이 관찰이 "독립적인 실제 브랜드
+        # 사용 패턴"인지 "Planner 자신이 만든 결과"인지 구분해 tracker에 전달한다.
+        planner_consumption = pattern_result.get("planner_consumption") or {}
+        planner_influenced = bool((planner_consumption.get("pattern") or {}).get("planner_applied"))
+
+        observation = self.tracker.observe(pattern_plan, layout_result, brand_rule_passed, planner_influenced)
 
         dna = self.storage.update(brand_profile, observation)
         self.history.record(observation)

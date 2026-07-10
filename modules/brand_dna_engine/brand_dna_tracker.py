@@ -29,6 +29,7 @@ class BrandDNATracker(object):
         pattern_plan: Dict[str, Any],
         layout_result: Dict[str, Any],
         brand_rule_passed: bool,
+        planner_influenced: bool = False,
     ) -> Dict[str, Any]:
         layout_type = str(layout_result.get("layout_type") or pattern_plan.get("layout_type", "") or "")
         highlight_color = self._lookup_highlight_color(layout_type)
@@ -39,6 +40,14 @@ class BrandDNATracker(object):
             "layout_type": layout_type,
             "highlight_color": highlight_color,
             "brand_rule_passed": bool(brand_rule_passed),
+            # Self Reference Guard (Sprint 16-0): 이번 실행의 pattern_type이 AI
+            # Planner Hint로 대체된 결과라면(PatternEngineModule.planner_consumption.
+            # pattern.planner_applied), 여기서 관찰하는 hook_type/cta_type도
+            # 간접적으로 Planner의 판단을 반영한 것이다. 이 관찰을 "독립적인
+            # 실제 브랜드 사용 패턴"과 구분해서 세도록 표시해 둔다 - 그래야 다음
+            # 실행의 Planner가 자신이 만든 결과를 다시 근거로 삼는 것을 막을 수
+            # 있다(PlannerDecisionEngine의 override 게이트가 이 값을 사용).
+            "planner_influenced": bool(planner_influenced),
         }
 
     def _lookup_highlight_color(self, layout_type: str) -> str:

@@ -27,16 +27,29 @@ reordered among themselves when a real data dependency requires it):
 
 - Knowledge Engine — extraction/classification/scoring/ranking of reusable Hook/CTA/Pattern/
   Layout/Brand/Workflow/Prompt Pattern/Tool/Image Strategy/Funnel knowledge; consumed by
-  Pattern Engine, Content Module, CardNews Module, Audit Engine, and Learning Engine
+  Pattern Engine, Content Module, CardNews Module, Audit Engine, and Learning Engine. Since
+  Sprint 16-0, a Planner `knowledge_priority` hint never mutates the real, persisted
+  `overall_score` — it only produces a separate, non-persisted `planner_priority_preview`
+  diagnostic field (Self Reference Guard: closes the Knowledge→Planner feedback loop found in
+  Sprint 16-0's Feedback Audit).
 - Trend Memory — records recent topic/hook/cta/layout/image combinations, flags repeat risk
 - Performance Score — composite hook/cta/layout/brand/image score, shared by Audit/Learning/
-  Analytics
+  Analytics; since Sprint 16-0 also records `planner_used`/`planner_helpful`/`planner_rejected`/
+  `planner_reason`, keeping "Planner was applied" and "quality was good" as separate facts
 - Audit Engine — 9-check content audit (hook/cta/pattern/layout/brand/image strategy/
   duplicate/save inducement/comment inducement)
 - Learning Engine — `internal_learning_score` (audit + performance + knowledge, real local
-  data only) promotes high-performing patterns into a reinforced Learning Memory
-- Analytics Engine — honest local `quality_trend`, no fabricated SNS metrics
-- Brand DNA Engine — tracks actually-used hook/cta/layout/color per run
+  data only) promotes high-performing patterns into a reinforced Learning Memory. Never takes
+  `planner_result` as input (verified by a signature-inspection regression test, Sprint 16-0) —
+  it cannot unconditionally reinforce a Planner Decision because it never sees one.
+- Analytics Engine — honest local `quality_trend`, no fabricated SNS metrics; since Sprint 16-0
+  every output field carries a `measurement_metadata` entry labeling its real source
+  (`local_quality`/`historical`/`estimated`) so nothing can be misread as a real measurement.
+- Brand DNA Engine — tracks actually-used hook/cta/layout/color per run; since Sprint 16-0 also
+  tracks `planner_influenced_observations` separately from `total_observations`, so AI Planner
+  only trusts *independent* (non-Planner-caused) brand history when deciding whether to override
+  hook/cta (Self Reference Guard: closes the Brand DNA→Planner feedback loop found in Sprint
+  16-0's Feedback Audit).
 - Competitor Engine — offline-first competitor profiles parsed from `benchmark/*.md` docs
 
 See `MODULE_STATUS.md` for the full Sprint-by-Sprint history and `ROADMAP.md` for what's
