@@ -136,15 +136,38 @@ class PublishingModule(BaseModule):
             "enabled": True
         }
 
+    def _resolve_image_sourcing_status(self, card_news_result: Dict[str, Any]) -> Dict[str, Any]:
+        status = card_news_result.get("image_sourcing_status") if isinstance(card_news_result, dict) else None
+
+        if isinstance(status, dict) and status:
+            return status
+
+        return {
+            "manual_image_required": False,
+            "recommended_source": "",
+            "real_image_used_count": 0,
+            "checklist": [],
+            "reason": "card_news_result에 image_sourcing_status가 없어 수동 이미지 체크리스트를 생략함.",
+        }
+
     def _create_publish_queue(
         self,
         title: str,
         card_paths: List[str],
         caption: str,
         hashtags: List[str],
+        image_sourcing_status: Dict[str, Any],
     ) -> Dict[str, Any]:
         account = self._get_default_account()
         schedule = self.publishing_config.get("schedule", {})
+        manual_image_required = bool(image_sourcing_status.get("manual_image_required", False))
+
+        next_action = "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드"
+        if manual_image_required:
+            next_action = (
+                "manual_image_required 체크리스트(image_checklist)를 먼저 완료한 뒤, "
+                "카드뉴스 이미지와 캡션을 확인하고 인스타그램에 수동 업로드"
+            )
 
         queue_item = {
             "queue_id": f"publish_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -160,8 +183,10 @@ class PublishingModule(BaseModule):
             "schedule_enabled": schedule.get("enabled", False),
             "scheduled_time": schedule.get("default_time", "09:00"),
             "status": "ready_for_manual_upload",
+            "manual_image_required": manual_image_required,
+            "image_checklist": image_sourcing_status.get("checklist", []),
             "created_at": datetime.now().isoformat(),
-            "next_action": "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드"
+            "next_action": next_action,
         }
 
         return {
@@ -186,13 +211,23 @@ class PublishingModule(BaseModule):
         caption = self._create_caption(title)
         hashtags = self._create_hashtags()
         full_caption = self._create_full_caption(caption, hashtags)
+        image_sourcing_status = self._resolve_image_sourcing_status(card_news_result)
 
         publish_queue = self._create_publish_queue(
             title=title,
             card_paths=card_paths,
             caption=caption,
             hashtags=hashtags,
+            image_sourcing_status=image_sourcing_status,
         )
+
+        manual_image_required = bool(image_sourcing_status.get("manual_image_required", False))
+        next_action = "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드"
+        if manual_image_required:
+            next_action = (
+                "manual_image_required 체크리스트를 먼저 완료한 뒤, "
+                "카드뉴스 이미지와 캡션을 확인하고 인스타그램에 수동 업로드"
+            )
 
         result = {
             "module": "PublishingModule",
@@ -205,7 +240,9 @@ class PublishingModule(BaseModule):
             "hashtags": hashtags,
             "full_caption": full_caption,
             "publish_queue_path": "storage/publishing/publish_queue.json",
-            "next_action": "카드뉴스 이미지와 캡션을 확인한 뒤 인스타그램에 수동 업로드",
+            "image_sourcing_status": image_sourcing_status,
+            "manual_image_required": manual_image_required,
+            "next_action": next_action,
             "created_at": datetime.now().isoformat()
         }
 

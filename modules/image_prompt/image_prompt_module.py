@@ -25,12 +25,20 @@ class ImagePromptModule(BaseModule):
             self.config.get("llm", self.config)
         )
 
-    def run(self, content_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def run(
+        self,
+        content_result: Optional[Dict[str, Any]] = None,
+        image_strategy_result: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         print("Image Prompt Module Started")
 
         content_result = content_result or {}
-
         title = content_result.get("title", "AI content automation")
+
+        if isinstance(image_strategy_result, dict) and image_strategy_result.get("need_ai_image") is False:
+            print("Image Prompt Module Skipped: Image Strategy selected a real image source")
+            return self._build_skipped_result(title, image_strategy_result)
+
         slides = content_result.get("slides", [])
 
         system_prompt = """
@@ -112,6 +120,26 @@ class ImagePromptModule(BaseModule):
 
         print("Image Prompt Module Finished")
         return image_prompt_result
+
+    def _build_skipped_result(
+        self,
+        title: str,
+        image_strategy_result: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        return {
+            "title": title,
+            "image_prompts": [],
+            "status": "image_prompts_skipped",
+            "fallback_used": False,
+            "fallback_reason": "",
+            "ai_image_skipped": True,
+            "image_strategy": {
+                "content_type": image_strategy_result.get("content_type", ""),
+                "image_source": image_strategy_result.get("image_source", ""),
+                "reason": image_strategy_result.get("reason", ""),
+                "image_usage_plan": image_strategy_result.get("image_usage_plan", {}),
+            },
+        }
 
     def _safe_json_parse(
         self,

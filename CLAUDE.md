@@ -1,5 +1,23 @@
 # CLAUDE.md
 
+## Mandatory Reading Order
+
+Before any implementation, read in this order (see `PROJECT_OPERATING_SYSTEM.md` for the full
+rationale behind this list):
+
+1. `PROJECT_OPERATING_SYSTEM.md`
+2. `CTO_BRAIN.md` (if present)
+3. `PROJECT_MASTER.md`
+4. `PROJECT_SNAPSHOT.md`
+5. `MODULE_STATUS.md`
+6. `ROADMAP.md`
+7. `CURRENT_TASK.md`
+8. `.claude/skills/*` (start with `.claude/skills/cto_operating_system/SKILL.md`)
+
+Repository state has higher priority than memory. If documentation conflicts with the
+repository, analyze the repository first. Never implement features that require APIs the
+project doesn't have access to — check `ROADMAP.md`'s "Requires External API" section first.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
@@ -107,6 +125,7 @@ should approach this repository, so instructions don't need to be repeated every
 **Claude Skill System** at `.claude/skills/` (parallel to the Codex skill system in `.codex/skills/`).
 Consult the matching skill file before starting the corresponding kind of work:
 
+- `.claude/skills/cto_operating_system/SKILL.md` — **CTO Operating System**: the entry-point skill. Points back to `PROJECT_OPERATING_SYSTEM.md` (the project's top-level operating reference) and the Mandatory Reading Order above; read this before any other skill file when starting a new task or session.
 - `.claude/skills/architecture.md` — **Architecture**: how to read project state before any task (`PROJECT_MASTER.md` -> `PROJECT_SNAPSHOT.md` -> `MODULE_STATUS.md` -> `ROADMAP.md` -> `AGENTS.md` -> `CURRENT_TASK.md` -> `DECISIONS.md`), the real `WorkflowEngine` module sequence, and the WorkflowEngine/Windows execution rules that must never change.
 - `.claude/skills/large_implementation.md` — **Large Implementation**: when a task is Claude's responsibility (8+ files, new modules, complex refactors), the "always full file, never partial patches" rule for this non-developer project owner, and that Claude does not push changes to the repository itself.
 - `.claude/skills/refactoring.md` — **Refactoring**: structure-preservation rules (no renaming WorkflowEngine/folders/modules/classes/functions, minimize file moves) for cleanup work.

@@ -107,10 +107,19 @@ def get_workflow_summary(workflow_result: Dict[str, Any]) -> Dict[str, Any]:
         "pattern",
         "research",
         "content",
+        "image_strategy",
         "image_prompt",
         "image_generation",
         "card_news",
         "publishing",
+        "knowledge",
+        "performance_score",
+        "audit",
+        "learning",
+        "analytics",
+        "brand_dna",
+        "trend_memory",
+        "competitor",
     ]
 
     module_statuses = {}
@@ -135,10 +144,19 @@ def collect_recent_completed_features(workflow_summary: Dict[str, Any]) -> List[
         "pattern": "Pattern selection",
         "research": "Research",
         "content": "Content generation",
+        "image_strategy": "Image strategy selection",
         "image_prompt": "Image prompt generation",
         "image_generation": "Image generation",
         "card_news": "Card news rendering",
         "publishing": "Publishing preparation",
+        "knowledge": "Knowledge extraction",
+        "performance_score": "Performance score",
+        "audit": "Content audit",
+        "learning": "Learning engine",
+        "analytics": "Analytics prediction",
+        "brand_dna": "Brand DNA update",
+        "trend_memory": "Trend memory record",
+        "competitor": "Competitor profile",
     }
 
     features = []
@@ -165,8 +183,11 @@ def build_snapshot(workflow_result: Dict[str, Any]) -> str:
     # skipped straight from TopicEngineModule to ResearchModule.
     module_lines = [
         "TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> "
-        "ResearchModule -> ContentModule -> ImagePromptModule -> "
-        "ImageGenerationModule -> CardNewsModule -> PublishingModule"
+        "ResearchModule -> ContentModule -> ImageStrategyModule -> "
+        "ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> "
+        "PublishingModule -> KnowledgeModule -> PerformanceScoreModule -> "
+        "AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> "
+        "BrandDNAEngineModule -> TrendMemoryModule -> CompetitorEngineModule"
     ]
 
     snapshot_lines = [

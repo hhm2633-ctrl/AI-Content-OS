@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-09T19:27:30
+Updated at: 2026-07-10T10:26:38
 
 ## Execution Command
 
@@ -18,19 +18,27 @@ Do not use `python -m src.main` for this project.
 ## Recent Completed Features
 
 - Trend collection: success
-- Trend sources: Naver News, Nate Pann, FMKorea, Bobaedream
 - Topic selection: success
 - Pattern selection: pattern_selected
 - Research: success
 - Content generation: content_created
-- Image prompt generation: image_prompts_created
-- Image generation: image_generation_completed
+- Image strategy selection: image_strategy_completed
+- Image prompt generation: image_prompts_skipped
+- Image generation: image_generation_skipped
 - Card news rendering: card_news_completed
 - Publishing preparation: publishing_ready
+- Knowledge extraction: knowledge_extracted
+- Performance score: performance_score_completed
+- Content audit: audit_completed
+- Learning engine: learning_completed
+- Analytics prediction: analytics_completed
+- Brand DNA update: brand_dna_updated
+- Trend memory record: trend_memory_recorded
+- Competitor profile: competitor_profile_built
 
 ## Current WorkflowEngine
 
-- TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule
+- TrendCollectorModule -> TopicEngineModule -> PatternEngineModule -> ResearchModule -> ContentModule -> ImageStrategyModule -> ImagePromptModule -> ImageGenerationModule -> CardNewsModule -> PublishingModule -> KnowledgeModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> TrendMemoryModule -> CompetitorEngineModule
 
 ## Current Project Tree
 
@@ -58,14 +66,19 @@ AI-Content-OS/
 |   |   `-- sprint_workflow.md
 |   `-- README.md
 |-- .claude/
-|   `-- skills/
-|       |-- domain/
-|       |-- architecture.md
-|       |-- large_implementation.md
-|       |-- planning.md
-|       |-- refactoring.md
-|       |-- research.md
-|       `-- review.md
+|   |-- skills/
+|   |   |-- cto_operating_system/
+|   |   |-- domain/
+|   |   |-- architecture.md
+|   |   |-- competitor_analysis.md
+|   |   |-- content_roi.md
+|   |   |-- image_strategy.md
+|   |   |-- large_implementation.md
+|   |   |-- planning.md
+|   |   |-- refactoring.md
+|   |   |-- research.md
+|   |   `-- review.md
+|   `-- settings.local.json
 |-- .codex/
 |   `-- skills/
 |       |-- ai-content-os-commit-check/
@@ -113,6 +126,29 @@ AI-Content-OS/
 |-- logs/
 |   `-- README.md
 |-- modules/
+|   |-- analytics_engine/
+|   |   |-- __init__.py
+|   |   |-- analytics_engine_module.py
+|   |   |-- analytics_history.py
+|   |   |-- analytics_interface.py
+|   |   |-- analytics_predictor.py
+|   |   `-- analytics_storage.py
+|   |-- audit_engine/
+|   |   |-- __init__.py
+|   |   |-- audit_checks.py
+|   |   |-- audit_engine_module.py
+|   |   |-- audit_history.py
+|   |   |-- audit_interface.py
+|   |   |-- audit_score.py
+|   |   `-- audit_storage.py
+|   |-- brand_dna_engine/
+|   |   |-- __init__.py
+|   |   |-- brand_dna_engine_module.py
+|   |   |-- brand_dna_history.py
+|   |   |-- brand_dna_interface.py
+|   |   |-- brand_dna_storage.py
+|   |   |-- brand_dna_tracker.py
+|   |   `-- brand_profile_loader.py
 |   |-- card_news/
 |   |   |-- __init__.py
 |   |   |-- card_news_module.py
@@ -125,6 +161,18 @@ AI-Content-OS/
 |   |-- common/
 |   |   |-- __init__.py
 |   |   `-- service_diagnostic.py
+|   |-- competitor_engine/
+|   |   |-- __init__.py
+|   |   |-- benchmark_source.py
+|   |   |-- community_source.py
+|   |   |-- competitor_engine_module.py
+|   |   |-- competitor_history.py
+|   |   |-- competitor_interface.py
+|   |   |-- competitor_profile_builder.py
+|   |   |-- competitor_storage.py
+|   |   |-- instagram_benchmark_parser.py
+|   |   |-- news_source.py
+|   |   `-- tools_funnel_parser.py
 |   |-- content/
 |   |   |-- brand_rule_evaluator.py
 |   |   |-- content_duplicate_detector.py
@@ -142,6 +190,32 @@ AI-Content-OS/
 |   |-- image_prompt/
 |   |   |-- __init__.py
 |   |   `-- image_prompt_module.py
+|   |-- image_strategy/
+|   |   |-- __init__.py
+|   |   |-- ai_image_decision.py
+|   |   |-- content_type_classifier.py
+|   |   |-- image_source_selector.py
+|   |   `-- image_strategy_module.py
+|   |-- knowledge_engine/
+|   |   |-- __init__.py
+|   |   |-- duplicate_detector.py
+|   |   |-- knowledge_classifier.py
+|   |   |-- knowledge_extractor.py
+|   |   |-- knowledge_history.py
+|   |   |-- knowledge_index.py
+|   |   |-- knowledge_interface.py
+|   |   |-- knowledge_module.py
+|   |   |-- knowledge_ranker.py
+|   |   |-- knowledge_score.py
+|   |   `-- knowledge_storage.py
+|   |-- learning_engine/
+|   |   |-- __init__.py
+|   |   |-- learning_engine_module.py
+|   |   |-- learning_history.py
+|   |   |-- learning_interface.py
+|   |   |-- learning_score.py
+|   |   |-- learning_selector.py
+|   |   `-- learning_storage.py
 |   |-- pattern_engine/
 |   |   |-- __init__.py
 |   |   |-- cta_selector.py
@@ -150,10 +224,19 @@ AI-Content-OS/
 |   |   |-- pattern_engine_module.py
 |   |   |-- pattern_result_writer.py
 |   |   `-- pattern_selector.py
+|   |-- performance_score/
+|   |   |-- __init__.py
+|   |   |-- performance_score_calculator.py
+|   |   |-- performance_score_history.py
+|   |   |-- performance_score_interface.py
+|   |   |-- performance_score_module.py
+|   |   `-- performance_score_storage.py
 |   |-- publishing/
 |   |   |-- __init__.py
 |   |   `-- publishing_module.py
 |   |-- research/
+|   |   |-- research_context_builder.py
+|   |   |-- research_insight_generator.py
 |   |   `-- research_module.py
 |   |-- topic/
 |   |   `-- topic_engine.py
@@ -179,6 +262,13 @@ AI-Content-OS/
 |   |   |-- trend_quality_scorer.py
 |   |   |-- trend_run_recorder.py
 |   |   `-- trend_source_manager.py
+|   |-- trend_memory/
+|   |   |-- __init__.py
+|   |   |-- trend_memory_checker.py
+|   |   |-- trend_memory_history.py
+|   |   |-- trend_memory_interface.py
+|   |   |-- trend_memory_module.py
+|   |   `-- trend_memory_storage.py
 |   |-- base_module.py
 |   `-- README.md
 |-- prompts/
@@ -201,6 +291,18 @@ AI-Content-OS/
 |   |-- README.md
 |   `-- workflow_engine.py
 |-- storage/
+|   |-- analytics/
+|   |   |-- analytics_history.json
+|   |   |-- analytics_result.json
+|   |   `-- analytics_statistics.json
+|   |-- audit/
+|   |   |-- audit_history.json
+|   |   |-- audit_result.json
+|   |   `-- audit_statistics.json
+|   |-- brand_dna/
+|   |   |-- brand_dna.json
+|   |   |-- brand_dna_history.json
+|   |   `-- brand_dna_statistics.json
 |   |-- cache/
 |   |   |-- .gitkeep
 |   |   |-- bobaedream_cache.json
@@ -209,16 +311,32 @@ AI-Content-OS/
 |   |   `-- naver_news_cache.json
 |   |-- card_news/
 |   |   `-- (5 runtime file(s) omitted; gitignored, see .gitignore)
+|   |-- competitor/
+|   |   |-- competitor_history.json
+|   |   |-- competitor_profile.json
+|   |   |-- competitor_profiles.json
+|   |   `-- competitor_statistics.json
 |   |-- content/
 |   |   `-- (1 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- generated_images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- history/
 |   |   `-- .gitkeep
+|   |-- image_strategy/
+|   |   `-- image_strategy_result.json
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
+|   |-- knowledge/
+|   |   |-- knowledge.json
+|   |   |-- knowledge_history.json
+|   |   |-- knowledge_index.json
+|   |   `-- knowledge_statistics.json
+|   |-- learning/
+|   |   |-- learning_history.json
+|   |   |-- learning_memory.json
+|   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (214 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (240 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -235,6 +353,10 @@ AI-Content-OS/
 |   |   |-- pattern_history.json
 |   |   |-- pattern_result.json
 |   |   `-- pattern_statistics.json
+|   |-- performance_score/
+|   |   |-- performance_score.json
+|   |   |-- performance_score_history.json
+|   |   `-- performance_score_statistics.json
 |   |-- publishing/
 |   |   |-- caption.txt
 |   |   |-- hashtags.txt
@@ -247,9 +369,12 @@ AI-Content-OS/
 |   |-- topics/
 |   |   |-- .gitkeep
 |   |   `-- topic_result.json
+|   |-- trend_memory/
+|   |   |-- trend_memory.json
+|   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (19 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (27 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -259,7 +384,7 @@ AI-Content-OS/
 |   |   |-- trend_result.json
 |   |   `-- trend_run_log.jsonl
 |   |-- workflow_results/
-|   |   `-- (23 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (38 runtime file(s) omitted; gitignored, see .gitignore)
 |   `-- README.md
 |-- templates/
 |   |-- card_news_layout_rules.json
@@ -284,6 +409,7 @@ AI-Content-OS/
 |-- MODULE_STATUS.md
 |-- PROJECT_BIBLE.md
 |-- PROJECT_MASTER.md
+|-- PROJECT_OPERATING_SYSTEM.md
 |-- PROJECT_SNAPSHOT.md
 |-- PROJECT_STATE.md
 |-- README.md

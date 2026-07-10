@@ -7,6 +7,7 @@ except ImportError:
     from src.base_module import BaseModule
 
 from src.llm_client import LLMClient
+from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 from modules.content.content_prompt_builder import ContentPromptBuilder
 from modules.content.brand_rule_evaluator import BrandRuleEvaluator
 from modules.content.content_duplicate_detector import ContentDuplicateDetector
@@ -32,6 +33,11 @@ class ContentModule(BaseModule):
         self.publishing_hint_generator = PublishingHintGenerator(self.config)
         self.brand_rule_evaluator = BrandRuleEvaluator(self.config)
 
+        # Knowledge Interface 실제 연결(Sprint 13): 축적된 Knowledge DB의 상위
+        # hook/cta를 실제로 읽어 LLM user_prompt에 참고 예시로 주입한다(그대로
+        # 복사 금지 문구 포함). 프롬프트 빌더/파싱 로직 자체는 바꾸지 않는다.
+        self.knowledge_interface = KnowledgeInterface()
+
     def run(self, research_result: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         print("Content Module Started")
 
@@ -53,9 +59,11 @@ class ContentModule(BaseModule):
             print(f"Content Prompt Builder Failed, falling back to legacy prompt: {error}")
             pattern_aware_prompt = None
 
+        knowledge_guidance = self._fetch_knowledge_guidance()
+
         if pattern_aware_prompt:
             system_prompt = pattern_aware_prompt["system_prompt"]
-            user_prompt = pattern_aware_prompt["user_prompt"]
+            user_prompt = pattern_aware_prompt["user_prompt"] + knowledge_guidance["guidance_text"]
             prompt_source = "pattern_aware"
             prompt_meta = pattern_aware_prompt.get("meta", {})
         else:
@@ -67,7 +75,7 @@ class ContentModule(BaseModule):
                 key_points=key_points,
                 target=target,
                 topic_angle=topic_angle,
-            )
+            ) + knowledge_guidance["guidance_text"]
 
         llm_response = self.llm_client.generate_text(
             system_prompt=system_prompt,
@@ -83,8 +91,59 @@ class ContentModule(BaseModule):
             prompt_meta=prompt_meta,
         )
 
+        knowledge_items = knowledge_guidance["knowledge_items"]
+        content_result["knowledge_used"] = bool(knowledge_items)
+        content_result["knowledge_items"] = knowledge_items
+        content_result["knowledge_influence"] = (
+            f"LLM user_prompt에 상위 Hook/CTA 참고 예시 {len(knowledge_items)}건을 추가함."
+            if knowledge_items
+            else "참고할 만큼 점수가 높은 Knowledge 항목이 아직 없어 프롬프트를 그대로 사용함."
+        )
+
         print("Content Module Finished")
         return content_result
+
+    def _fetch_knowledge_guidance(self) -> Dict[str, Any]:
+        try:
+            top_hooks = self.knowledge_interface.get_top_hooks(limit=2)
+            top_ctas = self.knowledge_interface.get_top_ctas(limit=2)
+        except Exception as error:
+            print(f"Content Knowledge Fetch Failed: {error}")
+            top_hooks, top_ctas = [], []
+
+        guidance_lines = []
+        knowledge_items = []
+
+        for item in top_hooks:
+            headline = str((item.get("content") or {}).get("headline", "")).strip()
+
+            if headline:
+                guidance_lines.append(f"- (참고 Hook, 문장 그대로 복사 금지) {headline}")
+                knowledge_items.append({
+                    "knowledge_id": item.get("knowledge_id"),
+                    "type": "hook",
+                    "title": item.get("title"),
+                })
+
+        for item in top_ctas:
+            headline = str((item.get("content") or {}).get("headline", "")).strip()
+
+            if headline:
+                guidance_lines.append(f"- (참고 CTA, 문장 그대로 복사 금지) {headline}")
+                knowledge_items.append({
+                    "knowledge_id": item.get("knowledge_id"),
+                    "type": "cta",
+                    "title": item.get("title"),
+                })
+
+        guidance_text = ""
+        if guidance_lines:
+            guidance_text = (
+                "\n\n참고 (과거 실행에서 점수가 높았던 Hook/CTA 스타일 - 그대로 복사하지 말고 "
+                "이번 주제에 맞게 새로 쓸 것):\n" + "\n".join(guidance_lines)
+            )
+
+        return {"guidance_text": guidance_text, "knowledge_items": knowledge_items}
 
     def _build_content_intelligence(
         self,

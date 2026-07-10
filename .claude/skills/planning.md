@@ -44,3 +44,55 @@ Claude는 지시받지 않는 한 `py -m src.main`을 직접 실행하지 않는
 ## 참고 문서
 
 Sprint 계획 시 `architecture.md`에서 안내하는 순서(`PROJECT_MASTER.md` → `PROJECT_SNAPSHOT.md` → `MODULE_STATUS.md` → `ROADMAP.md`)로 현재 상태를 먼저 확인한 뒤 계획한다.
+
+---
+
+# AI-Content-OS Planning Extension
+
+## ROI First
+
+항상 구현 전에 먼저 판단한다.
+
+1. 공식 기능으로 가능한가?
+
+2. MCP로 가능한가?
+
+3. Claude Auto Mode로 가능한가?
+
+4. Codex 검수만으로 가능한가?
+
+5. Browser 자동화 가능한가?
+
+6. Playwright 가능한가?
+
+7. Filesystem으로 가능한가?
+
+8. AI 생성이 필요한가?
+
+9. 실제 자료가 더 좋은가?
+
+10. ROI가 높은가?
+
+더 좋은 방법이 발견되면 기존 계획을 즉시 변경한다.
+
+## Sprint Rule
+
+작업은 Module이 아니라 Engine 단위로 설계한다.
+
+항상
+
+Storage
+
+History
+
+Score
+
+Fallback
+
+Retry
+
+Interface
+
+Workflow
+
+까지 포함해서 설계한다.

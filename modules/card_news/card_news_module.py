@@ -11,6 +11,7 @@ from modules.card_news.highlight_engine import HighlightEngine
 from modules.card_news.layout_rule_engine import LayoutRuleEngine
 from modules.card_news.layout_selector import LayoutSelector
 from modules.card_news.slide_designer import SlideDesigner
+from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 
 
 class CardNewsModule(BaseModule):
@@ -29,6 +30,10 @@ class CardNewsModule(BaseModule):
         self.highlight_engine = HighlightEngine(self.config)
         self.quality_checker = CardNewsQualityChecker(self.config)
         self.text_optimizer = CardNewsTextOptimizer(self.config)
+
+        # Knowledge Interface 실제 연결(Sprint 12): 레이아웃 선택/렌더링 로직은 그대로
+        # 두고, 축적된 Knowledge DB의 상위 layout 참고 정보만 결과에 덧붙인다.
+        self.knowledge_interface = KnowledgeInterface()
 
     def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
@@ -704,6 +709,7 @@ class CardNewsModule(BaseModule):
         self,
         content_result: Dict[str, Any],
         image_generation_result: Dict[str, Any],
+        image_strategy_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         print("Card News Module Started")
 
@@ -766,10 +772,117 @@ class CardNewsModule(BaseModule):
             rendering_notes=rendering_notes,
         )
         result["design_quality_result"] = design_quality_result
+        self._apply_knowledge_consumption(result)
         result["card_news_quality"] = self._build_card_news_quality(result)
+        result["image_sourcing_status"] = self._build_image_sourcing_status(image_strategy_result or {}, cards)
 
         print("Card News Module Finished")
         return result
+
+    def _build_image_sourcing_status(
+        self,
+        image_strategy_result: Dict[str, Any],
+        cards: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """
+        Image Strategy 후속 보강(Sprint 13): 실제 이미지 자동수집은 하지 않지만,
+        Image Strategy가 만든 `image_usage_plan`을 실제로 읽어 이번 카드뉴스가
+        그 계획대로 실제 이미지를 사용했는지 확인한다. 계획(real_image_required)과
+        실제(사용된 이미지 없음)가 어긋나면 `manual_image_required` 체크리스트를
+        남긴다 - 생성 자체를 막지는 않는다.
+        """
+        try:
+            need_ai_image = image_strategy_result.get("need_ai_image", True)
+            recommended_source = image_strategy_result.get("image_source", "")
+            content_type = image_strategy_result.get("content_type", "")
+
+            real_image_used_count = sum(1 for card in cards if card.get("source_image"))
+
+            if need_ai_image:
+                return {
+                    "manual_image_required": False,
+                    "recommended_source": recommended_source,
+                    "real_image_used_count": real_image_used_count,
+                    "checklist": [],
+                    "reason": "Image Strategy가 AI 이미지 생성 경로를 선택함 - 수동 이미지 소싱 불필요.",
+                }
+
+            if real_image_used_count > 0:
+                return {
+                    "manual_image_required": False,
+                    "recommended_source": recommended_source,
+                    "real_image_used_count": real_image_used_count,
+                    "checklist": [],
+                    "reason": f"실제 이미지 {real_image_used_count}건이 이미 사용되어 수동 소싱이 필요 없음.",
+                }
+
+            return {
+                "manual_image_required": True,
+                "recommended_source": recommended_source,
+                "real_image_used_count": 0,
+                "checklist": [
+                    f"권장 이미지 소스({recommended_source})를 수동으로 수집해 카드뉴스에 반영하세요.",
+                    "실제 이미지가 없어 이번 렌더링은 solid-color 배경으로 대체되었습니다.",
+                ],
+                "reason": f"content_type '{content_type}'은 실제 이미지가 필요하지만 아직 소싱되지 않음.",
+            }
+        except Exception as error:
+            print(f"Card News Image Sourcing Status Failed: {error}")
+            return {
+                "manual_image_required": False,
+                "recommended_source": "",
+                "real_image_used_count": 0,
+                "checklist": [],
+                "reason": f"image_sourcing_status 계산 실패: {error}",
+            }
+
+    def _apply_knowledge_consumption(self, result: Dict[str, Any]) -> None:
+        """
+        Knowledge DB 실제 소비(Sprint 13): 이번에 선택된 layout_type이 Knowledge DB
+        상위 layout과 일치하면 layout_quality_score를 소폭 보정한다(+0.03, 최대 1.0).
+        레이아웃 선택/렌더링 로직 자체는 바꾸지 않는다 - 이미 검증된 layout을 살짝
+        더 신뢰하는 보정만 추가한다. 실패해도 result는 그대로 유지된다.
+        """
+        try:
+            layout_result = result.get("layout_result") or {}
+            layout_type = layout_result.get("layout_type", "")
+
+            top_layouts = self.knowledge_interface.get_layout_knowledge(limit=5)
+            matched = next(
+                (
+                    item for item in top_layouts
+                    if (item.get("content") or {}).get("layout_type") == layout_type
+                ),
+                None,
+            )
+
+            if matched:
+                old_score = float(layout_result.get("layout_quality_score", 0.0) or 0.0)
+                boosted_score = min(1.0, round(old_score + 0.03, 4))
+                layout_result["layout_quality_score"] = boosted_score
+                influence = (
+                    f"layout_type '{layout_type}'가 Knowledge DB 상위 layout과 일치해 "
+                    f"layout_quality_score를 {old_score} -> {boosted_score}로 보정함."
+                )
+            else:
+                influence = "Knowledge DB 상위 layout과 일치하는 항목이 없어 layout_quality_score는 그대로 둠."
+
+            result["layout_result"] = layout_result
+            result["knowledge_used"] = bool(top_layouts)
+            result["knowledge_items"] = [
+                {
+                    "knowledge_id": item.get("knowledge_id"),
+                    "type": item.get("type"),
+                    "title": item.get("title"),
+                }
+                for item in top_layouts
+            ]
+            result["knowledge_influence"] = influence
+        except Exception as error:
+            print(f"Card News Knowledge Consumption Failed: {error}")
+            result.setdefault("knowledge_used", False)
+            result.setdefault("knowledge_items", [])
+            result.setdefault("knowledge_influence", f"knowledge consumption 실패: {error}")
 
     def _optimize_slides_for_rendering(self, slides: List[Dict[str, Any]]) -> Dict[str, Any]:
         fallback_result = {

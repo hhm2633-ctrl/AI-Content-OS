@@ -1,8 +1,13 @@
 # Planning Additions
 
-- Knowledge Engine: Planning
-- Competitor Engine: Planning
-- Audit Engine: Planning
+- Knowledge Engine: v1 implemented (Sprint 11); real active consumption (not just passive reference) in Pattern/Content/CardNews/Audit/Learning (Sprint 13)
+- Competitor Engine: v2 implemented (Sprint 13, offline-first) — Instagram placeholder removed, replaced with real `INSTAGRAM_BENCHMARK.md`/`TOOLS_AND_FUNNEL_REFERENCES.md` parsing
+- Audit Engine: v2 implemented (Sprint 13) — 9 real checks incl. Pattern/Image Strategy match, save/comment inducement; Competitor Comparison/Blind Spot Detection still Planning
+- Learning Engine: v2 implemented (Sprint 13) — `internal_learning_score` (audit+performance+knowledge, all real local data, no fabricated performance)
+- Analytics Engine: v2 implemented (Sprint 13) — fabricated SNS metrics removed, replaced with honest local `quality_trend`; real Instagram Graph API connection still Planning (see ROADMAP.md "Requires External API")
+- Brand DNA Engine: v1 implemented (Sprint 12)
+- Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine (Sprint 13)
+- Performance Score: v1 implemented (Sprint 12, shared by Audit/Learning/Analytics)
 - AI Planner: Planning
 
 # Operational Support
@@ -54,6 +59,7 @@
 - `trend_result.json` includes `selected_topic`
 - Research Module selected_topic linkage
 - Research Module pattern_result linkage
+- Research Intelligence v1 context/insight generation
 - Content Module pattern-aware prompt linkage
 - Content Intelligence v1
 - Hook Engine v1 metadata reflected in Content prompts and Content Score
@@ -242,6 +248,8 @@
   - `storage/pattern/pattern_history.json`
   - `storage/pattern/pattern_statistics.json`
 - Latest Research result includes `pattern_result_available: true`
+- Latest Research result includes `research_context` and `research_insight`
+- Latest Research insight fallback remains a status field and does not break `workflow_completed`
 - Latest Content result includes `prompt_source: pattern_aware`
 - Latest Content result records LLM fallback with `fallback_used: true` when API calls fail
 - Latest Content result includes all required `content_intelligence` fields
@@ -260,11 +268,92 @@
 - Latest run generated `storage/card_news/card_news_quality.json`
 - Latest run generated 4 card news PNG files
 
+## Sprint 10 Completed (Image Intelligence v1)
+
+- New `modules/image_strategy/` engine added:
+  - `ContentTypeClassifier` — classifies content into `news`/`community`/`shopping`/`review`/`promotion`/`tutorial`/`ai_tools`/`education` using research source/category/pattern signals and keyword rules.
+  - `ImageSourceSelector` — maps each content type to a real-image-first priority chain (e.g. `news -> news_image`, `community -> post_capture -> comment_capture`, `shopping -> product_image`, `review -> real_photo`, `education/tutorial -> icon -> diagram -> ai_image`, `ai_tools -> official_screenshot -> ai_image`).
+  - `AIImageDecision` — decides `need_ai_image` based on whether the priority chain ends in `ai_image`.
+  - `ImageStrategyModule` — orchestrates the above, always returns a safe result (`need_ai_image: true`) on internal failure, and writes `storage/image_strategy/image_strategy_result.json`.
+- `ImageStrategyModule` is connected in `WorkflowEngine` after `ContentModule` and before `ImagePromptModule`; its result is also passed into `ImagePromptModule.run()`.
+- `ImagePromptModule.run()` now accepts an optional `image_strategy_result` argument; when `need_ai_image` is `False`, it skips the LLM prompt call entirely and returns `status: "image_prompts_skipped"` with an `ai_image_skipped: true` flag and an `image_strategy` summary (including `image_usage_plan`).
+- `ImageGenerationModule.run()` checks `ai_image_skipped` and, when set, skips the OpenAI image API entirely and returns `status: "image_generation_skipped"` with `images: []` — no AI image credits/API calls are spent for content types that should use real images.
+- `CardNewsModule`'s existing solid-color background fallback (unchanged) renders card news normally even when no images were generated, so `workflow_completed` is unaffected.
+- Image Strategy failures (classification/selection/decision exceptions) are caught internally and always fall back to `need_ai_image: true` (existing AI generation path), never to `workflow_failed`.
+- `scripts/update_project_snapshot.py` updated to include `image_strategy` in the workflow module list and `ImageStrategyModule` in the `PROJECT_SNAPSHOT.md` pipeline line.
+- Verified with `py -m compileall src modules scripts` (success) and `py -m src.main` (`workflow_completed`); latest run classified the selected topic as `content_type: "community"` (source `nate_pann`) with `need_ai_image: false`, and both `ImagePromptModule`/`ImageGenerationModule` skipped AI generation while `CardNewsModule` still produced 4 PNGs via solid-color fallback backgrounds.
+
+## Sprint 11 Completed (Knowledge Intelligence v1)
+
+- New `modules/knowledge_engine/` engine added, built as a full Engine (Core/Storage/History/Index/Score/Cache/Retry-safe/Fallback/Interface), not a single module:
+  - `KnowledgeExtractor` — pulls reusable Knowledge candidates out of each pipeline stage's result dict across 10 extraction targets: `hook`, `cta` (from `ContentModule` slides + `pattern_plan`), `pattern` (Pattern Engine `pattern_plan`/`topic_intelligence`), `layout` (CardNews `layout_result`), `brand` (Content `content_intelligence.details.brand_rule`), `workflow` (aggregate `fallback_used` signature across all pipeline stages for the run), `prompt_pattern` (Content `prompt_source`/`pattern_prompt_meta`), `tool` and `image_strategy` (Image Strategy `image_source`/`content_type`/`image_usage_plan`), and `funnel` (Research keyword/target + Publishing platform/status). Each extraction step is individually try/except-wrapped so one failing step never blocks the others.
+  - `KnowledgeClassifier` — tags each item with `category`/`cluster`/`tags` from Pattern Engine `topic_intelligence`.
+  - `KnowledgeDuplicateDetector` (`duplicate_detector.py`) — `SequenceMatcher`-based title similarity against same-type existing records in `knowledge.json`, same low/medium/high thresholds as `ContentDuplicateDetector`.
+  - `KnowledgeScorer` (`knowledge_score.py`) — computes `reusability` (per-type weight), `importance` (fallback-aware), `confidence` (from `topic_intelligence.confidence_score` / Content `quality_score`), `duplicate_risk_score`, and a combined `roi`, plus an `overall_score` used for ranking.
+  - `KnowledgeRanker` — sorts items by `overall_score` and assigns `rank`.
+  - `KnowledgeStorage` — upserts by `knowledge_id` into `storage/knowledge/knowledge.json` and maintains `storage/knowledge/knowledge_statistics.json` (run counts, fallback-run counts, per-type totals).
+  - `KnowledgeHistory` — append-only run log at `storage/knowledge/knowledge_history.json` (same pattern as `pattern_history.json`/`content_history.json`, capped at 500 records).
+  - `KnowledgeIndex` — type/tag inverted index at `storage/knowledge/knowledge_index.json`, rebuilt from the full `knowledge.json` every run so a corrupted index never loses data.
+  - `KnowledgeInterface` — read-only query API (`get_top_hooks`, `get_top_ctas`, `get_pattern_knowledge`, `get_layout_knowledge`, `get_brand_knowledge`, `get_image_strategy_knowledge`, `get_tool_knowledge`, `get_funnel_knowledge`, `get_workflow_knowledge`, `get_by_keyword`, `get_statistics`) intended for future use by Pattern Engine/Research/Content/Image Strategy/CardNews. **Not wired into those engines yet** — API only, per this Chapter's scope; every method fails safe to `[]`/`{}`.
+  - `KnowledgeModule` — orchestrates extract -> classify -> duplicate-check -> score -> rank -> persist, and always returns a safe `knowledge_extracted` result (with `fallback_used: true` and an empty-but-existing Knowledge DB) even on internal exceptions.
+- `KnowledgeModule` is connected in `WorkflowEngine` after `PublishingModule` and before final-result assembly; `WorkflowEngine._run_knowledge_engine()` adds an extra outer try/except as a second safety net so a Knowledge Engine exception can never turn into `workflow_failed`. `final_result` now additively includes a `"knowledge"` key.
+- `scripts/update_project_snapshot.py` updated to include `knowledge`/`Knowledge extraction` in the workflow module list and labels, and `KnowledgeModule` appended to the `PROJECT_SNAPSHOT.md` pipeline line.
+- Verified with `py -m compileall src modules scripts` (success) and `py -m src.main` (`workflow_completed`). Latest run extracted 10 Knowledge items (one of each type) from the `톡커들의 선택 명예의 전당` topic run, wrote all four `storage/knowledge/*.json` files, and top-ranked `hook`/`cta` items scored `overall_score: 0.9125`.
+
+## Sprint 12 Completed (Multi-Engine Growth Sprint)
+
+Seven new Engines added in one Sprint, each built to the full Engine standard (Core/Storage/History/Score/Fallback/Interface; Retry/Cache noted as "not applicable" where the Engine makes no network/LLM calls). `WorkflowEngine` now runs 17 stages total, all additive — no existing module, folder, class, or call signature was renamed or removed.
+
+- **Knowledge Interface real connection**: `PatternEngineModule`, `ResearchModule`, `ContentModule`, `ImageStrategyModule`, and `CardNewsModule` now each import `KnowledgeInterface` and attach a `knowledge_reference` field to their own result dict (top pattern/layout, funnel/workflow, hook/cta/prompt_pattern, image_strategy/tool, and layout knowledge respectively). This is deliberately additive-only — none of the five engines' existing selection/scoring logic was changed, so behavior and fallback paths are unaffected. Confirmed in the latest run: `pattern_result.knowledge_reference.top_patterns`/`top_layouts` populated from the persisted Knowledge DB.
+- **`modules/performance_score/`** — `PerformanceScoreModule` composes (does not recompute) `hook_score`/`cta_score` from Content's existing `pattern_prompt_meta`, `layout_score` from CardNews `layout_result.layout_quality_score`/`card_news_quality.qa_score`, `brand_score` from `content_intelligence.brand_rule_passed`, and a heuristic `image_score` from Image Strategy fallback/need_ai_image, into one `overall_performance_score`. Storage: `storage/performance_score/performance_score.json` + `_statistics.json` + `_history.json`. Consumed by Audit/Learning/Analytics Engines.
+- **`modules/audit_engine/`** — `AuditEngineModule` runs the docs/AUDIT_ENGINE.md "My Account Analysis" + "Score Calculation" + "Recommended Actions" stages: `hook_check`/`cta_check`/`layout_check`/`brand_check`/`image_check`/`duplicate_check` (duplicate reusing Content's existing `duplicate_risk`), weighted into `audit_score`, with `strengths`/`weaknesses`/`recommendations`. Competitor Comparison/Blind Spot Detection remain for a future Sprint once Competitor Engine data accumulates. Storage: `storage/audit/`.
+- **`modules/learning_engine/`** — `LearningEngineModule` treats `(Performance Score + Audit Score) >= 0.65` as a proxy "good run" signal (no real Analytics data exists yet) and promotes that run's high-scoring (`overall_score >= 0.7`) hook/cta/pattern/layout/brand Knowledge items into `storage/learning/learning_memory.json`. Repeated promotion of the same `knowledge_id` across good runs increases its `memory_score` (reinforcement). Storage: `storage/learning/`.
+- **`modules/analytics_engine/`** (Skeleton) — `AnalyticsEngineModule` defines the full views/saves/comments/shares/CTR/follow_conversion/DM schema but has no real Instagram Graph API connection yet; `AnalyticsPredictor` fills it with a Performance/Audit-Score-derived estimate and every result carries `is_measured: false`. Structure is designed so a future real-data collector can replace the predictor without changing the schema. Storage: `storage/analytics/`.
+- **`modules/brand_dna_engine/`** — `BrandDNAEngineModule` loads `config/brand_profile.json` (tone/banned words/target) and additionally observes each run's actual `hook_type`/`cta_type`/`layout_type` (plus `highlight_color` looked up from `templates/card_news_layout_rules.json`) to build up `dominant_hook_type`/`dominant_cta_type`/`dominant_layout_type`/`dominant_color` frequency stats — i.e. what the brand actually repeats, not just its written profile. Storage: `storage/brand_dna/` (`brand_dna.json` + `brand_dna_statistics.json` + `brand_dna_history.json`).
+- **`modules/trend_memory/`** — `TrendMemoryModule` records each run's `(topic_title, hook_type, cta_type, layout_type, image_source)` combination and compares it against the last 10 runs for `topic_repeat_risk` (title similarity) and per-element repeat counts. It only records/flags — it does not block generation, per the "no WorkflowEngine structure change" rule. Storage: `storage/trend_memory/`.
+- **`modules/competitor_engine/`** (docs/COMPETITOR_ENGINE.md) — `CompetitorEngineModule` builds a competitor profile from 4 sources: `BenchmarkSource` parses the already-CTO-analyzed `benchmark/*.md` docs (`HOOK_LIBRARY.md`, `CTA_LIBRARY.md`, `CONTENT_PATTERNS.md`, `INSTAGRAM_BENCHMARK.md`, `TOOLS_AND_FUNNEL_REFERENCES.md`, `AI_CONTENT_STRATEGY.md`) into structured `hook_and_cta_map`/`repeated_content_patterns` sections (no raw external re-analysis — reads existing project docs per `research.md`); `CommunitySource`/`NewsSource` reuse Trend Collector's already-collected `storage/trends/trend_result.json` (`nate_pann`/`fmkorea`/`bobaedream`/`naver_news`) rather than scraping anything new; `InstagramSource` is an explicit placeholder (`fallback_used: true`) since no live Instagram collection exists yet. Output includes a `gap_analysis_input` for the Audit Engine to consume in a future Sprint. Storage: `storage/competitor/`.
+- **Knowledge DB upgraded** (`modules/knowledge_engine/`): `KnowledgeStorage` gained an in-run instance cache (`load_all()` no longer re-reads disk on repeated calls within a run) and a `replace_all()` used for **global re-ranking** — `KnowledgeModule` now re-ranks the *entire* cumulative `knowledge.json`, not just the current run's batch, so every record's `rank` always reflects its standing across the whole DB. Added `update_score_statistics()` (average `overall_score` per type in `knowledge_statistics.json`) and `KnowledgeInterface.search(query, limit)` (substring search across title/content, sorted by `overall_score`).
+- `scripts/update_project_snapshot.py` updated: workflow module list/labels/pipeline line now include all 7 new stages (`performance_score`, `audit`, `learning`, `analytics`, `brand_dna`, `trend_memory`, `competitor`).
+- `WorkflowEngine` gained a shared `_run_safe()` wrapper (used by all 7 new stages) as a second safety net on top of each Engine's own internal fallback, mirroring the existing `_run_pattern_engine`/`_run_knowledge_engine` pattern — any one Engine failing outright still cannot turn into `workflow_failed`.
+- Verified with `py -m compileall src modules scripts` (success, twice — second pass after fixing an initially-unused `brand_dna_statistics.json` path) and `py -m src.main` (`workflow_completed`, twice). Latest run: `overall_performance_score: 0.8636`, `audit_score: 0.737` (passed, weaknesses: `layout_check`/`duplicate_check` — expected, since the run reused a previously-seen topic/layout), Learning Engine promoted 2 items (`is_good_run: true`), Competitor Engine read all 6 benchmark files and extracted 10 hook sections / 7 CTA sections, and `storage/knowledge/knowledge.json` global rank/statistics updated.
+
+## Sprint 13 Completed (Offline-First 실전 고도화)
+
+Goal: with no API/login/token, make every Sprint 12 structure actually do something real with local data. No new placeholders, no new skeletons.
+
+- **Placeholder/Skeleton removal**:
+  - Deleted `modules/competitor_engine/instagram_source.py` (the `instagram_not_implemented` placeholder) entirely rather than documenting around it.
+  - Rewrote `AnalyticsEngineModule`/`AnalyticsPredictor`/`AnalyticsStorage`/`AnalyticsHistory` to remove the fabricated `predicted_metrics` (views/saves/comments/shares/ctr/follow_conversion/dm_count, all `is_measured: false`) — this was inventing SNS performance data that doesn't exist. Replaced with a real `quality_trend` (`improving`/`declining`/`stable`/`insufficient_history`) computed by comparing this run's actual Performance Score against the actual historical average already stored in `storage/performance_score/performance_score_statistics.json` (via the existing `PerformanceScoreInterface` — no new fabricated data, no external API).
+  - Fixed a real bug found during the placeholder audit: `benchmark_source.py`'s generic `### N. Title` parser silently produced 0 sections for `INSTAGRAM_BENCHMARK.md` (`### account_handle`, no number) and `TOOLS_AND_FUNNEL_REFERENCES.md` (`## N. Title`, H2 not H3) — both files were listed as "read" but contributed nothing. Replaced with two dedicated parsers (`InstagramBenchmarkParser`, `ToolsFunnelParser`) matching each file's actual heading structure.
+  - API-dependent items (real Instagram/Meta metrics, live competitor account scanning, real image auto-sourcing, Reels transcript/translation) moved to `ROADMAP.md`'s new "Requires External API" section instead of being stubbed in code.
+- **Knowledge DB real consumption** (previously passive `knowledge_reference` attach-only fields, Sprint 12):
+  - `PatternEngineModule`: reads `KnowledgeInterface.get_pattern_knowledge`/`get_layout_knowledge`; when the selected `pattern_type` matches a same-category top-ranked Knowledge item, boosts `topic_intelligence.confidence_score` by +0.05 (observed in practice: `0.72 -> 0.77`). Adds `knowledge_used`/`knowledge_items`/`knowledge_influence` to `pattern_result.json`.
+  - `ContentModule`: reads top hooks/CTAs and injects them into the LLM `user_prompt` as explicitly-labeled "reference, do not copy verbatim" examples (real influence on generation, not just metadata). Adds the same 3 fields to `content_result.json`.
+  - `CardNewsModule`: when the rendered `layout_type` matches a top-ranked Knowledge layout, boosts `layout_result.layout_quality_score` by +0.03 (observed: `0.6833 -> 0.7133`, which also raised the downstream `card_news_quality.qa_score`). Adds the same 3 fields.
+  - `AuditEngineModule`: `duplicate_check` now blends `content_intelligence.duplicate_risk`, `trend_memory_result.topic_repeat_risk`, and the current run's `knowledge_result.top_knowledge` items' `duplicate_risk` into one worst-case verdict.
+  - `LearningEngineModule`: `knowledge_score` = average `overall_score` of this run's `top_knowledge` items, one of three real inputs to `internal_learning_score`.
+  - All five engines now log `knowledge_used`/`knowledge_items`/`knowledge_influence` in their result JSON as required.
+- **Competitor Engine v2** (offline-first, no Instagram API):
+  - New `InstagramBenchmarkParser` parses `benchmark/INSTAGRAM_BENCHMARK.md`'s 14 `### account_handle` sections (Category/Observed Pattern/Common Hooks/AI-Content-OS 적용/Priority) into per-account `hook`/`pattern`/`layout`/`cta`/`image_strategy`/`priority` profiles (layout/cta/image_strategy derived via keyword matching against the already-analyzed text — no fabrication, empty where the source doc has nothing).
+  - New `ToolsFunnelParser` parses `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`'s 6 numbered sections.
+  - New `CompetitorProfileBuilder` normalizes parser output into the requested schema.
+  - New `storage/competitor/competitor_profiles.json` (14 account profiles in the latest run) alongside the existing `competitor_profile.json` (run-level source summary). `format_comparison` is now real (layout/cta/image_strategy distribution counts across parsed profiles), not a `not_available` placeholder.
+- **Content Audit Engine real strengthening**: expanded from 6 to 9 checks — added `pattern_check` (Content's actual `pattern_type` vs Pattern Engine's plan), `image_strategy_check` (rewritten to check whether Image Strategy's plan was actually fulfilled, via the new `image_sourcing_status`, not just a fallback flag), `save_inducement_check` and `comment_inducement_check` (keyword/cta_type detection on the actual CTA slide text). All 9 checks now take a single `context` dict so `AuditChecks.run_all()` can read `pattern_result`/`knowledge_result`/`trend_memory_result` alongside the original inputs. `recommendations` remain mandatory in every result.
+- **Learning Engine real strengthening**: `internal_learning_score` (renamed from `run_quality_score`) = `audit_score * 0.4 + performance_score * 0.35 + knowledge_score * 0.25` — three real local numbers, explicitly no fabricated engagement data.
+- **Trend Memory real connection**: already recording/checking topic+hook+cta+layout+image_source combinations since Sprint 12; Sprint 13 moved its pipeline position earlier (stage 11, before Performance Score/Audit) specifically so Audit Engine's `duplicate_check` can consume `trend_memory_result.topic_repeat_risk`. Still warning-only — never blocks generation.
+- **Image Strategy → CardNews/Publishing wiring**: `CardNewsModule.run()` gained an optional `image_strategy_result` param (`WorkflowEngine` now passes it); it compares the plan (`need_ai_image`/`image_source`) against what was actually rendered (`cards[].source_image`) and writes `image_sourcing_status` (`manual_image_required`, `recommended_source`, `checklist`) into `card_news_result.json`. `PublishingModule` reads that status from `card_news_result` (no new required param) and surfaces `manual_image_required`/`image_checklist` in `publish_queue.json` and `publishing_result.json` — the checklist goes into ops metadata, not the public-facing caption text.
+- `WorkflowEngine` pipeline reordered among the Sprint-12 bonus stages only (core 10-stage protected pipeline untouched): `... -> PublishingModule -> KnowledgeModule -> TrendMemoryModule -> PerformanceScoreModule -> AuditEngineModule -> LearningEngineModule -> AnalyticsEngineModule -> BrandDNAEngineModule -> CompetitorEngineModule`. `storage/workflow_results/` numbering updated (`11_trend_memory_result.json` through `17_competitor_result.json`).
+- Verified with `py -m compileall -f src modules scripts` (success, forced full recompile) and `py -m src.main` (`workflow_completed`). Latest run: Pattern Engine `confidence_score` boosted `0.72 -> 0.77` from Knowledge match; CardNews `layout_quality_score` boosted `0.6833 -> 0.7133`; `audit_score: 0.7552` (9 checks, `image_strategy_check` correctly failed with `manual_image_required: true`); `internal_learning_score: 0.7762` (`audit=0.7552*0.4 + performance=0.8587*0.35 + knowledge=0.6945*0.25`); Analytics `quality_trend: "stable"` (real 3-run historical average, no fabricated metrics); `competitor_profiles.json` has 14 real account profiles; `publish_queue.json` correctly carries `manual_image_required: true` with a 2-item checklist.
+
 ## Next
 
 - M2 Content Engine enhancement
+- Real image sourcing automation (news thumbnail fetch, community post/comment capture, product image lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
 - Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
+- Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs
+- Real Instagram Graph API connection for Analytics Engine — see ROADMAP.md "Requires External API"; until then `quality_trend` remains based on real local Performance Score history only
+- AI Planner (routing/cost-control layer) remains the one planned Engine not yet implemented
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior
@@ -273,6 +362,9 @@
 
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
-- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, and CardNews Layout Intelligence/rendering/QA/design quality failures must be recorded as fallback events, not workflow failures.
+- Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, CardNews Layout Intelligence/rendering/QA/design quality, Knowledge Engine, Performance Score, Audit Engine, Learning Engine, Analytics Engine, Brand DNA Engine, Trend Memory, and Competitor Engine failures must be recorded as fallback events, not workflow failures.
 - OpenAI, Naver News, and Nate Pann transient connection failures should retry with backoff before fallback.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.
+- Knowledge Engine failure must still guarantee an existing (even empty) `storage/knowledge/knowledge.json` — never leave the DB file missing. The same guarantee now applies to `storage/performance_score/`, `storage/audit/`, `storage/learning/`, `storage/analytics/`, `storage/brand_dna/`, `storage/trend_memory/`, and `storage/competitor/`.
+- None of the Sprint 12/13 bonus Engines call external network/LLM APIs, so none implement literal retry logic — their Fallback strategy (safe default result, never raise) is the reliability contract instead, consistent with `image_strategy`/`pattern_engine`.
+- Per Sprint 13's explicit "Offline-First" constraint: do not implement Instagram API, Meta Graph API, access-token-based auth, or real SNS login/crawling without explicit future approval — check ROADMAP.md's "Requires External API" section first.

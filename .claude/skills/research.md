@@ -42,3 +42,68 @@ Claude는 Research 문서만 사용
 
 Claude가 직접 새로운 Research 문서를 작성하지 않는다. 외부 자료 분석 및 문서화는
 ChatGPT CTO의 역할이며, Claude는 이미 저장된 문서를 소비하는 역할에 머문다.
+
+---
+
+# AI-Content-OS Research Extension
+
+## Purpose
+
+Research는 자료를 모으는 작업이 아니다.
+
+항상 재사용 가능한 Knowledge를 만든다.
+
+## Workflow
+
+Collect
+
+↓
+
+Analyze
+
+↓
+
+Extract
+
+↓
+
+Knowledge
+
+↓
+
+Pattern
+
+↓
+
+Save
+
+## 반드시 추출
+
+- Hook
+- CTA
+- Pattern
+- Layout
+- Brand DNA
+- Funnel
+- Workflow
+- Image Strategy
+- Prompt Pattern
+
+## Sources
+
+- News
+- Community
+- Instagram
+- YouTube
+- PDF
+- Official Docs
+- GitHub
+- Benchmark Accounts
+
+## Never
+
+원문을 그대로 구현하지 않는다.
+
+패턴만 추출한다.
+
+Knowledge DB에 재사용 가능한 형태로 저장 가능한 구조를 우선 설계한다.

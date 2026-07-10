@@ -142,6 +142,10 @@ class ImageGenerationModule(BaseModule):
     def run(self, image_prompt_result: Dict[str, Any]) -> Dict[str, Any]:
         print("Image Generation Module Started")
 
+        if isinstance(image_prompt_result, dict) and image_prompt_result.get("ai_image_skipped"):
+            print("Image Generation Module Skipped: Image Strategy selected a real image source")
+            return self._build_skipped_result(image_prompt_result)
+
         prompts = self._extract_prompts(image_prompt_result)
         images = []
 
@@ -181,6 +185,20 @@ class ImageGenerationModule(BaseModule):
 
         print("Image Generation Module Finished")
         return result
+
+    def _build_skipped_result(self, image_prompt_result: Dict[str, Any]) -> Dict[str, Any]:
+        image_strategy = image_prompt_result.get("image_strategy", {})
+        if not isinstance(image_strategy, dict):
+            image_strategy = {}
+
+        return {
+            "module": "ImageGenerationModule",
+            "status": "image_generation_skipped",
+            "images": [],
+            "fallback_used": False,
+            "fallback_reason": "",
+            "image_strategy": image_strategy,
+        }
 
     def _build_and_record_diagnostic(self, images: List[Dict[str, Any]]) -> Dict[str, Any]:
         try:

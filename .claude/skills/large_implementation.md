@@ -42,3 +42,31 @@ Codex가 처리하는 것이 더 적합하다 (`ai-content-os-sprint` 스킬의 
 
 - 리서치 자료 반영은 `research.md`를 따른다.
 - Sprint 범위/ROI 판단은 `planning.md`를 따른다.
+
+---
+
+# AI-Content-OS Engine Rule
+
+모듈 하나를 구현했다고 완료가 아니다.
+
+Engine은 반드시 아래를 포함해야 한다.
+
+- Core
+- Storage
+- History
+- Index
+- Score
+- Cache
+- Retry
+- Fallback
+- Interface
+- Documentation
+- Workflow Integration
+
+위 항목이 없으면 Engine Completed가 아니다.
+
+항상 다른 Engine에서 재사용 가능한 구조로 만든다.
+
+현재 기능만 구현하지 않는다.
+
+6개월 뒤 재사용될 구조를 먼저 설계한다.

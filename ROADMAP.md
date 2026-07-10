@@ -49,12 +49,27 @@
 - Blog article workflow
 - SmartStore/Coupang content workflow
 - 채널별 재가공 파이프라인
-# Research Knowledge / Planning Engines
+# Research Knowledge / Intelligence Engines
 
-- Knowledge Engine: external material analysis workflow and project asset documentation
-- Competitor Engine: competitor account/service pattern analysis
-- Audit Engine: my account audit, competitor comparison, blind spot detection
-- AI Planner: AI task routing, cost control, sprint ROI review
+- Knowledge Engine: v1 implemented (Sprint 11), enhanced (Sprint 13: global rank across full DB, `search()`, in-run cache, per-type average score statistics) — real read+write consumption wired into Pattern Engine (confidence_score boost on match), Content Module (prompt guidance injection), CardNews Module (layout_quality_score boost on match), Audit Engine (duplicate_check blending), Learning Engine (knowledge_score component)
+- Performance Score Engine: v1 implemented (Sprint 12) — hook/cta/layout/brand/image composite scoring, shared by Audit/Learning/Analytics
+- Competitor Engine: v2 implemented (Sprint 13, offline-first) — Benchmark/Community/News sources + `InstagramBenchmarkParser` (parses `benchmark/INSTAGRAM_BENCHMARK.md`'s per-account sections into real `storage/competitor/competitor_profiles.json`) + `ToolsFunnelParser` (parses `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`). No live Instagram/Meta API — see "Requires External API" below.
+- Audit Engine: v2 implemented (Sprint 13) — 9 checks (hook/cta/pattern/layout/brand/image_strategy/duplicate/save_inducement/comment_inducement) reading content_result + pattern_result + card_news_result + image_strategy_result + knowledge_result + trend_memory_result; Competitor Comparison and Blind Spot Detection remain for a future Sprint once Competitor Engine history accumulates across runs
+- Learning Engine: v2 implemented (Sprint 13) — `internal_learning_score` = audit_score(0.4) + performance_score(0.35) + knowledge_score(0.25), all real local values (no fabricated SNS performance); promotes high-scoring Hook/CTA/Pattern/Layout/Brand Knowledge from "good runs" into a reinforced Learning Memory
+- Analytics Engine: v2 implemented (Sprint 13) — Sprint 12's fabricated views/saves/comments/shares/CTR/follow/DM predictions (`is_measured: false`) were removed; replaced with an honest `quality_trend` (improving/declining/stable) computed by comparing this run's real Performance Score against the real historical average in `storage/performance_score/`. Real Instagram Graph API metrics are Planning — see "Requires External API" below.
+- Brand DNA Engine: v1 implemented (Sprint 12) — tracks actually-used hook/cta/layout/color per run on top of `config/brand_profile.json`
+- Trend Memory: v1 implemented (Sprint 12), consumed by Audit Engine's duplicate_check (Sprint 13) — records recent topic/hook/cta/layout/image combinations and flags repeat risk (does not block generation)
+- AI Planner: AI task routing, cost control, sprint ROI review — Planning
+
+# Requires External API (do not implement without explicit approval)
+
+These items are intentionally **not** implemented because they require Instagram API, Meta Graph API, access tokens, or real SNS login/crawling — all explicitly out of scope per the Sprint 13 "Offline-First" decision. They stay here until a Sprint explicitly authorizes the external dependency.
+
+- **Real Instagram/Meta performance metrics** (views, saves, comments, shares, CTR, follow conversion, DM count) for Analytics Engine — requires Instagram Graph API + access token. Until then, Analytics Engine only reports a real, locally-computed `quality_trend`.
+- **Real-time Instagram competitor account scanning** (beyond the static `benchmark/*.md` docs already parsed by Competitor Engine) — requires either Instagram API/login or a scraping tool (e.g. the "Bla View" reference in `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`, which itself requires an AssemblyAI API key).
+- **Real image sourcing automation** (news thumbnail fetch, community post/comment capture, product image lookup) to fulfill `image_usage_plan` — requires crawling external pages/SNS posts for images, which falls under "실제 SNS 로그인/크롤링 전제 금지". Until implemented, CardNews/Publishing only surface a `manual_image_required` checklist (Sprint 13).
+- **Reels/Shorts transcript extraction and translation** (Bla View / AssemblyAI workflow described in `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`) — requires a third-party transcription API key.
+- **Edits app deep-linking / automated Reels publishing** — requires Instagram-side app integration, not just local rendering.
 
 # Later Roadmap
 
