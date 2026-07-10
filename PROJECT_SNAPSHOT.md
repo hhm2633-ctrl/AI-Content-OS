@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T11:31:02
+Updated at: 2026-07-10T12:03:15
 
 ## Execution Command
 
@@ -177,6 +177,8 @@ AI-Content-OS/
 |   |   |-- brand_rule_evaluator.py
 |   |   |-- content_duplicate_detector.py
 |   |   |-- content_module.py
+|   |   |-- content_output_normalizer.py
+|   |   |-- content_output_validator.py
 |   |   |-- content_prompt_builder.py
 |   |   |-- content_quality_scorer.py
 |   |   |-- cta_strategy.py
@@ -336,7 +338,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (244 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (250 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -374,7 +376,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (29 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (32 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -391,6 +393,8 @@ AI-Content-OS/
 |   |-- card_news_template.json
 |   `-- publishing_template.json
 |-- tests/
+|   |-- test_content_output_normalizer.py
+|   `-- test_content_output_validator.py
 |-- utils/
 |   `-- __init__.py
 |-- workflows/

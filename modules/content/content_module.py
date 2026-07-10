@@ -11,6 +11,8 @@ from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 from modules.content.content_prompt_builder import ContentPromptBuilder
 from modules.content.brand_rule_evaluator import BrandRuleEvaluator
 from modules.content.content_duplicate_detector import ContentDuplicateDetector
+from modules.content.content_output_normalizer import ContentOutputNormalizer
+from modules.content.content_output_validator import ContentOutputValidator
 from modules.content.content_quality_scorer import ContentQualityScorer
 from modules.content.publishing_hint_generator import PublishingHintGenerator
 
@@ -32,6 +34,12 @@ class ContentModule(BaseModule):
         self.duplicate_detector = ContentDuplicateDetector(self.config)
         self.publishing_hint_generator = PublishingHintGenerator(self.config)
         self.brand_rule_evaluator = BrandRuleEvaluator(self.config)
+
+        # Content Output Contract (Sprint 14-2): LLM 결과가 무엇이든 Validation ->
+        # Normalization -> Quality Recheck 3단계를 거쳐 항상 안정적인 4-slide
+        # 스키마를 보장한다.
+        self.output_validator = ContentOutputValidator()
+        self.output_normalizer = ContentOutputNormalizer()
 
         # Knowledge Interface 실제 연결(Sprint 13): 축적된 Knowledge DB의 상위
         # hook/cta를 실제로 읽어 LLM user_prompt에 참고 예시로 주입한다(그대로
@@ -82,7 +90,7 @@ class ContentModule(BaseModule):
             user_prompt=user_prompt,
         )
 
-        content_result = self._safe_json_parse(llm_response, keyword)
+        content_result = self._run_output_contract(llm_response, keyword)
         content_result["prompt_source"] = prompt_source
         content_result["pattern_prompt_meta"] = prompt_meta
         content_result["content_intelligence"] = self._build_content_intelligence(
@@ -320,61 +328,43 @@ class ContentModule(BaseModule):
 }}
 """
 
-    def _safe_json_parse(self, text: str, keyword: str) -> Dict[str, Any]:
+    def _run_output_contract(self, text: str, keyword: str) -> Dict[str, Any]:
+        """
+        Content Output Contract (Sprint 14-2):
+
+        Content LLM Result -> Content Output Validation -> Content Output
+        Normalization -> Content Quality Recheck -> Stable content_result.json
+
+        어떤 LLM 결과가 오더라도(완전히 깨진 JSON, 일부만 정상인 JSON, role/순서가
+        뒤섞인 JSON, 정상 JSON 모두) 항상 4-slide, hook-first/cta-last, 길이 제한을
+        만족하는 동일한 스키마를 반환한다. 이 메서드 자체는 예외를 던지지 않는다.
+        """
         try:
-            result = json.loads(text)
-
-            if not isinstance(result, dict):
-                raise ValueError("LLM result is not dict")
-
-            if result.get("status") == "llm_failed":
-                raise ValueError(result.get("error", "llm_failed"))
-
-            if "slides" not in result or not isinstance(result["slides"], list):
-                raise ValueError("slides missing")
-
-            result["slides"] = self._normalize_slides(result["slides"], keyword)
-            result["status"] = "content_created"
-            result["fallback_used"] = False
-            result["fallback_reason"] = ""
-
-            if not result.get("title"):
-                result["title"] = f"{keyword} 카드뉴스"
-
-            if not result.get("caption"):
-                result["caption"] = f"{keyword}는 작게 시작해서 자동화 구조로 키우는 것이 중요합니다."
-
-            if not result.get("hashtags"):
-                result["hashtags"] = ["#AI콘텐츠", "#콘텐츠자동화", "#카드뉴스", "#부업준비"]
-
-            return result
-
+            parsed_result = json.loads(text)
         except Exception as error:
-            return {
-                "title": f"{keyword} 지금 시작해야 하는 이유",
-                "slides": self._fallback_slides(keyword),
-                "caption": f"{keyword}는 처음부터 완벽하게 만들기보다, 작은 구조부터 자동화하는 것이 중요합니다. 저장해두고 하나씩 따라가세요.",
-                "hashtags": ["#AI콘텐츠", "#콘텐츠자동화", "#카드뉴스", "#부업준비", "#인스타콘텐츠"],
-                "status": "content_created",
-                "fallback_used": True,
-                "fallback_reason": f"llm_or_json_parse_failed: {error}",
-            }
+            parsed_result = None
+            print(f"Content LLM Response JSON Parse Failed: {error}")
 
-    def _normalize_slides(self, slides, keyword: str):
-        fallback = self._fallback_slides(keyword)
-        normalized = []
+        if isinstance(parsed_result, dict) and parsed_result.get("status") == "llm_failed":
+            print(f"Content LLM Response Reported Failure: {parsed_result.get('error', 'llm_failed')}")
+            parsed_result = None
 
-        for index in range(4):
-            source = slides[index] if index < len(slides) and isinstance(slides[index], dict) else {}
+        # 1) Validation: 정규화 전 원본 진단 (수정하지 않고 문제만 기록).
+        pre_validation = self.output_validator.validate(parsed_result)
 
-            normalized.append({
-                "page": index + 1,
-                "role": source.get("role") or fallback[index]["role"],
-                "headline": str(source.get("headline") or fallback[index]["headline"]),
-                "body": str(source.get("body") or fallback[index]["body"]),
-            })
+        # 2) Normalization: 무엇이 들어오든 항상 안정적인 스키마로 재구성.
+        normalized_result = self.output_normalizer.normalize(parsed_result, keyword, self._fallback_slides)
 
-        return normalized
+        # 3) Quality Recheck: 정규화 결과가 실제로 계약을 만족하는지 재검증.
+        recheck_validation = self.output_validator.validate(normalized_result)
+
+        if not recheck_validation.get("valid", False):
+            print(f"Content Output Recheck Still Invalid After Normalization: {recheck_validation}")
+
+        normalized_result["output_validation"] = pre_validation
+        normalized_result["output_recheck"] = recheck_validation
+
+        return normalized_result
 
     def _fallback_slides(self, keyword: str):
         return [

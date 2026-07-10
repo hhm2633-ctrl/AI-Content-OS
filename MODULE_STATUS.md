@@ -434,9 +434,86 @@ Fixes the code bug tracked in Sprint 14-0's Next list above.
   CompetitorEngineModule` — matching the actual code exactly. `CHANGELOG.md` auto-updated via
   the same run.
 
+## Sprint 14-2 Completed (Content Output Contract & Quality Hardening)
+
+M2 Content Engine enhancement: `ContentModule` now enforces an explicit Output Contract so any
+LLM result (well-formed, partially broken, or completely invalid) always produces the same
+stable `content_result.json` schema.
+
+- New `modules/content/content_output_validator.py` (`ContentOutputValidator`) — diagnoses
+  (never fixes) issues in a parsed content dict: `slides_not_list`, `slide_count_mismatch:N`,
+  `page_missing_or_invalid`/`page_duplicate`, `role_unrecognized`/`hook_not_first`/
+  `cta_not_last`/`role_order_mismatch`, `headline_missing`/`headline_too_long`/
+  `headline_too_short`, `body_missing`/`body_too_long`/`body_too_short`,
+  `title_invalid`/`caption_invalid`/`hashtags_invalid`.
+- New `modules/content/content_output_normalizer.py` (`ContentOutputNormalizer`) — always
+  rebuilds a clean 4-slide result regardless of input quality. Matches slides to the canonical
+  `hook -> problem -> solution -> cta` order by **role first** (so a scrambled or partial LLM
+  response like "cta first, hook last, only 3 slides" still lands each real slide in its
+  correct position instead of losing content to positional indexing), falls back to unmatched
+  slides by original order, and only uses hardcoded fallback content for slots with nothing
+  usable. Enforces headline (2-40 chars) / body (4-160 chars) bounds with trimming, and
+  caption/hashtags type + minimum-count guarantees.
+  - New, more accurate `fallback_used` semantics: `true` only when **zero** slides had any
+    real LLM content (`fallback_reason: "no_usable_llm_slide_content"`); partially-broken
+    input that gets successfully repaired is `fallback_used: false`, since real generated
+    content was preserved — this is a real behavior change from Sprint 1-13's `_normalize_slides`,
+    which only checked for a `slides` key's presence/absence and could silently mis-tag
+    hook/cta if the LLM's role labels were wrong or out of order.
+- `ContentModule._run_output_contract()` replaces the old `_safe_json_parse`/`_normalize_slides`
+  pair with the exact pipeline requested: `Content LLM Result -> Content Output Validation ->
+  Content Output Normalization -> Content Quality Recheck -> Stable content_result.json`. The
+  Quality Recheck step re-runs `ContentOutputValidator` on the *normalized* result as a
+  defense-in-depth guarantee that the contract was actually satisfied (logs a warning if not,
+  but never raises). `content_result` gains three additive fields: `output_validation`
+  (pre-normalization diagnosis), `output_recheck` (post-normalization re-verification),
+  `output_normalization` (`normalization_applied` + human-readable `notes` of what was fixed).
+  Top-level schema (title/slides/caption/hashtags/status) is unchanged, so `CardNewsModule`/
+  `PublishingModule`/downstream Intelligence Layer Engines require no changes.
+- `.claude/skills/domain/content_engine.md` updated: removed references to the deleted
+  `_safe_json_parse`/`_normalize_slides` methods, added a "Content Output Contract" section
+  documenting the new pipeline so future Sprints don't have to re-derive it.
+- Verified with `py -m compileall -f src modules scripts` (success) and `py -m src.main`
+  (`workflow_completed`) — this run's real LLM output was already well-formed
+  (`output_validation.valid: true`, `normalization_applied: false`), confirming the contract
+  doesn't interfere with good output. Since a clean run doesn't exercise the repair path, also
+  ran a standalone verification script (`content_output_validator`/`content_output_normalizer`
+  imported directly, no workflow side effects) against 4 deliberately malformed inputs: totally
+  invalid input, `slides` as a non-list, scrambled roles with `cta` first/`hook` last/only 3
+  slides/one missing headline, and an oversized headline. All 4 cases produced a recheck-valid
+  result; the scrambled-role case correctly preserved the real hook/cta text in the right slots
+  and set `fallback_used: false` (3 of 4 slides had real content); the oversized-headline case
+  trimmed to exactly 40 characters.
+
+### Sprint 14-2 Correction (real `tests/` suite added)
+
+The verification above was a throwaway script, not a committed, discoverable test suite — a
+follow-up check found `tests/` didn't exist at all, so `py -m unittest discover -s tests -p
+"test_content_output_*.py"` ran 0 tests. Fixed properly:
+
+- New `tests/test_content_output_validator.py` (17 tests) and
+  `tests/test_content_output_normalizer.py` (13 tests) — 30 tests total, pure `unittest`,
+  `TestCase` subclasses, `test_`-prefixed methods, no external API/LLM/network calls (the
+  normalizer tests use a local `fallback_slides()` stand-in matching `ContentModule._fallback_slides()`'s
+  signature).
+- Writing real tests surfaced two genuine gaps in the Sprint 14-2 implementation itself (fixed,
+  not worked around):
+  - `ContentOutputValidator` only checked for **duplicate** page numbers, not **out-of-order**
+    ones (e.g. pages `[4,3,2,1]` with no duplicates went undetected). Added a `page_out_of_order`
+    check (`page != index + 1`), and excluded `bool` from passing the `isinstance(page, int)`
+    check (`True`/`False` are technically `int` subclasses in Python).
+  - `ContentOutputNormalizer` treated `hashtags` given as a string as simply invalid and
+    discarded it entirely (falling through to fallback hashtags) instead of actually
+    normalizing it into a list. Added string-to-list splitting (`re.split(r"[,\s]+", ...)`) so
+    e.g. `"#AI #콘텐츠 #자동화"` or `"#AI,#콘텐츠,#자동화"` become `["#AI", "#콘텐츠", "#자동화"]`.
+- Re-verified end to end: `py -m unittest discover -s tests -p "test_content_output_*.py" -v`
+  → 30 tests, all `ok`. `py -m compileall -f src modules scripts tests` → success, both test
+  files now appear in the compile output. `py -m src.main` → `workflow_completed`, 4 CardNews
+  PNGs generated, `publishing_result.status: "publishing_ready"`, Naver News/Nate Pann fallback
+  events still occurred as normal (fallback-first contract intact).
+
 ## Next
 
-- M2 Content Engine enhancement
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
 - Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
