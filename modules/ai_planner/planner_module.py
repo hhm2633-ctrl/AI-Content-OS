@@ -1,7 +1,7 @@
 from typing import Any, Dict, Optional
 
 from modules.base_module import BaseModule
-from modules.ai_planner.planner_contract import PlannerContract
+from modules.ai_planner.planner_decision_engine import PlannerDecisionEngine
 from modules.ai_planner.planner_interface import PlannerInterface
 from modules.ai_planner.planning_context import PlanningContext
 from modules.ai_planner.planning_result_schema import build_undecided_result, validate_schema
@@ -9,26 +9,27 @@ from modules.ai_planner.planning_result_schema import build_undecided_result, va
 
 class AIPlannerModule(BaseModule):
     """
-    AI Planner Skeleton (Sprint 15-0, Architecture Only; corrected Sprint 15-0A).
+    AI Planner - Decision Engine v1 (Sprint 15-1).
 
-    이 Sprint의 목표는 "판단"이 아니라 "계약"이다. AI Planner v1은 Pre-Planning
-    Engine으로 한정되며, `TopicEngineModule` 이후 / `PatternEngineModule` 이전에서
-    실행될 예정이다 - Pattern/Knowledge/Trend Memory/Competitor/Image Strategy는
-    아직 실행되지 않은 시점이므로, 이 Engine들의 이번 실행 결과는 입력으로 받지
-    않는다 (Sprint 15-0A에서 이 구조적 모순을 발견/수정했다).
+    Sprint 15-0/15-0A는 Contract만 정의하는 Architecture-only Sprint였다 - 이
+    클래스는 항상 `build_undecided_result()`(전부 None/[]/0.0)를 반환하는
+    Skeleton이었다. Sprint 15-1부터는 `PlannerDecisionEngine`을 실제로 호출해
+    콘텐츠 전략을 결정한다:
 
-    이 클래스는 실제 Decision Engine이 아니다:
-    - `PlanningContext`(Runtime Input 3개 + Historical Input 5개, 총 8개)를 받는다.
-    - `planning_result_schema`의 Output Contract를 그대로 따르는 결과를 만든다.
-    - 모든 결정 필드는 명시적으로 비어 있다(None/[]/0.0) - 진짜 판단처럼 보이는
-      가짜 값을 채우지 않는다 (Sprint 13 Offline-First 원칙과 동일한 정직성 기준).
-      Historical Input에 실제 과거 데이터가 채워져 있어도 이 사실은 변하지 않는다 -
-      이 Skeleton은 어떤 입력을 받든 판단을 꾸며내지 않는다.
-    - 아무것도 storage에 저장하지 않는다 - History/Score/Storage 클래스가 없다.
+    - `PlanningContext`(Runtime Input 3개 + Historical Input 5개)를 받는다.
+    - 판단 로직 자체는 이 클래스가 아니라 `planner_decision_engine.py::PlannerDecisionEngine`에
+      있다 - 이 클래스는 그 결과를 `planning_result_schema`의 Output Contract로
+      검증(`validate_schema`)해 반환하는 얇은 진입점이다.
+    - Decision Engine은 LLM/외부 API를 쓰지 않는다 - `PatternEngineModule`이 실제로
+      쓰는 것과 동일한 규칙 기반 클래스(KeywordWeightEngine/TopicClassifier/
+      TopicCluster/ConfidenceScorer/PatternSelector/HookSelector/CTASelector)를
+      재사용하고, 나머지는 로컬 storage에 실제로 누적된 Historical Input을
+      정렬/필터링한 결과다. 어떤 계산이 실패해도 예외를 던지지 않고
+      `build_undecided_result()`(정직한 "판단 실패" 상태)로 안전하게 대체된다.
 
-    `WorkflowEngine`에는 아직 연결되지 않는다 (`PlannerContract.WORKFLOW_INTEGRATION_NOTE`
-    참고) - `src/workflow_engine.py`에는 연결 위치를 나타내는 주석만 추가되어 있고,
-    실제 인스턴스화/실행 호출은 없다.
+    `WorkflowEngine`에는 여전히 연결되지 않는다 (Sprint 15-1의 명시적 범위 제한:
+    "아직 WorkflowEngine에는 실제 연결하지 않는다") - `src/workflow_engine.py`에는
+    연결 위치를 나타내는 주석만 있고, 실제 인스턴스화/실행 호출은 없다.
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
@@ -39,36 +40,37 @@ class AIPlannerModule(BaseModule):
 
         self.config = config or getattr(self, "config", {}) or {}
 
-        # Interface는 향후 Sprint가 재사용할 수 있도록 준비만 해 둔다.
+        # Interface는 향후 Sprint(WorkflowEngine 실제 연결)가 재사용할 수 있도록 준비만 해 둔다.
         self.interface = PlannerInterface()
+        self.decision_engine = PlannerDecisionEngine(self.config)
 
-    def run(self, context: Optional[PlanningContext] = None) -> Dict[str, Any]:
-        print("AI Planner Module Started (Skeleton - Architecture Only)")
+    def run(self, context: Optional[Any] = None) -> Dict[str, Any]:
+        print("AI Planner Module Started (Decision Engine v1)")
+
+        context = self._coerce_context(context)
 
         try:
-            result = self._build_undecided_result(context)
+            result = self.decision_engine.decide(context)
         except Exception as error:
-            print(f"AI Planner Skeleton Failed, returning safe undecided result: {error}")
-            result = build_undecided_result(reason=f"planner_skeleton_exception: {error}")
-
-        print("AI Planner Module Finished (Skeleton - Architecture Only)")
-        return result
-
-    def _build_undecided_result(self, context: Optional[PlanningContext]) -> Dict[str, Any]:
-        # context는 이번 Sprint에서 실제로 읽히지 않는다 - Contract가 받아들일 수
-        # 있음을 보여주기 위해서만 받는다. 실제 판단 로직은 향후 Sprint의 몫이다.
-        context = context or PlanningContext()
-
-        result = build_undecided_result(
-            reason=(
-                "Sprint 15-0은 Architecture 전용 Sprint다 - AI Planner Contract"
-                "(입력/출력/Schema/WorkflowEngine 연결 위치)만 확정했으며, "
-                f"{', '.join(PlannerContract.COORDINATED_ENGINES)}를 조율하는 "
-                "실제 Decision Engine은 아직 구현되지 않았다."
-            )
-        )
+            print(f"AI Planner Decision Engine Failed, returning safe undecided result: {error}")
+            result = build_undecided_result(reason=f"planner_module_exception: {error}")
 
         schema_check = validate_schema(result)
         result["schema_valid"] = schema_check.get("valid", False)
 
+        print("AI Planner Module Finished (Decision Engine v1)")
         return result
+
+    def _coerce_context(self, context: Optional[Any]) -> PlanningContext:
+        """
+        `run()`이 어떤 타입을 받아도 절대 예외를 던지지 않도록 방어적으로
+        `PlanningContext`로 정규화한다 - `PlanningContext.from_dict()`와 동일한
+        "무엇을 받아도 안전한 기본값" 계약을 여기서도 그대로 지킨다.
+        """
+        if isinstance(context, PlanningContext):
+            return context
+
+        if isinstance(context, dict):
+            return PlanningContext.from_dict(context)
+
+        return PlanningContext()

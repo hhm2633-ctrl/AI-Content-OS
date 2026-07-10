@@ -3,7 +3,8 @@ from typing import Any, Dict, List
 
 class PlannerContract(object):
     """
-    AI Planner Contract (Sprint 15-0, Architecture Only; corrected Sprint 15-0A).
+    AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired
+    Sprint 15-0A; Decision Engine v1 added Sprint 15-1).
 
     AI Planner v1 is scoped as a **Pre-Planning Engine** for the current run's
     initial strategy - not a coordinator that waits for stages that haven't run
@@ -32,12 +33,25 @@ class PlannerContract(object):
       results - they are read from disk via each Engine's existing Interface
       (see `planner_interface.py::PlannerInterface.load_historical_inputs()`).
 
+    Sprint 15-1 adds the actual Decision Engine (`planner_decision_engine.py::
+    PlannerDecisionEngine`) that computes real Output values from these inputs
+    using transparent, deterministic rules - no LLM call, no external API, no
+    random values. It reuses the exact same rule-based classes
+    `PatternEngineModule` uses (`KeywordWeightEngine`/`TopicClassifier`/
+    `TopicCluster`/`ConfidenceScorer`/`PatternSelector`/`HookSelector`/
+    `CTASelector`) so its `selected_pattern`/`selected_hook_strategy`/
+    `selected_cta_strategy` match what Pattern Engine will independently
+    compute moments later, plus real aggregation over Historical Input for
+    `knowledge_priority`/`competitor_reference` and an optional Brand DNA
+    history override for hook/cta. `WorkflowEngine` wiring remains out of scope
+    (see `NOT_IN_SCOPE_THIS_SPRINT`).
+
     This class remains the single source of truth for the contract. If
     documentation (MODULE_STATUS.md etc.) disagrees with this code, this code
     is authoritative.
     """
 
-    VERSION = "0.2.0-contract-only"
+    VERSION = "0.3.0-decision-v1"
 
     # AI Planner가 앞으로 조율할 대상 Engine 목록 (docs/AI_PLANNER.md, ROADMAP.md 참고).
     COORDINATED_ENGINES: List[str] = [
@@ -110,18 +124,19 @@ class PlannerContract(object):
         "있었다 (Sprint 15-0A에서 발견 및 수정). 이제 Runtime Input은 이 위치에서 "
         "실제로 존재하는 trend_result/topic_result/brand_profile만 사용하고, "
         "Pattern/Knowledge/Trend Memory/Competitor/Image Strategy에 대한 참고는 "
-        "이번 실행 결과가 아니라 storage/에 누적된 과거 이력만 사용한다. "
-        "src/workflow_engine.py에는 이 위치를 나타내는 주석만 있으며, "
-        "self.ai_planner_module 인스턴스화나 run() 호출은 추가하지 않는다."
+        "이번 실행 결과가 아니라 storage/에 누적된 과거 이력만 사용한다. Sprint 15-1에서 "
+        "`planner_decision_engine.py::PlannerDecisionEngine`이 이 Input들로 실제 Output을 "
+        "계산하도록 구현됐지만, src/workflow_engine.py에는 여전히 이 위치를 나타내는 "
+        "주석만 있으며, self.ai_planner_module 인스턴스화나 run() 호출은 추가하지 않는다."
     )
 
-    # 절대 규칙 (Sprint 15-0/15-0A 한정): 이번 Sprint에서 하지 않는 것.
+    # 절대 규칙: 이번 Sprint(15-1)에서 하지 않는 것.
     NOT_IN_SCOPE_THIS_SPRINT: List[str] = [
-        "실제 판단/선택 로직(Decision Engine) 구현",
-        "가짜/그럴듯한 기본값으로 채워진 placeholder 결과 생성",
         "WorkflowEngine에 실제 실행 연결(인스턴스화, run() 호출) 추가",
         "storage/planner/에 실행 결과 저장 (History/Score/Storage 클래스 없음)",
         "이번 실행에서 아직 생성되지 않은 미래 단계 결과를 Planner Input으로 사용",
+        "LLM/외부 API를 사용한 판단 로직 (Decision Engine은 기존 Pattern/Topic Engine의 "
+        "실제 규칙 재사용 + 로컬 Historical 데이터 집계만 사용, PlannerContract.VERSION 참고)",
     ]
 
     @classmethod

@@ -42,13 +42,12 @@ implemented vs. still Planning.
 
 ## Planning Additions
 
-- AI Planner (AI task routing / cost control / Sprint ROI review) — the only Engine from the
-  original Planning Additions list not yet implemented as a Decision Engine; see
-  `docs/AI_PLANNER.md`. Its **Contract** (input/output/schema/workflow connection point) was
-  defined in Sprint 15-0 under `modules/ai_planner/` — see "AI Planner Contract" below. No
-  actual decision logic exists yet, and it is not connected into `WorkflowEngine`.
+- AI Planner — its Decision Engine v1 (`modules/ai_planner/planner_decision_engine.py`) was
+  implemented in Sprint 15-1 (see "AI Planner Contract" below); the only remaining Planning item
+  is `WorkflowEngine` wiring (instantiation + `run()` call), deliberately out of scope through
+  Sprint 15-1.
 
-## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A)
+## AI Planner Contract (Sprint 15-0, Architecture Only; dependency-repaired Sprint 15-0A; Decision Engine v1 added Sprint 15-1)
 
 AI Planner is designed to eventually become the central coordinating Engine across Pattern
 Engine, Knowledge Engine, Competitor Engine, Image Strategy, Content Engine, Brand DNA Engine,
@@ -83,15 +82,25 @@ split into genuinely-available **Runtime Inputs** (from the current run, pre-Pla
   the existing `KnowledgeInterface`/`TrendMemoryInterface`/`CompetitorInterface`/
   `BrandDNAInterface`/`PerformanceScoreInterface` to read real accumulated `storage/` data —
   no new storage structure was invented.
-- `modules/ai_planner/planner_module.py` (`AIPlannerModule`) — a Skeleton that accepts a
-  `PlanningContext` and returns a schema-valid but fully **undecided** result (`selected_*` and
-  `content_strategy` are `None`, `planner_confidence: 0.0`) — never a fabricated-looking
-  decision, even when Historical Input is filled with real past data. Not wired into
-  `WorkflowEngine`; only a comment marks the intended connection point (after
-  `TopicEngineModule`, before `PatternEngineModule`).
+- `modules/ai_planner/planner_module.py` (`AIPlannerModule`) — a thin entry point that
+  normalizes any input into a `PlanningContext` and delegates to
+  `planner_decision_engine.py::PlannerDecisionEngine` for the real decision, then validates the
+  result with `validate_schema()`. Not wired into `WorkflowEngine`; only a comment marks the
+  intended connection point (after `TopicEngineModule`, before `PatternEngineModule`).
+- `modules/ai_planner/planner_decision_engine.py` (`PlannerDecisionEngine`, added Sprint 15-1) —
+  the actual Decision Engine. Computes `selected_pattern`/`selected_hook_strategy`/
+  `selected_cta_strategy` by reusing the exact same rule-based classes `PatternEngineModule`
+  uses (`KeywordWeightEngine`/`TopicClassifier`/`TopicCluster`/`ConfidenceScorer`/
+  `PatternSelector`/`HookSelector`/`CTASelector`) on the Runtime Input's `selected_topic`/
+  `trends`, with an optional Brand DNA history override for hook/cta once
+  `brand_dna_history.total_observations >= 5`. `knowledge_priority`/`competitor_reference` come
+  from sorting/filtering real Historical Input statistics. No LLM call, no external API, no
+  random values — any unexpected failure falls back to `build_undecided_result()` (kept as the
+  exception-safety net, not the normal path). Still never fabricates a decision that isn't
+  traceable to a real input.
 
-See `MODULE_STATUS.md`'s Sprint 15-0 and Sprint 15-0A entries for full detail and Codex's
-independent review results.
+See `MODULE_STATUS.md`'s Sprint 15-0, Sprint 15-0A, and Sprint 15-1 entries for full detail and
+Codex's independent review results.
 
 ## Research Knowledge Base
 

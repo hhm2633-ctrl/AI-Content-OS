@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-PLANNER_VERSION = "0.2.0-contract-only"
+PLANNER_VERSION = "0.3.0-decision-v1"
 
 # AI Planner - Output Contract (Sprint 15-0). PlannerContract.OUTPUT_FIELDS와 반드시 일치한다.
 # Sprint 15-0A에서 재확인: 이 필드들은 이번 실행의 "미래 결과를 흉내내는 값"이
@@ -35,13 +35,18 @@ TARGET_ENGINE_BY_FIELD: Dict[str, str] = {
 
 def build_undecided_result(reason: str) -> Dict[str, Any]:
     """
-    Sprint 15-0(Architecture Only) 기준의 "아직 아무것도 판단하지 않은" 상태의
-    planner_result.json 스키마를 만든다.
+    "아직 아무것도 판단하지 않은" 상태의 planning_result 스키마를 만든다.
+
+    Sprint 15-0/15-0A에서는 Skeleton(`AIPlannerModule`)이 항상 이 함수를
+    반환했다 - 그 Sprint의 목표가 "판단"이 아니라 "계약"이었기 때문이다.
+    Sprint 15-1에서 `PlannerDecisionEngine`이 실제 판단 로직을 도입한 이후로는,
+    이 함수는 **예외 발생 시의 안전망**으로만 쓰인다 - 어떤 이유로든 Decision
+    Engine 계산이 실패하면, 그럴듯해 보이는 기본값을 꾸며내는 대신 정직하게
+    "판단 실패/미결정" 상태를 기록한다. 이는 Sprint 13에서 확립된 Offline-First
+    원칙("실제 신호가 없으면 정직하게 빈 상태로 기록한다")과 동일한 기준이다.
 
     모든 결정 필드는 명시적으로 비어 있거나(None/[]/0.0) "아직 결정되지 않음"을
-    뜻한다 - 진짜 판단처럼 보이는 그럴듯한 기본값을 채우지 않는다. 이는
-    Sprint 13에서 확립된 Offline-First 원칙("실제 신호가 없으면 정직하게 빈
-    상태로 기록한다")과 동일한 기준을 AI Planner에도 그대로 적용한 것이다.
+    뜻한다 - 진짜 판단처럼 보이는 그럴듯한 기본값을 채우지 않는다.
     """
     return {
         "status": "planner_not_decided",

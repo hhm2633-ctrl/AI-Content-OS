@@ -18,11 +18,14 @@ only Engine still in Planning.** Everything else below is implemented and verifi
 
 ## Planning
 
-- **AI Planner** — AI task routing, cost control, Sprint ROI review (`docs/AI_PLANNER.md`). The
-  only Engine from the original Planning Additions list not yet implemented as a Decision
-  Engine. Its **Contract** (input/output/schema/`WorkflowEngine` connection point) was defined
-  in Sprint 15-0 under `modules/ai_planner/` — see the Sprint 15-0 entry below. No decision
-  logic exists and it is not connected into `WorkflowEngine`.
+- **AI Planner** — its **Decision Engine v1** (`modules/ai_planner/planner_decision_engine.py`)
+  was implemented in Sprint 15-1 — see the Sprint 15-1 entry below. It computes real
+  `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`/`selected_image_strategy`/
+  `knowledge_priority`/`competitor_reference`/`content_strategy` values via transparent,
+  deterministic rules (reusing `PatternEngineModule`'s own classes + real Historical Input
+  aggregation) — no LLM, no external API, no fabricated values. What remains Planning is only
+  **`WorkflowEngine` wiring** (instantiation + `run()` call at the documented connection point) —
+  deliberately out of scope through Sprint 15-1.
 - Audit Engine's Competitor Comparison + Blind Spot Detection stages (extension of the
   already-implemented Audit Engine, pending Competitor Engine history accumulation across
   multiple runs — not a separate Engine).
@@ -672,6 +675,91 @@ results with placeholders, or reordering the Workflow — all three explicitly f
   and `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v` (31 tests, OK) after the
   fix.
 
+## Sprint 15-1 Completed (AI Planner Decision Engine v1)
+
+Implements the actual Decision Engine that Sprint 15-0/15-0A deliberately deferred. Still not
+wired into `WorkflowEngine` (explicit Sprint scope limit).
+
+- New `modules/ai_planner/planner_decision_engine.py` (`PlannerDecisionEngine`) — computes real
+  Output Contract values from `PlanningContext` via transparent, deterministic rules only (no
+  LLM call, no external API, no random values):
+  - `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`: reuses the exact same
+    classes `PatternEngineModule` uses on the Runtime Input's `selected_topic`/`trends`
+    (`KeywordWeightEngine` → `TopicClassifier` → `TopicCluster` → `ConfidenceScorer` →
+    `PatternSelector` → `HookSelector`/`CTASelector`) — not a re-invented heuristic, so the
+    Planner's hint matches what Pattern Engine will independently compute moments later.
+  - hook/cta then get an optional **Brand DNA history override**: if
+    `brand_dna_history.total_observations >= 5` and `dominant_hook_type`/`dominant_cta_type` is
+    a recognized value (`HookSelector.HOOK_TYPES`/`CTASelector.CTA_TYPES`), the Planner
+    recommends the brand's actual proven preference instead of the pattern-consistent default —
+    otherwise it keeps the pattern-consistent default. Corrupted/unrecognized dominant values
+    are ignored regardless of observation count (defensive).
+  - `selected_image_strategy`: a lightweight keyword/source-based `content_type` pre-estimate
+    (education/tutorial/ai_tools/news/community/shopping/review/promotion — the same vocabulary
+    `ImageStrategyModule.content_type` uses) computed from Runtime Input only, since
+    `content_result` doesn't exist yet at the Planner's position; documented as a pre-estimate,
+    not a replacement for `ImageStrategyModule`'s own later authoritative classification.
+  - `knowledge_priority`: `knowledge_history.average_overall_score_by_type` sorted descending
+    (real accumulated Knowledge Engine statistics, non-numeric/malformed entries ignored).
+  - `competitor_reference`: `competitor_history.account_profiles` filtered to
+    `priority in {"Very High", "High"}`, sorted Very High first, capped to 5 account names.
+  - `content_strategy`/`planner_reason`: human-readable strings summarizing the decision and
+    which real inputs drove it. `planner_confidence`: the real `ConfidenceScorer` topic
+    confidence plus small transparent bonuses when Brand DNA override / knowledge_priority /
+    competitor_reference were actually usable — never an arbitrary/fabricated number.
+  - Any unexpected exception is caught and safely replaced with
+    `planning_result_schema.build_undecided_result()` — the Sprint 15-0 "undecided" schema is
+    kept as the exception-safety net, not the normal path anymore.
+  - **Codex review correction**: the first Decision Engine draft still returned a concrete
+    decision (`number_list`/`saveable_tip`/`save`/etc.) even when `topic_result.selected_topic`
+    had no real signal at all (missing, non-dict, or blank title/keyword) — Codex flagged this
+    as a plausible-looking value not actually traceable to real input. Fixed by adding
+    `_has_real_topic_signal()`: when there is no real title/keyword, `decide()` now returns
+    `build_undecided_result(reason="selected_topic_missing_or_invalid")` instead of running the
+    Pattern/Hook/CTA selectors on an empty topic.
+- `planner_module.py` (`AIPlannerModule`): now delegates to `PlannerDecisionEngine` instead of
+  always returning `build_undecided_result()`; `run()` defensively coerces any input
+  (`PlanningContext`, `dict`, `None`, or anything else) via a new `_coerce_context()` before
+  calling the Decision Engine, then validates the result with `validate_schema()` exactly as
+  before.
+- `planning_result_schema.py`: `PLANNER_VERSION` bumped `"0.2.0-contract-only"` →
+  `"0.3.0-decision-v1"` (also reflected in `PlannerContract.VERSION`); `REQUIRED_FIELDS`/
+  `TARGET_ENGINE_BY_FIELD`/`build_undecided_result()`/`validate_schema()` unchanged.
+  `planner_contract.py`: `NOT_IN_SCOPE_THIS_SPRINT` no longer lists "Decision Engine 구현" (now
+  done) and instead calls out that the Decision Engine must stay LLM/external-API-free;
+  `WORKFLOW_INTEGRATION_NOTE` updated to note the Decision Engine exists but `WorkflowEngine`
+  wiring is still absent.
+- `src/workflow_engine.py`: **not modified** — still only the Sprint 15-0 comment markers, no
+  import/instantiation/`run()` call (verified by the existing
+  `test_workflow_engine_has_no_real_ai_planner_wiring` regression test, still passing unchanged).
+- **Tests** (new, `tests/test_ai_planner_decision_engine.py`, 16 tests; `test_ai_planner_module.py`
+  rewritten for the new delegate-and-validate behavior, 8 tests; full `test_ai_planner_*.py` suite
+  now 47 tests total, all local/no network/no LLM): realistic-topic decision validity (values
+  within the real `PatternSelector`/`HookSelector`/`CTASelector` enums), determinism, honest
+  "undecided" behavior for None/empty/blank/non-dict `selected_topic` (no real topic signal),
+  malformed-Historical-Input safety (with a real topic still present), Brand DNA override
+  applied/not-applied/ignored-when-corrupted, `knowledge_priority` ordering and non-numeric-score
+  filtering, `competitor_reference` priority filtering/ordering/capping, no dependency on the
+  Sprint 15-0A forbidden future-stage attributes.
+  Run via `py -m unittest discover -s tests -p "test_ai_planner_*.py" -v` → **Ran 47 tests, OK**.
+- Verified with `py -m compileall -f src modules scripts tests` (success) and `py -m src.main`
+  (`workflow_completed`, unchanged 17-stage order confirming AI Planner still does not execute,
+  4 CardNews PNGs, `publishing_ready`).
+- **Independent Codex MCP review** (thread `019f4aa3-ad93-7ec1-879e-73f5c26b1922`): first pass
+  returned **CONDITIONAL PASS** — one real issue found: an empty/missing/blank `selected_topic`
+  still produced a concrete-looking decision (`number_list`/`saveable_tip`/`save`/etc.) via the
+  reused selectors' own hardcoded defaults, which Codex judged indistinguishable from a
+  fabricated value since it wasn't traceable to any real input signal. Fixed by adding
+  `_has_real_topic_signal()`: when `selected_topic` has no non-blank `title`/`keyword`, `decide()`
+  now returns `build_undecided_result(reason="selected_topic_missing_or_invalid")` before calling
+  any selector, and 3 tests were rewritten/added to assert the honest-undecided shape for that
+  case (bringing the suite to 47 tests). Re-submitted → **APPROVED**, with only a non-blocking
+  documentation note (test-count wording, corrected above) and an optional/non-blocking
+  observation that `src/workflow_engine.py`'s existing comments still describe AI Planner as
+  having no Decision Engine (left as-is this Sprint — comment-only cosmetic drift, not a
+  functional issue, and `src/workflow_engine.py` edits were kept out of scope to minimize risk to
+  the Protected Core file).
+
 ## Next
 
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
@@ -679,7 +767,8 @@ results with placeholders, or reordering the Workflow — all three explicitly f
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs
 - Real Instagram Graph API connection for Analytics Engine — see ROADMAP.md "Requires External API"; until then `quality_trend` remains based on real local Performance Score history only
-- AI Planner (routing/cost-control layer) remains the one planned Engine not yet implemented
+- AI Planner: Decision Engine v1 implemented (Sprint 15-1); only `WorkflowEngine` wiring
+  (instantiation + `run()` call at the documented connection point) remains
 - Source Health dashboard
 - Collector Statistics dashboard
 - Improve final safe-result recovery behavior

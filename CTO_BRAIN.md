@@ -75,7 +75,7 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-0A 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 15-1 갱신)
 
 - ~~`scripts/update_project_snapshot.py`의 `module_lines` 하드코딩 문자열이 Sprint 13
   재정렬을 반영하지 못함~~ — Sprint 14-1에서 수정 완료 (`MODULE_STATUS.md` Sprint 14-1 항목
@@ -83,13 +83,19 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - Audit Engine의 Competitor Comparison/Blind Spot Detection은 Competitor Engine 실행 이력이
   더 쌓여야 의미 있게 동작함 — 아직 단일 실행 스냅샷만 있음.
 - AI Planner: Contract(입력/출력/Schema/WorkflowEngine 연결 위치)는 Sprint 15-0에서
-  `modules/ai_planner/`로 확정됨. Sprint 15-0A에서 Contract의 구조적 결함(Planner 실행
-  위치보다 나중에 생성되는 `pattern_result`/`knowledge_result`/`trend_memory_result`/
+  `modules/ai_planner/`로 확정되고, Sprint 15-0A에서 구조적 결함(Planner 실행 위치보다
+  나중에 생성되는 `pattern_result`/`knowledge_result`/`trend_memory_result`/
   `competitor_result`/`image_strategy_result`를 입력으로 요구하던 문제)을 Runtime
   Input(`trend_result`/`topic_result`/`brand_profile`)/Historical Input(`knowledge_history`/
   `trend_memory_history`/`competitor_history`/`brand_dna_history`/`performance_history`) 분리로
-  수정 완료. 실제 Decision Engine은 아직 미구현이며 WorkflowEngine에도 연결되어 있지 않음 —
-  구현 전 ROI/역할 재검토 필요 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개
+  수정했다. Sprint 15-1에서 실제 Decision Engine(`planner_decision_engine.py::
+  PlannerDecisionEngine`)을 구현했다 - `PatternEngineModule`이 실제로 쓰는 규칙 기반 클래스를
+  재사용해 `selected_pattern`/`selected_hook_strategy`/`selected_cta_strategy`를 계산하고,
+  Historical Input을 실제로 정렬/필터링해 `knowledge_priority`/`competitor_reference`를
+  만든다. LLM/외부 API/무작위 값 없음. 남은 것은 WorkflowEngine 실제 연결(인스턴스화 +
+  run() 호출)뿐이며, 이는 이번 Sprint 범위 밖으로 명시적으로 남겨졌다 - 연결 전 하위 Engine이
+  이 Output을 실제로 어떻게 소비할지(Pattern/Content/Image Strategy Engine의 판단을 대체할지,
+  참고만 할지) CTO 결정이 필요하다 (`.claude/skills/planning.md`, `docs/AI_PLANNER.md`은 별개
   개념인 "AI 작업 분담 라우팅"을 설명하며 `modules/ai_planner/`와 이름만 같음에 유의).
 - Offline-First 원칙 위반 여부는 매 Sprint 시작 전 `ROADMAP.md`의 "Requires External API"
   섹션과 대조해 확인할 것.

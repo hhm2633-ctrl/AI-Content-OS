@@ -11,10 +11,10 @@ Engines). The two concepts share a name but are different systems:
 
 - This document / the routing concept: **Planning-only, no code** (part of the Claude/Codex/
   ChatGPT role division, `.ai/rules/ai_roles.md`, `docs/AI_PLANNER.md` itself).
-- `modules/ai_planner/` (`PlannerContract`, `PlanningContext`, `AIPlannerModule`): **Contract
-  defined in Sprint 15-0, dependency-repaired in Sprint 15-0A** — see `MODULE_STATUS.md`'s
-  Sprint 15-0/15-0A entries. Its Decision Engine is not implemented and it is not connected to
-  `WorkflowEngine`.
+- `modules/ai_planner/` (`PlannerContract`, `PlanningContext`, `AIPlannerModule`,
+  `PlannerDecisionEngine`): **Contract defined in Sprint 15-0, dependency-repaired in
+  Sprint 15-0A, Decision Engine v1 implemented in Sprint 15-1** — see `MODULE_STATUS.md`'s
+  Sprint 15-0/15-0A/15-1 entries. It is still not connected to `WorkflowEngine`.
 
 Do not conflate the two when reading Sprint history — "AI Planner: Contract defined" in
 `ROADMAP.md`/`MODULE_STATUS.md` refers to `modules/ai_planner/`, not this document's routing
