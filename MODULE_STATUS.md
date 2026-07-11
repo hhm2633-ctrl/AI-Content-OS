@@ -1345,6 +1345,12 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### Shorts Phase 0 Architecture Approved (2026-07-11)
+
+- Reviewed and corrected Claude's contract draft against the current repository state.
+- Approved Phase 1 only as a deterministic offline standalone planner producing nine result contracts from existing Content output.
+- External APIs, new LLM calls, renderer work, AI Planner extension, and WorkflowEngine wiring remain prohibited.
+
 ### Content Intelligence Focused Contract Coverage (2026-07-11)
 
 - Added 16 focused tests for ContentPromptBuilder, BrandRuleEvaluator, ContentDuplicateDetector, ContentQualityScorer, and PublishingHintGenerator.

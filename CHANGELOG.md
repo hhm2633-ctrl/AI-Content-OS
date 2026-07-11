@@ -885,6 +885,12 @@
 - Tests: All 49 `test_content_*.py` tests passed; compile clean.
 - Scope: Test and project-status updates only; production Content Engine and WorkflowEngine behavior unchanged.
 
+## 2026-07-11 Shorts Phase 0 CTO Review
+
+- Change: Reviewed and corrected the Claude-authored Shorts architecture draft against current CardNews completion evidence.
+- Decision: Approved a deterministic, offline, standalone Phase 1 that derives nine planning contracts from existing Content output.
+- Guardrails: No external API, new LLM call, renderer, AI Planner extension, or WorkflowEngine wiring.
+
 ## 2026-07-11 18:50:56
 
 - Change: Project snapshot updated.
@@ -906,5 +912,11 @@
 ## 2026-07-11 19:03:26
 
 - Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:04:16
+
+- Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`

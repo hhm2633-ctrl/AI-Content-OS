@@ -157,6 +157,13 @@ These items are intentionally **not** implemented because they require Instagram
 
 # Later Roadmap
 
+## Shorts Phase 0 (approved, 2026-07-11)
+
+- Architecture and nine output contracts approved in `docs/SHORTS_ARCHITECTURE_DRAFT.md`.
+- Phase 1 is limited to deterministic, offline, standalone planning derived from existing Content output.
+- No external API, LLM call, renderer, AI Planner extension, or WorkflowEngine wiring is approved.
+- Real TTS/transcription/assets/rendering/publishing remain explicit future CTO gates.
+
 - Timeline Engine
 - Animation Engine
 - Video Renderer
