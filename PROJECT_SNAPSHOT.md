@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T13:27:00
+Updated at: 2026-07-11T14:14:10
 
 ## Execution Command
 
@@ -87,6 +87,88 @@ AI-Content-OS/
 |       |-- ai-content-os-research/
 |       |-- ai-content-os-retry-audit/
 |       `-- ai-content-os-sprint/
+|-- .codex-test-tmp/
+|   |-- competitor_learning_interface_test_7f_pzxnv/
+|   |-- competitor_learning_interface_test_bjdbpp0g/
+|   |-- competitor_learning_interface_test_crz6aoo_/
+|   |-- competitor_learning_interface_test_ctn3rmco/
+|   |-- competitor_learning_interface_test_fie05bwb/
+|   |-- competitor_learning_interface_test_gmqd49_5/
+|   |-- competitor_learning_interface_test_h6qpadnq/
+|   |-- competitor_learning_interface_test_idy3978j/
+|   |-- competitor_learning_interface_test_ljc65mos/
+|   |-- competitor_learning_interface_test_mvqqanqa/
+|   |-- competitor_learning_interface_test_nxgu9b8j/
+|   |-- competitor_learning_interface_test_o9906j9x/
+|   |-- competitor_learning_interface_test_s7fdyx2j/
+|   |-- competitor_learning_interface_test_sk2lqiyx/
+|   |-- competitor_learning_interface_test_t_khtmty/
+|   |-- competitor_learning_interface_test_tcs7y7l_/
+|   |-- competitor_learning_module_test_1lrl8t30/
+|   |-- competitor_learning_module_test_5p7vc5md/
+|   |-- competitor_learning_module_test_5z8ajw46/
+|   |-- competitor_learning_module_test_65p68fsn/
+|   |-- competitor_learning_module_test_6tzrmd57/
+|   |-- competitor_learning_module_test_8txdcawq/
+|   |-- competitor_learning_module_test_aq6xd50b/
+|   |-- competitor_learning_module_test_inzoxqm1/
+|   |-- competitor_learning_module_test_j4lqsqsi/
+|   |-- competitor_learning_module_test_ssyvqvwm/
+|   |-- competitor_learning_module_test_w_ideh7i/
+|   |-- competitor_learning_module_test_yt5ih826/
+|   |-- competitor_learning_test_2fh_o4uh/
+|   |-- competitor_learning_test_4pkywjjg/
+|   |-- competitor_learning_test_6p9kmk6b/
+|   |-- competitor_learning_test_7dffzs22/
+|   |-- competitor_learning_test_82mloqko/
+|   |-- competitor_learning_test_881f5n7o/
+|   |-- competitor_learning_test_a9ok8e7p/
+|   |-- competitor_learning_test_boyzy9my/
+|   |-- competitor_learning_test_g6p4lqew/
+|   |-- competitor_learning_test_gyib1x5m/
+|   |-- competitor_learning_test_ieo4w5l4/
+|   |-- competitor_learning_test_k13mid5x/
+|   |-- competitor_learning_test_mor0ufhk/
+|   |-- competitor_learning_test_p46xqxxc/
+|   |-- competitor_learning_test_sjvsk6f5/
+|   |-- competitor_learning_test_wq98wuc9/
+|   |-- competitor_learning_test_wxlmzzan/
+|   |-- instagram_research_test_0l2dgunb/
+|   |-- instagram_research_test_0m80me7_/
+|   |-- instagram_research_test_0uidxwko/
+|   |-- instagram_research_test_2wjpe80k/
+|   |-- instagram_research_test_4q8dl77n/
+|   |-- instagram_research_test_4sdkzeah/
+|   |-- instagram_research_test_4x5fukg8/
+|   |-- instagram_research_test_89kshedp/
+|   |-- instagram_research_test_8h_1m0q8/
+|   |-- instagram_research_test__829nv8t/
+|   |-- instagram_research_test__nuwnhk7/
+|   |-- instagram_research_test__xanfo2z/
+|   |-- instagram_research_test_a6astkh9/
+|   |-- instagram_research_test_awxv43xo/
+|   |-- instagram_research_test_cf6p9_0_/
+|   |-- instagram_research_test_g09xftd0/
+|   |-- instagram_research_test_gh51a_kg/
+|   |-- instagram_research_test_h6wwdrw0/
+|   |-- instagram_research_test_ie8j6ngo/
+|   |-- instagram_research_test_k552o1wy/
+|   |-- instagram_research_test_kgba_z0z/
+|   |-- instagram_research_test_oh_1khvf/
+|   |-- instagram_research_test_q32hzdfd/
+|   |-- instagram_research_test_rstqo2df/
+|   |-- instagram_research_test_sihzxr1v/
+|   |-- instagram_research_test_skbpdext/
+|   |-- risk_a_test_6pkek_yp/
+|   |-- risk_a_test_7skf5vq5/
+|   |-- risk_a_test_he5myoss/
+|   |-- risk_a_test_nbkp36n2/
+|   |-- risk_a_test_xicm38b3/
+|   |-- risk_c_test_70hjhdgt/
+|   |-- risk_c_test_angcm8_g/
+|   |-- risk_c_test_o1tp8qtc/
+|   |-- risk_e_test_7qtbq3rk/
+|   `-- risk_f_test_mxx796h7/
 |-- .playwright-mcp/
 |   |-- console-2026-07-10T10-58-21-755Z.log
 |   |-- console-2026-07-10T11-00-17-038Z.log
@@ -328,9 +410,11 @@ AI-Content-OS/
 |   |   `-- knowledge_storage.py
 |   |-- learning_engine/
 |   |   |-- __init__.py
+|   |   |-- content_performance_history.py
 |   |   |-- learning_engine_module.py
 |   |   |-- learning_history.py
 |   |   |-- learning_interface.py
+|   |   |-- learning_performance_analyzer.py
 |   |   |-- learning_score.py
 |   |   |-- learning_selector.py
 |   |   `-- learning_storage.py
@@ -497,7 +581,8 @@ AI-Content-OS/
 |   |-- generated_images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- history/
-|   |   `-- .gitkeep
+|   |   |-- .gitkeep
+|   |   `-- content_performance_history.json
 |   |-- image_strategy/
 |   |   `-- image_strategy_result.json
 |   |-- images/
@@ -519,7 +604,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (386 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (396 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -560,7 +645,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (64 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (66 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -594,6 +679,7 @@ AI-Content-OS/
 |   |-- test_competitor_learning_wiring.py
 |   |-- test_content_output_normalizer.py
 |   |-- test_content_output_validator.py
+|   |-- test_instagram_intelligence_risk_checks.py
 |   |-- test_instagram_research_classifier.py
 |   |-- test_instagram_research_independence.py
 |   |-- test_instagram_research_interface.py

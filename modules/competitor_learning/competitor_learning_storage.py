@@ -60,6 +60,57 @@ class CompetitorLearningStorage:
         self._save_json(self.knowledge_database_path, data)
         return data
 
+    def adjust_entry_confidence(self, knowledge_id: str, delta: float) -> Optional[Dict[str, Any]]:
+        """
+        Knowledge Feedback (Instagram Intelligence Phase 2): 하나의 entry의
+        `score.confidence`만 delta만큼 조정하고(0.0~1.0으로 clamp),
+        `score.overall_score`를 `CompetitorLearningScorer`와 동일한 공식
+        (share*0.6 + confidence*0.3 + engagement_factor*0.1)으로 다시 계산한다.
+        그 외 필드(value/frequency/avg_likes/avg_comments/type/source/rank 등)는
+        전혀 건드리지 않는다 - "기존 값을 덮어쓰지 않는다, 가중치만 변경한다"는
+        요구를 그대로 구현한다. 대상 knowledge_id가 없으면 아무 것도 하지 않고
+        `None`을 반환한다(새 entry를 만들지 않는다). 실패해도 예외를 던지지
+        않는다.
+        """
+        try:
+            database = self.load_knowledge_database()
+            entries = database.get("entries", [])
+
+            if not isinstance(entries, list):
+                return None
+
+            target = None
+            for entry in entries:
+                if isinstance(entry, dict) and entry.get("knowledge_id") == knowledge_id:
+                    target = entry
+                    break
+
+            if target is None:
+                return None
+
+            score = target.get("score")
+            score = dict(score) if isinstance(score, dict) else {}
+
+            old_confidence = float(score.get("confidence", 0.0) or 0.0)
+            new_confidence = max(0.0, min(1.0, round(old_confidence + delta, 4)))
+
+            share = float(score.get("share", 0.0) or 0.0)
+            engagement_factor = float(score.get("engagement_factor", 0.0) or 0.0)
+            new_overall_score = round(min(1.0, share * 0.6 + new_confidence * 0.3 + engagement_factor * 0.1), 4)
+
+            score["confidence"] = new_confidence
+            score["overall_score"] = new_overall_score
+            target["score"] = score
+
+            database["entries"] = entries
+            database["updated_at"] = datetime.now().isoformat()
+            self._save_json(self.knowledge_database_path, database)
+
+            return target
+        except Exception as error:
+            print(f"Competitor Learning Confidence Adjust Failed: {error}")
+            return None
+
     def save_hook_statistics(self, stats: Dict[str, Any]) -> Dict[str, Any]:
         return self._save_stats(self.hook_statistics_path, stats)
 

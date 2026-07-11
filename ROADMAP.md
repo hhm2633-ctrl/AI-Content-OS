@@ -49,6 +49,18 @@
 - Blog article workflow
 - SmartStore/Coupang content workflow
 - 채널별 재가공 파이프라인
+
+## M7: CardNews Intelligence (다음 최우선 작업, 2026-07-11 지정)
+
+Instagram Intelligence Phase(Internal Quality Feedback Loop) 완료 후 다음 최우선 순서.
+Reels/Shorts, Commerce(SmartStore/Coupang)는 지금 시작하지 않는다.
+
+1. CardNews Intelligence
+2. Evidence Selection
+3. Comment/Social Proof Selection
+4. Story Flow
+5. Debate/CTA
+6. Production Quality
 # Research Knowledge / Intelligence Engines
 
 - Knowledge Engine: v1 implemented (Sprint 11), enhanced (Sprint 13: global rank across full DB, `search()`, in-run cache, per-type average score statistics) — real read+write consumption wired into Pattern Engine (confidence_score boost on match), Content Module (prompt guidance injection), CardNews Module (layout_quality_score boost on match), Audit Engine (duplicate_check blending), Learning Engine (knowledge_score component)
@@ -77,6 +89,22 @@
   Consumer Adapter into `PatternEngineModule`/`ContentModule`/`ImageStrategyModule`/
   `KnowledgeModule`, each recording a `planner_consumption.*` metadata entry and none of them
   losing their own existing selection logic or fallback behavior.
+- **Competitor Learning Engine**: implemented (Sprint 18, offline-first) — `modules/competitor_learning/`
+  converts `modules/instagram_research/`'s already-collected posts (read-only, no crawler) into a
+  ranked Knowledge Database (`storage/knowledge/knowledge_database.json` + 5 statistics files).
+  Not wired into `WorkflowEngine.run()` — a standalone, on-demand batch step.
+- **Instagram Intelligence Phase — Internal Quality Feedback Loop**: implemented
+  (2026-07-11) — Instagram Research -> Competitor Learning -> Knowledge Database -> Brand DNA ->
+  Pattern -> Content, closed via `content_performance_history.json`/Knowledge Feedback
+  (`score.confidence` nudges)/4-source Pattern Engine confidence consultation
+  (Knowledge/Competitor Learning/Brand DNA/Learning Engine)/`ContentQualityScorer`'s
+  `pattern_confidence_bonus`. **This is a pre-publish, internal `quality_score`-based proxy loop,
+  not a real Instagram performance loop** — every result surface carries explicit
+  `performance_source: "internal_quality_proxy"` / `external_metrics_used: false` /
+  `external_metrics_available: false` / `learning_scope: "pre_publish_internal_feedback"`
+  metadata so it is never mistaken for real engagement data. See `DECISIONS.md` (2026-07-11).
+  The **real** post-publish Instagram performance Closed Loop (actual likes/comments/saves/
+  shares/reach feeding back into this same loop) remains in "Requires External API" below.
 - **Intelligence Feedback Safety (Sprint 16-0, no new Engine)**: a Feedback Audit of the actual
   `Planner → Content/Pattern/Image Strategy/Knowledge → Brand DNA/Performance Score/Learning/
   Analytics → storage → Planner` path found two real self-reinforcing loops (Brand DNA→Planner
@@ -91,6 +119,13 @@
 These items are intentionally **not** implemented because they require Instagram API, Meta Graph API, access tokens, or real SNS login/crawling — all explicitly out of scope per the Sprint 13 "Offline-First" decision. They stay here until a Sprint explicitly authorizes the external dependency.
 
 - **Real Instagram/Meta performance metrics** (views, saves, comments, shares, CTR, follow conversion, DM count) for Analytics Engine — requires Instagram Graph API + access token. Until then, Analytics Engine only reports a real, locally-computed `quality_trend`.
+- **Real post-publish Instagram Performance Closed Loop** (2026-07-11): the Instagram Intelligence
+  Phase's Learning Feedback/Knowledge Feedback/`content_performance_history` currently run on an
+  internal, pre-publish `quality_score` proxy only (see the entry above and `DECISIONS.md`).
+  Replacing that proxy with real post-publish performance (actual likes/comments/saves/shares/
+  reach per published card news, via Meta/Instagram Graph API + OAuth + a publish-result Import
+  step) is intentionally deferred here until explicit approval — it is a superset of the metrics
+  bullet directly above, scoped specifically to closing this feedback loop with real data.
 - **Real-time Instagram competitor account scanning** (beyond the static `benchmark/*.md` docs already parsed by Competitor Engine) — requires either Instagram API/login or a scraping tool (e.g. the "Bla View" reference in `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`, which itself requires an AssemblyAI API key).
 - **Real image sourcing automation** (news thumbnail fetch, community post/comment capture, product image lookup) to fulfill `image_usage_plan` — requires crawling external pages/SNS posts for images, which falls under "실제 SNS 로그인/크롤링 전제 금지". Until implemented, CardNews/Publishing only surface a `manual_image_required` checklist (Sprint 13).
 - **Reels/Shorts transcript extraction and translation** (Bla View / AssemblyAI workflow described in `benchmark/TOOLS_AND_FUNNEL_REFERENCES.md`) — requires a third-party transcription API key.

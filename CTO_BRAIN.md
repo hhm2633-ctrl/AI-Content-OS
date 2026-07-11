@@ -58,6 +58,21 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
   빈도 추적.
 - **Competitor Engine** — Instagram 실시간 API 없음. `benchmark/*.md`(이미 CTO가 분석한 문서)
   파싱만으로 `storage/competitor/competitor_profiles.json` 생성.
+- **Competitor Learning Engine** (Sprint 18, `modules/competitor_learning/`, standalone/
+  on-demand — `WorkflowEngine.run()`에는 연결 안 됨) — `modules/instagram_research/`(diff
+  없음, 읽기 전용)의 이미 수집된 게시물을 Knowledge Database(`storage/knowledge/
+  knowledge_database.json` + 5개 통계 파일)와 `storage/dashboard/daily_learning_report.json`
+  으로 변환. Pattern/Content/Brand DNA Engine이 이 Knowledge Database를 참고(confidence
+  보정/hint 우선순위)한다.
+- **Instagram Intelligence Phase — Internal Quality Feedback Loop** (2026-07-11, 새 Engine
+  아님, 기존 Engine 확장) — Instagram Research -> Competitor Learning -> Knowledge Database ->
+  Brand DNA -> Pattern -> Content 순환 고리. `storage/history/content_performance_history.json`
+  에 콘텐츠별 hook/cta/pattern/layout/brand_dna_snapshot/quality_score를 기록하고, Learning
+  Engine이 "좋은 실행" 여부에 따라 Knowledge Database entry의 `score.confidence`를 ±0.05
+  조정한다. **이 값은 실제 Instagram 좋아요/댓글/저장/공유/도달이 아니라 발행 전 내부
+  quality_score 대리 신호다** — `performance_source: "internal_quality_proxy"` 등 4개
+  메타데이터 필드로 모든 결과 구조에 명시(`DECISIONS.md` 2026-07-11 참고). 실제 게시 후 성과
+  기반 Closed Loop는 아직 없음(`ROADMAP.md` "Requires External API").
 
 ## 절대 지켜야 할 것 (`PROJECT_OPERATING_SYSTEM.md`와 동일, 여기서도 반복)
 
@@ -75,7 +90,18 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-10 기준, Sprint 16-0 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-11 기준, Instagram Intelligence Phase 갱신)
+
+- **Instagram Intelligence Phase(2026-07-11)는 완료됐지만, "실제 Instagram 성과 기반"이
+  아니다.** `content_performance_history`/Learning Feedback/Knowledge Feedback은 전부 발행
+  전(pre-publish) 내부 `quality_score` 대리 신호로 동작한다. 실제 좋아요/댓글/저장/공유/도달
+  데이터가 Meta/Instagram Graph API + OAuth로 연결되기 전까지, 이 Loop를 "실제 시장 성과
+  학습"이라고 표현하지 않는다 — `DECISIONS.md`(2026-07-11)와 `ROADMAP.md` "Requires External
+  API"를 항상 함께 확인할 것.
+- Instagram Intelligence Phase의 confidence 보정은 4개 독립 소스(Knowledge +0.05/Competitor
+  Learning +0.03/Brand DNA +0.02/Learning Engine +0.025)이며, 전부 `topic_intelligence.
+  confidence_score`만 보정하고 `PatternSelector`/`HookSelector`/`CTASelector`/`LayoutSelector`
+  의 실제 선택 로직은 절대 바꾸지 않는다. 향후 이 영역을 수정할 때 이 불변식을 반드시 유지할 것.
 
 - ~~`scripts/update_project_snapshot.py`의 `module_lines` 하드코딩 문자열이 Sprint 13
   재정렬을 반영하지 못함~~ — Sprint 14-1에서 수정 완료 (`MODULE_STATUS.md` Sprint 14-1 항목

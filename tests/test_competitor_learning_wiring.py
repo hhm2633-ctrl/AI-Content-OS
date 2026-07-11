@@ -44,6 +44,9 @@ class _FakeCompetitorInterface:
     def get_competitor_statistics(self):
         return {"accounts": self._accounts, "account_count": len(self._accounts)}
 
+    def get_knowledge_database(self):
+        return {"new_count": 0, "total_count": 0}
+
 
 class _FakeLLMClient:
     def generate_text(self, system_prompt, user_prompt):

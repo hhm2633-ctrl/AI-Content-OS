@@ -32,16 +32,28 @@ class ContentQualityScorer:
     CTA_BASE_POINTS = 5
     CTA_SCORE_MAX_POINTS = 10
 
-    # Pattern Engine이 fallback을 썼다면 "pattern 반영" 가점(15)을 절반만 인정한다.
-    PATTERN_REFLECTED_FULL_POINTS = 15
-    PATTERN_REFLECTED_FALLBACK_POINTS = 7
+    # Pattern Engine이 fallback을 썼다면 "pattern 반영" 가점을 절반만 인정한다.
+    # Phase: Instagram Intelligence에서 pattern(15) 중 5점을
+    # pattern_confidence_bonus로 떼어내 Pattern Engine의 confidence_score(이제
+    # Knowledge/Competitor Learning/Brand DNA 참고로 보정될 수 있음)가 실제로
+    # Content 품질 평가에 반영되도록 했다 - 총점(100) 배분은 그대로 유지된다.
+    PATTERN_REFLECTED_FULL_POINTS = 10
+    PATTERN_REFLECTED_FALLBACK_POINTS = 5
 
     # caption/hashtags 배점을 10 -> 5로 줄이고, 확보한 10점을 brand_ok 배점으로 돌린다.
-    # 총점(100)은 그대로 유지된다: hook(15)+cta(15)+structure(20)+topic(15)+pattern(15)
-    # +caption(5)+hashtags(5)+brand(10) = 100.
+    # 총점(100)은 그대로 유지된다: hook(15)+cta(15)+structure(20)+topic(15)
+    # +pattern_reflected(10)+pattern_confidence_bonus(5)+caption(5)+hashtags(5)
+    # +brand(10) = 100.
     CAPTION_OK_POINTS = 5
     HASHTAGS_OK_POINTS = 5
     BRAND_OK_POINTS = 10
+
+    # Phase: Instagram Intelligence. Pattern Engine의 topic_intelligence.
+    # confidence_score(Knowledge/Competitor Learning/Brand DNA 참고로 보정될 수
+    # 있는 실제 값, 조작/가짜 값 아님)가 이 임계치를 넘는 구간만 선형으로
+    # 가점한다 - 임계치 이하는 가점 없음(기존 동작과 동일).
+    PATTERN_CONFIDENCE_BONUS_MAX_POINTS = 5
+    PATTERN_CONFIDENCE_BONUS_THRESHOLD = 0.6
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
@@ -152,6 +164,34 @@ class ContentQualityScorer:
             else:
                 points += self.PATTERN_REFLECTED_FULL_POINTS
                 reasons.append(f"pattern_plan 기반 prompt 정상 반영됨(+{self.PATTERN_REFLECTED_FULL_POINTS})")
+
+        # --- Pattern confidence 가점 (Phase: Instagram Intelligence) ---
+        # Pattern Engine의 topic_intelligence.confidence_score는 이제
+        # Knowledge Engine/Competitor Learning/Brand DNA 참고로 보정될 수 있는
+        # 실제 값이다 - 그 값이 실제로 Content 품질 평가에 반영되도록 연결한다
+        # (Pattern fallback 상태면 confidence_score를 신뢰하지 않는다).
+        pattern_confidence_score = None
+        topic_intelligence = research_result.get("topic_intelligence")
+        if isinstance(topic_intelligence, dict):
+            raw_confidence = topic_intelligence.get("confidence_score")
+            if isinstance(raw_confidence, (int, float)):
+                pattern_confidence_score = float(raw_confidence)
+
+        pattern_confidence_bonus = 0
+        if pattern_reflected and not pattern_fallback_used and pattern_confidence_score is not None:
+            threshold = self.PATTERN_CONFIDENCE_BONUS_THRESHOLD
+            if pattern_confidence_score > threshold:
+                normalized = min(1.0, (pattern_confidence_score - threshold) / (1.0 - threshold))
+                pattern_confidence_bonus = round(self.PATTERN_CONFIDENCE_BONUS_MAX_POINTS * normalized)
+
+                if pattern_confidence_bonus:
+                    points += pattern_confidence_bonus
+                    reasons.append(
+                        f"Pattern confidence_score({pattern_confidence_score}) 높음(+{pattern_confidence_bonus})"
+                    )
+
+        checks["pattern_confidence_score"] = pattern_confidence_score
+        checks["pattern_confidence_bonus"] = pattern_confidence_bonus
 
         # --- caption / hashtags ---
         caption = str(content_result.get("caption", "")).strip()

@@ -5,8 +5,10 @@ from typing import Any, Dict, Optional
 
 from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.base_module import BaseModule
+from modules.brand_dna_engine.brand_dna_interface import BrandDNAInterface
 from modules.competitor_learning.competitor_learning_interface import CompetitorLearningInterface
 from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
+from modules.learning_engine.learning_interface import LearningInterface
 from modules.pattern_engine.cta_selector import CTASelector
 from modules.pattern_engine.hook_selector import HookSelector
 from modules.pattern_engine.layout_selector import LayoutSelector
@@ -72,6 +74,28 @@ class PatternEngineModule(BaseModule):
         # 않는다.
         self.competitor_learning_interface = CompetitorLearningInterface()
 
+        # Brand DNA Interface 연결(Phase: Instagram Intelligence): 우리 브랜드가
+        # 실제로 반복 사용해 온 dominant_hook_type/dominant_cta_type이 이번
+        # 선택과 일치하면 참고 정보로만 덧붙인다. HookSelector/CTASelector
+        # 자체는 바꾸지 않는다 - Knowledge/Competitor Learning 연결과 동일한
+        # "참고만, 대체 아님" 원칙.
+        self.brand_dna_interface = BrandDNAInterface()
+
+        # Brand DNA 신뢰 최소 기준(Phase: Instagram Intelligence). AI
+        # Planner Decision Engine이 Brand DNA history를 override 근거로 쓸 때
+        # 이미 사용 중인 "독립 관찰 5회 이상" 기준(PROJECT_MASTER.md AI Planner
+        # Contract 참고)과 동일하게 맞춘다 - 새 임계치를 임의로 발명하지 않는다.
+        self.BRAND_DNA_MIN_INDEPENDENT_OBSERVATIONS = 5
+
+        # Learning Interface 연결(Instagram Intelligence Phase 2): storage/
+        # learning/learning_memory.json에 반복적으로 좋은 실행에서 검증되어
+        # 승격된(promoted) hook/cta/pattern 항목이 이번 선택과 일치하면 참고
+        # 정보로만 덧붙인다. Knowledge(+0.05)/Competitor Learning(+0.03)/
+        # Brand DNA(+0.02) 보정과 독립적으로 누적되며, 선택 로직 자체는
+        # 바꾸지 않는다.
+        self.learning_interface = LearningInterface()
+        self.LEARNING_CONFIDENCE_BOOST = 0.025
+
         # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): 기존 PatternSelector
         # 선택 로직은 그대로 두고, planner_result가 유효/충분히 확신할 만하고
         # 안전 규칙과 충돌하지 않을 때만 pattern_type을 Planner Hint로 대체한다.
@@ -88,6 +112,8 @@ class PatternEngineModule(BaseModule):
         result = self._build_result(selected_topic, trend_result, planner_result)
         result = self._apply_knowledge_consumption(result)
         result = self._apply_competitor_learning_consumption(result)
+        result = self._apply_brand_dna_consumption(result)
+        result = self._apply_learning_consumption(result)
 
         try:
             self.result_writer.write(result)
@@ -239,6 +265,153 @@ class PatternEngineModule(BaseModule):
 
         for item in items or []:
             if item.get("value") == current_value:
+                return True
+
+        return False
+
+    def _apply_brand_dna_consumption(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Brand DNA 참고(Phase: Instagram Intelligence): storage/brand_dna/
+        brand_dna.json에 실제로 누적된 dominant_hook_type/dominant_cta_type이
+        이번 선택과 일치하면 confidence_score를 소폭 보정한다(+0.02, 최대
+        1.0). Knowledge Engine(+0.05)/Competitor Learning(+0.03) 보정과 각각
+        독립적으로 누적되며, 선택 로직(HookSelector/CTASelector) 자체는
+        바꾸지 않는다.
+
+        Self Reference Guard: `total_observations`에는 AI Planner Hint가
+        적용된 실행의 관찰도 섞여 있을 수 있다(Sprint 16-0에서 발견된 Brand
+        DNA -> Planner 순환 참조와 동일한 위험). `planner_influenced_observations`를
+        뺀 "독립 관찰 수"가 `BRAND_DNA_MIN_INDEPENDENT_OBSERVATIONS`(5, AI
+        Planner Decision Engine이 이미 쓰는 것과 동일한 기준) 이상일 때만
+        dominant 값을 신뢰한다 - 부족하면 참고하지 않는다.
+        """
+        try:
+            dna = self.brand_dna_interface.get_dna()
+            total_observations = int(dna.get("total_observations", 0) or 0)
+            planner_influenced = int(dna.get("planner_influenced_observations", 0) or 0)
+            independent_observations = total_observations - planner_influenced
+
+            if independent_observations < self.BRAND_DNA_MIN_INDEPENDENT_OBSERVATIONS:
+                result.setdefault("brand_dna_used", False)
+                result.setdefault("brand_dna_items", {})
+                result.setdefault(
+                    "brand_dna_influence",
+                    f"Brand DNA 독립 관찰 수({independent_observations})가 기준"
+                    f"({self.BRAND_DNA_MIN_INDEPENDENT_OBSERVATIONS}) 미달이라 참고하지 않음.",
+                )
+                return result
+
+            topic_intelligence = dict(result.get("topic_intelligence", {}) or {})
+            pattern_plan = result.get("pattern_plan", {}) or {}
+
+            dominant_hook_type = dna.get("dominant_hook_type", "")
+            dominant_cta_type = dna.get("dominant_cta_type", "")
+
+            matched_labels = []
+            if dominant_hook_type and dominant_hook_type == pattern_plan.get("hook_type"):
+                matched_labels.append(f"hook_type '{dominant_hook_type}'")
+            if dominant_cta_type and dominant_cta_type == pattern_plan.get("cta_type"):
+                matched_labels.append(f"cta_type '{dominant_cta_type}'")
+
+            if matched_labels:
+                old_confidence = float(topic_intelligence.get("confidence_score", 0.0) or 0.0)
+                boosted_confidence = min(1.0, round(old_confidence + 0.02, 4))
+                topic_intelligence["confidence_score"] = boosted_confidence
+                influence = (
+                    f"{', '.join(matched_labels)}가 Brand DNA의 실제 반복 사용 패턴(독립 관찰 "
+                    f"{independent_observations}회)과 일치해 confidence_score를 "
+                    f"{old_confidence} -> {boosted_confidence}로 보정함."
+                )
+            else:
+                influence = "Brand DNA의 dominant hook/cta와 일치하는 항목이 없어 confidence_score는 그대로 둠."
+
+            result["topic_intelligence"] = topic_intelligence
+            result["brand_dna_used"] = bool(matched_labels)
+            result["brand_dna_items"] = {
+                "dominant_hook_type": dominant_hook_type,
+                "dominant_cta_type": dominant_cta_type,
+                "independent_observations": independent_observations,
+            }
+            result["brand_dna_influence"] = influence
+
+            return result
+        except Exception as error:
+            print(f"Pattern Engine Brand DNA Consumption Failed: {error}")
+            result.setdefault("brand_dna_used", False)
+            result.setdefault("brand_dna_items", {})
+            result.setdefault("brand_dna_influence", f"brand dna consumption 실패: {error}")
+            return result
+
+    def _apply_learning_consumption(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Pattern Feedback (Instagram Intelligence Phase 2): Pattern Engine은
+        이제 Knowledge(+0.05)/Competitor Learning(+0.03)/Brand DNA(+0.02)에
+        이어 Learning Engine이 반복 검증해 storage/learning/learning_memory.json에
+        승격한 hook/cta/pattern 항목까지 함께 참고한다. 4개 소스는 각각
+        독립적으로 confidence_score에 누적되며(최대 1.0), Pattern 선택 자체
+        (PatternSelector/HookSelector/CTASelector)는 절대 바꾸지 않는다.
+
+        layout은 비교하지 않는다 - Learning Memory의 layout 항목은 Competitor
+        Learning의 layout entry(Instagram 게시물 형식)에서 승격된 것이라 이번
+        pattern_plan.layout_type(카드뉴스 LayoutSelector 어휘)과 체계가 다르다
+        (Competitor Learning 소비와 동일한 이유).
+
+        knowledge_id는 `competitor_learning_<type>_<value>` 형식으로 정확히
+        일치하는 것만 인정한다(추측 매칭 없음) - Competitor Learning DB에서
+        유래하지 않은(예: 옛 Knowledge Engine에서 승격된) 항목은 이 메서드가
+        인식하지 못할 수 있으나, 잘못된 매칭보다 안전하다.
+        """
+        try:
+            pattern_plan = result.get("pattern_plan", {}) or {}
+            topic_intelligence = dict(result.get("topic_intelligence", {}) or {})
+
+            top_hooks = self.learning_interface.get_top_memory(knowledge_type="hook", limit=3)
+            top_ctas = self.learning_interface.get_top_memory(knowledge_type="cta", limit=3)
+            top_patterns = self.learning_interface.get_top_memory(knowledge_type="pattern", limit=3)
+
+            matched_labels = []
+            if self._learning_value_matches(top_hooks, "hook", pattern_plan.get("hook_type", "")):
+                matched_labels.append(f"hook_type '{pattern_plan.get('hook_type')}'")
+            if self._learning_value_matches(top_ctas, "cta", pattern_plan.get("cta_type", "")):
+                matched_labels.append(f"cta_type '{pattern_plan.get('cta_type')}'")
+            if self._learning_value_matches(top_patterns, "pattern", pattern_plan.get("pattern_type", "")):
+                matched_labels.append(f"pattern_type '{pattern_plan.get('pattern_type')}'")
+
+            if matched_labels:
+                old_confidence = float(topic_intelligence.get("confidence_score", 0.0) or 0.0)
+                boosted_confidence = min(1.0, round(old_confidence + self.LEARNING_CONFIDENCE_BOOST, 4))
+                topic_intelligence["confidence_score"] = boosted_confidence
+                influence = (
+                    f"{', '.join(matched_labels)}가 Learning Memory의 반복 검증된 항목과 일치해 "
+                    f"confidence_score를 {old_confidence} -> {boosted_confidence}로 보정함."
+                )
+            else:
+                influence = "Learning Memory 상위 항목과 일치하는 hook/cta/pattern이 없어 confidence_score는 그대로 둠."
+
+            result["topic_intelligence"] = topic_intelligence
+            result["learning_used"] = bool(matched_labels)
+            result["learning_items"] = [
+                {"knowledge_id": item.get("knowledge_id"), "type": item.get("type"), "memory_score": item.get("memory_score")}
+                for item in (top_hooks + top_ctas + top_patterns)
+            ]
+            result["learning_influence"] = influence
+
+            return result
+        except Exception as error:
+            print(f"Pattern Engine Learning Consumption Failed: {error}")
+            result.setdefault("learning_used", False)
+            result.setdefault("learning_items", [])
+            result.setdefault("learning_influence", f"learning consumption 실패: {error}")
+            return result
+
+    def _learning_value_matches(self, items: Any, entry_type: str, current_value: str) -> bool:
+        if not current_value:
+            return False
+
+        expected_knowledge_id = f"competitor_learning_{entry_type}_{current_value}"
+
+        for item in items or []:
+            if isinstance(item, dict) and item.get("knowledge_id") == expected_knowledge_id:
                 return True
 
         return False

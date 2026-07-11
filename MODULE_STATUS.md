@@ -23,6 +23,15 @@ implemented and verified against `src/workflow_engine.py`.
   `TopicEngineModule` and `PatternEngineModule`; every downstream Engine independently decides
   (via `PlannerConsumerAdapter`) whether to use its hints, and none of their own selection logic
   or fallback behavior was removed.
+- **Competitor Learning Engine**: implemented (Sprint 18) — `modules/competitor_learning/`
+  converts `modules/instagram_research/`'s already-collected posts (read-only, no crawler) into
+  a ranked Knowledge Database (`storage/knowledge/knowledge_database.json` + 5 statistics files).
+  Standalone/on-demand, not wired into `WorkflowEngine.run()`.
+- **Instagram Intelligence Phase (Internal Quality Feedback Loop)**: implemented (2026-07-11) —
+  see the "Instagram Intelligence Phase" entry below for the full Content -> Performance History
+  -> Learning -> Knowledge -> Brand DNA -> Pattern -> Content loop. Explicitly a **pre-publish
+  internal `quality_score` proxy**, not real Instagram performance — see `DECISIONS.md`
+  (2026-07-11) and `ROADMAP.md` "Requires External API" for the real post-publish version.
 
 ## Planning
 
@@ -1138,8 +1147,107 @@ existing test deleted or weakened).
   Re-submitted — Codex independently re-probed the `_empty_*` fallback shapes directly and
   confirmed they now match the module-level fallbacks → final verdict **APPROVED**.
 
+## Sprint 18 + Instagram Intelligence Phase (Internal Quality Feedback Loop, 2026-07-11)
+
+Goal: make the already-collected `modules/instagram_research/` data actually improve future
+content quality, without a new crawler, without touching `src/workflow_engine.py`, and without
+duplicating any existing Engine.
+
+- **Sprint 18 (Competitor Learning Engine)**: new `modules/competitor_learning/` (8 files:
+  extractor/statistics/score/storage/interface/dashboard/module/`__init__`). Reads
+  `modules/instagram_research/`'s posts read-only via its existing public
+  `InstagramResearchInterface`/`classify_post()`/`parse_visible_count_text()` — that module has
+  zero diff. Computes hook/cta/pattern/layout/caption/hashtag statistics, scores them into a
+  ranked Knowledge Database, and persists `storage/knowledge/knowledge_database.json` +
+  `hook_statistics.json`/`cta_statistics.json`/`pattern_statistics.json`/`layout_statistics.json`/
+  `competitor_statistics.json`/`competitor_learning_history.json` (additive alongside the
+  pre-existing `modules/knowledge_engine/` files in the same directory — different filenames, no
+  collision) and `storage/dashboard/daily_learning_report.json`. **Not** wired into
+  `WorkflowEngine.run()` — a standalone, on-demand batch step, mirroring
+  `scripts/update_project_snapshot.py`'s shape. `layout` deliberately uses Instagram's own post
+  format vocabulary (`carousel`/`reel`/`single_image`), never mapped onto
+  `LayoutSelector.LAYOUT_TYPES` (`bold_ai`/`notebook`/...) — those are different systems and
+  mapping them would fabricate a correspondence that was never observed. 131 new tests. Codex MCP
+  independent review: APPROVED (one BLOCK round on a screenshot-path sanitizer bypass / storage
+  constructor raising on `OSError` / a comma+unit parsing gap — all fixed, re-reviewed APPROVED).
+- **Instagram Intelligence Phase 1**: additive wiring only, no existing selection logic touched.
+  `PatternEngineModule` gained `_apply_competitor_learning_consumption()` (Competitor Learning DB
+  top pattern/hook/cta match -> `topic_intelligence.confidence_score` +0.03) and
+  `_apply_brand_dna_consumption()` (Brand DNA dominant hook/cta match -> +0.02, gated on
+  `independent_observations >= 5`, the same Self Reference Guard threshold from Sprint 16-0).
+  `ContentPromptBuilder` gained a Competitor Learning hook/cta hint gate
+  (`overall_score >= 0.4`, `sample_size >= 3`, never when `blocked`) evaluated **before** the
+  pre-existing AI Planner hint, reusing `HookStrategy`/`CTAStrategy`'s existing
+  `hook_type_override`/`cta_type_override` parameters. `BrandDNAEngineModule` gained
+  `competitor_learning_reference` (read-only) and `brand_dna_change` (before/after dominant_*
+  diff, merged into `daily_learning_report.json` by loading, adding one key, and saving — no new
+  Dashboard Engine). `ContentQualityScorer`'s 100-point budget was rebalanced
+  (`pattern_reflected` 15 -> 10 + a new `pattern_confidence_bonus` up to 5, linear above a 0.6
+  confidence threshold) so Pattern Engine's (now-boosted) confidence actually reaches
+  `content_result.content_intelligence.quality_score`, not just prompt text.
+- **Instagram Intelligence Phase 2 (Closed Loop)**: new `modules/learning_engine/
+  content_performance_history.py` (`storage/history/content_performance_history.json`: one
+  record per content with `content_id`/`hook`/`cta`/`pattern`/`layout`/`brand_dna_snapshot`/
+  `quality_score`/`competitor_reference`/`knowledge_reference` — all values already computed
+  elsewhere, none invented) and `learning_performance_analyzer.py` (top/worst/average
+  `quality_score` over recent history — pure aggregation, no new selection algorithm).
+  `LearningEngineModule` reads `storage/pattern/pattern_result.json` and
+  `storage/workflow_results/05_content_result.json` directly (both already fresh by the time
+  Learning Engine runs in the pipeline) rather than requiring new `WorkflowEngine.run()`
+  parameters. New `CompetitorLearningStorage.adjust_entry_confidence(knowledge_id, delta)`
+  nudges one Knowledge Database entry's `score.confidence` (clamped [0.0, 1.0]) and recomputes
+  `score.overall_score` with the exact existing `CompetitorLearningScorer` formula — no other
+  field on that entry, and no other entry, is touched. Learning Engine applies this ±0.05
+  (`LearningScorer.REINFORCEMENT_STEP`, reused not reinvented) based on the existing
+  `internal_learning_score >= 0.65` "good run" threshold. `BrandDNAEngineModule` gained
+  `learning_feedback_reference` (Learning Engine's `total_runs`/`total_good_runs` ratio, same
+  `independent_observations >= 5` guard) and `brand_dna_delta`. `PatternEngineModule` gained a
+  4th confidence source, `_apply_learning_consumption()` (+0.025, Learning Memory hook/cta/pattern
+  match by exact `knowledge_id`, layout excluded for the same vocabulary-mismatch reason as
+  Competitor Learning). `daily_learning_report.json` gained `top_performing_pattern`/
+  `weakest_pattern`/`learning_delta`/`knowledge_delta` (merged in by Learning Engine, same
+  load-add-key-save pattern, existing keys untouched).
+- **Instagram Intelligence Phase 3 (Final Verification)**: two real defects found and fixed
+  before this round shipped, neither caught by the "compile only" verification the first two
+  Phases were scoped to:
+  1. `ContentPerformanceHistory.build_content_id()` originally hashed `title` + the *recording*
+     timestamp (`datetime.now()`), which made every call produce a different id even for the
+     exact same content — silently defeating deduplication entirely. Fixed to hash `title` +
+     `caption` (both real, stable content fields) instead. `ContentPerformanceHistory.
+     record_once()` now dedupes by `content_id` (returns `False`, does not re-append, when the id
+     already exists; rejects empty ids rather than mis-deduping on them), and
+     `LearningEngineModule._apply_knowledge_feedback()` skips the ±0.05 confidence adjustment
+     entirely when `performance_history_entry["deduplicated"]` is `True` — reprocessing the same
+     content can no longer apply Knowledge Feedback twice.
+  2. Semantic-accuracy gap: `quality_score`/`learning_delta`/`top_performing_pattern` are an
+     **internal, pre-publish content-quality proxy**, not real Instagram engagement data, but
+     nothing in the result structure said so explicitly. Added
+     `LearningEngineModule.INTERNAL_QUALITY_PROXY_METADATA`
+     (`performance_source: "internal_quality_proxy"` / `external_metrics_used: false` /
+     `external_metrics_available: false` / `learning_scope: "pre_publish_internal_feedback"`) to
+     the top-level `learning_completed` result, `performance_history_entry` (including the
+     `_fallback_result()` path — the one gap Codex's final review round caught), `performance_
+     analysis`, and a new `internal_quality_feedback_metadata` block merged into
+     `daily_learning_report.json`. See `DECISIONS.md` (2026-07-11).
+  - Added 22 targeted regression tests (`tests/test_instagram_intelligence_risk_checks.py`)
+    covering exactly these two fixes plus confidence-bounds/independent-observation-gate/
+    selector-immutability, rather than a full re-coverage pass (no test-count target was set for
+    this round). Full verification run once: 444 tests pass (`py -m unittest discover -s tests
+    -v`), `py -m compileall -f src modules scripts tests` clean, `py -m src.main` ->
+    `workflow_completed` (CardNews `card_news_completed`, Publishing `publishing_ready`, Learning
+    `learning_completed` all confirmed from the real run's `storage/workflow_results/
+    99_final_result.json`). Codex MCP independent review: **APPROVED** (one BLOCK — the
+    `_fallback_result()` metadata gap above — fixed, re-reviewed).
+
 ## Next
 
+- CardNews Intelligence -> Evidence Selection -> Comment/Social Proof Selection -> Story Flow ->
+  Debate/CTA -> Production Quality (next priority as of 2026-07-11; see `ROADMAP.md` M7).
+  Reels/Shorts and Commerce are explicitly not started yet.
+- Real post-publish Instagram Performance Closed Loop (actual likes/comments/saves/shares/reach
+  replacing the current internal `quality_score` proxy in Learning/Knowledge Feedback) — requires
+  Meta/Instagram Graph API + OAuth + a publish-result Import step; see `ROADMAP.md` "Requires
+  External API".
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
 - Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
@@ -1158,6 +1266,8 @@ existing test deleted or weakened).
 - Always run the project with `py -m src.main`.
 - Do not use `python -m src.main`.
 - Internet, LLM, image, Pattern Engine, Content prompt, Content Intelligence, CardNews Layout Intelligence/rendering/QA/design quality, Knowledge Engine, Performance Score, Audit Engine, Learning Engine, Analytics Engine, Brand DNA Engine, Trend Memory, and Competitor Engine failures must be recorded as fallback events, not workflow failures.
+- Competitor Learning Engine is not part of `WorkflowEngine.run()` (standalone/on-demand), but its consumption points inside Pattern Engine/Content Engine/Brand DNA/Learning Engine must still degrade to their existing pre-Sprint-18 behavior, never raise, if `storage/knowledge/knowledge_database.json` is missing or empty.
+- `content_performance_history.json`/Learning Feedback/Knowledge Feedback are an internal pre-publish `quality_score` proxy, not real Instagram performance — never remove the `INTERNAL_QUALITY_PROXY_METADATA` labeling when touching this loop (see `DECISIONS.md`, 2026-07-11).
 - OpenAI, Naver News, and Nate Pann transient connection failures should retry with backoff before fallback.
 - Keep Naver News and Nate Pann fallback/cache behavior intact.
 - Knowledge Engine failure must still guarantee an existing (even empty) `storage/knowledge/knowledge.json` — never leave the DB file missing. The same guarantee now applies to `storage/performance_score/`, `storage/audit/`, `storage/learning/`, `storage/analytics/`, `storage/brand_dna/`, `storage/trend_memory/`, and `storage/competitor/`.

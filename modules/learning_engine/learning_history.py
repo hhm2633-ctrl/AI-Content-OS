@@ -18,6 +18,15 @@ class LearningHistory(object):
         self.history_path = history_path or Path("storage/learning/learning_history.json")
         self.history_path.parent.mkdir(parents=True, exist_ok=True)
 
+    def load(self) -> list:
+        """
+        Instagram Intelligence Phase 2: learning_delta(직전 실행 대비
+        internal_learning_score 변화) 계산을 위해 기존 기록을 읽기 전용으로
+        조회한다. 새 파일/스키마를 추가하지 않고 기존 history를 그대로 읽는다.
+        """
+        records = self._load_json().get("records", [])
+        return records if isinstance(records, list) else []
+
     def record(self, internal_learning_score: float, is_good_run: bool, promoted_count: int) -> None:
         try:
             self._record(internal_learning_score, is_good_run, promoted_count)

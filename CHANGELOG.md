@@ -768,3 +768,62 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-11 14:08:08
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 14:14:10
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 (Instagram Intelligence Phase, manual entry)
+
+- Change: Completed the Instagram Intelligence Phase — Instagram Research -> Competitor Learning
+  -> Knowledge Database -> Brand DNA -> Pattern -> Content Internal Quality Feedback Loop
+  (pre-publish, offline-first, no new crawler, `src/workflow_engine.py` untouched).
+- New Engine: `modules/competitor_learning/` (Sprint 18) converts `modules/instagram_research/`'s
+  already-collected posts (read-only) into a ranked Knowledge Database
+  (`storage/knowledge/knowledge_database.json` + 5 statistics files) and
+  `storage/dashboard/daily_learning_report.json`. Not wired into `WorkflowEngine.run()` — a
+  standalone, on-demand batch step.
+- Cross-Engine wiring (all additive, existing selection logic/fallback never removed):
+  `PatternEngineModule` now nudges `topic_intelligence.confidence_score` from 4 independent
+  sources (Knowledge Engine +0.05, Competitor Learning +0.03, Brand DNA +0.02, Learning Engine
+  +0.025) and never overwrites `pattern_plan`'s actual hook/cta/pattern/layout selection.
+  `ContentPromptBuilder` lets a sufficiently-confident Competitor Learning hint take priority over
+  the pre-existing AI Planner hint for hook/cta. `BrandDNAEngineModule` exposes
+  `competitor_learning_reference`/`brand_dna_change`/`brand_dna_delta`/`learning_feedback_reference`
+  (all read-only references, `dominant_*` computation itself untouched). `ContentQualityScorer`
+  reflects Pattern Engine's confidence back into `quality_score` via a bounded bonus.
+- New Learning Engine extension: `content_performance_history.py`
+  (`storage/history/content_performance_history.json`) + `learning_performance_analyzer.py`
+  (top/worst/average from history) + Knowledge Feedback (`CompetitorLearningStorage.
+  adjust_entry_confidence()` nudges an existing Knowledge Database entry's `score.confidence` by
+  ±0.05 based on `is_good_run`, clamped to [0.0, 1.0], never overwrites other fields, never
+  creates new entries).
+- Safety fixes made during final verification: `content_id` is built from `title`+`caption` only
+  (never wall-clock time) so repeated processing of the same content is deduplicated
+  (`ContentPerformanceHistory.record_once()`), and Knowledge Feedback is skipped when the
+  `content_id` was already recorded — preventing duplicate ±0.05 confidence application on
+  reprocessing. `independent_observations >= 5` (existing Self Reference Guard, Sprint 16-0)
+  gates both Pattern Engine's Brand DNA consumption and the new
+  `BrandDNAEngineModule._build_learning_feedback_reference()`.
+- Semantic-accuracy fix: `LearningEngineModule.INTERNAL_QUALITY_PROXY_METADATA`
+  (`performance_source: "internal_quality_proxy"`, `external_metrics_used: false`,
+  `external_metrics_available: false`, `learning_scope: "pre_publish_internal_feedback"`) is
+  attached to every result surface (`learning_completed` top level, `performance_history_entry`,
+  `performance_analysis`, the fallback path, and a `internal_quality_feedback_metadata` block
+  merged into `daily_learning_report.json`) so `quality_score`/`top_performing_pattern`/
+  `learning_delta` are never mistaken for real Instagram engagement data. No real external
+  performance metric exists yet — see `ROADMAP.md` "Requires External API".
+- Verification: 444 tests pass (`py -m unittest discover -s tests -v`, incl. 22 new targeted risk
+  tests in `tests/test_instagram_intelligence_risk_checks.py` covering duplicate-application,
+  confidence-bounds, independent-observation-gate, and selector-immutability risks), `py -m
+  compileall -f src modules scripts tests` clean, `py -m src.main` -> `workflow_completed`
+  (CardNews/Publishing status unaffected). Codex MCP independent review: APPROVED (one BLOCK on a
+  missing metadata field in the fallback path, fixed, re-reviewed).
