@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T18:50:55
+Updated at: 2026-07-11T19:03:25
 
 ## Execution Command
 
@@ -293,6 +293,7 @@ AI-Content-OS/
 |   |-- AI_PLANNER.md
 |   |-- AI_RULES.md
 |   |-- AUDIT_ENGINE.md
+|   |-- CLAUDE_SHORTS_PHASE_0_TASK.md
 |   |-- COMPETITOR_ENGINE.md
 |   |-- COST.md
 |   |-- DEPLOYMENT.md
@@ -302,6 +303,7 @@ AI-Content-OS/
 |   |-- MONETIZATION.md
 |   |-- PROJECT_VISION.md
 |   |-- RELEASE_RULE.md
+|   |-- SHORTS_ARCHITECTURE_DRAFT.md
 |   |-- SPRINT_01.md
 |   |-- SYSTEM_ARCHITECTURE.md
 |   |-- TECH_STACK.md
@@ -547,6 +549,7 @@ AI-Content-OS/
 |   |-- .openai/
 |   |   `-- hosting.json
 |   |-- app/
+|   |   |-- commerce.css
 |   |   |-- globals.css
 |   |   |-- layout.js
 |   |   |-- os.css
@@ -884,7 +887,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (422 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (427 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -925,7 +928,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (70 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (72 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -958,8 +961,10 @@ AI-Content-OS/
 |   |-- test_competitor_learning_statistics.py
 |   |-- test_competitor_learning_storage.py
 |   |-- test_competitor_learning_wiring.py
+|   |-- test_content_intelligence_helpers.py
 |   |-- test_content_output_normalizer.py
 |   |-- test_content_output_validator.py
+|   |-- test_content_prompt_builder.py
 |   |-- test_instagram_intelligence_risk_checks.py
 |   |-- test_instagram_research_classifier.py
 |   |-- test_instagram_research_independence.py

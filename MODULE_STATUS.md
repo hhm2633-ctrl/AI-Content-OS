@@ -1345,6 +1345,14 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### Content Intelligence Focused Contract Coverage (2026-07-11)
+
+- Added 16 focused tests for ContentPromptBuilder, BrandRuleEvaluator, ContentDuplicateDetector, ContentQualityScorer, and PublishingHintGenerator.
+- Covered legacy fallback, research-context injection, four-slide JSON contract, provenance metadata, Planner confidence gating, brand/exaggeration rules, duplicate thresholds, quality-score penalties/bonuses, CTA inference, and malformed input safety.
+- Confirmed malformed or missing research input returns `None` for the existing ContentModule legacy path and never escapes an exception.
+- All 49 `test_content_*.py` tests pass and the repository compile check is clean.
+- No production Content Engine behavior or WorkflowEngine order changed.
+
 ### CardNews Operational Complete (M7-next, 2026-07-11)
 
 - Generated and visually inspected all four 1024x1024 PNGs: no overlap, clipping, missing CTA, fake social proof, or prohibited competitor screenshot use.
@@ -1368,7 +1376,7 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
   Meta/Instagram Graph API + OAuth + a publish-result Import step; see `ROADMAP.md` "Requires
   External API".
 - Real image sourcing automation (news thumbnail fetch, community post/comment capture, product lookup) — requires crawling external SNS/news pages, moved to ROADMAP.md "Requires External API"
-- Add focused unit checks for ContentPromptBuilder, Content Intelligence helpers, CardNews Layout Intelligence/rendering/QA/design quality helpers, and fallback fields
+- ContentPromptBuilder, Content Intelligence helpers, and CardNews production-quality focused coverage are complete
 - Keep snapshot generator in sync with WorkflowEngine if future modules are added
 - Wire Audit Engine's Competitor Comparison + Blind Spot Detection stages once Competitor Engine's `competitor_profiles.json` history accumulates across multiple runs
 - Real Instagram Graph API connection for Analytics Engine — see ROADMAP.md "Requires External API"; until then `quality_trend` remains based on real local Performance Score history only

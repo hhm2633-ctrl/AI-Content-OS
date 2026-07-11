@@ -295,13 +295,9 @@ Instagram 카드뉴스 자동화 (Protected Core 안정성 유지)
 
 # Current Focus
 
-현재는
-
-CardNews 실제 결과물 운영 테스트 (다음 최우선, `ROADMAP.md` M7-next) — 주제별 카드뉴스 생성 ->
-실제 업로드 가능한 품질 확인 -> 필요한 소규모 디자인 보정
-
-을 우선한다. Reels/Shorts, Commerce(SmartStore/Coupang)는 지금 시작하지 않는다. 구조를
-깨뜨리는 새로운 대형 리팩토링은 지금 우선순위가 아니다.
+CardNews M7/M8/M7-next는 운영 완료됐다. Claude는 보호된 CardNews 경로와 겹치지 않는
+Shorts Phase 0 아키텍처 초안만 독립 작성한다. Work/Codex는 병렬로 기존 Content Engine의
+남은 focused unit-test 공백을 닫고, 이후 결과를 검토해 작은 구현 Sprint를 승인한다.
 
 ---
 
@@ -309,13 +305,11 @@ CardNews 실제 결과물 운영 테스트 (다음 최우선, `ROADMAP.md` M7-ne
 
 `MODULE_STATUS.md`의 "Next" 섹션과 `ROADMAP.md`를 그대로 따른다. 요약:
 
-1. **CardNews 실제 결과물 운영 테스트** -> 다양한 실제 주제로 카드뉴스 생성 -> 실제 업로드
-   가능한 품질 확인 -> 필요한 소규모 디자인 보정 (2026-07-11 지정, 다음 최우선; CardNews
-   Intelligence M7 + Production Quality M8은 완료됨)
-2. 실제 게시 후 Instagram 성과 기반 Closed Loop (현재는 내부 quality_score proxy만 존재) —
+1. M2 Content Engine 고도화: ContentPromptBuilder와 Content Intelligence helper의 focused unit test 보강
+2. Claude의 Shorts Phase 0 아키텍처 초안을 Work/Codex가 CTO gate 기준으로 검토
+3. 실제 게시 후 Instagram 성과 기반 Closed Loop (현재는 내부 quality_score proxy만 존재) —
    Meta/Instagram Graph API + OAuth + 게시 결과 Import 필요, `ROADMAP.md` "Requires External
    API"에 명시적 승인 전까지 대기
-3. M2 Content Engine 고도화 (남은 부분: ContentPromptBuilder 등 focused unit test)
 4. Audit Engine의 Competitor Comparison + Blind Spot Detection (Competitor Engine 이력 축적 후)
 5. ~~AI Planner 실제 통합~~ — Sprint 15-3에서 완료. AI Planner는 이제 별도 Next 항목이
    없다. (향후 고려사항, 미예정: 실제 실행 이력이 쌓이면

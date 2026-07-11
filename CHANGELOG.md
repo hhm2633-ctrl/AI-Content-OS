@@ -879,7 +879,31 @@
 - Tests: 38 focused CardNews production-quality tests passed; compile clean.
 - Workflow: `py -m src.main` -> `workflow_completed`, `card_news_completed`, `publishing_ready`; Production QA 0.85/pass with no rendering fallback.
 
+## 2026-07-11 Content Intelligence Contract Coverage
+
+- Change: Added 16 focused tests for ContentPromptBuilder, brand rules, duplicate detection, content quality scoring, publishing hints, malformed input safety, and legacy fallback.
+- Tests: All 49 `test_content_*.py` tests passed; compile clean.
+- Scope: Test and project-status updates only; production Content Engine and WorkflowEngine behavior unchanged.
+
 ## 2026-07-11 18:50:56
+
+- Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:01:16
+
+- Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:02:07
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:03:26
 
 - Change: Project snapshot updated.
 - Execution command: `py -m src.main`
