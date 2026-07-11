@@ -6,9 +6,11 @@ AI-Content-OS의 기본 변경 경로는 같은 프로젝트 컨텍스트 안에
 사용자
   ↓  비즈니스 우선순위와 승인
 ChatGPT Work CTO
-  ↓  아키텍처, ROI, Research, Sprint 범위, 승인 게이트
-Codex execution in the same workspace
-  ↓  구현, 테스트, workflow_completed, 문서, Git
+  ↓  아키텍처, ROI, Sprint 범위, 파일 소유권, 병렬 지시서
+Claude specialist + Codex worker lanes
+  ↓  겹치지 않는 구현/조사/테스트/검수
+Work CTO integration
+  ↓  통합 검토, workflow_completed, 공용 문서, Git
 GitHub
      Single Source of Truth
 ```
@@ -24,6 +26,8 @@ GitHub
 - 외부 자료를 분석해 Research 문서로 저장한다.
 - 관련 프로젝트 스킬을 선택하고 구현·검증 상태를 끝까지 추적한다.
 - ROI가 낮거나 선행조건이 없는 요청은 `ROADMAP.md`로 보낸다.
+- 큰 작업을 직접 독점하지 않고 독립 작업선으로 나눠 `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`에 기록한다.
+- 공용 문서와 Git만 통합 작업선에서 관리하고, 작업자별 파일 소유권이 겹치지 않게 한다.
 
 ## Codex Execution
 
@@ -31,6 +35,7 @@ GitHub
 - 위험 기반 테스트, compile, 전체 workflow, 문서 동기화와 Git을 담당한다.
 - 큰 작업도 작은 검증 단계로 나누며 사용자 루프를 유지한다.
 - `storage/**`, `.env`, 로그와 생성 산출물을 커밋하지 않는다.
+- 작업자 지시서의 소유 파일 밖을 수정하지 않고, 결과를 CTO 통합 작업선에 인계한다.
 
 ## Claude (Optional)
 
@@ -38,6 +43,7 @@ GitHub
 - Codex MCP를 기본 호출하지 않는다.
 - 구현 또는 읽기 전용 검토 역할을 지시받은 범위 안에서 수행한다.
 - 결과는 Work/Codex가 저장소 관점에서 다시 검증한다.
+- 지시서에 지정된 단일 산출물과 파일 경계를 지키며 공용 문서와 Git을 수정하지 않는다.
 
 ## GitHub
 

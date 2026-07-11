@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T19:09:22
+Updated at: 2026-07-11T19:18:25
 
 ## Execution Command
 
@@ -290,6 +290,7 @@ AI-Content-OS/
 |   |   |-- AlphaCut.md
 |   |   |-- Claude_Codex_Workflow.md
 |   |   `-- Claude_Instagram_Audit.md
+|   |-- ACTIVE_PARALLEL_WORK_ORDERS.md
 |   |-- AI_PLANNER.md
 |   |-- AI_RULES.md
 |   |-- AUDIT_ENGINE.md

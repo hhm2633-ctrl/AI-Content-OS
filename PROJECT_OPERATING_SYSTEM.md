@@ -54,6 +54,24 @@ Always maximize Repository growth and ROI.
 | Codex execution | Primary delivery — implementation, repository operations, tests, workflow, docs, Git |
 | Claude | Optional specialist — independent review or explicitly assigned complex implementation |
 
+## Parallel Delivery Model
+
+The default for substantial work is parallel delegation, not CTO solo execution.
+
+| Lane | Default ownership |
+|---|---|
+| Work CTO / integration | Priorities, contracts, task splitting, file ownership, approvals, integration review, final QA/docs/Git |
+| Claude specialist | One isolated research, architecture, UX, or implementation deliverable with explicit file boundaries |
+| Codex worker lanes | Independent implementation, tests, output inspection, or review tasks on non-overlapping files |
+
+Before work starts, the CTO writes or updates `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`. Each lane must
+have a single objective, exclusive owned files, protected files, verification commands, and an exact
+handoff response. Shared project documents and Git remain in the integration lane. The CTO continues
+useful non-overlapping work while other lanes run and does not silently absorb every lane.
+
+Direct CTO implementation is the exception: integration glue, an urgent blocker, or a task too small
+to split. The CTO states that reason before editing.
+
 Full detail: `DECISIONS.md` ("AI 사용 정책"), `.ai/rules/ai_roles.md`, `docs/AI_PLANNER.md`.
 
 ## Protected Core vs. Intelligence Layer
@@ -108,4 +126,5 @@ acceptable, even labeled as a placeholder.
 - Do not fabricate data that impersonates a real external signal (see Offline-First above).
 - Work/Codex is the default end-to-end path. Claude is optional and does not need to call Codex MCP.
 - When Claude is explicitly assigned, Claude does not `git add`/`commit`/`push`; Work/Codex performs final verification and Git operations.
+- Substantial work must follow the Parallel Delivery Model and active work-order board.
 - `DECISIONS.md` entries are never deleted, only appended to.

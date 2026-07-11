@@ -37,6 +37,18 @@ This document defines the rules Codex must follow in the AI-Content-OS repositor
 - Keep Sprint work small and aligned with the current Sprint goal.
 - Completion reports should include changed files, test results, final state, and error details.
 
+## Mandatory Delegation Rules
+
+- For any task spanning more than one independent concern, the CTO must split work before implementation.
+- The CTO owns scope, contracts, file ownership, approval gates, integration review, and final Git operations. The CTO must not default to implementing every workstream personally.
+- Run independent workstreams in parallel when their file ownership does not overlap.
+- Every delegated work order must state: objective, owned files, prohibited files, required reading, completion checks, and handoff format.
+- Assign one writer per file. Shared status documents and Git are owned only by the CTO/integration lane.
+- Claude and worker agents must not edit `CURRENT_TASK.md`, `ROADMAP.md`, `MODULE_STATUS.md`, `DECISIONS.md`, `CHANGELOG.md`, `PROJECT_SNAPSHOT.md`, or perform Git operations unless the CTO explicitly assigns that ownership.
+- The CTO may implement directly only for integration glue, urgent blockers, or a small task that cannot be split usefully. Record the reason in the progress update.
+- Do not wait idly for a delegated lane. Continue a non-overlapping lane or integration preparation.
+- Use `docs/ACTIVE_PARALLEL_WORK_ORDERS.md` as the active assignment board and handoff contract.
+
 ## Codex Skills
 
 Use project Codex skills when the task matches:
