@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-10T18:25:44
+Updated at: 2026-07-11T12:42:04
 
 ## Execution Command
 
@@ -87,6 +87,94 @@ AI-Content-OS/
 |       |-- ai-content-os-research/
 |       |-- ai-content-os-retry-audit/
 |       `-- ai-content-os-sprint/
+|-- .playwright-mcp/
+|   |-- console-2026-07-10T10-58-21-755Z.log
+|   |-- console-2026-07-10T11-00-17-038Z.log
+|   |-- console-2026-07-10T11-00-59-987Z.log
+|   |-- console-2026-07-10T11-02-56-948Z.log
+|   |-- console-2026-07-10T11-03-13-982Z.log
+|   |-- console-2026-07-10T11-03-36-118Z.log
+|   |-- console-2026-07-10T11-03-44-913Z.log
+|   |-- console-2026-07-10T11-03-55-566Z.log
+|   |-- console-2026-07-10T11-04-04-472Z.log
+|   |-- console-2026-07-10T11-04-16-253Z.log
+|   |-- console-2026-07-10T11-04-22-281Z.log
+|   |-- console-2026-07-10T11-04-31-315Z.log
+|   |-- console-2026-07-10T11-04-39-414Z.log
+|   |-- console-2026-07-10T11-59-22-055Z.log
+|   |-- console-2026-07-10T11-59-48-548Z.log
+|   |-- console-2026-07-10T12-00-00-025Z.log
+|   |-- console-2026-07-10T12-02-16-087Z.log
+|   |-- console-2026-07-10T12-02-25-922Z.log
+|   |-- console-2026-07-10T12-02-47-960Z.log
+|   |-- console-2026-07-10T12-02-59-198Z.log
+|   |-- console-2026-07-10T12-03-16-771Z.log
+|   |-- console-2026-07-10T12-03-26-351Z.log
+|   |-- console-2026-07-10T12-03-49-636Z.log
+|   |-- console-2026-07-10T12-04-10-607Z.log
+|   |-- console-2026-07-10T12-04-20-049Z.log
+|   |-- console-2026-07-10T12-04-32-729Z.log
+|   |-- console-2026-07-10T12-04-41-389Z.log
+|   |-- console-2026-07-10T12-04-48-640Z.log
+|   |-- console-2026-07-10T12-04-58-164Z.log
+|   |-- page-2026-07-10T10-34-46-213Z.yml
+|   |-- page-2026-07-10T10-58-22-784Z.yml
+|   |-- page-2026-07-10T11-00-19-174Z.yml
+|   |-- page-2026-07-10T11-01-15-699Z.yml
+|   |-- page-2026-07-10T11-02-58-698Z.yml
+|   |-- page-2026-07-10T11-03-15-961Z.yml
+|   |-- page-2026-07-10T11-03-37-073Z.yml
+|   |-- page-2026-07-10T11-03-46-529Z.yml
+|   |-- page-2026-07-10T11-03-56-952Z.yml
+|   |-- page-2026-07-10T11-04-05-773Z.yml
+|   |-- page-2026-07-10T11-04-17-270Z.yml
+|   |-- page-2026-07-10T11-04-23-696Z.yml
+|   |-- page-2026-07-10T11-04-32-933Z.yml
+|   |-- page-2026-07-10T11-04-40-600Z.yml
+|   |-- page-2026-07-10T11-59-26-064Z.yml
+|   |-- page-2026-07-10T11-59-49-191Z.yml
+|   |-- page-2026-07-10T12-00-13-666Z.yml
+|   |-- page-2026-07-10T12-02-17-371Z.yml
+|   |-- page-2026-07-10T12-02-41-283Z.yml
+|   |-- page-2026-07-10T12-02-49-460Z.yml
+|   |-- page-2026-07-10T12-02-59-878Z.yml
+|   |-- page-2026-07-10T12-03-18-031Z.yml
+|   |-- page-2026-07-10T12-03-39-779Z.yml
+|   |-- page-2026-07-10T12-04-03-112Z.yml
+|   |-- page-2026-07-10T12-04-11-834Z.yml
+|   |-- page-2026-07-10T12-04-20-662Z.yml
+|   |-- page-2026-07-10T12-04-35-222Z.yml
+|   |-- page-2026-07-10T12-04-42-664Z.yml
+|   |-- page-2026-07-10T12-04-49-909Z.yml
+|   `-- page-2026-07-10T12-04-59-417Z.yml
+|-- .tmp/
+|   |-- instagram_research_test_0sqsk8bl/
+|   |-- instagram_research_test_16lxitgf/
+|   |-- instagram_research_test_2ztvmvm1/
+|   |-- instagram_research_test_3ymgs2l0/
+|   |-- instagram_research_test_47w_t35g/
+|   |-- instagram_research_test_4wb_cfk5/
+|   |-- instagram_research_test_adi6lnog/
+|   |-- instagram_research_test_bbc7jub3/
+|   |-- instagram_research_test_g7y63b_d/
+|   |-- instagram_research_test_h6cusuw2/
+|   |-- instagram_research_test_i754luxc/
+|   |-- instagram_research_test_inr6ley_/
+|   |-- instagram_research_test_izpghcu4/
+|   |-- instagram_research_test_k6rce6te/
+|   |-- instagram_research_test_ktbyxpmf/
+|   |-- instagram_research_test_m3kelqu9/
+|   |-- instagram_research_test_n3ifvy3r/
+|   |-- instagram_research_test_pmgs5_6u/
+|   |-- instagram_research_test_sll3urmg/
+|   |-- instagram_research_test_u_kr6k4x/
+|   |-- instagram_research_test_w984co06/
+|   |-- instagram_research_test_wc3bx8gn/
+|   |-- instagram_research_test_wszio36o/
+|   |-- instagram_research_test_xhtiqg0w/
+|   |-- instagram_research_test_xn1nffoi/
+|   |-- instagram_research_test_ytgq0m9c/
+|   `-- instagram_research_test_yu43wz70/
 |-- benchmark/
 |   |-- AI_CONTENT_STRATEGY.md
 |   |-- CONTENT_PATTERNS.md
@@ -209,6 +297,14 @@ AI-Content-OS/
 |   |   |-- content_type_classifier.py
 |   |   |-- image_source_selector.py
 |   |   `-- image_strategy_module.py
+|   |-- instagram_research/
+|   |   |-- __init__.py
+|   |   |-- instagram_classifier.py
+|   |   |-- instagram_normalizer.py
+|   |   |-- instagram_post_schema.py
+|   |   |-- instagram_research_interface.py
+|   |   |-- instagram_statistics.py
+|   |   `-- instagram_storage.py
 |   |-- knowledge_engine/
 |   |   |-- __init__.py
 |   |   |-- duplicate_detector.py
@@ -304,6 +400,62 @@ AI-Content-OS/
 |   |-- README.md
 |   `-- workflow_engine.py
 |-- storage/
+|   |-- _instagram_research_test_tmp/
+|   |   |-- tmp0y7jcb_i/
+|   |   |-- tmp1x56c8__/
+|   |   |-- tmp63alc08a/
+|   |   |-- tmp6hhsj8cl/
+|   |   |-- tmp7yjyjzif/
+|   |   |-- tmp9w9ospx4/
+|   |   |-- tmpaiubjq1c/
+|   |   |-- tmpb_1v5tab/
+|   |   |-- tmpc0nd1emr/
+|   |   |-- tmpckhayk02/
+|   |   |-- tmpeahkksku/
+|   |   |-- tmpfecn_ja5/
+|   |   |-- tmpfiwyww8j/
+|   |   |-- tmpg45ljmgu/
+|   |   |-- tmpgrhezw1r/
+|   |   |-- tmphj2tvjq0/
+|   |   |-- tmphlhg9mse/
+|   |   |-- tmphn23aem5/
+|   |   |-- tmphs5ehbc_/
+|   |   |-- tmpi1tcrgks/
+|   |   |-- tmpkh_uoix8/
+|   |   |-- tmpl_mt7wa2/
+|   |   |-- tmpmlennkgx/
+|   |   |-- tmpmnufmiea/
+|   |   |-- tmpnla3jmqn/
+|   |   |-- tmpnloen1ja/
+|   |   |-- tmpnn3d54_o/
+|   |   |-- tmpovxojy08/
+|   |   |-- tmppraqcaha/
+|   |   |-- tmpps50m436/
+|   |   |-- tmppu08uhrz/
+|   |   |-- tmpq4gm16hm/
+|   |   |-- tmpqpwc_kn3/
+|   |   |-- tmpqtmuimn2/
+|   |   |-- tmprjt5t2jz/
+|   |   |-- tmprp4q1_um/
+|   |   |-- tmps0ijghur/
+|   |   |-- tmps3tab9an/
+|   |   |-- tmps45iyd5y/
+|   |   |-- tmpsb_exl9a/
+|   |   |-- tmpsrnwdnuq/
+|   |   |-- tmpsyiz70pc/
+|   |   |-- tmpt3jlgxie/
+|   |   |-- tmptook7i6x/
+|   |   |-- tmpu2smcjoy/
+|   |   |-- tmpuoau7nvi/
+|   |   |-- tmpvqpy8cc2/
+|   |   |-- tmpvw8a1z1o/
+|   |   |-- tmpwuctwqgu/
+|   |   |-- tmpx61s7b7p/
+|   |   |-- tmpxcv781sw/
+|   |   |-- tmpy5w79mxh/
+|   |   |-- tmpysz08mfe/
+|   |   |-- tmpyxwvate4/
+|   |   `-- tmpzknm_wty/
 |   |-- analytics/
 |   |   |-- analytics_history.json
 |   |   |-- analytics_result.json
@@ -349,7 +501,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (366 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (374 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -378,6 +530,7 @@ AI-Content-OS/
 |   |   |-- publish_queue.json
 |   |   `-- publishing_result.json
 |   |-- research/
+|   |   |-- instagram/
 |   |   `-- research_result.json
 |   |-- runtime/
 |   |   `-- service_diagnostic.json
@@ -389,7 +542,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (57 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (61 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -415,6 +568,13 @@ AI-Content-OS/
 |   |-- test_ai_planner_schema.py
 |   |-- test_content_output_normalizer.py
 |   |-- test_content_output_validator.py
+|   |-- test_instagram_research_classifier.py
+|   |-- test_instagram_research_independence.py
+|   |-- test_instagram_research_interface.py
+|   |-- test_instagram_research_normalizer.py
+|   |-- test_instagram_research_schema.py
+|   |-- test_instagram_research_statistics.py
+|   |-- test_instagram_research_storage.py
 |   |-- test_intelligence_feedback_safety.py
 |   `-- test_workflow_planner_integration.py
 |-- utils/
@@ -432,6 +592,9 @@ AI-Content-OS/
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md
+|-- full_test_output.txt
+|-- full_test_output2.txt
+|-- ig_test_output.txt
 |-- MODULE_SPEC.md
 |-- MODULE_STATUS.md
 |-- PROJECT_BIBLE.md
