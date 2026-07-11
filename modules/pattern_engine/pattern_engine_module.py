@@ -5,6 +5,7 @@ from typing import Any, Dict, Optional
 
 from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
 from modules.base_module import BaseModule
+from modules.competitor_learning.competitor_learning_interface import CompetitorLearningInterface
 from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 from modules.pattern_engine.cta_selector import CTASelector
 from modules.pattern_engine.hook_selector import HookSelector
@@ -63,6 +64,14 @@ class PatternEngineModule(BaseModule):
         # 축적된 Knowledge DB의 상위 pattern/layout 항목을 참고 정보로만 덧붙인다.
         self.knowledge_interface = KnowledgeInterface()
 
+        # Competitor Learning Interface 연결(Sprint 18): Instagram Research에서
+        # 파생된 별도 Knowledge Database(storage/knowledge/knowledge_database.json)의
+        # 상위 pattern/hook/cta 항목을 참고 정보로만 덧붙인다. 기존 Knowledge
+        # Engine 연결과 완전히 독립적이며, 이 값 하나 때문에 선택 로직
+        # (PatternSelector/HookSelector/CTASelector/LayoutSelector)이 바뀌지
+        # 않는다.
+        self.competitor_learning_interface = CompetitorLearningInterface()
+
         # AI Planner Consumer Adapter 실제 연결(Sprint 15-3): 기존 PatternSelector
         # 선택 로직은 그대로 두고, planner_result가 유효/충분히 확신할 만하고
         # 안전 규칙과 충돌하지 않을 때만 pattern_type을 Planner Hint로 대체한다.
@@ -78,6 +87,7 @@ class PatternEngineModule(BaseModule):
 
         result = self._build_result(selected_topic, trend_result, planner_result)
         result = self._apply_knowledge_consumption(result)
+        result = self._apply_competitor_learning_consumption(result)
 
         try:
             self.result_writer.write(result)
@@ -147,6 +157,91 @@ class PatternEngineModule(BaseModule):
             result.setdefault("knowledge_items", [])
             result.setdefault("knowledge_influence", f"knowledge consumption 실패: {error}")
             return result
+
+    def _apply_competitor_learning_consumption(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Competitor Learning DB 참고(Sprint 18): Instagram Research에서 파생된
+        별도 Knowledge Database(storage/knowledge/knowledge_database.json)의
+        상위 pattern_type/hook_type/cta_type이 이번 선택과 일치하면
+        confidence_score를 소폭 보정한다(+0.03, 최대 1.0). 이 보정은 Sprint 13
+        Knowledge Engine 보정(+0.05)과 완전히 독립적으로 누적된다 - 서로의
+        존재를 확인하거나 상한을 조정하지 않는다(각자 자기 근거로만 판단).
+        선택 로직(PatternSelector/HookSelector/CTASelector) 자체는 바꾸지 않는다.
+
+        layout은 의도적으로 비교하지 않는다: Instagram Research의 layout 신호는
+        관찰된 Instagram 게시물 형식(carousel/reel/single_image)이고, 이
+        LayoutSelector의 layout_type 어휘(bold_ai/notebook/dark_editorial/
+        character_diary/talking_head)는 카드뉴스 디자인 템플릿이다 - 서로 다른
+        체계라 매핑하면 실제로 관찰되지 않은 대응 관계를 꾸며내는 것이 된다
+        (Offline-First 원칙, `PROJECT_OPERATING_SYSTEM.md`).
+
+        실패하거나 Competitor Learning DB가 아직 없으면 result는 그대로
+        유지되고 competitor_learning_used=False로 안전하게 처리된다.
+        """
+        try:
+            if not self.competitor_learning_interface.is_available():
+                result.setdefault("competitor_learning_used", False)
+                result.setdefault("competitor_learning_items", [])
+                result.setdefault(
+                    "competitor_learning_influence",
+                    "Competitor Learning Knowledge Database가 아직 없어 참고하지 않음.",
+                )
+                return result
+
+            topic_intelligence = dict(result.get("topic_intelligence", {}) or {})
+            pattern_plan = result.get("pattern_plan", {}) or {}
+
+            top_patterns = self.competitor_learning_interface.get_top_patterns(limit=3)
+            top_hooks = self.competitor_learning_interface.get_top_hooks(limit=3)
+            top_ctas = self.competitor_learning_interface.get_top_ctas(limit=3)
+
+            matched_labels = []
+            if self._competitor_value_matches(top_patterns, pattern_plan.get("pattern_type", "")):
+                matched_labels.append(f"pattern_type '{pattern_plan.get('pattern_type')}'")
+            if self._competitor_value_matches(top_hooks, pattern_plan.get("hook_type", "")):
+                matched_labels.append(f"hook_type '{pattern_plan.get('hook_type')}'")
+            if self._competitor_value_matches(top_ctas, pattern_plan.get("cta_type", "")):
+                matched_labels.append(f"cta_type '{pattern_plan.get('cta_type')}'")
+
+            if matched_labels:
+                old_confidence = float(topic_intelligence.get("confidence_score", 0.0) or 0.0)
+                boosted_confidence = min(1.0, round(old_confidence + 0.03, 4))
+                topic_intelligence["confidence_score"] = boosted_confidence
+                influence = (
+                    f"{', '.join(matched_labels)}가 경쟁 계정 Knowledge Database 상위 항목과 "
+                    f"일치해 confidence_score를 {old_confidence} -> {boosted_confidence}로 보정함."
+                )
+            else:
+                influence = (
+                    "경쟁 계정 Knowledge Database 상위 pattern/hook/cta와 일치하는 항목이 없어 "
+                    "confidence_score는 그대로 둠."
+                )
+
+            result["topic_intelligence"] = topic_intelligence
+            result["competitor_learning_used"] = bool(matched_labels)
+            result["competitor_learning_items"] = [
+                {"knowledge_id": item.get("knowledge_id"), "type": item.get("type"), "value": item.get("value")}
+                for item in (top_patterns + top_hooks + top_ctas)
+            ]
+            result["competitor_learning_influence"] = influence
+
+            return result
+        except Exception as error:
+            print(f"Pattern Engine Competitor Learning Consumption Failed: {error}")
+            result.setdefault("competitor_learning_used", False)
+            result.setdefault("competitor_learning_items", [])
+            result.setdefault("competitor_learning_influence", f"competitor learning consumption 실패: {error}")
+            return result
+
+    def _competitor_value_matches(self, items: Any, current_value: str) -> bool:
+        if not current_value:
+            return False
+
+        for item in items or []:
+            if item.get("value") == current_value:
+                return True
+
+        return False
 
     def _find_category_match(
         self,

@@ -4,6 +4,7 @@ from typing import Any, Dict, Optional
 
 from modules.ai_planner.consumer_contract import PlannerConsumerContract
 from modules.ai_planner.planner_consumer_adapter import PlannerConsumerAdapter, build_consumption_metadata
+from modules.competitor_learning.competitor_learning_interface import CompetitorLearningInterface
 from modules.content.cta_strategy import CTAStrategy
 from modules.content.hook_strategy import HookStrategy
 from modules.content.pattern_prompt_router import PatternPromptRouter
@@ -24,6 +25,12 @@ class ContentPromptBuilder:
     예외를 던지지 않는다 (build()가 항상 dict 또는 None을 반환).
     """
 
+    # Sprint 18: Competitor Learning DB 힌트를 적용하기 위한 최소 기준.
+    # overall_score(빈도*0.6 + 분류 확신도*0.3 + 참여도*0.1)와 표본 크기를 함께
+    # 요구해 관찰이 1~2건뿐인 값이 즉시 프롬프트를 좌우하지 않도록 한다.
+    COMPETITOR_HINT_MIN_SCORE = 0.4
+    COMPETITOR_HINT_MIN_SAMPLE_SIZE = 3
+
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
         self.pattern_prompt_router = PatternPromptRouter(self.config)
@@ -40,6 +47,14 @@ class ContentPromptBuilder:
         # 단계에서 정규화된 content_result에 대해 그대로, 그리고 나중에 실행되므로
         # 항상 우선 적용된다(Sprint 요구사항: "Brand Rule 우선 유지").
         self.planner_consumer_adapter = PlannerConsumerAdapter()
+
+        # Competitor Learning Interface 연결(Sprint 18): "Hook/CTA 추천 시
+        # Knowledge DB를 우선 참고, 실패하면 기존 방식 그대로" 요구사항을
+        # HookStrategy/CTAStrategy가 이미 지원하는 hook_type_override/
+        # cta_type_override 게이트로 구현한다 - AI Planner Hint보다 먼저
+        # 평가되며, 유효한 값이 없으면 기존 순서(Planner Hint -> Engine 기본값)를
+        # 그대로 따른다.
+        self.competitor_learning_interface = CompetitorLearningInterface()
 
     def build(
         self,
@@ -96,7 +111,27 @@ class ContentPromptBuilder:
             blocked=blocked,
         )
 
-        if hook_consumption.get("hint_applied"):
+        # Competitor Learning DB 힌트(Sprint 18): "Knowledge DB를 우선 참고"
+        # 요구사항에 따라 AI Planner Hint보다 먼저 평가한다. 유효한 힌트가
+        # 없으면(DB 없음/기준 미달/blocked) 기존 순서(Planner Hint -> Engine
+        # 기본값)를 그대로 따른다 - 이 블록이 없어도 이전 동작과 완전히 동일하다.
+        competitor_hook_hint = self._resolve_competitor_hint(
+            self.competitor_learning_interface.get_top_hooks(limit=3), blocked
+        )
+        competitor_cta_hint = self._resolve_competitor_hint(
+            self.competitor_learning_interface.get_top_ctas(limit=3), blocked
+        )
+
+        if competitor_hook_hint and competitor_hook_hint in self.hook_strategy.HOOK_TYPES:
+            hook_result = self.hook_strategy.select(
+                pattern_plan,
+                topic_intelligence,
+                self.brand_profile,
+                str(keyword),
+                hook_type_override=competitor_hook_hint,
+            )
+            hook_source = "competitor_learning"
+        elif hook_consumption.get("hint_applied"):
             hook_result = self.hook_strategy.select(
                 pattern_plan,
                 topic_intelligence,
@@ -104,10 +139,21 @@ class ContentPromptBuilder:
                 str(keyword),
                 hook_type_override=hook_consumption.get("hook_type"),
             )
+            hook_source = "planner"
         else:
             hook_result = engine_hook_result
+            hook_source = "pattern_engine_default"
 
-        if cta_consumption.get("hint_applied"):
+        if competitor_cta_hint and competitor_cta_hint in self.cta_strategy.CTA_TYPES:
+            cta_result = self.cta_strategy.select(
+                pattern_plan,
+                topic_intelligence,
+                self.brand_profile,
+                str(keyword),
+                cta_type_override=competitor_cta_hint,
+            )
+            cta_source = "competitor_learning"
+        elif cta_consumption.get("hint_applied"):
             cta_result = self.cta_strategy.select(
                 pattern_plan,
                 topic_intelligence,
@@ -115,8 +161,10 @@ class ContentPromptBuilder:
                 str(keyword),
                 cta_type_override=cta_consumption.get("cta_type"),
             )
+            cta_source = "planner"
         else:
             cta_result = engine_cta_result
+            cta_source = "pattern_engine_default"
 
         content_strategy_hint = self._resolve_content_strategy_hint(planner_result)
 
@@ -193,8 +241,74 @@ class ContentPromptBuilder:
                         ),
                     ),
                 },
+                "competitor_learning_consumption": {
+                    "hook": {
+                        "applied": hook_source == "competitor_learning",
+                        "hint_value": competitor_hook_hint,
+                        "original_value": engine_hook_result.get("hook_type"),
+                        "final_value": hook_result.get("hook_type"),
+                        "reason": (
+                            f"Competitor Learning DB 상위 hook '{competitor_hook_hint}'을 "
+                            "AI Planner Hint보다 우선 적용함."
+                            if hook_source == "competitor_learning"
+                            else (
+                                "Competitor Learning DB 힌트가 없거나 기준"
+                                f"(overall_score>={self.COMPETITOR_HINT_MIN_SCORE}, "
+                                f"sample_size>={self.COMPETITOR_HINT_MIN_SAMPLE_SIZE}) 미달이라 "
+                                f"적용하지 않음 (실제 적용 소스: {hook_source})."
+                            )
+                        ),
+                    },
+                    "cta": {
+                        "applied": cta_source == "competitor_learning",
+                        "hint_value": competitor_cta_hint,
+                        "original_value": engine_cta_result.get("cta_type"),
+                        "final_value": cta_result.get("cta_type"),
+                        "reason": (
+                            f"Competitor Learning DB 상위 CTA '{competitor_cta_hint}'을 "
+                            "AI Planner Hint보다 우선 적용함."
+                            if cta_source == "competitor_learning"
+                            else (
+                                "Competitor Learning DB 힌트가 없거나 기준"
+                                f"(overall_score>={self.COMPETITOR_HINT_MIN_SCORE}, "
+                                f"sample_size>={self.COMPETITOR_HINT_MIN_SAMPLE_SIZE}) 미달이라 "
+                                f"적용하지 않음 (실제 적용 소스: {cta_source})."
+                            )
+                        ),
+                    },
+                },
             },
         }
+
+    def _resolve_competitor_hint(self, top_items: Any, blocked: bool) -> Optional[str]:
+        """
+        Competitor Learning DB의 상위 hook/cta 후보 중 적용 기준을 만족하는
+        첫 값을 반환한다. blocked 카테고리에는 절대 적용하지 않는다(AI
+        Planner Hint의 안전 규칙과 동일한 취지). 기준 미달/DB 없음/예외는 모두
+        None을 반환해 호출자가 기존 순서(Planner Hint -> Engine 기본값)로
+        자연스럽게 넘어가게 한다 - 이 메서드 자체는 예외를 던지지 않는다.
+        """
+        try:
+            if blocked:
+                return None
+
+            for item in top_items or []:
+                if not isinstance(item, dict):
+                    continue
+
+                score = (item.get("score") or {}).get("overall_score", 0.0)
+                sample_size = item.get("sample_size", 0)
+
+                if (
+                    isinstance(score, (int, float)) and score >= self.COMPETITOR_HINT_MIN_SCORE
+                    and isinstance(sample_size, (int, float)) and sample_size >= self.COMPETITOR_HINT_MIN_SAMPLE_SIZE
+                ):
+                    value = item.get("value")
+                    return value if isinstance(value, str) and value else None
+
+            return None
+        except Exception:
+            return None
 
     def _resolve_content_strategy_hint(self, planner_result: Optional[Dict[str, Any]]) -> Optional[str]:
         """

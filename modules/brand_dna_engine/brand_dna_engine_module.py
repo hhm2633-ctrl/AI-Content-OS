@@ -7,6 +7,7 @@ from modules.brand_dna_engine.brand_dna_interface import BrandDNAInterface
 from modules.brand_dna_engine.brand_dna_storage import BrandDNAStorage
 from modules.brand_dna_engine.brand_dna_tracker import BrandDNATracker
 from modules.brand_dna_engine.brand_profile_loader import BrandProfileLoader
+from modules.competitor_learning.competitor_learning_interface import CompetitorLearningInterface
 
 
 class BrandDNAEngineModule(BaseModule):
@@ -34,6 +35,12 @@ class BrandDNAEngineModule(BaseModule):
         self.storage = BrandDNAStorage()
         self.history = BrandDNAHistory()
         self.interface = BrandDNAInterface(self.storage)
+
+        # Competitor Learning Interface 연결(Sprint 18): 우리 브랜드 자신의
+        # dominant_hook_type/dominant_cta_type/dominant_layout_type 계산 로직은
+        # 전혀 건드리지 않고, Instagram Research로 관찰한 "계정별(경쟁 계정)"
+        # hook/cta/pattern/layout 통계를 참고 정보로만 덧붙인다.
+        self.competitor_learning_interface = CompetitorLearningInterface()
 
     def run(
         self,
@@ -87,9 +94,34 @@ class BrandDNAEngineModule(BaseModule):
             "dominant_layout_type": dna.get("dominant_layout_type", ""),
             "dominant_color": dna.get("dominant_color", ""),
             "total_observations": dna.get("total_observations", 0),
+            "competitor_learning_reference": self._build_competitor_learning_reference(),
             "fallback_used": False,
             "created_at": datetime.now().isoformat(),
         }
+
+    def _build_competitor_learning_reference(self) -> Dict[str, Any]:
+        """
+        Competitor Learning DB 참고(Sprint 18): storage/knowledge/
+        competitor_statistics.json(CompetitorLearningModule이 이미 계산/저장한
+        계정별 hook/cta/pattern/layout 통계)을 읽기 전용으로 참고만 한다. 이
+        Engine 자신의 dominant_* 계산/저장 로직은 전혀 바꾸지 않으며, 이
+        메서드는 절대 예외를 던지지 않는다.
+        """
+        try:
+            if not self.competitor_learning_interface.is_available():
+                return {"available": False, "account_profiles": {}, "account_count": 0}
+
+            competitor_statistics = self.competitor_learning_interface.get_competitor_statistics()
+            accounts = competitor_statistics.get("accounts", {})
+
+            return {
+                "available": True,
+                "account_profiles": accounts if isinstance(accounts, dict) else {},
+                "account_count": competitor_statistics.get("account_count", 0),
+            }
+        except Exception as error:
+            print(f"Brand DNA Competitor Learning Reference Failed: {error}")
+            return {"available": False, "account_profiles": {}, "account_count": 0, "reason": str(error)}
 
     def _fallback_result(self, reason: str) -> Dict[str, Any]:
         try:
@@ -106,6 +138,7 @@ class BrandDNAEngineModule(BaseModule):
             "dominant_layout_type": "",
             "dominant_color": "",
             "total_observations": 0,
+            "competitor_learning_reference": {"available": False, "account_profiles": {}, "account_count": 0},
             "fallback_used": True,
             "reason": reason,
             "created_at": datetime.now().isoformat(),

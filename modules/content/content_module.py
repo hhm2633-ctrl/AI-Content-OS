@@ -137,6 +137,33 @@ class ContentModule(BaseModule):
             else "참고할 만큼 점수가 높은 Knowledge 항목이 아직 없어 프롬프트를 그대로 사용함."
         )
 
+        # Competitor Learning DB 실제 소비 기록(Sprint 18): ContentPromptBuilder가
+        # 이미 계산해 둔 hook/cta competitor_learning_consumption을 그대로
+        # content_result로 끌어올린다. legacy 경로(prompt_meta 없음)는 평가 자체가
+        # 없었다는 사실을 정직하게 기록한다(가짜로 "미적용"을 꾸며내지 않음).
+        if prompt_source == "pattern_aware" and isinstance(prompt_meta.get("competitor_learning_consumption"), dict):
+            competitor_consumption = prompt_meta["competitor_learning_consumption"]
+            applied_items = [
+                {"type": field, "value": entry.get("final_value")}
+                for field, entry in competitor_consumption.items()
+                if isinstance(entry, dict) and entry.get("applied")
+            ]
+            content_result["competitor_learning_consumption"] = competitor_consumption
+            content_result["competitor_learning_used"] = bool(applied_items)
+            content_result["competitor_learning_items"] = applied_items
+            content_result["competitor_learning_influence"] = (
+                "Competitor Learning Knowledge Database 힌트로 Hook/CTA를 재지정함."
+                if applied_items
+                else "Competitor Learning Knowledge Database 힌트가 없거나 기준 미달이라 기존 방식을 그대로 사용함."
+            )
+        else:
+            content_result["competitor_learning_consumption"] = {}
+            content_result["competitor_learning_used"] = False
+            content_result["competitor_learning_items"] = []
+            content_result["competitor_learning_influence"] = (
+                "legacy 프롬프트 경로(pattern_plan 없음)라 Competitor Learning 힌트를 평가하지 않음."
+            )
+
         content_result["engine_influence"] = self._build_engine_influence(
             content_result=content_result,
             prompt_source=prompt_source,

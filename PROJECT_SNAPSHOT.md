@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T12:42:04
+Updated at: 2026-07-11T13:27:00
 
 ## Execution Command
 
@@ -272,6 +272,15 @@ AI-Content-OS/
 |   |   |-- instagram_benchmark_parser.py
 |   |   |-- news_source.py
 |   |   `-- tools_funnel_parser.py
+|   |-- competitor_learning/
+|   |   |-- __init__.py
+|   |   |-- competitor_learning_dashboard.py
+|   |   |-- competitor_learning_extractor.py
+|   |   |-- competitor_learning_interface.py
+|   |   |-- competitor_learning_module.py
+|   |   |-- competitor_learning_score.py
+|   |   |-- competitor_learning_statistics.py
+|   |   `-- competitor_learning_storage.py
 |   |-- content/
 |   |   |-- brand_rule_evaluator.py
 |   |   |-- content_duplicate_detector.py
@@ -483,6 +492,8 @@ AI-Content-OS/
 |   |   `-- competitor_statistics.json
 |   |-- content/
 |   |   `-- (1 runtime file(s) omitted; gitignored, see .gitignore)
+|   |-- dashboard/
+|   |   `-- daily_learning_report.json
 |   |-- generated_images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- history/
@@ -492,16 +503,23 @@ AI-Content-OS/
 |   |-- images/
 |   |   `-- (4 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- knowledge/
+|   |   |-- competitor_learning_history.json
+|   |   |-- competitor_statistics.json
+|   |   |-- cta_statistics.json
+|   |   |-- hook_statistics.json
 |   |   |-- knowledge.json
+|   |   |-- knowledge_database.json
 |   |   |-- knowledge_history.json
 |   |   |-- knowledge_index.json
-|   |   `-- knowledge_statistics.json
+|   |   |-- knowledge_statistics.json
+|   |   |-- layout_statistics.json
+|   |   `-- pattern_statistics.json
 |   |-- learning/
 |   |   |-- learning_history.json
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (374 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (386 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -542,7 +560,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (61 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (64 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -566,6 +584,14 @@ AI-Content-OS/
 |   |-- test_ai_planner_decision_engine.py
 |   |-- test_ai_planner_module.py
 |   |-- test_ai_planner_schema.py
+|   |-- test_competitor_learning_dashboard.py
+|   |-- test_competitor_learning_extractor.py
+|   |-- test_competitor_learning_interface.py
+|   |-- test_competitor_learning_module.py
+|   |-- test_competitor_learning_score.py
+|   |-- test_competitor_learning_statistics.py
+|   |-- test_competitor_learning_storage.py
+|   |-- test_competitor_learning_wiring.py
 |   |-- test_content_output_normalizer.py
 |   |-- test_content_output_validator.py
 |   |-- test_instagram_research_classifier.py
