@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T14:14:10
+Updated at: 2026-07-11T17:44:21
 
 ## Execution Command
 
@@ -88,6 +88,7 @@ AI-Content-OS/
 |       |-- ai-content-os-retry-audit/
 |       `-- ai-content-os-sprint/
 |-- .codex-test-tmp/
+|   |-- card_news_render_test_rdfokizy/
 |   |-- competitor_learning_interface_test_7f_pzxnv/
 |   |-- competitor_learning_interface_test_bjdbpp0g/
 |   |-- competitor_learning_interface_test_crz6aoo_/
@@ -133,6 +134,9 @@ AI-Content-OS/
 |   |-- competitor_learning_test_sjvsk6f5/
 |   |-- competitor_learning_test_wq98wuc9/
 |   |-- competitor_learning_test_wxlmzzan/
+|   |-- evidence_selector_test_4j2omq3s/
+|   |-- evidence_selector_test_jdsso62l/
+|   |-- evidence_selector_test_tty6g8a7/
 |   |-- instagram_research_test_0l2dgunb/
 |   |-- instagram_research_test_0m80me7_/
 |   |-- instagram_research_test_0uidxwko/
@@ -334,10 +338,18 @@ AI-Content-OS/
 |   |   |-- card_news_module.py
 |   |   |-- card_news_quality_checker.py
 |   |   |-- card_news_text_optimizer.py
+|   |   |-- debate_question_selector.py
+|   |   |-- evidence_selector.py
 |   |   |-- highlight_engine.py
 |   |   |-- layout_rule_engine.py
 |   |   |-- layout_selector.py
-|   |   `-- slide_designer.py
+|   |   |-- mobile_readability_checker.py
+|   |   |-- render_constants.py
+|   |   |-- slide_designer.py
+|   |   |-- social_proof_selector.py
+|   |   |-- story_flow_planner.py
+|   |   |-- typography_rules.py
+|   |   `-- visual_rhythm_selector.py
 |   |-- common/
 |   |   |-- __init__.py
 |   |   |-- metadata_standard.py
@@ -604,7 +616,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (396 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (406 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -645,7 +657,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (66 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (68 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -669,6 +681,7 @@ AI-Content-OS/
 |   |-- test_ai_planner_decision_engine.py
 |   |-- test_ai_planner_module.py
 |   |-- test_ai_planner_schema.py
+|   |-- test_card_news_production_quality.py
 |   |-- test_competitor_learning_dashboard.py
 |   |-- test_competitor_learning_extractor.py
 |   |-- test_competitor_learning_interface.py
@@ -704,8 +717,6 @@ AI-Content-OS/
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md
-|-- full_test_output.txt
-|-- full_test_output2.txt
 |-- ig_test_output.txt
 |-- MODULE_SPEC.md
 |-- MODULE_STATUS.md

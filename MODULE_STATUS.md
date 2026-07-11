@@ -32,6 +32,14 @@ implemented and verified against `src/workflow_engine.py`.
   -> Learning -> Knowledge -> Brand DNA -> Pattern -> Content loop. Explicitly a **pre-publish
   internal `quality_score` proxy**, not real Instagram performance — see `DECISIONS.md`
   (2026-07-11) and `ROADMAP.md` "Requires External API" for the real post-publish version.
+- **CardNews Intelligence (Phase M7) + Production Quality (Phase M8)**: implemented (2026-07-11)
+  — Evidence Selection with topic-relevance + copyright render guards, Social Proof safe
+  selection (masking/PII scrub/opinion labeling), Story Flow planning, Debate/CTA conflict guard,
+  Typography hierarchy, Human Visual Rhythm, Mobile Readability + Contrast guard, Source
+  Attribution, and 10 new Production Quality QA checks — all layered onto the existing
+  `CardNewsModule` Pillow renderer. See the "Phase M7 + Phase M8" entry below for full detail.
+  Social Proof stays honestly `available: false` (no real comment collector exists yet); Instagram
+  competitor screenshots remain `render_allowed: false` by design (analysis-only).
 
 ## Planning
 
@@ -1239,11 +1247,108 @@ duplicating any existing Engine.
     99_final_result.json`). Codex MCP independent review: **APPROVED** (one BLOCK — the
     `_fallback_result()` metadata gap above — fixed, re-reviewed).
 
+## Phase M7 (CardNews Intelligence) + Phase M8 (CardNews Production Quality) Completed (2026-07-11)
+
+Goal: elevate `CardNewsModule`'s existing Pillow renderer from "functionally generated images"
+to production-quality output, and close the Evidence/Social Proof misuse gaps found during M7
+review — all layered onto the existing renderer. No new top-level Engine, no new Renderer,
+`src/workflow_engine.py` has zero diff (confirmed via `git diff --stat`).
+
+- **Evidence Selection + guards** (`modules/card_news/evidence_selector.py`): a screenshot asset
+  is only ever `available: true` when ALL FOUR independently-computed gates pass —
+  `candidate_found` (file actually exists), `topic_relevant` (>= 2 matched terms AND score >=
+  0.34 against `research_result`, never a single coincidental word), `render_allowed`
+  (`copyright_status` in an explicit allow-list: `owned`/`licensed`/`public_domain`/
+  `official_reuse_allowed`/`user_supplied_with_permission`), and `asset_role == "topic_evidence"`.
+  Instagram-Research-sourced screenshots are hardcoded `asset_role: "competitor_reference"` and
+  `copyright_status: "third_party_unlicensed_reference"` — never auto-promoted to topic evidence
+  (no signal strong enough exists yet), so they can never reach the rendered card background.
+  `CardNewsModule._apply_evidence_asset` re-checks `asset_role`/`render_allowed`/`candidate_found`
+  as defense-in-depth before ever substituting an image path (does not trust `available` alone).
+- **Social Proof safe selection** (`modules/card_news/social_proof_selector.py`): only real
+  `comment_text`/`reply_text`/`reaction_text`/`quote_text` fields count as candidates —
+  `caption_text` (the post owner's own text) and `visible_*_text` (like/comment *counts*, not
+  content) are explicitly excluded. `_mask_account_handle()` (keep first 2 + last 1 char) and
+  `_scrub_sensitive_info()` (email/phone regex masking, no meaning changes) are applied before any
+  text reaches rendering. Every selected item carries `is_opinion: true` + `label: "커뮤니티 반응"` +
+  a disclaimer. `available: false` remains correct today since no real third-party comment text
+  source exists yet (only like/comment counts) — this is an honest gap, not a bug.
+- **Story Flow + Debate/CTA guard** (`story_flow_planner.py`, `debate_question_selector.py`):
+  narrative roles (`cover`/`problem`/`evidence`/`explanation`/`social_proof`/`conclusion`/
+  `debate_cta`) are assigned only to slides that actually exist (`applied_roles` length never
+  exceeds the real slide count). Debate questions are skipped entirely when `cta_type == "comment"`
+  (already comment-inducing, would be redundant) and, at apply time, when the combined CTA+question
+  text would exceed the existing `CTA_MAX_SENTENCES` character budget — the original CTA body is
+  always preserved unchanged in both skip cases.
+- **Typography + Human Visual Rhythm, actually wired into the renderer** (`typography_rules.py`,
+  `visual_rhythm_selector.py`, `render_constants.py`): 7 typography roles (`cover_title`/
+  `slide_title`/`body`/`quote`/`source`/`cta`/`page_number`) define real `font_size_range`/
+  `max_lines`/`line_spacing`/`paragraph_spacing`. `CardNewsModule._plan_text_layout()` computes
+  actual line-wrapped text and font size **before** the card box is drawn, and
+  `_draw_layout_card`/`_draw_layout_text_content` use those real values (not just metadata) —
+  `VISUAL_STYLE_PROFILES` (`title_focus`/`short_line_focus`/`image_focus`/`quote_card`/
+  `comparison`/`whitespace_focus`/`cta_focus`) vary `box_top`/line-count budgets per slide's
+  narrative role. `quote_card` and `comparison` fall back to a safe default style
+  (`_resolve_visual_rhythm_application()`) when the real data they'd need (an actually-applied
+  Social Proof quote / an actual A/B comparison structure, which the slide schema doesn't have
+  yet) isn't present — never fabricated. `render_constants.py` is a single shared source of truth
+  for font sizes/margins/palette between the renderer and `MobileReadabilityChecker` (no
+  duplicated/drifting copies).
+- **Contrast + Mobile Readability guard** (`mobile_readability_checker.py`): real WCAG relative-
+  luminance contrast computed from the renderer's actual palette. Found and fixed a real
+  pre-existing defect: light-mode subtitle text (120,120,120) on white box_fill had a measured
+  contrast ratio of 4.42, below the WCAG AA 4.5 threshold — darkened to (112,112,112) (measured
+  ~4.95) rather than lowering the threshold to hide the finding. Checker result now includes
+  `evaluated_render_values`/`min_font_size_used`/`contrast_ratio_min`/`safe_margin_used`/
+  `overflow_detected`, all computed from the same shared constants the renderer uses.
+- **Source Attribution**: shown only when an Evidence asset was both `render_allowed: true` AND
+  actually `applied: true` for that slide — `source_type` + `source_name` in the bottom safe area,
+  never a raw `source_url`. No attribution block is drawn at all when either condition is false.
+- **Production Quality QA** (`card_news_quality_checker.py`): 10 new checks
+  (`typography_hierarchy_ok`/`cover_readability_ok`/`mobile_readability_ok`/`visual_rhythm_ok`/
+  `text_overflow_free`/`contrast_ok`/`source_legible`/`cta_focus_ok`/
+  `prohibited_fake_screenshot_absent`/`unlicensed_asset_not_rendered`) added to `CHECK_POINTS`;
+  the pre-existing 14 checks were proportionally rescaled (100 -> 70) so the total remains exactly
+  100 (verified: `sum(CardNewsQualityChecker.CHECK_POINTS.values()) == 100`). Data genuinely
+  unavailable (not yet collected) is never penalized (`CONDITIONAL_CHECKS`/`_conditional_ok`);
+  only "data was available but not applied" is penalized.
+- **Real defect found and fixed during final PNG inspection** (not caught by compile/unit tests):
+  `CardNewsTextOptimizer.SENTENCE_SPLIT_PATTERN` (and the identical pattern duplicated in
+  `CardNewsModule._fit_lines`) treated a period right after a digit (e.g. `"1."` `"2."` in a
+  numbered list) as a sentence boundary, so `BODY_MAX_SENTENCES` truncation could cut a rendered
+  card's body to `"1. <content> 2."` — item 2's number surviving but its actual content silently
+  disappearing. Fixed the regex to require a non-digit character before the sentence-ending
+  punctuation (`(?<=[^\d][.!?。!?])`), confirmed via a real generated PNG before/after. Also
+  hardened both modules' true last-resort character-level truncation fallback (only reached when
+  even the minimum font size / a single remaining sentence still doesn't fit) to append an
+  ellipsis ("…") rather than cutting with no visual indicator at all (found by Codex MCP review,
+  fixed, re-reviewed APPROVED).
+- **Honest current limitations** (not bugs — no data source exists yet):
+  - No real third-party comment-body collector exists; Social Proof stays `available: false`
+    until one is built.
+  - Instagram competitor screenshots remain `competitor_reference`/`render_allowed: false` by
+    design — analysis-only, never auto-rendered.
+  - `comparison` visual style always falls back to the default style — the slide schema has no
+    real A/B comparison structure yet.
+  - Real post-publish Instagram performance Closed Loop still requires Meta/Instagram Graph API +
+    OAuth (see `ROADMAP.md` "Requires External API") — unrelated to and unblocked by this Phase.
+- New `tests/test_card_news_production_quality.py` (35 risk-based tests covering the guards
+  above — no test-count target, each test maps to one specific risk item). Verified once each:
+  `py -m unittest discover -s tests -v` -> 480 tests pass; `py -m compileall -f src modules
+  scripts tests` clean; `py -m src.main` -> `workflow_completed` (`card_news_completed`,
+  `publishing_ready`, 4 PNGs, `evidence_result`/`social_proof_result`/`story_flow_result`/
+  `debate_result`/`typography_result`/`visual_rhythm_result`/`mobile_readability_result`/
+  `card_news_quality` all present). All 4 generated PNGs opened and visually inspected (cover not
+  overcrowded, clear hierarchy/whitespace rhythm per slide, clear CTA, no unsourced attribution,
+  no fake comment card, no competitor screenshot misuse). Codex MCP independent review: one BLOCK
+  (silent-truncation-fallback finding above), fixed, re-reviewed **APPROVED**.
+
 ## Next
 
-- CardNews Intelligence -> Evidence Selection -> Comment/Social Proof Selection -> Story Flow ->
-  Debate/CTA -> Production Quality (next priority as of 2026-07-11; see `ROADMAP.md` M7).
-  Reels/Shorts and Commerce are explicitly not started yet.
+- CardNews real-output operational testing: generate card news across a range of real topics,
+  confirm upload-ready quality end to end, apply any small design corrections found (next
+  priority as of 2026-07-11; see `ROADMAP.md` M7-next). Commerce/Reels/Shorts are explicitly not
+  started yet.
 - Real post-publish Instagram Performance Closed Loop (actual likes/comments/saves/shares/reach
   replacing the current internal `quality_score` proxy in Learning/Knowledge Feedback) — requires
   Meta/Instagram Graph API + OAuth + a publish-result Import step; see `ROADMAP.md` "Requires

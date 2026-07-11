@@ -50,17 +50,36 @@
 - SmartStore/Coupang content workflow
 - 채널별 재가공 파이프라인
 
-## M7: CardNews Intelligence (다음 최우선 작업, 2026-07-11 지정)
+## M7: CardNews Intelligence (완료, 2026-07-11)
 
-Instagram Intelligence Phase(Internal Quality Feedback Loop) 완료 후 다음 최우선 순서.
-Reels/Shorts, Commerce(SmartStore/Coupang)는 지금 시작하지 않는다.
+Instagram Intelligence Phase(Internal Quality Feedback Loop) 완료 후 다음 최우선 순서로 지정됐고,
+같은 날 Production Quality(M8)까지 함께 완료됐다. 전부 기존 `CardNewsModule` Pillow Renderer
+확장으로 구현(새 Engine/Renderer 없음, `src/workflow_engine.py` diff 없음). 상세 내용은
+`MODULE_STATUS.md`의 "Phase M7 + Phase M8" 항목 참고.
 
-1. CardNews Intelligence
-2. Evidence Selection
-3. Comment/Social Proof Selection
-4. Story Flow
-5. Debate/CTA
-6. Production Quality
+1. CardNews Intelligence — 완료
+2. Evidence Selection (+ 주제 관련성/저작권 render guard) — 완료
+3. Comment/Social Proof Selection (+ 마스킹/PII/의견 라벨링) — 완료
+4. Story Flow — 완료
+5. Debate/CTA (+ 충돌 방지) — 완료
+6. Production Quality (Typography/Visual Rhythm/Mobile Readability/Contrast/Source
+   Attribution/QA 10개 항목) — 완료
+
+honest 현재 제한 (버그 아님, 데이터 소스가 아직 없음):
+
+- 실제 제3자 댓글 본문 수집기가 없어 Social Proof는 `available: false`가 정상 상태
+- Instagram 경쟁계정 screenshot은 `competitor_reference`/`render_allowed: false`로 분석용만
+  유지 — 자동 렌더링 금지
+- `comparison` 시각 스타일은 실제 A/B 비교 구조 데이터가 없어 항상 기본 스타일로 fallback
+
+## M7-next: CardNews 실제 결과물 운영 테스트 (다음 최우선 작업, 2026-07-11 지정)
+
+M7+M8 완료 후 다음 최우선 순서. Reels/Shorts, Commerce(SmartStore/Coupang)는 지금 시작하지
+않는다.
+
+1. 다양한 실제 주제로 카드뉴스 생성
+2. 실제 업로드 가능한 품질 확인
+3. 필요한 소규모 디자인 보정
 # Research Knowledge / Intelligence Engines
 
 - Knowledge Engine: v1 implemented (Sprint 11), enhanced (Sprint 13: global rank across full DB, `search()`, in-run cache, per-type average score statistics) — real read+write consumption wired into Pattern Engine (confidence_score boost on match), Content Module (prompt guidance injection), CardNews Module (layout_quality_score boost on match), Audit Engine (duplicate_check blending), Learning Engine (knowledge_score component)

@@ -73,6 +73,18 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
   quality_score 대리 신호다** — `performance_source: "internal_quality_proxy"` 등 4개
   메타데이터 필드로 모든 결과 구조에 명시(`DECISIONS.md` 2026-07-11 참고). 실제 게시 후 성과
   기반 Closed Loop는 아직 없음(`ROADMAP.md` "Requires External API").
+- **CardNews Renderer — Intelligence(M7) + Production Quality(M8)** (2026-07-11, `modules/
+  card_news/`, 새 Engine/Renderer 아님, 기존 `CardNewsModule` Pillow Renderer 확장) —
+  Evidence Selection(주제 관련성 최소 2개 용어 일치+점수 0.34 이상, 허용된 `copyright_status`만
+  render 가능, Instagram Research 출처는 항상 `competitor_reference`로 자동 렌더 차단),
+  Social Proof 안전 선정(실제 댓글 필드만, caption/개수 오인 금지, 계정 마스킹+PII 스크럽+의견
+  라벨링), Story Flow/Debate-CTA 충돌 방지, Typography 계층 + Human Visual Rhythm(서사 role
+  기준 7개 시각 스타일, 실제 데이터 없으면 안전 스타일로 fallback) 실제 PNG 반영, Mobile
+  Readability + WCAG Contrast guard(`render_constants.py`가 Renderer/Checker 공용 단일 진실
+  소스), Source Attribution(실제 적용+허용된 evidence만), Production Quality QA 10개 항목
+  (총점 100 유지). `src/workflow_engine.py` diff 없음. 현재 정직한 제한: 실제 제3자 댓글
+  수집기 없음(Social Proof `available: false`가 정상), 경쟁계정 screenshot은 분석용만
+  (`render_allowed: false`), `comparison` 스타일은 실제 A/B 데이터 없어 항상 fallback.
 
 ## 절대 지켜야 할 것 (`PROJECT_OPERATING_SYSTEM.md`와 동일, 여기서도 반복)
 
@@ -90,8 +102,16 @@ Sprint 14-0 항목 참고) — 이 문서와 실제 `src/workflow_engine.py`를 
 - **Claude** — 대규모 구현, 광범위 리팩토링, 신규 Engine 구축.
 - **Codex** — Repository 운영(git), compile/test, git diff 검토, 문서 자동 갱신 스크립트 실행.
 
-## 알려진 리스크 / 감시 항목 (2026-07-11 기준, Instagram Intelligence Phase 갱신)
+## 알려진 리스크 / 감시 항목 (2026-07-11 기준, CardNews Intelligence M7+M8 갱신)
 
+- **CardNews Intelligence(M7) + Production Quality(M8)(2026-07-11)는 완료됐지만, Social
+  Proof/Evidence의 "실제 데이터 없음" 상태를 절대 착각하지 말 것.** 실제 제3자 댓글 본문
+  수집기가 없어 `social_proof_result.available: false`가 정상이고, Instagram 경쟁계정
+  screenshot은 `asset_role: "competitor_reference"`/`render_allowed: false`로 분석용에만
+  머문다 — 둘 다 "아직 안 만들어서"가 아니라 "실제 데이터/신호가 없어서" 정직하게 비활성 상태를
+  유지하는 것이며, 이 상태를 임의로 채워 넣거나(가짜 댓글 생성, competitor_reference를
+  topic_evidence로 승격) 우회하지 않는다. 다음 우선순위는 새 기능이 아니라 실제 주제로
+  카드뉴스를 생성해 운영 품질을 확인하는 것이다(`ROADMAP.md` M7-next).
 - **Instagram Intelligence Phase(2026-07-11)는 완료됐지만, "실제 Instagram 성과 기반"이
   아니다.** `content_performance_history`/Learning Feedback/Knowledge Feedback은 전부 발행
   전(pre-publish) 내부 `quality_score` 대리 신호로 동작한다. 실제 좋아요/댓글/저장/공유/도달

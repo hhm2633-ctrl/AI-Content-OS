@@ -29,13 +29,23 @@ class CardNewsTextOptimizer:
     BODY_LINE_MAX_LENGTH = 24
     BODY_MAX_SENTENCES = 3
     CTA_MAX_SENTENCES = 2
+    # Phase M8 (Production Quality) - Cover Optimization: 첫 장(hook)은 본문
+    # 요약이 아니라 "제목 1개 + 보조 문장 최대 1개"여야 한다. CTA와 동일한
+    # 기존 role 분기 패턴(is_cta)을 그대로 재사용해 hook에도 문장 수 상한을
+    # 둔다 - 새 파이프라인을 만들지 않는다.
+    COVER_MAX_SENTENCES = 1
 
     # body 길이는 headline 길이의 이 배수 범위 안에 있는 것을 이상적으로 본다.
     TITLE_BODY_RATIO_MIN = 1.2
     TITLE_BODY_RATIO_MAX = 6.0
 
     # 문장 종결 부호(.!?。！？) 뒤 공백 또는 줄바꿈 기준으로 문장을 나눈다.
-    SENTENCE_SPLIT_PATTERN = re.compile(r"(?<=[.!?。!?])\s+|\n+")
+    # 종결 부호 바로 앞이 숫자면(예: "1." "2." 같은 번호 매긴 목록 표시) 문장
+    # 경계로 보지 않는다 - 그렇지 않으면 "1. 내용\n2. 내용"이 "1.", "내용",
+    # "2." 처럼 쪼개져 뒤 문장 수 제한(BODY_MAX_SENTENCES)에서 "2."만 남고
+    # 실제 내용이 잘려나가는 결함이 있었다(Phase M8 실제 렌더 샘플 검증에서
+    # 발견).
+    SENTENCE_SPLIT_PATTERN = re.compile(r"(?<=[^\d][.!?。!?])\s+|\n+")
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
@@ -51,6 +61,7 @@ class CardNewsTextOptimizer:
                 "body_trimmed_count": 0,
                 "duplicate_removed_count": 0,
                 "cta_optimized": False,
+                "cover_optimized": False,
                 "readability_warnings": [f"Text Optimizer 실패: {error}"],
                 "fallback_used": True,
                 "readability_score": 0.0,
@@ -66,6 +77,7 @@ class CardNewsTextOptimizer:
         duplicate_removed_count = 0
         ratio_adjusted_count = 0
         cta_optimized = False
+        cover_optimized = False
         warnings: List[str] = []
         slide_readability: List[Dict[str, Any]] = []
 
@@ -78,6 +90,7 @@ class CardNewsTextOptimizer:
             page = slide.get("page", "?")
             role = str(slide.get("role", ""))
             is_cta = role == "cta"
+            is_cover = role == "hook"
 
             headline = str(slide.get("headline", ""))
             optimized_headline, headline_trimmed = self._optimize_headline(headline)
@@ -89,7 +102,12 @@ class CardNewsTextOptimizer:
                 )
 
             body = str(slide.get("body", ""))
-            max_sentences = self.CTA_MAX_SENTENCES if is_cta else self.BODY_MAX_SENTENCES
+            if is_cta:
+                max_sentences = self.CTA_MAX_SENTENCES
+            elif is_cover:
+                max_sentences = self.COVER_MAX_SENTENCES
+            else:
+                max_sentences = self.BODY_MAX_SENTENCES
 
             optimized_body, body_stats = self._optimize_body(body, max_sentences)
 
@@ -114,6 +132,14 @@ class CardNewsTextOptimizer:
                 if body_stats["original_sentence_count"] > self.CTA_MAX_SENTENCES:
                     warnings.append(
                         f"{page}장 CTA 문장이 {self.CTA_MAX_SENTENCES}개를 초과해 더 짧게 정리함."
+                    )
+
+            if is_cover:
+                cover_optimized = True
+
+                if body_stats["original_sentence_count"] > self.COVER_MAX_SENTENCES:
+                    warnings.append(
+                        f"{page}장 Cover 보조 문장이 {self.COVER_MAX_SENTENCES}개를 초과해 더 짧게 정리함."
                     )
 
             optimized_body, ratio_adjusted, ratio_value = self._balance_title_body_ratio(
@@ -147,6 +173,7 @@ class CardNewsTextOptimizer:
             "body_trimmed_count": body_trimmed_count,
             "duplicate_removed_count": duplicate_removed_count,
             "cta_optimized": cta_optimized,
+            "cover_optimized": cover_optimized,
             "readability_warnings": warnings,
             "fallback_used": False,
             "ratio_adjusted_count": ratio_adjusted_count,
@@ -267,8 +294,25 @@ class CardNewsTextOptimizer:
         total_budget = self.BODY_LINE_MAX_LENGTH * max_sentences
 
         if len(optimized_body) > total_budget:
-            optimized_body = self._trim_naturally(optimized_body, total_budget)
-            trimmed = True
+            # Phase M8 실제 렌더 샘플 검증에서 발견된 결함 수정: 번호 매긴
+            # 목록처럼 문장이 여러 개인 경우, 글자 단위(_trim_naturally)로
+            # 바로 자르면 "2." 처럼 항목 번호만 남고 내용이 사라져 의미가
+            # 달라진다. 문장이 2개 이상 남아 있으면 뒤쪽 문장부터 통째로
+            # 제거해 예산에 맞추고, 문장이 1개만 남았을 때만 최후 수단으로
+            # 글자 단위 자연스러운 절단을 쓴다(_fit_lines의 원칙과 동일).
+            while len(deduped_sentences) > 1 and len(" ".join(deduped_sentences)) > total_budget:
+                deduped_sentences = deduped_sentences[:-1]
+                trimmed = True
+
+            optimized_body = " ".join(deduped_sentences).strip()
+
+            if len(optimized_body) > total_budget:
+                # 문장 단위 제거로도 예산을 못 맞춘 마지막 한 문장은 글자
+                # 단위로 자연스럽게 자른다 - 이때도 잘렸다는 사실 자체를
+                # 숨기지 않기 위해 말줄임표(…)를 붙인다(Codex 리뷰 지적 반영,
+                # "조용히" 잘리지 않게 하는 최소한의 표시).
+                optimized_body = self._trim_naturally(optimized_body, total_budget).rstrip() + "…"
+                trimmed = True
 
         if not optimized_body:
             optimized_body = body

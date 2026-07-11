@@ -265,3 +265,71 @@ Applied Modules
 - `modules/brand_dna_engine/brand_dna_engine_module.py`
 - `modules/pattern_engine/pattern_engine_module.py`
 - `modules/content/content_quality_scorer.py`
+
+---
+
+# 2026-07-11 CardNews Intelligence (M7) + Production Quality (M8): Extend the Existing Renderer, Never Fabricate Evidence/Comments
+
+결정
+
+CardNews Intelligence(Evidence Selection/Social Proof Selection/Story Flow/Debate Engine)와
+CardNews Production Quality(Typography/Human Visual Rhythm/Mobile Readability/Contrast/Source
+Attribution/QA)는 새 Engine이나 새 Renderer를 만들지 않고, 기존 `CardNewsModule`(Pillow
+Renderer)을 확장하는 방식으로만 구현한다. `src/workflow_engine.py`는 건드리지 않는다.
+
+Evidence/Social Proof는 "파일이 존재한다"와 "실제로 써도 된다"를 절대 같은 값으로 취급하지
+않는다: Evidence는 `candidate_found`(파일 존재)/`topic_relevant`(주제 관련성, 단어 1개 우연
+일치로 통과시키지 않음)/`render_allowed`(허용된 `copyright_status`만)/`asset_role ==
+"topic_evidence"` 4개 게이트를 모두 통과해야 실제 카드 배경에 쓸 수 있다. Instagram Research
+스크린샷은 항상 `competitor_reference`(경쟁 계정 참고 자료)로 분류하고, 이 사건/주제의 실제
+증거라는 확인 신호가 없는 한 `topic_evidence`로 승격하지 않는다 — 출처 표시는 사용 허가를
+대신하지 않는다. Social Proof는 실제 댓글/반응 텍스트 필드(`comment_text`/`reply_text`/
+`reaction_text`/`quote_text`)만 후보로 인정하고, 게시물 소유자 자신의 글(`caption_text`)이나
+좋아요/댓글 "개수"(`visible_*_text`)는 절대 댓글 "내용"으로 오인하지 않는다. 실제 데이터가
+없으면 `available: false`를 정직하게 반환하고, 가짜 댓글이나 가짜 SNS 캡처를 만들지 않는다.
+
+이유
+
+카드뉴스가 실제 배포되는 콘텐츠이기 때문에, "그럴듯해 보이는 증거/반응"을 자동 생성하면
+독자를 속이는 결과로 이어진다. 이는 Sprint 13 Offline-First 원칙("가짜 외부 신호를 만들지
+않는다")과 2026-07-11 Instagram Intelligence Phase 결정("실제 값이 아닌 것을 실제 값처럼
+라벨링하지 않는다")의 CardNews 버전이다.
+
+완성된 것 / 완성되지 않은 것 구분
+
+- 완성됨: Evidence 주제 관련성/저작권 render guard, Social Proof 안전 선정(마스킹/PII
+  스크럽/의견 라벨링), Story Flow/Debate·CTA 충돌 방지, Typography 계층 + Human Visual
+  Rhythm의 실제 PNG 반영, Mobile Readability + WCAG Contrast guard(라이트 모드 subtitle
+  대비를 4.42 -> 4.95로 실측 수정), Source Attribution(실제 적용+허용된 evidence만),
+  Production Quality QA 10개 항목(총점 100 유지, 조건부 채점).
+- 완성되지 않음(버그 아니라 데이터 소스가 아직 없음): 실제 제3자 댓글 본문 수집기 — Social
+  Proof는 계속 `available: false`가 정상 상태다. Instagram 경쟁계정 screenshot의 실제 증거
+  승격(현재는 항상 `competitor_reference`로 남는다). `comparison` 시각 스타일에 쓸 실제 A/B
+  비교 슬라이드 구조(현재 slide 스키마에 없어 항상 기본 스타일로 fallback한다).
+
+검증 중 발견한 실결함과 최소 수정 원칙 확인
+
+최종 검증 단계에서 실제 생성된 PNG를 직접 열어본 결과, 번호 매긴 목록("1." "2.")을 문장
+경계로 오인하는 정규식 결함이 발견됐다(항목 번호만 남고 내용이 사라짐). 전체 구조를 다시
+만들지 않고 정규식 하나만 최소 수정했고, Codex MCP 리뷰가 추가로 지적한 "최후 수단 글자 단위
+절단에 잘렸다는 표시(말줄임표)가 없는" 문제도 동일하게 최소 수정했다. "실제 결과물을 직접
+확인해야만 발견되는 결함이 있다"는 원칙을 재확인한 사례로 기록한다.
+
+다음 최우선 작업
+
+CardNews 실제 결과물 운영 테스트 — 다양한 실제 주제로 카드뉴스 생성 -> 실제 업로드 가능한
+품질 확인 -> 필요한 소규모 디자인 보정. Reels/Shorts와 Commerce는 지금 시작하지 않는다.
+
+Applied Modules
+
+- `modules/card_news/evidence_selector.py`
+- `modules/card_news/social_proof_selector.py`
+- `modules/card_news/story_flow_planner.py`
+- `modules/card_news/debate_question_selector.py`
+- `modules/card_news/typography_rules.py`
+- `modules/card_news/visual_rhythm_selector.py`
+- `modules/card_news/mobile_readability_checker.py`
+- `modules/card_news/render_constants.py`
+- `modules/card_news/card_news_module.py`
+- `modules/card_news/card_news_quality_checker.py`
+- `modules/card_news/card_news_text_optimizer.py`

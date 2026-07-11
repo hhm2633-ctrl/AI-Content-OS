@@ -827,3 +827,21 @@
   compileall -f src modules scripts tests` clean, `py -m src.main` -> `workflow_completed`
   (CardNews/Publishing status unaffected). Codex MCP independent review: APPROVED (one BLOCK on a
   missing metadata field in the fallback path, fixed, re-reviewed).
+
+## 2026-07-11 16:30:42
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 16:42:28
+
+- Change: Complete CardNews Intelligence (M7) and Production Quality (M8): Evidence topic-relevance + copyright render guards, Social Proof safe selection (masking/PII scrub/opinion labeling), Story Flow planning, Debate/CTA conflict guard, Typography hierarchy, Human Visual Rhythm, Mobile Readability + Contrast guard, Source Attribution, Production Quality QA -- all wired into the existing CardNewsModule Pillow renderer (no new Engine/Renderer, WorkflowEngine untouched). 480 unit tests pass, compile clean, workflow_completed, Codex MCP review APPROVED.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 17:44:22
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
