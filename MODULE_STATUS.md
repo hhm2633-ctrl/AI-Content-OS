@@ -1345,6 +1345,15 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### CardNews Operational Complete (M7-next, 2026-07-11)
+
+- Generated and visually inspected all four 1024x1024 PNGs: no overlap, clipping, missing CTA, fake social proof, or prohibited competitor screenshot use.
+- Fixed QA diagnostics so safe layout-selection fallback is not mislabeled as renderer fallback.
+- Added `debate_required` so a documented character-budget/CTA-conflict skip is not penalized as an unexplained failure.
+- CardNews QA: 0.85, passed; `rendering_fallback_used: false`; only the safe layout-selection fallback remains informational.
+- Verification: 38 focused production-quality tests, compile clean, full `py -m src.main` -> `workflow_completed`, `card_news_completed`, `publishing_ready`.
+- CardNews M7, M8, and M7-next are now operationally complete. Missing real evidence/comments/images remain separate external-data capabilities.
+
 ### Work/Codex Operating System and Domain Skills (2026-07-11)
 
 - Default delivery path updated to ChatGPT Work CTO -> Codex execution in one project context.
@@ -1353,10 +1362,7 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 - Shorts and Coupang skills are planning/approval gates only; they do not mark those Roadmap engines as implemented.
 - Existing Claude domain files remain as compatibility references and are not the primary operating layer.
 
-- CardNews real-output operational testing: generate card news across a range of real topics,
-  confirm upload-ready quality end to end, apply any small design corrections found (next
-  priority as of 2026-07-11; see `ROADMAP.md` M7-next). Commerce/Reels/Shorts are explicitly not
-  started yet.
+- Shorts Phase 0 architecture may now proceed as an isolated planning task; it must not modify the protected CardNews pipeline or mark Shorts implemented.
 - Real post-publish Instagram Performance Closed Loop (actual likes/comments/saves/shares/reach
   replacing the current internal `quality_score` proxy in Learning/Knowledge Feedback) — requires
   Meta/Instagram Graph API + OAuth + a publish-result Import step; see `ROADMAP.md` "Requires

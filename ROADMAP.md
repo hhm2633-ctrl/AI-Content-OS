@@ -72,14 +72,19 @@ honest 현재 제한 (버그 아님, 데이터 소스가 아직 없음):
   유지 — 자동 렌더링 금지
 - `comparison` 시각 스타일은 실제 A/B 비교 구조 데이터가 없어 항상 기본 스타일로 fallback
 
-## M7-next: CardNews 실제 결과물 운영 테스트 (다음 최우선 작업, 2026-07-11 지정)
+## M7-next: CardNews 실제 결과물 운영 테스트 (완료, 2026-07-11)
 
-M7+M8 완료 후 다음 최우선 순서. Reels/Shorts, Commerce(SmartStore/Coupang)는 지금 시작하지
-않는다.
+M7+M8 이후 운영 종료 검증까지 완료했다.
 
-1. 다양한 실제 주제로 카드뉴스 생성
-2. 실제 업로드 가능한 품질 확인
-3. 필요한 소규모 디자인 보정
+1. 카드뉴스 4장 실제 렌더링과 시각 검수 완료
+2. Production QA 0.85/pass, 렌더링 fallback 없음 확인
+3. 안전한 레이아웃 대체와 실제 렌더링 fallback 진단 분리
+4. 의도된 Debate skip과 실제 미적용 결함 진단 분리
+5. 전용 위험 기반 테스트 38개, compile, `workflow_completed` 확인
+
+외부 LLM 실패로 생성 문안이 fallback인 상태, 실제 댓글/증거/이미지 데이터 부재는 CardNews
+Renderer 완료를 막는 결함이 아니다. 해당 항목은 Research/Instagram/외부 API Roadmap에서
+별도로 다룬다.
 # Research Knowledge / Intelligence Engines
 
 - Knowledge Engine: v1 implemented (Sprint 11), enhanced (Sprint 13: global rank across full DB, `search()`, in-run cache, per-type average score statistics) — real read+write consumption wired into Pattern Engine (confidence_score boost on match), Content Module (prompt guidance injection), CardNews Module (layout_quality_score boost on match), Audit Engine (duplicate_check blending), Learning Engine (knowledge_score component)

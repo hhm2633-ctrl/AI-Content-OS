@@ -1,9 +1,9 @@
 # CURRENT_TASK.md
 
 # AI-Content-OS
-Current Version: CardNews Intelligence (M7) + Production Quality (M8) complete (2026-07-11)
-Current Phase: CardNews real-output operational testing
-Status: M7+M8 complete, verified (tests/compile/workflow/Codex all APPROVED), pending next priority (CardNews operational testing across real topics)
+Current Version: CardNews Operational Complete (M7 + M8 + M7-next, 2026-07-11)
+Current Phase: Post-CardNews expansion planning
+Status: CardNews production path closed; Shorts Phase 0 architecture may proceed in an isolated Claude lane
 
 ---
 
@@ -23,10 +23,14 @@ Attribution, Production Quality QA 10개 항목 — 기존 `CardNewsModule` Pill
 전부 확장 방식으로 연결됐다(새 Engine/Renderer 없음, `src/workflow_engine.py` diff 없음).
 자세한 내용은 `MODULE_STATUS.md`의 "Phase M7 + Phase M8" 항목 참고.
 
-다음 최우선 작업은 CardNews 실제 결과물 운영 테스트다: 다양한 실제 주제로 카드뉴스를
-생성해 실제 업로드 가능한 품질인지 확인하고, 필요한 소규모 디자인 보정을 적용한다.
-Reels/Shorts와 Commerce는 지금 시작하지 않는다. 자세한 이력은 `MODULE_STATUS.md`(Sprint별
-완료 내역), 현재/향후 계획은 `ROADMAP.md`를 따른다.
+CardNews 실제 결과물 운영 검증까지 완료됐다. 전용 위험 기반 테스트 38개, compile,
+`workflow_completed`, `card_news_completed`, `publishing_ready`, QA 0.85/pass, 렌더링 fallback
+없음, PNG 4장 직접 시각 검수를 확인했다. 안전한 기존 레이아웃 대체는 렌더링 실패와 분리해
+진단하고, 글자 수 보호로 의도적으로 생략한 Debate는 결함으로 감점하지 않는다.
+
+다음 단계는 기존 카드뉴스 경로를 건드리지 않는 독립 작업으로 진행한다. Claude는 Shorts
+Phase 0 아키텍처/계약 초안만 작성하고, Work/Codex는 저장소 통합·검증과 다음 실행 우선순위를
+관리한다. 자세한 이력은 `MODULE_STATUS.md`, 향후 계획은 `ROADMAP.md`를 따른다.
 
 ---
 

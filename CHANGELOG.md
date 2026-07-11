@@ -865,3 +865,22 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-11 18:47:23
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 CardNews Operational Completion
+
+- Change: Completed M7-next operational validation with direct review of four rendered PNGs and corrected QA diagnostics for layout-selection fallback versus renderer fallback.
+- Change: Added `debate_required` so intentional character-budget/CTA-conflict skips are not scored as unexplained Debate failures.
+- Tests: 38 focused CardNews production-quality tests passed; compile clean.
+- Workflow: `py -m src.main` -> `workflow_completed`, `card_news_completed`, `publishing_ready`; Production QA 0.85/pass with no rendering fallback.
+
+## 2026-07-11 18:50:56
+
+- Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

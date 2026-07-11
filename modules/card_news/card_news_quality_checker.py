@@ -69,7 +69,7 @@ class CardNewsQualityChecker:
     CONDITIONAL_CHECKS = {
         "evidence_applied": "evidence_available",
         "social_proof_applied": "social_proof_available",
-        "debate_applied": "debate_should_apply",
+        "debate_applied": "debate_required",
         "attribution_present": "attribution_needed",
         "typography_hierarchy_ok": "typography_result_exists",
         "cover_readability_ok": "design_quality_exists",
@@ -161,6 +161,8 @@ class CardNewsQualityChecker:
         social_proof_applied = bool(card_news_result.get("social_proof_applied"))
         debate_should_apply = bool(debate_result.get("should_apply"))
         debate_applied = bool(debate_result.get("applied"))
+        debate_skip_reason = str(debate_result.get("skip_reason", "") or "").strip()
+        debate_required = debate_should_apply and not debate_skip_reason
         attribution_needed = evidence_applied or social_proof_applied
         attribution_present = bool(card_news_result.get("attribution_present"))
         slide_continuity_ok = self._check_slide_continuity(cards)
@@ -237,6 +239,8 @@ class CardNewsQualityChecker:
             "layout_result_exists": layout_result_exists,
             "rendering_result_exists": rendering_result_exists,
             "layout_applied": layout_applied,
+            "layout_fallback_used": layout_fallback_used,
+            "rendering_fallback_used": rendering_fallback_used,
             "fallback_used": fallback_used,
             "highlight_exists": highlight_exists,
             "cta_slide_exists": cta_slide_exists,
@@ -247,6 +251,7 @@ class CardNewsQualityChecker:
             "social_proof_available": social_proof_available,
             "social_proof_applied": social_proof_applied,
             "debate_should_apply": debate_should_apply,
+            "debate_required": debate_required,
             "debate_applied": debate_applied,
             "attribution_needed": attribution_needed,
             "attribution_present": attribution_present,
@@ -396,8 +401,10 @@ class CardNewsQualityChecker:
         if not checks.get("rendering_result_exists"):
             warnings.append("rendering_result가 없습니다.")
 
-        if checks.get("fallback_used"):
+        if checks.get("rendering_fallback_used"):
             warnings.append("rendering_result.fallback_used=True (레이아웃 인지 렌더링이 일부/전부 fallback됨).")
+        elif checks.get("layout_fallback_used"):
+            warnings.append("layout_result.fallback_used=True (안전한 기존 레이아웃으로 대체 선택됨).")
 
         if not checks.get("cta_slide_exists"):
             warnings.append("CTA 슬라이드를 찾을 수 없습니다.")
@@ -414,7 +421,7 @@ class CardNewsQualityChecker:
         if checks.get("social_proof_available") and not checks.get("social_proof_applied"):
             warnings.append("social proof 후보가 실제로 있었는데 카드뉴스에 적용되지 않았습니다.")
 
-        if checks.get("debate_should_apply") and not checks.get("debate_applied"):
+        if checks.get("debate_required") and not checks.get("debate_applied"):
             warnings.append("debate 질문이 적용 대상이었는데 실제로 추가되지 않았습니다.")
 
         if checks.get("attribution_needed") and not checks.get("attribution_present"):
@@ -515,8 +522,10 @@ class CardNewsQualityChecker:
         if not checks.get("layout_applied"):
             recommendations.append("레이아웃 인지 렌더링이 적용되지 않았습니다. layout_result/rendering_result를 점검하세요.")
 
-        if checks.get("fallback_used"):
+        if checks.get("rendering_fallback_used"):
             recommendations.append("일부 카드가 기본 렌더링으로 fallback되었습니다. 원인을 로그에서 확인하세요.")
+        elif checks.get("layout_fallback_used"):
+            recommendations.append("중복·품질 보호 규칙으로 안전한 기존 레이아웃이 선택됐습니다. 필요하면 선택 근거만 검토하세요.")
 
         if not checks.get("cta_slide_exists"):
             recommendations.append("CTA 슬라이드가 감지되지 않았습니다. 콘텐츠 슬라이드 구조를 확인하세요.")
@@ -533,7 +542,7 @@ class CardNewsQualityChecker:
         if checks.get("social_proof_available") and not checks.get("social_proof_applied"):
             recommendations.append("사용 가능한 Social Proof 후보가 있었는데 적용되지 않았습니다. _apply_social_proof_quote()를 확인하세요.")
 
-        if checks.get("debate_should_apply") and not checks.get("debate_applied"):
+        if checks.get("debate_required") and not checks.get("debate_applied"):
             recommendations.append("Debate 질문이 적용 대상이었는데 반영되지 않았습니다. 글자 수 제한/충돌 방지 로직을 확인하세요.")
 
         if checks.get("attribution_needed") and not checks.get("attribution_present"):

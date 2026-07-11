@@ -415,6 +415,45 @@ class TestQualityCheckerContractGuards(unittest.TestCase):
         })
         self.assertFalse(result["checks"]["prohibited_fake_screenshot_absent"])
 
+    def test_layout_selection_fallback_is_not_reported_as_rendering_fallback(self):
+        result = self.checker.check({
+            "cards": [],
+            "layout_result": {"fallback_used": True},
+            "rendering_result": {"fallback_used": False},
+        })
+        self.assertTrue(result["checks"]["layout_fallback_used"])
+        self.assertFalse(result["checks"]["rendering_fallback_used"])
+        self.assertIn(
+            "layout_result.fallback_used=True (안전한 기존 레이아웃으로 대체 선택됨).",
+            result["warnings"],
+        )
+        self.assertNotIn(
+            "rendering_result.fallback_used=True (레이아웃 인지 렌더링이 일부/전부 fallback됨).",
+            result["warnings"],
+        )
+
+    def test_intentional_debate_skip_is_not_penalized(self):
+        result = self.checker.check({
+            "cards": [],
+            "debate_result": {
+                "should_apply": True,
+                "applied": False,
+                "skip_reason": "CTA 슬라이드 글자 수 예산을 초과해 추가하지 않음.",
+            },
+        })
+        self.assertFalse(result["checks"]["debate_required"])
+        self.assertTrue(self.checker._conditional_ok(result["checks"], "debate_applied"))
+        self.assertNotIn("debate 질문이 적용 대상이었는데 실제로 추가되지 않았습니다.", result["warnings"])
+
+    def test_unexplained_debate_miss_remains_a_warning(self):
+        result = self.checker.check({
+            "cards": [],
+            "debate_result": {"should_apply": True, "applied": False, "skip_reason": ""},
+        })
+        self.assertTrue(result["checks"]["debate_required"])
+        self.assertFalse(self.checker._conditional_ok(result["checks"], "debate_applied"))
+        self.assertIn("debate 질문이 적용 대상이었는데 실제로 추가되지 않았습니다.", result["warnings"])
+
 
 if __name__ == "__main__":
     unittest.main()

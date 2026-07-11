@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T18:11:33
+Updated at: 2026-07-11T18:50:55
 
 ## Execution Command
 
@@ -516,7 +516,6 @@ AI-Content-OS/
 |   |   |-- dev/
 |   |   |-- diagnostics/
 |   |   |-- server/
-|   |   |-- standalone/
 |   |   |-- static/
 |   |   |-- types/
 |   |   |-- app-path-routes-manifest.json
@@ -550,6 +549,7 @@ AI-Content-OS/
 |   |-- app/
 |   |   |-- globals.css
 |   |   |-- layout.js
+|   |   |-- os.css
 |   |   `-- page.js
 |   |-- node_modules/
 |   |   |-- .bin/
@@ -884,7 +884,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (414 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (422 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -925,7 +925,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (69 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (70 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
