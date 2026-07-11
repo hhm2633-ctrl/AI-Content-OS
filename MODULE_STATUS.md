@@ -1345,6 +1345,14 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### CardNews Output Acceptance Correction (2026-07-11)
+
+- Independent visual QA changed the user-facing verdict: individual app file viewing is GO, polished gallery/publish-ready presentation is NO-GO.
+- Four files are 1080x1080, non-empty, ordered, and free of overlap/clipping; prior 1024x1024 documentation was incorrect.
+- Semantic defects remain: topic/body mismatch, visible cover truncation, incomplete problem headline, and weak save CTA.
+- Publishing result currently combines `publishing_ready` with `manual_image_required=true`; UI/manifest must block ready state until the manual image gate is cleared.
+- Automated QA 0.85/pass is renderer/design evidence, not sufficient publish approval.
+
 ### Shorts Phase 1 Offline Planning Complete (2026-07-11)
 
 - Added standalone `modules/shorts/ShortsModule` with nine brief-to-publish-preparation result contracts.

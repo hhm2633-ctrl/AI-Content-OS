@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T19:18:25
+Updated at: 2026-07-11T19:22:05
 
 ## Execution Command
 
@@ -351,6 +351,7 @@ AI-Content-OS/
 |   |   |-- __init__.py
 |   |   |-- card_news_module.py
 |   |   |-- card_news_quality_checker.py
+|   |   |-- card_news_result_manifest.py
 |   |   |-- card_news_text_optimizer.py
 |   |   |-- debate_question_selector.py
 |   |   |-- evidence_selector.py
@@ -522,6 +523,7 @@ AI-Content-OS/
 |   |   |-- dev/
 |   |   |-- diagnostics/
 |   |   |-- server/
+|   |   |-- standalone/
 |   |   |-- static/
 |   |   |-- types/
 |   |   |-- app-path-routes-manifest.json
@@ -545,11 +547,9 @@ AI-Content-OS/
 |   |   |-- assets/
 |   |   |-- cache/
 |   |   |-- cloudflare/
-|   |   |-- cloudflare-templates/
 |   |   |-- dynamodb-provider/
 |   |   |-- middleware/
-|   |   |-- server-functions/
-|   |   `-- worker.js
+|   |   `-- server-functions/
 |   |-- .openai/
 |   |   `-- hosting.json
 |   |-- app/
@@ -958,6 +958,7 @@ AI-Content-OS/
 |   |-- test_ai_planner_module.py
 |   |-- test_ai_planner_schema.py
 |   |-- test_card_news_production_quality.py
+|   |-- test_card_news_result_manifest.py
 |   |-- test_competitor_learning_dashboard.py
 |   |-- test_competitor_learning_extractor.py
 |   |-- test_competitor_learning_interface.py
@@ -981,6 +982,9 @@ AI-Content-OS/
 |   |-- test_intelligence_feedback_safety.py
 |   |-- test_shorts_phase_1.py
 |   `-- test_workflow_planner_integration.py
+|-- tmp0ha6xwst/
+|-- tmph4pf0wsn/
+|-- tmpjlt8wsk0/
 |-- utils/
 |   `-- __init__.py
 |-- workflows/

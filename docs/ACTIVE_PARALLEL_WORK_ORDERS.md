@@ -95,8 +95,15 @@ Owned files: none; read-only review.
 
 Checks:
 
-- 1024x1024 dimensions, non-empty files, four-card order, no clipping/overlap, CTA visibility.
+- Expected square dimensions (current renderer output is 1080x1080), non-empty files, four-card order, no clipping/overlap, CTA visibility.
 - QA score/pass, renderer fallback, layout fallback, evidence/social-proof honesty, publishing readiness.
 - Identify the exact gap between file viewing and a polished gallery UI.
 
 Handoff: findings ordered by severity, exact file paths, and a go/no-go recommendation. Do not edit files.
+
+## Current Integration Finding
+
+- App individual-file viewing: GO.
+- Polished gallery and publish-ready labeling: NO-GO.
+- Current outputs are 1080x1080 and visually readable, but semantic copy defects remain.
+- `publishing_ready` must be gated off while `manual_image_required=true`.

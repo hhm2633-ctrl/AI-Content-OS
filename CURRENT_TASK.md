@@ -1,9 +1,9 @@
 # CURRENT_TASK.md
 
 # AI-Content-OS
-Current Version: CardNews Operational Complete (M7 + M8 + M7-next, 2026-07-11)
-Current Phase: Post-CardNews expansion planning
-Status: CardNews production path closed; Shorts Phase 0 architecture may proceed in an isolated Claude lane
+Current Version: CardNews Renderer Complete; Output Acceptance Remediation Active (2026-07-11)
+Current Phase: CardNews app-view and publish-readiness correction
+Status: Four PNGs are app-viewable; polished gallery and publish-ready approval are NO-GO until semantic copy and manual-image gates are fixed
 
 ---
 

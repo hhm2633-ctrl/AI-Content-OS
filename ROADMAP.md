@@ -85,6 +85,14 @@ M7+M8 이후 운영 종료 검증까지 완료했다.
 외부 LLM 실패로 생성 문안이 fallback인 상태, 실제 댓글/증거/이미지 데이터 부재는 CardNews
 Renderer 완료를 막는 결함이 아니다. 해당 항목은 Research/Instagram/외부 API Roadmap에서
 별도로 다룬다.
+
+### M7-next acceptance correction (reopened, 2026-07-11)
+
+Independent output QA found that renderer-level checks passed while publish-level acceptance did
+not. The four 1080x1080 PNGs can be opened in the Codex app, but topic/body coherence, a truncated
+cover body, an incomplete problem headline, and a weak/mismatched save CTA require correction.
+`publishing_ready` must also be false whenever `manual_image_required=true`. Renderer completion
+remains valid; polished gallery and real publish readiness are reopened.
 # Research Knowledge / Intelligence Engines
 
 - Knowledge Engine: v1 implemented (Sprint 11), enhanced (Sprint 13: global rank across full DB, `search()`, in-run cache, per-type average score statistics) — real read+write consumption wired into Pattern Engine (confidence_score boost on match), Content Module (prompt guidance injection), CardNews Module (layout_quality_score boost on match), Audit Engine (duplicate_check blending), Learning Engine (knowledge_score component)

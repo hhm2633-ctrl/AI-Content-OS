@@ -898,6 +898,12 @@
 - Behavior: 30-second script budget removes complete trailing lines and records original/final duration without silent truncation.
 - Tests: 7 focused Shorts tests passed; compile clean.
 
+## 2026-07-11 CardNews Acceptance Verdict Correction
+
+- Review: Independent visual/output QA confirmed app file viewing but rejected polished gallery and publish-ready presentation.
+- Findings: Four outputs are 1080x1080; semantic copy defects and a `publishing_ready`/`manual_image_required=true` conflict remain.
+- Decision: Preserve renderer completion, reopen publish-level acceptance, and require UI/manifest readiness gating.
+
 ## 2026-07-11 18:50:56
 
 - Change: Project snapshot updated.
@@ -935,6 +941,12 @@
 - Workflow result: `workflow_completed`
 
 ## 2026-07-11 19:18:25
+
+- Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:22:06
 
 - Change: Project snapshot updated.
 - Execution command: `py -m src.main`
