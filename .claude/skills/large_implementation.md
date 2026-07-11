@@ -1,14 +1,14 @@
 ---
 name: large_implementation
-description: Claude가 담당하는 작업 범위(대량 구현, 8개 이상 파일 수정, 복잡한 리팩토링, 새 모듈 생성)를 정의한다. 항상 전체 파일 기준으로 작성하고 부분 수정 안내를 하지 않는다.
+description: Claude가 대형 구현에 명시적으로 배정된 경우의 작업 범위와 안전 규칙을 정의한다. 파일 수만으로 Claude를 자동 선택하지 않으며 Work/Codex가 기본 실행 경로다.
 ---
 
 # Large Implementation Skill
 
 ## Purpose
 
-AI-Content-OS에서 "이 작업은 Claude가 맡아야 하는가"를 판단하고,
-Claude가 맡는 경우 어떤 방식으로 작업해야 하는지를 정의한다.
+AI-Content-OS에서 Claude가 명시적으로 선택된 경우 어떤 방식으로 작업해야 하는지를 정의한다.
+Claude 선택 자체는 `.ai/decision/decision_engine.md`를 따르며 파일 수는 강제 조건이 아니다.
 
 ## Claude 담당 작업
 

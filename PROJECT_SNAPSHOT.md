@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T17:44:21
+Updated at: 2026-07-11T18:11:33
 
 ## Execution Command
 
@@ -81,12 +81,22 @@ AI-Content-OS/
 |   `-- settings.local.json
 |-- .codex/
 |   `-- skills/
+|       |-- ai-content-os-card-news/
 |       |-- ai-content-os-commit-check/
+|       |-- ai-content-os-coupang/
+|       |-- ai-content-os-cto-review/
 |       |-- ai-content-os-dev/
 |       |-- ai-content-os-doc-update/
+|       |-- ai-content-os-instagram/
+|       |-- ai-content-os-publishing/
+|       |-- ai-content-os-qa/
 |       |-- ai-content-os-research/
+|       |-- ai-content-os-research-intelligence/
 |       |-- ai-content-os-retry-audit/
-|       `-- ai-content-os-sprint/
+|       |-- ai-content-os-shorts/
+|       |-- ai-content-os-sprint/
+|       |-- ai-content-os-sprint-manager/
+|       `-- ai-content-os-trend-collector/
 |-- .codex-test-tmp/
 |   |-- card_news_render_test_rdfokizy/
 |   |-- competitor_learning_interface_test_7f_pzxnv/
@@ -296,6 +306,7 @@ AI-Content-OS/
 |   |-- SYSTEM_ARCHITECTURE.md
 |   |-- TECH_STACK.md
 |   |-- TOPIC_ENGINE_SPEC.md
+|   |-- WORK_CODEX_CAPABILITY_AUDIT.md
 |   `-- WORKFLOW.md
 |-- logs/
 |   `-- README.md
@@ -499,6 +510,263 @@ AI-Content-OS/
 |   `-- research_prompt.md
 |-- scripts/
 |   `-- update_project_snapshot.py
+|-- site/
+|   |-- .next/
+|   |   |-- cache/
+|   |   |-- dev/
+|   |   |-- diagnostics/
+|   |   |-- server/
+|   |   |-- standalone/
+|   |   |-- static/
+|   |   |-- types/
+|   |   |-- app-path-routes-manifest.json
+|   |   |-- build-manifest.json
+|   |   |-- BUILD_ID
+|   |   |-- export-marker.json
+|   |   |-- fallback-build-manifest.json
+|   |   |-- images-manifest.json
+|   |   |-- next-minimal-server.js.nft.json
+|   |   |-- next-server.js.nft.json
+|   |   |-- package.json
+|   |   |-- prerender-manifest.json
+|   |   |-- required-server-files.js
+|   |   |-- required-server-files.json
+|   |   |-- routes-manifest.json
+|   |   |-- trace
+|   |   |-- trace-build
+|   |   `-- turbopack
+|   |-- .open-next/
+|   |   |-- .build/
+|   |   |-- assets/
+|   |   |-- cache/
+|   |   |-- cloudflare/
+|   |   |-- cloudflare-templates/
+|   |   |-- dynamodb-provider/
+|   |   |-- middleware/
+|   |   |-- server-functions/
+|   |   `-- worker.js
+|   |-- .openai/
+|   |   `-- hosting.json
+|   |-- app/
+|   |   |-- globals.css
+|   |   |-- layout.js
+|   |   `-- page.js
+|   |-- node_modules/
+|   |   |-- .bin/
+|   |   |-- @ast-grep/
+|   |   |-- @aws/
+|   |   |-- @aws-crypto/
+|   |   |-- @aws-sdk/
+|   |   |-- @cloudflare/
+|   |   |-- @cspotcode/
+|   |   |-- @dotenvx/
+|   |   |-- @ecies/
+|   |   |-- @esbuild/
+|   |   |-- @img/
+|   |   |-- @isaacs/
+|   |   |-- @jridgewell/
+|   |   |-- @next/
+|   |   |-- @noble/
+|   |   |-- @node-minify/
+|   |   |-- @opennextjs/
+|   |   |-- @poppinss/
+|   |   |-- @sindresorhus/
+|   |   |-- @smithy/
+|   |   |-- @speed-highlight/
+|   |   |-- @swc/
+|   |   |-- @tsconfig/
+|   |   |-- @types/
+|   |   |-- abort-controller/
+|   |   |-- accepts/
+|   |   |-- acorn/
+|   |   |-- agentkeepalive/
+|   |   |-- ansi-colors/
+|   |   |-- ansi-regex/
+|   |   |-- ansi-styles/
+|   |   |-- array-timsort/
+|   |   |-- asynckit/
+|   |   |-- aws4fetch/
+|   |   |-- balanced-match/
+|   |   |-- baseline-browser-mapping/
+|   |   |-- blake3-wasm/
+|   |   |-- body-parser/
+|   |   |-- bowser/
+|   |   |-- brace-expansion/
+|   |   |-- buffer-from/
+|   |   |-- bytes/
+|   |   |-- call-bind-apply-helpers/
+|   |   |-- call-bound/
+|   |   |-- caniuse-lite/
+|   |   |-- chalk/
+|   |   |-- ci-info/
+|   |   |-- client-only/
+|   |   |-- cliui/
+|   |   |-- cloudflare/
+|   |   |-- combined-stream/
+|   |   |-- commander/
+|   |   |-- comment-json/
+|   |   |-- content-disposition/
+|   |   |-- content-type/
+|   |   |-- cookie/
+|   |   |-- cookie-signature/
+|   |   |-- cross-spawn/
+|   |   |-- debug/
+|   |   |-- delayed-stream/
+|   |   |-- depd/
+|   |   |-- detect-libc/
+|   |   |-- dotenv/
+|   |   |-- dunder-proto/
+|   |   |-- duplexer/
+|   |   |-- eciesjs/
+|   |   |-- ee-first/
+|   |   |-- emoji-regex/
+|   |   |-- encodeurl/
+|   |   |-- enquirer/
+|   |   |-- error-stack-parser-es/
+|   |   |-- es-define-property/
+|   |   |-- es-errors/
+|   |   |-- es-object-atoms/
+|   |   |-- es-set-tostringtag/
+|   |   |-- esbuild/
+|   |   |-- escalade/
+|   |   |-- escape-html/
+|   |   |-- esprima/
+|   |   |-- etag/
+|   |   |-- event-target-shim/
+|   |   |-- execa/
+|   |   |-- express/
+|   |   |-- fdir/
+|   |   |-- finalhandler/
+|   |   |-- foreground-child/
+|   |   |-- form-data/
+|   |   |-- form-data-encoder/
+|   |   |-- formdata-node/
+|   |   |-- forwarded/
+|   |   |-- fresh/
+|   |   |-- fs.realpath/
+|   |   |-- function-bind/
+|   |   |-- get-caller-file/
+|   |   |-- get-east-asian-width/
+|   |   |-- get-intrinsic/
+|   |   |-- get-proto/
+|   |   |-- get-stream/
+|   |   |-- glob/
+|   |   |-- gopd/
+|   |   |-- gzip-size/
+|   |   |-- has-symbols/
+|   |   |-- has-tostringtag/
+|   |   |-- hasown/
+|   |   |-- http-errors/
+|   |   |-- human-signals/
+|   |   |-- humanize-ms/
+|   |   |-- iconv-lite/
+|   |   |-- ignore/
+|   |   |-- inherits/
+|   |   |-- ipaddr.js/
+|   |   |-- is-promise/
+|   |   |-- is-stream/
+|   |   |-- isexe/
+|   |   |-- jackspeak/
+|   |   |-- kleur/
+|   |   |-- lru-cache/
+|   |   |-- math-intrinsics/
+|   |   |-- media-typer/
+|   |   |-- merge-descriptors/
+|   |   |-- merge-stream/
+|   |   |-- mime-db/
+|   |   |-- mime-types/
+|   |   |-- mimic-fn/
+|   |   |-- miniflare/
+|   |   |-- minimatch/
+|   |   |-- minipass/
+|   |   |-- mkdirp/
+|   |   |-- mnemonist/
+|   |   |-- ms/
+|   |   |-- nanoid/
+|   |   |-- negotiator/
+|   |   |-- next/
+|   |   |-- node-domexception/
+|   |   |-- node-fetch/
+|   |   |-- npm-run-path/
+|   |   |-- object-inspect/
+|   |   |-- object-treeify/
+|   |   |-- obliterator/
+|   |   |-- on-finished/
+|   |   |-- once/
+|   |   |-- onetime/
+|   |   |-- package-json-from-dist/
+|   |   |-- parseurl/
+|   |   |-- path-key/
+|   |   |-- path-scurry/
+|   |   |-- path-to-regexp/
+|   |   |-- pathe/
+|   |   |-- picocolors/
+|   |   |-- picomatch/
+|   |   |-- postcss/
+|   |   |-- proxy-addr/
+|   |   |-- qs/
+|   |   |-- range-parser/
+|   |   |-- raw-body/
+|   |   |-- react/
+|   |   |-- react-dom/
+|   |   |-- router/
+|   |   |-- safer-buffer/
+|   |   |-- scheduler/
+|   |   |-- semver/
+|   |   |-- send/
+|   |   |-- serve-static/
+|   |   |-- setprototypeof/
+|   |   |-- sharp/
+|   |   |-- shebang-command/
+|   |   |-- shebang-regex/
+|   |   |-- side-channel/
+|   |   |-- side-channel-list/
+|   |   |-- side-channel-map/
+|   |   |-- side-channel-weakmap/
+|   |   |-- signal-exit/
+|   |   |-- source-map/
+|   |   |-- source-map-js/
+|   |   |-- source-map-support/
+|   |   |-- statuses/
+|   |   |-- string-width/
+|   |   |-- strip-ansi/
+|   |   |-- strip-final-newline/
+|   |   |-- styled-jsx/
+|   |   |-- supports-color/
+|   |   |-- terser/
+|   |   |-- toidentifier/
+|   |   |-- tr46/
+|   |   |-- ts-tqdm/
+|   |   |-- tslib/
+|   |   |-- type-is/
+|   |   |-- undici/
+|   |   |-- undici-types/
+|   |   |-- unenv/
+|   |   |-- unpipe/
+|   |   |-- urlpattern-polyfill/
+|   |   |-- vary/
+|   |   |-- web-streams-polyfill/
+|   |   |-- webidl-conversions/
+|   |   |-- whatwg-url/
+|   |   |-- which/
+|   |   |-- workerd/
+|   |   |-- wrangler/
+|   |   |-- wrap-ansi/
+|   |   |-- wrappy/
+|   |   |-- ws/
+|   |   |-- y18n/
+|   |   |-- yaml/
+|   |   |-- yargs/
+|   |   |-- yargs-parser/
+|   |   |-- youch/
+|   |   |-- youch-core/
+|   |   `-- .package-lock.json
+|   |-- .gitignore
+|   |-- next.config.mjs
+|   |-- open-next.config.ts
+|   |-- package-lock.json
+|   |-- package.json
+|   `-- wrangler.jsonc
 |-- src/
 |   |-- llm_client.py
 |   |-- main.py
@@ -616,7 +884,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (406 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (414 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -657,7 +925,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (68 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (69 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json

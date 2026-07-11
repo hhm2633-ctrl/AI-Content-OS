@@ -26,10 +26,11 @@ Absolute Rules)을 담고 있는 단일 진실 소스(single source of truth)이
    5. `MODULE_STATUS.md`
    6. `ROADMAP.md`
    7. `CURRENT_TASK.md`
-   8. `.claude/skills/*` (작업 범위에 맞는 나머지 스킬)
+   8. `.codex/skills/*` (공용 프로젝트 스킬)
+   9. `.claude/skills/*` (Claude가 명시적으로 배정된 경우의 호환 지침)
 2. Repository 상태가 메모리보다 항상 우선한다. 문서와 실제 코드/storage 결과가 다르면
    Repository를 먼저 분석한다.
-3. 사용 가능한 MCP(특히 Codex MCP)를 먼저 확인한다.
+3. 작업에 필요한 도구만 확인한다. Codex MCP는 필수도 기본 경로도 아니다.
 4. 외부 API(Instagram API, Meta Graph API, access token, 실제 SNS 로그인/크롤링)가 있어야만
    가능한 기능은 억지로 구현하지 않는다 — `ROADMAP.md`의 "Requires External API" 섹션에
    있는지 먼저 확인하고, 없으면 그 섹션으로 옮긴다 (`PROJECT_OPERATING_SYSTEM.md`의

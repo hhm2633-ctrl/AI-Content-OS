@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Intelligence"
+  short_description: "근거 중심 리서치와 콘텐츠 인사이트 흐름을 안전하게 관리"
+  default_prompt: "Use $ai-content-os-research-intelligence to turn source evidence into reusable project insight."

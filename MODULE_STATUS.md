@@ -1345,6 +1345,14 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### Work/Codex Operating System and Domain Skills (2026-07-11)
+
+- Default delivery path updated to ChatGPT Work CTO -> Codex execution in one project context.
+- Claude remains available only for explicitly assigned specialist implementation or independent review; Codex MCP is no longer a prerequisite.
+- Added ten validated project skills: Trend Collector, Research Intelligence, Card News, Shorts, Publishing, Instagram, Coupang, QA, CTO Review, and Sprint Manager.
+- Shorts and Coupang skills are planning/approval gates only; they do not mark those Roadmap engines as implemented.
+- Existing Claude domain files remain as compatibility references and are not the primary operating layer.
+
 - CardNews real-output operational testing: generate card news across a range of real topics,
   confirm upload-ready quality end to end, apply any small design corrections found (next
   priority as of 2026-07-11; see `ROADMAP.md` M7-next). Commerce/Reels/Shorts are explicitly not

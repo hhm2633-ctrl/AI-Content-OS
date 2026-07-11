@@ -41,7 +41,17 @@ This document defines the rules Codex must follow in the AI-Content-OS repositor
 
 Use project Codex skills when the task matches:
 
-- `ai-content-os-sprint`: Sprint implementation or Sprint verification
+- `ai-content-os-sprint-manager`: end-to-end Sprint scope, execution, QA, docs, and handoff
+- `ai-content-os-cto-review`: architecture, ROI, risk, tool/plugin, and approval review
+- `ai-content-os-trend-collector`: trend sources, retry, cache, fallback, and selection
+- `ai-content-os-research-intelligence`: evidence-backed research context and insight
+- `ai-content-os-card-news`: card-news structure, rendering, readability, and production QA
+- `ai-content-os-shorts`: approved Shorts/Reels planning and dependency gates
+- `ai-content-os-publishing`: captions, hashtags, queue, schedule, and publish readiness
+- `ai-content-os-instagram`: Instagram research, learning, metrics, and API boundaries
+- `ai-content-os-coupang`: approved commerce planning and product-data integrity
+- `ai-content-os-qa`: risk-based tests, compile, workflow, and output verification
+- `ai-content-os-sprint`: legacy Sprint compatibility workflow
 - `ai-content-os-commit-check`: pre-commit classification and safety check
 - `ai-content-os-research`: saving CTO-analyzed external materials into project docs
 - `ai-content-os-retry-audit`: diagnosing slow workflow, retry, fallback, service diagnostics

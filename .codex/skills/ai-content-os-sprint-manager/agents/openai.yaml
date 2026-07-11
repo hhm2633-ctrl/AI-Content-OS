@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sprint Manager"
+  short_description: "Sprint 범위·상태·검증·인계 절차를 통합 관리"
+  default_prompt: "Use $ai-content-os-sprint-manager to plan and complete the next project Sprint."

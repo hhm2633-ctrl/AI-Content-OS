@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coupang"
+  short_description: "捻莆 能刨明 犬厘苞 力绒·惑前 单捞磐 版拌甫 包府"
+  default_prompt: "Use $ai-content-os-coupang to plan commerce content without fabricating product data."

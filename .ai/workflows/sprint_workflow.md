@@ -8,7 +8,7 @@ Sprint 시작
   ↓
 ROI 평가            카드뉴스 MVP에 직접 기여하는가? (.ai/decision/decision_engine.md)
   ↓
-작업 분해            8개 이상 파일/신규 모듈/복잡한 리팩토링인가, 소규모 국소 수정인가?
+작업 분해            위험 계약, 모듈 경계, 검증 단위와 승인 게이트는 무엇인가?
   ↓
 Claude              담당 판단되면 지시서(.ai/templates/task_template.md 형식)를 받아 구현
   ↓
@@ -34,7 +34,7 @@ workflow_completed   허용된 경우 py -m src.main 실행 후 storage/workflow
 
 ### Claude
 - 지시서의 절대 규칙(예: "WorkflowEngine 변경 금지", "storage/** 수정 금지", "py -m src.main 실행 금지")을 문자 그대로 지킨다.
-- 8개 이상 파일 수정, 신규 모듈 생성 등은 전체 파일 단위로 작성한다 (`.claude/skills/large_implementation.md`).
+- 대형 변경은 파일 수와 무관하게 작은 검증 단계와 별도 커밋으로 분해한다.
 
 ### Codex
 - Claude의 변경분을 git status/diff로 검토한다.

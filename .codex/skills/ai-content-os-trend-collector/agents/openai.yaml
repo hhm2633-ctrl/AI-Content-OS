@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trend Collector"
+  short_description: "트렌드 수집·재시도·캐시 품질을 안전하게 관리"
+  default_prompt: "Use $ai-content-os-trend-collector to inspect and improve the trend collection flow safely."

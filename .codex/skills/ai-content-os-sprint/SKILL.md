@@ -55,8 +55,9 @@ Before making changes, classify the task:
 
 - Directly helps CardNews MVP or workflow reliability: proceed.
 - Helps later Shorts, Video, Dashboard, Analytics: move to Roadmap unless explicitly approved.
-- Requires 8+ files or complex refactor: ask whether Claude should draft first.
-- Small repository-safe change: Codex may implement.
+- Work/Codex is the default implementation path regardless of file count.
+- Use Claude only when the user requests it or an independent second opinion has clear value.
+- For new work prefer `ai-content-os-sprint-manager`; keep this skill for compatibility.
 
 ## Work Order
 

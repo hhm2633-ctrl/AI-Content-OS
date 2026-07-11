@@ -1,0 +1,4 @@
+interface:
+  display_name: "CTO Review"
+  short_description: "ROI·아키텍처·리스크·근거를 CTO 관점에서 검토"
+  default_prompt: "Use $ai-content-os-cto-review to review this proposal from the project CTO perspective."

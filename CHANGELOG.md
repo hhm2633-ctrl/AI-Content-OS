@@ -6,6 +6,14 @@
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
 
+## 2026-07-11 Work/Codex operating model
+
+- Changed the default delivery path to ChatGPT Work CTO -> Codex execution in one project context.
+- Made Claude an optional specialist/independent reviewer and removed mandatory Codex MCP checks.
+- Added and validated ten project skills for Trend Collector, Research Intelligence, Card News, Shorts, Publishing, Instagram, Coupang, QA, CTO Review, and Sprint Manager.
+- Updated project operating, role, workflow, decision, compatibility, and skill-discovery documentation.
+- Shorts and Coupang remain Roadmap planning capabilities, not implemented engines.
+
 ## 2026-07-08 15:55:09
 
 - Change: Workflow completed and project snapshot refreshed.
@@ -841,6 +849,18 @@
 - Workflow result: `workflow_completed`
 
 ## 2026-07-11 17:44:22
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 18:07:38
+
+- Change: Project snapshot updated.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 18:11:34
 
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`

@@ -333,3 +333,22 @@ Applied Modules
 - `modules/card_news/card_news_module.py`
 - `modules/card_news/card_news_quality_checker.py`
 - `modules/card_news/card_news_text_optimizer.py`
+
+---
+
+# 2026-07-11 Work/Codex Primary Operating Model and Project Skill System
+
+결정
+
+AI-Content-OS의 기본 개발 경로를 `ChatGPT CTO -> Claude -> Codex MCP -> GitHub` 강제 체인에서 `ChatGPT Work CTO -> 같은 프로젝트 컨텍스트의 Codex 실행 -> GitHub`로 단순화한다. Claude는 제거하지 않지만, 사용자가 명시적으로 맡기거나 독립적인 2차 검토 가치가 큰 경우에만 선택적으로 사용한다. Claude의 Codex MCP 확인·호출은 기본 요구사항에서 제거한다.
+
+Work와 Codex가 저장소 파일, 사이드 작업, 브라우저, 연결 앱, 구현, 테스트, 문서와 Git을 한 프로젝트 안에서 다룰 수 있으므로, 동일 맥락을 여러 AI 사이에 반복 전달하는 비용과 손실을 줄이는 것이 목적이다. 파일 수만으로 Claude를 강제하지 않고 위험도, 전문성, 독립 검토 가치와 사용자 지시로 선택한다.
+
+공용 실행 지식을 `.codex/skills/`의 프로젝트 스킬로 관리한다. 추가된 스킬은 Trend Collector, Research Intelligence, Card News, Shorts, Publishing, Instagram, Coupang, QA, CTO Review, Sprint Manager다. Shorts와 Coupang은 현재 구현 완료를 의미하지 않으며, Roadmap·외부 데이터·승인 게이트를 강제하는 계획 스킬이다.
+
+외부 스킬·플러그인 원칙
+
+- 기존 모듈과 설치된 공식 기능을 우선한다.
+- 공개 스킬은 코드, 권한, 유지보수, 라이선스를 검토한 뒤 채택한다.
+- 폐기된 `openai/skills` 카탈로그보다 현재 `openai/plugins`와 공식 Skill Creator 형식을 기준으로 한다.
+- GitHub와 Google Drive는 현재 유효한 핵심 연결이며, 추가 메신저·메일·디자인 플러그인은 실제 운영 주체가 생길 때만 설치한다.

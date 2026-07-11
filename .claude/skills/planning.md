@@ -1,6 +1,6 @@
 ---
 name: planning
-description: Sprint 계획 규칙. Sprint 시작 전 ROI를 평가하고 카드뉴스 MVP를 우선한다. Claude는 설계/대량 구현을, Codex는 Repository/Compile/Test를 담당한다.
+description: Claude가 명시적으로 배정된 Sprint의 계획 규칙. ROI와 카드뉴스 MVP를 우선하며 Work/Codex 기본 경로와 충돌하지 않게 범위를 제한한다.
 ---
 
 # Planning Skill
@@ -20,10 +20,12 @@ Sprint를 시작하기 전 항상 아래를 먼저 판단한다.
 
 ## 역할 분담
 
-- **Claude**
-  - 설계 (Architecture 판단, Sprint 범위 설계)
-  - 대량 구현 (`large_implementation.md` 기준에 해당하는 작업)
-- **Codex**
+- **Work/Codex (기본 경로)**
+  - CTO 판단, 설계, 구현, 검증, 문서, Git
+- **Claude (명시적 선택 시)**
+  - 요청받은 구현 또는 독립 검토 범위만 수행
+  - Codex MCP를 기본 호출하지 않음
+- **Work/Codex 최종 검증**
   - Repository 관리 (git 상태 정리, 실제 커밋)
   - Compile 검증 (`py -m compileall src modules scripts`)
   - Test / 전체 워크플로 실행 (`py -m src.main`) 및 `workflow_completed` 확인
@@ -35,8 +37,8 @@ Claude는 지시받지 않는 한 `py -m src.main`을 직접 실행하지 않는
 ## Sprint 계획 체크리스트
 
 - [ ] 이 작업이 카드뉴스 MVP에 직접 기여하는가?
-- [ ] 8개 이상 파일 수정 / 새 모듈 생성이 필요한가 → Claude 담당 (`large_implementation.md`)
-- [ ] 소규모 국소 수정인가 → Codex 담당이 더 적합할 수 있음
+- [ ] Claude가 필요한 이유가 파일 수 외에 명확한가?
+- [ ] 기본 Work/Codex 경로로 끝까지 처리할 수 있는가?
 - [ ] `WorkflowEngine`, `workflow_completed`, 기존 모듈/폴더/클래스 이름을 건드리지 않는가?
 - [ ] 이번 Sprint에서 수정 가능/금지 범위가 명확히 지정되었는가?
 - [ ] 문서 수정 범위(PROJECT_SNAPSHOT.md/CHANGELOG.md/MODULE_STATUS.md 등)가 이번 Sprint 지시에 포함되어 있는가, 아니면 금지되어 있는가?

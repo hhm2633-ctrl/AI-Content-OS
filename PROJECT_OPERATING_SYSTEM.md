@@ -1,7 +1,7 @@
 # AI-Content-OS — Project Operating System
 
 This document is the top-level operating reference for AI-Content-OS. It governs how ChatGPT
-(CTO), Claude, Codex, and the human project owner all work in this repository, and how the
+Work (CTO/orchestration), Codex execution capabilities, optional Claude review, and the human project owner work in this repository, and how the
 other project documents fit together. Nothing below removes or overrides prior entries in
 `DECISIONS.md`.
 
@@ -17,15 +17,15 @@ reading them.
 5. MODULE_STATUS.md
 6. ROADMAP.md
 7. CURRENT_TASK.md
-8. .claude/skills/*
+8. .codex/skills/*
+9. .claude/skills/* only when Claude is explicitly assigned
 
 Repository state has higher priority than memory.
 
 If documentation conflicts with the repository, analyze the repository first.
 
-Always check available MCPs before starting.
-
-Always verify Codex MCP availability.
+Check available apps, plugins, skills, and MCPs only when they are relevant to the task.
+Codex MCP is not a prerequisite for Work or Claude tasks.
 
 Never implement features requiring unavailable APIs.
 
@@ -50,9 +50,9 @@ Always maximize Repository growth and ROI.
 
 | AI | Role |
 |---|---|
-| ChatGPT | CTO — architecture, documentation, research analysis, Sprint decomposition |
-| Claude | Large implementation, broad refactors, new Engine construction |
-| Codex | Repository operations, compile/test, git diff review, focused fixes, documentation sync |
+| ChatGPT Work | Primary CTO — architecture, research, project context, Sprint orchestration, approval gates |
+| Codex execution | Primary delivery — implementation, repository operations, tests, workflow, docs, Git |
+| Claude | Optional specialist — independent review or explicitly assigned complex implementation |
 
 Full detail: `DECISIONS.md` ("AI 사용 정책"), `.ai/rules/ai_roles.md`, `docs/AI_PLANNER.md`.
 
@@ -95,8 +95,8 @@ acceptable, even labeled as a placeholder.
 | `AGENTS.md` | What are Codex's/the project's execution rules? |
 | `CURRENT_TASK.md` | What is being worked on right now? |
 | `CTO_BRAIN.md` | What is ChatGPT's own operating context? |
-| `.claude/skills/*.md` | How should Claude approach this *kind* of work? |
-| `.codex/skills/*` | The equivalent operating rules for Codex |
+| `.codex/skills/*` | Shared project workflows and domain operating rules for Work/Codex |
+| `.claude/skills/*.md` | Compatibility guidance used only when Claude is explicitly assigned |
 | `docs/`, `docs/RESEARCH/` | Analyzed external-material conclusions (Claude reads, never re-analyzes raw sources) |
 
 ## Absolute Rules (never break, regardless of Sprint instructions)
@@ -106,6 +106,6 @@ acceptable, even labeled as a placeholder.
 - Execute with `py -m src.main`; never `python -m src.main`.
 - Do not delete working modules/folders/classes/functions without explicit instruction.
 - Do not fabricate data that impersonates a real external signal (see Offline-First above).
-- Claude drafts and implements; Claude does not `git add`/`commit`/`push` — that is Codex's
-  role (`.claude/skills/review.md`).
+- Work/Codex is the default end-to-end path. Claude is optional and does not need to call Codex MCP.
+- When Claude is explicitly assigned, Claude does not `git add`/`commit`/`push`; Work/Codex performs final verification and Git operations.
 - `DECISIONS.md` entries are never deleted, only appended to.

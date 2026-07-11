@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA"
+  short_description: "위험 기반 테스트와 전체 워크플로 완료를 검증"
+  default_prompt: "Use $ai-content-os-qa to run risk-based checks and confirm workflow_completed."

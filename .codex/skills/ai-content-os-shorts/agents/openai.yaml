@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shorts"
+  short_description: "쇼츠 확장 설계와 외부 도구 선행조건을 안전하게 관리"
+  default_prompt: "Use $ai-content-os-shorts to plan a safe Shorts workflow from existing content assets."

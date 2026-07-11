@@ -1,0 +1,4 @@
+interface:
+  display_name: "Card News"
+  short_description: "카드뉴스 구성·렌더링·가독성·품질 계약을 안전하게 관리"
+  default_prompt: "Use $ai-content-os-card-news to improve card-news output without breaking the renderer."

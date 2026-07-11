@@ -157,11 +157,20 @@ Skills are used to reduce repeated instructions and speed up Sprint execution.
 
 Reusable workflows:
 
-- Sprint
+- Sprint Manager
 - Commit Check
 - Research Knowledge
 - Retry Audit
 - Documentation Update
+- Trend Collector
+- Research Intelligence
+- Card News
+- Shorts
+- Publishing
+- Instagram
+- Coupang
+- QA
+- CTO Review
 
 ## Claude Developer Kit
 
@@ -174,7 +183,7 @@ skill is `.claude/skills/cto_operating_system/SKILL.md`, which points to the pro
 `PROJECT_OPERATING_SYSTEM.md` (the top-level operating reference and Mandatory Reading Order)
 and is read before any other skill file.
 
-Claude roles:
+Claude compatibility roles (used only when explicitly assigned):
 
 - Architecture
 - Large Implementation
@@ -199,12 +208,12 @@ every collaborating AI (ChatGPT CTO, Claude, Codex, and any future AI) reference
 AI-specific skill systems (Codex Skill System, Claude Developer Kit):
 
 - `.ai/architecture/system_architecture.md` — full structure, WorkflowEngine, Module/Engine/document relationships
-- `.ai/workflows/development_workflow.md`, `sprint_workflow.md` — user -> ChatGPT CTO -> Claude -> Codex -> GitHub, and the Sprint lifecycle
+- `.ai/workflows/development_workflow.md`, `sprint_workflow.md` — user -> ChatGPT Work CTO -> Codex execution -> GitHub, with optional Claude review
 - `.ai/rules/project_rules.md`, `ai_roles.md`, `workflow_protection.md` — absolute rules, AI role division, workflow/fallback/retry/cache protection
 - `.ai/prompts/README.md` — prompt management principles and Prompt Library structure
 - `.ai/templates/task_template.md`, `sprint_template.md` — reusable templates for writing task instructions and Sprint plans
 - `.ai/knowledge/knowledge_system.md` — external material -> CTO analysis -> Research docs -> project assets
-- `.ai/decision/decision_engine.md` — ROI/file-count/risk-based decision rules for Claude vs. Codex and Roadmap triage
+- `.ai/decision/decision_engine.md` — ROI/risk/approval-based execution rules and Roadmap triage
 
 ## Protected Rules
 

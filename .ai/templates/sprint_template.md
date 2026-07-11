@@ -45,6 +45,6 @@
 
 - "범위"에서 "다루지 않는 것"을 명시하지 않으면, 다음 Sprint에서 "이미 했다고 생각했는데 안 되어 있다"는
   혼란이 생긴다 — 항상 명시적으로 경계를 긋는다.
-- Sprint 하나가 8개 이상 파일을 건드릴 것 같으면 처음부터 Claude 담당으로 계획한다 (`.ai/decision/decision_engine.md`).
+- Sprint 하나가 많은 파일을 건드리면 Work/Codex에서 검증 가능한 단계와 커밋으로 분해한다. Claude는 독립 검토 가치나 사용자 지시가 있을 때만 선택한다 (`.ai/decision/decision_engine.md`).
 - 여러 Sprint에 걸쳐 같은 이름의 결과물(예: "Claude Skill System")을 계속 만들게 되는 경우, 새로 만들지 말고
   기존 것을 버전업(v2, v3...)하는 방식을 우선 검토한다 — 중복 제거 원칙.

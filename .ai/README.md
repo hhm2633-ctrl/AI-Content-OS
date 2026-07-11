@@ -17,7 +17,7 @@
 ├── architecture/
 │   └── system_architecture.md         전체 구조, WorkflowEngine, Module/Engine/문서 관계
 ├── workflows/
-│   ├── development_workflow.md        사용자 -> ChatGPT CTO -> Claude -> Codex -> GitHub
+│   ├── development_workflow.md        사용자 -> ChatGPT Work CTO -> Codex execution -> GitHub
 │   └── sprint_workflow.md             Sprint 시작 -> ROI -> 작업 분해 -> ... -> 문서 업데이트
 ├── rules/
 │   ├── project_rules.md               절대 규칙 (WorkflowEngine 보호, Windows, Fallback 우선)
@@ -39,7 +39,7 @@
 - **작업을 시작하기 전**: `architecture/system_architecture.md`로 현재 구조를 확인하고, `rules/project_rules.md` +
   `rules/workflow_protection.md`로 절대 규칙을 재확인한다.
 - **새 Sprint 지시서를 쓸 때** (주로 ChatGPT CTO): `templates/task_template.md` 또는 `templates/sprint_template.md`를 기준으로 작성한다.
-- **작업 범위/담당 AI를 정할 때**: `decision/decision_engine.md`의 기준(ROI, 파일 수, 위험도)으로 판단한다.
+- **작업 범위/실행 경로를 정할 때**: `decision/decision_engine.md`의 기준(ROI, 위험도, 승인 게이트)으로 판단한다.
 - **외부 자료(PDF/영상/UI/서비스/사이트)를 다룰 때**: `knowledge/knowledge_system.md`의 흐름을 따른다.
 - **새 프롬프트를 추가/수정할 때**: `prompts/README.md`의 원칙(중복 프롬프트 금지, 버전 관리)을 따른다.
 - **AI별 세부 작업 절차**는 이 문서가 아니라 각자의 스킬 시스템을 본다:
@@ -52,9 +52,9 @@
 
 | AI | 역할 |
 |---|---|
-| ChatGPT | CTO — 아키텍처 설계, ROI 판단, Sprint 지시서 작성, 외부 자료 분석 |
-| Claude | Large Implementation — 대량 구현, 복잡한 리팩토링, 신규 모듈 생성 |
-| Codex | Repository/Test — git 관리, compile/workflow 실행, 커밋, 문서 최종 반영 |
+| ChatGPT Work | Primary CTO — 아키텍처, ROI, Research, Sprint orchestration |
+| Codex execution | Primary Delivery — 구현, 테스트, workflow, 문서, Git |
+| Claude | Optional Specialist — 명시적 구현 또는 독립 검토 |
 
 ## 절대 원칙 (요약)
 
