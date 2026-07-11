@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-11T19:03:25
+Updated at: 2026-07-11T19:09:22
 
 ## Execution Command
 
@@ -465,6 +465,9 @@ AI-Content-OS/
 |   |   |-- research_context_builder.py
 |   |   |-- research_insight_generator.py
 |   |   `-- research_module.py
+|   |-- shorts/
+|   |   |-- __init__.py
+|   |   `-- shorts_module.py
 |   |-- topic/
 |   |   `-- topic_engine.py
 |   |-- topic_engine/
@@ -550,6 +553,7 @@ AI-Content-OS/
 |   |   `-- hosting.json
 |   |-- app/
 |   |   |-- commerce.css
+|   |   |-- decision.css
 |   |   |-- globals.css
 |   |   |-- layout.js
 |   |   |-- os.css
@@ -887,7 +891,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (427 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (432 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- memory/
@@ -974,6 +978,7 @@ AI-Content-OS/
 |   |-- test_instagram_research_statistics.py
 |   |-- test_instagram_research_storage.py
 |   |-- test_intelligence_feedback_safety.py
+|   |-- test_shorts_phase_1.py
 |   `-- test_workflow_planner_integration.py
 |-- utils/
 |   `-- __init__.py

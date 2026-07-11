@@ -295,9 +295,9 @@ Instagram 카드뉴스 자동화 (Protected Core 안정성 유지)
 
 # Current Focus
 
-CardNews M7/M8/M7-next와 Content Intelligence focused coverage는 완료됐다. Claude의 Shorts
-Phase 0 아키텍처 초안은 Work/Codex CTO 검토를 거쳐 제한 승인됐다. 다음 작업은 기존
-Content 결과를 규칙 기반으로 변환하는 완전 오프라인 standalone Shorts Phase 1이다.
+CardNews M7/M8/M7-next, Content Intelligence focused coverage, Shorts Phase 0 설계와 Phase 1
+offline standalone planning이 완료됐다. Shorts는 기존 Content 결과를 9개 제작계획 계약으로
+변환하지만 실제 영상 렌더링·음성·외부 API·자동 게시를 수행하지 않는다.
 
 ---
 
@@ -305,8 +305,8 @@ Content 결과를 규칙 기반으로 변환하는 완전 오프라인 standalon
 
 `MODULE_STATUS.md`의 "Next" 섹션과 `ROADMAP.md`를 그대로 따른다. 요약:
 
-1. Shorts Phase 1: 기존 Content 결과를 9개 계획 계약으로 변환하는 offline standalone 모듈과 focused tests
-2. Shorts Phase 1은 외부 API, 렌더러, AI Planner 확장, WorkflowEngine 연결 없이 구현
+1. Shorts Phase 1 결과를 실제 Content fixture로 운영 검수하고 계약 보정
+2. TTS·전사·렌더러·게시 API는 비용/정책/데이터 검토와 명시적 CTO 승인 전까지 대기
 3. 실제 게시 후 Instagram 성과 기반 Closed Loop (현재는 내부 quality_score proxy만 존재) —
    Meta/Instagram Graph API + OAuth + 게시 결과 Import 필요, `ROADMAP.md` "Requires External
    API"에 명시적 승인 전까지 대기

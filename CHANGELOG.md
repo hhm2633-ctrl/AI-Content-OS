@@ -891,6 +891,13 @@
 - Decision: Approved a deterministic, offline, standalone Phase 1 that derives nine planning contracts from existing Content output.
 - Guardrails: No external API, new LLM call, renderer, AI Planner extension, or WorkflowEngine wiring.
 
+## 2026-07-11 Shorts Phase 1 Offline Planning
+
+- Change: Added a standalone offline Shorts planner producing nine contracts from brief through manual publish preparation.
+- Safety: No external calls, CardNews imports, AI Planner extension, renderer, or WorkflowEngine wiring; unknown assets remain blocked.
+- Behavior: 30-second script budget removes complete trailing lines and records original/final duration without silent truncation.
+- Tests: 7 focused Shorts tests passed; compile clean.
+
 ## 2026-07-11 18:50:56
 
 - Change: Project snapshot updated.
@@ -918,5 +925,11 @@
 ## 2026-07-11 19:04:16
 
 - Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-11 19:09:23
+
+- Change: Project snapshot updated.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`

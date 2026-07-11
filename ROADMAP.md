@@ -164,6 +164,13 @@ These items are intentionally **not** implemented because they require Instagram
 - No external API, LLM call, renderer, AI Planner extension, or WorkflowEngine wiring is approved.
 - Real TTS/transcription/assets/rendering/publishing remain explicit future CTO gates.
 
+## Shorts Phase 1 (offline planning complete, 2026-07-11)
+
+- Added standalone `ShortsModule` producing nine planning contracts from existing Content output.
+- Deterministic 30-second script planning trims only complete trailing lines and records original/final duration.
+- Asset, audio, render, rights, and upload remain explicit manual gates; no real video is claimed.
+- Seven focused tests and compile pass; no CardNews import, AI Planner extension, external call, or WorkflowEngine wiring.
+
 - Timeline Engine
 - Animation Engine
 - Video Renderer

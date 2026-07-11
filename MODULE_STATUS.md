@@ -1345,6 +1345,14 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 
 ## Next
 
+### Shorts Phase 1 Offline Planning Complete (2026-07-11)
+
+- Added standalone `modules/shorts/ShortsModule` with nine brief-to-publish-preparation result contracts.
+- Uses existing Content output only; performs no LLM, network, TTS, transcription, rendering, or publish call.
+- Enforces a deterministic 30-second budget by removing complete trailing lines, never slicing text mid-line.
+- Unknown assets are never render-allowed and all real production steps remain in a seven-item manual checklist.
+- Seven focused tests pass; compile clean; static boundary test confirms no CardNews import and no WorkflowEngine wiring.
+
 ### Shorts Phase 0 Architecture Approved (2026-07-11)
 
 - Reviewed and corrected Claude's contract draft against the current repository state.
