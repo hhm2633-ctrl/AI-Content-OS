@@ -1,5 +1,6 @@
 import json
 import re
+from inspect import Parameter, signature
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -20,10 +21,19 @@ from modules.card_news.social_proof_selector import SocialProofSelector
 from modules.card_news.story_flow_planner import StoryFlowPlanner
 from modules.card_news.typography_rules import TYPOGRAPHY_ROLES, check_text_against_role, resolve_typography_role
 from modules.card_news.visual_rhythm_selector import VisualRhythmSelector
+from modules.common.external_storage import resolve_external_path
 from modules.knowledge_engine.knowledge_interface import KnowledgeInterface
 
 
 class CardNewsModule(BaseModule):
+    # problem/CTA 카드의 흰 패널 상단은 270px 썸네일에서 보조문이 패널
+    # 경계와 붙어 보이지 않도록 전용 세로 영역을 확보한다. hook/solution은
+    # 기존 좌표를 유지해 이미 승인된 card1/3 시각 리듬을 보존한다.
+    SUBTITLE_CONFLICT_ROLES = frozenset({"problem", "cta"})
+    SUBTITLE_LEGACY_TOP_INSET = 34
+    SUBTITLE_SAFE_TOP_INSET = 50
+    SUBTITLE_HEADLINE_SAFE_GAP = 10
+
     # CardNews Intelligence (Phase M8: Production Quality) - Human Visual
     # Rhythm 실제 렌더링 반영. 완전히 새로운 Renderer가 아니라, 기존
     # _draw_layout_card/_draw_layout_text_content가 이미 쓰는 box_top(박스
@@ -76,8 +86,13 @@ class CardNewsModule(BaseModule):
     def __init__(self, config=None):
         super().__init__(config)
 
-        self.card_dir = Path("storage/card_news")
-        self.card_dir.mkdir(parents=True, exist_ok=True)
+        explicit_card_dir = self.config.get("card_news_output_dir")
+        self._default_card_dir = (
+            Path(explicit_card_dir)
+            if explicit_card_dir
+            else resolve_external_path("card_news", "renders")
+        )
+        self.card_dir = self._default_card_dir
 
         self.width = 1080
         self.height = 1080
@@ -107,6 +122,16 @@ class CardNewsModule(BaseModule):
         # Knowledge Interface 실제 연결(Sprint 12): 레이아웃 선택/렌더링 로직은 그대로
         # 두고, 축적된 Knowledge DB의 상위 layout 참고 정보만 결과에 덧붙인다.
         self.knowledge_interface = KnowledgeInterface()
+
+    def _ensure_card_dir(self) -> None:
+        if self.card_dir == self._default_card_dir and not self.config.get(
+            "card_news_output_dir"
+        ):
+            self.card_dir = resolve_external_path(
+                "card_news", "renders", create=True
+            )
+        else:
+            self.card_dir.mkdir(parents=True, exist_ok=True)
 
     def _get_font(self, size: int, bold: bool = False):
         font_candidates = [
@@ -220,31 +245,82 @@ class CardNewsModule(BaseModule):
 
         return "AI-Content-OS 카드뉴스"
 
-    def _extract_image_paths(self, image_generation_result: Dict[str, Any]) -> List[str]:
-        image_paths = []
+    def _extract_image_paths(self, image_generation_result: Dict[str, Any]) -> List[Optional[str]]:
+        """Return decode-safe image slots without changing their slide order."""
+        image_paths: List[Optional[str]] = []
+        diagnostics: List[Dict[str, Any]] = []
 
         if isinstance(image_generation_result, dict):
             images = image_generation_result.get("images", [])
 
             if isinstance(images, list):
-                for item in images:
+                for index, item in enumerate(images):
+                    image_path = None
+
                     if isinstance(item, dict):
                         image_path = item.get("image_path") or item.get("path")
+                    elif isinstance(item, str):
+                        image_path = item
 
-                        if image_path and Path(image_path).exists():
-                            image_paths.append(image_path)
+                    safe_path, diagnostic = self._validate_image_asset(image_path, index + 1)
+                    image_paths.append(safe_path)
+                    diagnostics.append(diagnostic)
 
-                    elif isinstance(item, str) and Path(item).exists():
-                        image_paths.append(item)
+        self._image_asset_diagnostics = diagnostics
 
         return image_paths
 
+    def _validate_image_asset(
+        self,
+        image_path: Any,
+        slot: int,
+    ) -> "tuple[Optional[str], Dict[str, Any]]":
+        diagnostic: Dict[str, Any] = {
+            "slot": slot,
+            "image_path": str(image_path) if image_path else None,
+            "status": "fallback",
+            "reason": "image_path_missing",
+        }
+
+        if not image_path:
+            return None, diagnostic
+
+        path = Path(str(image_path))
+        if not path.is_file():
+            diagnostic["reason"] = "image_file_missing"
+            return None, diagnostic
+
+        try:
+            # Force pixel decoding before layout rendering. A corrupt file must be
+            # downgraded here rather than retried by both renderer paths.
+            with Image.open(path) as candidate:
+                candidate.load()
+                candidate.convert("RGB")
+        except (OSError, ValueError, SyntaxError) as error:
+            diagnostic["reason"] = "image_decode_failed"
+            diagnostic["error_type"] = type(error).__name__
+            return None, diagnostic
+
+        diagnostic["status"] = "validated"
+        diagnostic["reason"] = ""
+        return str(image_path), diagnostic
+
     def _create_background(self, image_path: Optional[str], page_number: int):
-        if image_path and Path(image_path).exists():
-            image = Image.open(image_path).convert("RGB")
-            image = image.resize((self.width, self.height))
-            image = image.filter(ImageFilter.GaussianBlur(radius=1.2))
-        else:
+        image = None
+
+        if image_path:
+            try:
+                with Image.open(image_path) as source_image:
+                    source_image.load()
+                    image = source_image.convert("RGB")
+                image = image.resize((self.width, self.height))
+                image = image.filter(ImageFilter.GaussianBlur(radius=1.2))
+            except (OSError, ValueError, SyntaxError) as error:
+                # The file may change after preflight. Fall back here instead of
+                # raising into _create_card, which would reopen the same bad file.
+                self._mark_runtime_image_fallback(image_path, page_number, error)
+
+        if image is None:
             base_colors = [
                 (226, 233, 240),
                 (235, 235, 228),
@@ -337,6 +413,7 @@ class CardNewsModule(BaseModule):
         box_top: int,
         box_right: int,
         box_bottom: int,
+        canonical_role: str = "",
     ):
         # 기존 하드코딩 폰트 값(Phase M8 이전과 동일) - layout-aware 경로가
         # 실패했을 때 쓰이는 안전한 기본 fallback이므로 의도적으로 그대로
@@ -348,9 +425,16 @@ class CardNewsModule(BaseModule):
 
         max_width = box_right - box_left - 80
 
-        title_text = title[:38]
+        title_text = self._truncate_with_ellipsis(title, 38)
+        subtitle_geometry = self._resolve_subtitle_geometry(
+            title_text,
+            small_font,
+            box_left,
+            box_top,
+            canonical_role,
+        )
         draw.text(
-            (box_left + 40, box_top + 34),
+            subtitle_geometry["position"],
             title_text,
             font=small_font,
             fill=RC.PALETTE_COMBINATIONS["light"]["subtitle_color"],
@@ -360,6 +444,8 @@ class CardNewsModule(BaseModule):
         body_lines = self._wrap_text(body, body_font, max_width)
 
         y = box_top + 88
+        if self._uses_safe_subtitle_band(canonical_role):
+            y = max(y, subtitle_geometry["headline_min_y"])
 
         light_palette = RC.PALETTE_COMBINATIONS["light"]
 
@@ -422,11 +508,68 @@ class CardNewsModule(BaseModule):
             box_top=box_top,
             box_right=box_right,
             box_bottom=box_bottom,
+            canonical_role=str(role),
         )
 
         self._draw_bottom_line(draw)
 
         return image
+
+    def _mark_runtime_image_fallback(self, image_path: str, page_number: int, error: Exception) -> None:
+        diagnostics = getattr(self, "_render_image_diagnostics", [])
+        for diagnostic in diagnostics:
+            if diagnostic.get("slot") == page_number:
+                diagnostic.update({
+                    "image_path": image_path,
+                    "status": "fallback",
+                    "reason": "image_decode_failed_during_render",
+                    "error_type": type(error).__name__,
+                })
+                break
+
+    @staticmethod
+    def _truncate_with_ellipsis(text: Any, hard_limit: int) -> str:
+        value = str(text or "")
+        if hard_limit <= 0:
+            return ""
+        if len(value) <= hard_limit:
+            return value
+        if hard_limit == 1:
+            return "…"
+        return f"{value[: hard_limit - 1].rstrip()}…"
+
+    @classmethod
+    def _uses_safe_subtitle_band(cls, canonical_role: Any) -> bool:
+        return str(canonical_role or "").strip().lower() in cls.SUBTITLE_CONFLICT_ROLES
+
+    def _resolve_subtitle_geometry(
+        self,
+        title_text: str,
+        font,
+        box_left: int,
+        box_top: int,
+        canonical_role: str,
+    ) -> Dict[str, Any]:
+        """Return the subtitle ink box and the first overlap-safe headline y."""
+        top_inset = (
+            self.SUBTITLE_SAFE_TOP_INSET
+            if self._uses_safe_subtitle_band(canonical_role)
+            else self.SUBTITLE_LEGACY_TOP_INSET
+        )
+        position = (box_left + 40, box_top + top_inset)
+        left, top, right, bottom = font.getbbox(title_text)
+        ink_bbox = (
+            position[0] + left,
+            position[1] + top,
+            position[0] + right,
+            position[1] + bottom,
+        )
+        return {
+            "position": position,
+            "ink_bbox": ink_bbox,
+            "headline_min_y": ink_bbox[3] + self.SUBTITLE_HEADLINE_SAFE_GAP,
+            "top_inset": top_inset,
+        }
 
     def _create_card(
         self,
@@ -839,6 +982,7 @@ class CardNewsModule(BaseModule):
         body_position: str,
         style_profile: Dict[str, Any],
         layout_plan: Dict[str, Any],
+        canonical_role: str = "",
         attribution: Optional[Dict[str, Any]] = None,
     ):
         small_font = self._get_font(RC.RENDERER_FONT_SIZES["small"])
@@ -847,9 +991,16 @@ class CardNewsModule(BaseModule):
         title_position_offsets = {"top": 0, "center": 20, "bottom": 30}
         body_position_offsets = {"below_title": 0, "middle": 10, "bottom": 20}
 
-        title_text = title[:38]
+        title_text = self._truncate_with_ellipsis(title, 38)
+        subtitle_geometry = self._resolve_subtitle_geometry(
+            title_text,
+            small_font,
+            box_left,
+            box_top,
+            canonical_role,
+        )
         draw.text(
-            (box_left + 40, box_top + 34),
+            subtitle_geometry["position"],
             title_text,
             font=small_font,
             fill=palette["subtitle_color"],
@@ -866,6 +1017,8 @@ class CardNewsModule(BaseModule):
         body_line_height = max(1, int(round(layout_plan["body_font_size"] * body_rule["line_spacing"])))
 
         y = box_top + 88 + title_position_offsets.get(title_position, 0)
+        if self._uses_safe_subtitle_band(canonical_role):
+            y = max(y, subtitle_geometry["headline_min_y"])
 
         for line in headline_lines:
             draw.text((box_left + 40, y), line, font=headline_font, fill=palette["headline_color"])
@@ -978,6 +1131,7 @@ class CardNewsModule(BaseModule):
             body_position=body_position,
             style_profile=style_profile,
             layout_plan=layout_plan,
+            canonical_role=str(role),
             attribution=attribution,
         )
 
@@ -996,6 +1150,170 @@ class CardNewsModule(BaseModule):
 
         return image
 
+    @staticmethod
+    def _extract_cta_text(slides: List[Dict[str, Any]]) -> str:
+        for slide in slides:
+            if isinstance(slide, dict) and str(slide.get("role", "")).lower() == "cta":
+                return " ".join(
+                    part for part in (
+                        str(slide.get("headline", "") or "").strip(),
+                        str(slide.get("body", "") or "").strip(),
+                    ) if part
+                )
+        return ""
+
+    @staticmethod
+    def _align_cta_slide_to_save(slides: List[Dict[str, Any]]) -> tuple[List[Dict[str, Any]], Dict[str, Any]]:
+        """Keep the renderer's SAVE badge and CTA copy on one explicit action."""
+        aligned = [dict(slide) if isinstance(slide, dict) else slide for slide in slides]
+        diagnostics = {
+            "status": "unchanged",
+            "primary_intent": "",
+            "detected_intents": [],
+            "original_body": "",
+        }
+        for slide in aligned:
+            if not isinstance(slide, dict) or str(slide.get("role", "")).lower() != "cta":
+                continue
+            headline = str(slide.get("headline", "") or "")
+            body = str(slide.get("body", "") or "")
+            text = f"{headline} {body}"
+            detected = [
+                intent
+                for intent, pattern in DebateQuestionSelector.CTA_INTENT_PATTERNS.items()
+                if pattern.search(text)
+            ]
+            diagnostics["detected_intents"] = detected
+            diagnostics["original_body"] = body
+            if "save" in detected and any(intent != "save" for intent in detected):
+                slide["body"] = "나중에 다시 볼 수 있도록 저장해 두세요."
+                diagnostics.update({
+                    "status": "normalized",
+                    "primary_intent": "save",
+                    "reason": "SAVE 배지와 충돌하는 추가 CTA 행동을 제거함.",
+                })
+            elif detected:
+                diagnostics["primary_intent"] = detected[0]
+            break
+        return aligned, diagnostics
+
+    @staticmethod
+    def _apply_evidence_safe_copy(
+        slides: List[Dict[str, Any]],
+        evidence_result: Dict[str, Any],
+    ) -> tuple[List[Dict[str, Any]], Dict[str, Any]]:
+        """Replace unsupported factual copy with an explicit pre-verification flow."""
+        if evidence_result.get("evidence_available") is True:
+            return slides, {"applied": False, "reason": "evidence_available"}
+        safe_slides = [
+            {
+                "role": "hook",
+                "headline": "이 주제, 바로 써도 될까요?",
+                "body": "출처와 맥락 확인이 먼저입니다.",
+            },
+            {
+                "role": "problem",
+                "headline": "제목만으로는 판단 못 합니다",
+                "body": "원문과 게시일이 없으면 의미를 단정하기 어렵습니다.",
+            },
+            {
+                "role": "solution",
+                "headline": "출처부터 다시 확인하세요",
+                "body": "원문, 게시일, 실제 반응을 확인한 뒤 핵심만 정리하세요.",
+            },
+            {
+                "role": "cta",
+                "headline": "확인 전에는 발행하지 마세요",
+                "body": "근거가 확보되면 저장하세요.",
+            },
+        ]
+        return safe_slides, {
+            "applied": True,
+            "reason": "topic_evidence_unavailable",
+            "claim_policy": "unsupported_factual_copy_replaced",
+        }
+
+    def _select_debate_question(self, pattern_type: Any, cta_type: Any, cta_text: str) -> Dict[str, Any]:
+        """Use the optional CTA-text contract while accepting the legacy selector."""
+        select = self.debate_question_selector.select
+        try:
+            parameters = signature(select).parameters.values()
+            supports_cta_text = any(
+                parameter.name == "cta_text" or parameter.kind == Parameter.VAR_KEYWORD
+                for parameter in parameters
+            )
+        except (TypeError, ValueError):
+            supports_cta_text = False
+
+        if supports_cta_text:
+            result = select(pattern_type, cta_type, cta_text=cta_text)
+            detected = [
+                intent
+                for intent in result.get("detected_cta_intents", [])
+                if intent != "comment"
+            ] if isinstance(result, dict) else []
+            source_cta_type = str(cta_type or "").strip().lower()
+            if len(detected) == 1 and detected[0] != source_cta_type:
+                effective_cta_type = detected[0]
+                normalized = select(
+                    pattern_type,
+                    effective_cta_type,
+                    cta_text=cta_text,
+                )
+                if isinstance(normalized, dict):
+                    normalized["source_cta_type"] = source_cta_type
+                    normalized["effective_cta_type"] = effective_cta_type
+                    normalized["cta_type_normalized"] = True
+                    normalized["cta_alignment_status"] = "aligned_to_explicit_text"
+                    normalized["normalization_reason"] = (
+                        "CTA 문안의 단일 명시 행동을 CardNews 표시 목적과 정렬함."
+                    )
+                    return normalized
+            if isinstance(result, dict):
+                result.setdefault("source_cta_type", source_cta_type)
+                result.setdefault("effective_cta_type", source_cta_type)
+                result.setdefault("cta_type_normalized", False)
+                result.setdefault("cta_alignment_status", "unchanged")
+            return result
+        return select(pattern_type, cta_type)
+
+    def _build_image_asset_diagnostics(self) -> Dict[str, Any]:
+        candidates = [dict(item) for item in getattr(self, "_image_asset_diagnostics", [])]
+        assets = [dict(item) for item in getattr(self, "_render_image_diagnostics", [])]
+        validated_count = sum(1 for item in assets if item.get("status") == "validated")
+        fallback_count = len(assets) - validated_count
+        return {
+            "input_count": len(candidates),
+            "render_slot_count": len(assets),
+            "validated_count": validated_count,
+            "fallback_count": fallback_count,
+            "fallback_used": fallback_count > 0,
+            "assets": assets,
+            "input_assets": candidates,
+        }
+
+    def _prepare_rendering_image_paths(
+        self,
+        image_paths: List[Optional[str]],
+    ) -> List[Optional[str]]:
+        prepared: List[Optional[str]] = []
+        diagnostics: List[Dict[str, Any]] = []
+        for index in range(4):
+            image_path = image_paths[index] if index < len(image_paths) else None
+            safe_path, diagnostic = self._validate_image_asset(image_path, index + 1)
+            prepared.append(safe_path)
+            diagnostics.append(diagnostic)
+        self._render_image_diagnostics = diagnostics
+        return prepared
+
+    def _source_image_for_card(self, image_path: Optional[str], page_number: int) -> Optional[str]:
+        if not image_path:
+            return None
+        for diagnostic in getattr(self, "_render_image_diagnostics", []):
+            if diagnostic.get("slot") == page_number and diagnostic.get("status") != "validated":
+                return None
+        return image_path
+
     def run(
         self,
         content_result: Dict[str, Any],
@@ -1003,13 +1321,12 @@ class CardNewsModule(BaseModule):
         image_strategy_result: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         print("Card News Module Started")
+        self._ensure_card_dir()
 
         title = self._extract_title(content_result)
         slides = self._extract_slides(content_result)
+        slides, cta_alignment_result = self._align_cta_slide_to_save(slides)
         image_paths = self._extract_image_paths(image_generation_result)
-
-        layout_result = self._build_layout_result(content_result, slides)
-        layout_context, rendering_notes = self._build_layout_context(layout_result)
 
         # CardNews Intelligence (Phase M7): pattern_type/cta_type은 ContentModule이
         # 이미 계산해 content_result에 실어 둔 값(pattern_prompt_meta)을 그대로
@@ -1018,9 +1335,18 @@ class CardNewsModule(BaseModule):
         pattern_type = pattern_meta.get("pattern_type", "")
         cta_type = pattern_meta.get("cta_type", "")
 
-        evidence_result = self.evidence_selector.select(image_strategy_result, image_paths)
+        valid_image_paths = [image_path for image_path in image_paths if image_path]
+        evidence_result = self.evidence_selector.select(image_strategy_result, valid_image_paths)
+        slides, evidence_copy_guard = self._apply_evidence_safe_copy(slides, evidence_result)
+        slides, cta_alignment_result = self._align_cta_slide_to_save(slides)
+        layout_result = self._build_layout_result(content_result, slides)
+        layout_context, rendering_notes = self._build_layout_context(layout_result)
         social_proof_result = self.social_proof_selector.select()
-        debate_result = self.debate_question_selector.select(pattern_type, cta_type)
+        debate_result = self._select_debate_question(
+            pattern_type,
+            cta_type,
+            self._extract_cta_text(slides),
+        )
         story_flow_result = self.story_flow_planner.plan(
             slides,
             evidence_available=bool(evidence_result.get("evidence_available")),
@@ -1044,6 +1370,16 @@ class CardNewsModule(BaseModule):
         rendering_image_paths, evidence_applied = self._apply_evidence_asset(
             list(image_paths), evidence_result, story_flow_result
         )
+        rendering_image_paths = self._prepare_rendering_image_paths(rendering_image_paths)
+
+        if evidence_applied:
+            top_asset = evidence_result.get("top_evidence_asset") or {}
+            evidence_path = top_asset.get("asset_path") if isinstance(top_asset, dict) else None
+            if not evidence_path or evidence_path not in rendering_image_paths:
+                evidence_applied = False
+                if isinstance(top_asset, dict):
+                    top_asset["applied"] = False
+                    top_asset["render_rejection_reason"] = "image_decode_failed"
 
         # Phase M8 (Production Quality) 실제 렌더링 반영: 선택된 스타일이 실제
         # 이번 카드뉴스 데이터로 적용 가능한지 재확인하고(quote_card/comparison/
@@ -1097,7 +1433,7 @@ class CardNewsModule(BaseModule):
             cards.append({
                 "index": index + 1,
                 "card_path": card_path,
-                "source_image": image_path,
+                "source_image": self._source_image_for_card(image_path, page_number),
                 "headline": slide.get("headline", ""),
                 "status": "created",
             })
@@ -1119,10 +1455,12 @@ class CardNewsModule(BaseModule):
         result["design_quality_result"] = design_quality_result
         result["evidence_result"] = evidence_result
         result["evidence_applied"] = evidence_applied
+        result["evidence_copy_guard"] = evidence_copy_guard
         result["social_proof_result"] = social_proof_result
         result["social_proof_applied"] = social_proof_applied
         result["story_flow_result"] = story_flow_result
         result["debate_result"] = debate_result
+        result["cta_alignment_result"] = cta_alignment_result
         result["typography_result"] = typography_result
         result["visual_rhythm_result"] = visual_rhythm_result
         result["mobile_readability_result"] = mobile_readability_result
@@ -1130,6 +1468,7 @@ class CardNewsModule(BaseModule):
         self._apply_knowledge_consumption(result)
         result["card_news_quality"] = self._build_card_news_quality(result)
         result["image_sourcing_status"] = self._build_image_sourcing_status(image_strategy_result or {}, cards)
+        result["image_asset_diagnostics"] = self._build_image_asset_diagnostics()
         result["planner_influence"] = self._build_planner_influence(content_result, image_strategy_result)
 
         print("Card News Module Finished")
