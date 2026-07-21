@@ -2,6 +2,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from modules.topic_engine.card_news_topic_intelligence import CardNewsTopicIntelligence
+
 
 class TopicEngineModule:
     def __init__(self, config=None):
@@ -29,6 +31,13 @@ class TopicEngineModule:
             "selected_topic": selected_topic,
             "created_at": datetime.now().isoformat()
         }
+
+        # CardNews Topic Intelligence V1: 기존 topic_result 구조는 그대로 두고
+        # 필드 하나만 추가한다. 내부에서 모든 예외를 fallback result로 흡수하므로
+        # 이 호출이 workflow_completed를 깨뜨리는 일은 없다.
+        result["card_news_topic_intelligence"] = CardNewsTopicIntelligence(
+            self.config
+        ).build(trend_result)
 
         self._save_result(result)
 
