@@ -10,18 +10,10 @@ from urllib.error import HTTPError, URLError
 
 from modules.common.service_diagnostic import ServiceDiagnostic
 from modules.trend_collector.naver_api_hub_client import NaverApiHubClient
+from modules.trend_collector.naver_news_parser_v2 import NaverNewsParserV2
 
 
 class NaverNewsCollector:
-    # Anchor/attribute scanning must not depend on attribute order, quote
-    # style, or extra attributes injected by markup changes.
-    _ANCHOR_PATTERN = re.compile(
-        r"<a\b([^>]*)>(.*?)</a\s*>",
-        flags=re.IGNORECASE | re.DOTALL,
-    )
-    _ATTRIBUTE_PATTERN = re.compile(
-        r"""([\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')"""
-    )
     # Lenient RSS recovery for payloads ET refuses (unbound prefixes,
     # stray entities) while <item> blocks are still intact.
     _LENIENT_ITEM_PATTERN = re.compile(
@@ -43,6 +35,7 @@ class NaverNewsCollector:
             if api_hub_client is not None
             else NaverApiHubClient(timeout=timeout)
         )
+        self._parser = NaverNewsParserV2()
         self.last_status = self._empty_status()
 
     def _empty_status(self) -> Dict[str, Any]:
@@ -263,25 +256,19 @@ class NaverNewsCollector:
         url = f"https://search.naver.com/search.naver?where=rss&query={encoded_query}"
         raw_xml = self._fetch_url(url)
 
-        return self._parse_rss_payload(query=query, source=source, raw_xml=raw_xml)
-
-    def _parse_rss_payload(
-        self,
-        query: str,
-        source: Dict[str, Any],
-        raw_xml: str,
-    ) -> List[Dict[str, Any]]:
-        """Parse an RSS payload, tolerating namespaces and case variance.
-
-        HTML payloads (the RSS endpoint serving a search page) and
-        unrecoverably malformed XML raise ET.ParseError so the caller can
-        try the HTML search path while keeping the parse_failed reason.
-        """
-        if self._looks_like_html(raw_xml):
-            raise ET.ParseError("rss payload is an html document")
-
         try:
-            root = ET.fromstring(raw_xml)
+            normalized_xml = self._normalize_rss_payload(raw_xml)
+            items = self._parser.parse_query(
+                query=query,
+                source=source,
+                rss_payload=normalized_xml,
+                search_payload="",
+            )
+
+            if items:
+                return items
+
+            return []
         except ET.ParseError as parse_error:
             lenient_items = self._parse_rss_items_lenient(
                 query=query,
@@ -294,51 +281,21 @@ class NaverNewsCollector:
 
             raise parse_error
 
-        items = self._find_rss_items(root)
-        trends = []
+    def _normalize_rss_payload(
+        self,
+        raw_xml: str,
+    ) -> str:
+        if self._looks_like_html(raw_xml):
+            raise ET.ParseError("rss payload is an html document")
 
-        for index, item in enumerate(items[:self.max_items_per_query], start=1):
-            title = self._clean_text(self._find_text(item, "title"))
-            link = self._clean_text(
-                self._find_text(item, "originallink")
-                or self._find_text(item, "link")
-            )
-            summary = self._clean_text(self._find_text(item, "description"))
-            published_at = self._clean_text(self._find_text(item, "pubDate"))
+        root = ET.fromstring(raw_xml)
+        self._normalize_xml_tree_tags(root)
+        return ET.tostring(root, encoding="unicode")
 
-            if not title:
-                continue
-
-            trends.append(
-                self._build_trend_item(
-                    query=query,
-                    title=title,
-                    link=link,
-                    summary=summary,
-                    published_at=published_at,
-                    index=index,
-                    source=source,
-                    collection_method="naver_news_rss",
-                )
-            )
-
-        return trends
-
-    def _find_rss_items(self, root: ET.Element) -> List[ET.Element]:
-        items = []
-
-        for element in root.iter():
-            if self._xml_local_name(element.tag) == "item":
-                items.append(element)
-
-        return items
-
-    def _xml_local_name(self, tag: Any) -> str:
-        # Comments/processing instructions surface non-string tags in ET.
-        if not isinstance(tag, str):
-            return ""
-
-        return tag.rsplit("}", 1)[-1].strip().lower()
+    def _normalize_xml_tree_tags(self, node: ET.Element) -> None:
+        node.tag = self._normalize_xml_tag_name(node.tag)
+        for child in list(node):
+            self._normalize_xml_tree_tags(child)
 
     def _parse_rss_items_lenient(
         self,
@@ -416,29 +373,78 @@ class NaverNewsCollector:
             f"?where=news&query={encoded_query}&sort=1"
         )
         raw_html = self._fetch_url(url)
-        articles = self._parse_search_result_articles(raw_html)
-        trends = []
+        normalized_html = self._normalize_search_html_for_parser(raw_html)
+        articles = self._parser.parse_search_payload(
+            query=query,
+            source=source,
+            raw_html=normalized_html,
+        )
 
-        for index, article in enumerate(articles[:self.max_items_per_query], start=1):
-            title = article.get("title", "")
+        for item in articles:
+            if item.get("link") == "#":
+                item["link"] = ""
 
+        return articles[: self.max_items_per_query]
+
+    def _normalize_search_html_for_parser(self, raw_html: str) -> str:
+        lowered = raw_html.lower()
+        if "news_tit" not in lowered and "data-heatmap-target" not in lowered:
+            return ""
+
+        anchor_pattern = re.compile(
+            r"<a\b([^>]*)>(.*?)</a\s*>",
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+
+        def _extract_attr(attributes_text: str, name: str) -> str:
+            match = re.search(
+                rf'{name}\s*=\s*(?:"([^"]*)"|\'([^\']*)\')',
+                attributes_text,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            if not match:
+                return ""
+            return html.unescape(match.group(1) if match.group(1) is not None else match.group(2) or "")
+
+        def _replace_anchor(match: re.Match[str]) -> str:
+            attributes_text = match.group(1)
+            inner_html = match.group(2)
+            class_text = _extract_attr(attributes_text, "class").lower()
+            heatmap_target = _extract_attr(attributes_text, "data-heatmap-target")
+            if heatmap_target in (".tit", ".body"):
+                href = _extract_attr(attributes_text, "href") or "#"
+                if heatmap_target == ".tit":
+                    title = _extract_attr(attributes_text, "title") or inner_html
+                    return (
+                        f'<a nocr="1" data-heatmap-target=".tit" href="{href}">'
+                        f"{title}"
+                        "</a>"
+                    )
+                return f'<a data-heatmap-target="{heatmap_target}" href="{href}">{inner_html}</a>'
+
+            if "news_tit" not in class_text:
+                return match.group(0)
+
+            title = _extract_attr(attributes_text, "title") or self._clean_text(inner_html)
             if not title:
-                continue
+                return ""
 
-            trends.append(
-                self._build_trend_item(
-                    query=query,
-                    title=title,
-                    link=article.get("link", ""),
-                    summary=article.get("summary", ""),
-                    published_at="",
-                    index=index,
-                    source=source,
-                    collection_method="naver_news_html",
-                )
+            href = _extract_attr(attributes_text, "href") or "#"
+            return (
+                f'<a nocr="1" data-heatmap-target=".tit" href="{href}">'
+                f"<span>{title}</span></a>"
+                f'<a data-heatmap-target=".body" href="{href}"></a>'
             )
 
-        return trends
+        return anchor_pattern.sub(_replace_anchor, raw_html)
+
+    def _normalize_xml_tag_name(self, tag: str) -> str:
+        local_name = self._xml_local_name(tag)
+
+        if local_name == "pubdate":
+            return "pubDate"
+
+        return local_name
 
     def _fetch_url(self, url: str) -> str:
         request = urllib.request.Request(
@@ -516,105 +522,12 @@ class NaverNewsCollector:
 
         return reasons[0] if reasons else "unknown_error"
 
-    def _parse_search_result_articles(self, raw_html: str) -> List[Dict[str, str]]:
-        """Extract visible title/link/summary from search-result markup.
+    def _xml_local_name(self, tag: Any) -> str:
+        # Comments/processing instructions surface non-string tags in ET.
+        if not isinstance(tag, str):
+            return ""
 
-        Anchors are matched by parsed attributes instead of positional
-        regexes, so attribute reordering or new attributes cannot break
-        extraction. Supports the legacy news_tit layout and the newer
-        data-heatmap-target layout. Missing fields stay empty strings —
-        nothing is fabricated.
-        """
-        anchors = self._extract_anchor_tags(raw_html)
-        articles = self._extract_news_tit_articles(anchors)
-
-        if articles:
-            return articles
-
-        return self._extract_heatmap_articles(anchors)
-
-    def _extract_anchor_tags(self, raw_html: str) -> List[Dict[str, Any]]:
-        anchors = []
-
-        for match in self._ANCHOR_PATTERN.finditer(raw_html):
-            attributes = {}
-
-            for attr in self._ATTRIBUTE_PATTERN.finditer(match.group(1)):
-                name = attr.group(1).lower()
-                value = attr.group(2) if attr.group(2) is not None else attr.group(3)
-                attributes[name] = value or ""
-
-            anchors.append(
-                {
-                    "attributes": attributes,
-                    "inner_html": match.group(2),
-                }
-            )
-
-        return anchors
-
-    def _extract_news_tit_articles(
-        self,
-        anchors: List[Dict[str, Any]],
-    ) -> List[Dict[str, str]]:
-        articles = []
-
-        for anchor in anchors:
-            attributes = anchor["attributes"]
-
-            if "news_tit" not in attributes.get("class", ""):
-                continue
-
-            title = (
-                self._clean_text(attributes.get("title", ""))
-                or self._clean_text(anchor["inner_html"])
-            )
-
-            if not title:
-                continue
-
-            articles.append(
-                {
-                    "title": title,
-                    "link": html.unescape(attributes.get("href", "")),
-                    "summary": "",
-                }
-            )
-
-        return articles
-
-    def _extract_heatmap_articles(
-        self,
-        anchors: List[Dict[str, Any]],
-    ) -> List[Dict[str, str]]:
-        articles = []
-        current: Optional[Dict[str, str]] = None
-
-        for anchor in anchors:
-            target = anchor["attributes"].get("data-heatmap-target", "")
-
-            if target == ".tit":
-                if current is not None:
-                    articles.append(current)
-                    current = None
-
-                title = self._clean_text(anchor["inner_html"])
-
-                if not title:
-                    continue
-
-                current = {
-                    "title": title,
-                    "link": html.unescape(anchor["attributes"].get("href", "")),
-                    "summary": "",
-                }
-            elif target == ".body" and current is not None and not current["summary"]:
-                current["summary"] = self._clean_text(anchor["inner_html"])
-
-        if current is not None:
-            articles.append(current)
-
-        return articles
+        return tag.rsplit("}", 1)[-1].lower()
 
     def _build_trend_item(
         self,

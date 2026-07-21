@@ -15,7 +15,6 @@
     "삽입 영상",
     "방송사·유튜브 영상"
   ],
-  "execution_enabled": true,
-  "network_executed": false,
-  "selection_stage": "final_selected"
+  "execution_enabled": false,
+  "network_executed": false
 }

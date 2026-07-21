@@ -83,6 +83,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
             "maker": {"id": "renderer"},
             "reviewer": {"id": "independent-visual-qa", "independent_from_maker": True},
             "scope": {"kind": "representative", "accounts": [account], "candidate_ids": [candidate]},
+            "feed_caption": "Separate natural feed caption",
             "slides": [{
                 "candidate_id": candidate,
                 "page": 1,
@@ -91,6 +92,8 @@ class RunCardnewsProductionTests(unittest.TestCase):
                 "findings": {
                     "mobile_readability": "pass",
                     "copy_readability": "pass",
+                    "copy_density_ok": "pass",
+                    "image_is_primary": "pass",
                     "content_not_blank": "pass",
                     "subject_focus": "pass",
                     "subject_crop_preserved": "pass",
@@ -651,15 +654,17 @@ class RunCardnewsProductionTests(unittest.TestCase):
                     "page": 1,
                     "image_path": str(image),
                     "image_sha256": hashlib.sha256(image.read_bytes()).hexdigest(),
-                    "findings": {
-                        "mobile_readability": "pass",
-                        "copy_readability": "pass",
-                        "content_not_blank": "pass",
-                        "subject_focus": "pass",
-                        "subject_crop_preserved": "pass",
-                        "comment_readability": "not_applicable",
-                        "story_progression": "pass",
-                    },
+                "findings": {
+                    "mobile_readability": "pass",
+                    "copy_readability": "pass",
+                    "copy_density_ok": "pass",
+                    "image_is_primary": "pass",
+                    "content_not_blank": "pass",
+                    "subject_focus": "pass",
+                    "subject_crop_preserved": "pass",
+                    "comment_readability": "not_applicable",
+                    "story_progression": "pass",
+                },
                 })
             batch_qa = self._write(root / "batch_qa.json", {
                 "schema_version": "cardnews_visual_qa_receipt_v1",
@@ -674,6 +679,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
                     "candidate_ids": ["candidate-a", "candidate-b", "candidate-c"],
                     "representative_receipt_ids": state["representative_qa_receipt_ids"],
                 },
+                "feed_caption": "Separate natural feed caption",
                 "slides": slides,
                 "decision": "approve",
             })

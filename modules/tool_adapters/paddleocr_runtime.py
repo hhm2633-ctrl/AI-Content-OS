@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 import subprocess
 import time
-from typing import Mapping
+from typing import Any, Mapping
 
 
 PADDLEOCR_RUNTIME_ROOT_ENV = "PADDLEOCR_RUNTIME_ROOT"
@@ -56,6 +56,8 @@ ocr = PaddleOCR(
 )
 lines = []
 scores = []
+boxes = []
+polys = []
 for result in ocr.predict(image_path):
     payload = result.json if hasattr(result, "json") else dict(result)
     if isinstance(payload, str):
@@ -63,7 +65,13 @@ for result in ocr.predict(image_path):
     body = payload.get("res", payload)
     lines.extend(str(value) for value in body.get("rec_texts", []) if str(value).strip())
     scores.extend(float(value) for value in body.get("rec_scores", []))
-print("__PADDLEOCR_RECEIPT__" + json.dumps({"lines": lines, "scores": scores}, ensure_ascii=True))
+    raw_boxes = body.get("rec_boxes", body.get("dt_boxes", []))
+    raw_polys = body.get("rec_polys", body.get("dt_polys", []))
+    if isinstance(raw_boxes, list):
+        boxes.extend(raw_boxes)
+    if isinstance(raw_polys, list):
+        polys.extend(raw_polys)
+print("__PADDLEOCR_RECEIPT__" + json.dumps({"lines": lines, "scores": scores, "boxes": boxes, "polys": polys}, ensure_ascii=True))
 '''
 
 
@@ -116,6 +124,8 @@ class PaddleOCRExtractionReceipt:
     text: str
     lines: tuple[str, ...]
     scores: tuple[float, ...]
+    boxes: tuple[tuple[float, ...], ...]
+    polys: tuple[tuple[tuple[float, float], ...], ...]
     elapsed_seconds: float
     timeout_seconds: float
     paddleocr_version: str
@@ -141,6 +151,8 @@ def _extraction_receipt(
     input_unchanged: bool = True,
     lines: tuple[str, ...] = (),
     scores: tuple[float, ...] = (),
+    boxes: tuple[tuple[float, ...], ...] = (),
+    polys: tuple[tuple[tuple[float, float], ...], ...] = (),
     elapsed_seconds: float = 0.0,
     timeout_seconds: float = DEFAULT_TIMEOUT_SECONDS,
     reason: str = "",
@@ -155,6 +167,8 @@ def _extraction_receipt(
         text="\n".join(lines),
         lines=lines,
         scores=scores,
+        boxes=boxes,
+        polys=polys,
         elapsed_seconds=round(elapsed_seconds, 3),
         timeout_seconds=timeout_seconds,
         paddleocr_version=runtime.paddleocr_version,
@@ -173,6 +187,35 @@ def _path_from_env(
 ) -> Path:
     override = str(environment.get(name, "")).strip().strip('"')
     return Path(override).expanduser() if override else default
+
+
+def _coerce_float(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _coerce_box(raw_box: Any) -> tuple[float, ...]:
+    if not isinstance(raw_box, (list, tuple)):
+        return ()
+    coordinates = tuple(item for item in (_coerce_float(item) for item in raw_box) if item is not None)
+    return coordinates if len(coordinates) >= 4 else ()
+
+
+def _coerce_polygon(raw_polygon: Any) -> tuple[tuple[float, float], ...]:
+    if not isinstance(raw_polygon, (list, tuple)):
+        return ()
+    points: list[tuple[float, float]] = []
+    for raw_point in raw_polygon:
+        if not isinstance(raw_point, (list, tuple)) or len(raw_point) < 2:
+            return ()
+        x = _coerce_float(raw_point[0])
+        y = _coerce_float(raw_point[1])
+        if x is None or y is None:
+            return ()
+        points.append((x, y))
+    return tuple(points)
 
 
 def _distribution(root: Path, name: str) -> tuple[Path | None, dict[str, str]]:
@@ -459,6 +502,12 @@ def extract_korean_text(
             raise ValueError("receipt payload is not an object")
         lines = tuple(str(item) for item in payload.get("lines", ()) if str(item).strip())
         scores = tuple(float(item) for item in payload.get("scores", ()))
+        boxes = tuple(
+            value for value in (_coerce_box(item) for item in payload.get("boxes", ())) if value
+        )
+        polys = tuple(
+            value for value in (_coerce_polygon(item) for item in payload.get("polys", ())) if value
+        )
     except (TypeError, ValueError, json.JSONDecodeError) as exc:
         return _extraction_receipt(
             runtime=runtime,
@@ -480,6 +529,8 @@ def extract_korean_text(
         input_bytes=before.st_size,
         lines=lines,
         scores=scores,
+        boxes=boxes,
+        polys=polys,
         elapsed_seconds=elapsed,
         timeout_seconds=timeout,
     )

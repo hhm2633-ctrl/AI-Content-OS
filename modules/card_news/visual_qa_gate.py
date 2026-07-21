@@ -18,12 +18,23 @@ SCOPE_KINDS = {"representative", "batch"}
 REQUIRED_FINDINGS = (
     "mobile_readability",
     "copy_readability",
+    "copy_density_ok",
+    "feed_caption_present",
     "content_not_blank",
+    "image_is_primary",
     "subject_focus",
     "subject_crop_preserved",
     "comment_readability",
     "story_progression",
 )
+HARD_REQUIRED_FINDING_REASON_CODES = {
+    "subject_crop_preserved": "visual_qa_subject_aware_layout",
+    "feed_caption_present": "visual_qa_feed_caption_required",
+    "comment_readability": "visual_qa_comment_readability_hard",
+    "story_progression": "visual_qa_story_progression_order",
+    "copy_density_ok": "visual_qa_copy_density_hard_limit",
+    "image_is_primary": "visual_qa_image_is_primary",
+}
 PASS = "pass"
 NOT_APPLICABLE = "not_applicable"
 ALLOWED_FINDING_STATUSES = {PASS, NOT_APPLICABLE, "fail", "rejected", "blocked"}
@@ -262,7 +273,10 @@ def assess_visual_qa_receipt(
 
         findings = slide.get("findings") if isinstance(slide.get("findings"), Mapping) else {}
         for finding_name in REQUIRED_FINDINGS:
-            status = _text(findings.get(finding_name))
+            if finding_name == "feed_caption_present":
+                status = "pass" if _text(value.get("feed_caption")) else "fail"
+            else:
+                status = _text(findings.get(finding_name))
             finding_field = f"{field}.findings.{finding_name}"
             if status not in ALLOWED_FINDING_STATUSES:
                 failures.append(
@@ -289,13 +303,24 @@ def assess_visual_qa_receipt(
                 )
                 continue
             if status in {"fail", "rejected", "blocked"}:
+                reason_code = HARD_REQUIRED_FINDING_REASON_CODES.get(
+                    finding_name, "visual_qa_finding_rejected"
+                )
                 failures.append(
                     _failure(
                         finding_field,
-                        "visual_qa_finding_rejected",
+                        reason_code,
                         f"{finding_name} was {status}",
                     )
                 )
+                if reason_code != "visual_qa_finding_rejected":
+                    failures.append(
+                        _failure(
+                            finding_field,
+                            "visual_qa_finding_rejected",
+                            f"{finding_name} was {status}",
+                        )
+                    )
 
     for key in sorted(set(expected_by_key) - set(reviewed_by_key)):
         failures.append(

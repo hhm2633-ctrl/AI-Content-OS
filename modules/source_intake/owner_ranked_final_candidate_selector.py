@@ -12,6 +12,7 @@ import re
 from typing import Any, Dict, List, Mapping, Sequence
 
 from modules.source_intake.same_event_topic_clusterer import run_same_event_topic_clustering
+from modules.agent_console.owner_feedback_learning import DEFAULT_INDEX_PATH, ensure_owner_learning_index
 
 
 SCHEMA_VERSION = "cardnews_final_selection_v1"
@@ -22,10 +23,18 @@ TOPIC_STOPWORDS = {
     "담은", "선보였다", "나왔다", "없었다", "있었다", "관련", "소식", "포토",
     "리뷰", "2027", "남성복", "컬렉션", "이탈리아", "럭셔리", "주제로",
 }
+_TOPIC_HARD_EXCLUSION_RULES_CACHE: list[dict[str, Any]] | None = None
+_TOPIC_TOKEN_RE = re.compile(r"[0-9A-Za-z가-힣]+")
 
 
 def _text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
+
+
+def _string_set(value: Any) -> set[str]:
+    if not isinstance(value, (list, tuple, set)):
+        return set()
+    return {_text(item) for item in value if _text(item)}
 
 
 def _commerce_score(annotation: Mapping[str, Any]) -> float:
@@ -66,6 +75,77 @@ def _topic_terms(title: str) -> set[str]:
         for token in re.findall(r"[0-9A-Za-z가-힣]+", title)
         if len(token) >= 2 and token.lower() not in TOPIC_STOPWORDS
     }
+
+
+def _extract_tokens(value: Any) -> set[str]:
+    return {
+        token.casefold()
+        for token in _TOPIC_TOKEN_RE.findall(_text(value))
+        if len(token) >= 2 and token.casefold() not in TOPIC_STOPWORDS
+    }
+
+
+def _topic_hard_exclusion_rules() -> list[dict[str, Any]]:
+    global _TOPIC_HARD_EXCLUSION_RULES_CACHE
+    if _TOPIC_HARD_EXCLUSION_RULES_CACHE is not None:
+        return _TOPIC_HARD_EXCLUSION_RULES_CACHE
+
+    rules: list[dict[str, Any]] = []
+    try:
+        payload = ensure_owner_learning_index(index_path=DEFAULT_INDEX_PATH)
+    except Exception:
+        _TOPIC_HARD_EXCLUSION_RULES_CACHE = []
+        return _TOPIC_HARD_EXCLUSION_RULES_CACHE
+
+    for record in payload.get("records", []):
+        if not isinstance(record, Mapping):
+            continue
+        if record.get("active") is not True:
+            continue
+        feedback_type = _text(record.get("feedback_type")).lower()
+        if "topic_hard_exclusion" not in feedback_type and "hard_exclusion" not in feedback_type:
+            continue
+        applies_to = _string_set(record.get("applies_to"))
+        if "topic_selection" not in applies_to and "topic_hard_exclusion" not in applies_to:
+            continue
+        learning_id = _text(record.get("learning_id"))
+        title = _text(record.get("title"))
+        rule = _text(record.get("rule"))
+        owner_reason = _text(record.get("owner_reason"))
+        candidate_id = _text(record.get("candidate_id"))
+        rule_tokens = set()
+        rule_tokens.update(_extract_tokens(title))
+        rule_tokens.update(_extract_tokens(rule))
+        rule_tokens.update(_extract_tokens(owner_reason))
+        if not rule_tokens and not candidate_id:
+            continue
+        rules.append(
+            {
+                "learning_id": learning_id,
+                "candidate_id": candidate_id,
+                "applies_to": sorted(applies_to),
+                "tokens": rule_tokens,
+                "title": title,
+            }
+        )
+
+    _TOPIC_HARD_EXCLUSION_RULES_CACHE = rules
+    return rules
+
+
+def _is_topic_hard_excluded(raw: Mapping[str, Any]) -> dict[str, Any] | None:
+    title = _text(raw.get("title"))
+    category = _text(raw.get("category"))
+    candidate_id = _text(raw.get("candidate_id"))
+    candidate_tokens = _extract_tokens(f"{title} {category}")
+    if not candidate_tokens and candidate_id:
+        candidate_tokens.add(candidate_id)
+    for rule in _topic_hard_exclusion_rules():
+        if rule.get("candidate_id") and rule["candidate_id"] == candidate_id:
+            return rule
+        if rule["tokens"] and candidate_tokens.intersection(rule["tokens"]):
+            return rule
+    return None
 
 
 def _supplemental_same_topic(left: Mapping[str, Any], right: Mapping[str, Any]) -> bool:
@@ -140,6 +220,18 @@ def select_owner_ranked_final_candidates(
                 }
             )
             continue
+        exclusion = _is_topic_hard_excluded(raw)
+        if exclusion is not None:
+            excluded.append(
+                {
+                    **{k: raw.get(k) for k in ("request_id", "candidate_id", "account", "title")},
+                    "reason_code": "topic_hard_exclusion",
+                    "topic_exclusion_learning_id": _text(exclusion.get("learning_id")),
+                    "topic_exclusion_rule": _text(exclusion.get("title")),
+                    "request_reason": "active topic hard exclusion rule",
+                }
+            )
+            continue
         annotation = annotations.get(candidate_id, {})
         source_urls = [
             _text(url) for url in raw.get("source_urls", []) if isinstance(url, str) and _text(url)
@@ -177,7 +269,9 @@ def select_owner_ranked_final_candidates(
             }
             for item in candidates
         ]
-        cluster_result = run_same_event_topic_clustering(cluster_input)
+        cluster_result = run_same_event_topic_clustering(
+            cluster_input,
+        )
         cluster_by_id: Dict[str, str] = {}
         cluster_members: Dict[str, List[str]] = {}
         if cluster_result.get("status") == "ok":

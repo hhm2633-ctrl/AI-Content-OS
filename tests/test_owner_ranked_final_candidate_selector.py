@@ -1,9 +1,22 @@
 import unittest
 
 from modules.source_intake.owner_ranked_final_candidate_selector import select_owner_ranked_final_candidates
+from modules.source_intake.same_event_topic_clusterer import (
+    run_same_event_topic_clustering as _real_run_same_event_topic_clustering,
+)
+from unittest.mock import patch
 
 
 class OwnerRankedFinalCandidateSelectorTests(unittest.TestCase):
+    def setUp(self):
+        self._semantic_cache: dict[str, float] = {}
+        patcher = patch(
+            "modules.source_intake.owner_ranked_final_candidate_selector.run_same_event_topic_clustering",
+        )
+        self.addCleanup(patcher.stop)
+        self._clusterer_patch = patcher.start()
+        self._clusterer_patch.side_effect = self._run_clusterer_with_cached_fast_scorer
+
     def _queue(self):
         requests = []
         for account in ("A", "B", "C"):
@@ -21,6 +34,25 @@ class OwnerRankedFinalCandidateSelectorTests(unittest.TestCase):
                     }
                 )
         return {"schema_version": "owner_ranked_deep_dive_queue_v1", "requests": requests}
+
+    def _run_clusterer_with_cached_fast_scorer(self, items, **kwargs):
+        return _real_run_same_event_topic_clustering(
+            items,
+            semantic_scorer=self._cached_fast_scorer,
+            **kwargs,
+        )
+
+    def _cached_fast_scorer(self, pairs, **kwargs):
+        _ = kwargs
+        scores: list[float] = []
+        for left, right in pairs:
+            key = "|".join(sorted((left, right)))
+            score = self._semantic_cache.get(key)
+            if score is None:
+                score = 0.0
+                self._semantic_cache[key] = score
+            scores.append(score)
+        return {"status": "completed", "scores": scores, "errors": []}
 
     def test_selects_four_per_account_and_preserves_all_candidates(self):
         queue = self._queue()

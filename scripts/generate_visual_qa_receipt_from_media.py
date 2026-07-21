@@ -32,6 +32,7 @@ from scripts.run_cardnews_production import (
 PASS = "pass"
 NOT_APPLICABLE = "not_applicable"
 FAIL = "fail"
+IMAGE_IS_PRIMARY_AREA_THRESHOLD = 0.15
 
 
 def _text(value: Any) -> str:
@@ -62,6 +63,62 @@ def _safe_int(value: Any) -> int:
         return int(value)
     except (TypeError, ValueError):
         return 0
+
+
+def _coerce_float(value: Any) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _box_area(box: Sequence[float]) -> float:
+    if len(box) < 4:
+        return 0.0
+    x1, y1, x2, y2 = box[:4]
+    width = max(0.0, x2 - x1)
+    height = max(0.0, y2 - y1)
+    return width * height
+
+
+def _polygon_area(points: Sequence[Sequence[float]]) -> float:
+    if len(points) < 3:
+        return 0.0
+    area = 0.0
+    for index, point in enumerate(points):
+        point_x = point[0] if len(point) > 0 else 0.0
+        point_y = point[1] if len(point) > 1 else 0.0
+        next_point = points[(index + 1) % len(points)]
+        next_x = next_point[0] if len(next_point) > 0 else 0.0
+        next_y = next_point[1] if len(next_point) > 1 else 0.0
+        area += point_x * next_y - next_x * point_y
+    return abs(area) * 0.5
+
+
+def _text_area_ratio(
+    boxes: Sequence[Sequence[float]],
+    polys: Sequence[Sequence[Sequence[float]]],
+    width: float,
+    height: float,
+) -> float:
+    if width <= 0 or height <= 0:
+        return 0.0
+    image_area = width * height
+    total_area = 0.0
+    if boxes:
+        for item in boxes:
+            area = _box_area([_coerce_float(value) for value in item])
+            if area > 0:
+                total_area += area
+    elif polys:
+        for polygon in polys:
+            area = _polygon_area(
+                [[_coerce_float(point[0]), _coerce_float(point[1])] for point in polygon]
+            )
+            if area > 0:
+                total_area += area
+    ratio = total_area / image_area
+    return min(1.0, ratio)
 
 
 def _iter_candidates(
@@ -242,15 +299,17 @@ def _analyze_slide(
 
     if not image_path.is_file():
         findings.update(
-            {
-                missing: FAIL for missing in (
-                    "mobile_readability",
-                    "copy_readability",
-                    "content_not_blank",
-                    "subject_focus",
-                    "subject_crop_preserved",
-                    "story_progression",
-                )
+                {
+                    missing: FAIL for missing in (
+                        "mobile_readability",
+                        "copy_density_ok",
+                        "copy_readability",
+                        "image_is_primary",
+                        "content_not_blank",
+                        "subject_focus",
+                        "subject_crop_preserved",
+                        "story_progression",
+                    )
             }
         )
         return findings, {"image_error": "missing_image_file", "analysis_contract": "missing_media"}, metrics
@@ -264,6 +323,8 @@ def _analyze_slide(
     )
     ocr_status = _text(ocr.status)
     ocr_lines = list(getattr(ocr, "lines", ()))
+    ocr_boxes = getattr(ocr, "boxes", ())
+    ocr_polys = getattr(ocr, "polys", ())
     ocr_scores = [
         float(value)
         for value in getattr(ocr, "scores", ())
@@ -272,12 +333,19 @@ def _analyze_slide(
     ocr_text = _text(ocr.text)
     ocr_avg = sum(ocr_scores) / len(ocr_scores) if ocr_scores else 0.0
 
+    text_area_ratio = _text_area_ratio(
+        ocr_boxes,
+        ocr_polys,
+        float(signal.get("width", 0)),
+        float(signal.get("height", 0)),
+    )
     analysis["ocr"] = {
         "status": ocr_status,
         "success": bool(getattr(ocr, "success", False)),
         "line_count": int(len(ocr_lines)),
         "avg_text_conf": round(ocr_avg, 4),
         "text_char_count": int(len(ocr_text)),
+        "text_area_ratio": round(text_area_ratio, 4),
         "input_bytes": int(getattr(ocr, "input_bytes", 0)),
         "reason": _text(ocr.reason),
     }
@@ -344,6 +412,12 @@ def _analyze_slide(
     metrics["openclip_best_score"] = round(best_score, 6)
 
     # Heuristic checks that still remain independent of controller-only metadata.
+    # copy_density_ok is a hard guard for long body copy.
+    # A short-card layout is assumed by policy; most safe copies stay around 1-3 short lines.
+    # We block if OCR reveals >12 lines or >260 characters on a single slide.
+    # This is an initial conservative threshold and can be tuned after sample distribution review.
+    copy_density_ok = (len(ocr_text) <= 260) and (len(ocr_lines) <= 12)
+    image_is_primary = bool(text_area_ratio < IMAGE_IS_PRIMARY_AREA_THRESHOLD)
     copy_readability = bool(ocr_text or non_blank)
     mobile_readability = bool(
         (ocr.success and ocr_avg >= 0.28)
@@ -388,7 +462,9 @@ def _analyze_slide(
     blankness_proxy = float(signal.get("blankness_proxy", 1.0))
 
     findings["mobile_readability"] = PASS if mobile_readability else FAIL
+    findings["copy_density_ok"] = PASS if copy_density_ok else FAIL
     findings["copy_readability"] = PASS if copy_readability else FAIL
+    findings["image_is_primary"] = PASS if image_is_primary else FAIL
     findings["content_not_blank"] = PASS if (content_readable or blankness_proxy < 0.07) else FAIL
     findings["subject_focus"] = PASS if subject_focus else FAIL
     findings["subject_crop_preserved"] = PASS if subject_crop_preserved else FAIL

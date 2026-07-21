@@ -910,10 +910,15 @@ def command_issue_render(args: argparse.Namespace) -> Dict[str, Any]:
                     f"{candidate_id} prepared source is missing or changed: {path}",
                 )
     representative_qa_ids = state.get("representative_qa_receipt_ids", {})
+    representative_qa_hashes = state.get("representative_qa_receipt_hashes", {})
+    required_accounts = set(state.get("accounts", []))
     if mode == "batch" and (
         not isinstance(representative_qa_ids, Mapping)
-        or set(representative_qa_ids) != set(state.get("accounts", []))
+        or set(representative_qa_ids) != required_accounts
         or any(not _text(value) for value in representative_qa_ids.values())
+        or not isinstance(representative_qa_hashes, Mapping)
+        or set(representative_qa_hashes) != required_accounts
+        or any(not _text(value) for value in representative_qa_hashes.values())
     ):
         raise ProductionControllerError(
             "representative_visual_qa_missing",

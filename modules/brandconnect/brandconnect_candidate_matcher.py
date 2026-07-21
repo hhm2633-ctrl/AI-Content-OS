@@ -9,8 +9,14 @@ commercial facts are created here.
 
 from __future__ import annotations
 
+import math
 import re
 from typing import Any, Dict, List, Mapping
+
+from modules.tool_adapters.sentence_transformers_runtime import (
+    MAX_SIMILARITY_PAIRS,
+    score_text_pairs,
+)
 
 MATCH_THRESHOLD = 0.35
 MAX_MATCHES = 3
@@ -194,6 +200,23 @@ def _candidate_family_hints(candidate: Mapping[str, Any]) -> set:
     return hints | _category_family_hints(candidate)
 
 
+def _filter_products_by_family(
+    products: Any,
+    candidate_families: set,
+    situation_families: set,
+) -> list[Mapping[str, Any]]:
+    allowed_families = set(candidate_families) | set(situation_families)
+    if not allowed_families or not isinstance(products, list):
+        return list(products) if isinstance(products, list) else []
+    filtered: list[Mapping[str, Any]] = []
+    for product in products:
+        if not isinstance(product, Mapping):
+            continue
+        if _text(product.get("product_family")) in allowed_families:
+            filtered.append(product)
+    return filtered
+
+
 def is_editorial_bypass(candidate: Mapping[str, Any]) -> bool:
     """Runway/editorial authority content stays independent of Commerce."""
 
@@ -228,6 +251,8 @@ def _score_product(
     product: Mapping[str, Any],
     candidate_families: set,
     situation_families: set,
+    *,
+    semantic_similarity: float | None = None,
 ) -> Dict[str, Any]:
     product_text = _product_text(product)
     cached_tokens = product.get("_match_tokens")
@@ -260,10 +285,23 @@ def _score_product(
         basis.append("meaningful_keyword_overlap")
 
     family = _text(product.get("product_family"))
+    family_hints = set(candidate_families) | set(situation_families)
     family_compatible = bool(family and family in candidate_families)
+    family_allowed_for_semantics = not family_hints or not family or family in family_hints
     if family_compatible and qualified_overlap:
         score += 0.15
         basis.append("category_family_match")
+
+    if (
+        semantic_similarity is not None
+        and isinstance(semantic_similarity, (int, float))
+        and not isinstance(semantic_similarity, bool)
+        and family_allowed_for_semantics
+        and semantic_similarity > 0.0
+    ):
+        semantic_signal = max(0.0, min(1.0, float(semantic_similarity)))
+        score += 0.2 * semantic_signal
+        basis.append(f"semantic_similarity:{semantic_signal:.4f}")
 
     for rule_name, pattern, targets in SITUATION_RULES:
         if family in situation_families and pattern.search(text) and any(target in product_text for target in targets):
@@ -272,6 +310,62 @@ def _score_product(
             break
 
     return {"score": round(min(score, 1.0), 4), "basis": basis}
+
+
+def _semantic_scores_for_products(
+    candidate_text: str,
+    products: List[Mapping[str, Any]],
+) -> Dict[str, float]:
+    text_pairs: List[tuple[str, str]] = []
+    product_ids: List[str] = []
+
+    if not isinstance(candidate_text, str) or not candidate_text.strip():
+        return {}
+
+    for product in (products if isinstance(products, list) else []):
+        if not isinstance(product, Mapping):
+            continue
+        product_id = _text(str(product.get("product_id", "")))
+        if not product_id:
+            continue
+        product_ids.append(product_id)
+        text_pairs.append((candidate_text, _product_text(product)))
+
+    if not text_pairs:
+        return {}
+
+    results: Dict[str, float] = {}
+    for start in range(0, len(text_pairs), MAX_SIMILARITY_PAIRS):
+        batch_pairs = text_pairs[start : start + MAX_SIMILARITY_PAIRS]
+        batch_ids = product_ids[start : start + MAX_SIMILARITY_PAIRS]
+        try:
+            # No custom env here: score_text_pairs() already builds the child
+            # environment from os.environ plus its own offline/UTF-8 settings.
+            # Passing a minimal override dict (e.g. {"HF_HUB_OFFLINE": "1"})
+            # discards PATH/SystemRoot and breaks subprocess startup on Windows.
+            receipt = score_text_pairs(batch_pairs)
+        except (TypeError, ValueError, OSError, RuntimeError):
+            continue
+
+        if not isinstance(receipt, Mapping):
+            continue
+        if receipt.get("status") != "completed":
+            continue
+        raw_scores = receipt.get("scores")
+        if not isinstance(raw_scores, list) or len(raw_scores) != len(batch_pairs):
+            continue
+
+        for product_id, raw_score in zip(batch_ids, raw_scores):
+            if not isinstance(raw_score, (int, float)) or isinstance(raw_score, bool):
+                continue
+            score = float(raw_score)
+            if not (-1.000001 <= score <= 1.000001):
+                continue
+            if not math.isfinite(score):
+                continue
+            results[product_id] = round(score, 6)
+
+    return results
 
 
 def match_candidate_to_products(
@@ -295,11 +389,27 @@ def match_candidate_to_products(
     category_families = _category_family_hints(candidate)
     candidate_families = _candidate_family_hints(candidate)
     situation_families = category_families or candidate_families
+    semantic_products = _filter_products_by_family(
+        products,
+        candidate_families=candidate_families,
+        situation_families=situation_families,
+    )
+    semantic_scores = _semantic_scores_for_products(text, semantic_products)
     scored = []
     for product in products if isinstance(products, list) else []:
         if not isinstance(product, Mapping):
             continue
-        outcome = _score_product(text, tokens, product, candidate_families, situation_families)
+        product_id = _text(str(product.get("product_id", "")))
+        outcome = _score_product(
+            text,
+            tokens,
+            product,
+            candidate_families,
+            situation_families,
+            semantic_similarity=semantic_scores.get(product_id)
+            if product_id
+            else None,
+        )
         if outcome["score"] >= threshold:
             scored.append(
                 {

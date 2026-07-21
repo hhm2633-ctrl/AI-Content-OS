@@ -768,11 +768,15 @@ def apply_transition(state: Mapping[str, Any], receipt: Mapping[str, Any]) -> Di
             _text(next(iter(payload["render_receipts"].values())).get("authorization_id"))
         )
     elif transition == ACCEPT_REPRESENTATIVE_QA:
-        updated["representative_qa_receipt_hashes"] = copy.deepcopy(payload["visual_qa_receipt_hashes"])
         account_by_candidate = _candidate_account_map(updated)
         updated["representative_qa_receipt_ids"] = {
             account_by_candidate[candidate_id]: _text(receipt.get("receipt_id"))
             for candidate_id, receipt in payload["visual_qa_receipts"].items()
+        }
+        updated["representative_qa_receipt_hashes"] = {
+            account_by_candidate[candidate_id]: _text(payload["visual_qa_receipt_hashes"].get(candidate_id, ""))
+            for candidate_id in payload["visual_qa_receipt_hashes"]
+            if account_by_candidate.get(candidate_id)
         }
     elif transition == AUTHORIZE_BATCH:
         updated["batch_authorization_hash"] = canonical_hash(valid)

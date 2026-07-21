@@ -290,6 +290,12 @@ def score_text_pairs(
 
     child_environment = dict(os.environ if env is None else env)
     child_environment.update(dict(OFFLINE_ENVIRONMENT))
+    # Force UTF-8 stdio in the child process. Without this, the child's
+    # own locale (e.g. cp949 on Korean Windows) decodes the UTF-8 JSON
+    # written to its stdin incorrectly, corrupting non-ASCII text into
+    # invalid surrogate characters before it ever reaches the tokenizer.
+    child_environment["PYTHONIOENCODING"] = "utf-8"
+    child_environment["PYTHONUTF8"] = "1"
     command = [runtime.python_executable, "-c", _SIMILARITY_SCRIPT, model.root]
     try:
         completed = runner(

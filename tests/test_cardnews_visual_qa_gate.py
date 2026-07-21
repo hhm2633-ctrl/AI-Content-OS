@@ -31,6 +31,9 @@ def expected_slides():
 def finding(comment=False):
     return {
         "mobile_readability": "pass",
+        "copy_density_ok": "pass",
+        "image_is_primary": "pass",
+        "feed_caption_present": "pass",
         "copy_readability": "pass",
         "content_not_blank": "pass",
         "subject_focus": "pass",
@@ -45,6 +48,7 @@ def complete_receipt():
         "schema_version": SCHEMA_VERSION,
         "receipt_id": "visual-receipt-1",
         "output_set_id": "output-set-1",
+        "feed_caption": "별도 피드 본문으로 카드뉴스를 이어읽을 수 있어야 한다.",
         "reviewed_at": "2026-07-19T12:00:00+09:00",
         "maker": {"id": "renderer-worker"},
         "reviewer": {"id": "owner-reviewer", "independent_from_maker": True},
@@ -197,6 +201,25 @@ class CardnewsVisualQaGateTests(unittest.TestCase):
         self.assertIn(
             "visual_qa_batch_representative_mismatch",
             {item["reason_code"] for item in result["failures"]},
+        )
+
+    def test_feed_caption_present_required(self):
+        receipt = complete_receipt()
+        pass_result = assess_visual_qa_receipt(receipt, expected_slides())
+        self.assertTrue(pass_result["visual_qa_passed"], pass_result["failures"])
+
+        missing = complete_receipt()
+        missing["feed_caption"] = ""
+        fail_result = assess_visual_qa_receipt(missing, expected_slides())
+
+        self.assertFalse(fail_result["visual_qa_passed"])
+        self.assertIn(
+            "visual_qa_feed_caption_required",
+            {item["reason_code"] for item in fail_result["failures"]},
+        )
+        self.assertIn(
+            "slides[1].findings.feed_caption_present",
+            {item["field"] for item in fail_result["failures"] if item["reason_code"] == "visual_qa_feed_caption_required"},
         )
 
 

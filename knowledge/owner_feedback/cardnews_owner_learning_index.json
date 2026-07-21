@@ -1,16 +1,16 @@
 {
   "schema_version": "cardnews_owner_learning_index_v3",
-  "generated_at": "2026-07-19T06:22:47.096267+00:00",
+  "generated_at": "2026-07-21T09:32:26.471373+00:00",
   "learning_boundary": {
     "owner_rules_are_performance_evidence": false,
     "automatic_performance_promotion_allowed": false,
     "explicit_owner_directions_may_activate": true
   },
   "stats": {
-    "feedback_event_count": 71,
+    "feedback_event_count": 105,
     "active_owner_rule_count": 44,
     "stage_counts": {
-      "CLASSIFIED_EXAMPLE": 19,
+      "CLASSIFIED_EXAMPLE": 53,
       "ACTIVE_OWNER_RULE": 44,
       "CLASSIFIED_PENDING": 4,
       "LEARNING_CANDIDATE": 3,
@@ -1973,10 +1973,802 @@
       "is_performance_evidence": false,
       "supersedes_event_id": null,
       "fingerprint": "10e24afcd708b6d3837a2800cd1c59f0e023be63802a187873733d6f484d8a49"
+    },
+    {
+      "learning_id": "owner-feedback-0ac87e313487e898041c",
+      "sequence": 72,
+      "recorded_at": "2026-07-21T09:32:25.963897+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "인물/실사진 풀프레임 + 하단 좌측 볼드 타이포",
+      "title": "인물/실사진 풀프레임 + 하단 좌측 볼드 타이포",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "표지 전체를 사진으로 채우고 하단에 굵은 산세리프 타이포 1~2행 배치",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "2e02f38587494d7852a468cde2143be5b3f092cd918060ae5730b96d7e89347c"
+    },
+    {
+      "learning_id": "owner-feedback-02743155adba2b1fe416",
+      "sequence": 73,
+      "recorded_at": "2026-07-21T09:32:25.979977+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "손글씨/스크랩북 콜라주 스타일",
+      "title": "손글씨/스크랩북 콜라주 스타일",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "종이 질감, 마스킹테이프, 손글씨체 폰트, 낙서 요소를 활용한 다이어리풍 레이아웃",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "941fcf7cf62fed764f4cf56e4d8ad733ce8305b459287173f18e798c09d17c58"
+    },
+    {
+      "learning_id": "owner-feedback-200a8635ab8910a1a1e4",
+      "sequence": 74,
+      "recorded_at": "2026-07-21T09:32:25.994362+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "다크(블랙) 배경 + 네온/형광 대비 타이포",
+      "title": "다크(블랙) 배경 + 네온/형광 대비 타이포",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "블랙 배경에 블루·오렌지·옐로우 등 형광색 볼드 타이포로 대비 강조",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3dd988979f07e82b44e86a0ec619f0846f4150cc875d2f893bc6132c3b7c3889"
+    },
+    {
+      "learning_id": "owner-feedback-217a1ce2c2082b52161f",
+      "sequence": 75,
+      "recorded_at": "2026-07-21T09:32:26.014216+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "일러스트 캐릭터/의인화 아이콘형",
+      "title": "일러스트 캐릭터/의인화 아이콘형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "실사진 대신 귀여운 캐릭터 일러스트로 정보를 전달(병원, 공공기관 계정에서 두드러짐)",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "4fcb5505cb3f729f1776da7978f09201dd0fe1a1ad4dc291d35462d18f89131a"
+    },
+    {
+      "learning_id": "owner-feedback-3604b318628375765827",
+      "sequence": 76,
+      "recorded_at": "2026-07-21T09:32:26.028891+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "미니멀 화이트 배경 + 버튼형 CTA 그래픽",
+      "title": "미니멀 화이트 배경 + 버튼형 CTA 그래픽",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "여백이 많은 화이트 배경에 블랙 볼드 타이포, 표지 자체에 버튼처럼 보이는 CTA 그래픽 삽입",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "6ad713f47d99e8c2dffe1917af13bf0b1e6ffe301d557e76726eb7e6252bdb20"
+    },
+    {
+      "learning_id": "owner-feedback-33c48f53aab2bb6577ae",
+      "sequence": 77,
+      "recorded_at": "2026-07-21T09:32:26.042711+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "앱 UI 목업 재현형",
+      "title": "앱 UI 목업 재현형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "실제 SNS/카드뉴스 제작 툴의 화면 UI를 표지에 그대로 재현",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "9bd0ee1b7b6c8377e94fdf9d6f750d23caffaa75466930ce293a8efdc9b10fff"
+    },
+    {
+      "learning_id": "owner-feedback-7fe8f9f62347bb9322c9",
+      "sequence": 78,
+      "recorded_at": "2026-07-21T09:32:26.056709+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "데이터 대시보드/카드형",
+      "title": "데이터 대시보드/카드형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "숫자 지표를 카드 3~4개로 나누어 배치, 증권/데이터 브리핑 콘텐츠에 특화",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "8749708480b2ae41505d9c27b54968a42e774390993a4013f452a539f712ac9e"
+    },
+    {
+      "learning_id": "owner-feedback-e70a571abcddd0aa4407",
+      "sequence": 79,
+      "recorded_at": "2026-07-21T09:32:26.071010+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "텍스트 오버레이 없는 순수 사진형(캡션 의존)",
+      "title": "텍스트 오버레이 없는 순수 사진형(캡션 의존)",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "표지에 텍스트를 거의/전혀 얹지 않고 캡션 텍스트로 정보를 전달하는 방식",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "81e077be0414919f6b89c0bac3d1e19268eb70a7f5ce1fc1bcd12a6d553d6b58"
+    },
+    {
+      "learning_id": "owner-feedback-25a487d32cb9a5b177e9",
+      "sequence": 80,
+      "recorded_at": "2026-07-21T09:32:26.085971+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "흑백 매거진풍 하이엔드 레이아웃",
+      "title": "흑백 매거진풍 하이엔드 레이아웃",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "visual_layout",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "흑백 인물사진 + 절제된 화이트 타이포로 패션 매거진 느낌 연출",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "befba3a03b2e0ac9105aedb43da76808e38b37656bf9ecd640adafed31936696"
+    },
+    {
+      "learning_id": "owner-feedback-5e58c78fb7cba7d07434",
+      "sequence": 81,
+      "recorded_at": "2026-07-21T09:32:26.100821+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "인용·반전형 서술 헤드라인",
+      "title": "인용·반전형 서술 헤드라인",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "인물의 발언을 인용하고 그 반대 결과를 제시해 궁금증 유발",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "27a06ab91eeac6de15f91e0f6891059cecb70576e3247a1ab4d1e5acb4bf2b8b"
+    },
+    {
+      "learning_id": "owner-feedback-5cc824b395fbe373921c",
+      "sequence": 82,
+      "recorded_at": "2026-07-21T09:32:26.116218+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "타임리밋(D-day/시즌)형",
+      "title": "타임리밋(D-day/시즌)형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'D-14', '올여름', '7월에 뭐 올리지' 등 시한을 명시해 긴급성 부여",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "c5b47c75ae6e283db2c91d242996bd25d453e5def5dcac320dda0d941a1915ba"
+    },
+    {
+      "learning_id": "owner-feedback-39eda782d7ee7df1ffaa",
+      "sequence": 83,
+      "recorded_at": "2026-07-21T09:32:26.130317+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "신조어/개념 정의형",
+      "title": "신조어/개념 정의형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'OO의 등장'처럼 새로운 용어를 제목에 걸고 정의를 풀어주는 구조",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3d7e95781f1f32a4c15c555829ca661baa1cb518d100b74d78a8b3a774481283"
+    },
+    {
+      "learning_id": "owner-feedback-37c580fc225d6d616ad1",
+      "sequence": 84,
+      "recorded_at": "2026-07-21T09:32:26.144872+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "권위·유명인 인용형",
+      "title": "권위·유명인 인용형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "유명인(젠슨 황, 한소희 등)의 이름/이미지를 표지에 노출해 신뢰·관심 차용",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "dcb5492b963037caef976a28c8a2b8e540e81316f33a9efbeb293a8dfe3fec1d"
+    },
+    {
+      "learning_id": "owner-feedback-488df321827dab9fc89a",
+      "sequence": 85,
+      "recorded_at": "2026-07-21T09:32:26.158618+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "직설 질문·도발형",
+      "title": "직설 질문·도발형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'OO 샀어? 안 샀어?' 식으로 독자를 직접 겨냥한 도발적 질문",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f425e2e8acbb2b01e05869f6091fcbbefe9e1200fc5f3b319b1d72ecac913a74"
+    },
+    {
+      "learning_id": "owner-feedback-5463843a40b3c848549f",
+      "sequence": 86,
+      "recorded_at": "2026-07-21T09:32:26.172153+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "숫자·공식형",
+      "title": "숫자·공식형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'3가지 공식', 'top3' 등 숫자를 헤드라인에 포함해 구조적 기대감 형성",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1798540d36f706e09b645668559d6a6d71c2da633b3b7cb7419a8aa1467de1ab"
+    },
+    {
+      "learning_id": "owner-feedback-6cf29621d9170b6b0031",
+      "sequence": 87,
+      "recorded_at": "2026-07-21T09:32:26.185901+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "무료자료 제공형",
+      "title": "무료자료 제공형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'~프롬프트 받아가세요', '무료 배포' 등 실질적 보상을 전면에 명시",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1db653a90004b1eda6cea6159337622076b204dfa060964762d176fc21e0c22c"
+    },
+    {
+      "learning_id": "owner-feedback-e0521f33ff5a3c137c3a",
+      "sequence": 88,
+      "recorded_at": "2026-07-21T09:32:26.202182+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "문제 원인 지목형",
+      "title": "문제 원인 지목형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'~가 안 되는 이유', '~한 실수' 등 문제의 원인을 먼저 지목해 해결책 기대를 형성",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "cf6babf453e3e211e1dd2cc87d49eebbc80600e1d1f1387506a365c9ad601445"
+    },
+    {
+      "learning_id": "owner-feedback-30efa16994764dd2240d",
+      "sequence": 89,
+      "recorded_at": "2026-07-21T09:32:26.216199+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "성과 인증형",
+      "title": "성과 인증형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'대학생이 팔로워 9천 만든 방법' 등 구체적 성과 수치를 표지에 제시",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "5a0d923f535e240f33cf5bb80b90925527dc01351fee96f57d26ca0a72fe1701"
+    },
+    {
+      "learning_id": "owner-feedback-741aa0bd706b9267396f",
+      "sequence": 90,
+      "recorded_at": "2026-07-21T09:32:26.230840+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "은유·의인화형",
+      "title": "은유·의인화형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "의학/전문 정보를 캐릭터·비유로 풀어 친근하게 전달(예: 디스크를 '젤리'로 의인화)",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "cd07caff1a1386da1aad98e946306bc7413df24c9041226c9b8fec66c42f4af8"
+    },
+    {
+      "learning_id": "owner-feedback-9446fff796b3c5c096d3",
+      "sequence": 91,
+      "recorded_at": "2026-07-21T09:32:26.246268+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "가정형 질문",
+      "title": "가정형 질문",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'~하고 계셨나요?'처럼 독자의 현재 습관을 가정하고 되묻는 헤드라인",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3af3f9aacb464ab17a339d10e9e85af9d94e981db41d7baf3f2c5f036f15575e"
+    },
+    {
+      "learning_id": "owner-feedback-d35136d4503248a3f9fe",
+      "sequence": 92,
+      "recorded_at": "2026-07-21T09:32:26.261752+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "비교 트렌드형",
+      "title": "비교 트렌드형",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "'A보다 B가 낫다'는 비교 구도로 최신성을 강조",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "2a197158db3ba0cb9b4d4973cc5c62a922a338c1f9a132c6c964b5b5373571cc"
+    },
+    {
+      "learning_id": "owner-feedback-0361e9d3a8d45f9c633e",
+      "sequence": 93,
+      "recorded_at": "2026-07-21T09:32:26.277086+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "서사시적/문학적 헤드라인",
+      "title": "서사시적/문학적 헤드라인",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "일반 정보전달과 달리 문학적 수사로 브랜드/인물 스토리를 감성적으로 서술",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "61589fd822681c574151e66b227cd528a334643993ef5923df62f7c88e3c44be"
+    },
+    {
+      "learning_id": "owner-feedback-6f52da669565a2157926",
+      "sequence": 94,
+      "recorded_at": "2026-07-21T09:32:26.292116+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "인용구형(도서/철학)",
+      "title": "인용구형(도서/철학)",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "책 속 문장을 그대로 표지 훅으로 사용",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1d09f62a0d5c116b61dbf3f83f7b62a0ada7435e3ea736471b64e4e0c9915ec7"
+    },
+    {
+      "learning_id": "owner-feedback-0cc8a17d27c1ed0bc860",
+      "sequence": 95,
+      "recorded_at": "2026-07-21T09:32:26.307489+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "사건 요약형(논란/이슈)",
+      "title": "사건 요약형(논란/이슈)",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "cover_hook",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "실제 사건을 한 문장으로 요약해 표지에 제시하고 토론을 유도",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "32955639353b372784f498d063b9a46d7795daee3ff39cd428ccd289f5be03e1"
+    },
+    {
+      "learning_id": "owner-feedback-af37a43e5158997fb6f3",
+      "sequence": 96,
+      "recorded_at": "2026-07-21T09:32:26.322173+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "기승전결 뉴스 큐레이션형",
+      "title": "기승전결 뉴스 큐레이션형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "이슈 제기 / 현장/인터뷰 인용 / 여론 재인용 / 참여 유도 질문",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7f181350359014bf30fe5018c3c2a6f05096a8991c839278833729f9abfde312"
+    },
+    {
+      "learning_id": "owner-feedback-df97976df3ca4a085986",
+      "sequence": 97,
+      "recorded_at": "2026-07-21T09:32:26.336548+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "목차 요약형",
+      "title": "목차 요약형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "타이틀+시한 강조 / 챕터 목록 나열(3~5개) / 각 챕터는 후속 슬라이드에서 설명 예상",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "b194a194d96d864298cb7807b4b5df90df3e029b27e2d47128a325f1d3916dda"
+    },
+    {
+      "learning_id": "owner-feedback-18e6cec8b44ebf8d72d4",
+      "sequence": 98,
+      "recorded_at": "2026-07-21T09:32:26.351237+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "문제-공식-행동유도형",
+      "title": "문제-공식-행동유도형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "문제 제기(공감) / 문제의 중요성/이유 설명 / N단계 공식 제시 / 행동 유도(저장/댓글)",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f7ce9bd4931c6003d788fffc12d1e6175d2e0eb7ade4d49aaff1718b0d5270a6"
+    },
+    {
+      "learning_id": "owner-feedback-7669c11eab7ba5082d78",
+      "sequence": 99,
+      "recorded_at": "2026-07-21T09:32:26.366531+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "VS 비교 구조",
+      "title": "VS 비교 구조",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "나쁜 예 vs 괜찮은 예 vs 좋은 예 3단 비교 / 좋은 예의 조건 리스트",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "6cae7c2809281eac103af6af72ac6ad45878685bcdb52ac25ba31880a37cc257"
+    },
+    {
+      "learning_id": "owner-feedback-3aef5a160d15579ee5b8",
+      "sequence": 100,
+      "recorded_at": "2026-07-21T09:32:26.381063+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "번호형 큐레이션 리스트",
+      "title": "번호형 큐레이션 리스트",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "주제 제시 / 장소/계정/제품을 번호로 나열 / 각 항목 반복 포맷(위치+한줄평+팁)",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "585f1ee98d286faf24a850b2376d0d83fce7a666a6f83f5662f05a2274c0f7df"
+    },
+    {
+      "learning_id": "owner-feedback-3ca578aa6ac4be0f6b60",
+      "sequence": 101,
+      "recorded_at": "2026-07-21T09:32:26.395535+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "성과 인증 → 노하우 공개형",
+      "title": "성과 인증 → 노하우 공개형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "성과 수치 제시 / 핵심 인사이트 요약 / 댓글/DM 유도",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "ed0f464c3c8844bd33db14dc250c5db4602114ba9a1701750b6bc4edd5130758"
+    },
+    {
+      "learning_id": "owner-feedback-7dfb15d46e737a83d666",
+      "sequence": 102,
+      "recorded_at": "2026-07-21T09:32:26.413814+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "증상 공감 → 의인화 설명 → 자가진단 → 내원유도형(병원 마케팅형)",
+      "title": "증상 공감 → 의인화 설명 → 자가진단 → 내원유도형(병원 마케팅형)",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "증상 공감 질문 / 원인을 캐릭터/비유로 설명 / 자가진단법 제시 / 내원/연락처 안내",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "2d12bf0b228ac9add7429b44357f1eb6cf53ea5d49df967ba7bc40535904bb8d"
+    },
+    {
+      "learning_id": "owner-feedback-5266fb944a9a05b6549d",
+      "sequence": 103,
+      "recorded_at": "2026-07-21T09:32:26.429702+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "인문학 해설형(인용-배경-의의)",
+      "title": "인문학 해설형(인용-배경-의의)",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "책 속 인용구 제시 / 시대적 배경 설명 / 저서의 의의 해설",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "2271382e3a7999d9ee9dc2bf7d0600f1eddac999fff8e2f66c58c0c87864d1bd"
+    },
+    {
+      "learning_id": "owner-feedback-e873621301afc9e7d1f0",
+      "sequence": 104,
+      "recorded_at": "2026-07-21T09:32:26.446615+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "사건-논란 제기-의견 유도형",
+      "title": "사건-논란 제기-의견 유도형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "사건 개요 요약 / 논란 포인트 제시 / 독자 의견 요청(댓글)",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1301054c74b795070d24c4a20da2cabea7fd9f2dc52081a4e75d0b57cea795f4"
+    },
+    {
+      "learning_id": "owner-feedback-329e554fbad01bdcf2cf",
+      "sequence": 105,
+      "recorded_at": "2026-07-21T09:32:26.461273+00:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "데이터 브리핑형",
+      "title": "데이터 브리핑형",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "story_structure",
+        "card_news_design_learning",
+        "design_candidate"
+      ],
+      "rule": "날짜/이벤트 라벨 / 핵심 지표 카드 나열 / 해설 텍스트",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f7a9699eaf9705e1082fc5a07c01edff410138bb1f7508f98e884bf6b95066fa"
     }
   ],
   "source": "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\knowledge\\owner_feedback\\cardnews_owner_feedback.jsonl",
-  "source_sha256": "017a7a94452c59a2d7a656fd8203e5ab9986dfcec9b32c5808b6edd15f2f636b",
+  "source_sha256": "7546328fb8f3ef3ff83adb7a499f0bb915f9ca2a9cd5f2c5935acf4ebbed65a2",
   "errors": [],
   "feedback_log_reloaded": true
 }
