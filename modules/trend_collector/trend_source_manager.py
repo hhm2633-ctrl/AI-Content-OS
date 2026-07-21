@@ -789,6 +789,14 @@ class TrendSourceManager:
             if not isinstance(item, dict):
                 continue
 
+            # Old cache files can contain navigation labels parsed as article
+            # titles. Apply the current collector validity rule on read so a
+            # poisoned cache cannot keep winning topic selection.
+            if not self.nate_pann_collector._is_valid_title(
+                str(item.get("keyword", "")).strip()
+            ):
+                continue
+
             cache_item = dict(item)
             cache_item["source_id"] = "nate_pann"
             cache_item["source_name"] = source.get("name", "Nate Pann")

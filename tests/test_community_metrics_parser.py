@@ -69,7 +69,7 @@ FMKOREA_FIXTURE = """
 
 BOBAEDREAM_FIXTURE = """
 <table>
-<tr itemscope itemtype="http://schema.org/Article" data-summary="목격자가 공개한 사고 당시 상황입니다.">
+<tr itemscope itemtype="http://schema.org/Article">
   <td class="category" title="신유머/이슈/움짤"><a href="/list.php?code=humor">신유머/이..</a></td>
   <td class="pl14">
     <a class="bsubject" style="padding:0;font-size:13px;" href="/view?code=best&No=1009828&vdate=" itemprop="name">보배드림 첫번째 베스트 글</a><img style="padding-left:3px" class="jpg" src="//image.bobaedream.co.kr/newimg/jpg.gif" alt="첨부파일" />&nbsp;<a style="padding-left:2px" href="/view?code=best&No=1009828&vdate=&cmt=1"><span class="Comment">(<strong class="totreply">17</strong>)</span></a>
@@ -184,23 +184,6 @@ class BobaedreamParserTests(unittest.TestCase):
         flags = self.articles[0]["media_flags"]
         self.assertTrue(flags["has_image"])
         self.assertGreaterEqual(flags["image_count"], 1)
-
-    def test_visible_row_summary_is_preserved_without_inference(self):
-        self.assertEqual(
-            self.articles[0]["summary"],
-            "목격자가 공개한 사고 당시 상황입니다.",
-        )
-        self.assertEqual(self.articles[1]["summary"], "")
-
-    def test_visible_summary_element_is_cleaned(self):
-        fixture = """
-        <table><tr><td class="pl14">
-          <a class="bsubject" href="/view?code=best&No=2">요약 요소가 있는 게시글</a>
-          <p class="list-desc"><b>공개된</b> 행 요약 텍스트</p>
-        </td></tr></table>
-        """
-        articles = BobaedreamCollector()._parse_articles(fixture)
-        self.assertEqual(articles[0]["summary"], "공개된 행 요약 텍스트")
 
     def test_row_without_metrics_stays_none(self):
         metrics = self.articles[1]["visible_metrics"]

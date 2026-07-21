@@ -11,7 +11,10 @@ class RetryPolicy:
         backoff_seconds: List[float] = None,
     ):
         self.enabled = enabled
-        self.max_retries = max(3, int(max_retries))
+        # Respect the configured retry budget.  A previous minimum of three
+        # silently expanded a configured value of two and multiplied delays
+        # across every unavailable source.
+        self.max_retries = max(0, int(max_retries))
         self.delay_seconds = max(0.0, float(delay_seconds))
         self.backoff_seconds = backoff_seconds or [0.5, 1.0, 2.0]
 

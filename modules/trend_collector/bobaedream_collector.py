@@ -8,6 +8,10 @@ from typing import Any, Dict, List, Optional
 from urllib.error import HTTPError, URLError
 
 from modules.common.service_diagnostic import ServiceDiagnostic
+from modules.source_intake.source_intake_schema import (
+    build_media_flags,
+    build_visible_metrics,
+)
 
 
 class BobaedreamCollector:
@@ -216,7 +220,141 @@ class BobaedreamCollector:
 
         return reasons[0] if reasons else "unknown_error"
 
-    def _parse_articles(self, raw_html: str) -> List[Dict[str, str]]:
+    def _parse_articles(self, raw_html: str) -> List[Dict[str, Any]]:
+        articles = self._parse_article_blocks(raw_html)
+
+        if articles:
+            return articles
+
+        return self._parse_articles_legacy(raw_html)
+
+    def _parse_article_blocks(self, raw_html: str) -> List[Dict[str, Any]]:
+        """Parse Bobaedream best-list <tr> rows with visible metrics.
+
+        Real list markup (2026-07 capture):
+            <tr itemscope itemtype="http://schema.org/Article">
+              <td class="category" title="신유머/이슈/움짤"><a ...>신유머/이..</a></td>
+              <td class="pl14">
+                <a class="bsubject" href="/view?code=best&No=1009828...">제목</a>
+                <img class="jpg" src=".../newimg/jpg.gif" alt="첨부파일" />
+                <a href="..."><span class="Comment">(<strong class="totreply">17</strong>)</span></a>
+              </td>
+              ...
+              <td class="recomm"><font ...>114</font></td>
+              <td class="count" ...><strong>5904</strong></td>
+            </tr>
+
+        Metrics that are not present in a row stay None — never guessed.
+        """
+        articles = []
+        block_pattern = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.IGNORECASE | re.DOTALL)
+        title_pattern = re.compile(
+            r'<a[^>]+class="bsubject"[^>]+href="([^"]+)"[^>]*>(.*?)</a>',
+            re.IGNORECASE | re.DOTALL,
+        )
+        title_pattern_href_first = re.compile(
+            r'<a[^>]+href="(/view\?[^"]*)"[^>]*class="bsubject"[^>]*>(.*?)</a>',
+            re.IGNORECASE | re.DOTALL,
+        )
+        comment_pattern = re.compile(
+            r'class="totreply"[^>]*>(.*?)</strong>', re.IGNORECASE | re.DOTALL
+        )
+        views_pattern = re.compile(
+            r'<td[^>]+class="count"[^>]*>(.*?)</td>', re.IGNORECASE | re.DOTALL
+        )
+        likes_pattern = re.compile(
+            r'<td[^>]+class="recomm"[^>]*>(.*?)</td>', re.IGNORECASE | re.DOTALL
+        )
+        category_pattern = re.compile(
+            r'<td[^>]+class="category"[^>]+title="([^"]*)"', re.IGNORECASE
+        )
+        attachment_pattern = re.compile(
+            r'<img[^>]+alt="첨부파일"', re.IGNORECASE
+        )
+
+        for block_match in block_pattern.finditer(raw_html):
+            block = block_match.group(1)
+            title_match = (
+                title_pattern.search(block)
+                or title_pattern_href_first.search(block)
+            )
+
+            if not title_match:
+                continue
+
+            title = self._clean_text(title_match.group(2))
+
+            if not self._is_valid_title(title):
+                continue
+
+            comment_match = comment_pattern.search(block)
+            views_match = views_pattern.search(block)
+            likes_match = likes_pattern.search(block)
+            category_match = category_pattern.search(block)
+            attachment_count = len(attachment_pattern.findall(block))
+
+            articles.append(
+                {
+                    "title": title,
+                    "link": self._normalize_link(title_match.group(1)),
+                    "summary": "",
+                    "board_or_category": self._clean_text(
+                        category_match.group(1) if category_match else ""
+                    ),
+                    "visible_metrics": {
+                        "views": self._parse_metric_number(
+                            views_match.group(1) if views_match else None
+                        ),
+                        "comments": self._parse_metric_number(
+                            comment_match.group(1) if comment_match else None
+                        ),
+                        "likes": self._parse_metric_number(
+                            likes_match.group(1) if likes_match else None
+                        ),
+                    },
+                    "media_flags": {
+                        "has_image": True if attachment_count > 0 else None,
+                        "image_count": attachment_count if attachment_count > 0 else None,
+                        "has_video": None,
+                    },
+                }
+            )
+
+        return articles
+
+    def _parse_metric_number(self, text: Optional[str]) -> Optional[int]:
+        """'1,234' / '조회 1,234' / '댓글 56' / '1.2만' -> int; unparsable -> None."""
+        if text is None:
+            return None
+
+        cleaned = self._clean_text(str(text))
+
+        if not cleaned:
+            return None
+
+        match = re.search(r"(\d+(?:,\d{3})*(?:\.\d+)?)\s*(만|천)?", cleaned)
+
+        if not match:
+            return None
+
+        try:
+            value = float(match.group(1).replace(",", ""))
+        except ValueError:
+            return None
+
+        unit = match.group(2)
+
+        if unit == "만":
+            value *= 10000
+        elif unit == "천":
+            value *= 1000
+
+        if value < 0 or value != int(value):
+            return None
+
+        return int(value)
+
+    def _parse_articles_legacy(self, raw_html: str) -> List[Dict[str, Any]]:
         articles = []
         patterns = [
             r'<a[^>]+href="(/view\?[^"]*)"[^>]*>(.*?)</a>',
@@ -275,6 +413,10 @@ class BobaedreamCollector:
                     "collection_method": collection_method,
                     "is_fallback": False,
                     "collected_at": datetime.now().isoformat(),
+                    "rank_position": index,
+                    "board_or_category": article.get("board_or_category", ""),
+                    "visible_metrics": build_visible_metrics(article.get("visible_metrics")),
+                    "media_flags": build_media_flags(article.get("media_flags")),
                 }
             )
 
