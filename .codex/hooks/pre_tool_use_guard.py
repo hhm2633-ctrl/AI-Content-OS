@@ -34,7 +34,7 @@ PROTECTED_EXACT = {
 
 GIT_WRITE_RE = re.compile(
     r"(?i)(?:^|[;&|])\s*(?:[^\s;&|]*[\\/])?git(?:\.exe)?\s+"
-    r"(?:-[^\s]+\s+)*(?:add|commit|push|pull|merge|rebase|reset|checkout|"
+    r"(?:-[^\s]+\s+)*(?:push|pull|merge|rebase|reset|checkout|"
     r"switch|restore|clean|rm|mv|tag)(?:\s|$)"
 )
 BAD_MAIN_RE = re.compile(r"(?i)(?:^|\s)python(?:\.exe)?\s+-m\s+src\.main(?:\s|$)")
@@ -175,7 +175,7 @@ def evaluate(payload: dict[str, Any], *, claude_session_count: int | None = None
         if BAD_MAIN_RE.search(command):
             return _deny("AI-Content-OS는 `python -m src.main`을 금지합니다. `py -m src.main`을 사용하세요.")
         if GIT_WRITE_RE.search(command):
-            return _deny("Git 쓰기 작업은 CTO 최종 승인 전 금지됩니다. status/diff/log 같은 읽기만 허용됩니다.")
+            return _deny("Git 히스토리/원격/파일 상태를 바꾸는 명령(push/pull/merge/rebase/reset/checkout/switch/restore/clean/rm/mv/tag)은 CTO 최종 승인 전 금지됩니다. `git add`와 `git commit`은 자유롭게 사용 가능합니다.")
         if DESTRUCTIVE_RE.search(command):
             return _deny("재귀 삭제 또는 파괴적 복구 명령은 이 프로젝트 Hook이 차단합니다.")
         if DEPLOY_RE.search(command):
@@ -237,7 +237,13 @@ def _self_test() -> int:
         ({"tool_name": "Bash", "tool_input": {"command": "python -m src.main"}}, True, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "py -m src.main"}}, False, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git status --short"}}, False, 0),
-        ({"tool_name": "Bash", "tool_input": {"command": "git commit -m x"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git commit -m x"}}, False, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git add -A"}}, False, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git push origin main"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git push --force origin main"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git reset --hard HEAD~1"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git clean -fd"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "git rebase -i HEAD~5"}}, True, 0),
         ({"tool_name": "apply_patch", "tool_input": {"command": "*** Begin Patch\n*** Update File: ROADMAP.md\n@@\n-x\n+y\n*** End Patch"}}, True, 0),
         ({"tool_name": "apply_patch", "tool_input": {"command": "*** Begin Patch\n*** Delete File: config/source_data_storage.json\n*** End Patch"}}, True, 0),
         ({"tool_name": "apply_patch", "tool_input": {"command": "*** Begin Patch\n*** Update File: config/source_data_storage.json\n@@\n-x\n+y\n*** End Patch"}}, True, 0),
@@ -246,7 +252,8 @@ def _self_test() -> int:
     ]
     cases.extend(
         [
-            ({"tool_name": "exec_command", "tool_input": {"cmd": "git commit -m x"}}, True, 0),
+            ({"tool_name": "exec_command", "tool_input": {"cmd": "git commit -m x"}}, False, 0),
+            ({"tool_name": "exec_command", "tool_input": {"cmd": "git push origin main"}}, True, 0),
             ({"tool_name": "exec_command", "tool_input": {"cmd": "python -m src.main"}}, True, 0),
             ({"tool_name": "exec_command", "tool_input": {"cmd": "  claude --bg task"}}, True, 1),
             ({"tool_name": "exec_command", "tool_input": {"cmd": "C:/Tools/claude.exe --bg task"}}, True, 1),
