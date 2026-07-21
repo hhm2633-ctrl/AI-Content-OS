@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-6c2dc4c716b5",
+  "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티",
+  "title": "알아두면 평생 쓰는, 신발 오래 깨끗하게 신는 사람들의 관리법 7",
+  "source_urls": [
+    "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

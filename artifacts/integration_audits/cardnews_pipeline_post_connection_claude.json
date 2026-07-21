@@ -1,0 +1,65 @@
+{
+  "audit_id": "CM-CLAUDE-CROSS-AUDIT",
+  "date": "2026-07-19",
+  "mode": "read_only",
+  "assumption": "CM-CAPTURE-RUNTIME / CM-SEMANTIC-CLUSTER / CM-CONTROLLER-GATE의 의도된 계약이 완료된 이후의 잔존 우회 경로 분석",
+  "todays_failures": ["이미지 잘림(OD-CARD-019)", "전체 페이지 댓글 축소(OD-CARD-018)", "긴/빈 문안(OD-CARD-017)", "대표 QA 없는 배치 출력(OD-CARD-020)"],
+  "findings": [
+    {
+      "severity": "high",
+      "entry_point": "scripts/run_cardnews_production.py command_record_render(L243)+_render_receipts(L125)",
+      "bypass_condition": "record-render가 issue-render 인가(authorization_id/expires_at/input_sha256/mode)를 검증하지 않음. state 파일의 state_hash·batch_hash·hard_rule_hash를 수기 manifest에 복사하고 실제 PNG만 가리키면 인가 발급 없이 렌더 기록→QA→배치 진입 가능",
+      "smallest_fix": "record-render에서 manifest.authorization_id를 발급 token과 대조하고 TTL·mode·candidate_ids 일치 검증",
+      "worker_scope_closes_it": true,
+      "evidence": "_render_receipts L134-147 manifest 값 무검증 수용; production_controller.py L346-357은 3개 해시만 비교; issue-render는 transition이 아니라 state_hash 불변"
+    },
+    {
+      "severity": "high",
+      "entry_point": "scripts/render_selected_cardnews_preupload.py 등 렌더러 직접 실행",
+      "bypass_condition": "렌더러가 controller token 소비를 강제받지 않는 한 배치 PNG를 컨트롤러 밖에서 생산 가능. 컨트롤러는 기록·업로드준비 표시만 통제하고 렌더 실행 자체는 못 막음 — 오늘의 대표 QA 없는 배치 출력 물리 경로 잔존",
+      "smallest_fix": "렌더러 진입부에 유효 authorization 파일 필수 가드 추가(별도 승인 필요)",
+      "worker_scope_closes_it": false,
+      "evidence": "CM-CONTROLLER-GATE Prohibited: renderer implementation(work order L45); run_cardnews_production.py L4-6 렌더는 별도 subprocess"
+    },
+    {
+      "severity": "high",
+      "entry_point": "run_cardnews_production.py command_issue_render(L206-240)",
+      "bypass_condition": "token_body에 local-media preparation receipt 바인딩이 없고 LocalMediaPipeline receipt는 in-memory 반환뿐(영속화·만료·output_set/batch 바인딩 없음). 연결 후에도 미준비 자산(cover 확대·중앙 크롭)으로 렌더 인가 발급 가능 → 이미지 잘림 재발 경로",
+      "smallest_fix": "issue-render 시 asset별 receipt_hash+source sha256을 token에 바인딩하고 status=completed·pre_render_prepared=true 요구",
+      "worker_scope_closes_it": "partial",
+      "evidence": "local_media_pipeline.py L489-512 receipt는 반환값만; run_cardnews_production.py는 local_media 미참조(import 없음)"
+    },
+    {
+      "severity": "medium",
+      "entry_point": "run_cardnews_production.py _expected_slides(L159-169)",
+      "bypass_condition": "package_path가 파일이 아니거나 슬라이드 role/media/media_type에 comment/댓글 라벨이 없으면 comment_pages가 조용히 빈 집합 → requires_comment_readability=false → 전체 페이지 축소 댓글 슬라이드가 not_applicable로 QA 통과",
+      "smallest_fix": "package_path 미존재 시 fail-closed; 패키지에 댓글 증거가 있는데 comment page 0개면 차단",
+      "worker_scope_closes_it": true,
+      "evidence": "L160 if package_path.is_file(): 실패 무시; visual_qa_gate.py L248-257 not_applicable 허용 조건"
+    },
+    {
+      "severity": "medium",
+      "entry_point": "community_comment_capture_provider.py discover(L461-468), _collect_comments(L620-653)",
+      "bypass_condition": "캡처 예외가 status ok+빈 assets로 삼켜지고, 스크린샷 예산(20장→최대 10개 댓글 크롭) 초과분은 screenshot_path 빈 값으로 통과. 다운스트림이 크롭 부재 시 full-page original_post.png(L579-583)로 대체하면 전체 페이지 댓글 축소 재발",
+      "smallest_fix": "예외 시 status를 degraded/error로 구분; 크롭 없는 댓글에 crop_missing 플래그를 붙여 댓글 슬라이드 부적격 처리",
+      "worker_scope_closes_it": false,
+      "evidence": "L461 except 후 status ok 반환; L624 screenshot_budget>=2 조건; CM-CAPTURE-RUNTIME 완료조건은 parse/capture 동작 불변 요구"
+    },
+    {
+      "severity": "medium",
+      "entry_point": "visual_qa_gate.py REQUIRED_FINDINGS(L18-23), reviewer 검증(L95-118)",
+      "bypass_condition": "QA는 자기신고 attestation — reviewer_independent는 receipt 내 boolean뿐이고 긴/빈 문안(017)·크롭/비율 보존(019)을 강제하는 finding 키가 없어 4종 pass 신고만으로 통과. 기계 생성 approve receipt를 구조적으로 구분 못함",
+      "smallest_fix": "findings에 copy_length_ok(017)·crop_ratio_ok(019) 키 추가; reviewer id를 승인된 human reviewer 목록과 대조",
+      "worker_scope_closes_it": "partial",
+      "evidence": "production_controller.py L392-408은 필드 값만 확인; REQUIRED_FINDINGS 4종에 문안 길이·잘림 항목 부재"
+    },
+    {
+      "severity": "low",
+      "entry_point": "same_event_topic_clusterer.py _build_cluster_record(L726-728)",
+      "bypass_condition": "cluster 대표가 입력 순서 최솟값 기반이라 semantic 신호로 오버머지가 늘면 임의 대표가 심층 수집 대상이 될 수 있음. 오늘 실패 4종과의 직접 연결은 약함",
+      "smallest_fix": "대표 선정에 edge score/근거 수 반영(선택적)",
+      "worker_scope_closes_it": false,
+      "evidence": "representative=members[0]; CM-SEMANTIC-CLUSTER 완료조건은 additive-only만 보장"
+    }
+  ]
+}

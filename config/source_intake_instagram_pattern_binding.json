@@ -1,0 +1,93 @@
+{
+  "schema_version": "source_intake_instagram_pattern_binding_v1",
+  "calibration_status": "initial_uncalibrated",
+  "calibration_note": "Role mappings and fit weights are editorial starting points over the currently registered CANDIDATE patterns. No binding here is measured Instagram performance; recalibrate only from real per-account results.",
+  "pattern_registry_path": "knowledge/patterns/pattern_registry.jsonl",
+  "reference_time": null,
+  "max_reviewed_age_days": 180,
+  "minimum_source_claims": 1,
+  "evidence_saturation_claim_count": 5,
+  "production_statuses": ["PROMOTED"],
+  "reference_statuses": ["VERIFIED", "CANDIDATE"],
+  "supported_roles": ["hook_strategy", "story_structure", "visual_direction", "cta_strategy"],
+  "required_production_roles": ["hook_strategy", "story_structure", "visual_direction", "cta_strategy"],
+  "fit_weights": {
+    "category_applicability": 0.25,
+    "evidence_strength": 0.35,
+    "status_tier": 0.25,
+    "freshness": 0.15
+  },
+  "status_tier_scores": {
+    "PROMOTED": 1.0,
+    "VERIFIED": 0.6,
+    "CANDIDATE": 0.3
+  },
+  "blocked_risk_flags_by_role": {
+    "hook_strategy": ["manipulation_risk"],
+    "story_structure": ["manipulation_risk"],
+    "visual_direction": ["manipulation_risk"],
+    "cta_strategy": ["manipulation_risk", "funnel_risk"],
+    "slide_count_hint": ["manipulation_risk"]
+  },
+  "accounts": {
+    "account_a_news_incident": {
+      "categories": ["major_news_policy", "incident_conflict", "economy_market"],
+      "allowed_pattern_domains": ["content_pattern"],
+      "role_bindings": [
+        {
+          "role": "hook_strategy",
+          "pattern_id": "pattern.instagram_learning.content_pattern.quote_reversal_hook",
+          "applicable_categories": ["major_news_policy", "incident_conflict", "economy_market"],
+          "applicability_basis": "Quote/reversal headline with a person photo was observed on news/issue-style covers; hypothesis_only (n=1), reference tier only."
+        }
+      ],
+      "slide_count_hint_bindings": []
+    },
+    "account_b_issue_story": {
+      "categories": ["entertainment_relationship", "community_buzz"],
+      "allowed_pattern_domains": ["content_pattern", "engagement_mechanic"],
+      "role_bindings": [
+        {
+          "role": "hook_strategy",
+          "pattern_id": "pattern.instagram_learning.content_pattern.quote_reversal_hook",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Quote/reversal headline hook observed on issue/entertainment-style explore content; hypothesis_only (n=1), reference tier only."
+        },
+        {
+          "role": "story_structure",
+          "pattern_id": "pattern.instagram_learning.content_pattern.numbered_curation_list_structure",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Numbered curation list structure (repeated same-format items) was observed across humor/issue and lifestyle accounts; benchmark_observed (n=3), reference tier only."
+        },
+        {
+          "role": "cta_strategy",
+          "pattern_id": "pattern.instagram_learning.engagement_mechanic.dm_keyword_cta",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Comment-keyword DM CTA is the only observed CTA pattern, but it carries manipulation_risk/funnel_risk flags and its own record forbids default use; the binder's role risk gate is expected to block it, leaving cta_strategy explicitly unavailable rather than silently bound."
+        }
+      ],
+      "slide_count_hint_bindings": [
+        {
+          "pattern_id": "pattern.instagram_learning.content_pattern.numbered_curation_list_structure",
+          "hint_type": "variable_length_list_supported",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "basis": "Evidence shows repeated same-format list items with a variable item count; no measured slide-count distribution exists, so only variable-length support is asserted and no slide number is produced."
+        }
+      ]
+    },
+    "account_c_beauty_fashion": {
+      "categories": ["beauty_fashion"],
+      "allowed_pattern_domains": ["content_pattern"],
+      "role_bindings": [],
+      "slide_count_hint_bindings": []
+    }
+  },
+  "notes": [
+    "Account ids and category vocabulary mirror config/source_intake_account_routing.json and config/source_intake_account_top_selection.json.",
+    "Only pattern ids that already exist in knowledge/patterns/pattern_registry.jsonl may appear in role_bindings; the binder verifies existence and never invents patterns.",
+    "All currently registered Instagram-learning patterns are CANDIDATE, so every possible binding today is reference_only and production_planning_eligible stays false until real promotion per knowledge/patterns/promotion_policy.md.",
+    "account_c_beauty_fashion has no role bindings because no observed beauty/fashion pattern exists in the registry yet; its topics deterministically report pattern_unavailable instead of borrowing another account's patterns.",
+    "pattern.instagram_learning.content_pattern.regional_institution_notice_style and healthcare_public_character_illustration are intentionally unmapped: their observed contexts (regional/institutional notice accounts, hospital/public accounts) do not match any current account portfolio.",
+    "visual_direction is unmapped for every account because no registered pattern's observed context matches the current portfolios; it reports pattern_unavailable rather than a stretched binding."
+  ]
+}

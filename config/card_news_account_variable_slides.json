@@ -1,0 +1,890 @@
+{
+  "schema_version": "card_news_account_variable_slides_config_v1",
+  "default_config_version_note": "Instagram pattern binding 기반 variable slide planning foundation",
+  "pattern_binding_ttl_days": 14,
+  "global_min_max": {
+    "min": 4,
+    "max": 7
+  },
+  "supported_layouts": [
+    "notebook",
+    "dark_editorial",
+    "bold_ai",
+    "character_diary",
+    "comparison",
+    "tutorial",
+    "checklist",
+    "timeline",
+    "warning",
+    "number_list"
+  ],
+  "fallback_layout": "bold_ai",
+  "signature_aliases": {
+    "breaking_news": [
+      "속보",
+      "브레이킹",
+      "긴급",
+      "사고",
+      "현장",
+      "총격",
+      "중단",
+      "발표",
+      "breaking",
+      "incident",
+      "현장"
+    ],
+    "incident_timeline": [
+      "사건",
+      "사고",
+      "침해",
+      "피해",
+      "진행",
+      "시간표",
+      "timeline",
+      "발생"
+    ],
+    "explainer": [
+      "설명",
+      "왜",
+      "어떻게",
+      "입문",
+      "가이드",
+      "튜토리얼",
+      "알아보",
+      "비교",
+      "원리",
+      "메커니즘"
+    ],
+    "issue_story": [
+      "썰",
+      "이슈",
+      "도파민",
+      "관계",
+      "감정",
+      "썸",
+      "논란",
+      "반응",
+      "관점"
+    ],
+    "relationship_story": [
+      "썸",
+      "데이트",
+      "연애",
+      "감정",
+      "공감",
+      "관계",
+      "좋아요",
+      "연결"
+    ],
+    "beauty_guide": [
+      "패션",
+      "뷰티",
+      "메이크업",
+      "헤어",
+      "스킨케어",
+      "리얼톤",
+      "스타일링",
+      "루틴"
+    ]
+  },
+  "default_content_budget": {
+    "headline_chars": 28,
+    "headline_lines": 2,
+    "body_chars": 160,
+    "body_lines": 3
+  },
+  "global_mobile_density": {
+    "headline_chars_max": 32,
+    "headline_lines_max": 2,
+    "body_chars_max": 170,
+    "body_lines_max": 3
+  },
+  "default_slide_templates": {
+    "opening": {
+      "canonical_role": "hook",
+      "semantic_role": "cover",
+      "purpose": "핵심 관심을 끄는 한 장짜리 후킹 역할.",
+      "content_budget": {
+        "headline_chars": 26,
+        "headline_lines": 1,
+        "body_chars": 90,
+        "body_lines": 2
+      }
+    },
+    "problem": {
+      "canonical_role": "problem",
+      "semantic_role": "problem",
+      "purpose": "독자가 공감할 수 있는 문제 제시.",
+      "content_budget": {
+        "headline_chars": 28,
+        "headline_lines": 1,
+        "body_chars": 120,
+        "body_lines": 2
+      }
+    },
+    "solution": {
+      "canonical_role": "solution",
+      "semantic_role": "explanation",
+      "purpose": "핵심 전개나 해결 단계를 압축해 제시.",
+      "content_budget": {
+        "headline_chars": 28,
+        "headline_lines": 1,
+        "body_chars": 130,
+        "body_lines": 3
+      }
+    },
+    "closing": {
+      "canonical_role": "cta",
+      "semantic_role": "conclusion",
+      "purpose": "저장/팔로우/댓글의 행동 유도.",
+      "content_budget": {
+        "headline_chars": 26,
+        "headline_lines": 1,
+        "body_chars": 90,
+        "body_lines": 2
+      }
+    },
+    "evidence": {
+      "canonical_role": "solution",
+      "semantic_role": "evidence",
+      "purpose": "출처 기반 근거를 짧게 한 번에 제시.",
+      "content_budget": {
+        "headline_chars": 24,
+        "headline_lines": 1,
+        "body_chars": 120,
+        "body_lines": 2
+      }
+    },
+    "counterpoint": {
+      "canonical_role": "solution",
+      "semantic_role": "counterpoint",
+      "purpose": "반대 관점 또는 예상 반론 요약.",
+      "content_budget": {
+        "headline_chars": 24,
+        "headline_lines": 1,
+        "body_chars": 110,
+        "body_lines": 2
+      }
+    }
+  },
+  "accounts": {
+    "account_a_news_incident": {
+      "min_slides": 4,
+      "max_slides": 6,
+      "fallback_pattern": "news_fallback",
+      "signature_profiles": {
+        "breaking_news": {
+          "pattern_candidates": [
+            "news_breaking"
+          ],
+          "target_count": 4,
+          "required_roles": [
+            "evidence"
+          ]
+        },
+        "incident_timeline": {
+          "pattern_candidates": [
+            "incident_timeline"
+          ],
+          "target_count": 5,
+          "required_roles": [
+            "evidence"
+          ]
+        },
+        "explainer": {
+          "pattern_candidates": [
+            "news_explainer"
+          ],
+          "target_count": 5,
+          "required_roles": [
+            "evidence"
+          ]
+        },
+        "default": {
+          "pattern_candidates": [
+            "news_fallback"
+          ],
+          "target_count": 4,
+          "required_roles": [
+            "evidence"
+          ]
+        }
+      }
+    },
+    "account_b_issue_story": {
+      "min_slides": 4,
+      "max_slides": 6,
+      "fallback_pattern": "issue_fallback",
+      "signature_profiles": {
+        "issue_story": {
+          "pattern_candidates": [
+            "issue_story"
+          ],
+          "target_count": 5,
+          "required_roles": []
+        },
+        "relationship_story": {
+          "pattern_candidates": [
+            "relationship_story"
+          ],
+          "target_count": 5,
+          "required_roles": []
+        },
+        "explainer": {
+          "pattern_candidates": [
+            "issue_story"
+          ],
+          "target_count": 5,
+          "required_roles": []
+        },
+        "default": {
+          "pattern_candidates": [
+            "issue_fallback"
+          ],
+          "target_count": 4,
+          "required_roles": []
+        }
+      }
+    },
+    "account_c_beauty_fashion": {
+      "min_slides": 4,
+      "max_slides": 6,
+      "fallback_pattern": "beauty_fallback",
+      "signature_profiles": {
+        "beauty_guide": {
+          "pattern_candidates": [
+            "beauty_guide"
+          ],
+          "target_count": 5,
+          "required_roles": []
+        },
+        "explainer": {
+          "pattern_candidates": [
+            "beauty_guide"
+          ],
+          "target_count": 5,
+          "required_roles": []
+        },
+        "default": {
+          "pattern_candidates": [
+            "beauty_fallback"
+          ],
+          "target_count": 4,
+          "required_roles": []
+        }
+      }
+    }
+  },
+  "pattern_definitions": {
+    "news_breaking": {
+      "pattern_id": "news_breaking",
+      "name": "short_news_brief",
+      "signature": "breaking_news",
+      "slide_count_range": {
+        "min": 4,
+        "max": 5
+      },
+      "default_slide_count": 4,
+      "layout_type": "warning",
+      "required_roles": [
+        "evidence"
+      ],
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "긴급 이슈를 한 줄 후킹으로 제시.",
+            "content_budget": {
+              "headline_chars": 24,
+              "headline_lines": 1,
+              "body_chars": 80,
+              "body_lines": 2
+            }
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "무슨 일인지 요약.",
+            "content_budget": {
+              "headline_chars": 24,
+              "headline_lines": 1,
+              "body_chars": 110,
+              "body_lines": 2
+            }
+          },
+          {
+            "semantic_role": "evidence",
+            "canonical_role": "solution",
+            "purpose": "핵심 근거 1개를 명시.",
+            "content_budget": {
+              "headline_chars": 22,
+              "headline_lines": 1,
+              "body_chars": 95,
+              "body_lines": 2
+            }
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "행동 유도형 한 줄 정리."
+          }
+        ],
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "긴급 이슈를 한 줄 후킹으로 제시."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "사건 배경을 짧게 제시."
+          },
+          {
+            "semantic_role": "evidence",
+            "canonical_role": "solution",
+            "purpose": "검증된 사실/공개 출처 1개를 정리."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "영향 범위 또는 파급을 짧게 설명."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "저장/팔로우 유도."
+          }
+        ]
+      }
+    },
+    "incident_timeline": {
+      "pattern_id": "incident_timeline",
+      "name": "incident_timeline",
+      "signature": "incident_timeline",
+      "slide_count_range": {
+        "min": 5,
+        "max": 6
+      },
+      "default_slide_count": 5,
+      "layout_type": "timeline",
+      "required_roles": [
+        "evidence"
+      ],
+      "slides_by_count": {
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "사건을 시간축으로 압축 제시."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "사건 전개 1단계."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "핵심 쟁점 한 줄."
+          },
+          {
+            "semantic_role": "evidence",
+            "canonical_role": "solution",
+            "purpose": "시간순 근거 1개."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "요약 + 공유 유도."
+          }
+        ],
+        "6": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "사건을 한 줄 후킹."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "시간축 전개 1단계."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "전환점 전 단계."
+          },
+          {
+            "semantic_role": "evidence",
+            "canonical_role": "solution",
+            "purpose": "증거 기반 근거점."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "사건 영향 정리."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "행동 유도."
+          }
+        ]
+      }
+    },
+    "news_explainer": {
+      "pattern_id": "news_explainer",
+      "name": "news_explainer",
+      "signature": "explainer",
+      "slide_count_range": {
+        "min": 4,
+        "max": 6
+      },
+      "default_slide_count": 5,
+      "layout_type": "timeline",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "주제 진입 질문형 후킹."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "현재 상태의 왜곡 요인."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "핵심 원인 한 줄."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "기억 포인트 CTA."
+          }
+        ],
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "주제 진입 질문형 후킹."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "주요 문제."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "원인/조건."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "영향."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "한줄 행동 제안."
+          }
+        ],
+        "6": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "주제 진입 질문형 후킹."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "주요 문제."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "원인."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "영향."
+          },
+          {
+            "semantic_role": "solution",
+            "canonical_role": "solution",
+            "purpose": "요약적 정리."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "저장/댓글 유도."
+          }
+        ]
+      }
+    },
+    "issue_story": {
+      "pattern_id": "issue_story",
+      "name": "issue_story_flow",
+      "signature": "issue_story",
+      "slide_count_range": {
+        "min": 4,
+        "max": 6
+      },
+      "default_slide_count": 5,
+      "layout_type": "notebook",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "이슈를 한 줄로 압축."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "논점 정리."
+          },
+          {
+            "semantic_role": "counterpoint",
+            "canonical_role": "solution",
+            "purpose": "반론 한 줄."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "공감 질문 유도."
+          }
+        ],
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "공감 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "상황 정의."
+          },
+          {
+            "semantic_role": "counterpoint",
+            "canonical_role": "solution",
+            "purpose": "양측 입장 한 줄."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "내가 본 핵심 포인트."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "의견 참여 유도."
+          }
+        ],
+        "6": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "공감 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "상황 정의."
+          },
+          {
+            "semantic_role": "counterpoint",
+            "canonical_role": "solution",
+            "purpose": "양측 입장 한 줄."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "판단 기준."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "후속 정리."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "마무리 참여."
+          }
+        ]
+      }
+    },
+    "relationship_story": {
+      "pattern_id": "relationship_story",
+      "name": "relationship_emotion_story",
+      "signature": "relationship_story",
+      "slide_count_range": {
+        "min": 4,
+        "max": 6
+      },
+      "default_slide_count": 5,
+      "layout_type": "checklist",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "감정 공감 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "관계의 갈등 포인트."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "상황 해석."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "의견/공감 유도."
+          }
+        ],
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "감정 공감 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "상황 진입."
+          },
+          {
+            "semantic_role": "counterpoint",
+            "canonical_role": "solution",
+            "purpose": "오해 포인트."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "재해석 포인트."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "댓글 질문 유도."
+          }
+        ]
+      }
+    },
+    "beauty_guide": {
+      "pattern_id": "beauty_guide",
+      "name": "beauty_guide",
+      "signature": "beauty_guide",
+      "slide_count_range": {
+        "min": 4,
+        "max": 6
+      },
+      "default_slide_count": 5,
+      "layout_type": "tutorial",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "즉시 체감할 장면형 후킹."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "진입 조건."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "핵심 사용 팁."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "저장/실천 제안."
+          }
+        ],
+        "5": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "즉시 체감형 후킹."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "필요 조건."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "1단계 팁."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "2단계 팁."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "실천 체크 제안."
+          }
+        ],
+        "6": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "즉시 체감형 후킹."
+          },
+          {
+            "semantic_role": "context",
+            "canonical_role": "problem",
+            "purpose": "실행 전 준비."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "단계 1."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "단계 2."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "단계 3."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "실천 요청."
+          }
+        ]
+      }
+    },
+    "news_fallback": {
+      "pattern_id": "news_fallback",
+      "name": "news_fallback_legacy_like",
+      "signature": "breaking_news",
+      "slide_count_range": {
+        "min": 4,
+        "max": 4
+      },
+      "default_slide_count": 4,
+      "layout_type": "bold_ai",
+      "required_roles": [
+        "evidence"
+      ],
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "보수 fallback 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "핵심 사건 요약."
+          },
+          {
+            "semantic_role": "evidence",
+            "canonical_role": "solution",
+            "purpose": "근거/출처 제시."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "저장 CTA."
+          }
+        ]
+      }
+    },
+    "issue_fallback": {
+      "pattern_id": "issue_fallback",
+      "name": "issue_story_fallback",
+      "signature": "issue_story",
+      "slide_count_range": {
+        "min": 4,
+        "max": 4
+      },
+      "default_slide_count": 4,
+      "layout_type": "notebook",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "보수 fallback 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "사건 핵심."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "관점 요약."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "참여 질문."
+          }
+        ]
+      }
+    },
+    "beauty_fallback": {
+      "pattern_id": "beauty_fallback",
+      "name": "beauty_fallback",
+      "signature": "beauty_guide",
+      "slide_count_range": {
+        "min": 4,
+        "max": 4
+      },
+      "default_slide_count": 4,
+      "layout_type": "tutorial",
+      "slides_by_count": {
+        "4": [
+          {
+            "semantic_role": "cover",
+            "canonical_role": "hook",
+            "purpose": "보수 fallback 훅."
+          },
+          {
+            "semantic_role": "problem",
+            "canonical_role": "problem",
+            "purpose": "현재 상태."
+          },
+          {
+            "semantic_role": "explanation",
+            "canonical_role": "solution",
+            "purpose": "핵심 팁 한 줄."
+          },
+          {
+            "semantic_role": "conclusion",
+            "canonical_role": "cta",
+            "purpose": "저장/실행 유도."
+          }
+        ]
+      }
+    }
+  }
+}

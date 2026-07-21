@@ -1,0 +1,34 @@
+{
+  "schema_version": "brandconnect_lifestyle_story_report_v1",
+  "generated_at": "2026-07-18T00:00:00+09:00",
+  "source_relations": "artifacts/brandconnect_relation_learning_2026-07-18/lifestyle_relations.jsonl",
+  "source_product_count": 4722,
+  "product_count": 4722,
+  "story_count": 4722,
+  "practical_topic_count": 4722,
+  "fallback_count": 631,
+  "under_30_violations": 0,
+  "duplicate_short_story_count": 0,
+  "duplicate_product_id_count": 0,
+  "empty_practical_topic_count": 0,
+  "missing_required_field_rows": 0,
+  "personal_use_claim_rows": 0,
+  "min_short_story_length": 20.0,
+  "max_short_story_length": 28.0,
+  "validation": {
+    "source_id_coverage": true,
+    "one_row_per_source_product": true,
+    "exactly_one_nonempty_practical_topic": true,
+    "unique_short_story_under_30": true,
+    "required_fields_present": true,
+    "no_personal_use_claim_detected": true,
+    "counts_agree": true,
+    "result": "PASS"
+  },
+  "notes": [
+    "one best context per product; no 12-month matrix",
+    "story uniqueness uses a deterministic compact suffix",
+    "future blog seeds only; not publish drafts or fixed owner rules",
+    "no network, API, publishing, link issuance, or commercial fact inference"
+  ]
+}

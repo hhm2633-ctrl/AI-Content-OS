@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-93d539639c2b",
+  "candidate_id": "20260717-2003-C-93d539639c2b",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "[리뷰] 톰 브라운 2027 S/S 남성복 컬렉션 미국 패션 디자이너 '톰 브라운이 18년만에 밀라노 패션위크에 컴백, 전통과 혁신적인 테일러링이 조화를 이룬 2027 S/S 남성복 컬렉션을 선보였다.",
+  "source_urls": [
+    "https://www.fashionn.com/board/read_new.php?table=1028&number=61445&sel_cat="
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "external_tool_capability_v1",
+  "tool_id": "hyperframes",
+  "status": "local_render_adapter_connected_owner_gated",
+  "upstream": {
+    "repository": "https://github.com/heygen-com/hyperframes",
+    "commit": "feb675a89d9377898abe63db53d793b6e000e8a6",
+    "license": "Apache-2.0",
+    "local_root": "F:/AI-Content-OS-Data/external_tools/upstreams/hyperframes",
+    "official_skill_root": "F:/AI-Content-OS-Data/external_tools/upstreams/hyperframes/skills",
+    "official_skill_count": 19
+  },
+  "runtime": {
+    "cli_version": "0.7.63",
+    "node": "24.16.0",
+    "ffmpeg_bin": "F:/AI-Content-OS-Data/external_tools/runtimes/ffmpeg/ffmpeg-8.1.2-essentials_build/bin",
+    "npm_cache": "F:/AI-Content-OS-Data/external_tools/runtime_cache/npm",
+    "extract_cache": "F:/AI-Content-OS-Data/external_tools/runtime_cache/hyperframes/extract",
+    "chrome": "available",
+    "bun": "not_installed",
+    "docker": "not_installed",
+    "optional_local_ai": {
+      "whisper_cpp": "not_installed",
+      "kokoro_tts": "not_installed",
+      "musicgen": "not_installed"
+    }
+  },
+  "environment": {
+    "HYPERFRAMES_EXTRACT_CACHE_DIR": "F:/AI-Content-OS-Data/external_tools/runtime_cache/hyperframes/extract",
+    "HYPERFRAMES_FONT_CACHE_DIR": "F:/AI-Content-OS-Data/external_tools/runtime_cache/hyperframes/fonts"
+  },
+  "allowed_now": [
+    "doctor",
+    "help",
+    "lint_existing_local_composition",
+    "check_existing_local_composition",
+    "prepare_local_render_command",
+    "local_preview_after_owner_selects_input"
+  ],
+  "owner_approval_required": [
+    "create_or_modify_video_composition",
+    "snapshot_media",
+    "render_video"
+  ],
+  "blocked": [
+    "publish",
+    "cloud_render",
+    "aws_lambda",
+    "upload",
+    "present_generated_media_as_factual_footage"
+  ],
+  "notes": [
+    "The local render adapter is connected, but render_local requires owner_approved=true and was not executed during connection.",
+    "Local doctor and render commands use npx --offline with the pinned hyperframes@0.7.63 package; cache misses fail instead of downloading.",
+    "Doctor verified FFmpeg, FFprobe, Chrome and Node; optional transcription/TTS/BGM runtimes remain absent.",
+    "The upstream checkout includes a larger-than-intended LFS payload; it was retained on F rather than destructively rewritten.",
+    "No MP4 render, cloud call, publish, upload or account login was executed."
+  ]
+}

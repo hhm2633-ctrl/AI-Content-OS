@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-e3de40697529",
+  "candidate_id": "20260717-2003-A-e3de40697529",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "충남경찰, 압수수색 관련 전교조 주장 일부 사실과 달라",
+  "source_urls": [
+    "https://www.newsis.com/view/NISX20260717_0003713378"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

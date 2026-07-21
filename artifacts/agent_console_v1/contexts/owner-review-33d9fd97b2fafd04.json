@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-694835d83681",
+  "candidate_id": "20260717-2003-C-694835d83681",
+  "grade": "3",
+  "account": "C",
+  "category": "패션",
+  "title": "베네통코리아, 아름다운가게와 '의류 기부 캠페인' 성료",
+  "source_urls": [
+    "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226437"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

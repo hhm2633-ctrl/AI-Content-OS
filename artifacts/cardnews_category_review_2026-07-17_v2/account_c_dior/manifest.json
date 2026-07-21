@@ -1,0 +1,11 @@
+{
+  "schema_version": "image_first_review_manifest_v2",
+  "generated_by": "Codex CTO integration lane",
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "restricted_internal_editorial_review",
+  "source_recheck_required": true,
+  "actual_publish_requires_explicit_owner_approval": true,
+  "asset_warning": "real runway imagery; internal editorial review only; publication rights must be cleared",
+  "owner_correction_applied": "actual Dior imagery dominates; season explanation is intentionally short"
+}

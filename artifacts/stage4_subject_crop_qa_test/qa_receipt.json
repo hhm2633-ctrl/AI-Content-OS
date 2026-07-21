@@ -1,0 +1,163 @@
+{
+  "schema_version": "cardnews_visual_qa_receipt_v1",
+  "receipt_id": "visual-qa-stage4-near-fail-set-representative",
+  "output_set_id": "stage4-near-fail-set",
+  "reviewed_at": "2026-07-20T08:51:30.030559+00:00",
+  "maker": {
+    "id": "pipeline"
+  },
+  "reviewer": {
+    "id": "visual-reviewer",
+    "independent_from_maker": true
+  },
+  "scope": {
+    "kind": "representative",
+    "accounts": [
+      "A"
+    ],
+    "candidate_ids": [
+      "qa-c1"
+    ]
+  },
+  "decision": "approve",
+  "slides": [
+    {
+      "candidate_id": "qa-c1",
+      "page": 1,
+      "image_path": "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\artifacts\\stage3_subject_crop_guard\\dior_runway_01_near_fail.png",
+      "image_sha256": "af0a64d79e2ccc1efc67a24e8a96719288c87758ee28b78b546a314f9bb41e6a",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "fail",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 680,
+          "height": 1020,
+          "mean_gray": 0.421067,
+          "std_gray": 0.194026,
+          "blankness_proxy": 0.016508
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 1,
+          "avg_text_conf": 0.4831,
+          "text_char_count": 41,
+          "input_bytes": 1004125,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "fashion",
+            "cosine_similarity": 0.199602
+          }
+        },
+        "subject_crop_guard": {
+          "status": "fail",
+          "max_subject_outside_ratio": 0.06,
+          "subject_crop_outside_ratio": 0.1138,
+          "subject_crop_outside_ratio_in_template_frame": 0.1138,
+          "subject_area": 322400,
+          "kept_subject_area": 285696.0,
+          "source_crop_window": {
+            "x1": 201.0,
+            "y1": 0.0,
+            "x2": 680,
+            "y2": 1020
+          },
+          "template_frame": {
+            "width": 1080,
+            "height": 1350
+          },
+          "projected_subject_bbox": {
+            "x1": 174.0441,
+            "y1": 23.8235,
+            "x2": 604.1912,
+            "y2": 1336.7647
+          },
+          "subject_crop_pass": false
+        }
+      }
+    }
+  ],
+  "analysis_contract": {
+    "openclip_ready": true,
+    "paddleocr_ready": true,
+    "openclip_timeout_seconds": 30.0,
+    "ocr_timeout_seconds": 30.0,
+    "openclip_probe": {
+      "schema_version": "openclip_runtime_probe_v1",
+      "status": "ready",
+      "ready": true,
+      "runtime_root": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip",
+      "model_root": "F:\\AI-Content-OS-Data\\external_tools\\models\\openclip\\timm--resnet50_clip.openai--ec3d92cf63a5",
+      "provenance_path": "F:\\AI-Content-OS-Data\\external_tools\\provenance\\openclip\\install_manifest.json",
+      "python_executable": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip\\Scripts\\python.exe",
+      "model": {
+        "repository": "timm/resnet50_clip.openai",
+        "model_name": "RN50-quickgelu",
+        "revision": "ec3d92cf63a5f9d591f0d611b736895966c73076",
+        "path": "F:\\AI-Content-OS-Data\\external_tools\\models\\openclip\\timm--resnet50_clip.openai--ec3d92cf63a5\\open_clip_model.safetensors",
+        "bytes": 408291932,
+        "sha256": "da0baa37fb2211eee5729ab69ed587eb10d48f5b7076ceeed01552fc3d4cb4ee"
+      },
+      "licenses": {
+        "code": {
+          "spdx": "MIT",
+          "commercial_reuse": true,
+          "path": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip\\Lib\\site-packages\\open_clip_torch-3.3.0.dist-info\\licenses\\LICENSE",
+          "sha256": "4a5b4f13ea4792a8211a69f32d2b460b6d520e57cd23c6301e707c76a6e97a55"
+        },
+        "weights": {
+          "spdx": "MIT",
+          "commercial_reuse": true,
+          "evidence": "https://huggingface.co/timm/resnet50_clip.openai/tree/ec3d92cf63a5f9d591f0d611b736895966c73076"
+        }
+      },
+      "capabilities": {
+        "image_embedding": true,
+        "text_embedding": true,
+        "normalized_similarity": true,
+        "offline_cpu": true
+      },
+      "checks": {
+        "provenance_schema": true,
+        "runtime_python": true,
+        "runtime_version": true,
+        "code_license": true,
+        "weight_repository": true,
+        "weight_model": true,
+        "weight_revision": true,
+        "weight_access": true,
+        "weight_license": true,
+        "weight_integrity": true,
+        "offline_smoke": true
+      },
+      "errors": [],
+      "boundaries": {
+        "offline_only": true,
+        "owner_assets": false,
+        "remote_service": false,
+        "model_download": false,
+        "training_or_finetuning": false,
+        "production_selection": false
+      }
+    }
+  }
+}

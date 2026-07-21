@@ -1,0 +1,76 @@
+{
+  "schema_version": "image_first_owner_review_v2",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "C",
+  "category": "fashion",
+  "topic": "DIOR MEN 2027 S/S · 이미지 중심 축약본",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "season_preview",
+      "media_type": "image",
+      "headline": "DIOR MEN",
+      "asset": "runway_13.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 2,
+      "role": "the_idea",
+      "media_type": "image",
+      "headline": "친숙함을\n다시 조립하다",
+      "asset": "runway_01.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 3,
+      "role": "silhouette",
+      "media_type": "image",
+      "headline": "커진 턱시도",
+      "asset": "runway_18.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 4,
+      "role": "material",
+      "media_type": "image",
+      "headline": "프린트된\n하운즈투스",
+      "asset": "runway_14.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 5,
+      "role": "texture",
+      "media_type": "image",
+      "headline": "정교함 위\n거친 표면",
+      "asset": "runway_10.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 6,
+      "role": "palette",
+      "media_type": "image",
+      "headline": "낮은 색,\n큰 질감",
+      "asset": "runway_20.png",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 7,
+      "role": "the_look",
+      "media_type": "image",
+      "headline": "27 S/S를\n미리 본 장면",
+      "asset": "runway_23.png",
+      "copy_density": "minimal"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "DIOR",
+      "url": "https://www.dior.com/ko_kr/fashion/mens-fashion/shows/summer-2027-show",
+      "role": "official season reference"
+    }
+  ]
+}

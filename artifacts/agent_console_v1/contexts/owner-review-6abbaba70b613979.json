@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-2d5372d38e51",
+  "candidate_id": "20260717-2003-C-2d5372d38e51",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "뉴나, '익싸 넥스트' 런칭 기념 CJ온스타일 라방 진행",
+  "source_urls": [
+    "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226428"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

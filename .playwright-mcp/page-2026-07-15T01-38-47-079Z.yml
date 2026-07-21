@@ -1,0 +1,447 @@
+- generic [active] [ref=f23e1]:
+  - generic:
+    - link "뉴스 바로가기":
+      - /url: "#container"
+  - generic [ref=f23e2]:
+    - generic [ref=f23e4]:
+      - list:
+        - listitem [ref=f23e5]:
+          - button "햄버거" [ref=f23e6] [cursor=pointer]
+        - listitem [ref=f23e8]:
+          - button "AI검색" [ref=f23e9] [cursor=pointer]
+        - listitem [ref=f23e11]:
+          - generic [ref=f23e12]:
+            - link:
+              - /url: https://www.mk.co.kr/plus
+        - listitem [ref=f23e14]:
+          - button "로그인" [ref=f23e15] [cursor=pointer]
+      - generic [ref=f23e17]:
+        - link "매일경제 60":
+          - /url: https://www.mk.co.kr/
+          - heading [level=1] [ref=f23e18] [cursor=pointer]
+    - generic [ref=f23e35]:
+      - heading [level=2] [ref=f23e36]:
+        - link "매일경제 logo":
+          - /url: https://www.mk.co.kr/
+        - heading [level=1] [ref=f23e37]:
+          - link "매일경제 logo":
+            - /url: https://www.mk.co.kr/
+            - generic: Maeil Business News Korea
+          - generic [ref=f23e38]:
+            - link "매일경제 logo":
+              - /url: https://www.mk.co.kr/
+            - link "매일경제 logo" [ref=f23e39] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/
+              - heading [level=1] [ref=f23e40]
+              - generic: 매일경제 60
+        - link [ref=f23e57] [cursor=pointer]:
+          - /url: https://mai.mk.co.kr/
+          - generic [ref=f23e59]:
+            - text: 나만의 AI 비서
+            - img "MAI" [ref=f23e60]
+      - generic [ref=f23e61]:
+        - list [ref=f23e63]:
+          - listitem [ref=f23e64]:
+            - link [ref=f23e65] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e67]
+              - heading "뉴스" [level=5] [ref=f23e68]
+          - listitem [ref=f23e69]:
+            - link [ref=f23e70] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/youtube
+              - paragraph [ref=f23e72]
+              - heading "M 유튜브" [level=5] [ref=f23e73]
+          - listitem [ref=f23e74]:
+            - link [ref=f23e75] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e77]
+              - heading "콘텐츠 Hub" [level=5] [ref=f23e78]
+          - listitem [ref=f23e79]:
+            - link [ref=f23e80] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e82]
+              - heading "아카이브" [level=5] [ref=f23e83]
+          - listitem [ref=f23e84]:
+            - link [ref=f23e85] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e87]
+              - heading "독자서비스" [level=5] [ref=f23e88]
+          - listitem [ref=f23e89]:
+            - link [ref=f23e90] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e92]
+              - heading "MAI 에이전트" [level=5] [ref=f23e93]
+          - listitem [ref=f23e94]:
+            - link [ref=f23e95] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e97]
+              - heading "AI Hub" [level=5] [ref=f23e98]
+          - listitem [ref=f23e99]:
+            - link [ref=f23e100] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e102]
+              - heading "행사" [level=5] [ref=f23e103]
+          - listitem [ref=f23e104]:
+            - link [ref=f23e105] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=f23e107]
+              - heading "비즈니스" [level=5] [ref=f23e108]
+        - list [ref=f23e110]:
+          - listitem [ref=f23e111]:
+            - link "경제" [ref=f23e112] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e113]:
+            - link "금융" [ref=f23e114] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e115]:
+            - link "기업" [ref=f23e116] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e117]:
+            - link "증권" [ref=f23e118] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e119]:
+            - link "부동산" [ref=f23e120] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e121]:
+            - link "테크·과학" [ref=f23e122] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e123]:
+            - link "오피니언" [ref=f23e124] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e125]:
+            - link "정치" [ref=f23e126] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e127]:
+            - link "사회" [ref=f23e128] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e129]:
+            - link "국제" [ref=f23e130] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e131]:
+            - link "문화" [ref=f23e132] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e133]:
+            - link "스포츠" [ref=f23e134] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f23e135]:
+            - link "인기뉴스" [ref=f23e136] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/ranking
+      - button "닫기" [ref=f23e138] [cursor=pointer]
+    - link [ref=f23e142] [cursor=pointer]:
+      - /url: //www.mk.co.kr/news/ranking
+      - heading "인기뉴스" [level=1] [ref=f23e143]
+    - main [ref=f23e144]:
+      - generic [ref=f23e146]:
+        - generic [ref=f23e148]:
+          - generic [ref=f23e150]:
+            - generic [ref=f23e151]: 오늘
+            - generic: 더보기
+          - paragraph [ref=f23e152]:
+            - emphasis [ref=f23e153]: 최근 2시간
+            - text: 기준 조회수가 많은 기사입니다.
+        - generic [ref=f23e155]:
+          - list [ref=f23e157]:
+            - listitem [ref=f23e158]:
+              - link "뉴스 종합" [ref=f23e159] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/all
+            - listitem [ref=f23e160]:
+              - link "경제" [ref=f23e161] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/economy
+            - listitem [ref=f23e162]:
+              - link "금융" [ref=f23e163] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/financial
+            - listitem [ref=f23e164]:
+              - link "기업" [ref=f23e165] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/business
+            - listitem [ref=f23e166]:
+              - link "증권" [ref=f23e167] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/stock
+            - listitem [ref=f23e168]:
+              - link "부동산" [ref=f23e169] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/realestate
+            - listitem [ref=f23e170]:
+              - link "테크·과학" [ref=f23e171] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/it
+            - listitem [ref=f23e172]:
+              - link "오피니언" [ref=f23e173] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/opinion
+            - listitem [ref=f23e174]:
+              - link "정치" [ref=f23e175] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/politics
+            - listitem [ref=f23e176]:
+              - link "사회" [ref=f23e177] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/society
+            - listitem [ref=f23e178]:
+              - link "국제" [ref=f23e179] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/world
+            - listitem [ref=f23e180]:
+              - link "문화" [ref=f23e181] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/culture
+            - listitem [ref=f23e182]:
+              - link "스포츠" [ref=f23e183] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/ranking/sports
+          - navigation:
+            - button "다음 탭 그룹" [ref=f23e184] [cursor=pointer]
+        - generic [ref=f23e186]:
+          - list [ref=f23e187]:
+            - listitem [ref=f23e188]:
+              - link "1 “이제 개미 다 털어먹었단 건가”…외국인 한달새 47조원 빼갔다 “이제 개미 다 털어먹었단 건가”…외국인 한달새 47조원 빼갔다" [ref=f23e189] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098806
+                - generic [ref=f23e190]:
+                  - emphasis [ref=f23e191]: "1"
+                  - img "“이제 개미 다 털어먹었단 건가”…외국인 한달새 47조원 빼갔다" [ref=f23e193]
+                  - generic [ref=f23e194]: “이제 개미 다 털어먹었단 건가”…외국인 한달새 47조원 빼갔다
+            - listitem [ref=f23e197]:
+              - link "2 기준금리 인상 초읽기…‘이자만 평균 613만원’ 영끌·빚투족 비상 기준금리 인상 초읽기…‘이자만 평균 613만원’ 영끌·빚투족 비상" [ref=f23e198] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098860
+                - generic [ref=f23e199]:
+                  - emphasis [ref=f23e200]: "2"
+                  - img "기준금리 인상 초읽기…‘이자만 평균 613만원’ 영끌·빚투족 비상" [ref=f23e202]
+                  - generic [ref=f23e203]: 기준금리 인상 초읽기…‘이자만 평균 613만원’ 영끌·빚투족 비상
+            - listitem [ref=f23e206]:
+              - link "3 “1인당 20만원 또 드릴게요”…민생지원금 제한없이 뿌린다는 ‘이 지역’ “1인당 20만원 또 드릴게요”…민생지원금 제한없이 뿌린다는 ‘이 지역’" [ref=f23e207] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12097134
+                - generic [ref=f23e208]:
+                  - emphasis [ref=f23e209]: "3"
+                  - img "“1인당 20만원 또 드릴게요”…민생지원금 제한없이 뿌린다는 ‘이 지역’" [ref=f23e211]
+                  - generic [ref=f23e212]: “1인당 20만원 또 드릴게요”…민생지원금 제한없이 뿌린다는 ‘이 지역’
+            - listitem [ref=f23e215]:
+              - link "4 “집값 오를 땐 좋았는데, 공짜가 아니었군”…서울 재산세 11.7% 늘었다 “집값 오를 땐 좋았는데, 공짜가 아니었군”…서울 재산세 11.7% 늘었다" [ref=f23e216] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098864
+                - generic [ref=f23e217]:
+                  - emphasis [ref=f23e218]: "4"
+                  - img "“집값 오를 땐 좋았는데, 공짜가 아니었군”…서울 재산세 11.7% 늘었다" [ref=f23e220]
+                  - generic [ref=f23e221]: “집값 오를 땐 좋았는데, 공짜가 아니었군”…서울 재산세 11.7% 늘었다
+            - listitem [ref=f23e224]:
+              - link "5 비명이 비명 불렀다…골드만 “레버리지 ETF 기계적 매도가 낙폭 키워” 비명이 비명 불렀다…골드만 “레버리지 ETF 기계적 매도가 낙폭 키워”" [ref=f23e225] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098177
+                - generic [ref=f23e226]:
+                  - emphasis [ref=f23e227]: "5"
+                  - img "비명이 비명 불렀다…골드만 “레버리지 ETF 기계적 매도가 낙폭 키워”" [ref=f23e229]
+                  - generic [ref=f23e230]: 비명이 비명 불렀다…골드만 “레버리지 ETF 기계적 매도가 낙폭 키워”
+            - listitem [ref=f23e233]:
+              - link "6 [단독] 현대차 ‘2차 하청’도 작업환경 교섭권 인정…판매대리점은 기각 [단독] 현대차 ‘2차 하청’도 작업환경 교섭권 인정…판매대리점은 기각" [ref=f23e234] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098738
+                - generic [ref=f23e235]:
+                  - emphasis [ref=f23e236]: "6"
+                  - img "[단독] 현대차 ‘2차 하청’도 작업환경 교섭권 인정…판매대리점은 기각" [ref=f23e238]
+                  - generic [ref=f23e239]: "[단독] 현대차 ‘2차 하청’도 작업환경 교섭권 인정…판매대리점은 기각"
+            - listitem [ref=f23e242]:
+              - link "7 “집 쪼개 팔수도 없는데, 억소리 상속세”…종신보험에 답있다는데 “집 쪼개 팔수도 없는데, 억소리 상속세”…종신보험에 답있다는데" [ref=f23e243] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098819
+                - generic [ref=f23e244]:
+                  - emphasis [ref=f23e245]: "7"
+                  - img "“집 쪼개 팔수도 없는데, 억소리 상속세”…종신보험에 답있다는데" [ref=f23e247]
+                  - generic [ref=f23e248]: “집 쪼개 팔수도 없는데, 억소리 상속세”…종신보험에 답있다는데
+            - listitem [ref=f23e251]:
+              - link "8 [속보] 6월 취업자 6만3000명 증가…한달 만에 ‘플러스’ [속보] 6월 취업자 6만3000명 증가…한달 만에 ‘플러스’" [ref=f23e252] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098850
+                - generic [ref=f23e253]:
+                  - emphasis [ref=f23e254]: "8"
+                  - img "[속보] 6월 취업자 6만3000명 증가…한달 만에 ‘플러스’" [ref=f23e256]
+                  - generic [ref=f23e257]: "[속보] 6월 취업자 6만3000명 증가…한달 만에 ‘플러스’"
+            - listitem [ref=f23e260]:
+              - link "9 “이러니 버틸 수가 있나”…외국인 지난달 323억달러 던졌다 ‘사상 최대’ “이러니 버틸 수가 있나”…외국인 지난달 323억달러 던졌다 ‘사상 최대’" [ref=f23e261] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098069
+                - generic [ref=f23e262]:
+                  - emphasis [ref=f23e263]: "9"
+                  - img "“이러니 버틸 수가 있나”…외국인 지난달 323억달러 던졌다 ‘사상 최대’" [ref=f23e265]
+                  - generic [ref=f23e266]: “이러니 버틸 수가 있나”…외국인 지난달 323억달러 던졌다 ‘사상 최대’
+            - listitem [ref=f23e269]:
+              - link "10 CPTPP 경제벨트 합류땐 … 한국·멕시코 'FTA 효과' CPTPP 경제벨트 합류땐 … 한국·멕시코 'FTA 효과'" [ref=f23e270] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098465
+                - generic [ref=f23e271]:
+                  - emphasis [ref=f23e272]: "10"
+                  - img "CPTPP 경제벨트 합류땐 … 한국·멕시코 'FTA 효과'" [ref=f23e274]
+                  - generic [ref=f23e275]: CPTPP 경제벨트 합류땐 … 한국·멕시코 'FTA 효과'
+          - list [ref=f23e278]:
+            - listitem [ref=f23e279]:
+              - link [ref=f23e280] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098553
+                - generic [ref=f23e281]:
+                  - emphasis [ref=f23e282]: "11"
+                  - heading "[단독] 기업마다 노동자대표委 띄운다" [level=3] [ref=f23e283]
+          - list [ref=f23e284]:
+            - listitem [ref=f23e285]:
+              - link [ref=f23e286] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098464
+                - generic [ref=f23e287]:
+                  - emphasis [ref=f23e288]: "12"
+                  - heading "호남 '반도체 클러스터'에 LNG발전 신설 … 신규 입찰 재추진" [level=3] [ref=f23e289]
+          - list [ref=f23e290]:
+            - listitem [ref=f23e291]:
+              - link [ref=f23e292] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098507
+                - generic [ref=f23e293]:
+                  - emphasis [ref=f23e294]: "13"
+                  - heading "[단독] '근로자대표' 힘 싣고 노동자委 상설화 추진 … 기업들은 난색" [level=3] [ref=f23e295]
+          - list [ref=f23e296]:
+            - listitem [ref=f23e297]:
+              - link [ref=f23e298] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12097933
+                - generic [ref=f23e299]:
+                  - emphasis [ref=f23e300]: "14"
+                  - heading "“어린 것보단 돈 잘 버는 아내가 낫다”…전문직 여성, 결혼 더 많이 해" [level=3] [ref=f23e301]
+          - list [ref=f23e302]:
+            - listitem [ref=f23e303]:
+              - link [ref=f23e304] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098556
+                - generic [ref=f23e305]:
+                  - emphasis [ref=f23e306]: "15"
+                  - heading "정부, CPTPP 가입 추진… 국회 현안보고서 공식화" [level=3] [ref=f23e307]
+          - list [ref=f23e308]:
+            - listitem [ref=f23e309]:
+              - link [ref=f23e310] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098540
+                - generic [ref=f23e311]:
+                  - emphasis [ref=f23e312]: "16"
+                  - heading "반도체 슈퍼사이클 자신감 … 정부, 실질성장률 3%로 높여 잡아" [level=3] [ref=f23e313]
+          - list [ref=f23e314]:
+            - listitem [ref=f23e315]:
+              - link [ref=f23e316] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098407
+                - generic [ref=f23e317]:
+                  - emphasis [ref=f23e318]: "17"
+                  - heading "자동차 보험료 올리는 손해율…자차수리 자기부담금 때문이라는데" [level=3] [ref=f23e319]
+          - list [ref=f23e320]:
+            - listitem [ref=f23e321]:
+              - link [ref=f23e322] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12085233
+                - generic [ref=f23e323]:
+                  - emphasis [ref=f23e324]: "18"
+                  - heading "“주식 왜 해? 연 19% 적금 있는데”…오늘부터 ‘이것’ 신청 출생연도 안 따져" [level=3] [ref=f23e325]
+          - list [ref=f23e326]:
+            - listitem [ref=f23e327]:
+              - link [ref=f23e328] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12096483
+                - generic [ref=f23e329]:
+                  - emphasis [ref=f23e330]: "19"
+                  - heading "[단독] 中企·자영업 빚 1500조원 넘어… 대출 연체율도 10년 만에 최악" [level=3] [ref=f23e331]
+          - list [ref=f23e332]:
+            - listitem [ref=f23e333]:
+              - link [ref=f23e334] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098053
+                - generic [ref=f23e335]:
+                  - emphasis [ref=f23e336]: "20"
+                  - heading "정부, 상장사 ‘주가 누르기’ 막는다…11월부터 저PBR 기업 공개" [level=3] [ref=f23e337]
+          - list [ref=f23e338]:
+            - listitem [ref=f23e339]:
+              - link [ref=f23e340] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12097806
+                - generic [ref=f23e341]:
+                  - emphasis [ref=f23e342]: "21"
+                  - heading "은행들 ETF팔아 수수료만 5500억 챙겼다…근데 수익률 왜이래" [level=3] [ref=f23e343]
+          - list [ref=f23e344]:
+            - listitem [ref=f23e345]:
+              - link [ref=f23e346] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12097488
+                - generic [ref=f23e347]:
+                  - emphasis [ref=f23e348]: "22"
+                  - heading "RE100산단 에너지원서 원자력 빼기로" [level=3] [ref=f23e349]
+          - list [ref=f23e350]:
+            - listitem [ref=f23e351]:
+              - link [ref=f23e352] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12095443
+                - generic [ref=f23e353]:
+                  - emphasis [ref=f23e354]: "23"
+                  - heading "학군지 은마냐 한강변 잠실5단지냐 [감평사의 부동산 현장진단]" [level=3] [ref=f23e355]
+          - list [ref=f23e356]:
+            - listitem [ref=f23e357]:
+              - link [ref=f23e358] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12094652
+                - generic [ref=f23e359]:
+                  - emphasis [ref=f23e360]: "24"
+                  - heading [level=3] [ref=f23e361]:
+                    - text: “1.3억 촌집 살면서 통장에 월 65만원 꽂힌다” … 올해 ‘확’ 바뀐 주택연금
+                    - generic [ref=f23e362]: 매경플러스
+          - list [ref=f23e363]:
+            - listitem [ref=f23e364]:
+              - link [ref=f23e365] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098539
+                - generic [ref=f23e366]:
+                  - emphasis [ref=f23e367]: "25"
+                  - heading "외국인 자금 '썰물' … 올해 국내 증시서 1102억弗 빠졌다" [level=3] [ref=f23e368]
+          - list [ref=f23e369]:
+            - listitem [ref=f23e370]:
+              - link [ref=f23e371] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098486
+                - generic [ref=f23e372]:
+                  - emphasis [ref=f23e373]: "26"
+                  - heading "'고객편의 확대' vs '중소기업 고사' … 캐피털사·렌터카업계 정면 충돌" [level=3] [ref=f23e374]
+          - list [ref=f23e375]:
+            - listitem [ref=f23e376]:
+              - link [ref=f23e377] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12096895
+                - generic [ref=f23e378]:
+                  - emphasis [ref=f23e379]: "27"
+                  - heading "“발표할 때마다 신기록”…7월초 수출도 54% 급증, 또 역대 최대" [level=3] [ref=f23e380]
+          - list [ref=f23e381]:
+            - listitem [ref=f23e382]:
+              - link [ref=f23e383] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12093679
+                - generic [ref=f23e384]:
+                  - emphasis [ref=f23e385]: "28"
+                  - heading "“당장 3억을 어디서 구해요”…KB 주담대 핵폭탄, 다른 은행 결단은" [level=3] [ref=f23e386]
+          - list [ref=f23e387]:
+            - listitem [ref=f23e388]:
+              - link [ref=f23e389] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12097519
+                - generic [ref=f23e390]:
+                  - emphasis [ref=f23e391]: "29"
+                  - heading "[금융 라운지] 난관 부딪힌 은행 '수도권 데이터센터'" [level=3] [ref=f23e392]
+          - list [ref=f23e393]:
+            - listitem [ref=f23e394]:
+              - link [ref=f23e395] [cursor=pointer]:
+                - /url: https://www.mk.co.kr/news/economy/12098538
+                - generic [ref=f23e396]:
+                  - emphasis [ref=f23e397]: "30"
+                  - heading "대기업 하도급대금 89조인데 … 30일내 지급비율은 되레 줄어" [level=3] [ref=f23e398]
+    - contentinfo [ref=f23e399]:
+      - generic [ref=f23e402]:
+        - text: 매경미디어
+        - link "회사소개" [ref=f23e403] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/intro
+        - link "광고안내" [ref=f23e404] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/adcenter
+        - link "구독신청" [ref=f23e405] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/membership
+        - link "인재채용" [ref=f23e406] [cursor=pointer]:
+          - /url: https://recruit.mk.co.kr/pages/recruit.php
+        - link "독자의견" [ref=f23e407] [cursor=pointer]:
+          - /url: https://board.mk.co.kr/list.php?id=opinion
+        - link "서비스문의" [ref=f23e408] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/mypage/service/faq/all
+        - link "개인정보처리방침" [ref=f23e409] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/mypage/privacy
+        - link "이용약관" [ref=f23e410] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/mypage/policy
+        - link "청소년보호정책(책임자:이선형,조현정)" [ref=f23e411] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/mypage/youthpolicy
+      - generic [ref=f23e414]:
+        - link "매일경제" [ref=f23e416] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/
+        - generic [ref=f23e421]:
+          - generic [ref=f23e423]:
+            - paragraph [ref=f23e424]: 매일경제신문
+            - paragraph [ref=f23e425]:
+              - generic [ref=f23e426]: "주소 : 서울특별시 중구 퇴계로 190(필동1가)"
+              - generic [ref=f23e427]: "전화 : 02-2000-2114"
+            - paragraph [ref=f23e428]:
+              - generic [ref=f23e429]: "일간신문등록번호 : 가00196"
+              - generic [ref=f23e430]: "등록일자 : 1966.03.08"
+            - paragraph [ref=f23e431]: 매경AX
+            - paragraph [ref=f23e432]:
+              - generic [ref=f23e433]: "주소 : 서울특별시 중구 퇴계로 190(필동1가) 8층"
+              - generic [ref=f23e434]: "전화 : 02-2000-2114"
+            - paragraph [ref=f23e435]:
+              - generic [ref=f23e436]: "인터넷신문등록번호 : 서울아01043"
+              - generic [ref=f23e437]: "등록(발행)일자 : 2009.11.30"
+              - generic [ref=f23e438]: "발행/편집인 : 김명수"
+          - generic [ref=f23e439]: Copyright (c) 매경AX. All rights reserved. 무단 전재, 재배포 및 AI학습 이용 금지
+        - generic [ref=f23e441]:
+          - button "Language" [ref=f23e443] [cursor=pointer]
+          - generic:
+            - link "사이트맵":
+              - /url: https://www.mk.co.kr/sitemap
+            - link "MK 주요채널":
+              - /url: https://www.mk.co.kr/channel

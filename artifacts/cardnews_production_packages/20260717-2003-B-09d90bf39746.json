@@ -1,0 +1,241 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-B-09d90bf39746",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-B-09d90bf39746",
+    "account": "B",
+    "category": "연예·도파민",
+    "title": "사진 두 장으로 외모를 품평했는데 반대가 더 컸다"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://pann.nate.com/talk/375521202",
+        "publisher": "네이트판",
+        "title": "김채원 진짜 많이 늙었다…….",
+        "published_at": "2026-07-16T23:28:00+09:00",
+        "source_status": "body_and_reaction_counts_read",
+        "usage_note": "원글은 김채원 등 20대 여성 연예인의 외모를 나이로 조롱했고, 확인 시점 수치는 조회 44,332·추천 23·반대 82·댓글 43이었다. 공개 카드에서는 모욕 문구를 반복 확산하지 않고 반응의 역전을 중심으로 재구성"
+      }
+    ],
+    "observed_reaction": {
+      "views": 44332,
+      "recommendations": 23,
+      "oppositions": 82,
+      "comments": 43,
+      "observation_status": "source_page_observed_2026-07-19"
+    },
+    "comments": [
+      {
+        "author": "익명 A",
+        "text": "00년생이면 25~26살 아님?",
+        "source_url": "https://pann.nate.com/talk/375521202",
+        "usage_status": "source_comment_excerpt_masked",
+        "context": "원글의 나이 품평 기준을 되묻는 실제 상위 댓글의 짧은 일부"
+      }
+    ]
+  },
+  "story": {
+    "summary": "사진 두 장으로 2000년생 연예인에게 '늙었다'는 평가를 던진 원글보다, 그 말이 지나치다는 반대 반응이 더 크게 붙은 흐름을 보여준다. 외모 품평을 다시 소비하지 않고 '왜 20대 여성에게까지 노화를 들이미는가'라는 커뮤니티 문화의 역설로 전환한다.",
+    "emotional_arc": [
+      "불쾌한 한 줄",
+      "사진 비교의 함정",
+      "추천보다 커진 반대",
+      "댓글의 되받아침",
+      "외모 품평 피로감",
+      "독자의 선 긋기"
+    ]
+  },
+  "slide_count": 6,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "사진 두 장으로 품평했는데\n반대가 더 컸다",
+      "body": "추천 23보다 반대 82가 먼저 눈에 들어온 글입니다."
+    },
+    {
+      "page": 2,
+      "role": "setup",
+      "headline": "시작은 비교였습니다",
+      "body": "김채원을 다른 여성 연예인들과 나란히 놓고 외모를 나이로 재단한 글이었습니다."
+    },
+    {
+      "page": 3,
+      "role": "reaction_turn",
+      "headline": "추천 23\n반대는 82",
+      "body": "공감보다 '그건 너무 갔다'는 반응이 세 배 넘게 많았습니다."
+    },
+    {
+      "page": 4,
+      "role": "community_response",
+      "headline": "익명 댓글이\n먼저 되물었습니다",
+      "body": "“00년생이면 25~26살 아님?” 원글의 나이 기준을 되묻는 실제 댓글이었습니다."
+    },
+    {
+      "page": 5,
+      "role": "meaning",
+      "headline": "이 반응을 보면",
+      "body": "외모를 전성기와 노화로 가르는 품평에 사람들이 피로해진 것으로 읽힙니다. 이는 편집자의 해석입니다."
+    },
+    {
+      "page": 6,
+      "role": "low_friction_cta",
+      "headline": "이건 평가야,\n그냥 악플이야?",
+      "body": "외모 얘기에도 넘지 말아야 할 선이 있다고 봅니까?"
+    }
+  ],
+  "feed_caption": "사진 두 장으로 2000년생 연예인의 외모와 나이를 품평한 글이 올라왔습니다. 그런데 확인 당시 추천은 23, 반대는 82였습니다. 실제 상위 댓글도 “00년생이면 25~26살 아님?”이라고 원글의 기준을 되물었습니다. 이 카드는 얼굴을 다시 평가하려는 게 아니라, 원글과 반응 사이의 온도 차를 다룹니다. 외모를 전성기와 노화로 가르는 말에 피로감이 쌓였다는 대목은 이 반응을 바탕으로 한 편집자의 해석입니다.\n\n이런 외모 품평, 선 넘었다고 봐?",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "네이트판 공개 추천·반대 수치 참고 자체 타이포그래피"
+      ],
+      "rights_status": "editorial_reconstruction_no_celebrity_photo",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 2,
+      "slide_role": "setup",
+      "media_type": "editorial",
+      "source_credit": [
+        "네이트판 원글에 기록된 비교 구조를 인용 없이 설명한 자체 편집 패널"
+      ],
+      "source_url": "https://pann.nate.com/talk/375521202",
+      "rights_status": "original_editorial_graphic_source_facts_only",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 3,
+      "slide_role": "reaction_turn",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "네이트판 공개 추천·반대 수치 참고 자체 그래픽"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 4,
+      "slide_role": "community_response",
+      "media_type": "editorial",
+      "source_credit": [
+        "네이트판 실제 상위 댓글 한 줄을 익명 인용한 자체 편집 패널"
+      ],
+      "source_url": "https://pann.nate.com/talk/375521202",
+      "rights_status": "original_editorial_quote_panel_identity_masked",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 5,
+      "slide_role": "meaning",
+      "media_type": "editorial",
+      "source_credit": [
+        "자체 편집 그래픽"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 6,
+      "slide_role": "low_friction_cta",
+      "media_type": "editorial",
+      "source_credit": [
+        "자체 타이포그래피"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-B-09d90bf39746",
+    "account": "B",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-B-09d90bf39746",
+      "account": "B",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-B-09d90bf39746",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "원문의 모욕적 외모 표현을 반복하지 않고 추천 23·반대 82의 반응 역전을 훅으로 삼았다.",
+        "실제 댓글은 익명 처리됐고, 품평 피로감은 편집자의 해석으로 분리 표기됐다.",
+        "모든 매체 계획은 자체 편집 그래픽이며 확보되지 않은 사진이나 영상에 의존하지 않는다."
+      ]
+    }
+  }
+}

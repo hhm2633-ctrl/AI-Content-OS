@@ -1,0 +1,108 @@
+{
+  "contract_name": "naver_comments_metadata_fixture_contract",
+  "contract_version": "1.0.0",
+  "created_at": "2026-07-15",
+  "status": "recon_only_do_not_implement_without_compliance_gate",
+  "source_domains": ["n.news.naver.com", "apis.naver.com", "news.like.naver.com"],
+  "compliance_gate": {
+    "robots_txt": "All three hosts serve 'User-agent: * Disallow: /'. n.news.naver.com additionally prohibits AI-training/RAG bot access in-file; only Facebook/Twitter preview bots are allowed anywhere.",
+    "api_access_control": "Comment JSONP API rejects requests without an article-page Referer (success:false, code 3999). Both APIs are private, undocumented Naver internals.",
+    "verdict": "Live collection violates robots.txt and likely Naver terms, and the comment payload contains PIPA-scoped personal data. DO NOT implement a live collector. Fixtures below are for OFFLINE schema/consumer tests only, pending an explicit legal/compliance decision.",
+    "credentials": "None used, none required, none permitted. Never store guestToken, cookies, or session headers."
+  },
+  "url_contracts": {
+    "article_page": {
+      "url_templates": [
+        "https://n.news.naver.com/article/{officeId}/{articleId}",
+        "https://n.news.naver.com/mnews/article/{officeId}/{articleId}"
+      ],
+      "legacy_redirect": "news.naver.com/main/read.naver?oid={officeId}&aid={articleId} redirects to the mnews URL",
+      "rendering": "server-rendered shell, UTF-8; comment count NOT in static HTML",
+      "static_fields": {
+        "publish_datetime": "span._ARTICLE_DATE_TIME attribute data-date-time (format 'YYYY-MM-DD HH:MM:SS', KST)",
+        "modify_datetime": "span._ARTICLE_MODIFY_DATE_TIME attribute data-modify-date-time (optional)",
+        "comment_ui_anchor": "element id 'comment_count' exists but text is the label '댓글' only (no number statically)"
+      }
+    },
+    "comment_page": {
+      "url_template": "https://n.news.naver.com/(mnews/)article/comment/{officeId}/{articleId}",
+      "rendering": "JS skeleton only; zero comment content or counts in static HTML",
+      "action": "do not scrape; contains nothing statically"
+    },
+    "comment_aggregate_api": {
+      "url": "https://apis.naver.com/commentBox/cbox/web_naver_list_jsonp.json",
+      "verified_params": {
+        "ticket": "news",
+        "templateId": "default_society (accepted regardless of article category in probe)",
+        "pool": "cbox5",
+        "objectId": "news{officeId},{articleId}",
+        "lang": "ko",
+        "country": "KR",
+        "pageSize": "1 (count-probe mode; never request full pages)",
+        "sort": "FAVORITE | NEW | REPLY | OLD (all verified)",
+        "_callback": "JSONP callback name"
+      },
+      "required_header": "Referer: https://n.news.naver.com/article/{officeId}/{articleId} (without it: code 3999)",
+      "availability_flag": "result.exposureConfig.status == 'COMMENT_ON' means comments enabled; any other status = unavailable (non-COMMENT_ON values unverified)",
+      "aggregate_fields": "result.count.{comment,reply,total,exposeCount,delCommentByUser,delCommentByMon,blindCommentByUser,blindReplyByUser,fallback}, result.pageModel.{totalRows,totalPages,pageSize}, result.sort",
+      "prohibited_response_sections": "result.commentList and result.bestList in their entirety (contain userName, maskedUserId/Name, userIdNo, profileUserId, userProfileImage, exposedUserIp, contents, mentions, replyList — PIPA-scoped personal data)"
+    },
+    "reaction_api": {
+      "url_template": "https://news.like.naver.com/v1/search/contents?suppress_response_codes=true&q=NEWS[ne_{officeId}_{articleId}]",
+      "required_header": "none verified (works without Referer and without login)",
+      "aggregate_fields": "contents[].reactions[].{reactionType,count}; observed news reaction types: useful, wow, touched, recommend (like/warm/sad/angry family exists on other content types)",
+      "prohibited_response_fields": "guestToken, isLogin, any session material"
+    }
+  },
+  "fixture_types": {
+    "article_comment_metadata_fixture": {
+      "description": "Sanitized ARTICLE-LEVEL aggregate snapshot for offline schema/consumer tests. One record per article; never contains any per-comment or per-user data.",
+      "fields": {
+        "fixture_type": { "type": "string", "const": "article_comment_metadata", "required": true },
+        "source_urls": { "type": "array", "items": "string", "required": true, "note": "article URL + API endpoints used" },
+        "fetched_at": { "type": "string", "format": "ISO-8601 KST", "required": true },
+        "office_id": { "type": "string", "pattern": "^\\d{3}$", "required": true },
+        "article_id": { "type": "string", "pattern": "^\\d{10}$", "required": true },
+        "publisher": { "type": "string", "required": true, "note": "attribution mandatory" },
+        "article_url": { "type": "string", "pattern": "n.news.naver.com/(mnews/)?article/", "required": true },
+        "published_at": { "type": "string", "format": "YYYY-MM-DD HH:MM:SS KST", "required": true },
+        "modified_at": { "type": "string", "format": "YYYY-MM-DD HH:MM:SS KST", "required": false },
+        "comment_status": { "type": "string", "enum": ["COMMENT_ON", "OTHER_UNVERIFIED"], "required": true },
+        "comment_counts": {
+          "type": "object",
+          "required": true,
+          "fields": {
+            "comment": { "type": "integer" },
+            "reply": { "type": "integer" },
+            "total": { "type": "integer" },
+            "expose_count": { "type": "integer" },
+            "deleted_by_user": { "type": "integer" },
+            "deleted_by_moderation": { "type": "integer" }
+          }
+        },
+        "reactions": {
+          "type": "array",
+          "required": false,
+          "items": { "reaction_type": { "type": "string" }, "count": { "type": "integer" } }
+        },
+        "sort_options_supported": { "type": "array", "items": "string", "const": ["FAVORITE", "NEW", "REPLY", "OLD"], "required": false }
+      }
+    }
+  },
+  "sanitization_rules": [
+    "Store ONLY the article-level aggregate fields defined above; drop everything else from API responses at parse time.",
+    "Never store any element of commentList or bestList — no comment bodies, no per-comment counts, no commentNo/sortValue, no user fields, no IPs, even masked.",
+    "Never store guestToken, cookies, callback names, or raw request/response headers.",
+    "Never store raw JSONP/HTML payloads in fixtures; store only the derived record schema above.",
+    "Always record fetched_at and source_urls so staleness is auditable.",
+    "Preserve publisher attribution (publisher name + original article URL) in every record.",
+    "Fixtures live under test fixtures only; they must not feed production content generation or ranking."
+  ],
+  "known_risks": [
+    "Both endpoints are unversioned private internals; params (ticket/templateId/pool) live in JS bundles and can change or be access-restricted without notice — any consumer must fail soft into the project's fallback chain.",
+    "Comment payload is one field away from personal data; a parsing mistake could persist PII. The drop-at-parse-time rule above is mandatory.",
+    "robots.txt fully disallows crawling on all three hosts; this contract does not authorize live collection.",
+    "Behavior for comments-disabled articles (exposureConfig statuses other than COMMENT_ON) is unverified.",
+    "The official Naver Open API offers no comment/reaction data, so there is no sanctioned migration path for this signal."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-5be0a68b5948",
+  "candidate_id": "20260717-2003-A-5be0a68b5948",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "\"장윤기 사건 미흡 대응 반성\"…경찰직협, 경찰 지휘부 총사퇴 요구",
+  "source_urls": [
+    "https://www.newsis.com/view/NISX20260717_0003713418"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

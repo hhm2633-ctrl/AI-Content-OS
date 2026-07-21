@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-bc429ab14c38",
+  "candidate_id": "20260717-2003-C-bc429ab14c38",
+  "grade": "3",
+  "account": "C",
+  "category": "뷰티",
+  "title": "여유 좀 되는 남자의 상징인 ‘예쁜 손’, 제대로 관리하는 법 4",
+  "source_urls": [
+    "https://www.gqkorea.co.kr/2026/07/12/%ec%97%ac%ec%9c%a0-%ec%a2%80-%eb%90%98%eb%8a%94-%eb%82%a8%ec%9e%90%ec%9d%98-%ec%83%81%ec%a7%95%ec%9d%b8-%ec%98%88%ec%81%9c-%ec%86%90-%ec%a0%9c%eb%8c%80%eb%a1%9c-%ea%b4%80%eb%a6%ac/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

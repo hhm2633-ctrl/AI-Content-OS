@@ -33,3 +33,8 @@ storage/card_news/
 storage/images/
 
 logs/
+
+# Regenerable / externalized (2026-07-20)
+tools/cardnews-renderer/node_modules/
+graphify-out/
+

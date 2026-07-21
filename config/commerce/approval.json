@@ -1,0 +1,11 @@
+{
+  "_comment": "Commerce Phase 2A approval gate config. Fail-closed default -- see modules/commerce/approval_gate.py. phase_2_cto_gate_satisfied must stay false until the full CTO gate checklist in docs/RESEARCH/COMMERCE/SECURITY_COMPLIANCE_GATE.md §11 is satisfied by a human. No adapter can perform a real API call this Sprint regardless of this file's contents (see marketplace_base.py::submit()).",
+  "phase_2_cto_gate_satisfied": false,
+  "approved_capabilities": {
+    "listing_creation": false,
+    "listing_update": false,
+    "inventory_update": false,
+    "price_update": false,
+    "order_actions": false
+  }
+}

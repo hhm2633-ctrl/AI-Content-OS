@@ -1,0 +1,35 @@
+{
+  "schema_version": "agent_runtime_adapter_probe_v1",
+  "tested_at": "2026-07-18T19:45:43.5772173+09:00",
+  "writes_or_sessions_created": false,
+  "adapters": {
+    "claude_cli": {
+      "status": "blocked",
+      "blocker": "no_active_session",
+      "test": "claude agents --json",
+      "receipt": "[]",
+      "loader_registered": false
+    },
+    "spark": {
+      "status": "blocked",
+      "blocker": "no_summary_disabled_runner",
+      "test": "scoped Graphify and repository path inspection",
+      "receipt": "data-only queue builder exists; no model_reasoning_summary=none execution runner exists",
+      "loader_registered": false
+    },
+    "codex": {
+      "status": "blocked",
+      "blocker": "no_callable_adapter",
+      "test": "existing Codex app executable status invocation",
+      "receipt": "WindowsApps codex.exe was discovered but local project process received access denied",
+      "loader_registered": false
+    },
+    "browser": {
+      "status": "blocked",
+      "blocker": "app_only_no_local_callable_adapter",
+      "test": "default local tool registry state probe",
+      "receipt": "read-only browser descriptor exists; loader_registered=false",
+      "loader_registered": false
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": "full_collection_owner_review_v3",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "C",
+  "category": "beauty",
+  "topic": "Valentino Beauty VENDETTA · 2026-07-13 공개",
+  "slide_count": 8,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "new_·_07.13",
+      "media_type": "image",
+      "headline": "6년 만의 새 향수",
+      "asset": "01_duo_model.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "발렌티노 뷰티가 6년 만에 새 향수 듀오 벤데타를 공개했다. DONNA와 UOMO를 하나의 뜨거운 캠페인으로 묶었다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 2,
+      "role": "the_duo",
+      "media_type": "image",
+      "headline": "DONNA × UOMO",
+      "asset": "02_duo_pack.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "두 향은 같은 캠페인 안에서 서로 다른 온도를 보여준다. 패키지의 강한 레드와 블랙 대비가 첫 장면을 만든다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 3,
+      "role": "her_scent",
+      "media_type": "image",
+      "headline": "DONNA",
+      "asset": "03_donna.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "DONNA는 튜베로즈와 레드 오렌지를 중심으로 전개된다. 밝은 첫인상 뒤에 꽃의 농도가 길게 남는 구성을 내세운다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 4,
+      "role": "the_flower",
+      "media_type": "image",
+      "headline": "밝게 피고,\n깊게 남는다",
+      "asset": "04_tuberose.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "튜베로즈는 DONNA의 중심을 잡는 꽃이다. 흰 꽃의 밝음과 짙은 잔향을 가까운 질감 이미지로 보여준다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 5,
+      "role": "his_scent",
+      "media_type": "image",
+      "headline": "UOMO",
+      "asset": "06_uomo.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "UOMO는 진저와 시나몬 리큐어의 대비를 전면에 둔다. 차가운 시작과 달콤한 열기가 빠르게 교차한다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 6,
+      "role": "the_heat",
+      "media_type": "image",
+      "headline": "차갑게 시작해,\n뜨겁게 번진다",
+      "asset": "07_ginger.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "진저의 날카로운 첫 향이 UOMO의 속도를 만든다. 짧은 영상에서는 차가운 빛에서 따뜻한 빛으로 전환하기 좋다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 7,
+      "role": "the_flash",
+      "media_type": "image",
+      "headline": "한 번 더\n시선을 잡는 색",
+      "asset": "05_orange.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "레드 오렌지는 DONNA의 첫인상을 더 선명하게 만든다. 과육과 병의 붉은 색을 빠르게 교차하면 시선 정지력이 커진다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 8,
+      "role": "to_be_continued",
+      "media_type": "image",
+      "headline": "첫 비주얼은 여기까지",
+      "asset": "02_duo_pack.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate",
+      "lower_third_body": "현재 공개된 제품과 캠페인 이미지가 첫 인상을 완성한다. 후속 필름은 같은 자산을 짧은 모션과 릴스로 확장하기 좋다.",
+      "body_sentence_count": 2
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "Valentino Beauty",
+      "url": "https://www.valentino-beauty.com/int/fragrances/women-fragrances/vendetta/vendetta-donna/MPL02097.html",
+      "role": "official product facts and images"
+    },
+    {
+      "publisher": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/valentino-beauty-unveils-vendetta-the-scents-of-unstoppable-passion-302823371.html",
+      "role": "2026-07-13 launch confirmation"
+    }
+  ],
+  "feed_caption": "Valentino Beauty가 6년 만에 새 향수 듀오 VENDETTA를 공개했습니다. DONNA는 튜베로즈와 레드 오렌지, UOMO는 진저와 시나몬 리큐어를 중심으로 서로 다른 열기를 표현합니다.\n\n제품 병, 원료의 질감, 강한 레드 컬러가 먼저 보이도록 구성했고 설명은 향의 방향을 이해하는 정도로 줄였습니다. 다음 단계에서는 공식 캠페인 필름을 활용한 짧은 모션 컷으로 확장할 수 있습니다.\n\n자료: Valentino Beauty 공식 제품 페이지·공식 배포 자료\n※ 제품 이미지와 캠페인 영상의 소셜 게시 권리는 별도 확인이 필요합니다."
+}

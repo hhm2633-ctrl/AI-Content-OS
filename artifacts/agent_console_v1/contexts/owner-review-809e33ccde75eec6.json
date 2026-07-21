@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-641694255a8b",
+  "candidate_id": "20260717-2003-B-641694255a8b",
+  "grade": "2",
+  "account": "B",
+  "category": "연애·관계",
+  "title": "한그루, 감성 카페 앞 반려견과 여유 한때",
+  "source_urls": [
+    "https://www.topstarnews.net/news/articleView.html?idxno=16137533"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

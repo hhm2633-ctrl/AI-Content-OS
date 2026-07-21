@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-3594c7cfb3a1",
+  "candidate_id": "20260717-2003-C-3594c7cfb3a1",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "'입고 싶은 옷 만들었더니 189억'… 플로움, 4층 규모 브랜드 스페이스 열다",
+  "source_urls": [
+    "https://fashionbiz.co.kr/article/227962"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

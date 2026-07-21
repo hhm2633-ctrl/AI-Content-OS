@@ -1,0 +1,117 @@
+{
+  "schema_version": "owner_review_carousel_plan_v1",
+  "account": "A",
+  "category": "economy_market",
+  "topic": "단일종목 레버리지 ETF 기본예탁금 3천만 원과 20주 단위 거래",
+  "slide_count": 8,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "media_type": "image",
+      "headline": "이제 1주씩 못 산다?\n3천만 원 문턱 생긴다",
+      "body": "",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "publisher_image_unverified_internal_review_only"
+    },
+    {
+      "slide": 2,
+      "role": "number",
+      "media_type": "editorial",
+      "headline": "가장 먼저 바뀌는 숫자",
+      "body": "3,000만 원",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 3,
+      "role": "versus",
+      "media_type": "editorial",
+      "headline": "주문 단위도 달라진다",
+      "body": "기존\n1주 단위로\n매매 가능|변경\n20주 단위로\n사고팔기",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 4,
+      "role": "chart",
+      "media_type": "editorial",
+      "headline": "당국이 함께 내놓은\n세 가지 제동",
+      "body": "신규 상장 잠정 중단|상품 광고 금지|기본예탁금·매매단위 강화",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 5,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "해외 상장 상품이면\n피할 수 있을까?",
+      "body": "연합뉴스 보도에 따르면 국내 주식을 기초로 한 상품은 해외 상장 상품도 적용 대상에 포함된다.",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 6,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "왜 이렇게까지 막나",
+      "body": "단일종목 레버리지 상품이 삼성전자·SK하이닉스 등 현물 주가의 변동성을 키울 수 있다는 지적이 배경이다.",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 7,
+      "role": "check",
+      "media_type": "editorial",
+      "headline": "보유자·매수 예정자가\n지금 확인할 것",
+      "body": "내 증권사의 시행 일정|예탁금 인정 방식과 주문 단위|보유 상품의 국내주식 기초 여부",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 8,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "한 줄 결론",
+      "body": "레버리지가 사라지는 건 아니다.\n다만 ‘쉽게 들어가고 1주씩 사는 상품’에서 고위험 거래 문턱이 있는 상품으로 바뀐다.",
+      "source_credit": [
+        "이데일리",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "이데일리",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05516966645515176&mediaCodeNo=257"
+    },
+    {
+      "publisher": "연합뉴스",
+      "url": "https://www.yna.co.kr/view/AKR20260716165353002?section=economy/all"
+    }
+  ]
+}

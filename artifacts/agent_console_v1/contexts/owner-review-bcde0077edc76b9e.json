@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-6b1fafcd1f68",
+  "candidate_id": "20260717-2003-C-6b1fafcd1f68",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·메이크업",
+  "title": "블루엘리펀트 황리단길, 신세계 아울렛 ‘바캉스 메가 딜’ 外 [똑똑한...",
+  "source_urls": [
+    "https://www.ekn.kr/web/view.php?key=20260716022133110"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

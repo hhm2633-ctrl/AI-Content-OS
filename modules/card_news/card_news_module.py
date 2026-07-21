@@ -200,7 +200,7 @@ class CardNewsModule(BaseModule):
             if isinstance(slides, list) and slides:
                 clean_slides = []
 
-                for index, slide in enumerate(slides[:4]):
+                for index, slide in enumerate(slides):
                     if isinstance(slide, dict):
                         clean_slides.append({
                             "page": slide.get("page", index + 1),
@@ -1295,10 +1295,17 @@ class CardNewsModule(BaseModule):
     def _prepare_rendering_image_paths(
         self,
         image_paths: List[Optional[str]],
+        expected_count: int = 0,
     ) -> List[Optional[str]]:
         prepared: List[Optional[str]] = []
         diagnostics: List[Dict[str, Any]] = []
-        for index in range(4):
+        if expected_count <= 0:
+            # Keep image-only rendering safe even when caller provides an empty
+            # image list; this keeps diagnostics stable while allowing later
+            # logic to determine the true rendering length from slide inputs.
+            expected_count = max(1, len(image_paths))
+
+        for index in range(expected_count):
             image_path = image_paths[index] if index < len(image_paths) else None
             safe_path, diagnostic = self._validate_image_asset(image_path, index + 1)
             prepared.append(safe_path)
@@ -1370,7 +1377,9 @@ class CardNewsModule(BaseModule):
         rendering_image_paths, evidence_applied = self._apply_evidence_asset(
             list(image_paths), evidence_result, story_flow_result
         )
-        rendering_image_paths = self._prepare_rendering_image_paths(rendering_image_paths)
+        rendering_image_paths = self._prepare_rendering_image_paths(
+            rendering_image_paths, expected_count=len(rendering_slides)
+        )
 
         if evidence_applied:
             top_asset = evidence_result.get("top_evidence_asset") or {}
@@ -1400,7 +1409,8 @@ class CardNewsModule(BaseModule):
         cards = []
         layout_applied_count = 0
 
-        for index in range(4):
+        render_page_count = max(1, len(rendering_slides))
+        for index in range(render_page_count):
             page_number = index + 1
             slide = rendering_slides[index] if index < len(rendering_slides) else {
                 "page": page_number,

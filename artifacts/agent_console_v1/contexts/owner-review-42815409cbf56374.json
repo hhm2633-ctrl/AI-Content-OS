@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-6a12a3725eb6",
+  "candidate_id": "20260717-2003-A-6a12a3725eb6",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "국민연금 ‘부동산실 이해상충’ 연쇄 인사…준법라인까지 대기발령[마켓인]",
+  "source_urls": [
+    "https://www.edaily.co.kr/News/Read?newsId=02902806645515504&mediaCodeNo=257"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

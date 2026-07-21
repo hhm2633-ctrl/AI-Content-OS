@@ -1,0 +1,230 @@
+{
+  "schema_version": "independent_account_selection_v1",
+  "as_of": "2026-07-19",
+  "account": "C",
+  "input_file": "artifacts/cardnews_category_review_2026-07-19/collection.json",
+  "evaluation_scope": "daily_shallow_only",
+  "evaluation_dimensions": {
+    "freshness": 30,
+    "source_count": 15,
+    "visible_media": 10,
+    "official_editorial_asset_fit": 20,
+    "hook_product_trend_utility": 25
+  },
+  "portfolio_policy": {
+    "fashion_beauty_balance": true,
+    "similar_list_or_product_deduplication": true,
+    "commerce_required": false,
+    "runway_and_brand_information_allowed_as_editorial": true
+  },
+  "selected": [
+    {
+      "selection_rank": 1,
+      "id": "20260719-C-0b54b86fb5d9",
+      "category": "뷰티·헤어",
+      "title": "지지 하디드가 증명한 갸름한 얼굴의 비결! '하트 레이어스 커트'",
+      "score": 80,
+      "score_breakdown": {
+        "freshness": 28,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 19,
+        "hook_product_trend_utility": 24
+      },
+      "reason": "7월 18일의 최신 헤어 트렌드이며 커트 형태가 제목에 명확해 전후 비교와 실루엣 중심 카드 구성이 쉽다.",
+      "signals": [
+        "published_at=2026.07.18",
+        "source=vogue_beauty",
+        "rank_position=1",
+        "source_count=1",
+        "media_count=not_observed",
+        "explicit_haircut_trend"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "selection_rank": 2,
+      "id": "20260719-C-e33deaa8f48d",
+      "category": "뷰티·스킨케어",
+      "title": "요즘 사람들이 얼굴에 젤리를 뿌리는 이유?",
+      "score": 79,
+      "score_breakdown": {
+        "freshness": 26,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 19,
+        "hook_product_trend_utility": 25
+      },
+      "reason": "질문형 훅과 낯선 제품 제형이 동시에 드러나며, 최신 스킨케어 트렌드를 짧은 시각 설명으로 전환하기 좋다.",
+      "signals": [
+        "published_at=2026.07.17",
+        "source=allure_beauty",
+        "rank_position=3",
+        "source_count=1",
+        "media_count=not_observed",
+        "question_hook_and_unfamiliar_texture"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "selection_rank": 3,
+      "id": "20260719-C-dbbeb00497c8",
+      "category": "패션",
+      "title": "힙하고 스타일리시한 여행 룩을 원한다면",
+      "score": 76,
+      "score_breakdown": {
+        "freshness": 28,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 18,
+        "hook_product_trend_utility": 21
+      },
+      "reason": "7월 18일 여행 룩 주제로 계절성과 착장 활용성이 분명하고, 패션 계정에서 정보형 스타일 제안으로 전개하기 적합하다.",
+      "signals": [
+        "published_at=2026.07.18",
+        "source=allure_beauty",
+        "rank_position=1",
+        "source_count=1",
+        "media_count=not_observed",
+        "seasonal_travel_look"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "selection_rank": 4,
+      "id": "20260719-C-8bf2a4df5010",
+      "category": "패션",
+      "title": "레페토 X 버켄스탁, 협업 컬렉션 출시",
+      "score": 74,
+      "score_breakdown": {
+        "freshness": 24,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 19,
+        "hook_product_trend_utility": 22
+      },
+      "reason": "서로 다른 정체성의 두 슈즈 브랜드 협업이 제목만으로 명확하며, 공식 제품 이미지와 디자인 차이를 보여주는 정보형 카드에 적합하다.",
+      "signals": [
+        "published_at=2026/07/16",
+        "source=apparelnews",
+        "rank_position=4",
+        "source_count=1",
+        "media_count=not_observed",
+        "explicit_brand_collaboration"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    }
+  ],
+  "alternates": [
+    {
+      "alternate_rank": 1,
+      "id": "20260719-C-8a4f495612c4",
+      "category": "뷰티",
+      "title": "패션 액세서리로 진화된 뷰티 아이템",
+      "score": 77,
+      "score_breakdown": {
+        "freshness": 26,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 19,
+        "hook_product_trend_utility": 23
+      },
+      "reason": "제품과 트렌드 활용성은 높지만 선택된 여행 룩과 패션·뷰티 경계 주제가 겹쳐 포트폴리오 중복을 줄이기 위해 대안으로 배치했다.",
+      "signals": [
+        "published_at=2026.07.17",
+        "source=allure_beauty",
+        "rank_position=2",
+        "source_count=1",
+        "media_count=not_observed",
+        "fashion_beauty_crossover"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "alternate_rank": 2,
+      "id": "20260719-C-ecfd64af5b1f",
+      "category": "뷰티",
+      "title": "블랙이 아니면 품을 수 없는 남자를 위한 시크한 블랙 뷰티템 7",
+      "score": 75,
+      "score_breakdown": {
+        "freshness": 26,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 18,
+        "hook_product_trend_utility": 22
+      },
+      "reason": "남성 뷰티와 컬러 콘셉트가 명확하고 제품 리스트형 시각 구성이 가능하지만, 리스트 성격을 한 건만 남기기 위해 대안으로 배치했다.",
+      "signals": [
+        "published_at=2026.07.17",
+        "source=gq_grooming",
+        "rank_position=1",
+        "source_count=1",
+        "media_count=not_observed",
+        "male_beauty_color_concept"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "alternate_rank": 3,
+      "id": "20260719-C-bac7d3515051",
+      "category": "패션",
+      "title": "폭염에도 단정하게… LF, '라이트 포멀' 트렌드 타고 리오더 행진",
+      "score": 74,
+      "score_breakdown": {
+        "freshness": 24,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 18,
+        "hook_product_trend_utility": 23
+      },
+      "reason": "폭염과 라이트 포멀의 연결이 분명해 계절형 정보 카드로 유용하지만 단일 브랜드 판매 동향 비중이 높아 대안으로 유지했다.",
+      "signals": [
+        "published_at=2026-07-16T00:50:00.000Z",
+        "source=fashionbiz",
+        "rank_position=23",
+        "source_count=1",
+        "media_count=not_observed",
+        "heatwave_light_formal_trend"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "alternate_rank": 4,
+      "id": "20260719-C-898634310d1c",
+      "category": "패션",
+      "title": "[리뷰] 디올 2027 S/S 남성복 컬렉션 프랑스 럭셔리 디올이 스타일, 소재, 기법까지 아우르는 친숙함의 재창조와 고유의 그루브와 마법을 불어넣은 2027 S/S 남성복 컬렉션을 선보였다.",
+      "score": 64,
+      "score_breakdown": {
+        "freshness": 10,
+        "source_count": 6,
+        "visible_media": 3,
+        "official_editorial_asset_fit": 20,
+        "hook_product_trend_utility": 25
+      },
+      "reason": "시즌 콘셉트와 공식 컬렉션 자료 적합성은 가장 높지만 얕은 수집본에 게시일이 없어 최신성 점수를 제한하고 대안으로 배치했다.",
+      "signals": [
+        "published_at=not_observed",
+        "source=fashionn",
+        "rank_position=1",
+        "source_count=1",
+        "media_count=not_observed",
+        "runway_editorial_information",
+        "commerce_not_required"
+      ],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    }
+  ],
+  "owner_opinion_used": false,
+  "deep_research_used": false,
+  "render_executed": false,
+  "publishing_executed": false,
+  "git_executed": false
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>설정 · 셀러 자동화</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h1>설정</h1>
+      <div class="row-inline">
+        <a class="btn btn-gray btn-sm" href="/dashboard">대시보드</a>
+        <a class="btn btn-gray btn-sm" href="/products">상품 목록</a>
+        <a class="btn btn-gray btn-sm" href="/logout">로그아웃</a>
+      </div>
+    </div>
+    <p class="sub">도매 사이트 계정, 마켓 API 키, 가공 규칙을 설정합니다. 비밀값은 암호화되어 이 PC에만 저장됩니다.</p>
+
+    <!-- 도매 사이트 계정 -->
+    <div class="card">
+      <h2 style="margin-top:0">도매 사이트 계정</h2>
+      <p class="muted">비밀번호는 암호화 저장됩니다. 변경하지 않으려면 비워두세요(기존 값 유지).</p>
+      {% for s in sites %}
+      <form method="post" action="/settings/site" class="settings-row">
+        <input type="hidden" name="site" value="{{ s.key }}">
+        <div class="settings-label">{{ s.label }}</div>
+        <input type="text" name="username" value="{{ s.username }}" placeholder="아이디" style="width:180px;padding:8px">
+        <input type="password" name="password" placeholder="{% if s.has_pw %}●●● 저장됨 (변경 시 입력){% else %}비밀번호{% endif %}" style="width:200px;padding:8px">
+        <label class="chk"><input type="checkbox" name="enabled" {% if s.enabled %}checked{% endif %}> 사용</label>
+        <button class="btn btn-sm" type="submit">저장</button>
+      </form>
+      {% endfor %}
+    </div>
+
+    <!-- 마켓 API 키 -->
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin-top:0">마켓 API 키</h2>
+      <p class="muted">네이버는 커머스 API의 Client ID / Secret을 입력합니다. 쿠팡·지마켓·토스는 추후 연동 예정입니다.</p>
+      {% for m in markets %}
+      <form method="post" action="/settings/market" class="settings-row">
+        <input type="hidden" name="market" value="{{ m.key }}">
+        <div class="settings-label">{{ m.label }}</div>
+        <input type="text" name="client_id" value="{{ m.client_id }}" placeholder="Client ID" style="width:220px;padding:8px"
+               {% if m.key != 'naver' %}disabled{% endif %}>
+        <input type="password" name="client_secret" placeholder="{% if m.has_secret %}●●● 저장됨{% else %}Client Secret{% endif %}" style="width:220px;padding:8px"
+               {% if m.key != 'naver' %}disabled{% endif %}>
+        <label class="chk"><input type="checkbox" name="enabled" {% if m.enabled %}checked{% endif %}> 사용</label>
+        {% if m.key == 'naver' %}<button class="btn btn-sm" type="submit">저장</button>
+        {% else %}<span class="badge wait">준비중</span>{% endif %}
+      </form>
+      {% endfor %}
+    </div>
+
+    <!-- 가공 설정 -->
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin-top:0">가공 설정 (가격/상품명)</h2>
+      <form method="post" action="/settings/profile">
+        <div class="form-grid">
+          <label>마진율 (%)
+            <input type="number" name="margin_rate" value="{{ profile.margin_rate }}" min="0">
+          </label>
+          <label>결제·판매 수수료 (%)
+            <input type="number" name="payment_fee_rate" value="{{ profile.payment_fee_rate }}" min="0">
+          </label>
+          <label>반올림 단위 (원)
+            <input type="number" name="round_unit" value="{{ profile.round_unit }}" min="1">
+          </label>
+          <label>최소 판매가 (원)
+            <input type="number" name="min_price" value="{{ profile.min_price }}" min="0">
+          </label>
+          <label>기본 재고 수량
+            <input type="number" name="default_stock" value="{{ profile.default_stock }}" min="0">
+          </label>
+          <label>상품명 말머리(prefix)
+            <input type="text" name="prefix" value="{{ profile.prefix }}" placeholder="예: [당일발송]">
+          </label>
+          <label>상품명 말꼬리(suffix)
+            <input type="text" name="suffix" value="{{ profile.suffix }}" placeholder="예: 무료배송">
+          </label>
+          <label>금지어 (콤마 구분)
+            <input type="text" name="banned_words" value="{{ profile.banned_words }}" placeholder="예: 최저가,정품">
+          </label>
+        </div>
+        <div style="margin-top:14px"><button class="btn" type="submit">가공 설정 저장</button></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

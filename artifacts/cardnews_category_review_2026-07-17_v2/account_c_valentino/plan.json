@@ -1,0 +1,97 @@
+{
+  "schema_version": "image_first_owner_review_v2",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "C",
+  "category": "beauty",
+  "topic": "Valentino Beauty VENDETTA · 2026-07-13 공개",
+  "slide_count": 8,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "new_·_07.13",
+      "media_type": "image",
+      "headline": "6년 만의 새 향수",
+      "asset": "01_duo_model.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 2,
+      "role": "the_duo",
+      "media_type": "image",
+      "headline": "DONNA × UOMO",
+      "asset": "02_duo_pack.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 3,
+      "role": "her_scent",
+      "media_type": "image",
+      "headline": "DONNA",
+      "asset": "03_donna.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 4,
+      "role": "the_flower",
+      "media_type": "image",
+      "headline": "밝게 피고,\n깊게 남는다",
+      "asset": "04_tuberose.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 5,
+      "role": "his_scent",
+      "media_type": "image",
+      "headline": "UOMO",
+      "asset": "06_uomo.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 6,
+      "role": "the_heat",
+      "media_type": "image",
+      "headline": "차갑게 시작해,\n뜨겁게 번진다",
+      "asset": "07_ginger.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 7,
+      "role": "the_flash",
+      "media_type": "image",
+      "headline": "한 번 더\n시선을 잡는 색",
+      "asset": "05_orange.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    },
+    {
+      "slide": 8,
+      "role": "to_be_continued",
+      "media_type": "image",
+      "headline": "첫 비주얼은 여기까지",
+      "asset": "02_duo_pack.jpg",
+      "copy_density": "minimal",
+      "motion_reuse": "push-in/glint/quick-cut candidate"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "Valentino Beauty",
+      "url": "https://www.valentino-beauty.com/int/fragrances/women-fragrances/vendetta/vendetta-donna/MPL02097.html",
+      "role": "official product facts and images"
+    },
+    {
+      "publisher": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/valentino-beauty-unveils-vendetta-the-scents-of-unstoppable-passion-302823371.html",
+      "role": "2026-07-13 launch confirmation"
+    }
+  ]
+}

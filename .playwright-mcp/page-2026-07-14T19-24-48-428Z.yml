@@ -1,0 +1,834 @@
+- generic [active] [ref=f11e1]:
+  - generic:
+    - link "본문 바로가기" [ref=f11e2] [cursor=pointer]:
+      - /url: "#mainContent"
+    - link "메뉴 바로가기" [ref=f11e3] [cursor=pointer]:
+      - /url: "#gnbContent"
+  - generic [ref=f11e5]:
+    - banner [ref=f11e6]:
+      - generic [ref=f11e8]:
+        - heading [level=1] [ref=f11e9]:
+          - link "Daum" [ref=f11e10] [cursor=pointer]:
+            - /url: https://daum.net
+          - link "뉴스" [ref=f11e21] [cursor=pointer]:
+            - /url: https://news.daum.net
+        - generic [ref=f11e25]:
+          - strong: 관련 서비스
+          - list [ref=f11e26]:
+            - listitem [ref=f11e27]:
+              - link "연예" [ref=f11e28] [cursor=pointer]:
+                - /url: https://entertain.daum.net
+            - listitem [ref=f11e29]:
+              - link "스포츠" [ref=f11e30] [cursor=pointer]:
+                - /url: https://sports.daum.net
+            - listitem [ref=f11e31]:
+              - link "날씨" [ref=f11e32] [cursor=pointer]:
+                - /url: https://weather.daum.net
+        - button "공유하기" [ref=f11e35] [cursor=pointer]
+      - generic [ref=f11e37]:
+        - navigation [ref=f11e38]:
+          - generic [ref=f11e39]:
+            - heading "메인메뉴" [level=2]
+            - menu [ref=f11e43]:
+              - menuitem "홈" [ref=f11e45] [cursor=pointer]
+              - menuitem "기후/환경" [ref=f11e48] [cursor=pointer]
+              - menuitem "사회" [ref=f11e51] [cursor=pointer]
+              - menuitem "경제" [ref=f11e54] [cursor=pointer]
+              - menuitem "정치" [ref=f11e57] [cursor=pointer]
+              - menuitem "국제" [ref=f11e60] [cursor=pointer]
+              - menuitem "문화" [ref=f11e63] [cursor=pointer]
+              - menuitem "생활" [ref=f11e66] [cursor=pointer]
+              - menuitem "IT/과학" [ref=f11e69] [cursor=pointer]
+              - menuitem "인물" [ref=f11e72] [cursor=pointer]
+              - menuitem "지식/칼럼" [ref=f11e75] [cursor=pointer]
+              - menuitem "연재" [ref=f11e78] [cursor=pointer]
+        - generic [ref=f11e81]:
+          - strong: 사회홈 하위메뉴
+          - menu [ref=f11e84]:
+            - menuitem "인구" [ref=f11e86] [cursor=pointer]
+            - menuitem "인권/복지" [ref=f11e89] [cursor=pointer]
+            - menuitem "노동" [ref=f11e92] [cursor=pointer]
+            - menuitem "교육" [ref=f11e95] [cursor=pointer]
+            - menuitem "미디어" [ref=f11e98] [cursor=pointer]
+            - menuitem "성평등" [ref=f11e101] [cursor=pointer]
+            - menuitem "의료/보건" [ref=f11e104] [cursor=pointer]
+            - menuitem "전국" [ref=f11e107] [cursor=pointer]
+            - menuitem "재난안전" [ref=f11e110] [cursor=pointer]
+            - menuitem "시사" [ref=f11e113] [cursor=pointer]
+            - menuitem "사법" [ref=f11e116] [cursor=pointer]
+            - menuitem "사건/사고" [ref=f11e119] [cursor=pointer]
+            - menuitem "여론조사" [ref=f11e122] [cursor=pointer]
+    - generic [ref=f11e124]:
+      - article [ref=f11e125]:
+        - generic [ref=f11e126]:
+          - generic [ref=f11e127]:
+            - strong [ref=f11e129]:
+              - generic [ref=f11e130]: 사회 주요뉴스
+            - list [ref=f11e131]:
+              - listitem [ref=f11e132]:
+                - link "폭우에 덜덜, 폭염에 헉헉… \"비가 와도, 안와도 무섭다\" 폭염과 폭우가 번갈아 이어지는 보기 드문 '극한 날씨' 속에 여름철 시민들의 대응도 제각각이다. 집중호우 피해를 본 저지대 주민들은 '피서' 대신 '침수'에 집중하는 한편 연일 기록적 폭염과 싸워야 하는 시민들은 더위를 이기는 방안을 찾느라 분주하다. 하루가 멀다 하고 달라지는 변덕스러운 날씨에 대응하는 우리네 일상을 들여다봤다. ◇\"물난리의 기억\"…폭 머니투데이 22분 전" [ref=f11e133] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715040308416
+                  - generic [ref=f11e135]:
+                    - strong [ref=f11e136]: 폭우에 덜덜, 폭염에 헉헉… "비가 와도, 안와도 무섭다"
+                    - paragraph [ref=f11e137]: 폭염과 폭우가 번갈아 이어지는 보기 드문 '극한 날씨' 속에 여름철 시민들의 대응도 제각각이다. 집중호우 피해를 본 저지대 주민들은 '피서' 대신 '침수'에 집중하는 한편 연일 기록적 폭염과 싸워야 하는 시민들은 더위를 이기는 방안을 찾느라 분주하다. 하루가 멀다 하고 달라지는 변덕스러운 날씨에 대응하는 우리네 일상을 들여다봤다. ◇"물난리의 기억"…폭
+                    - generic [ref=f11e138]: 머니투데이 22분 전
+              - listitem [ref=f11e140]:
+                - link "[단독] 엘리엇 ISDS 환송 중재절차 개시… 7월 27~28일 워싱턴D.C.서 대면 심리 법률신문 3시간 전" [ref=f11e141] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715015323609
+                  - generic [ref=f11e144]:
+                    - strong [ref=f11e145]: "[단독] 엘리엇 ISDS 환송 중재절차 개시… 7월 27~28일 워싱턴D.C.서 대면 심리"
+                    - generic [ref=f11e146]: 법률신문 3시간 전
+              - listitem [ref=f11e148]:
+                - link "최저임금위원장 \"30원 차이였는데…표결 아쉬워\"(종합2보) 뉴시스 3시간 전" [ref=f11e149] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005651222
+                  - generic [ref=f11e152]:
+                    - strong [ref=f11e153]: 최저임금위원장 "30원 차이였는데…표결 아쉬워"(종합2보)
+                    - generic [ref=f11e154]: 뉴시스 3시간 전
+              - listitem [ref=f11e156]:
+                - link "촉법소년 13세 미만으로 ‘조건부 하향’… 李대통령 “미약하다” 조선일보 4시간 전" [ref=f11e157] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005151182
+                  - generic [ref=f11e160]:
+                    - strong [ref=f11e161]: 촉법소년 13세 미만으로 ‘조건부 하향’… 李대통령 “미약하다”
+                    - generic [ref=f11e162]: 조선일보 4시간 전
+              - listitem [ref=f11e164]:
+                - link "한다리 건너면 형님·동생… 장윤기 증거인멸 뒤엔 ‘향찰’ 조선일보 4시간 전" [ref=f11e165] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715004649127
+                  - generic [ref=f11e168]:
+                    - strong [ref=f11e169]: 한다리 건너면 형님·동생… 장윤기 증거인멸 뒤엔 ‘향찰’
+                    - generic [ref=f11e170]: 조선일보 4시간 전
+              - listitem [ref=f11e172]:
+                - link "[‘반구천의 암각화’ 세계인의 문화자산으로 만들자]반구천·암각화에 이야기 입혀 브랜드화 우선 경상일보 4시간 전" [ref=f11e173] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003531037
+                  - generic [ref=f11e176]:
+                    - strong [ref=f11e177]: "[‘반구천의 암각화’ 세계인의 문화자산으로 만들자]반구천·암각화에 이야기 입혀 브랜드화 우선"
+                    - generic [ref=f11e178]: 경상일보 4시간 전
+              - listitem [ref=f11e180]:
+                - link "서핑&요트, 단 하나의 콘텐츠가 도시를 바꿨다 경상일보 4시간 전" [ref=f11e181] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003148924
+                  - generic [ref=f11e184]:
+                    - strong [ref=f11e185]: 서핑&요트, 단 하나의 콘텐츠가 도시를 바꿨다
+                    - generic [ref=f11e186]: 경상일보 4시간 전
+              - listitem [ref=f11e188]:
+                - link "내년 최저임금 3.7% 오른 1만700원, 월 224만원…300만 근로자 영향 머니투데이 4시간 전" [ref=f11e189] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715002707893
+                  - generic [ref=f11e192]:
+                    - strong [ref=f11e193]: 내년 최저임금 3.7% 오른 1만700원, 월 224만원…300만 근로자 영향
+                    - generic [ref=f11e194]: 머니투데이 4시간 전
+              - listitem [ref=f11e196]:
+                - link "['강원형 K-연어' 동해안 미래 전략산업이 되다] 2. 첨연어 모천 동해 연어산업화 현주소(하) 강원도민일보 4시간 전" [ref=f11e197] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000745673
+                  - generic [ref=f11e200]:
+                    - strong [ref=f11e201]: "['강원형 K-연어' 동해안 미래 전략산업이 되다] 2. 첨연어 모천 동해 연어산업화 현주소(하)"
+                    - generic [ref=f11e202]: 강원도민일보 4시간 전
+            - link "새로운 뉴스" [ref=f11e205] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e207]: 뉴스
+          - generic [ref=f11e209]:
+            - insertion
+          - generic [ref=f11e210]:
+            - strong [ref=f11e212]:
+              - link [ref=f11e213] [cursor=pointer]:
+                - /url: https://news.daum.net/population
+            - list [ref=f11e216]:
+              - listitem [ref=f11e217]:
+                - link "동영상 신고해 줄 이웃도 없다..인구소멸 농촌 '안전 공백' 목포MBC 1일 전" [ref=f11e218] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713213527528
+                  - generic [ref=f11e219]: 동영상
+                  - generic [ref=f11e221]:
+                    - strong [ref=f11e222]: 신고해 줄 이웃도 없다..인구소멸 농촌 '안전 공백'
+                    - generic [ref=f11e223]: 목포MBC 1일 전
+              - listitem [ref=f11e225]:
+                - link "고령화시대 ‘치매머니’ 급증…고령층 믿고 맡길 ‘공공신탁’ 가동 농민신문 2일 전" [ref=f11e226] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713050036219
+                  - generic [ref=f11e228]:
+                    - strong [ref=f11e229]: 고령화시대 ‘치매머니’ 급증…고령층 믿고 맡길 ‘공공신탁’ 가동
+                    - generic [ref=f11e230]: 농민신문 2일 전
+              - listitem [ref=f11e232]:
+                - link "“출산율 반등 일시적 흐름 아냐… 1.5명까지 올라갈 토대 마련” 국민일보 2일 전" [ref=f11e233] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713020810845
+                  - generic [ref=f11e235]:
+                    - strong [ref=f11e236]: “출산율 반등 일시적 흐름 아냐… 1.5명까지 올라갈 토대 마련”
+                    - generic [ref=f11e237]: 국민일보 2일 전
+              - listitem [ref=f11e239]:
+                - link "강원 소아과 전문의 고령화 심각⋯지역 의료 공백 우려 강원일보 2일 전" [ref=f11e240] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713002127373
+                  - generic [ref=f11e242]:
+                    - strong [ref=f11e243]: 강원 소아과 전문의 고령화 심각⋯지역 의료 공백 우려
+                    - generic [ref=f11e244]: 강원일보 2일 전
+            - link "새로운 뉴스" [ref=f11e247] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e249]: 뉴스
+          - generic [ref=f11e250]:
+            - strong [ref=f11e252]:
+              - link [ref=f11e253] [cursor=pointer]:
+                - /url: https://news.daum.net/welfare
+            - list [ref=f11e256]:
+              - listitem [ref=f11e257]:
+                - link "[‘반구천의 암각화’ 세계인의 문화자산으로 만들자]반구천·암각화에 이야기 입혀 브랜드화 우선 경상일보 4시간 전" [ref=f11e258] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003531037
+                  - generic [ref=f11e260]:
+                    - strong [ref=f11e261]: "[‘반구천의 암각화’ 세계인의 문화자산으로 만들자]반구천·암각화에 이야기 입혀 브랜드화 우선"
+                    - generic [ref=f11e262]: 경상일보 4시간 전
+              - listitem [ref=f11e264]:
+                - link "진주시, ‘장애인 친화 도시’ 조성 속도낸다 경남일보 8시간 전" [ref=f11e265] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714204428671
+                  - generic [ref=f11e267]:
+                    - strong [ref=f11e268]: 진주시, ‘장애인 친화 도시’ 조성 속도낸다
+                    - generic [ref=f11e269]: 경남일보 8시간 전
+              - listitem [ref=f11e271]:
+                - link "아이스크림 값 1500원 계산 안 했다고…발달장애인 특수절도 적용한 경찰 국제신문 8시간 전" [ref=f11e272] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714195530765
+                  - generic [ref=f11e274]:
+                    - strong [ref=f11e275]: 아이스크림 값 1500원 계산 안 했다고…발달장애인 특수절도 적용한 경찰
+                    - generic [ref=f11e276]: 국제신문 8시간 전
+              - listitem [ref=f11e278]:
+                - link "35도 폭염에 대구·경북 비상…예측 기술·현장 돌봄 맞대응 경북일보 9시간 전" [ref=f11e279] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714194950672
+                  - generic [ref=f11e281]:
+                    - strong [ref=f11e282]: 35도 폭염에 대구·경북 비상…예측 기술·현장 돌봄 맞대응
+                    - generic [ref=f11e283]: 경북일보 9시간 전
+            - link "새로운 뉴스" [ref=f11e286] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e288]: 뉴스
+          - generic [ref=f11e289]:
+            - strong [ref=f11e291]:
+              - link [ref=f11e292] [cursor=pointer]:
+                - /url: https://news.daum.net/labor
+            - list [ref=f11e295]:
+              - listitem [ref=f11e296]:
+                - link "\"30원 차이까지 갔다\"…권순원 위원장 \"합의 준하는 최저임금 표결\" 뉴스1 4시간 전" [ref=f11e297] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715002128846
+                  - generic [ref=f11e299]:
+                    - strong [ref=f11e300]: "\"30원 차이까지 갔다\"…권순원 위원장 \"합의 준하는 최저임금 표결\""
+                    - generic [ref=f11e301]: 뉴스1 4시간 전
+              - listitem [ref=f11e303]:
+                - link "최저임금 380원 인상…노 \"턱없이 부족\" vs 사 \"소상공인 족쇄\" 연합뉴스 4시간 전" [ref=f11e304] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001440792
+                  - generic [ref=f11e306]:
+                    - strong [ref=f11e307]: 최저임금 380원 인상…노 "턱없이 부족" vs 사 "소상공인 족쇄"
+                    - generic [ref=f11e308]: 연합뉴스 4시간 전
+              - listitem [ref=f11e310]:
+                - link "내년 최저임금 1만 700원…'130원' 격차서 합의 불발(종합) 이데일리 4시간 전" [ref=f11e311] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001347782
+                  - generic [ref=f11e313]:
+                    - strong [ref=f11e314]: 내년 최저임금 1만 700원…'130원' 격차서 합의 불발(종합)
+                    - generic [ref=f11e315]: 이데일리 4시간 전
+              - listitem [ref=f11e317]:
+                - link "동영상 줄다리기 협상 끝에…내년도 최저임금 1만 700원 연합뉴스TV 4시간 전" [ref=f11e318] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714235731290
+                  - generic [ref=f11e319]: 동영상
+                  - generic [ref=f11e321]:
+                    - strong [ref=f11e322]: 줄다리기 협상 끝에…내년도 최저임금 1만 700원
+                    - generic [ref=f11e323]: 연합뉴스TV 4시간 전
+            - link "새로운 뉴스" [ref=f11e326] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e328]: 뉴스
+          - generic [ref=f11e329]:
+            - strong [ref=f11e331]:
+              - link [ref=f11e332] [cursor=pointer]:
+                - /url: https://news.daum.net/education
+            - list [ref=f11e335]:
+              - listitem [ref=f11e336]:
+                - link "촉법소년 13세 미만으로 ‘조건부 하향’… 李대통령 “미약하다” 조선일보 4시간 전" [ref=f11e337] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005151182
+                  - generic [ref=f11e339]:
+                    - strong [ref=f11e340]: 촉법소년 13세 미만으로 ‘조건부 하향’… 李대통령 “미약하다”
+                    - generic [ref=f11e341]: 조선일보 4시간 전
+              - listitem [ref=f11e343]:
+                - link "‘인구절벽 직격탄’ 강원 초교·유치원 6곳 또 통폐합 강원도민일보 4시간 전" [ref=f11e344] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000902714
+                  - generic [ref=f11e346]:
+                    - strong [ref=f11e347]: ‘인구절벽 직격탄’ 강원 초교·유치원 6곳 또 통폐합
+                    - generic [ref=f11e348]: 강원도민일보 4시간 전
+              - listitem [ref=f11e350]:
+                - link "영남이공대, AI물류교육센터 통해 스마트물류 인재 양성 영남일보 7시간 전" [ref=f11e351] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210411035
+                  - generic [ref=f11e353]:
+                    - strong [ref=f11e354]: 영남이공대, AI물류교육센터 통해 스마트물류 인재 양성
+                    - generic [ref=f11e355]: 영남일보 7시간 전
+              - listitem [ref=f11e357]:
+                - link "2026 학업중단 예방 사제동행 역사·문화탐방(수기 모음) 경남일보 8시간 전" [ref=f11e358] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714204436679
+                  - generic [ref=f11e360]:
+                    - strong [ref=f11e361]: 2026 학업중단 예방 사제동행 역사·문화탐방(수기 모음)
+                    - generic [ref=f11e362]: 경남일보 8시간 전
+            - link "새로운 뉴스" [ref=f11e365] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e367]: 뉴스
+          - generic [ref=f11e369]:
+            - insertion
+          - generic [ref=f11e370]:
+            - strong [ref=f11e372]:
+              - link [ref=f11e373] [cursor=pointer]:
+                - /url: https://news.daum.net/media
+            - list [ref=f11e376]:
+              - listitem [ref=f11e377]:
+                - link "[창간 38주년] 외국인 주민 17만 시대…글로벌 도시 길목에 선 인천 인천일보 7시간 전" [ref=f11e378] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210503048
+                  - generic [ref=f11e380]:
+                    - strong [ref=f11e381]: "[창간 38주년] 외국인 주민 17만 시대…글로벌 도시 길목에 선 인천"
+                    - generic [ref=f11e382]: 인천일보 7시간 전
+              - listitem [ref=f11e384]:
+                - link "[창간 38주년] AI시대 뉴스, 더 쉽고 친근하게…'끼룩이'가 전해드립니다 인천일보 8시간 전" [ref=f11e385] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714205002807
+                  - generic [ref=f11e387]:
+                    - strong [ref=f11e388]: "[창간 38주년] AI시대 뉴스, 더 쉽고 친근하게…'끼룩이'가 전해드립니다"
+                    - generic [ref=f11e389]: 인천일보 8시간 전
+              - listitem [ref=f11e391]:
+                - link "[창간 38주년] 광장에 모인 2030 “무너진 원칙 세우자”…'선거 신뢰 회복' 시급 인천일보 8시간 전" [ref=f11e392] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714204003595
+                  - generic [ref=f11e394]:
+                    - strong [ref=f11e395]: "[창간 38주년] 광장에 모인 2030 “무너진 원칙 세우자”…'선거 신뢰 회복' 시급"
+                    - generic [ref=f11e396]: 인천일보 8시간 전
+              - listitem [ref=f11e398]:
+                - link "[인천 5대 관광 거점] ② 송도 국제도시, 비즈니스·문화 공존…'국제 관광지구' 우뚝 인천일보 8시간 전" [ref=f11e399] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714203502512
+                  - generic [ref=f11e401]:
+                    - strong [ref=f11e402]: "[인천 5대 관광 거점] ② 송도 국제도시, 비즈니스·문화 공존…'국제 관광지구' 우뚝"
+                    - generic [ref=f11e403]: 인천일보 8시간 전
+            - link "새로운 뉴스" [ref=f11e406] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e408]: 뉴스
+          - generic [ref=f11e409]:
+            - strong [ref=f11e411]:
+              - link [ref=f11e412] [cursor=pointer]:
+                - /url: https://news.daum.net/gender
+            - list [ref=f11e415]:
+              - listitem [ref=f11e416]:
+                - link "전장연·성소수자인권연대 시청 앞에 모여 “해고는 살인…오세훈 시장 대화합시다” 경향신문 12시간 전" [ref=f11e417] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714165243740
+                  - generic [ref=f11e419]:
+                    - strong [ref=f11e420]: 전장연·성소수자인권연대 시청 앞에 모여 “해고는 살인…오세훈 시장 대화합시다”
+                    - generic [ref=f11e421]: 경향신문 12시간 전
+              - listitem [ref=f11e423]:
+                - link "평생 갈망했지만 ‘여자라서’ 닿지 못했던 우주, 마침내 닿고… 별이 되다[플랫] 경향신문 12시간 전" [ref=f11e424] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714164840537
+                  - generic [ref=f11e426]:
+                    - strong [ref=f11e427]: 평생 갈망했지만 ‘여자라서’ 닿지 못했던 우주, 마침내 닿고… 별이 되다[플랫]
+                    - generic [ref=f11e428]: 경향신문 12시간 전
+              - listitem [ref=f11e430]:
+                - link "2027년 고용평등공시제 본격 준비… 성평등가족부, 공동기획단 출범 베이비뉴스 12시간 전" [ref=f11e431] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714163754067
+                  - generic [ref=f11e433]:
+                    - strong [ref=f11e434]: 2027년 고용평등공시제 본격 준비… 성평등가족부, 공동기획단 출범
+                    - generic [ref=f11e435]: 베이비뉴스 12시간 전
+              - listitem [ref=f11e437]:
+                - link "피해자에겐 ‘경찰, 검찰 어느 한쪽만의 문제 아냐’ 일다 12시간 전" [ref=f11e438] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714160027377
+                  - generic [ref=f11e440]:
+                    - strong [ref=f11e441]: 피해자에겐 ‘경찰, 검찰 어느 한쪽만의 문제 아냐’
+                    - generic [ref=f11e442]: 일다 12시간 전
+            - link "새로운 뉴스" [ref=f11e445] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e447]: 뉴스
+          - generic [ref=f11e448]:
+            - strong [ref=f11e450]:
+              - link [ref=f11e451] [cursor=pointer]:
+                - /url: https://news.daum.net/medical
+            - list [ref=f11e454]:
+              - listitem [ref=f11e455]:
+                - link "동영상 폭염 지속 서울서 어제 온열질환자 11명 속출 연합뉴스TV 4시간 전" [ref=f11e456] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714235910305
+                  - generic [ref=f11e457]: 동영상
+                  - generic [ref=f11e459]:
+                    - strong [ref=f11e460]: 폭염 지속 서울서 어제 온열질환자 11명 속출
+                    - generic [ref=f11e461]: 연합뉴스TV 4시간 전
+              - listitem [ref=f11e463]:
+                - link "동영상 “나 하이닉스로 2억 벌었어” 친구의 고백…뇌에 ‘전치 4주’ 고통 온다 [헬시타임] 서울경제 7시간 전" [ref=f11e464] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714211351226
+                  - generic [ref=f11e465]: 동영상
+                  - generic [ref=f11e467]:
+                    - strong [ref=f11e468]: “나 하이닉스로 2억 벌었어” 친구의 고백…뇌에 ‘전치 4주’ 고통 온다 [헬시타임]
+                    - generic [ref=f11e469]: 서울경제 7시간 전
+              - listitem [ref=f11e471]:
+                - link "‘굳’모닝… 과도한 냉방, 류마티스 관절염 악화 경인일보 8시간 전" [ref=f11e472] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714201805271
+                  - generic [ref=f11e474]:
+                    - strong [ref=f11e475]: ‘굳’모닝… 과도한 냉방, 류마티스 관절염 악화
+                    - generic [ref=f11e476]: 경인일보 8시간 전
+              - listitem [ref=f11e478]:
+                - link "휴가철 아이 동반 해외여행땐 ‘감염병 대비’ 필수 광주매일신문 9시간 전" [ref=f11e479] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714194328577
+                  - generic [ref=f11e481]:
+                    - strong [ref=f11e482]: 휴가철 아이 동반 해외여행땐 ‘감염병 대비’ 필수
+                    - generic [ref=f11e483]: 광주매일신문 9시간 전
+            - link "새로운 뉴스" [ref=f11e486] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e488]: 뉴스
+          - generic [ref=f11e489]:
+            - strong [ref=f11e491]:
+              - link [ref=f11e492] [cursor=pointer]:
+                - /url: https://news.daum.net/nation
+            - list [ref=f11e495]:
+              - listitem [ref=f11e496]:
+                - link "빚더미로 내모는 '닥치고 대출'…\"누가 좀 알려줬으면\" 노컷뉴스 22분 전" [ref=f11e497] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715040300415
+                  - generic [ref=f11e499]:
+                    - strong [ref=f11e500]: 빚더미로 내모는 '닥치고 대출'…"누가 좀 알려줬으면"
+                    - generic [ref=f11e501]: 노컷뉴스 22분 전
+              - listitem [ref=f11e503]:
+                - link "김태성 신안군수“농수산물 최저가격제 도입…제값 받는 농어업 반드시 실현” 광주일보 2시간 전" [ref=f11e504] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715024405740
+                  - generic [ref=f11e506]:
+                    - strong [ref=f11e507]: 김태성 신안군수“농수산물 최저가격제 도입…제값 받는 농어업 반드시 실현”
+                    - generic [ref=f11e508]: 광주일보 2시간 전
+              - listitem [ref=f11e510]:
+                - link "걱정이 가득한 사회 광주일보 2시간 전" [ref=f11e511] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715024308737
+                  - generic [ref=f11e513]:
+                    - strong [ref=f11e514]: 걱정이 가득한 사회
+                    - generic [ref=f11e515]: 광주일보 2시간 전
+              - listitem [ref=f11e517]:
+                - link "충장로 ‘맛동산 골목’…홍콩골목 성공 이어갈까 광주일보 3시간 전" [ref=f11e518] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715014040567
+                  - generic [ref=f11e520]:
+                    - strong [ref=f11e521]: 충장로 ‘맛동산 골목’…홍콩골목 성공 이어갈까
+                    - generic [ref=f11e522]: 광주일보 3시간 전
+            - link "새로운 뉴스" [ref=f11e525] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e527]: 뉴스
+          - generic [ref=f11e529]:
+            - insertion
+          - generic [ref=f11e530]:
+            - strong [ref=f11e532]:
+              - link [ref=f11e533] [cursor=pointer]:
+                - /url: https://news.daum.net/safety
+            - list [ref=f11e536]:
+              - listitem [ref=f11e537]:
+                - link "동영상 \"아스팔트보다 뜨거운 밭\".. 폭염에 온열질환자 급증 MBC충북 7시간 전" [ref=f11e538] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714213450605
+                  - generic [ref=f11e539]: 동영상
+                  - generic [ref=f11e541]:
+                    - strong [ref=f11e542]: "\"아스팔트보다 뜨거운 밭\".. 폭염에 온열질환자 급증"
+                    - generic [ref=f11e543]: MBC충북 7시간 전
+              - listitem [ref=f11e545]:
+                - link "‘극한기후’ 일상 된 경남…“재난 대응도 바뀌어야” 경남도민일보 9시간 전" [ref=f11e546] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714190511720
+                  - generic [ref=f11e548]:
+                    - strong [ref=f11e549]: ‘극한기후’ 일상 된 경남…“재난 대응도 바뀌어야”
+                    - generic [ref=f11e550]: 경남도민일보 9시간 전
+              - listitem [ref=f11e552]:
+                - link "폭염·집중호우 동시 습격…경북, 복합재난 대응체계 전면 가동 경북일보 12시간 전" [ref=f11e553] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714164232262
+                  - generic [ref=f11e555]:
+                    - strong [ref=f11e556]: 폭염·집중호우 동시 습격…경북, 복합재난 대응체계 전면 가동
+                    - generic [ref=f11e557]: 경북일보 12시간 전
+              - listitem [ref=f11e559]:
+                - link "[생생뉴스] 폭염 속 온열질환자 급증, 예방과 대응은? KBS 13시간 전" [ref=f11e560] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714154507557
+                  - generic [ref=f11e562]:
+                    - strong [ref=f11e563]: "[생생뉴스] 폭염 속 온열질환자 급증, 예방과 대응은?"
+                    - generic [ref=f11e564]: KBS 13시간 전
+            - link "새로운 뉴스" [ref=f11e567] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e569]: 뉴스
+          - generic [ref=f11e570]:
+            - strong [ref=f11e572]:
+              - link [ref=f11e573] [cursor=pointer]:
+                - /url: https://news.daum.net/law
+            - list [ref=f11e576]:
+              - listitem [ref=f11e577]:
+                - link "[단독] 엘리엇 ISDS 환송 중재절차 개시… 7월 27~28일 워싱턴D.C.서 대면 심리 법률신문 3시간 전" [ref=f11e578] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715015323609
+                  - generic [ref=f11e580]:
+                    - strong [ref=f11e581]: "[단독] 엘리엇 ISDS 환송 중재절차 개시… 7월 27~28일 워싱턴D.C.서 대면 심리"
+                    - generic [ref=f11e582]: 법률신문 3시간 전
+              - listitem [ref=f11e584]:
+                - link "유족 3000만원 청구…‘모텔 살인’ 김소영 “평생 일해도 못 갚는다” 중앙일보 6시간 전" [ref=f11e585] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714220409001
+                  - generic [ref=f11e587]:
+                    - strong [ref=f11e588]: 유족 3000만원 청구…‘모텔 살인’ 김소영 “평생 일해도 못 갚는다”
+                    - generic [ref=f11e589]: 중앙일보 6시간 전
+              - listitem [ref=f11e591]:
+                - link "“장윤기 수사 할 만큼 했다”는 경찰…법조계 “성범죄는 결국 못 밝혔다” 조선일보 7시간 전" [ref=f11e592] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714212307419
+                  - generic [ref=f11e594]:
+                    - strong [ref=f11e595]: “장윤기 수사 할 만큼 했다”는 경찰…법조계 “성범죄는 결국 못 밝혔다”
+                    - generic [ref=f11e596]: 조선일보 7시간 전
+              - listitem [ref=f11e598]:
+                - link "마은혁·오영준 재판관, 독일 연방헌법재판소 방문… 재판소원 운영 방안 논의 법률신문 9시간 전" [ref=f11e599] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714191607992
+                  - generic [ref=f11e601]:
+                    - strong [ref=f11e602]: 마은혁·오영준 재판관, 독일 연방헌법재판소 방문… 재판소원 운영 방안 논의
+                    - generic [ref=f11e603]: 법률신문 9시간 전
+            - link "새로운 뉴스" [ref=f11e606] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e608]: 뉴스
+          - generic [ref=f11e609]:
+            - strong [ref=f11e611]:
+              - link [ref=f11e612] [cursor=pointer]:
+                - /url: https://news.daum.net/affair
+            - list [ref=f11e615]:
+              - listitem [ref=f11e616]:
+                - link "동영상 경기대 총장 예정자 ‘성추행 재판 중’…커지는 반발 KBS 7시간 전" [ref=f11e617] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215245830
+                  - generic [ref=f11e618]: 동영상
+                  - generic [ref=f11e620]:
+                    - strong [ref=f11e621]: 경기대 총장 예정자 ‘성추행 재판 중’…커지는 반발
+                    - generic [ref=f11e622]: KBS 7시간 전
+              - listitem [ref=f11e624]:
+                - link "피해자 유족 3000만원 손배소에…'모텔살인' 김소영 자필로 \"평생 일해도 못갚아\" 한국경제TV 7시간 전" [ref=f11e625] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714212151393
+                  - generic [ref=f11e627]:
+                    - strong [ref=f11e628]: 피해자 유족 3000만원 손배소에…'모텔살인' 김소영 자필로 "평생 일해도 못갚아"
+                    - generic [ref=f11e629]: 한국경제TV 7시간 전
+              - listitem [ref=f11e631]:
+                - link "‘장기 출장’ 간다던 남편, 음주운전으로 구속…아내 “완벽하게 끝내고 싶다” 헤럴드경제 7시간 전" [ref=f11e632] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210309019
+                  - generic [ref=f11e634]:
+                    - strong [ref=f11e635]: ‘장기 출장’ 간다던 남편, 음주운전으로 구속…아내 “완벽하게 끝내고 싶다”
+                    - generic [ref=f11e636]: 헤럴드경제 7시간 전
+              - listitem [ref=f11e638]:
+                - link "태국서 케타민 2kg 들여온 전직 프로야구 선수, 징역 10년 문화일보 8시간 전" [ref=f11e639] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714201728260
+                  - generic [ref=f11e641]:
+                    - strong [ref=f11e642]: 태국서 케타민 2kg 들여온 전직 프로야구 선수, 징역 10년
+                    - generic [ref=f11e643]: 문화일보 8시간 전
+            - link "새로운 뉴스" [ref=f11e646] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e648]: 뉴스
+          - generic [ref=f11e649]:
+            - strong [ref=f11e651]:
+              - link [ref=f11e652] [cursor=pointer]:
+                - /url: https://news.daum.net/poll
+            - list [ref=f11e655]:
+              - listitem [ref=f11e656]:
+                - link "[사설] 생중계 국무회의서 부동산 세제 즉석 여론조사라니 한국일보 4시간 전" [ref=f11e657] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001133760
+                  - generic [ref=f11e659]:
+                    - strong [ref=f11e660]: "[사설] 생중계 국무회의서 부동산 세제 즉석 여론조사라니"
+                    - generic [ref=f11e661]: 한국일보 4시간 전
+              - listitem [ref=f11e663]:
+                - link "‘공짜 여론조사’ 유죄 판결…명태균 엮인 재판에도 영향 예상 경남도민일보 9시간 전" [ref=f11e664] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714190008607
+                  - generic [ref=f11e666]:
+                    - strong [ref=f11e667]: ‘공짜 여론조사’ 유죄 판결…명태균 엮인 재판에도 영향 예상
+                    - generic [ref=f11e668]: 경남도민일보 9시간 전
+              - listitem [ref=f11e670]:
+                - link "동영상 尹 '무상 여론조사' 유죄…오세훈 '대납 혐의' 1심 판단은? [뉴스와이드] MBN 10시간 전" [ref=f11e671] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714182932852
+                  - generic [ref=f11e672]: 동영상
+                  - generic [ref=f11e674]:
+                    - strong [ref=f11e675]: 尹 '무상 여론조사' 유죄…오세훈 '대납 혐의' 1심 판단은? [뉴스와이드]
+                    - generic [ref=f11e676]: MBN 10시간 전
+              - listitem [ref=f11e678]:
+                - link "동영상 ‘무상 여론조사’ 김건희 대법 선고 연기 신청 KBS 11시간 전" [ref=f11e679] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714171716921
+                  - generic [ref=f11e680]: 동영상
+                  - generic [ref=f11e682]:
+                    - strong [ref=f11e683]: ‘무상 여론조사’ 김건희 대법 선고 연기 신청
+                    - generic [ref=f11e684]: KBS 11시간 전
+            - link "새로운 뉴스" [ref=f11e687] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e689]: 뉴스
+          - generic [ref=f11e690]:
+            - strong [ref=f11e692]:
+              - generic [ref=f11e693]: 포토 뉴스
+            - list [ref=f11e694]:
+              - listitem [ref=f11e695]:
+                - link [ref=f11e696] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714134052704
+                  - img "포토" [ref=f11e698]
+                  - strong [ref=f11e700]: 한솔케미칼·동원로엑스·전북도 투자협약
+              - listitem [ref=f11e701]:
+                - link [ref=f11e702] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713133057039
+                  - img "포토" [ref=f11e704]
+                  - strong [ref=f11e706]: 발언하는 이원택 전북지사
+              - listitem [ref=f11e707]:
+                - link [ref=f11e708] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713133053038
+                  - img "포토" [ref=f11e710]
+                  - strong [ref=f11e712]: 취임 첫 기자회견하는 이원택 전북지사
+              - listitem [ref=f11e713]:
+                - link [ref=f11e714] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713133043031
+                  - img "포토" [ref=f11e716]
+                  - strong [ref=f11e718]: 기자회견하는 이원택 전북특별자치도지사
+              - listitem [ref=f11e719]:
+                - link [ref=f11e720] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713132951011
+                  - img "포토" [ref=f11e722]
+                  - strong [ref=f11e724]: 기자회견하는 이원택 전북지사
+            - link "새로운 포토" [ref=f11e726] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e728]: 포토
+      - complementary [ref=f11e729]:
+        - generic [ref=f11e730]:
+          - generic [ref=f11e731]:
+            - generic [ref=f11e732]:
+              - strong [ref=f11e733]:
+                - generic [ref=f11e734]: 인터랙티브 페이지 모음
+              - button "도움말" [ref=f11e736] [cursor=pointer]
+            - list [ref=f11e738]:
+              - listitem [ref=f11e739]:
+                - link "'극우' 유튜버는 이미 계엄을 알고 있었다 윤석열 전 대통령은 지난해 12월 계엄을 선포하는 대국민담화에서 이렇게 말했다. 결국 탄핵과 파면이라는 결말로 이어진, 대다수 시민의 생각과는 동떨어진 이런 상황 인식은 어디서 온 것일까? 경향신문 데이터저널리즘팀 다이브가 이른바 ‘극우’ 성향으로 불리는 유튜브 채널 12개에서 계엄 선포 직전 2년간 올린 영상 600건을 뽑아 분석해 보니, 윤 전 대통령과 비슷한 논리 흐름을 가진 영상을 다수 발견할 수 있었다. 경향신문 (새창열림)" [ref=f11e740] [cursor=pointer]:
+                  - /url: https://www.khan.co.kr/kh_storytelling/2025/youtube/
+                  - generic [ref=f11e742]:
+                    - strong [ref=f11e743]: "'극우' 유튜버는 이미 계엄을 알고 있었다"
+                    - paragraph [ref=f11e744]: 윤석열 전 대통령은 지난해 12월 계엄을 선포하는 대국민담화에서 이렇게 말했다. 결국 탄핵과 파면이라는 결말로 이어진, 대다수 시민의 생각과는 동떨어진 이런 상황 인식은 어디서 온 것일까? 경향신문 데이터저널리즘팀 다이브가 이른바 ‘극우’ 성향으로 불리는 유튜브 채널 12개에서 계엄 선포 직전 2년간 올린 영상 600건을 뽑아 분석해 보니, 윤 전 대통령과 비슷한 논리 흐름을 가진 영상을 다수 발견할 수 있었다.
+                    - generic [ref=f11e745]: 경향신문
+                  - generic: (새창열림)
+              - listitem [ref=f11e749]:
+                - link "어디 김씨 입니까? 이름없는 경기도 검은 반도체 경인일보 (새창열림)" [ref=f11e750] [cursor=pointer]:
+                  - /url: https://gg-gim.kyeongin.com/
+                  - generic [ref=f11e752]:
+                    - strong [ref=f11e753]: 어디 김씨 입니까?
+                    - paragraph [ref=f11e754]: 이름없는 경기도 검은 반도체
+                    - generic [ref=f11e755]: 경인일보
+                  - generic: (새창열림)
+            - button "더보기" [ref=f11e760] [cursor=pointer]
+          - generic [ref=f11e763]:
+            - insertion
+          - generic [ref=f11e764]:
+            - generic [ref=f11e765]:
+              - strong [ref=f11e766]:
+                - generic [ref=f11e767]: 실시간 트렌드
+              - generic [ref=f11e768]: 오늘 01:02
+              - button "도움말" [ref=f11e770] [cursor=pointer]
+            - list [ref=f11e772]:
+              - listitem [ref=f11e773]:
+                - link "1 위, 민경욱 의식불명 , 동일" [ref=f11e774] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AF%BC%EA%B2%BD%EC%9A%B1%20%EC%9D%98%EC%8B%9D%EB%B6%88%EB%AA%85
+                  - emphasis [ref=f11e775]:
+                    - text: "1"
+                    - generic: 위,
+                  - strong [ref=f11e776]: 민경욱 의식불명
+                  - generic [ref=f11e777]: ", 동일"
+              - listitem [ref=f11e778]:
+                - link "2 위, 트럼프 통행료 , 하락" [ref=f11e779] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%8A%B8%EB%9F%BC%ED%94%84%20%ED%86%B5%ED%96%89%EB%A3%8C
+                  - emphasis [ref=f11e780]:
+                    - text: "2"
+                    - generic: 위,
+                  - strong [ref=f11e781]: 트럼프 통행료
+                  - generic [ref=f11e782]: ", 하락"
+              - listitem [ref=f11e783]:
+                - link "3 위, 하트 시그널 5 정규리 , 신규" [ref=f11e784] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%98%ED%8A%B8%20%EC%8B%9C%EA%B7%B8%EB%84%90%205%20%EC%A0%95%EA%B7%9C%EB%A6%AC
+                  - emphasis [ref=f11e785]:
+                    - text: "3"
+                    - generic: 위,
+                  - strong [ref=f11e786]: 하트 시그널 5 정규리
+                  - generic [ref=f11e787]: ", 신규"
+              - listitem [ref=f11e788]:
+                - link "4 위, 시간추적자 설록 , 신규" [ref=f11e789] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EC%8B%9C%EA%B0%84%EC%B6%94%EC%A0%81%EC%9E%90%20%EC%84%A4%EB%A1%9D
+                  - emphasis [ref=f11e790]:
+                    - text: "4"
+                    - generic: 위,
+                  - strong [ref=f11e791]: 시간추적자 설록
+                  - generic [ref=f11e792]: ", 신규"
+              - listitem [ref=f11e793]:
+                - link "5 위, 모태솔로지만 연애는 하고 싶어 시즌2 , 신규" [ref=f11e794] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AA%A8%ED%83%9C%EC%86%94%EB%A1%9C%EC%A7%80%EB%A7%8C%20%EC%97%B0%EC%95%A0%EB%8A%94%20%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20%EC%8B%9C%EC%A6%8C2
+                  - emphasis [ref=f11e795]:
+                    - text: "5"
+                    - generic: 위,
+                  - strong [ref=f11e796]: 모태솔로지만 연애는 하고 싶어 시즌2
+                  - generic [ref=f11e797]: ", 신규"
+              - listitem [ref=f11e798]:
+                - link "6 위, 한민수 국회의원 , 신규" [ref=f11e799] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%9C%EB%AF%BC%EC%88%98%20%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90
+                  - emphasis [ref=f11e800]:
+                    - text: "6"
+                    - generic: 위,
+                  - strong [ref=f11e801]: 한민수 국회의원
+                  - generic [ref=f11e802]: ", 신규"
+              - listitem [ref=f11e803]:
+                - link "7 위, 백룸 , 신규" [ref=f11e804] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%B0%B1%EB%A3%B8
+                  - emphasis [ref=f11e805]:
+                    - text: "7"
+                    - generic: 위,
+                  - strong [ref=f11e806]: 백룸
+                  - generic [ref=f11e807]: ", 신규"
+              - listitem [ref=f11e808]:
+                - link "8 위, 클릭비 김상혁 , 신규" [ref=f11e809] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%81%B4%EB%A6%AD%EB%B9%84%20%EA%B9%80%EC%83%81%ED%98%81
+                  - emphasis [ref=f11e810]:
+                    - text: "8"
+                    - generic: 위,
+                  - strong [ref=f11e811]: 클릭비 김상혁
+                  - generic [ref=f11e812]: ", 신규"
+              - listitem [ref=f11e813]:
+                - link "9 위, 26년 초복 , 신규" [ref=f11e814] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=26%EB%85%84%20%EC%B4%88%EB%B3%B5
+                  - emphasis [ref=f11e815]:
+                    - text: "9"
+                    - generic: 위,
+                  - strong [ref=f11e816]: 26년 초복
+                  - generic [ref=f11e817]: ", 신규"
+              - listitem [ref=f11e818]:
+                - link "10 위, 100분 토론 , 신규" [ref=f11e819] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=100%EB%B6%84%20%ED%86%A0%EB%A1%A0
+                  - emphasis [ref=f11e820]:
+                    - text: "10"
+                    - generic: 위,
+                  - strong [ref=f11e821]: 100분 토론
+                  - generic [ref=f11e822]: ", 신규"
+          - generic [ref=f11e823]:
+            - strong [ref=f11e825]:
+              - generic [ref=f11e826]: 이 시각 주요뉴스
+            - list [ref=f11e827]:
+              - listitem [ref=f11e828]:
+                - link "동영상 [날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입 YTN 27분 전" [ref=f11e829] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715035818381
+                  - generic [ref=f11e830]: 동영상
+                  - generic [ref=f11e833]:
+                    - strong [ref=f11e834]: "[날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입"
+                    - generic [ref=f11e835]: YTN 27분 전
+              - listitem [ref=f11e837]:
+                - link "105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합) 뉴시스 1시간 전" [ref=f11e838] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715025954753
+                  - generic [ref=f11e841]:
+                    - strong [ref=f11e842]: 105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합)
+                    - generic [ref=f11e843]: 뉴시스 1시간 전
+              - listitem [ref=f11e845]:
+                - link "최임위 공익위원 \"도급제 적용 등 최저임금 제도 개선 권고\"(종합) 뉴시스 3시간 전" [ref=f11e846] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715012350437
+                  - generic [ref=f11e849]:
+                    - strong [ref=f11e850]: 최임위 공익위원 "도급제 적용 등 최저임금 제도 개선 권고"(종합)
+                    - generic [ref=f11e851]: 뉴시스 3시간 전
+              - listitem [ref=f11e853]:
+                - link "최저임금위원장 \"30원 차이였는데…표결 아쉬워\"(종합2보) 뉴시스 3시간 전" [ref=f11e854] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005651222
+                  - generic [ref=f11e857]:
+                    - strong [ref=f11e858]: 최저임금위원장 "30원 차이였는데…표결 아쉬워"(종합2보)
+                    - generic [ref=f11e859]: 뉴시스 3시간 전
+              - listitem [ref=f11e861]:
+                - link "이 대통령 \"英, 韓 성장 도운 고마운 나라\"…앤 공주 \"韓 조선 경이로운 수준\"(종합) 뉴시스 4시간 전" [ref=f11e862] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001148764
+                  - generic [ref=f11e865]:
+                    - strong [ref=f11e866]: 이 대통령 "英, 韓 성장 도운 고마운 나라"…앤 공주 "韓 조선 경이로운 수준"(종합)
+                    - generic [ref=f11e867]: 뉴시스 4시간 전
+            - link "새로운 뉴스" [ref=f11e870] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e872]: 뉴스
+          - generic [ref=f11e873]:
+            - generic [ref=f11e874]:
+              - strong [ref=f11e875]:
+                - link [ref=f11e876] [cursor=pointer]:
+                  - /url: https://issue.daum.net/news/reportage
+              - button "도움말" [ref=f11e880] [cursor=pointer]
+            - list [ref=f11e882]:
+              - listitem [ref=f11e883]:
+                - link "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’ 여성경제신문 4시간 전" [ref=f11e884] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001224771
+                  - generic [ref=f11e886]:
+                    - strong [ref=f11e887]: "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’"
+                    - generic [ref=f11e888]: 여성경제신문 4시간 전
+              - listitem [ref=f11e890]:
+                - link "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁 동아일보 5시간 전" [ref=f11e891] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714230750705
+                  - generic [ref=f11e893]:
+                    - strong [ref=f11e894]: "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁"
+                    - generic [ref=f11e895]: 동아일보 5시간 전
+              - listitem [ref=f11e897]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 7시간 전" [ref=f11e898] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215156817
+                  - generic [ref=f11e899]: 동영상
+                  - generic [ref=f11e901]:
+                    - strong [ref=f11e902]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f11e903]: KBS 7시간 전
+              - listitem [ref=f11e905]:
+                - link "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤 인천일보 8시간 전" [ref=f11e906] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714202504399
+                  - generic [ref=f11e908]:
+                    - strong [ref=f11e909]: "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤"
+                    - generic [ref=f11e910]: 인천일보 8시간 전
+              - listitem [ref=f11e912]:
+                - link "동영상 [현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’ KBS 8시간 전" [ref=f11e913] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714201241189
+                  - generic [ref=f11e914]: 동영상
+                  - generic [ref=f11e916]:
+                    - strong [ref=f11e917]: "[현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’"
+                    - generic [ref=f11e918]: KBS 8시간 전
+              - listitem [ref=f11e920]:
+                - link "동영상 [현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막” 채널A 9시간 전" [ref=f11e921] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714193612404
+                  - generic [ref=f11e922]: 동영상
+                  - generic [ref=f11e924]:
+                    - strong [ref=f11e925]: "[현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막”"
+                    - generic [ref=f11e926]: 채널A 9시간 전
+              - listitem [ref=f11e928]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 9시간 전" [ref=f11e929] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714191413949
+                  - generic [ref=f11e930]: 동영상
+                  - generic [ref=f11e932]:
+                    - strong [ref=f11e933]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f11e934]: KBS 9시간 전
+              - listitem [ref=f11e936]:
+                - link "동영상 [현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살” 중부일보 9시간 전" [ref=f11e937] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714185659556
+                  - generic [ref=f11e938]: 동영상
+                  - generic [ref=f11e940]:
+                    - strong [ref=f11e941]: "[현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살”"
+                    - generic [ref=f11e942]: 중부일보 9시간 전
+            - link "새로운 뉴스" [ref=f11e945] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f11e947]: 뉴스
+          - generic [ref=f11e948]:
+            - strong [ref=f11e950]:
+              - generic [ref=f11e951]: 🧭 다음뉴스 안내서
+            - list [ref=f11e952]:
+              - listitem [ref=f11e953]:
+                - link "고침, 정정・반론 보도 모음 다음뉴스" [ref=f11e954] [cursor=pointer]:
+                  - /url: https://news.daum.net/correct
+                  - generic [ref=f11e957]:
+                    - strong [ref=f11e958]: 고침, 정정・반론 보도 모음
+                    - generic [ref=f11e959]: 다음뉴스
+              - listitem [ref=f11e961]:
+                - link "다음채널 제휴 안내 다음뉴스" [ref=f11e962] [cursor=pointer]:
+                  - /url: https://channel.daum.net/studio
+                  - generic [ref=f11e965]:
+                    - strong [ref=f11e966]: 다음채널 제휴 안내
+                    - generic [ref=f11e967]: 다음뉴스
+              - listitem [ref=f11e969]:
+                - link "다음뉴스 고객센터 다음뉴스" [ref=f11e970] [cursor=pointer]:
+                  - /url: https://cs.daum.net/faq/63.html
+                  - generic [ref=f11e973]:
+                    - strong [ref=f11e974]: 다음뉴스 고객센터
+                    - generic [ref=f11e975]: 다음뉴스
+              - listitem [ref=f11e977]:
+                - link "다음뉴스 제휴 언론사 다음뉴스" [ref=f11e978] [cursor=pointer]:
+                  - /url: https://news.daum.net/cplist
+                  - generic [ref=f11e981]:
+                    - strong [ref=f11e982]: 다음뉴스 제휴 언론사
+                    - generic [ref=f11e983]: 다음뉴스
+    - contentinfo [ref=f11e985]:
+      - generic [ref=f11e987]:
+        - list [ref=f11e988]:
+          - listitem [ref=f11e989]:
+            - link "다음뉴스 서비스안내" [ref=f11e990] [cursor=pointer]:
+              - /url: /news/edit
+          - listitem [ref=f11e991]:
+            - link "24시간 뉴스센터" [ref=f11e992] [cursor=pointer]:
+              - /url: /news/newscenter24
+          - listitem [ref=f11e993]:
+            - link "공지사항" [ref=f11e994] [cursor=pointer]:
+              - /url: https://brunch.co.kr/@daumnews
+          - listitem [ref=f11e995]:
+            - link "서비스 약관/정책" [ref=f11e996] [cursor=pointer]:
+              - /url: https://policy.daum.net/policy/info
+        - generic [ref=f11e997]: "기사배열책임자: 임광욱청소년보호책임자: 이호원"
+        - generic [ref=f11e999]: 뉴스 기사에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며, axz의 입장과 다를 수 있습니다.
+        - link "© AXZ Corp." [ref=f11e1001] [cursor=pointer]:
+          - /url: https://axzcorp.com/
+    - button "홈 화면 설정" [ref=f11e1003] [cursor=pointer]

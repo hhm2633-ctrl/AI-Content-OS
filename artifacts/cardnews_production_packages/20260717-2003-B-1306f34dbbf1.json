@@ -1,0 +1,240 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-B-1306f34dbbf1",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-B-1306f34dbbf1",
+    "account": "B",
+    "category": "연예·도파민",
+    "title": "편승엽, 故 길은정 '사기 결혼' 의혹 재조명-딸 끝내 눈물"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.mediafine.co.kr/news/articleView.html?idxno=83751",
+        "publisher": "파인뉴스",
+        "title": "편승엽, 故 길은정 '사기 결혼' 의혹 재조명-딸 끝내 눈물",
+        "published_at": "2026-07-17T07:11:00+09:00",
+        "source_status": "body_read",
+        "usage_note": "2021년 MBN 특종세상 방송 재조명, 편승엽의 명예훼손 소송 승소 설명, 딸 편수지의 가족 경험 발언을 기사 본문에서 확인. 편수지의 '아빠는 정말 나쁜 사람이 아닌데' 발언도 기사에 직접 인용돼 있음"
+      }
+    ]
+  },
+  "story": {
+    "summary": "30여 년 전 크게 퍼진 '사기 결혼' 의혹은 법원 판단 뒤에도 사람들의 기억에서 쉽게 지워지지 않았다는 기사 내용이다. 논란 당사자의 해명보다, 판결이 나면 끝날 줄 알았던 딸이 가족에게 남은 낙인을 말하다 울음을 터뜨린 지점으로 감정선을 좁힌다.",
+    "emotional_arc": [
+      "오래된 의혹의 재등장",
+      "법원 판단을 기다린 시간",
+      "판결 뒤의 허탈함",
+      "가족에게 남은 낙인",
+      "딸의 눈물",
+      "처음 들은 말만 남는가"
+    ]
+  },
+  "slide_count": 7,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "판결이 나면\n끝날 줄 알았습니다",
+      "body": "하지만 딸은 30년 전 의혹이 아직도 가족을 따라다닌다고 말했습니다."
+    },
+    {
+      "page": 2,
+      "role": "past_conflict",
+      "headline": "결혼 7개월 뒤\n커진 '사기 결혼' 의혹",
+      "body": "기사에 따르면 편승엽과 고 길은정의 파경 뒤 의혹이 대형 스캔들로 번졌습니다."
+    },
+    {
+      "page": 3,
+      "role": "legal_outcome",
+      "headline": "그는 법원의 판단을\n기다렸다고 했습니다",
+      "body": "편승엽은 명예훼손 소송에서 승소했고, 판결문을 들고 다닐 만큼 답답했다고 회상했습니다."
+    },
+    {
+      "page": 4,
+      "role": "aftermath",
+      "headline": "의혹은 크게,\n결과는 짧게",
+      "body": "그는 사실이 바로잡힌 내용은 잠깐 소개되고 끝났다고 말했습니다."
+    },
+    {
+      "page": 5,
+      "role": "family_impact",
+      "headline": "딸이 기다린 것도\n그 판결이었습니다",
+      "body": "편수지는 결과가 나오면 모든 것이 해결될 줄 알았지만 이미 각인된 이미지는 남았다고 털어놨습니다."
+    },
+    {
+      "page": 6,
+      "role": "emotion_peak",
+      "headline": "딸 편수지는\n이렇게 말했습니다",
+      "body": "“아빠는 정말 나쁜 사람이 아닌데…” 기사에 인용된 말을 이어가다 끝내 눈물을 보였습니다."
+    },
+    {
+      "page": 7,
+      "role": "low_friction_cta",
+      "headline": "의혹은 기억나는데\n판결은 몰랐어?",
+      "body": "처음 퍼진 말만 남았다는 가족의 이야기가 낯설지 않습니다."
+    }
+  ],
+  "feed_caption": "30여 년 전 크게 번진 '사기 결혼' 의혹이 다시 조명됐습니다. 파인뉴스가 재조명한 MBN 방송 내용에 따르면 편승엽은 고 길은정을 상대로 한 명예훼손 소송에서 승소했지만, 판결 뒤에도 대중에게 남은 이미지는 쉽게 지워지지 않았다고 말했습니다. 딸 편수지도 판결이 나오면 끝날 줄 알았는데 가족에게 남은 낙인은 그대로였다며 끝내 눈물을 보였습니다.\n\n의혹은 기억나는데, 판결은 몰랐어?\n\n참고: 파인뉴스, MBN 특종세상 재조명 내용",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "파인뉴스 기사 내용 참고 자체 타이포그래피"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 2,
+      "slide_role": "past_conflict",
+      "media_type": "editorial",
+      "source_credit": [
+        "파인뉴스 기사에 기록된 결혼·파경·의혹 제기 순서를 자체 타임라인으로 재구성"
+      ],
+      "source_url": "https://www.mediafine.co.kr/news/articleView.html?idxno=83751",
+      "rights_status": "original_editorial_graphic_source_facts_only",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 3,
+      "slide_role": "legal_outcome",
+      "media_type": "editorial",
+      "source_credit": [
+        "기사에 설명된 법원 판단을 자체 문서 그래픽으로 재구성"
+      ],
+      "rights_status": "original_editorial_graphic_no_fabricated_judgment_image",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 4,
+      "slide_role": "aftermath",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "기사 내용 참고·의혹/결과 노출 차이를 보여주는 자체 그래픽"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 5,
+      "slide_role": "family_impact",
+      "media_type": "editorial",
+      "source_credit": [
+        "파인뉴스 기사에 기록된 편수지 발언을 가족에게 남은 시간의 흐름으로 자체 재구성"
+      ],
+      "rights_status": "source_backed_editorial_reconstruction_no_person_reenactment",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 6,
+      "slide_role": "emotion_peak",
+      "media_type": "editorial",
+      "source_credit": [
+        "파인뉴스 기사에 직접 인용된 편수지 발언의 짧은 인용문 패널"
+      ],
+      "rights_status": "source_backed_short_quote_editorial_panel",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 7,
+      "slide_role": "low_friction_cta",
+      "media_type": "editorial",
+      "source_credit": [
+        "자체 타이포그래피"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-B-1306f34dbbf1",
+    "account": "B",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-B-1306f34dbbf1",
+      "account": "B",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-B-1306f34dbbf1",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "not_applicable",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "첫 장은 오래된 의혹 자체보다 판결 뒤에도 남은 가족의 낙인을 중심으로 감정선을 잡았다.",
+        "법원 판단과 가족 발언은 파인뉴스가 재조명한 방송 내용에 귀속되며 별도 추정으로 확장하지 않는다.",
+        "영상·실존 인물 재연 없이 자체 타임라인, 문서 그래픽, 짧은 출처 인용 패널만 계획했다."
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+Implemented.
+
+- [modules/source_intake/lane_collection_summary.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\lane_collection_summary.py)
+  - Added `build_lane_collection_summary(gap_report_or_path)` with:
+    - Input accepted as dict or file path.
+    - Automatic gap-report normalization (`collection_gap_report` or `daily_shallow_collection` via `build_collection_gap_report`).
+    - Per-lane counts for: `NOT_IMPLEMENTED`, `FALLBACK_ONLY`, `FAILED`, `OK`.
+    - `lane_readiness` calculation:
+      - `BLOCKED` when `OK == 0`
+      - `PARTIAL` when missing/fallback/failed exists and `OK > 0`
+      - `READY_SHALLOW` when all sources are `OK`.
+    - `top_missing_sources` derived from `recommended_implementation_order` order.
+    - No fabricated metrics; no `commerce_detail` field is produced.
+
+- [tests/test_lane_collection_summary.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_lane_collection_summary.py)
+  - Added tests for:
+    - fake gap report counts/readiness/top-order behavior
+    - `no commerce_detail` emission
+    - smoke test on `storage/source_intake/2026-07-14/collection_gap_report.json` when present
+
+- [external_workclaude/source_collection_engine_v0_spark/LANE_SUMMARY_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\LANE_SUMMARY_HANDOFF.md)
+  - Replaced with only `not implemented`, `tests`, `next light Spark tasks`.
+
+Validation run:
+- `py -m compileall modules/source_intake` ✅
+- `py -m unittest tests.test_lane_collection_summary tests.test_collection_gap_report -v` ✅

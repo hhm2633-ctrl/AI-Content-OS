@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "model_id": "account_c_fixed_model_01",
+  "account_id": "account_c_beauty_fashion",
+  "status": "OWNER_APPROVAL_PENDING",
+  "asset_root": "F:\\AI-Content-OS-Data\\character_library\\account_c\\fixed_model_01",
+  "authoritative_face_refs": [
+    "authoritative_sources/source_reference.png"
+  ],
+  "authoritative_body_refs": [],
+  "candidate_view_set": {
+    "method": "openai_direct_edit_from_original_per_view",
+    "approval_status": "OWNER_APPROVAL_PENDING",
+    "contact_sheet": "openai_edit_v2/turnaround_contact_sheet.png",
+    "views": {
+      "front": "openai_edit_v2/front.png",
+      "left_profile": "openai_edit_v2/left_profile.png",
+      "right_profile": "openai_edit_v2/right_profile.png",
+      "back": "openai_edit_v2/back.png",
+      "high_angle": "openai_edit_v2/high_angle.png",
+      "low_angle": "openai_edit_v2/low_angle.png"
+    }
+  },
+  "superseded_assets": [
+    "F:\\AI-Content-OS-Data\\character_library\\account_c\\commuter_model_01\\turnaround_3x2.png",
+    "face_turnaround_3x2.png",
+    "body_turnaround_3x2.png",
+    "master_front_fullbody.png"
+  ],
+  "required_views": [
+    "front",
+    "left_profile",
+    "right_profile",
+    "back",
+    "high_angle",
+    "low_angle"
+  ],
+  "immutable_face_traits": [
+    "long_narrow_oval_face",
+    "gently_tapered_small_chin",
+    "low_soft_straight_brows",
+    "long_narrow_almond_eyes",
+    "slender_straight_nose_small_rounded_tip",
+    "thin_upper_lip_slightly_fuller_lower_lip",
+    "center_parted_dark_hair_loose_low_bun_wispy_strands"
+  ],
+  "immutable_body_traits": [
+    "slim_to_average_natural_build",
+    "narrow_gently_sloped_shoulders",
+    "straight_torso_silhouette",
+    "stable_arm_thickness",
+    "stable_waist_hip_balance",
+    "stable_leg_length_and_thickness"
+  ],
+  "generation_contract": {
+    "required_reference_order": [
+      "authoritative_sources/source_reference.png",
+      "nearest_owner_approved_openai_edit_view"
+    ],
+    "never_cascade_from_unapproved_generated_view": true,
+    "changeable": [
+      "expression",
+      "pose",
+      "wardrobe",
+      "background",
+      "lighting",
+      "camera_composition"
+    ],
+    "immutable": [
+      "face_geometry",
+      "age_impression",
+      "skin_tone",
+      "hairline",
+      "body_build",
+      "shoulder_width",
+      "limb_thickness",
+      "torso_and_leg_proportions"
+    ],
+    "reject_on_identity_drift": true,
+    "manual_identity_review_required": true,
+    "public_label": "AI 연출 이미지"
+  },
+  "usage_scope": [
+    "account_c_auxiliary_lifestyle_scenes_only"
+  ],
+  "forbidden_roles": [
+    "celebrity",
+    "witness",
+    "real_customer",
+    "brand_model_without_contract",
+    "product_evidence",
+    "news_evidence"
+  ]
+}

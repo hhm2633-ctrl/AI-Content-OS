@@ -1,0 +1,15 @@
+{
+  "_comment": "Commerce Phase 2A settings. Dry-run-only Sprint -- see docs/COMMERCE/PHASE2A_IMPLEMENTATION.md. Not yet read by any module; reserved for Phase 2B wiring (engine-level feature flags, target platform list, rate-limit tuning).",
+  "phase": "2A",
+  "mode": "dry_run_only",
+  "real_api_calls_enabled": false,
+  "target_platforms": ["smartstore", "coupang"],
+  "dry_run": {
+    "persist_artifacts": true,
+    "output_dir": "storage/commerce/dryrun"
+  },
+  "audit": {
+    "enabled": true,
+    "output_dir": "storage/commerce/audit"
+  }
+}

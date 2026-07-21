@@ -1,0 +1,129 @@
+{
+  "schema_version": "owner_review_carousel_plan_v1",
+  "account": "A",
+  "category": "world_news",
+  "topic": "미국 외국학생 F-1 체류 최대 4년 최종 규정",
+  "slide_count": 8,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "media_type": "image",
+      "headline": "F-1 체류 최대 4년\n한국 유학생은 뭐가 달라지나",
+      "body": "",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "publisher_image_unverified_internal_review_only"
+    },
+    {
+      "slide": 2,
+      "role": "number",
+      "media_type": "editorial",
+      "headline": "규정의 핵심 숫자",
+      "body": "4년",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 3,
+      "role": "before_after",
+      "media_type": "editorial",
+      "headline": "‘재학 중이면 계속’에서\n고정 기간으로",
+      "body": "학업을 계속하면\n정규과정 종료까지\n체류 가능|일반적으로 최대 4년\n그 이후 별도\n연장 승인 필요",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 4,
+      "role": "steps",
+      "media_type": "editorial",
+      "headline": "4년을 넘는 과정이라면",
+      "body": "현재 허용기간 확인|만료 전 DHS에 체류 연장 신청|승인 결과와 학교 기록 함께 관리",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 5,
+      "role": "warning",
+      "media_type": "editorial",
+      "headline": "박사·장기과정이\n가장 먼저 체감할 변화",
+      "body": "과정이 4년을 넘는다고\n자동으로 체류가 이어지는 게 아니라\n연장 심사를 한 번 더 거쳐야 한다.",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 6,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "왜 바꿨나",
+      "body": "미 국토안보부는 학생비자 악용 불법체류 방지와 국가안보 우려 해소를 이유로 들었다고 복수 매체가 보도했다.",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 7,
+      "role": "check",
+      "media_type": "editorial",
+      "headline": "한국 유학생이 지금\n확인할 세 가지",
+      "body": "내 I-94의 체류 종료 표시|I-20 과정 종료일과 실제 졸업 예상일|학교 국제학생 담당부서의 시행 안내",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 8,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "아직 단정하면 안 되는 것",
+      "body": "모든 기존 학생에게 언제부터 어떤 방식으로 적용되는지는 공식 효력 발생일·경과조치·세부 신청 절차를 다시 확인해야 한다.",
+      "source_credit": [
+        "머니투데이",
+        "News1",
+        "연합뉴스"
+      ],
+      "rights_status": "original_editorial_layout"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "머니투데이",
+      "url": "https://www.mt.co.kr/world/2026/07/16/2026071622465641646"
+    },
+    {
+      "publisher": "News1",
+      "url": "https://www.news1.kr/world/usa-canada/6231085"
+    },
+    {
+      "publisher": "연합뉴스",
+      "url": "https://www.yna.co.kr/view/AKR20260716213200071?section=international/all"
+    }
+  ]
+}

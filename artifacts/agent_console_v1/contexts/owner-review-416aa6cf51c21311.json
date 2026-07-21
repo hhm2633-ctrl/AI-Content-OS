@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-ede7cb5bb32f",
+  "candidate_id": "20260717-2003-A-ede7cb5bb32f",
+  "grade": "3",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "농식품부, 호우 대비 긴급 점검…저수지 누수·산사태 여부 확인",
+  "source_urls": [
+    "https://www.yna.co.kr/view/AKR20260717041100030?section=society/all"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

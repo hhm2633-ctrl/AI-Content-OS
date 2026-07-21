@@ -1,0 +1,567 @@
+- generic [ref=f19e4]:
+  - generic [ref=f19e9]:
+    - generic [ref=f19e12]:
+      - link [ref=f19e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f19e22]
+      - generic [ref=f19e25]:
+        - link [ref=f19e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f19e35]
+        - link [ref=f19e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f19e45]
+        - link [ref=f19e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f19e55]:
+            - img "메시지" [ref=f19e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f19e60]: "1"
+        - link [ref=f19e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f19e71]
+        - link [ref=f19e79] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f19e84]
+        - link [ref=f19e92] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f19e97]
+        - link [ref=f19e103] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f19e108]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f19e109]
+      - generic [ref=f19e110]:
+        - link [ref=f19e113] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f19e118]
+        - link [ref=f19e121] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f19e126]
+    - generic [ref=f19e129]:
+      - main [ref=f19e130]:
+        - generic [ref=f19e131]:
+          - generic [ref=f19e133]:
+            - group "Video player" [ref=f19e152]:
+              - slider "볼륨 조정" [ref=f19e153]:
+                - button [ref=f19e157] [cursor=pointer]:
+                  - img "오디오 소리 꺼짐" [ref=f19e158]
+            - generic [ref=f19e161]:
+              - generic [ref=f19e163]:
+                - button [ref=f19e168] [cursor=pointer]:
+                  - link [ref=f19e170]:
+                    - img "moongi_adventures님의 프로필 사진" [ref=f19e171]
+                - generic [ref=f19e174]:
+                  - generic [ref=f19e175]:
+                    - generic [ref=f19e178]:
+                      - link "moongi_adventures" [ref=f19e183] [cursor=pointer]:
+                        - /url: /moongi_adventures/
+                      - img "인증됨" [ref=f19e188]
+                    - link "오리지널 오디오" [ref=f19e193] [cursor=pointer]:
+                      - /url: /reels/audio/38103785715887381/
+                  - button "팔로잉" [ref=f19e198] [cursor=pointer]
+                - button [ref=f19e201] [cursor=pointer]:
+                  - img "옵션 더 보기" [ref=f19e204]
+              - separator [ref=f19e208]
+              - generic [ref=f19e210]:
+                - generic [ref=f19e212]:
+                  - link [ref=f19e217] [cursor=pointer]:
+                    - /url: /moongi_adventures/
+                    - img "moongi_adventures님의 프로필 사진" [ref=f19e218]
+                  - generic [ref=f19e222]:
+                    - generic [ref=f19e223]:
+                      - link "moongi_adventures 인증됨" [ref=f19e227] [cursor=pointer]:
+                        - /url: /moongi_adventures/
+                        - generic [ref=f19e229]:
+                          - generic [ref=f19e230]: moongi_adventures
+                          - img "인증됨" [ref=f19e232]
+                      - generic [ref=f19e234]: 수정됨
+                      - generic [ref=f19e235]: •
+                      - time [ref=f19e237]: 10시간
+                    - generic [ref=f19e238]:
+                      - text: SNS 아싸였던 내가 어쩌다 인스타 만명을 찍었을까? 🤔작년까지 난 진짜 SNS 안 하던 사람이었어. 평범한 회사원, 번아웃, 그러다 뭐라도 하고 싶어서 시작한 게 인스타툰. 근데 4개월을 매일 4시간씩 매일 그렸는데… 400명이더라 😅거기서 포기하지 않았어! 진짜 사람들이 필요한게 뭘까? 고민해봤어. 그러다가내가 AI 배우면서 알게 된 걸 하나씩 나누기 시작했고, 많은 사람들이 유용하게쓰기 시작하면서 점점 계정이 알려졌어!결론? 열심히만 해선 안 되더라고. 내 계정이 색깔과 목적이 뚜렸해야했고, 나름 전략이 있어야 했어.나는 만이 되기도 전부터 내 계정에 맞는협업 요청과 강의가 여러개 들어오기 시작했어! 너무 신기했던거 있지?!지금까지 함께해줘서 고맙고, 앞으로도 함께 해줄거지?!그래서 준비했어 🎁내가 실제로 바이럴 글 584개를 모아서 분석한 「바이럴 훅 & 패턴 플레이북」:✅ 실제로 터진 훅 6가지 패턴 (조회수까지 공개)✅ 바로 갖다 쓰는 훅 템플릿 50개 & 실제 10만 이상 터진 컨텐츠 훅 50개 ✅ 지금 뜨는 신호 정리👉 댓글에 '선물' 남겨주면 DM으로 바로 보내줄게 📩앞으로 더 좋은 컨텐츠 만들어볼게!이 영상은
+                      - link "@like.craisee" [ref=f19e239] [cursor=pointer]:
+                        - /url: /like.craisee/
+                      - text: 를 사용해서 이미지와 영상 모두 만들었어!!
+                      - link "#인스타그램" [ref=f19e240] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8/
+                      - link "#AI" [ref=f19e241] [cursor=pointer]:
+                        - /url: /explore/tags/ai/
+                      - link "#콘텐츠크리에이터" [ref=f19e242] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%BD%98%ED%85%90%EC%B8%A0%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%84%B0/
+                      - link "#퍼스널브랜딩" [ref=f19e243] [cursor=pointer]:
+                        - /url: /explore/tags/%ED%8D%BC%EC%8A%A4%EB%84%90%EB%B8%8C%EB%9E%9C%EB%94%A9/
+                - generic [ref=f19e244]:
+                  - generic [ref=f19e245]:
+                    - generic [ref=f19e247]:
+                      - link [ref=f19e253] [cursor=pointer]:
+                        - /url: /zeulggoo/
+                        - img "zeulggoo님의 프로필 사진" [ref=f19e254]
+                      - generic [ref=f19e255]:
+                        - generic [ref=f19e256]:
+                          - generic [ref=f19e258]:
+                            - generic [ref=f19e259]:
+                              - link "zeulggoo" [ref=f19e264] [cursor=pointer]:
+                                - /url: /zeulggoo/
+                              - link [ref=f19e269] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17962154910130284/
+                                - time [ref=f19e270]: 9시간
+                            - generic [ref=f19e271]: 선물 🙌
+                          - button "답글 달기" [ref=f19e274] [cursor=pointer]
+                        - button [ref=f19e281] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e284]
+                    - button "답글 1개 모두 보기" [ref=f19e287] [cursor=pointer]
+                  - generic [ref=f19e291]:
+                    - generic [ref=f19e293]:
+                      - link [ref=f19e299] [cursor=pointer]:
+                        - /url: /parkhannnah/
+                        - img "parkhannnah님의 프로필 사진" [ref=f19e300]
+                      - generic [ref=f19e301]:
+                        - generic [ref=f19e302]:
+                          - generic [ref=f19e304]:
+                            - generic [ref=f19e305]:
+                              - link "parkhannnah" [ref=f19e310] [cursor=pointer]:
+                                - /url: /parkhannnah/
+                              - link [ref=f19e315] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18015578699877925/
+                                - time [ref=f19e316]: 50분
+                            - generic [ref=f19e317]: 선물
+                          - button "답글 달기" [ref=f19e320] [cursor=pointer]
+                        - button [ref=f19e327] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e330]
+                    - button "답글 1개 모두 보기" [ref=f19e333] [cursor=pointer]
+                  - generic [ref=f19e337]:
+                    - generic [ref=f19e339]:
+                      - link [ref=f19e345] [cursor=pointer]:
+                        - /url: /h_wanny/
+                        - img "h_wanny님의 프로필 사진" [ref=f19e346]
+                      - generic [ref=f19e347]:
+                        - generic [ref=f19e348]:
+                          - generic [ref=f19e350]:
+                            - generic [ref=f19e351]:
+                              - link "h_wanny" [ref=f19e356] [cursor=pointer]:
+                                - /url: /h_wanny/
+                              - link [ref=f19e361] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18086516591408745/
+                                - time [ref=f19e362]: 7시간
+                            - generic [ref=f19e363]: 초창기부터 열심히 따라했었능데 잘되고 계셔서 좋네요 더 건승하시길!!
+                          - generic [ref=f19e365]:
+                            - button "좋아요 1개" [ref=f19e366] [cursor=pointer]
+                            - button "답글 달기" [ref=f19e369] [cursor=pointer]
+                        - button [ref=f19e376] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e379]
+                    - button "답글 2개 모두 보기" [ref=f19e382] [cursor=pointer]
+                  - generic [ref=f19e386]:
+                    - generic [ref=f19e388]:
+                      - link [ref=f19e394] [cursor=pointer]:
+                        - /url: /8project_choim/
+                        - img "8project_choim님의 프로필 사진" [ref=f19e395]
+                      - generic [ref=f19e396]:
+                        - generic [ref=f19e397]:
+                          - generic [ref=f19e399]:
+                            - generic [ref=f19e400]:
+                              - link "8project_choim" [ref=f19e405] [cursor=pointer]:
+                                - /url: /8project_choim/
+                              - link [ref=f19e410] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18099094082247008/
+                                - time [ref=f19e411]: 9시간
+                            - generic [ref=f19e412]: 선물😍
+                          - button "답글 달기" [ref=f19e415] [cursor=pointer]
+                        - button [ref=f19e422] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e425]
+                    - button "답글 1개 모두 보기" [ref=f19e428] [cursor=pointer]
+                  - generic [ref=f19e432]:
+                    - generic [ref=f19e434]:
+                      - link [ref=f19e440] [cursor=pointer]:
+                        - /url: /hagri.mong/
+                        - img "hagri.mong님의 프로필 사진" [ref=f19e441]
+                      - generic [ref=f19e442]:
+                        - generic [ref=f19e443]:
+                          - generic [ref=f19e445]:
+                            - generic [ref=f19e446]:
+                              - link "hagri.mong" [ref=f19e451] [cursor=pointer]:
+                                - /url: /hagri.mong/
+                              - link [ref=f19e456] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18223808155322996/
+                                - time [ref=f19e457]: 7시간
+                            - generic [ref=f19e458]: 선물
+                          - button "답글 달기" [ref=f19e461] [cursor=pointer]
+                        - button [ref=f19e468] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e471]
+                    - button "답글 1개 모두 보기" [ref=f19e474] [cursor=pointer]
+                  - generic [ref=f19e478]:
+                    - generic [ref=f19e480]:
+                      - link [ref=f19e486] [cursor=pointer]:
+                        - /url: /christie_js_han/
+                        - img "christie_js_han님의 프로필 사진" [ref=f19e487]
+                      - generic [ref=f19e488]:
+                        - generic [ref=f19e489]:
+                          - generic [ref=f19e491]:
+                            - generic [ref=f19e492]:
+                              - link "christie_js_han 인증됨" [ref=f19e497] [cursor=pointer]:
+                                - /url: /christie_js_han/
+                                - generic [ref=f19e499]:
+                                  - generic [ref=f19e500]: christie_js_han
+                                  - img "인증됨" [ref=f19e502]
+                              - link [ref=f19e505] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17945476146037270/
+                                - time [ref=f19e506]: 8시간
+                            - generic [ref=f19e507]: 선물
+                          - button "답글 달기" [ref=f19e510] [cursor=pointer]
+                        - button [ref=f19e517] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e520]
+                    - button "답글 1개 모두 보기" [ref=f19e523] [cursor=pointer]
+                  - generic [ref=f19e527]:
+                    - generic [ref=f19e529]:
+                      - link [ref=f19e535] [cursor=pointer]:
+                        - /url: /kimhyunhee1/
+                        - img "kimhyunhee1님의 프로필 사진" [ref=f19e536]
+                      - generic [ref=f19e537]:
+                        - generic [ref=f19e538]:
+                          - generic [ref=f19e540]:
+                            - generic [ref=f19e541]:
+                              - link "kimhyunhee1" [ref=f19e546] [cursor=pointer]:
+                                - /url: /kimhyunhee1/
+                              - link [ref=f19e551] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18536160199073532/
+                                - time [ref=f19e552]: 8시간
+                            - generic [ref=f19e553]: 뭇져요!! 저도 성장하는 그날까지 함께해주세요!!
+                          - generic [ref=f19e555]:
+                            - button "좋아요 1개" [ref=f19e556] [cursor=pointer]
+                            - button "답글 달기" [ref=f19e559] [cursor=pointer]
+                        - button [ref=f19e566] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e569]
+                    - button "답글 2개 모두 보기" [ref=f19e572] [cursor=pointer]
+                  - generic [ref=f19e576]:
+                    - generic [ref=f19e578]:
+                      - link [ref=f19e584] [cursor=pointer]:
+                        - /url: /yyii0iiyy/
+                        - img "yyii0iiyy님의 프로필 사진" [ref=f19e585]
+                      - generic [ref=f19e586]:
+                        - generic [ref=f19e587]:
+                          - generic [ref=f19e589]:
+                            - generic [ref=f19e590]:
+                              - link "yyii0iiyy" [ref=f19e595] [cursor=pointer]:
+                                - /url: /yyii0iiyy/
+                              - link [ref=f19e600] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17969597460095735/
+                                - time [ref=f19e601]: 6시간
+                            - generic [ref=f19e602]: 🔥🔥
+                          - button "답글 달기" [ref=f19e605] [cursor=pointer]
+                        - button [ref=f19e612] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e615]
+                    - button "답글 1개 모두 보기" [ref=f19e618] [cursor=pointer]
+                  - generic [ref=f19e622]:
+                    - generic [ref=f19e624]:
+                      - link [ref=f19e630] [cursor=pointer]:
+                        - /url: /lunak/
+                        - img "lunak님의 프로필 사진" [ref=f19e631]
+                      - generic [ref=f19e632]:
+                        - generic [ref=f19e633]:
+                          - generic [ref=f19e635]:
+                            - generic [ref=f19e636]:
+                              - link "lunak" [ref=f19e641] [cursor=pointer]:
+                                - /url: /lunak/
+                              - link [ref=f19e646] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18060163247578390/
+                                - time [ref=f19e647]: 8시간
+                            - generic [ref=f19e648]: 선물~ 응원합니다!!!
+                          - button "답글 달기" [ref=f19e651] [cursor=pointer]
+                        - button [ref=f19e658] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e661]
+                    - button "답글 1개 모두 보기" [ref=f19e664] [cursor=pointer]
+                  - generic [ref=f19e668]:
+                    - generic [ref=f19e670]:
+                      - link [ref=f19e676] [cursor=pointer]:
+                        - /url: /mikkoya/
+                        - img "mikkoya님의 프로필 사진" [ref=f19e677]
+                      - generic [ref=f19e678]:
+                        - generic [ref=f19e679]:
+                          - generic [ref=f19e681]:
+                            - generic [ref=f19e682]:
+                              - link "mikkoya" [ref=f19e687] [cursor=pointer]:
+                                - /url: /mikkoya/
+                              - link [ref=f19e692] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18110635876759222/
+                                - time [ref=f19e693]: 8시간
+                            - generic [ref=f19e694]: 🙌
+                          - button "답글 달기" [ref=f19e697] [cursor=pointer]
+                        - button [ref=f19e704] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e707]
+                    - button "답글 1개 모두 보기" [ref=f19e710] [cursor=pointer]
+                  - generic [ref=f19e714]:
+                    - generic [ref=f19e716]:
+                      - link [ref=f19e722] [cursor=pointer]:
+                        - /url: /aurora.withyou/
+                        - img "aurora.withyou님의 프로필 사진" [ref=f19e723]
+                      - generic [ref=f19e724]:
+                        - generic [ref=f19e725]:
+                          - generic [ref=f19e727]:
+                            - generic [ref=f19e728]:
+                              - link "aurora.withyou" [ref=f19e733] [cursor=pointer]:
+                                - /url: /aurora.withyou/
+                              - link [ref=f19e738] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18142940488555902/
+                                - time [ref=f19e739]: 6시간
+                            - generic [ref=f19e740]: 선물
+                          - generic [ref=f19e742]:
+                            - button "좋아요 1개" [ref=f19e743] [cursor=pointer]
+                            - button "답글 달기" [ref=f19e746] [cursor=pointer]
+                        - button [ref=f19e753] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e756]
+                    - button "답글 1개 모두 보기" [ref=f19e759] [cursor=pointer]
+                  - generic [ref=f19e763]:
+                    - generic [ref=f19e765]:
+                      - link [ref=f19e771] [cursor=pointer]:
+                        - /url: /eunvely_84/
+                        - img "eunvely_84님의 프로필 사진" [ref=f19e772]
+                      - generic [ref=f19e773]:
+                        - generic [ref=f19e774]:
+                          - generic [ref=f19e776]:
+                            - generic [ref=f19e777]:
+                              - link "eunvely_84" [ref=f19e782] [cursor=pointer]:
+                                - /url: /eunvely_84/
+                              - link [ref=f19e787] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17874576864526494/
+                                - time [ref=f19e788]: 1시간
+                            - generic [ref=f19e789]: 선물
+                          - button "답글 달기" [ref=f19e792] [cursor=pointer]
+                        - button [ref=f19e799] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e802]
+                    - button "답글 1개 모두 보기" [ref=f19e805] [cursor=pointer]
+                  - generic [ref=f19e809]:
+                    - generic [ref=f19e811]:
+                      - link [ref=f19e817] [cursor=pointer]:
+                        - /url: /mjung.park/
+                        - img "mjung.park님의 프로필 사진" [ref=f19e818]
+                      - generic [ref=f19e819]:
+                        - generic [ref=f19e820]:
+                          - generic [ref=f19e822]:
+                            - generic [ref=f19e823]:
+                              - link "mjung.park" [ref=f19e828] [cursor=pointer]:
+                                - /url: /mjung.park/
+                              - link [ref=f19e833] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17950010982016682/
+                                - time [ref=f19e834]: 6시간
+                            - generic [ref=f19e835]: 뭉이님 축하드려요 😍
+                          - button "답글 달기" [ref=f19e838] [cursor=pointer]
+                        - button [ref=f19e845] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e848]
+                    - button "답글 1개 모두 보기" [ref=f19e851] [cursor=pointer]
+                  - generic [ref=f19e855]:
+                    - generic [ref=f19e857]:
+                      - link [ref=f19e863] [cursor=pointer]:
+                        - /url: /79sws88/
+                        - img "79sws88님의 프로필 사진" [ref=f19e864]
+                      - generic [ref=f19e865]:
+                        - generic [ref=f19e866]:
+                          - generic [ref=f19e868]:
+                            - generic [ref=f19e869]:
+                              - link "79sws88" [ref=f19e874] [cursor=pointer]:
+                                - /url: /79sws88/
+                              - link [ref=f19e879] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/17949838548220274/
+                                - time [ref=f19e880]: 3시간
+                            - generic [ref=f19e881]: 👏👏👏👏선물
+                          - button "답글 달기" [ref=f19e884] [cursor=pointer]
+                        - button [ref=f19e891] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e894]
+                    - button "답글 1개 모두 보기" [ref=f19e897] [cursor=pointer]
+                  - generic [ref=f19e901]:
+                    - generic [ref=f19e903]:
+                      - link [ref=f19e909] [cursor=pointer]:
+                        - /url: /mago_jewelry_korea/
+                        - img "mago_jewelry_korea님의 프로필 사진" [ref=f19e910]
+                      - generic [ref=f19e911]:
+                        - generic [ref=f19e912]:
+                          - generic [ref=f19e914]:
+                            - generic [ref=f19e915]:
+                              - link "mago_jewelry_korea" [ref=f19e920] [cursor=pointer]:
+                                - /url: /mago_jewelry_korea/
+                              - link [ref=f19e925] [cursor=pointer]:
+                                - /url: /p/Dalx6QIIYkx/c/18472073107107928/
+                                - time [ref=f19e926]: 6시간
+                            - generic [ref=f19e927]: 선물~😍
+                          - button "답글 달기" [ref=f19e930] [cursor=pointer]
+                        - button [ref=f19e937] [cursor=pointer]:
+                          - img "좋아요" [ref=f19e940]
+                    - button "답글 1개 모두 보기" [ref=f19e943] [cursor=pointer]
+                  - progressbar [ref=f19e949]:
+                    - img "읽어들이는 중..." [ref=f19e950]
+              - generic [ref=f19e963]:
+                - generic [ref=f19e964]:
+                  - generic [ref=f19e965]:
+                    - button [ref=f19e968] [cursor=pointer]:
+                      - img "좋아요" [ref=f19e971]
+                    - button "86" [ref=f19e973] [cursor=pointer]
+                    - button [ref=f19e975] [cursor=pointer]:
+                      - img "댓글 달기" [ref=f19e977]
+                    - button "154" [ref=f19e979] [cursor=pointer]
+                    - button [ref=f19e980] [cursor=pointer]:
+                      - img "리포스트" [ref=f19e981]
+                    - button "3" [ref=f19e983] [cursor=pointer]
+                    - button [ref=f19e984] [cursor=pointer]:
+                      - img "공유하기" [ref=f19e985]
+                  - button [ref=f19e990] [cursor=pointer]:
+                    - button [ref=f19e991]:
+                      - img "저장" [ref=f19e993]
+                - link [ref=f19e997] [cursor=pointer]:
+                  - /url: /moongi_adventures/reel/Dalx6QIIYkx/
+                  - time [ref=f19e999]: 11시간 전
+              - generic [ref=f19e1002]:
+                - link [ref=f19e1003]
+                - generic [ref=f19e1005]:
+                  - button [ref=f19e1007] [cursor=pointer]:
+                    - img "이모티콘" [ref=f19e1009]
+                  - textbox "댓글 달기..." [ref=f19e1011]
+          - separator [ref=f19e1013]
+          - generic [ref=f19e1014]:
+            - generic [ref=f19e1016]:
+              - link "moongi_adventures" [ref=f19e1017] [cursor=pointer]:
+                - /url: /moongi_adventures/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f19e1020]:
+              - generic [ref=f19e1021]:
+                - link [ref=f19e1023] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/DZJizKOFJVb/
+                  - 'img "코딩 쥐뿔 몰라도 AI 직원 만드는 법. 컴맹도 쉽게 시작할수 있는 클로드 왕초보 시작 가이드!! 터미널이 뭔지도 몰랐던 나도 지금은 Claude Code로 자동화 시스템 돌리고 있어. 삶이 너무 윤택해져서... 안하고 있는 사람들에겐 꼭 꼬옥좀 하라고 하고 싶어! 진짜 바뀐 건 딱 하나 — 채팅 말고 터미널에 claude 쳐본 것. 슬라이드 넘겨봐. 설치부터 CLAUDE.md 세팅까지 한 번에 정리했어. 자세한 가이드 + 엄선한 스킬 링크 원하면 댓글에 클로드코드 남겨줘 👇 #클로드코드 #claudecode #AI업무자동화 #AI툴 #생산성" [ref=f19e1026]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f19e1029] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/DamYos8lKZG/
+                  - 'img "단 일주일만 공개! 촬영팀도, 모델도, 스튜디오도 없이 브랜드 화보 24컷. 클로드가 30분 만에 자동화한 거야. 향수 브랜드 하나 골라서 URL만 던졌어. 그다음은 디렉션만 주면서 알아서 이미지 생성하게 했어. 워크플로우가 어떻게 되냐며: 1. 클로드가 브랜드를 먼저 읽어 — 2. 컬러, 폰트, 무드, 패키지까지 조사해서 정리하고 3. 사이트에서 실물 제품 이미지까지 긁어와. 4. 그걸 바탕으로 여러 다른 화보컷을 생성 핵심은 딱 하나, ''락(lock)''. · 실물 제품을 잠그고 (제품 락) · AI가 만든 모델 얼굴을 잠그고 (모델 락) 이 둘을 모든 컷에 물려버려. 그래서 히어로컷이든, 자연 속 제품컷이든, 손·얼굴 클로즈업이든같은 병 + 같은 모델이 안 무너져. 제품 없는 무드컷엔 실제 로고를 얹어서 키비주얼로. (글자는 AI로 안 그려. 깨지니까 클로드가 직접 합성으로 얹어) 툴 하나로는 절대 안 나오는 그 ''일관성''을 클로드(지휘) + 제미나이 나노바나나(생성) 조합으로 잡은 거야. 만원도 안쓰고 100장 브랜드 화보 뽑는 방법 알고 싶으면 ''Ffern'' 이라고 남겨줘. 가이드와 내가 만든 스킬 팩키지까지 공유해줄게! 딱 일주일만 공유할거니까 기회 놓치지마! #AI마케팅 #클로드#AI워크플로우 #마케팅자동화#브랜딩" [ref=f19e1032]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f19e1035] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/Dae7bFOFGo_/
+                  - 'img "내일 페이블(역대급 클로드) 무료로 쓰던 거 끝나잖아. 근데 그거 아까워할 필요 없더라. 누가 클로드·챗지피티 같은 AI들이 대답하기 전에 몰래 읽는 ''숨은 지시문''을 깃허브에 통째로 털어놨거든. 별만 4만 5천 개 넘음. 근데 진짜 터진 건, 아직 정식으로 안 풀린 최신 모델 ''페이블''의 지시문까지 올라온 거야. 핵심은 이거. 페이블이 똑똑했던 이유의 절반은 ''머리''가 아니라 ''일하는 방식''이었어. 그 방식(=지시문)만 복사해서 지금 쓰는 아무 모델한테 얹으면, 싼 모델도 페이블처럼 굴러. 사람들이 ''페이블 모드''라고 부르더라. 방법도 쉬워: 깃허브에서 파일 복사 claude.ai 프로젝트 ''지침''칸에 붙여넣기 모델 아무거나 + effort는 적당히 (너무 세게 X) 그 안에서 평소처럼 대화. 끝. 솔직히 이건 앤트로픽 공식 검증본은 아냐. 근데 수많은 사람이 직접 써보고 ''진짜 되네'' 하고 성능 입증한 방법이야. 맹신은 말고, 그래도 무시하긴 아까운 치트키. 📌 자세한 설치법 + 리포 링크 궁금하면 댓글에 ''페이블'' 남겨. DM으로 바로 보내줄게. 저장해두면 내일 무료 끝나도 페이블 감성 안 잃어. #AI #클로드 #Claude #페이블 #Fable" [ref=f19e1038]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+              - generic [ref=f19e1040]:
+                - link [ref=f19e1042] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/DaT_jw1CdgQ/
+                  - 'img "AI 티나는 글... 너무 지겨워 >< AI 도움 받아서 글 쓰고, 분명 내가 직접 확인하고 고치기까지 했는데— \"이거 AI가 썼지\" 소리, 진짜 한두 번 들은 게 아니야. 몇 번을 고쳐도 손가락만 아프고, 진짜 티 안 나는지는 나도 확신이 안 서더라고. 그래서 위키피디아, 카이스트, 논문까지 다 뒤졌어. AI 티나는 표현 — 영어 76개, 한국어 26개, 합쳐서 무려 102개. 이걸 다 외울 수는 없어서, 그냥 클로드 스킬로 만들어버렸어. 업로드만 하면 끝. 쓰는 법은 3가지: 쓴 글 고치기 — \"사람 냄새나게 해줘\" AI 냄새 확인 — \"몇 프로 AI야?\" 자동 체크 — 말 안 해도 알아서 체크함 궁금하면 댓글에 ''인간미'' 남겨. DM으로 스킬 파일 바로 보내줄게. #클로드 #AI" [ref=f19e1045]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f19e1048] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/DaRIlvmj1te/
+                  - 'img "여름 느낌 물씬한 트렌디한 폰배경 만들어봤어~~~ 내 반려동물 사진만 넣어서! 이건 동물뿐만 아니라 제품, 사람도 다 넣어서 만들수 있어 ㅎㅎ 손으로 그린듯한 디지털 아트에 팝컬러를 더하고 손글씨를 넣어 통통 튀는 매력의 포스터가 완성되었어. 폰배경, 액자, 컴퓨터 바탕 화면 등등 어디에도 써도 이쁠것 같아. 만들어보고 싶지 않아? 프롬프트 베끼고 수정하고 하는거 귀찮자너. 그래서 아예 스킬로 만들었어. 한번 클로드에 업로드 해놓으면 대화할때 반려동물 포스터, 폰배경 만들어줘라고만 해도 알아서 프롬프트 써줘!!! 내 원하는 컨셉으로 다양하게 만들때 참 좋겠지? 지피티나 제미나이에서 쓰고 싶으면 파일 내용을 붙여서 쓰면돼. 자세한 벙법까지 이번엔 영상으로 남겼으니까 꼭 써보길~~''배경화면'' 댓글 남겨주면 파일 보내줄게. 이쁜거 많이 만들어보길! #반려동물 #Claude #aiart #클로드" [ref=f19e1051]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f19e1054] [cursor=pointer]:
+                  - /url: /moongi_adventures/p/DaJfjMxjxdA/
+                  - 'img "그림 완전 못그리는 사람도 이런 손 일러스트 만들수 있다면? 이 일러스트 만드는 스킬, 해외에서 크리에이터들이 다들 추천하는데, 깃허브에서 무려 6.4K ★ 받았어!! 긴 글이나 강의 노트나 기사나 내용을 더 쏙쏙 들어오게 할 다이어그램이 귀엽기까지 하면 너무 좋잖아? 이번에 월드컵 32강 진출 못한거 너무 속상한데, 그거 관련 조사시키고 간략하게 결과 요약한 일러스트를 만들어봤어. 심지어 내 캐릭터를 넣어서 만들수 있으니까 필요한 사람은 ''일러스트 스킬'' 댓글에 남겨줘! 스킬 링크와 쓰는 방법 가이드 보내줄게~ #Claudeskill #handdrawn #AIskill" [ref=f19e1057]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+      - contentinfo [ref=f19e1059]:
+        - generic [ref=f19e1060]:
+          - generic [ref=f19e1062]:
+            - link "Meta" [ref=f19e1064] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f19e1067] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f19e1070] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f19e1073] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f19e1076] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f19e1079] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f19e1082] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f19e1085] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f19e1088] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f19e1091] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f19e1094] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f19e1097] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f19e1100] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f19e1103] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f19e1106] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f19e1108]:
+            - generic [ref=f19e1109] [cursor=pointer]:
+              - generic [ref=f19e1110]:
+                - generic [ref=f19e1111]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f19e1114]
+              - combobox "표시 언어 변경" [ref=f19e1116]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f19e1117]: © 2026 Instagram from Meta
+  - button [ref=f19e1120] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f19e1121]:
+      - generic [ref=f19e1122]:
+        - generic [ref=f19e1124]:
+          - img "메시지" [ref=f19e1125]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f19e1128]: "1"
+        - generic [ref=f19e1131]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f19e1134]:
+        - img "사용자 아바타" [ref=f19e1137]

@@ -1,0 +1,175 @@
+{
+  "contract_name": "edaily_fixture_contract",
+  "version": "1.0",
+  "recon_date": "2026-07-15",
+  "source": {
+    "publisher": "이데일리",
+    "publisher_code": "edaily",
+    "base_url": "https://www.edaily.co.kr",
+    "media_code_no": "257",
+    "timezone": "Asia/Seoul",
+    "robots": {
+      "generic_agents_allowed": true,
+      "disallowed_paths": ["/_template/popup/t_popup_click.asp"],
+      "named_bots_fully_blocked": true
+    },
+    "blockers": {
+      "captcha": false,
+      "login_required": false,
+      "bot_challenge": false
+    }
+  },
+  "endpoints": {
+    "latest_sitemap": {
+      "url": "https://www.edaily.co.kr/sitemap/latest-article.xml",
+      "method": "GET",
+      "format": "xml_google_news_sitemap",
+      "role": "primary_latest_feed"
+    },
+    "realtime_html": {
+      "url": "https://www.edaily.co.kr/News/RealTimeNews?tab={tab}&page={page}",
+      "method": "GET",
+      "format": "server_rendered_html",
+      "tabs": { "0": "전체뉴스", "1": "연예·스포츠", "3": "시황·특징주", "4": "종목뉴스", "5": "포토" },
+      "role": "latest_feed_fallback_and_trending"
+    },
+    "category_morelist_json": {
+      "url": "https://www.edaily.co.kr/article/MoreList?categoryCode={categoryCode}&page={page}&pagesize={pagesize}&date=",
+      "method": "GET",
+      "format": "json_array",
+      "known_category_codes": { "16100": "증권뉴스 (증권 > 증권뉴스)" },
+      "category_code_discovery": "inline fetch() script on /article/{slug} pages",
+      "role": "primary_category_feed"
+    },
+    "category_html": {
+      "url": "https://www.edaily.co.kr/article/{slug}",
+      "method": "GET",
+      "format": "server_rendered_html",
+      "known_slugs": ["economy", "stock", "estate", "global", "politics", "society"],
+      "role": "category_feed_fallback"
+    },
+    "article_detail": {
+      "url": "https://www.edaily.co.kr/News/Read?newsId={news_id}&mediaCodeNo=257",
+      "method": "GET",
+      "role": "canonical_article_url"
+    }
+  },
+  "selectors": {
+    "realtime_latest": {
+      "item": "div.news_list dl",
+      "time_hhmm": "dt",
+      "title": "dd a span",
+      "news_id_regex": "View\\('(\\d{17})',\\s*'(\\w)'\\)",
+      "date_header": "div.news_list div.date",
+      "pagination": "div.paging a"
+    },
+    "trending": {
+      "container": "section#taparea_a",
+      "item": "a",
+      "url": "a[href]",
+      "title": "dd p span",
+      "thumbnail": "dt img[src]",
+      "rank": "1-based DOM order (no explicit rank number on site)"
+    },
+    "category_html": {
+      "item": "div#newsList div.newsbox_04",
+      "url": "> a[href]",
+      "title": "ul.newsbox_texts li:nth-of-type(1)",
+      "summary": "ul.newsbox_texts li:nth-of-type(2)",
+      "thumbnail": "span.newsbox_visual img[src]",
+      "subcategory": "div.author_category span.categories",
+      "datetime_text": "div.author_category text node, format YY.MM.DD HH:MM (KST)",
+      "reporter": "div.author_category span.author"
+    },
+    "morelist_json_keys": {
+      "news_id": "NEWS_ID",
+      "title": "HEADLINE_HTML_DEL",
+      "summary": "BODY_SHORT",
+      "category_l1": "Category1CodeName",
+      "category_l2": "Category2CodeName",
+      "category_l3": "Category3CodeName",
+      "reporter_name": "Journalist",
+      "reporter_id": "JID",
+      "published_at_local": "ConfirmDateFormat01",
+      "thumbnail": "IMG_B",
+      "total_count": "TotalCnt",
+      "avoid": ["ConfirmDate (US-format, shifted time)", "BODY_HTML (heavy raw html)", "READ_CNT (always 0)"]
+    },
+    "sitemap_fields": {
+      "url": "loc",
+      "title": "news:title",
+      "published_at_iso": "news:publication_date",
+      "publisher": "news:publication/news:name",
+      "image": "image:loc"
+    }
+  },
+  "normalized_item_schema": {
+    "description": "Canonical shape every Edaily fixture item and future collector output must satisfy.",
+    "required_fields": {
+      "source": "const 'edaily'",
+      "news_id": "string, 17 digits",
+      "url": "string, https://www.edaily.co.kr/News/Read?newsId={news_id}&mediaCodeNo=257",
+      "title": "string, HTML-entities unescaped, non-empty",
+      "published_at": "string, ISO-8601 with +09:00 offset (from sitemap) or 'YYYY-MM-DDTHH:MM:00+09:00' reconstructed from list timestamps",
+      "collected_at": "string, ISO-8601",
+      "list_type": "enum: latest | trending | category"
+    },
+    "optional_fields": {
+      "summary": "string | null",
+      "category_path": "array of strings, e.g. ['증권','증권뉴스','종목']",
+      "category_slug": "string | null, e.g. 'stock'",
+      "rank": "integer >= 1, only for list_type=trending (DOM order)",
+      "reporter": "string | null (public byline only)",
+      "reporter_id": "string | null (jid)",
+      "thumbnail_url": "string | null",
+      "publisher": "const '이데일리'"
+    }
+  },
+  "sanitization_rules": [
+    "Fixture news_id values must be syntactically valid (17 digits) but fake: prefix '99'.",
+    "Article body text is never stored in fixtures; only title and truncated summary (<=120 chars).",
+    "Titles/summaries in fixtures may be replaced with placeholder Korean text of similar length.",
+    "No personal data beyond public byline name and public jid.",
+    "Never include BODY_HTML, tracking parameters, or cookies in fixtures.",
+    "Fixtures are static snapshots; no live network calls in tests."
+  ],
+  "sample_fixture_items": [
+    {
+      "source": "edaily",
+      "news_id": "99000000000000001",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=99000000000000001&mediaCodeNo=257",
+      "title": "샘플 기사 제목입니다 (실시간 뉴스 픽스처)",
+      "published_at": "2026-07-15T10:17:00+09:00",
+      "collected_at": "2026-07-15T10:20:00+09:00",
+      "list_type": "latest",
+      "publisher": "이데일리"
+    },
+    {
+      "source": "edaily",
+      "news_id": "99000000000000002",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=99000000000000002&mediaCodeNo=257",
+      "title": "샘플 급상승 뉴스 제목입니다",
+      "published_at": "2026-07-15T09:31:00+09:00",
+      "collected_at": "2026-07-15T10:20:00+09:00",
+      "list_type": "trending",
+      "rank": 1,
+      "thumbnail_url": "https://image.edaily.co.kr/images/content/defaultimg.jpg",
+      "publisher": "이데일리"
+    },
+    {
+      "source": "edaily",
+      "news_id": "99000000000000003",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=99000000000000003&mediaCodeNo=257",
+      "title": "샘플 카테고리 기사 제목입니다",
+      "summary": "샘플 요약문입니다. 카테고리 리스트 픽스처의 요약 필드 예시입니다...",
+      "published_at": "2026-07-15T09:31:00+09:00",
+      "collected_at": "2026-07-15T10:20:00+09:00",
+      "list_type": "category",
+      "category_path": ["증권", "증권뉴스", "종목"],
+      "category_slug": "stock",
+      "reporter": "홍길동 기자",
+      "reporter_id": "sample",
+      "publisher": "이데일리"
+    }
+  ]
+}

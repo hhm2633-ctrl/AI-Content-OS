@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-35afa2222679",
+  "candidate_id": "20260717-2003-B-35afa2222679",
+  "grade": "3",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "르세라핌은 어쩌다 이렇게 된걸까",
+  "source_urls": [
+    "https://pann.nate.com/talk/375520876"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,9 @@
+{
+  "classification": "technical_fixture_not_publish_approved",
+  "generator": "Pillow Image.new",
+  "width": 64,
+  "height": 64,
+  "mode": "RGB",
+  "color": [34, 78, 120],
+  "output_name": "first_party_technical_fixture.png"
+}

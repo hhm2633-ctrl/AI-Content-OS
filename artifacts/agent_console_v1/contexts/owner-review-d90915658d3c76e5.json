@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-e8e6bdbd9c8f",
+  "candidate_id": "20260717-2003-A-e8e6bdbd9c8f",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "\"제헌절이 살렸다\" 공포 속 개미, \"갖고 있으라\" 최태원에 \"믿는다\"",
+  "source_urls": [
+    "https://www.edaily.co.kr/News/Read?newsId=02843766645515504&mediaCodeNo=257"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

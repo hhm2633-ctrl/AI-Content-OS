@@ -1,0 +1,10 @@
+
+> ai-content-os-site@1.0.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+✓ Ready in 1510ms
+
+ GET /api/owner-review 200 in 4.2s (next.js: 1215ms, application-code: 3.0s)

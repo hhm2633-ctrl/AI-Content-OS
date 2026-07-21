@@ -1,0 +1,222 @@
+- generic [ref=f15e4]:
+  - generic [ref=f15e9]:
+    - generic [ref=f15e12]:
+      - link [ref=f15e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f15e22]
+      - generic [ref=f15e25]:
+        - link [ref=f15e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f15e35]
+        - link [ref=f15e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f15e45]
+        - link [ref=f15e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f15e55]:
+            - img "메시지" [ref=f15e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f15e60]: "1"
+        - link [ref=f15e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f15e71]
+        - link [ref=f15e78] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f15e83]
+        - link [ref=f15e89] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f15e94]
+        - link [ref=f15e100] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f15e105]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f15e106]
+      - generic [ref=f15e107]:
+        - link [ref=f15e110] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f15e115]
+        - link [ref=f15e118] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f15e123]
+    - generic [ref=f15e126]:
+      - main [ref=f15e127]:
+        - generic [ref=f15e130]:
+          - generic [ref=f15e135]:
+            - list [ref=f15e137]:
+              - listitem [ref=f15e138]
+              - listitem [ref=f15e139]:
+                - button "dayou_ng님의 스토리, 확인하지 않음" [ref=f15e140] [cursor=pointer]:
+                  - link [ref=f15e145]:
+                    - img "dayou_ng님의 프로필 사진" [ref=f15e146]
+                  - generic [ref=f15e147]: dayou_ng
+              - listitem [ref=f15e150]:
+                - button "zzombie85님의 스토리, 확인하지 않음" [ref=f15e151] [cursor=pointer]:
+                  - link [ref=f15e156]:
+                    - img "zzombie85님의 프로필 사진" [ref=f15e157]
+                  - generic [ref=f15e158]: zzombie85
+              - listitem [ref=f15e161]:
+                - button "kakapal_님의 스토리, 확인하지 않음" [ref=f15e162] [cursor=pointer]:
+                  - link [ref=f15e167]:
+                    - img "kakapal_님의 프로필 사진" [ref=f15e168]
+                  - generic [ref=f15e169]: kakapal_
+              - listitem [ref=f15e172]:
+                - button "choo_1025님의 스토리, 확인하지 않음" [ref=f15e173] [cursor=pointer]:
+                  - link [ref=f15e178]:
+                    - img "choo_1025님의 프로필 사진" [ref=f15e179]
+                  - generic [ref=f15e180]: choo_1025
+              - listitem [ref=f15e183]:
+                - button "danny.__.daddy님의 스토리, 확인하지 않음" [ref=f15e184] [cursor=pointer]:
+                  - link [ref=f15e189]:
+                    - img "danny.__.daddy님의 프로필 사진" [ref=f15e190]
+                  - generic [ref=f15e191]: danny.__.daddy
+              - listitem [ref=f15e194]:
+                - button "mason_english_님의 스토리, 확인하지 않음" [ref=f15e195] [cursor=pointer]:
+                  - link [ref=f15e200]:
+                    - img "mason_english_님의 프로필 사진" [ref=f15e201]
+                  - generic [ref=f15e202]: mason_english_
+              - listitem [ref=f15e205]:
+                - button "hohokh님의 스토리, 확인하지 않음" [ref=f15e206] [cursor=pointer]:
+                  - link [ref=f15e211]:
+                    - img "hohokh님의 프로필 사진" [ref=f15e212]
+                  - generic [ref=f15e213]: hohokh
+              - listitem [ref=f15e216]:
+                - button "jsk69님의 스토리, 확인하지 않음" [ref=f15e217] [cursor=pointer]:
+                  - link [ref=f15e222]:
+                    - img "jsk69님의 프로필 사진" [ref=f15e223]
+                  - generic [ref=f15e224]: jsk69
+              - listitem [ref=f15e227]:
+                - button "hwangji104님의 스토리, 확인하지 않음" [ref=f15e228] [cursor=pointer]:
+                  - link [ref=f15e233]:
+                    - img "hwangji104님의 프로필 사진" [ref=f15e234]
+                  - generic [ref=f15e235]: hwangji104
+              - listitem [ref=f15e238]:
+                - button "chanbob96님의 스토리, 확인하지 않음" [ref=f15e239] [cursor=pointer]:
+                  - link [ref=f15e244]:
+                    - img "chanbob96님의 프로필 사진" [ref=f15e245]
+                  - generic [ref=f15e246]: chanbob96
+              - listitem [ref=f15e249]:
+                - button "gamhaal님의 스토리, 확인하지 않음" [ref=f15e250] [cursor=pointer]:
+                  - link [ref=f15e255]:
+                    - img "gamhaal님의 프로필 사진" [ref=f15e256]
+                  - generic [ref=f15e257]: gamhaal
+              - listitem [ref=f15e260]:
+                - button "saintluis_7님의 스토리, 확인하지 않음" [ref=f15e261] [cursor=pointer]:
+                  - link [ref=f15e266]:
+                    - img "saintluis_7님의 프로필 사진" [ref=f15e267]
+                  - generic [ref=f15e268]: saintluis_7
+            - button "다음" [ref=f15e271] [cursor=pointer]
+          - generic [ref=f15e274]:
+            - generic [ref=f15e276]:
+              - generic [ref=f15e278]:
+                - status "읽어들이는 중..." [ref=f15e279]
+                - generic [ref=f15e280]:
+                  - status "읽어들이는 중..." [ref=f15e281]
+                  - status "읽어들이는 중..." [ref=f15e282]
+              - status "읽어들이는 중..." [ref=f15e283]
+            - generic [ref=f15e285]:
+              - generic [ref=f15e287]:
+                - status "읽어들이는 중..." [ref=f15e288]
+                - generic [ref=f15e289]:
+                  - status "읽어들이는 중..." [ref=f15e290]
+                  - status "읽어들이는 중..." [ref=f15e291]
+              - status "읽어들이는 중..." [ref=f15e292]
+      - contentinfo [ref=f15e293]:
+        - generic [ref=f15e294]:
+          - generic [ref=f15e296]:
+            - link "Meta" [ref=f15e298] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f15e301] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f15e304] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f15e307] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f15e310] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f15e313] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f15e316] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f15e319] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f15e322] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f15e325] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f15e328] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f15e331] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f15e334] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f15e337] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f15e340] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f15e342]:
+            - generic [ref=f15e343] [cursor=pointer]:
+              - generic [ref=f15e344]:
+                - generic [ref=f15e345]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f15e348]
+              - combobox "표시 언어 변경" [ref=f15e350]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f15e351]: © 2026 Instagram from Meta
+  - button [ref=f15e354] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f15e355]:
+      - generic [ref=f15e356]:
+        - generic [ref=f15e358]:
+          - img "메시지" [ref=f15e359]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f15e362]: "1"
+        - generic [ref=f15e365]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f15e368]:
+        - img "사용자 아바타" [ref=f15e371]

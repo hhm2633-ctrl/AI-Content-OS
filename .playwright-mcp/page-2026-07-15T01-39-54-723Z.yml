@@ -1,0 +1,284 @@
+- generic [ref=f24e2]:
+  - generic [ref=f24e5]:
+    - link [ref=f24e7] [cursor=pointer]:
+      - /url: https://www.mk.co.kr/news/pick
+    - list [ref=f24e10]:
+      - listitem [ref=f24e11]:
+        - link "산업Q&A" [ref=f24e12] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/qa
+      - listitem [ref=f24e13]:
+        - link "제품·기술" [ref=f24e14] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/solution
+      - listitem [ref=f24e15]:
+        - link "성공사례" [ref=f24e16] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/casestudy
+      - listitem [ref=f24e17]:
+        - link "기업뉴스" [ref=f24e18] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/corporate
+      - listitem [ref=f24e19]:
+        - link "브랜드 스토리" [ref=f24e20] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/brand
+    - list [ref=f24e23]:
+      - listitem [ref=f24e24]:
+        - button [ref=f24e25] [cursor=pointer]
+      - listitem [ref=f24e26]:
+        - button [ref=f24e27] [cursor=pointer]
+      - listitem [ref=f24e28]:
+        - link [ref=f24e29] [cursor=pointer]:
+          - /url: https://www.mk.co.kr
+  - generic [ref=f24e30]:
+    - generic [ref=f24e33]:
+      - generic [ref=f24e34]:
+        - group "1 / 5" [ref=f24e35]:
+          - link [ref=f24e37] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12097951
+            - img "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!" [ref=f24e40]
+            - generic [ref=f24e41]:
+              - heading "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!" [level=3] [ref=f24e42]
+              - paragraph [ref=f24e43]: 첫 브랜드 모델로 배우 윤경호 발탁, 신규 캠페인 전격 공개 15일부터 유튜브·인스타그램 및 주요 OTT·디지털 채널서 필름 론칭윤경호 첫 브랜드 모델 발탁과 캠페인 공개 일정 앳홈(대표 양정호)이 전개하는 가전 브랜드 ‘(Minix)’가 배우 윤경호를 첫 브랜드 모델로 발탁하고 신규 브랜드 캠페인 ‘나는 안 해, 미닉스가 해’를 공개한다. 윤경호는 유튜브
+        - group "2 / 5":
+          - generic:
+            - link "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시 “시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시 한정 판매 수량 및 판매 기간 해태제과가 국민 초코케이크 오예스에 보라색 참마 우베를 입힌 ‘오예스 우베라떼’를 출시한다. 3달 동안 30만 케이스만 한정 판매하는 스페셜 에디션이다. 디저트 카페에서 맛보던 우베라떼의 매력을 오예스만의 촉촉한 식감으로 재현한 프리미엄 우베라떼 케이크다. 수분 함량 및 원료 구성 오예스는 국내 과자 중 최고 수준의 수분 함량":
+              - /url: https://www.mk.co.kr/news/pick/12097081
+              - generic:
+                - generic:
+                  - img "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시"
+              - generic:
+                - heading "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시" [level=3]
+                - paragraph: 한정 판매 수량 및 판매 기간 해태제과가 국민 초코케이크 오예스에 보라색 참마 우베를 입힌 ‘오예스 우베라떼’를 출시한다. 3달 동안 30만 케이스만 한정 판매하는 스페셜 에디션이다. 디저트 카페에서 맛보던 우베라떼의 매력을 오예스만의 촉촉한 식감으로 재현한 프리미엄 우베라떼 케이크다. 수분 함량 및 원료 구성 오예스는 국내 과자 중 최고 수준의 수분 함량
+        - group "3 / 5":
+          - generic:
+            - link "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법 손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법 ‘유니세프 행동’ 캠페인의 목적 유니세프 한국위원회가 배우 손석구와 함께 분쟁 지역 어린이 지원을 위한 신규 후원 캠페인 ‘유니세프 행동’을 전개한다. 캠페인은 분쟁과 굶주림, 질병으로 어려움을 겪는 어린이를 지원하고, 일상 속 작은 행동과 후원이 어린이의 삶을 변화시킬 수 있다는 점을 알리는 데 목적이 있다. 분쟁 지역 어린이의 상황을 알리는 동시에 후원":
+              - /url: https://www.mk.co.kr/news/pick/12092058
+              - generic:
+                - generic:
+                  - img "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법"
+              - generic:
+                - heading "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법" [level=3]
+                - paragraph: ‘유니세프 행동’ 캠페인의 목적 유니세프 한국위원회가 배우 손석구와 함께 분쟁 지역 어린이 지원을 위한 신규 후원 캠페인 ‘유니세프 행동’을 전개한다. 캠페인은 분쟁과 굶주림, 질병으로 어려움을 겪는 어린이를 지원하고, 일상 속 작은 행동과 후원이 어린이의 삶을 변화시킬 수 있다는 점을 알리는 데 목적이 있다. 분쟁 지역 어린이의 상황을 알리는 동시에 후원
+        - group "4 / 5":
+          - generic:
+            - link "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지 매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지 공모전 접수 기간과 수상자 규모 매일유업(대표 김선희, 이인기)이 ‘제2회 대학생 AI 영상 공모전’을 개최한다. 제작 영상 접수는 8월 17일까지 진행되며 수상자 8명을 선정해 총상금 1200만원을 지급한다. 수상자에게는 대외활동 크루 참여 기회도 함께 제공된다. 최종 당선작은 8월 31일 발표될 예정이다. 응모 주제와 제품 부문 이번 공모전의 응모 주제":
+              - /url: https://www.mk.co.kr/news/pick/12098382
+              - generic:
+                - generic:
+                  - img "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지"
+              - generic:
+                - heading "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지" [level=3]
+                - paragraph: 공모전 접수 기간과 수상자 규모 매일유업(대표 김선희, 이인기)이 ‘제2회 대학생 AI 영상 공모전’을 개최한다. 제작 영상 접수는 8월 17일까지 진행되며 수상자 8명을 선정해 총상금 1200만원을 지급한다. 수상자에게는 대외활동 크루 참여 기회도 함께 제공된다. 최종 당선작은 8월 31일 발표될 예정이다. 응모 주제와 제품 부문 이번 공모전의 응모 주제
+        - group "5 / 5":
+          - generic:
+            - link "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시 “제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시 삵 캐릭터 콘텐츠에 쏟아진 제품화 요청 유한킴벌리의 숲환경 공익 캠페인 ‘우리강산 푸르게 푸르게’에서 공개된 삵 캐릭터 콘텐츠 ‘삵냥이 송’에 시청자들의 호응이 이어졌다. 영상을 접한 시청자들은 댓글을 통해 삵 캐릭터를 크리넥스 제품으로 만나보고 싶다는 요청을 지속적으로 남겼다. 앞서 공개된 스텔라장과의 ‘삵냥이 송’ 콜라보 역시 “음색이 스텔라장과 닮았다":
+              - /url: https://www.mk.co.kr/news/pick/12096929
+              - generic:
+                - generic:
+                  - img "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시"
+              - generic:
+                - heading "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시" [level=3]
+                - paragraph: 삵 캐릭터 콘텐츠에 쏟아진 제품화 요청 유한킴벌리의 숲환경 공익 캠페인 ‘우리강산 푸르게 푸르게’에서 공개된 삵 캐릭터 콘텐츠 ‘삵냥이 송’에 시청자들의 호응이 이어졌다. 영상을 접한 시청자들은 댓글을 통해 삵 캐릭터를 크리넥스 제품으로 만나보고 싶다는 요청을 지속적으로 남겼다. 앞서 공개된 스텔라장과의 ‘삵냥이 송’ 콜라보 역시 “음색이 스텔라장과 닮았다
+      - generic [ref=f24e44]:
+        - generic [ref=f24e45]:
+          - button "Go to slide 1" [ref=f24e46] [cursor=pointer]
+          - button "Go to slide 2" [ref=f24e47] [cursor=pointer]
+          - button "Go to slide 3" [ref=f24e48] [cursor=pointer]
+          - button "Go to slide 4" [ref=f24e49] [cursor=pointer]
+          - button "Go to slide 5" [ref=f24e50] [cursor=pointer]
+        - button [ref=f24e51] [cursor=pointer]
+    - generic [ref=f24e53]:
+      - generic [ref=f24e54]:
+        - heading [level=2] [ref=f24e55]:
+          - link "최신 뉴스" [ref=f24e56] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/all
+        - paragraph [ref=f24e58]: 지금 읽어야 할 최신 비즈니스 뉴스
+      - list [ref=f24e60]:
+        - listitem [ref=f24e61]:
+          - link "성공사례 링탭 ‘글루타치온 패치’ 출시 1주년, 누적 18만 세트 판매 돌파 링탭 ‘글루타치온 패치’ 출시 1주년, 누적 18만 세트 판매 돌파 2026.07.15" [ref=f24e62] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12098931
+            - generic [ref=f24e63]:
+              - generic [ref=f24e64]: 성공사례
+              - img "링탭 ‘글루타치온 패치’ 출시 1주년, 누적 18만 세트 판매 돌파" [ref=f24e66]
+            - heading "링탭 ‘글루타치온 패치’ 출시 1주년, 누적 18만 세트 판매 돌파" [level=3] [ref=f24e68]
+            - generic [ref=f24e69]: 2026.07.15
+        - listitem [ref=f24e71]:
+          - link "기업뉴스 매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지 매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지 2026.07.14" [ref=f24e72] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12098382
+            - generic [ref=f24e73]:
+              - generic [ref=f24e74]: 기업뉴스
+              - img "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지" [ref=f24e76]
+            - heading "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지" [level=3] [ref=f24e78]
+            - generic [ref=f24e79]: 2026.07.14
+        - listitem [ref=f24e81]:
+          - link "산업Q&A “직원이 아바타로?”…하나투어 ‘하나LIVE’, 버추얼 기술 접목한 신개념 라이브 커머스 론칭 “직원이 아바타로?”…하나투어 ‘하나LIVE’, 버추얼 기술 접목한 신개념 라이브 커머스 론칭 2026.07.14" [ref=f24e82] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12098287
+            - generic [ref=f24e83]:
+              - generic [ref=f24e84]: 산업Q&A
+              - img "“직원이 아바타로?”…하나투어 ‘하나LIVE’, 버추얼 기술 접목한 신개념 라이브 커머스 론칭" [ref=f24e86]
+            - heading "“직원이 아바타로?”…하나투어 ‘하나LIVE’, 버추얼 기술 접목한 신개념 라이브 커머스 론칭" [level=3] [ref=f24e88]
+            - generic [ref=f24e89]: 2026.07.14
+        - listitem [ref=f24e91]:
+          - link "기업뉴스 “나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝! “나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝! 2026.07.14" [ref=f24e92] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12097951
+            - generic [ref=f24e93]:
+              - generic [ref=f24e94]: 기업뉴스
+              - img "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!" [ref=f24e96]
+            - heading "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!" [level=3] [ref=f24e98]
+            - generic [ref=f24e99]: 2026.07.14
+        - listitem [ref=f24e101]:
+          - link "제품·기술 “시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시 “시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시 2026.07.13" [ref=f24e102] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12097081
+            - generic [ref=f24e103]:
+              - generic [ref=f24e104]: 제품·기술
+              - img "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시" [ref=f24e106]
+            - heading "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시" [level=3] [ref=f24e108]
+            - generic [ref=f24e109]: 2026.07.13
+        - listitem [ref=f24e111]:
+          - link "성공사례 “제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시 “제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시 2026.07.13" [ref=f24e112] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12096929
+            - generic [ref=f24e113]:
+              - generic [ref=f24e114]: 성공사례
+              - img "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시" [ref=f24e116]
+            - heading "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시" [level=3] [ref=f24e118]
+            - generic [ref=f24e119]: 2026.07.13
+    - generic [ref=f24e122]:
+      - generic [ref=f24e123]:
+        - heading [level=2] [ref=f24e124]:
+          - link "브랜드 스토리" [ref=f24e125] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/brand
+        - paragraph [ref=f24e127]: 가장 빠르고 정확한 기업 공식 오피셜 투데이
+      - list [ref=f24e129]:
+        - listitem [ref=f24e130]:
+          - link "한식은 어떻게 진화했을까? ‘맛의 길, 지역을 잇다’ 전시로 보는 한국의 맛 한식은 어떻게 진화했을까? ‘맛의 길, 지역을 잇다’ 전시로 보는 한국의 맛 2026.07.13" [ref=f24e131] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12096792
+            - img "한식은 어떻게 진화했을까? ‘맛의 길, 지역을 잇다’ 전시로 보는 한국의 맛" [ref=f24e134]
+            - heading "한식은 어떻게 진화했을까? ‘맛의 길, 지역을 잇다’ 전시로 보는 한국의 맛" [level=3] [ref=f24e136]
+            - generic [ref=f24e137]: 2026.07.13
+        - listitem [ref=f24e139]:
+          - link "“오늘 뭐 하지?” 주말 놀거리부터 전국 숨은 명소까지 추천…NOL, AI 큐레이션 ‘발견’ 서비스 공개 “오늘 뭐 하지?” 주말 놀거리부터 전국 숨은 명소까지 추천…NOL, AI 큐레이션 ‘발견’ 서비스 공개 2026.07.10" [ref=f24e140] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12095462
+            - img "“오늘 뭐 하지?” 주말 놀거리부터 전국 숨은 명소까지 추천…NOL, AI 큐레이션 ‘발견’ 서비스 공개" [ref=f24e143]
+            - heading "“오늘 뭐 하지?” 주말 놀거리부터 전국 숨은 명소까지 추천…NOL, AI 큐레이션 ‘발견’ 서비스 공개" [level=3] [ref=f24e145]
+            - generic [ref=f24e146]: 2026.07.10
+        - listitem [ref=f24e148]:
+          - link "토니모리 20주년 팝업스토어 ‘언커먼 팩토리’ 성수 오픈…키츠샵 협업 에디션 선론칭 토니모리 20주년 팝업스토어 ‘언커먼 팩토리’ 성수 오픈…키츠샵 협업 에디션 선론칭 2026.07.09" [ref=f24e149] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/12094181
+            - img "토니모리 20주년 팝업스토어 ‘언커먼 팩토리’ 성수 오픈…키츠샵 협업 에디션 선론칭" [ref=f24e152]
+            - heading "토니모리 20주년 팝업스토어 ‘언커먼 팩토리’ 성수 오픈…키츠샵 협업 에디션 선론칭" [level=3] [ref=f24e154]
+            - generic [ref=f24e155]: 2026.07.09
+    - generic [ref=f24e159]:
+      - generic [ref=f24e160]:
+        - heading [level=2] [ref=f24e162]:
+          - link "오리온 오리온" [ref=f24e163] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/brand/ORION
+            - img "오리온" [ref=f24e165]
+            - generic [ref=f24e166]: 오리온
+        - link "“고래밥 캐릭터가 살아 움직인다고?” 관객 참여형 가족 뮤지컬 ‘고래밥 바다 대운동회’ 출격 “고래밥 캐릭터가 살아 움직인다고?” 관객 참여형 가족 뮤지컬 ‘고래밥 바다 대운동회’ 출격 오리온, 인스타 소문내기 이벤트 및 전원 증정 ‘웰컴 과자’로 혜택도 통 크게 쏜다엄마, 아빠는 물론 아이까지 온 가족이 즐겨 먹는 국민 간식 ‘고래밥’이 이번 여름방학을 맞아 아주 색다른 모습으로 찾아옵니다. “우리가 먹던 과자가 갑자기 뮤지컬로 나온다고?”라며 깜짝 놀라실 분들이 많을 텐데요. 바닷속 캐릭터들이 과자 봉지를 뚫고 나와 무대 위에서 살아 2026.07.10" [ref=f24e168] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/12095331
+          - img "“고래밥 캐릭터가 살아 움직인다고?” 관객 참여형 가족 뮤지컬 ‘고래밥 바다 대운동회’ 출격" [ref=f24e171]
+          - heading "“고래밥 캐릭터가 살아 움직인다고?” 관객 참여형 가족 뮤지컬 ‘고래밥 바다 대운동회’ 출격" [level=3] [ref=f24e173]
+          - paragraph [ref=f24e175]: 오리온, 인스타 소문내기 이벤트 및 전원 증정 ‘웰컴 과자’로 혜택도 통 크게 쏜다엄마, 아빠는 물론 아이까지 온 가족이 즐겨 먹는 국민 간식 ‘고래밥’이 이번 여름방학을 맞아 아주 색다른 모습으로 찾아옵니다. “우리가 먹던 과자가 갑자기 뮤지컬로 나온다고?”라며 깜짝 놀라실 분들이 많을 텐데요. 바닷속 캐릭터들이 과자 봉지를 뚫고 나와 무대 위에서 살아
+          - generic [ref=f24e176]: 2026.07.10
+        - list [ref=f24e178]:
+          - listitem [ref=f24e179]:
+            - link [ref=f24e180] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12043250
+              - heading "“내 마음속에 저장, 이제 내 몸속에 저장!” 오리온, 배우 박지훈 모델 발탁" [level=3] [ref=f24e181]
+              - img "“내 마음속에 저장, 이제 내 몸속에 저장!” 오리온, 배우 박지훈 모델 발탁" [ref=f24e183]
+          - listitem [ref=f24e184]:
+            - link [ref=f24e185] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12028604
+              - heading "“오늘 기분은 ‘예감’ 좋아!”…MZ세대가 과자로 대화하는 법?" [level=3] [ref=f24e186]
+              - img "“오늘 기분은 ‘예감’ 좋아!”…MZ세대가 과자로 대화하는 법?" [ref=f24e188]
+      - generic [ref=f24e189]:
+        - heading [level=2] [ref=f24e191]:
+          - link "유니세프코리아 유니세프코리아" [ref=f24e192] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/brand/Unicef_Korea
+            - img "유니세프코리아" [ref=f24e194]
+            - generic [ref=f24e195]: 유니세프코리아
+        - link "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법 손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법 ‘유니세프 행동’ 캠페인의 목적 유니세프 한국위원회가 배우 손석구와 함께 분쟁 지역 어린이 지원을 위한 신규 후원 캠페인 ‘유니세프 행동’을 전개한다. 캠페인은 분쟁과 굶주림, 질병으로 어려움을 겪는 어린이를 지원하고, 일상 속 작은 행동과 후원이 어린이의 삶을 변화시킬 수 있다는 점을 알리는 데 목적이 있다. 분쟁 지역 어린이의 상황을 알리는 동시에 후원 2026.07.07" [ref=f24e197] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/12092058
+          - img "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법" [ref=f24e200]
+          - heading "손석구 유니세프 팀 팔찌, ‘유니세프 행동’ 정기후원 캠페인 참여 방법" [level=3] [ref=f24e202]
+          - paragraph [ref=f24e204]: ‘유니세프 행동’ 캠페인의 목적 유니세프 한국위원회가 배우 손석구와 함께 분쟁 지역 어린이 지원을 위한 신규 후원 캠페인 ‘유니세프 행동’을 전개한다. 캠페인은 분쟁과 굶주림, 질병으로 어려움을 겪는 어린이를 지원하고, 일상 속 작은 행동과 후원이 어린이의 삶을 변화시킬 수 있다는 점을 알리는 데 목적이 있다. 분쟁 지역 어린이의 상황을 알리는 동시에 후원
+          - generic [ref=f24e205]: 2026.07.07
+        - list [ref=f24e207]:
+          - listitem [ref=f24e208]:
+            - link [ref=f24e209] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12079979
+              - heading "‘유니세프 엑설런스’ 캠페인 도입…탑스타 9인과 함께 어린이 꿈을 지원하는 방법" [level=3] [ref=f24e210]
+              - img "‘유니세프 엑설런스’ 캠페인 도입…탑스타 9인과 함께 어린이 꿈을 지원하는 방법" [ref=f24e212]
+          - listitem [ref=f24e213]:
+            - link [ref=f24e214] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12066776
+              - heading "유니세프-투모로우바이투게더, 청소년 마음건강 유튜브 ‘비밀상담소’ 오픈" [level=3] [ref=f24e215]
+              - img "유니세프-투모로우바이투게더, 청소년 마음건강 유튜브 ‘비밀상담소’ 오픈" [ref=f24e217]
+      - generic [ref=f24e218]:
+        - heading [level=2] [ref=f24e220]:
+          - link "농심 농심" [ref=f24e221] [cursor=pointer]:
+            - /url: https://www.mk.co.kr/news/pick/brand/Nongshim
+            - img "농심" [ref=f24e223]
+            - generic [ref=f24e224]: 농심
+        - link "농심×서울시, ‘인생이 맛있어지는 결혼식’ 주인공을 찾습니다 농심×서울시, ‘인생이 맛있어지는 결혼식’ 주인공을 찾습니다 최종 선정 13쌍에 결혼식 지원금, 포토부스 등 500만원 상당 패키지 지원취업은 늦어지고 물가는 하늘 높은 줄 모르고 치솟는 요즘, 결혼식 비용 부담 때문에 인생의 새 출발을 주저하는 미혼 남녀들이 많습니다. ‘스드메(스튜디오·드레스·메이크업)’라는 신조어가 로망이 아닌 큰 경제적 짐으로 다가오는 것이 2026년 현재의 안타까운 현실입니다. 이에 서울시는 2026.07.07" [ref=f24e226] [cursor=pointer]:
+          - /url: https://www.mk.co.kr/news/pick/12092084
+          - img "농심×서울시, ‘인생이 맛있어지는 결혼식’ 주인공을 찾습니다" [ref=f24e229]
+          - heading "농심×서울시, ‘인생이 맛있어지는 결혼식’ 주인공을 찾습니다" [level=3] [ref=f24e231]
+          - paragraph [ref=f24e233]: 최종 선정 13쌍에 결혼식 지원금, 포토부스 등 500만원 상당 패키지 지원취업은 늦어지고 물가는 하늘 높은 줄 모르고 치솟는 요즘, 결혼식 비용 부담 때문에 인생의 새 출발을 주저하는 미혼 남녀들이 많습니다. ‘스드메(스튜디오·드레스·메이크업)’라는 신조어가 로망이 아닌 큰 경제적 짐으로 다가오는 것이 2026년 현재의 안타까운 현실입니다. 이에 서울시는
+          - generic [ref=f24e234]: 2026.07.07
+        - list [ref=f24e236]:
+          - listitem [ref=f24e237]:
+            - link [ref=f24e238] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12077188
+              - heading "농심, 멕시코 ‘캄포 마르테 26’ 축제서 신라면 홍보 부스 운영" [level=3] [ref=f24e239]
+              - img "농심, 멕시코 ‘캄포 마르테 26’ 축제서 신라면 홍보 부스 운영" [ref=f24e241]
+          - listitem [ref=f24e242]:
+            - link [ref=f24e243] [cursor=pointer]:
+              - /url: https://www.mk.co.kr/news/pick/12046067
+              - heading "농심 신라면 출시 40주년 누적 매출 20조원 달성" [level=3] [ref=f24e244]
+              - img "농심 신라면 출시 40주년 누적 매출 20조원 달성" [ref=f24e246]
+    - link [ref=f24e249] [cursor=pointer]:
+      - /url: https://bimg.mk.co.kr/2026/geo/assets/files/[매경] MK Pick_상품소개서_260527.pdf
+      - strong [ref=f24e251]: 우리 브랜드, 생성형 AI에 얼마나 노출되고 있을까? 지금 바로 기업 맞춤형 진단을 받아보세요.
+  - generic [ref=f24e253]:
+    - list [ref=f24e256]:
+      - listitem [ref=f24e257]:
+        - link [ref=f24e258] [cursor=pointer]:
+          - /url: //mk.co.kr
+          - strong [ref=f24e259]: 매경미디어
+      - listitem [ref=f24e260]:
+        - link "매일경제 About 페이지" [ref=f24e261] [cursor=pointer]:
+          - /url: //www.mk.co.kr/etc/company/intro/
+          - text: 회사소개
+      - listitem [ref=f24e262]:
+        - link "광고안내" [ref=f24e263] [cursor=pointer]:
+          - /url: //adcenter.mk.co.kr/
+      - listitem [ref=f24e264]:
+        - link "구독신청" [ref=f24e265] [cursor=pointer]:
+          - /url: //subscribe.mk.co.kr/index.php?TM=S&MM=1
+      - listitem [ref=f24e266]:
+        - link "인재채용" [ref=f24e267] [cursor=pointer]:
+          - /url: //recruit.mk.co.kr/pages/recruit.php
+      - listitem [ref=f24e268]:
+        - link "독자의견" [ref=f24e269] [cursor=pointer]:
+          - /url: //board.mk.co.kr/list.php?id=opinion
+      - listitem [ref=f24e270]:
+        - link "서비스문의" [ref=f24e271] [cursor=pointer]:
+          - /url: //www.mk.co.kr/mypage/service/
+      - listitem [ref=f24e272]:
+        - link [ref=f24e273] [cursor=pointer]:
+          - /url: //www.mk.co.kr/mypage/privacy/
+          - strong [ref=f24e274]: 개인정보처리방침
+      - listitem [ref=f24e275]:
+        - link "이용약관" [ref=f24e276] [cursor=pointer]:
+          - /url: //www.mk.co.kr/mypage/policy/
+      - listitem [ref=f24e277]:
+        - link "청소년보호정책(책임자:이선형,조현정)" [ref=f24e278] [cursor=pointer]:
+          - /url: //www.mk.co.kr/mypage/youthpolicy/
+    - generic [ref=f24e280]:
+      - link [ref=f24e282] [cursor=pointer]:
+        - /url: //mk.co.kr
+      - generic [ref=f24e283]:
+        - list [ref=f24e284]:
+          - listitem [ref=f24e285]: 서울특별시 중구 퇴계로 190, 8층
+          - listitem [ref=f24e286]: "대표자 : 김명수"
+          - listitem [ref=f24e287]: "사업자등록번호 : 395-86-00315"
+          - listitem [ref=f24e288]: 팩스 02-2000-5425
+        - paragraph [ref=f24e290]: Copyright (c) 매경비즈. All rights reserved.

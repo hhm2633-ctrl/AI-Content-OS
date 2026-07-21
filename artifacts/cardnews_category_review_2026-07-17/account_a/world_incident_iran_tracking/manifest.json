@@ -1,0 +1,24 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "comments_used": false,
+  "generated_evidence_used": false,
+  "publisher_asset_rights": "unverified; internal review only",
+  "claim_boundary": "reported attempts and official threat disclosures are separated from unconfirmed attack causation",
+  "required_before_publish": [
+    "recheck official effective date and transition rules",
+    "license or replace publisher imagery",
+    "re-open every source",
+    "legal/editorial review for military and immigration claims"
+  ],
+  "sources": [
+    {
+      "publisher": "한국경제",
+      "url": "https://www.hankyung.com/article/202607160517i"
+    },
+    {
+      "publisher": "U.S. Senator Ron Wyden / congressional disclosure",
+      "url": "https://www.wyden.senate.gov/news/press-releases/foreign-adversaries-are-using-commercial-location-data-to-target-us-servicemembers-in-the-middle-east-wyden-harrigan-and-12-other-bipartisan-members-of-congress-reveal-members-call-on-department-to-adopt-commonsense-safeguards-to-protect-us-troops"
+    }
+  ]
+}

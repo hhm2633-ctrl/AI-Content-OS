@@ -1,0 +1,184 @@
+- total: N/A
+- pass: N/A
+- fail: 0
+- error: 0
+- duration: 95.802
+- timeout: false
+- timed_out_at_sec: N/A
+- last_running_test: N/A
+- compile: 
+    exit: 0
+    duration: 0.108
+    output: |
+      Listing 'modules/trend_collector'...
+      Listing 'modules/source_intake'...
+- exact_failures: |
+  ERROR: test_executor_uses_mk_pick_collector_when_manager_lacks_method (tests.test_mk_pick_collector.TestMkPickExecutorWiring.test_executor_uses_mk_pick_collector_when_manager_lacks_method)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_mk_pick_collector.py", line 133, in test_executor_uses_mk_pick_collector_when_manager_lacks_method
+      with mock.patch("modules.source_intake.daily_collection_executor.MkPickCollector", FakeMkPickCollector):
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1497, in __enter__
+      original, local = self.get_original()
+                        ~~~~~~~~~~~~~~~~~^^
+    File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1467, in get_original
+      raise AttributeError(
+          "%s does not have the attribute %r" % (target, name)
+      )
+  AttributeError: <module 'modules.source_intake.daily_collection_executor' from 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\modules\\source_intake\\daily_collection_executor.py'> does not have the attribute 'MkPickCollector'
+  
+  ======================================================================
+  FAIL: test_executor_uses_edaily_collector_when_manager_lacks_method (tests.test_edaily_collector.TestEdailyExecutorWiring.test_executor_uses_edaily_collector_when_manager_lacks_method)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_edaily_collector.py", line 218, in test_executor_uses_edaily_collector_when_manager_lacks_method
+      self.assertEqual(len(called), 1)
+      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  AssertionError: 0 != 1
+  
+  ======================================================================
+  FAIL: test_executor_calls_theqoo_collector_when_manager_is_generic_manager (tests.test_theqoo_collector.TestTheQooExecutorWiring.test_executor_calls_theqoo_collector_when_manager_is_generic_manager)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_theqoo_collector.py", line 207, in test_executor_calls_theqoo_collector_when_manager_is_generic_manager
+      self.assertTrue(called)
+      ~~~~~~~~~~~~~~~^^^^^^^^
+  AssertionError: [] is not true
+  
+  ----------------------------------------------------------------------
+- combined_output: |
+  MoneyToday Collect Failed: sitemap / final_error_type=network_error
+  MoneyToday Collect Failed: homepage_ranking / final_error_type=network_error
+  MoneyToday Collect Failed: breakingnews / final_error_type=network_error
+  MoneyToday Collect Started
+  MoneyToday Collect Finished
+  Naver News Collect Started
+  Naver News Collect Failed: AI automation / final_error_type=connection_refused
+  Naver News Collect Failed: content automation / final_error_type=connection_refused
+  Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+  Naver News Collect Failed: smart store / final_error_type=connection_refused
+  Trend Collector Retry Scheduled: retry_count=1, final_error_type=connection_refused, delay_seconds=0.5
+  Naver News Collect Failed: AI automation / final_error_type=connection_refused
+  Naver News Collect Failed: content automation / final_error_type=connection_refused
+  Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+  Naver News Collect Failed: smart store / final_error_type=connection_refused
+  Trend Collector Retry Scheduled: retry_count=2, final_error_type=connection_refused, delay_seconds=1.0
+  Naver News Collect Failed: AI automation / final_error_type=connection_refused
+  Naver News Collect Failed: content automation / final_error_type=connection_refused
+  Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+  Naver News Collect Failed: smart store / final_error_type=connection_refused
+  Naver News Settings Keyword Fallback Used
+  Naver News Collect Finished
+  MoneyToday Collect Started
+  MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+  MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+  MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+  Trend Collector Retry Scheduled: retry_count=1, final_error_type=connection_refused, delay_seconds=0.5
+  MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+  MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+  MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+  Trend Collector Retry Scheduled: retry_count=2, final_error_type=connection_refused, delay_seconds=1.0
+  MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+  MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+  MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+  MoneyToday Cache Fallback Used
+  MoneyToday Collect Finished
+  
+  test_collects_only_observed_fields_from_fixture (tests.test_daum_news_collector.TestDaumNewsCollector.test_collects_only_observed_fields_from_fixture) ... ok
+  test_network_error_does_not_crash_and_returns_diagnostic (tests.test_daum_news_collector.TestDaumNewsCollector.test_network_error_does_not_crash_and_returns_diagnostic) ... ok
+  test_rejects_redirected_category_page (tests.test_daum_news_collector.TestDaumNewsCollector.test_rejects_redirected_category_page) ... ok
+  test_rejects_stale_or_invalid_category_url_without_fetch (tests.test_daum_news_collector.TestDaumNewsCollector.test_rejects_stale_or_invalid_category_url_without_fetch) ... ok
+  test_cache_used_when_live_fails (tests.test_edaily_collector.TestEdailyCollector.test_cache_used_when_live_fails) ... ok
+  test_fallback_to_category_json_when_sitemap_has_no_valid_items (tests.test_edaily_collector.TestEdailyCollector.test_fallback_to_category_json_when_sitemap_has_no_valid_items) ... ok
+  test_prefers_sitemap_and_normalizes_fields (tests.test_edaily_collector.TestEdailyCollector.test_prefers_sitemap_and_normalizes_fields) ... ok
+  test_executor_uses_edaily_collector_when_manager_lacks_method (tests.test_edaily_collector.TestEdailyExecutorWiring.test_executor_uses_edaily_collector_when_manager_lacks_method) ... FAIL
+  test_cache_used_when_live_is_blocked (tests.test_hankyung_economy_collector.TestHankyungEconomyCollector.test_cache_used_when_live_is_blocked) ... ok
+  test_fallback_to_economy_and_all_news_and_does_not_fabricate_rank (tests.test_hankyung_economy_collector.TestHankyungEconomyCollector.test_fallback_to_economy_and_all_news_and_does_not_fabricate_rank) ... ok
+  test_prefers_sitemap_and_normalizes_fields (tests.test_hankyung_economy_collector.TestHankyungEconomyCollector.test_prefers_sitemap_and_normalizes_fields) ... ok
+  test_executor_uses_hankyung_economy_collector_when_manager_lacks_method (tests.test_hankyung_economy_collector.TestHankyungEconomyExecutorWiring.test_executor_uses_hankyung_economy_collector_when_manager_lacks_method) ... ok
+  test_cache_is_used_when_live_fetch_fails (tests.test_mk_pick_collector.TestMkPickCollector.test_cache_is_used_when_live_fetch_fails) ... ok
+  test_only_collects_authorized_pick_article_links (tests.test_mk_pick_collector.TestMkPickCollector.test_only_collects_authorized_pick_article_links) ... ok
+  test_executor_uses_mk_pick_collector_when_manager_lacks_method (tests.test_mk_pick_collector.TestMkPickExecutorWiring.test_executor_uses_mk_pick_collector_when_manager_lacks_method) ... ERROR
+  test_collect_from_sitemap_parses_fixture_contract_fields (tests.test_moneytoday_collector.TestMoneyTodayCollector.test_collect_from_sitemap_parses_fixture_contract_fields) ... ok
+  test_diagnostics_fail_closed_when_all_collection_methods_error (tests.test_moneytoday_collector.TestMoneyTodayCollector.test_diagnostics_fail_closed_when_all_collection_methods_error) ... ok
+  test_parse_rank_and_breakingnews_normalization (tests.test_moneytoday_collector.TestMoneyTodayCollector.test_parse_rank_and_breakingnews_normalization) ... ok
+  test_parsing_and_fallback_to_breakingnews_when_upstream_sources_empty (tests.test_moneytoday_collector.TestMoneyTodayCollector.test_parsing_and_fallback_to_breakingnews_when_upstream_sources_empty) ... ok
+  test_trend_source_manager_compatibility_no_live_network (tests.test_moneytoday_collector.TestMoneyTodayCollector.test_trend_source_manager_compatibility_no_live_network) ... ok
+  test_cache_used_when_live_fails (tests.test_nate_news_rank_collector.TestNateNewsRankCollector.test_cache_used_when_live_fails) ... ok
+  test_collects_comment_count_only_on_cmt (tests.test_nate_news_rank_collector.TestNateNewsRankCollector.test_collects_comment_count_only_on_cmt) ... ok
+  test_collects_interest_rich_and_compact_items_from_fixture (tests.test_nate_news_rank_collector.TestNateNewsRankCollector.test_collects_interest_rich_and_compact_items_from_fixture) ... ok
+  test_executor_uses_local_nate_news_rank_collector_when_manager_lacks_method (tests.test_nate_news_rank_collector.TestNateNewsRankExecutorWiring.test_executor_uses_local_nate_news_rank_collector_when_manager_lacks_method) ... ok
+  test_collect_falls_back_to_html_when_next_data_missing (tests.test_news1_collector.TestNews1Collector.test_collect_falls_back_to_html_when_next_data_missing) ... ok
+  test_collect_uses_cache_if_live_parse_fails (tests.test_news1_collector.TestNews1Collector.test_collect_uses_cache_if_live_parse_fails) ... ok
+  test_collect_uses_next_data_primary (tests.test_news1_collector.TestNews1Collector.test_collect_uses_next_data_primary) ... ok
+  test_daily_executor_routes_news1_to_news1_collector (tests.test_news1_collector.TestNews1Collector.test_daily_executor_routes_news1_to_news1_collector) ... ok
+  test_collects_verified_list_fields_and_rank_order (tests.test_newsis_collector.TestNewsisCollector.test_collects_verified_list_fields_and_rank_order) ... ok
+  test_lenient_rankbox_parsing_handles_malformed_markup (tests.test_newsis_collector.TestNewsisCollector.test_lenient_rankbox_parsing_handles_malformed_markup) ... ok
+  test_executor_uses_newsis_collector_when_available (tests.test_newsis_collector.TestNewsisExecutorWiring.test_executor_uses_newsis_collector_when_available) ... ok
+  test_cache_used_when_live_failed (tests.test_theqoo_collector.TestTheQooCollector.test_cache_used_when_live_failed) ... ok
+  test_parsees_non_notice_rows_and_verified_fields_only (tests.test_theqoo_collector.TestTheQooCollector.test_parsees_non_notice_rows_and_verified_fields_only) ... ok
+  test_executor_calls_theqoo_collector_when_manager_is_generic_manager (tests.test_theqoo_collector.TestTheQooExecutorWiring.test_executor_calls_theqoo_collector_when_manager_is_generic_manager) ... FAIL
+  test_collector_exception_is_captured_per_source (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_collector_exception_is_captured_per_source) ... ok
+  test_executes_only_existing_collectors_and_writes_json (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_executes_only_existing_collectors_and_writes_json) ... ok
+  test_moneytoday_collects_from_shallow_plan_once_with_fixture_items_and_diagnostics (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_moneytoday_collects_from_shallow_plan_once_with_fixture_items_and_diagnostics) ... ok
+  test_sequential_calls_do_not_accumulate_items_or_mutate_plan_inputs (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_sequential_calls_do_not_accumulate_items_or_mutate_plan_inputs) ... ok
+  test_sources_without_collectors_are_skipped_not_failed (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_sources_without_collectors_are_skipped_not_failed) ... ok
+  test_unknown_lane_fails_closed_but_still_writes (tests.test_daily_source_collection_executor.TestDailySourceCollectionExecutor.test_unknown_lane_fails_closed_but_still_writes) ... ok
+  
+  ======================================================================
+  ERROR: test_executor_uses_mk_pick_collector_when_manager_lacks_method (tests.test_mk_pick_collector.TestMkPickExecutorWiring.test_executor_uses_mk_pick_collector_when_manager_lacks_method)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_mk_pick_collector.py", line 133, in test_executor_uses_mk_pick_collector_when_manager_lacks_method
+      with mock.patch("modules.source_intake.daily_collection_executor.MkPickCollector", FakeMkPickCollector):
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1497, in __enter__
+      original, local = self.get_original()
+                        ~~~~~~~~~~~~~~~~~^^
+    File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1467, in get_original
+      raise AttributeError(
+          "%s does not have the attribute %r" % (target, name)
+      )
+  AttributeError: <module 'modules.source_intake.daily_collection_executor' from 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\modules\\source_intake\\daily_collection_executor.py'> does not have the attribute 'MkPickCollector'
+  
+  ======================================================================
+  FAIL: test_executor_uses_edaily_collector_when_manager_lacks_method (tests.test_edaily_collector.TestEdailyExecutorWiring.test_executor_uses_edaily_collector_when_manager_lacks_method)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_edaily_collector.py", line 218, in test_executor_uses_edaily_collector_when_manager_lacks_method
+      self.assertEqual(len(called), 1)
+      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  AssertionError: 0 != 1
+  
+  ======================================================================
+  FAIL: test_executor_calls_theqoo_collector_when_manager_is_generic_manager (tests.test_theqoo_collector.TestTheQooExecutorWiring.test_executor_calls_theqoo_collector_when_manager_is_generic_manager)
+  ----------------------------------------------------------------------
+  Traceback (most recent call last):
+    File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_theqoo_collector.py", line 207, in test_executor_calls_theqoo_collector_when_manager_is_generic_manager
+      self.assertTrue(called)
+      ~~~~~~~~~~~~~~~^^^^^^^^
+  AssertionError: [] is not true
+  
+  ----------------------------------------------------------------------
+  Ran 40 tests in 94.799s
+  
+  FAILED (failures=2, errors=1)
+  
+## Task F (stable collector injection seam + zero-network executor tests)
+- Root cause:
+  - Executor module did not expose a stable, patchable direct collector entrypoint for `mk_economy`, and tests were patching missing symbols (`MkPickCollector`, `EdailyCollector`, `TheQooCollector`) from executor module.
+  - Executor wiring relied on broad profile-derived plans in test paths, letting live source manager routes attempt network I/O.
+- Fix:
+  - Added module-level `DIRECT_COLLECTOR_FACTORIES` in `modules/source_intake/daily_collection_executor.py` with stable defaults and `mk_economy`/existing direct collectors.
+  - Kept manager methods as primary path; direct collectors are only used when `allow_direct_collectors` policy permits.
+  - Updated tests (`tests/test_mk_pick_collector.py`, `tests/test_edaily_collector.py`, `tests/test_theqoo_collector.py`) to patch registry entries (`DIRECT_COLLECTOR_FACTORIES`) and `build_daily_collection_plan` with fixture-only lanes.
+  - Updated `tests/test_daily_source_collection_executor.py` to patch fixture-only plans per test and add socket/urllib network guard for executor paths.
+- Validation plan:
+  - Run forward/reverse unittest batches:
+    - `py -m unittest tests.test_mk_pick_collector tests.test_edaily_collector tests.test_theqoo_collector tests.test_daily_source_collection_executor -v`
+    - `py -m unittest tests.test_daily_source_collection_executor tests.test_theqoo_collector tests.test_edaily_collector tests.test_mk_pick_collector -v`
+  - Required checks: test pass/error counts, runtime, and absence of live network attempts (no unmocked socket/HTTP calls).
+- GO/NO_GO:
+  - GO: Task F changes are in scope and test patch points are stable.
+  - NO_GO: Do not remove the explicit `allow_direct_collectors` guard or add source-specific fallback `if/elif` branches in executor.

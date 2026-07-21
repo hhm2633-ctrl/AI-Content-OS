@@ -1,0 +1,116 @@
+{
+  "schema_version": "owner_review_carousel_plan_v1",
+  "account": "A",
+  "category": "major_news_policy",
+  "topic": "심우정 전 검찰총장 구속영장 기각과 영장 기각의 의미",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "media_type": "image",
+      "headline": "구속영장 기각.\n그게 ‘혐의 없음’은 아니다",
+      "body": "",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "publisher_image_unverified_internal_review_only"
+    },
+    {
+      "slide": 2,
+      "role": "quote",
+      "media_type": "editorial",
+      "headline": "법원이 판단한 건\n‘지금 구속할 필요’",
+      "body": "공개 보도상 기각 사유는 도주·증거인멸 우려가 낮다는 판단이었다.",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 3,
+      "role": "split",
+      "media_type": "editorial",
+      "headline": "영장심사와 본안판단은 다르다",
+      "body": "구속영장\n신병 확보 필요성\n도주·증거인멸 우려|본안 재판\n혐의 입증 여부\n최종 유·무죄",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 4,
+      "role": "three",
+      "media_type": "editorial",
+      "headline": "기사에서 이 세 단어를\n섞어 읽지 말 것",
+      "body": "구속: 수사·재판 중 신병 확보|기소: 재판에 넘기는 결정|유죄: 법원의 본안 판단",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 5,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "영장이 기각돼도\n수사나 재판은 끝난 게 아니다",
+      "body": "기각은 구속 필요성에 대한 판단이다.\n혐의 자체에 대한 최종 결론은 이후 절차에서 다뤄질 수 있다.",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 6,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "이 사건에서 지금\n확정적으로 말할 수 있는 것",
+      "body": "법원은 심우정 전 검찰총장 등에 대한 구속영장을 기각했다.\n보도된 기각 사유는 도주·증거인멸 우려가 낮다는 취지다.",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 7,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "뉴스 한 줄을 볼 때\n마지막으로 확인할 것",
+      "body": "① 법원이 실제로 판단한 범위\n② 기사 제목이 ‘구속’과 ‘유죄’를 섞지 않았는지\n③ 후속 수사·재판이 남았는지",
+      "source_credit": [
+        "이데일리",
+        "News1",
+        "머니투데이"
+      ],
+      "rights_status": "original_editorial_layout"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "이데일리",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=06546886645515176&mediaCodeNo=257"
+    },
+    {
+      "publisher": "News1",
+      "url": "https://www.news1.kr/society/court-prosecution/6231083"
+    },
+    {
+      "publisher": "머니투데이",
+      "url": "https://www.mt.co.kr/society/2026/07/16/2026071616531328287"
+    }
+  ]
+}

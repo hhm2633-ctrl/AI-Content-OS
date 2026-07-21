@@ -1,0 +1,198 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-A-23652dc036e9",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-A-23652dc036e9",
+    "account": "A",
+    "category": "사회·사건",
+    "title": "파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.yna.co.kr/view/AKR20260717052500061?section=society/all",
+        "publisher": "연합뉴스",
+        "title": "경기 최대 300㎜ 이상 비 예보…'비상 2단계' 가동",
+        "published_at": "2026-07-17T18:50:00+09:00",
+        "source_status": "search_body_confirmed_origin_page_blocked",
+        "usage_note": "17일 당시 18~19일 호우 예보와 경기도 비상 2단계 격상 내용"
+      },
+      {
+        "url": "https://www.hankyung.com/article/202607171300Y",
+        "publisher": "한국경제(연합뉴스 전재)",
+        "title": "경기 최대 300㎜ 이상 비 예보…비상 2단계 가동",
+        "published_at": "2026-07-17T20:46:00+09:00",
+        "source_status": "body_read",
+        "usage_note": "원문 접근 실패 시 동일 연합뉴스 본문 확인용"
+      },
+      {
+        "url": "https://www.yna.co.kr/amp/view/AKR20260718029500530",
+        "publisher": "연합뉴스",
+        "title": "파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해",
+        "published_at": "2026-07-18T00:00:00+09:00",
+        "source_status": "followup_body_read",
+        "usage_note": "17일 예보 뒤 18일 실제 누적 강수량·피해·통제 규모 확인"
+      }
+    ]
+  },
+  "story": {
+    "summary": "17일의 최대 300㎜ 예보를 되풀이하지 않고, 다음 날 파주·동두천에 실제로 약 200㎜가 내리며 540건의 피해가 집계된 후속 상황으로 전환한다. 예보 숫자가 도로 침수·수목 전도·대규모 통제로 이어진 현실 변화를 보여준다."
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "도로가 잠기고\n95명이 집을 나왔다",
+      "body": "17~18일 집중호우는 경기 북부의 실제 대피와 통제로 이어졌습니다."
+    },
+    {
+      "page": 2,
+      "role": "actual_rainfall",
+      "headline": "파주 192.5㎜\n동두천 189.5㎜",
+      "body": "17일부터 18일 오전 10시까지 경기 북부를 중심으로 비가 집중됐습니다."
+    },
+    {
+      "page": 3,
+      "role": "damage",
+      "headline": "침수 148건\n토사·낙석·전도 392건",
+      "body": "중대본이 집계한 피해 540건은 두 갈래로 나뉘었습니다."
+    },
+    {
+      "page": 4,
+      "role": "evacuation",
+      "headline": "44세대 95명은\n비를 피해 대피",
+      "body": "인명피해는 없었지만 6개 시도 13개 시·군에서 임시대피가 이뤄졌습니다."
+    },
+    {
+      "page": 5,
+      "role": "controls",
+      "headline": "하천길·주차장 등\n6,554곳 통제",
+      "body": "산책로 5,910곳과 하천변 341곳, 둔치주차장 105곳 등이 닫혔습니다."
+    }
+  ],
+  "feed_caption": "17~18일 집중호우로 경기 북부를 비롯한 수도권과 강원에서 실제 피해가 이어졌습니다. 18일 오전 10시까지 파주 192.5㎜, 동두천 189.5㎜의 누적 강수량을 기록했습니다. 중대본 집계 피해는 주택·도로 침수 148건, 토사·낙석 유출과 수목 전도 392건으로 모두 540건입니다. 인명피해는 없었지만 44세대 95명이 임시대피했고, 하천 산책로와 둔치주차장 등 6,554곳이 통제됐습니다.\n\n참고: 연합뉴스 「파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해」",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "연합뉴스 중대본 집계 참고·침수 도로 단면과 대피 화살표 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 2,
+      "slide_role": "actual_rainfall",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "연합뉴스 집계 참고·파주/동두천 누적 강수량 막대 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 3,
+      "slide_role": "damage",
+      "media_type": "editorial",
+      "source_credit": [
+        "연합뉴스 피해 집계 참고·148건/392건 분할 패널 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 4,
+      "slide_role": "evacuation",
+      "media_type": "editorial",
+      "source_credit": [
+        "연합뉴스 대피 집계 참고·44세대/95명 이동 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 5,
+      "slide_role": "controls",
+      "media_type": "editorial",
+      "source_credit": [
+        "연합뉴스 통제 집계 참고·산책로/하천변/둔치주차장 분류 지도"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-A-23652dc036e9",
+    "account": "A",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-A-23652dc036e9",
+      "account": "A",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-A-23652dc036e9",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

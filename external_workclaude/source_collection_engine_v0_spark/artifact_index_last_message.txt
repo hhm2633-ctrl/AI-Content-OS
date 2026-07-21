@@ -1,0 +1,21 @@
+Implemented.
+
+- [C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\source_intake_artifact_index.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\source_intake_artifact_index.py): added
+  - `build_source_intake_artifact_index(today=None, root=None)` (non-crawler, missing files tolerated)
+  - `run_source_intake_artifact_index(today=None, root=None)` writing `storage/source_intake/<today>/source_intake_artifact_index.json`
+  - indexed artifacts:  
+    `daily_collection_plan.json`, `daily_shallow_collection.json`, `collection_gap_report.json`, `collector_implementation_queue.json`, `lane_collection_summary.json`, `source_intake_status_bundle.json`, `source_intake_brief.md`
+  - per-artifact fields: `path`, `present`, `size_bytes`, `last_modified`
+  - summary fields include `present_count`, `missing_count`, `present_artifacts`, `missing_artifacts`
+
+- [C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_source_intake_artifact_index.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_source_intake_artifact_index.py): added
+  - all-missing artifacts test
+  - some-present artifacts test
+  - run writes JSON test
+  - `commerce_detail` absence test
+
+- [C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\ARTIFACT_INDEX_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\ARTIFACT_INDEX_HANDOFF.md): added handoff with implemented/tests/not implemented/next light tasks.
+
+Validation run:
+- `py -m unittest tests.test_source_intake_artifact_index -v` ✅
+- `py -m compileall modules/source_intake` ✅

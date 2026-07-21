@@ -1,0 +1,86 @@
+{
+  "schema_version": "image_first_owner_review_v2",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "A",
+  "category": "world_news",
+  "topic": "117년 된 지브롤터 육로 장벽이 열린 날",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "breaking",
+      "media_type": "image",
+      "headline": "117년 된 장벽,\n0시에 열렸다",
+      "asset": "gibraltar_current_01.jpg",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 2,
+      "role": "map",
+      "media_type": "editorial",
+      "headline": "영국령인데, 육지는 스페인과 붙어 있다",
+      "asset": "self-authored map over CC0 background",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 3,
+      "role": "the_night",
+      "media_type": "image",
+      "headline": "장벽을 걷어낸 밤",
+      "asset": "gibraltar_current_02.jpg",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 4,
+      "role": "first_crossing",
+      "media_type": "image",
+      "headline": "여권을 보여주던\n육로 검문이 멈췄다",
+      "asset": "gibraltar_video_frame.jpg",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 5,
+      "role": "the_people",
+      "media_type": "image",
+      "headline": "매일 약 1만 5천 명",
+      "asset": "la_linea_2024.jpg",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 6,
+      "role": "what_changed",
+      "media_type": "image",
+      "headline": "장벽은 열렸지만",
+      "asset": "gibraltar_airport.jpg",
+      "copy_density": "minimal"
+    },
+    {
+      "slide": 7,
+      "role": "the_line",
+      "media_type": "image",
+      "headline": "주권은 그대로",
+      "asset": "gibraltar_current_01.jpg",
+      "copy_density": "minimal"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "UK Government",
+      "url": "https://www.gov.uk/government/news/uk-finalises-historic-treaty-with-eu-to-secure-economic-future-of-gibraltar",
+      "role": "primary facts"
+    },
+    {
+      "publisher": "Government of Gibraltar",
+      "url": "https://www.gibraltar.gov.gi/press-releases/another-historic-day-for-gibraltar-as-checks-removed-from-frontier-5612026-12204",
+      "role": "primary event confirmation"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/spain-gibraltar-uk-brexit-9113dd58dc8220826038022e84e3b662",
+      "role": "independent report and licensed imagery"
+    }
+  ]
+}

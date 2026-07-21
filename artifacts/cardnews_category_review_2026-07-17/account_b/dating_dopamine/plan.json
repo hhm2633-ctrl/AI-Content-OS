@@ -1,0 +1,49 @@
+{
+  "account": "B",
+  "category": "dating_dopamine",
+  "topic": "데이트앱 만남 전 위험 신호",
+  "slide_count": 8,
+  "review_only": true,
+  "slides": [
+    {
+      "slide": 1,
+      "media_type": "illustration",
+      "role": "emotion_hook"
+    },
+    {
+      "slide": 2,
+      "media_type": "illustration",
+      "role": "setup"
+    },
+    {
+      "slide": 3,
+      "media_type": "illustration",
+      "role": "escalation"
+    },
+    {
+      "slide": 4,
+      "media_type": "illustration",
+      "role": "shock"
+    },
+    {
+      "slide": 5,
+      "media_type": "editorial",
+      "role": "safety_context"
+    },
+    {
+      "slide": 6,
+      "media_type": "illustration",
+      "role": "decision"
+    },
+    {
+      "slide": 7,
+      "media_type": "screenshot",
+      "role": "actual_reaction"
+    },
+    {
+      "slide": 8,
+      "media_type": "editorial",
+      "role": "low_friction_cta"
+    }
+  ]
+}

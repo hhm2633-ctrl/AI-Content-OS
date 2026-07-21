@@ -1,0 +1,38 @@
+{
+  "schema_version": "cardnews_repair_review_v2",
+  "cycle": 5,
+  "summary": {
+    "account": "A",
+    "record_count": 4,
+    "pass_count": 4,
+    "revise_count": 0,
+    "block_count": 0,
+    "remaining_issue_count": 0
+  },
+  "records": [
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    },
+    {
+      "candidate_id": "20260717-2003-A-54b45bfb6a07",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    },
+    {
+      "candidate_id": "20260717-2003-A-23652dc036e9",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    },
+    {
+      "candidate_id": "20260717-2003-A-4a4409ce4870",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  ]
+}

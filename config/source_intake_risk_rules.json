@@ -1,0 +1,60 @@
+{
+  "schema_version": "source_intake_risk_rules_v1",
+  "calibration": "initial_unvalidated",
+  "hard_rules": [
+    {
+      "id": "doxxing_contact_exposure",
+      "flag": "doxxing",
+      "all_term_groups": [["신상 공개", "신상 털", "개인정보 공개", "주소 공개", "연락처 공개", "doxx"], ["전화번호", "휴대폰", "주소", "이메일", "연락처", "사는 곳"]],
+      "regex_any": ["(?:01[016789][- ]?\\d{3,4}[- ]?\\d{4})", "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}"],
+      "require_regex": false,
+      "evidence_need": "remove_personal_contact_information"
+    },
+    {
+      "id": "explicit_minor_sexual_content",
+      "flag": "child_sexual_content",
+      "all_term_groups": [["미성년자", "아동", "초등학생", "중학생", "고등학생", "청소년"], ["성착취", "성적 영상", "음란물", "성관계", "나체", "누드"]],
+      "evidence_need": "mandatory_minor_safety_review"
+    },
+    {
+      "id": "graphic_exploitation_detail",
+      "flag": "graphic_exploitation",
+      "all_term_groups": [["시신", "사체", "피투성이", "절단", "참수", "유혈"], ["사진 공개", "영상 공개", "원본 영상", "무삭제", "생중계"]],
+      "evidence_need": "graphic_content_exclusion_review"
+    },
+    {
+      "id": "self_harm_method_detail",
+      "flag": "imminent_harm",
+      "all_term_groups": [["자살", "극단적 선택", "자해"], ["방법", "하는 법", "도구", "용량", "장소 추천", "단계별"]],
+      "evidence_need": "self_harm_safety_intervention"
+    },
+    {
+      "id": "imminent_targeted_harm",
+      "flag": "imminent_harm",
+      "all_term_groups": [["죽이겠다", "살해하겠다", "폭파하겠다", "테러하겠다", "해치겠다"], ["오늘", "지금", "곧", "내일", "찾아간다", "위치"]],
+      "evidence_need": "imminent_harm_escalation"
+    },
+    {
+      "id": "illegal_instruction_detail",
+      "flag": "illegal_content",
+      "all_term_groups": [["마약 제조", "폭발물 제조", "해킹", "계정 탈취", "불법 침입", "위조"], ["방법", "하는 법", "단계별", "코드", "레시피", "우회법"]],
+      "evidence_need": "illegal_instruction_exclusion_review"
+    }
+  ],
+  "soft_rules": [
+    {"id": "privacy_indicator", "flag": "privacy", "terms": ["실명", "신상", "개인정보", "전화번호", "주소", "연락처", "얼굴 공개"], "evidence_need": "privacy_and_public_interest_review"},
+    {"id": "minor_indicator", "flag": "minor", "terms": ["미성년자", "아동", "초등학생", "중학생", "고등학생", "청소년"], "evidence_need": "minor_safety_and_identification_review"},
+    {"id": "crime_claim_indicator", "flag": "crime_claim", "terms": ["범죄자", "사기꾼", "절도범", "성범죄", "횡령", "마약 투약", "살인범"], "evidence_need": "crime_claim_official_evidence"},
+    {"id": "defamation_indicator", "flag": "defamation", "terms": ["불륜", "학폭 가해", "갑질", "성추행", "표절", "탈세", "뒷광고"], "evidence_need": "defamation_claim_corroboration"},
+    {"id": "rumor_indicator", "flag": "rumor", "terms": ["루머", "찌라시", "카더라", "확인되지 않은", "의혹", "열애설", "결혼설", "해체설", "소문"], "evidence_need": "rumor_independent_confirmation"},
+    {"id": "harassment_indicator", "flag": "harassment", "terms": ["악플", "조리돌림", "신상 털기", "좌표 찍기", "집단 공격", "욕설"], "evidence_need": "harassment_context_review"},
+    {"id": "financial_claim_indicator", "flag": "financial_claim", "terms": ["수익 보장", "원금 보장", "대박주", "급등주", "확정 수익", "무조건 오른다"], "evidence_need": "financial_claim_primary_evidence"},
+    {"id": "investment_advice_indicator", "flag": "investment_advice", "terms": ["매수 추천", "지금 사라", "풀매수", "몰빵", "매도 추천", "투자 추천"], "evidence_need": "investment_advice_compliance_review"},
+    {"id": "medical_claim_indicator", "flag": "medical_claim", "terms": ["완치", "치료법", "부작용 없음", "의사가 필요 없다", "질병 예방", "의학적 효과"], "evidence_need": "medical_claim_authoritative_evidence"},
+    {"id": "legal_claim_indicator", "flag": "legal_claim", "terms": ["무조건 승소", "불법이다", "합법이다", "법적 효력", "소송하면 이긴다", "처벌된다"], "evidence_need": "legal_claim_authoritative_evidence"},
+    {"id": "political_persuasion_indicator", "flag": "political_persuasion", "terms": ["투표하자", "낙선시키자", "찍어야 한다", "지지해 주세요", "정권 심판", "선거 운동"], "evidence_need": "political_persuasion_review"},
+    {"id": "geopolitical_claim_indicator", "flag": "geopolitical_claim", "terms": ["전쟁 임박", "침공 확정", "핵전쟁", "영토 분쟁", "군사 충돌", "휴전 파기"], "evidence_need": "geopolitical_claim_independent_confirmation"},
+    {"id": "efficacy_claim_indicator", "flag": "efficacy_claim", "terms": ["효과 보장", "즉시 효과", "주름 삭제", "탈모 치료", "살 빠지는", "미백 보장"], "evidence_need": "efficacy_claim_evidence"},
+    {"id": "price_prediction_indicator", "flag": "price_prediction", "terms": ["목표가", "상한가 간다", "가격 폭등", "두 배 오른다", "무조건 상승", "곧 폭락"], "evidence_need": "price_prediction_basis_review"}
+  ]
+}

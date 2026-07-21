@@ -1,0 +1,16 @@
+- generic [ref=e2]:
+  - generic:
+    - heading "Daum" [level=1]
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - strong [ref=e5]: 페이지가 없어요
+      - paragraph [ref=e6]: 주소가 잘못되었거나 바뀐 것 같습니다.다시 확인해주시겠어요?
+      - generic [ref=e8]:
+        - link "뒤로 가기" [ref=e9] [cursor=pointer]:
+          - /url: javascript:window.history.back();
+        - link "다음 첫화면 가기" [ref=e11] [cursor=pointer]:
+          - /url: https://m.daum.net
+      - paragraph [ref=e13]:
+        - link "고객센터" [ref=e14] [cursor=pointer]:
+          - /url: https://cs.daum.net/m
+        - text: 에 물어볼까요?

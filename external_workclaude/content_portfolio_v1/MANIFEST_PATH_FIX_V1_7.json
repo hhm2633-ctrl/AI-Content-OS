@@ -1,0 +1,96 @@
+{
+  "task": "Manifest Committed-Path Fix V1.7",
+  "status": "COMPLETE",
+  "scope_files_touched": [
+    "src/workflow_engine.py",
+    "tests/test_workflow_card_news_output_receipts.py"
+  ],
+  "scope_files_not_touched": [
+    "tests/test_common_card_news_output_set.py",
+    "tests/test_card_news_output_set_integrity.py",
+    "modules/compliance/card_news_publish_gate.py",
+    "modules/publishing/publishing_module.py",
+    "modules/card_news/card_news_module.py",
+    "modules/common/card_news_output_set.py"
+  ],
+  "root_cause": {
+    "location": "src/workflow_engine.py :: WorkflowEngine._run_card_news_output_transaction / _build_pre_publish_attestation",
+    "defect": "Pre-publish attestation was built before transaction.stage() ran, using absolute .runs-scratch card_path values from CardNewsModule. CardNewsPublishGate._check_final_cards correctly rejects any absolute path, so all 4 cards failed as final_cards_invalid, leaving attestation.cards == [] and forcing manifest_paths_match == False.",
+    "resulting_blocker": "PUBLISH_MANIFEST_PATH_MISMATCH",
+    "trace_reference": "external_workclaude/content_portfolio_v1/PUBLISH_BLOCKER_AUDIT_V1_6.md §5"
+  },
+  "fix_design": {
+    "approach": "post_commit_correction",
+    "new_method": "WorkflowEngine._correct_committed_attestation",
+    "helper_added": "WorkflowEngine._atomic_write_committed_json",
+    "call_site": "_run_card_news_output_transaction, immediately after transaction.promote() and CardNewsOutputSetTransaction.resolve_active() both succeed",
+    "reuses_unmodified": [
+      "WorkflowEngine._build_pre_publish_attestation",
+      "PublishingModule._resolve_package_readiness",
+      "PublishingModule.rebind_committed_paths",
+      "CardNewsPublishGate (via _build_pre_publish_attestation)"
+    ],
+    "never_fakes_success": true,
+    "never_runs_if_commit_failed": true
+  },
+  "tests_added": [
+    "test_build_pre_publish_attestation_rejects_scratch_and_absolute_paths_but_accepts_committed_relative",
+    "test_resolve_package_readiness_output_set_id_mismatch_fails_closed",
+    "test_manifest_path_mismatch_resolved_after_commit_while_rights_blockers_persist",
+    "test_commit_failure_after_staging_never_reaches_attestation_correction"
+  ],
+  "test_infra_fix": {
+    "issue": "Windows short-name (8.3) vs long-name path mismatch caused CardNewsPublishGate._existing_repo_file's relative_to() check to raise ValueError even for identical directories",
+    "fix": "patch _REPOSITORY_ROOT with self.root.resolve() instead of raw self.root, test-file-only change"
+  },
+  "verification_commands": [
+    "py -m unittest tests.test_workflow_card_news_output_receipts tests.test_common_card_news_output_set tests.test_card_news_output_set_integrity -v",
+    "py -m compileall src modules scripts",
+    "py -m src.main"
+  ],
+  "verification_results": {
+    "unit_tests": "25/25 passed, OK",
+    "compileall": "clean, no errors",
+    "real_run_count": 1,
+    "new_output_set_id": "91a28c88912849b58fa608330a217467",
+    "workflow_completed": true,
+    "single_id_binding_confirmed": true,
+    "PUBLISH_MANIFEST_PATH_MISMATCH_removed": true,
+    "attestation_card_count": 4,
+    "attestation_cards_repo_relative": true,
+    "attestation_cards_no_runs_or_staging": true,
+    "attestation_cards_output_set_id_match": true,
+    "blockers_retained": [
+      "PUBLISH_RIGHTS_BLOCKED",
+      "PUBLISH_EVIDENCE_BLOCKED",
+      "PUBLISH_COMPLIANCE_BLOCKED",
+      "PUBLISH_MANUAL_IMAGE_REQUIRED",
+      "PUBLISH_COMMITTED_ATTESTATION_INVALID"
+    ],
+    "actual_publish": false,
+    "publishing_ready": false,
+    "package_ready": false,
+    "png_count_valid_1080x1080": 4,
+    "legacy_final_result": {
+      "status": "legacy_receipt_blocked",
+      "selectable": false,
+      "publishing_ready": false,
+      "actual_publish": false
+    }
+  },
+  "blockers_removed": ["PUBLISH_MANIFEST_PATH_MISMATCH"],
+  "blockers_intentionally_retained": [
+    "PUBLISH_RIGHTS_BLOCKED",
+    "PUBLISH_EVIDENCE_BLOCKED",
+    "PUBLISH_COMPLIANCE_BLOCKED",
+    "PUBLISH_MANUAL_IMAGE_REQUIRED",
+    "PUBLISH_COMMITTED_ATTESTATION_INVALID"
+  ],
+  "next_rights_intake_contract": [
+    "Real per-card origin/role/rights_status/rights_evidence (reference, review_status, reviewed_at), replacing hardcoded classification: technical_fixture",
+    "Real evidence[] entries (source_url or bound local record, reference_verified, topic_relevant/topic_relevance_note, authenticity_status) linked to each publishable asset_id, replacing hardcoded evidence: []",
+    "Real operator_checklist (operator_id, reviewed_at, source_opened, rights_reviewed, claims_reviewed, attribution_reviewed, final_asset_reviewed), replacing hardcoded operator_checklist: {}",
+    "Real campaign/disclosures review when applicable, replacing hardcoded commercial_relationship_reviewed: false",
+    "Must still only ever be built from committed, repo-relative card paths -- never .runs/.staging/absolute -- reusing _correct_committed_attestation's post-commit timing as the integration point"
+  ]
+}

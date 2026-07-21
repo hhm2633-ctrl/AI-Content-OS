@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "blog-copy-story-structure-v1",
+  "version": "1.0.0",
+  "status": "hypothesis",
+  "evidence_status": "source_required",
+  "promotion_status": "prohibited",
+  "source_binding_id": "naver-blog-story-learning-20260715",
+  "source_claim_ids": [],
+  "consumer": "blog_copy_and_story_writer",
+  "global_constraints": {
+    "product_or_health_claims_require_external_evidence": true,
+    "naver_algorithm_claims_allowed": false,
+    "example_values_as_defaults_allowed": false,
+    "disclosure_must_match_actual_compensation_state": true,
+    "missing_required_evidence_behavior": "hold_claim_and_request_source"
+  },
+  "ordered_slots": [
+    {
+      "slot_id": "opening_summary",
+      "order": 1,
+      "required": true,
+      "content_type": "three_to_five_lines",
+      "purpose": "State the reader situation, purpose, conclusion, and what the article will help decide.",
+      "required_inputs": ["reader_situation", "reader_goal", "supported_conclusion", "article_scope"],
+      "constraints": ["3_to_5_lines", "plain_language", "no_unresolved_claim"],
+      "prohibited_claims": ["guaranteed_ranking", "unverified_product_effect", "algorithm_preference"],
+      "image_binding_rule": null,
+      "qa_checks": ["line_count_is_3_to_5", "reader_and_goal_present", "conclusion_supported"],
+      "omission_rule": "never_omit; if conclusion lacks evidence, state scope without the claim"
+    },
+    {
+      "slot_id": "reader_context",
+      "order": 2,
+      "required": true,
+      "content_type": "context_paragraph",
+      "purpose": "Make the real reader situation and decision context explicit.",
+      "required_inputs": ["audience", "situation", "constraint_or_concern"],
+      "constraints": ["specific_but_non_sensitive", "not_keyword_list"],
+      "prohibited_claims": ["invented_personal_experience", "unsupported_demographic_generalization"],
+      "image_binding_rule": null,
+      "qa_checks": ["audience_present", "situation_present", "not_keyword_stuffing"],
+      "omission_rule": "hold_if_audience_or_situation_unknown"
+    },
+    {
+      "slot_id": "purpose",
+      "order": 3,
+      "required": true,
+      "content_type": "decision_statement",
+      "purpose": "Declare the reader decision or task the article supports.",
+      "required_inputs": ["decision_to_support", "in_scope", "out_of_scope"],
+      "constraints": ["one_primary_purpose", "scope_boundary_visible"],
+      "prohibited_claims": ["hidden_commercial_objective"],
+      "image_binding_rule": null,
+      "qa_checks": ["single_primary_purpose", "scope_boundary_present"],
+      "omission_rule": "never_omit"
+    },
+    {
+      "slot_id": "comparison_table",
+      "order": 4,
+      "required": true,
+      "content_type": "structured_table",
+      "purpose": "Place a scan-friendly comparison or summary in the upper or middle body.",
+      "required_inputs": ["comparison_subjects", "comparison_dimensions", "source_for_each_factual_cell"],
+      "constraints": ["placement_upper_or_middle", "consistent_dimensions", "unknown_cells_labeled"],
+      "prohibited_claims": ["example_spf_or_skin_effect_as_default", "unsupported_best_or_winner"],
+      "image_binding_rule": null,
+      "qa_checks": ["placement_is_upper_or_middle", "headers_are_explicit", "each_factual_cell_traceable"],
+      "omission_rule": "if no valid comparison exists, replace with a sourced summary table; otherwise hold"
+    },
+    {
+      "slot_id": "experience_evidence",
+      "order": 5,
+      "required": true,
+      "content_type": "first_hand_observation_or_sourced_case",
+      "purpose": "Separate actual observation and choice context from copied guidance.",
+      "required_inputs": ["experience_owner", "observation_context", "observation", "limits", "evidence_reference"],
+      "constraints": ["do_not_invent", "separate_observation_from_inference", "declare_limits"],
+      "prohibited_claims": ["fabricated_purchase", "fabricated_use", "fabricated_result", "medical_inference"],
+      "image_binding_rule": null,
+      "qa_checks": ["experience_owner_known", "context_and_limits_present", "observation_not_presented_as_universal_fact"],
+      "omission_rule": "use a clearly attributed sourced case or hold; never fabricate"
+    },
+    {
+      "slot_id": "image_text_binding",
+      "order": 6,
+      "required": true,
+      "content_type": "image_binding_record",
+      "purpose": "Ensure every meaningful image depicts or proves the adjacent text intent.",
+      "required_inputs": ["image_id", "text_intent", "image_intent", "match_check", "caption_or_alt_text"],
+      "constraints": ["match_check_is_pass", "decorative_images_labeled", "overlay_text_does_not_rescue_unrelated_image"],
+      "prohibited_claims": ["algorithm_can_see_or_rank_image", "image_as_proof_without_visible_support"],
+      "image_binding_rule": {
+        "text_intent": "required",
+        "image_intent": "required",
+        "match_check": "human_review_required",
+        "allowed_values": ["pass", "fail", "unknown"]
+      },
+      "qa_checks": ["all_non_decorative_images_bound", "no_fail_or_unknown_match", "alt_text_matches_visible_content"],
+      "omission_rule": "remove an unbound image or hold the draft"
+    },
+    {
+      "slot_id": "category_consistency",
+      "order": 7,
+      "required": true,
+      "content_type": "category_scope_record",
+      "purpose": "Keep the post aligned with a declared category and the writer's actual scope.",
+      "required_inputs": ["primary_category", "article_category", "scope_fit_reason"],
+      "constraints": ["one_primary_category", "no_false_expertise"],
+      "prohibited_claims": ["expert_status_without_qualification", "ranking_gain_from_category_consistency"],
+      "image_binding_rule": null,
+      "qa_checks": ["category_fit_explained", "expertise_claim_supported_or_removed"],
+      "omission_rule": "hold_until_category_is_selected"
+    },
+    {
+      "slot_id": "search_faq",
+      "order": 8,
+      "required": true,
+      "content_type": "natural_language_question_answer_pairs",
+      "purpose": "Answer real search-style questions in the reader's language.",
+      "required_inputs": ["reader_questions", "evidence_for_each_answer", "answer_limits"],
+      "constraints": ["natural_question_form", "one_question_one_answer", "limitations_visible"],
+      "prohibited_claims": ["invented_product_effect", "unsupported_health_advice", "guaranteed_search_exposure"],
+      "image_binding_rule": null,
+      "qa_checks": ["questions_match_reader_context", "answers_traceable", "no_example_value_leak"],
+      "omission_rule": "omit unsupported answers, not the disclosure of uncertainty"
+    },
+    {
+      "slot_id": "sponsorship_disclosure",
+      "order": 9,
+      "required": true,
+      "content_type": "compensation_disclosure",
+      "purpose": "State the actual advertising, sponsorship, gifted, affiliate, trial, or self-purchase relationship.",
+      "required_inputs": ["compensation_state", "provider_if_any", "editorial_control_state"],
+      "constraints": ["prominent", "unambiguous", "matches_actual_state"],
+      "prohibited_claims": ["self_purchase_when_compensated", "concealed_affiliate_relationship"],
+      "image_binding_rule": null,
+      "qa_checks": ["disclosure_present", "state_is_explicit", "provider_named_when_applicable"],
+      "omission_rule": "never_omit; unknown compensation state blocks release"
+    },
+    {
+      "slot_id": "final_self_check",
+      "order": 10,
+      "required": true,
+      "content_type": "release_checklist",
+      "purpose": "Fail closed before handoff when structure, evidence, disclosure, or image matching is incomplete.",
+      "required_inputs": ["completed_slot_results", "claim_traceability_result", "image_binding_result", "disclosure_result"],
+      "constraints": ["all_required_checks_pass", "unknown_is_not_pass"],
+      "prohibited_claims": ["validated_naver_algorithm", "performance_guarantee"],
+      "image_binding_rule": null,
+      "qa_checks": ["opening_summary_pass", "table_pass", "experience_pass", "image_binding_pass", "category_pass", "faq_pass", "disclosure_pass", "example_exclusion_pass"],
+      "omission_rule": "never_omit; any fail or unknown yields HELD"
+    }
+  ],
+  "neutral_payload_template": {
+    "reader_situation": "[독자가 처한 구체적 상황]",
+    "reader_goal": "[이 글로 해결할 결정 또는 과업]",
+    "supported_conclusion": "[근거가 연결된 결론]",
+    "comparison_subjects": ["[대상 A]", "[대상 B]"],
+    "comparison_dimensions": ["[비교 기준 1]", "[비교 기준 2]"],
+    "experience_observation": "[실제로 관찰한 사실과 조건]",
+    "image_binding": {
+      "image_id": "[이미지 ID]",
+      "text_intent": "[인접 문장이 전달하는 의미]",
+      "image_intent": "[이미지에 실제 보이는 의미]",
+      "match_check": "unknown"
+    },
+    "faq_question": "[독자가 실제 검색할 자연어 질문]",
+    "faq_answer": "[근거와 한계를 포함한 답변]",
+    "compensation_state": "[광고/협찬/제공/제휴/내돈내산/해당없음 중 실제 상태]"
+  }
+}

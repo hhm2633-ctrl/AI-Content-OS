@@ -1,0 +1,219 @@
+{
+  "schema_version": "cardnews_prototype_plan_v1",
+  "prototype_id": "account_b_d1_2026-07-16",
+  "account": "account_b_issue_story_relationship_emotion",
+  "category": "relationship_story",
+  "topic_id": "D1",
+  "topic": "결혼 앞두고 가족과 연끊은 동생",
+  "format": "variable_length_2d_cut_carousel",
+  "slide_count": 9,
+  "source_evidence": {
+    "source_id": "nate_pann",
+    "publisher": "pann.nate.com",
+    "source_url": "https://pann.nate.com/talk/375519631",
+    "collection_method": "nate_pann_html",
+    "title": "결혼 앞두고 가족과 연끊은 동생",
+    "summary": "30대 자매입니다. 엄마와 다툰후 연락두절 결혼식도 얼마남지 않은 시점에 정말 이대로 인연을...",
+    "published_at": null,
+    "rank_position": 8,
+    "visible_metrics": {
+      "views": 40695,
+      "comments": 152,
+      "likes": 2,
+      "dislikes": null
+    },
+    "evidence_scope": "public_shallow_list_metadata_only",
+    "single_source": true
+  },
+  "production_rules": {
+    "story_fact_policy": "Only the supplied title, summary, and visible metrics may be stated as source facts.",
+    "visual_policy": "All 2D people and locations are generic editorial reconstructions, not depictions of the real family or source footage.",
+    "comment_policy": "Comment panels remain blocked until real source comments are supplied, rights-reviewed, identity-masked, and PII-scrubbed.",
+    "attribution": "네이트판 공개 목록 메타데이터",
+    "mobile_copy_rule": "One short beat per cut; unknown details stay visibly marked rather than being filled in."
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "slide_role": "cover_hook",
+      "media_type": "editorial",
+      "scene": "결혼식 달력과 끊어진 가족 연결선을 한 화면에 배치한 2D 상징 컷. 인물은 식별 불가능한 실루엣으로만 표현한다.",
+      "dialogue": [],
+      "copy": {
+        "headline": "결혼 앞두고 가족과 연끊은 동생",
+        "body": "결혼식이 얼마 남지 않은 시점, 가족 연락이 끊겼다는 사연"
+      },
+      "evidence": {
+        "basis": ["source_evidence.title", "source_evidence.summary"],
+        "status": "shallow_source_supported",
+        "source_credit": "네이트판 공개 목록 메타데이터"
+      },
+      "rights_status": "generated_editorial_reconstruction_not_evidence",
+      "unknown_detail_markers": ["결혼식 날짜 미확인", "연락두절 기간 미확인"]
+    },
+    {
+      "slide_number": 2,
+      "slide_role": "known_context",
+      "media_type": "editorial",
+      "scene": "두 자매를 나타내는 중립적 2D 실루엣과 '30대 자매' 텍스트 카드.",
+      "dialogue": [],
+      "copy": {
+        "headline": "확인된 건, 30대 자매의 이야기",
+        "body": "목록 요약은 화자와 동생이 30대 자매라고만 전한다"
+      },
+      "evidence": {
+        "basis": ["source_evidence.summary"],
+        "status": "shallow_source_supported",
+        "source_credit": "네이트판 공개 목록 메타데이터"
+      },
+      "rights_status": "generated_editorial_reconstruction_not_evidence",
+      "unknown_detail_markers": ["각자의 정확한 나이 미확인", "화자의 가족 내 역할 미확인"]
+    },
+    {
+      "slide_number": 3,
+      "slide_role": "conflict_trigger",
+      "media_type": "editorial",
+      "scene": "엄마와 동생을 상징하는 두 실루엣 사이에 말풍선 대신 번개 모양을 둔 2D 갈등 컷.",
+      "dialogue": [],
+      "copy": {
+        "headline": "엄마와 다툰 뒤",
+        "body": "무슨 말이 오갔는지는 공개 목록만으로 알 수 없다"
+      },
+      "evidence": {
+        "basis": ["source_evidence.summary"],
+        "status": "trigger_supported_details_unknown",
+        "source_credit": "네이트판 공개 목록 메타데이터"
+      },
+      "rights_status": "generated_editorial_reconstruction_not_evidence",
+      "unknown_detail_markers": ["다툼의 원인 미확인", "대화 내용 미확인", "누가 먼저 연락을 끊었는지 미확인"]
+    },
+    {
+      "slide_number": 4,
+      "slide_role": "escalation",
+      "media_type": "editorial",
+      "scene": "읽지 않은 메시지 아이콘과 멀어진 두 가족 실루엣을 나눈 2D 분할 컷.",
+      "dialogue": [],
+      "copy": {
+        "headline": "그리고 연락두절",
+        "body": "제목은 동생이 가족과 연을 끊었다고 전한다"
+      },
+      "evidence": {
+        "basis": ["source_evidence.title", "source_evidence.summary"],
+        "status": "shallow_source_supported",
+        "source_credit": "네이트판 공개 목록 메타데이터"
+      },
+      "rights_status": "generated_editorial_reconstruction_not_evidence",
+      "unknown_detail_markers": ["연락을 끊은 가족의 범위 미확인", "연락 시도 횟수와 방식 미확인"]
+    },
+    {
+      "slide_number": 5,
+      "slide_role": "deadline_pressure",
+      "media_type": "editorial",
+      "scene": "가까워지는 결혼식 달력과 비어 있는 가족 좌석을 상징적으로 대비한 2D 컷.",
+      "dialogue": [],
+      "copy": {
+        "headline": "그런데 결혼식이 얼마 남지 않았다",
+        "body": "이대로 인연이 끝나는지 화자는 고민을 남겼다"
+      },
+      "evidence": {
+        "basis": ["source_evidence.summary"],
+        "status": "shallow_source_supported",
+        "source_credit": "네이트판 공개 목록 메타데이터"
+      },
+      "rights_status": "generated_editorial_reconstruction_not_evidence",
+      "unknown_detail_markers": ["결혼식 참석 여부 미확인", "초대 여부 미확인", "예비 배우자의 입장 미확인"]
+    },
+    {
+      "slide_number": 6,
+      "slide_role": "evidence_gap_pause",
+      "media_type": "editorial",
+      "scene": "검은 배경 위에 물음표가 붙은 네 개의 빈 2D 메모 카드를 배치한다.",
+      "dialogue": [],
+      "copy": {
+        "headline": "판단 전에 비어 있는 이야기",
+        "body": "다툼의 이유 · 단절 기간 · 화해 시도 · 동생의 입장"
+      },
+      "evidence": {
+        "basis": ["absence_from_supplied_shallow_metadata"],
+        "status": "explicit_gap_panel",
+        "source_credit": "상세 내용 미수집"
+      },
+      "rights_status": "original_editorial_graphic",
+      "unknown_detail_markers": ["핵심 사건 전개 전체 미확인", "누구의 잘못인지 판단 불가"]
+    },
+    {
+      "slide_number": 7,
+      "slide_role": "real_comment_panel_reserved_1",
+      "media_type": "screenshot",
+      "scene": "실제 댓글 캡처가 들어갈 빈 프레임. 확보 전에는 렌더링하지 않는다.",
+      "dialogue": [],
+      "copy": {
+        "headline": "실제 댓글 패널 1 — 확보 전",
+        "body": null
+      },
+      "evidence": {
+        "basis": ["source_evidence.visible_metrics.comments"],
+        "status": "blocked_real_comment_text_not_supplied",
+        "source_credit": "댓글 수 152만 목록에서 확인"
+      },
+      "rights_status": "pending_comment_capture_permission_and_pii_review",
+      "unknown_detail_markers": ["실제 댓글 문구 미확보", "댓글 작성자 식별정보 미검수"]
+    },
+    {
+      "slide_number": 8,
+      "slide_role": "real_comment_panel_reserved_2",
+      "media_type": "screenshot",
+      "scene": "서로 다른 관점의 실제 댓글을 나란히 배치할 빈 2D 프레임. 텍스트는 생성하지 않는다.",
+      "dialogue": [],
+      "copy": {
+        "headline": "실제 댓글 패널 2 — 확보 전",
+        "body": null
+      },
+      "evidence": {
+        "basis": ["source_evidence.visible_metrics.comments"],
+        "status": "blocked_real_comment_text_not_supplied",
+        "source_credit": "댓글 수 152만 목록에서 확인"
+      },
+      "rights_status": "pending_comment_capture_permission_and_pii_review",
+      "unknown_detail_markers": ["찬반 댓글 원문 미확보", "대표성 판단 불가"]
+    },
+    {
+      "slide_number": 9,
+      "slide_role": "direct_cta",
+      "media_type": "editorial",
+      "scene": "결혼 반지와 끊어진 가족선을 양쪽에 놓고 중앙에 질문을 크게 표시한 2D 엔딩 컷.",
+      "dialogue": [],
+      "copy": {
+        "headline": "결혼 전이면 이 선택, 맞아?",
+        "body": "판단에 필요한 상세 사연과 실제 댓글은 아직 확보되지 않았다"
+      },
+      "cta": "결혼 전이면 이 선택, 맞아?",
+      "evidence": {
+        "basis": ["owner_supplied_cta"],
+        "status": "editorial_question_not_fact_claim",
+        "source_credit": "CTA는 편집 질문"
+      },
+      "rights_status": "original_editorial_graphic",
+      "unknown_detail_markers": ["독자 판단 전 원문 맥락 확인 필요"]
+    }
+  ],
+  "data_gaps": [
+    "다툼의 원인과 실제 대화 내용",
+    "연락두절 기간과 연락을 끊은 가족 범위",
+    "화해 또는 연락 시도 여부",
+    "동생과 엄마 각각의 입장",
+    "예비 배우자의 입장",
+    "결혼식 날짜·초대·참석 여부",
+    "실제 댓글 152개의 원문과 관점 분포",
+    "게시 시각",
+    "사용 허가된 원문 스크린샷·인물·장소 자산"
+  ],
+  "production_blockers": [
+    "슬라이드 7-8은 실제 댓글 원문, 캡처 권리 확인, 계정명 마스킹, PII 검수 전 제작 불가",
+    "사건 세부를 설명하는 추가 컷은 상세 근거가 없어 현재 제작 불가",
+    "2D 장면은 반드시 '상황 재구성'으로 표시해야 하며 실제 가족 묘사로 제시할 수 없음"
+  ],
+  "invented_story_facts": false,
+  "invented_comments": false,
+  "publish_ready": false
+}

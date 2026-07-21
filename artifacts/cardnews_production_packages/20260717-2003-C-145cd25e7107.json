@@ -1,0 +1,259 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-C-145cd25e7107",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-C-145cd25e7107",
+    "account": "C",
+    "category": "뷰티·헤어",
+    "title": "비 올 때 시든 상추처럼 축 처진 앞머리, 요즘은 이렇게 복구합니다"
+  },
+  "evidence": {
+    "sources": [
+      "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+      "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+      "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655"
+    ],
+    "source_details": [
+      {
+        "url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+        "publisher": "얼루어 코리아",
+        "published_at": "2026-07-15",
+        "source_type": "selected_article",
+        "claims_used": [
+          "핀을 포인트로 활용하면 갈라지고 들러붙는 앞머리를 여름 스타일로 바꿀 수 있음",
+          "핀 고정 전 백콤·드라이 샴푸·텍스처 스프레이를 가볍게 사용할 수 있음",
+          "오일이나 젤은 끝부분 위주로 아주 소량 사용해 웻헤어 결을 연출"
+        ]
+      },
+      {
+        "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+        "publisher": "네이버 브랜드커넥트 상품 데이터",
+        "source_type": "selected_catalog_product",
+        "claims_used": [
+          "달리프 글램 스타일링 헤어픽서 앞머리 잔머리고정 뿌리볼륨 헤어스프레이 200ml"
+        ]
+      },
+      {
+        "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+        "publisher": "네이버 브랜드커넥트 상품 데이터",
+        "source_type": "selected_catalog_product",
+        "claims_used": [
+          "아로마티카 로즈마리 드라이 샴푸 파우더 10g"
+        ]
+      }
+    ],
+    "evidence_status": "sufficient"
+  },
+  "story": {
+    "summary": "비와 습기에 앞머리가 무너지는 순간을 훅으로 잡고, 자르는 대신 핀·드라이 샴푸·가벼운 고정·소량의 젤로 실패를 스타일로 바꾸는 순서를 보여준다.",
+    "angle": "장마철 실패 장면을 바로 따라 할 수 있는 세 가지 복구법으로 전환",
+    "narrative": "앞머리가 갈라지고 이마에 붙는 상황에서 시작한다. 핀으로 숨기는 대신 포인트를 만들고, 고정 전 드라이 샴푸나 텍스처 제품을 가볍게 더하거나 소량의 젤로 웻헤어 결을 살린다.",
+    "arc": [
+      "습기에 무너진 앞머리",
+      "핀으로 포인트 전환",
+      "고정 전 가벼운 준비",
+      "붙은 결을 웻헤어로 활용",
+      "상황별 도구 선택"
+    ],
+    "commerce_mode": "article_named_method_to_matching_product"
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "cover_problem",
+      "headline": "비 오면 앞머리부터 무너진다",
+      "body": "갈라지고 붙었다면, 포기하기 전에 세 가지만 바꿔본다."
+    },
+    {
+      "page": 2,
+      "role": "method_pin",
+      "headline": "숨기지 말고 핀으로 포인트",
+      "body": "가르마를 나누고 한쪽이나 양쪽에 핀을 꽂아 흐트러짐을 스타일로 바꾼다."
+    },
+    {
+      "page": 3,
+      "role": "method_hold",
+      "headline": "고정 전, 가볍게 한 번",
+      "body": "유분과 처짐엔 드라이 샴푸, 모양을 잡을 땐 픽서를 가볍게 쓴다."
+    },
+    {
+      "page": 4,
+      "role": "method_wet",
+      "headline": "붙었다면 웻헤어처럼",
+      "body": "오일이나 젤을 손끝에 아주 조금 묻혀 끝부분의 결만 정리한다."
+    },
+    {
+      "page": 5,
+      "role": "choice_guide",
+      "headline": "오늘은 핀, 파우더, 픽서 중 하나",
+      "body": "흐트러짐엔 핀, 유분엔 파우더, 모양 고정엔 픽서로 나눈다."
+    }
+  ],
+  "feed_caption": "비 오는 날 앞머리가 갈라지고 붙었다면 도구를 많이 쓰기보다 상태부터 나눠보세요. 흐트러진 모양은 핀으로 정리하고, 유분과 처짐에는 드라이 샴푸를 가볍게, 모양 고정이 더 필요할 때는 픽서를 소량 사용합니다. 이미 붙은 결은 오일이나 젤을 끝부분에만 살짝 묻혀 웻헤어처럼 정리할 수 있습니다. 참고: 얼루어 코리아 2026년 7월 15일 기사.",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "cover_problem",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+      "source_credit": [
+        "얼루어 코리아 기사 내용을 바탕으로 한 자체 습기·앞머리 그래픽"
+      ],
+      "rights_note": "미확보 기사 이미지를 사용하지 않고 갈라짐·붙음 현상만 도식화",
+      "production_direction": "습도 게이지와 갈라진 앞머리 선을 크게 배치해 문제를 즉시 보여줌"
+    },
+    {
+      "page": 2,
+      "slide_role": "method_pin",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+      "source_credit": [
+        "얼루어 코리아 기사 방법을 바탕으로 한 자체 헤어핀 위치 도식"
+      ],
+      "rights_note": "미확보 인플루언서 이미지를 사용하지 않고 핀 위치만 자체 그래픽으로 설명",
+      "production_direction": "가르마와 한쪽·양쪽 핀 위치를 선과 작은 핀 아이콘으로 표시"
+    },
+    {
+      "page": 3,
+      "slide_role": "method_hold",
+      "media_type": "video",
+      "asset_status": "product_source",
+      "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+      "asset_source_urls": [
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601"
+      ],
+      "source_credit": [
+        "네이버 브랜드커넥트 / 아로마티카 드라이 샴푸·달리프 헤어픽서 상품 이미지"
+      ],
+      "rights_note": "드라이 샴푸와 픽서의 서로 다른 사용 상황만 표시하고 같은 기능으로 단정하지 않음",
+      "production_direction": "드라이 샴푸에는 ‘유분·처짐’, 픽서에는 ‘모양 고정’ 라벨을 각각 표시"
+    },
+    {
+      "page": 4,
+      "slide_role": "method_wet",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+      "source_credit": [
+        "얼루어 코리아 기사 방법을 바탕으로 한 자체 젤 사용량 도식"
+      ],
+      "rights_note": "미확보 결과 이미지를 쓰지 않고 손끝 소량·모발 끝 사용 위치만 설명",
+      "production_direction": "손끝의 작은 점과 모발 끝부분을 연결해 ‘아주 조금’ 사용을 시각화"
+    },
+    {
+      "page": 5,
+      "slide_role": "choice_guide",
+      "media_type": "editorial",
+      "asset_status": "product_source",
+      "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+      "asset_source_urls": [
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601"
+      ],
+      "source_credit": [
+        "자체 헤어핀 아이콘 + 네이버 브랜드커넥트 드라이 샴푸·픽서 상품 이미지"
+      ],
+      "rights_note": "핀은 자체 아이콘, 두 상품은 실제 상세 이미지로 구분하며 개인 사용 후기는 만들지 않음",
+      "production_direction": "핀에는 ‘흐트러짐’, 드라이 샴푸에는 ‘유분’, 픽서에는 ‘모양 고정’만 표시"
+    }
+  ],
+  "commerce": {
+    "status": "natural_match",
+    "placement": "slides_3_and_5",
+    "link_issuance": false,
+    "products": [
+      {
+        "product_id": "808730266498655",
+        "name": "아로마티카 로즈마리 드라이 샴푸 파우더 10g"
+      },
+      {
+        "product_id": "833447744789601",
+        "name": "달리프 글램 스타일링 헤어픽서 앞머리 잔머리고정 뿌리볼륨 헤어스프레이 200ml"
+      }
+    ],
+    "fit_reason": "드라이 샴푸는 원문이 직접 제시한 방법과 연결된다. 헤어픽서는 원문의 텍스처 스프레이와 같은 기능으로 단정하지 않고, 앞머리 고정이 더 필요한 경우의 인접 상품으로만 제시한다."
+  },
+  "quality_notes": {
+    "first_frame": "습기에 무너진 앞머리 클로즈업",
+    "copy_density": "방법 하나당 한 장",
+    "product_guard": "효과 보장·사용 후기·하루 종일 유지 표현을 추가하지 않음"
+  },
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-C-145cd25e7107",
+    "account": "C",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-C-145cd25e7107",
+      "account": "C",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-C-145cd25e7107",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

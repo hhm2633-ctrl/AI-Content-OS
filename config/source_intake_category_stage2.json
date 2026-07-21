@@ -1,0 +1,248 @@
+{
+  "schema_version": "source_intake_category_stage2_config_v1",
+  "calibration_status": "initial_unvalidated",
+  "calibration_note": "Initial deterministic thresholds only. Recalibrate after 2-4 weeks of reviewed operating samples; do not treat these values as validated performance targets.",
+  "taxonomy": [
+    "major_news_policy",
+    "incident_conflict",
+    "economy_market",
+    "entertainment_relationship",
+    "community_buzz",
+    "beauty_fashion",
+    "lifestyle_knowledge"
+  ],
+  "routing": {
+    "primary_min_fit": 0.5,
+    "secondary_min_fit": 0.45,
+    "secondary_max_count": 2,
+    "secondary_max_gap": 0.15,
+    "uncategorized_watch_min_fit": 0.3,
+    "go_min_fit": 0.7,
+    "go_min_value": 0.6,
+    "go_min_confidence": 0.6,
+    "risk_sensitive_tie_margin": 0.02,
+    "community_subject_preference_margin": 0.05
+  },
+  "confidence": {
+    "observed_weight_coverage": 0.7,
+    "origin_evidence_quality": 0.3
+  },
+  "selective_verification": {
+    "schema_version": "source_intake_selective_verification_config_v1",
+    "strong_fact_check_categories": [
+      "major_news_policy",
+      "incident_conflict"
+    ],
+    "source_attribution_only_categories": [
+      "economy_market",
+      "entertainment_relationship",
+      "community_buzz",
+      "beauty_fashion",
+      "lifestyle_knowledge"
+    ],
+    "strong_fact_check_risk_flags": [
+      "crime_claim",
+      "defamation",
+      "efficacy_claim",
+      "financial_claim",
+      "geopolitical_claim",
+      "investment_advice",
+      "legal_claim",
+      "medical_claim",
+      "minor",
+      "policy_misread",
+      "political_persuasion",
+      "price_prediction",
+      "privacy",
+      "rumor",
+      "war"
+    ],
+    "common_minimum": {
+      "url_fields": ["link", "url", "source_url"],
+      "identity_fields": ["source_id", "source_name", "publisher"],
+      "timestamp_fields": ["published_at", "posted_at", "timestamp"],
+      "attribution_fields": ["source_attribution", "publisher", "source_name"]
+    },
+    "fast_path_replaced_evidence_needs": [
+      "claim_to_evidence_alignment_review",
+      "independent_factual_origin",
+      "independent_origin_confirmation",
+      "second_independent_source",
+      "two_independent_sources",
+      "verified_evidence_bundle_review"
+    ]
+  },
+  "evidence": {
+    "default_origin_independence_min": 0.5,
+    "minimum_by_category": {
+      "major_news_policy": 0.8,
+      "incident_conflict": 0.8,
+      "economy_market": 0.8,
+      "entertainment_relationship": 0.8
+    },
+    "authoritative_official_origin_exception": true,
+    "authoritative_origin_exception_categories": ["major_news_policy", "economy_market"],
+    "authoritative_origin_domains": [
+      "korea.kr",
+      "assembly.go.kr",
+      "scourt.go.kr",
+      "bok.or.kr",
+      "kostat.go.kr",
+      "moef.go.kr",
+      "dart.fss.or.kr"
+    ]
+  },
+  "risk_priority": {
+    "incident_conflict": 7,
+    "economy_market": 6,
+    "major_news_policy": 5,
+    "entertainment_relationship": 4,
+    "lifestyle_knowledge": 3,
+    "beauty_fashion": 2,
+    "community_buzz": 1
+  },
+  "hard_risk_flags": [
+    "child_sexual_content",
+    "doxxing",
+    "explicit_harassment",
+    "graphic_exploitation",
+    "illegal_content",
+    "imminent_harm"
+  ],
+  "soft_risk_flags": [
+    "crime_claim",
+    "defamation",
+    "efficacy_claim",
+    "financial_claim",
+    "geopolitical_claim",
+    "investment_advice",
+    "legal_claim",
+    "medical_claim",
+    "minor",
+    "policy_misread",
+    "political_persuasion",
+    "price_prediction",
+    "privacy",
+    "rumor",
+    "war"
+  ],
+  "tags": [
+    "international",
+    "commerce_signal",
+    "seasonality"
+  ],
+  "fit_heuristics": {
+    "keyword_full_match_count": 2,
+    "keyword_weight": 0.75,
+    "lane_weight": 0.1,
+    "lane_primary_weight": 0.4,
+    "source_type_weight": 0.15,
+    "category_keywords": {
+      "major_news_policy": ["정부", "정책", "법안", "국회", "제도", "규제", "복지", "노동", "교육", "시행", "발표"],
+      "incident_conflict": ["사건", "사고", "경찰", "검찰", "재판", "범죄", "화재", "재난", "갈등", "폭행", "피해", "논란"],
+      "economy_market": ["경제", "금리", "환율", "물가", "주식", "증시", "부동산", "기업", "시장", "금융", "투자"],
+      "entertainment_relationship": ["연예", "배우", "가수", "아이돌", "방송", "드라마", "영화", "열애", "결혼", "이혼", "소속사"],
+      "community_buzz": ["커뮤니티", "네티즌", "반응", "후기", "인증", "밈", "글쓴이", "화제"],
+      "beauty_fashion": ["뷰티", "패션", "화장품", "메이크업", "피부", "헤어", "코디", "스타일", "신상"],
+      "lifestyle_knowledge": ["생활", "방법", "꿀팁", "건강", "요리", "여행", "지식", "정리", "사용법", "살림"]
+    },
+    "lane_category": {
+      "news_society_economy": ["major_news_policy", "economy_market", "incident_conflict"],
+      "entertainment_news": ["entertainment_relationship"],
+      "dopamine_community": ["community_buzz", "incident_conflict", "entertainment_relationship"],
+      "beauty_fashion": ["beauty_fashion"],
+      "lifestyle_knowledge": ["lifestyle_knowledge"]
+    },
+    "lane_primary_category": {
+      "news_society_economy": "major_news_policy",
+      "entertainment_news": "entertainment_relationship",
+      "dopamine_community": "community_buzz",
+      "beauty_fashion": "beauty_fashion",
+      "lifestyle_knowledge": "lifestyle_knowledge"
+    },
+    "source_type_category": {
+      "community": ["community_buzz"],
+      "news": ["major_news_policy"]
+    }
+  },
+  "categories": {
+    "major_news_policy": {
+      "risk_priority": 5,
+      "weights": {
+        "origin_evidence_strength": 30,
+        "public_impact": 25,
+        "freshness": 15,
+        "information_completeness": 15,
+        "attention": 10,
+        "explainability": 5
+      }
+    },
+    "incident_conflict": {
+      "risk_priority": 7,
+      "weights": {
+        "factual_evidence": 30,
+        "public_interest": 20,
+        "risk_clearance": 20,
+        "cross_source_confirmation": 15,
+        "freshness": 10,
+        "attention": 5
+      }
+    },
+    "economy_market": {
+      "risk_priority": 6,
+      "weights": {
+        "numeric_evidence": 25,
+        "everyday_impact": 20,
+        "source_reliability": 20,
+        "timeliness": 15,
+        "explainability": 10,
+        "source_agreement": 10
+      }
+    },
+    "entertainment_relationship": {
+      "risk_priority": 4,
+      "weights": {
+        "independent_confirmation": 25,
+        "reaction_velocity": 20,
+        "freshness": 15,
+        "narrative_explainability": 15,
+        "public_relevance": 10,
+        "evidence_feasibility": 10,
+        "novelty": 5
+      }
+    },
+    "community_buzz": {
+      "risk_priority": 1,
+      "weights": {
+        "reaction_strength": 25,
+        "spread_velocity": 20,
+        "cross_community_recurrence": 20,
+        "explainability": 15,
+        "news_evidence_bridge": 10,
+        "novelty": 10
+      }
+    },
+    "beauty_fashion": {
+      "risk_priority": 2,
+      "weights": {
+        "recurrence": 25,
+        "positive_reaction": 20,
+        "practical_specificity": 20,
+        "visuality": 15,
+        "seasonality": 10,
+        "evidence_feasibility": 10
+      }
+    },
+    "lifestyle_knowledge": {
+      "risk_priority": 3,
+      "weights": {
+        "utility_actionability": 30,
+        "completeness": 20,
+        "source_evidence": 20,
+        "durability_recurrence": 15,
+        "seasonality_timing": 10,
+        "attention": 5
+      }
+    }
+  }
+}

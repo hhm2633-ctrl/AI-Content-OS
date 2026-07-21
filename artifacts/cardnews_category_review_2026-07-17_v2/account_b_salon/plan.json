@@ -1,0 +1,83 @@
+{
+  "schema_version": "image_first_owner_review_v2",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "B",
+  "category": "issue_real_story",
+  "topic": "17만 원 미용실 바리깡 피해 제보",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "the_shock",
+      "media_type": "comparison",
+      "headline": "17만 원 냈는데,\n바리깡으로 한 번에?",
+      "asset": "salon_17.jpg + salon_14.jpg evidence crop",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 2,
+      "role": "before",
+      "media_type": "screenshot",
+      "headline": "원한 건 새치 염색",
+      "asset": "salon_17.jpg",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 3,
+      "role": "the_turn",
+      "media_type": "editorial",
+      "headline": "“투블럭이\n어울릴 것 같아요”",
+      "asset": "salon_17.jpg blurred editorial background",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 4,
+      "role": "the_cut",
+      "media_type": "screenshot",
+      "headline": "알겠다고 하자,\n뒤통수를 확 밀었다",
+      "asset": "salon_15.jpg",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 5,
+      "role": "the_result",
+      "media_type": "screenshot",
+      "headline": "거울을 보고\n말을 잃었다",
+      "asset": "salon_14.jpg",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 6,
+      "role": "the_payment",
+      "media_type": "screenshot",
+      "headline": "결국 17만 원을 결제",
+      "asset": "salon_13.jpg",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    },
+    {
+      "slide": 7,
+      "role": "the_reply",
+      "media_type": "screenshot",
+      "headline": "“실수가 아니다”",
+      "asset": "salon_12.jpg",
+      "copy_density": "minimal",
+      "is_factual_evidence": "source-capture only; claim unverified"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "owner_analysis_inbox public-post capture",
+      "url": null,
+      "role": "raw owner-provided reference; not approved fact"
+    }
+  ]
+}

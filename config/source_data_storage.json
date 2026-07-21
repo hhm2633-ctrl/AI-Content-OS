@@ -1,0 +1,37 @@
+{
+  "schema_version": "source_data_storage_v1",
+  "source_data_root": "F:/AI-Content-OS-Data",
+  "external_heavy_storage": {
+    "enabled": true,
+    "root": "F:/AI-Content-OS-Data",
+    "fallback_root": "artifacts/_external_storage_fallback",
+    "graphify_output_root": "F:/AI-Content-OS-Data/graphify-out",
+    "buckets": {
+      "source_data": "source_intake",
+      "card_news": "card_news",
+      "artifacts": "artifacts"
+    }
+  },
+  "repo_storage_policy": {
+    "small_index_json": "storage/source_intake",
+    "workflow_results": "storage/workflow_results",
+    "large_raw_artifacts": "external_source_data_root",
+    "large_render_artifacts": "external_heavy_storage"
+  },
+  "external_artifact_policy": {
+    "raw_html": true,
+    "screenshots": true,
+    "comment_samples": true,
+    "image_candidates": true,
+    "ad_images": false,
+    "ad_text_domain_category_only": true
+  },
+  "notes": [
+    "C: keeps code, tests, workflow state, and shallow index JSON.",
+    "F: stores new selected-topic deep-dive, CardNews media, and rendered artifacts.",
+    "Existing C: data is not moved or deleted by this configuration.",
+    "Ad images are not stored; ad text/domain/category signals are enough for V1.",
+    "Credentials, login sessions, and publish actions are never stored here.",
+    "2026-07-20: graphify-out migrated to F:/AI-Content-OS-Data/graphify-out; the repository graphify-out is now a directory junction to F:, so any direct `graphify` CLI invocation (hook-guard, `graphify update .`, etc.) transparently reads/writes F: with no per-caller wiring needed."
+  ]
+}

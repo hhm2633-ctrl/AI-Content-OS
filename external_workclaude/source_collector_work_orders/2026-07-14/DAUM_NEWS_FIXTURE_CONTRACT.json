@@ -1,0 +1,60 @@
+{
+  "source": "daum_news",
+  "recon_date": "2026-07-15",
+  "verified_working_urls": [
+    "https://news.daum.net/society",
+    "https://news.daum.net/politics"
+  ],
+  "confirmed_broken_urls": [
+    "https://news.daum.net/ranking/popular",
+    "https://news.daum.net/ranking/popular?regDate=YYYYMMDD",
+    "https://news.daum.net/breakingnews/society"
+  ],
+  "url_pattern": "https://news.daum.net/<category_slug>",
+  "known_category_slugs_verified": ["society", "politics"],
+  "robots_txt": {
+    "news_daum_net": "404 - no robots.txt present for this origin",
+    "www_daum_net_note": "www.daum.net has its own robots.txt disallowing all but root; does NOT apply to news.daum.net (different origin)"
+  },
+  "access_blockers": {
+    "login_wall": false,
+    "captcha": false,
+    "js_required_for_content": false
+  },
+  "selectors": {
+    "list_container": "ul.list_newsheadline2",
+    "list_container_parent": "div.box_comp.box_news_headline2",
+    "item": "li",
+    "article_link": "a.item_newsheadline2",
+    "article_link_href_prefix": "https://v.daum.net/v/",
+    "rank_attribute": "data-tiara-ordnum",
+    "rank_attribute_note": "1-indexed integer, present on article_link element",
+    "headline": "strong.tit_txt",
+    "description": "p.desc_txt",
+    "source_and_time_container": "span.info_txt span.con_txt",
+    "source_and_time_children": "span.txt_info",
+    "source_and_time_note": "two sibling span.txt_info elements: [0]=source name, [1]=relative time string",
+    "thumbnail_webp": "picture source[type='image/webp']",
+    "thumbnail_fallback": "picture source:not([type])",
+    "thumbnail_img": "img.img_g",
+    "category_field": null,
+    "category_field_note": "not present per-item; category is implied by page URL slug only",
+    "embedded_json_state": null,
+    "embedded_json_state_note": "no __NEXT_DATA__/__NUXT__ or similar script found; content is server-rendered plain HTML",
+    "canonical_link": null,
+    "canonical_link_note": "no link[rel=canonical] found on tested pages"
+  },
+  "article_permalink_pattern": {
+    "pattern": "https://v.daum.net/v/{17_digit_id}",
+    "example": "https://v.daum.net/v/20260715040308416",
+    "id_structure_hypothesis": "first 14 digits = YYYYMMDDHHMMSS timestamp, last 3 digits = sequence/hash suffix (unverified, observed only)"
+  },
+  "sanitized_minimal_html_fixture": "<div class=\"box_comp box_news_headline2\"><ul class=\"list_newsheadline2\"><li><a href=\"https://v.daum.net/v/20260715040308416\" target=\"_self\" rel=\"\" class=\"item_newsheadline2\" data-tiara-layer=\"news\" data-tiara-ordnum=\"1\" data-title=\"%EC%98%88%EC%8B%9C%20%ED%97%A4%EB%93%9C%EB%9D%BC%EC%9D%B8\"><div class=\"wrap_thumb\"><picture><source srcset=\"//img1.daumcdn.net/thumb/S686x440a.q80.fwebp/?fname=EXAMPLE&scode=media\" type=\"image/webp\"><source srcset=\"//img1.daumcdn.net/thumb/S686x440a.q80/?fname=EXAMPLE&scode=media\"><img alt=\"\" referrerpolicy=\"no-referrer\" class=\"img_g\"></picture></div><div class=\"cont_thumb\"><strong class=\"tit_txt\">예시 헤드라인 텍스트</strong><p class=\"desc_txt\">예시 기사 요약 텍스트가 여기 들어갑니다.</p><span class=\"info_txt\"><span class=\"con_txt\"><span class=\"txt_info\">예시언론사</span><span class=\"txt_info\">22분 전</span></span></span></div></a></li></ul></div>",
+  "feasibility_verdict": "STATIC_HTML_FEASIBLE_FOR_CATEGORY_PAGES",
+  "feasibility_notes": [
+    "Category pages (/<slug>) are server-rendered; no JS execution required to extract headline/link/source/time/rank.",
+    "/ranking/popular is a hard 404 as of recon date; do not build a ranking collector against it without rediscovering the correct current URL first.",
+    "/breakingnews/<slug> old-style paths silently redirect to homepage (200, not 404) — a collector must validate the final resolved URL and expected DOM markers, not just HTTP status.",
+    "No robots.txt exists on news.daum.net (confirmed 404); legal/ToS review of crawl permissibility is a policy decision outside this recon's scope."
+  ]
+}

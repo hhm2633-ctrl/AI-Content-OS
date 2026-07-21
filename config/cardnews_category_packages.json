@@ -1,0 +1,66 @@
+{
+  "schema_version": "cardnews_category_packages_v1",
+  "status": "ACTIVE",
+  "purpose": "Category-first manual publish packages for owner-selected CardNews topics.",
+  "output_root": "artifacts/publish_packages",
+  "category_bucket_map": {
+    "major_news_policy": "news_policy_society",
+    "incident_conflict": "news_incident",
+    "economy_market": "news_economy_market",
+    "entertainment_relationship": "relationship_entertainment",
+    "community_buzz": "community_story"
+  },
+  "split_category": "beauty_fashion",
+  "beauty_fashion_split": {
+    "metadata_fields": ["vertical", "canonical_category", "category_detail", "editorial_scope"],
+    "allowed_values": {
+      "fashion": "fashion",
+      "beauty": "beauty",
+      "패션": "fashion",
+      "뷰티": "beauty"
+    }
+  },
+  "canonical_categories": [
+    "news_policy_society",
+    "news_incident",
+    "news_economy_market",
+    "relationship_entertainment",
+    "community_story",
+    "fashion",
+    "beauty"
+  ],
+  "news_categories": [
+    "news_policy_society",
+    "news_incident",
+    "news_economy_market"
+  ],
+  "caption_source_categories": [
+    "news_policy_society",
+    "news_incident",
+    "news_economy_market"
+  ],
+  "community_categories": ["community_story"],
+  "allowed_media_types": ["image", "video", "screenshot", "editorial", "motion_graphic"],
+  "allowed_origins": ["official", "news", "community", "generated", "local_created"],
+  "allowed_asset_classes": ["source_evidence", "auxiliary"],
+  "allowed_local_extensions": [".png", ".jpg", ".jpeg", ".webp", ".mp4"],
+  "reference_only_agencies": ["ap", "ap통신", "associated press", "the associated press"],
+  "internal_review_markers": ["내부 검토", "게시 불가", "권리 재확인", "팩트 재검증", "제작 메모"],
+  "download": {
+    "enabled_by_default": false,
+    "timeout_seconds": 10,
+    "max_bytes": 26214400,
+    "allowed_schemes": ["https", "http"],
+    "allowed_content_types": {
+      "image/png": ".png",
+      "image/jpeg": ".jpg",
+      "image/webp": ".webp",
+      "video/mp4": ".mp4"
+    }
+  },
+  "notes": [
+    "Remote URLs stay manifest references unless download mode is explicitly enabled per run.",
+    "AP/Associated Press items are discovery references only and are never promoted to publishable assets.",
+    "beauty_fashion input must carry explicit fashion/beauty metadata; otherwise the package blocks honestly."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "source_id": "moneytoday",
+  "site_name": "머니투데이",
+  "recon_date_kst": "2026-07-15",
+  "canonical_host": "https://www.mt.co.kr",
+  "legacy_hosts": {
+    "news.mt.co.kr": "410/301 to canonical; mtview.php?no=<articleId> 301-redirects to canonical article URL"
+  },
+  "article_url_pattern": "https://www.mt.co.kr/{category}/{yyyy}/{mm}/{dd}/{articleId}",
+  "article_id_format": "19-digit numeric string, prefix encodes creation timestamp (yyyyMMddHHmm...)",
+  "rendering": "server-rendered HTML (Laravel/Blade); no JS required; JSON-LD NewsArticle on article pages",
+  "endpoints": {
+    "latest_sitemap": {
+      "url": "https://www.mt.co.kr/sitemap/latest.xml",
+      "format": "google-news-sitemap-xml",
+      "coverage": "last 1000 articles",
+      "fields": ["loc", "lastmod", "news:publication_date", "news:title", "image:loc"],
+      "preferred": true
+    },
+    "latest_html": {
+      "url": "https://www.mt.co.kr/breakingnews",
+      "container_selector": "ul.list_wrap > li.article_item",
+      "pagination": "?page=N — EXISTS but robots-disallowed for User-agent:*; collector must use page 1 only"
+    },
+    "category_html": {
+      "url_template": "https://www.mt.co.kr/{category}",
+      "known_categories": ["economy", "stock", "industry", "finance", "estate", "politics", "society", "world", "culture", "entertainment", "living", "future", "tech", "law", "policy", "sports", "thebio", "thegreen"],
+      "top_selector": ".general_top_comp .top_one_area.article_item",
+      "secondary_selector": ".top_two_area .top_two_article.article_item"
+    },
+    "ranking_html": {
+      "url": "https://www.mt.co.kr/",
+      "note": "no standalone ranking page (/ranking is 404); per-section widgets on homepage",
+      "widget_selector": "div.rank",
+      "section_name_selector": "h2.section_title",
+      "item_selector": "ul.list_area > li.list_item",
+      "rank_selector": "figure.rank_img label",
+      "title_link_selector": "h3.hd_line a[href]"
+    }
+  },
+  "field_selectors_list_item": {
+    "link": "li.article_item > a[href]",
+    "title": "h3.headline",
+    "summary": "p.description",
+    "published_at": "div.article_date",
+    "reporter": "div.writer",
+    "article_id": "button.bookmark[data-aid]",
+    "thumbnail": "figure.thumb img[src]"
+  },
+  "field_formats": {
+    "published_at_list": "yyyy.MM.dd HH:mm (KST, no timezone marker)",
+    "published_at_jsonld": "ISO-8601 with +09:00 (datePublished / dateModified)",
+    "publisher": "constant '머니투데이'",
+    "category": "first path segment of canonical article URL",
+    "rank": "integer 1..N from widget <label>, per homepage section widget only"
+  },
+  "robots_constraints": {
+    "allowed_ai_agents": ["anthropic-ai", "ClaudeBot", "Claude-Web", "GPTBot", "CCBot"],
+    "disallowed_paths": ["/api/", "/oauth/", "/newsflash/", "/ads/", "/*?page=*", "/*?keyword=*", "/*?utm_*"],
+    "sitemaps": [
+      "https://www.mt.co.kr/sitemap.xml",
+      "https://www.mt.co.kr/sitemap/latest.xml",
+      "https://www.mt.co.kr/sitemap/news/daily.xml",
+      "https://www.mt.co.kr/sitemap/article/2026/daily.xml"
+    ]
+  },
+  "access_blockers": {
+    "login": false,
+    "paywall": false,
+    "captcha_observed": false,
+    "cdn": "Cloudflare (dynamic, may challenge under high request rates — keep rate low, cache aggressively)"
+  },
+  "fixture_rules": {
+    "sanitization": [
+      "use fake 19-digit article ids (e.g. 2026010100000000001)",
+      "use invented Korean headlines; never copy real headlines verbatim into committed fixtures",
+      "summary max 2 sentences, invented text",
+      "reporter names must be fake (e.g. '홍길동 기자')",
+      "keep real field names, selector-shaped HTML structure, and timestamp formats exactly"
+    ],
+    "fixture_item_schema": {
+      "title": "string (Korean headline)",
+      "url": "string (canonical pattern)",
+      "article_id": "string (19 digits)",
+      "category": "string (slug)",
+      "publisher": "머니투데이",
+      "published_at": "string 'yyyy.MM.dd HH:mm' KST",
+      "reporter": "string|null",
+      "summary": "string|null",
+      "thumbnail_url": "string|null",
+      "rank": "integer|null (only for ranking-widget fixtures)",
+      "source": "moneytoday",
+      "collected_at": "ISO-8601 string"
+    }
+  }
+}

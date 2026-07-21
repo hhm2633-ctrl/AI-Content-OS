@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-5f9e3814df21",
+  "candidate_id": "20260717-2003-B-5f9e3814df21",
+  "grade": "2",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "인터벌 트레이닝을 하지 않아도 되는 이유.JPG",
+  "source_urls": [
+    "https://www.bobaedream.co.kr/view?code=best&No=1011014&vdate="
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

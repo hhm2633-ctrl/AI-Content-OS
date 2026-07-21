@@ -1,0 +1,1505 @@
+test_all_ten_attack_cases_fail_with_expected_blocker (tests.test_rights_intake_v1_8_adapter.V1_8_AdapterFixtureAcceptanceTests.test_all_ten_attack_cases_fail_with_expected_blocker) ... ok
+test_expectation_count_matches_fixture_count (tests.test_rights_intake_v1_8_adapter.V1_8_AdapterFixtureAcceptanceTests.test_expectation_count_matches_fixture_count) ... ok
+test_normal_case_passes_with_no_blocker (tests.test_rights_intake_v1_8_adapter.V1_8_AdapterFixtureAcceptanceTests.test_normal_case_passes_with_no_blocker) ... ok
+test_pass_fail_totals_match_acceptance_matrix (tests.test_rights_intake_v1_8_adapter.V1_8_AdapterFixtureAcceptanceTests.test_pass_fail_totals_match_acceptance_matrix) ... ok
+test_no_intake_file_keeps_original_blocked_stub_behavior (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_no_intake_file_keeps_original_blocked_stub_behavior) ... ERROR
+test_output_set_id_mismatch_between_active_set_and_intake_keeps_blocked (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_output_set_id_mismatch_between_active_set_and_intake_keeps_blocked) ... ERROR
+test_valid_intake_clears_rights_evidence_compliance_blockers (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_valid_intake_clears_rights_evidence_compliance_blockers) ... ERROR
+test_absolute_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_absolute_path_rejected) ... ERROR
+test_evidence_url_without_verified_flag_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_evidence_url_without_verified_flag_rejected) ... ERROR
+test_forged_approval_with_placeholder_fields_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_forged_approval_with_placeholder_fields_rejected) ... ERROR
+test_missing_and_duplicate_card_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_missing_and_duplicate_card_rejected) ... ERROR
+test_missing_required_field_keeps_blocked (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_missing_required_field_keeps_blocked) ... ERROR
+test_no_file_returns_none (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_no_file_returns_none) ... ERROR
+test_normal_format_is_accepted (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_normal_format_is_accepted) ... ERROR
+test_output_set_id_mismatch_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_output_set_id_mismatch_rejected) ... ERROR
+test_previous_output_set_approval_cannot_be_reused (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_previous_output_set_approval_cannot_be_reused) ... ERROR
+test_publish_flags_are_never_propagated_even_when_otherwise_valid (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_publish_flags_are_never_propagated_even_when_otherwise_valid) ... ERROR
+test_runs_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_runs_path_rejected) ... ERROR
+test_staging_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_staging_path_rejected) ... ERROR
+test_build_pre_publish_attestation_rejects_scratch_and_absolute_paths_but_accepts_committed_relative (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_build_pre_publish_attestation_rejects_scratch_and_absolute_paths_but_accepts_committed_relative)
+Locks the exact contract the V1.7 fix depends on: CardNewsPublishGate ... ERROR
+test_commit_failure_after_staging_never_reaches_attestation_correction (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_commit_failure_after_staging_never_reaches_attestation_correction)
+If the transaction fails while writing the active pointer (after ... ERROR
+test_compliance_blocked_attestation_never_exposes_outer_pass (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_compliance_blocked_attestation_never_exposes_outer_pass) ... ERROR
+test_concurrent_reader_never_sees_missing_receipt_or_false_ready_mix (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_concurrent_reader_never_sees_missing_receipt_or_false_ready_mix) ... ERROR
+test_interrupted_receipt_update_has_no_missing_file_or_png_gap (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_interrupted_receipt_update_has_no_missing_file_or_png_gap) ... ERROR
+test_manifest_path_mismatch_resolved_after_commit_while_rights_blockers_persist (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_manifest_path_mismatch_resolved_after_commit_while_rights_blockers_persist)
+End-to-end proof of the V1.7 fix. After a full stage/rebind/promote ... ERROR
+test_partial_generation_failure_leaves_no_run_scratch_and_no_mixed_state (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_partial_generation_failure_leaves_no_run_scratch_and_no_mixed_state)
+Mixed-generation attack: CardNews renders a real artifact into the ... ERROR
+test_receipts_complete_before_loose_pngs_are_removed (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_receipts_complete_before_loose_pngs_are_removed) ... ERROR
+test_resolve_package_readiness_output_set_id_mismatch_fails_closed (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_resolve_package_readiness_output_set_id_mismatch_fails_closed)
+Even with otherwise-valid committed paths and a well-formed attestation, ... ERROR
+test_complete_blocked_or_failed_qa_set_promotes_as_not_release_ready (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_complete_blocked_or_failed_qa_set_promotes_as_not_release_ready) ... ERROR
+test_interruption_keeps_previous_active_set (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_interruption_keeps_previous_active_set) ... ERROR
+test_partial_mismatch_corrupt_and_wrong_size_fail_closed (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_partial_mismatch_corrupt_and_wrong_size_fail_closed) ... ERROR
+test_pointer_failure_rolls_back_new_commit_and_preserves_old_pointer (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_pointer_failure_rolls_back_new_commit_and_preserves_old_pointer) ... ERROR
+test_promotes_complete_set_and_resolves_only_active_manifest (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_promotes_complete_set_and_resolves_only_active_manifest) ... ERROR
+test_retry_is_idempotent (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_retry_is_idempotent) ... ERROR
+test_reversed_input_is_canonicalized_but_duplicate_or_extra_fails (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_reversed_input_is_canonicalized_but_duplicate_or_extra_fails) ... ERROR
+test_tampered_committed_set_is_never_resolved (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_tampered_committed_set_is_never_resolved) ... ERROR
+test_duplicate_and_outside_paths_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_duplicate_and_outside_paths_fail_closed) ... ERROR
+test_empty_corrupt_and_wrong_size_png_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_empty_corrupt_and_wrong_size_png_fail_closed) ... ERROR
+test_five_card_result_must_fail_closed_instead_of_ignoring_extra_card (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_five_card_result_must_fail_closed_instead_of_ignoring_extra_card) ... ERROR
+test_interrupted_stage_files_are_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_interrupted_stage_files_are_fail_closed) ... ERROR
+test_loose_or_stale_pngs_never_substitute_for_referenced_set (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_loose_or_stale_pngs_never_substitute_for_referenced_set) ... ERROR
+test_manual_image_and_rights_gates_remain_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_manual_image_and_rights_gates_remain_fail_closed) ... ERROR
+test_output_set_id_missing_incomplete_and_mismatch_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_output_set_id_missing_incomplete_and_mismatch_fail_closed) ... ERROR
+test_three_cards_duplicate_index_and_order_mismatch_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_three_cards_duplicate_index_and_order_mismatch_fail_closed) ... ERROR
+
+======================================================================
+ERROR: test_no_intake_file_keeps_original_blocked_stub_behavior (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_no_intake_file_keeps_original_blocked_stub_behavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 241, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpnx_je0ly'
+
+======================================================================
+ERROR: test_output_set_id_mismatch_between_active_set_and_intake_keeps_blocked (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_output_set_id_mismatch_between_active_set_and_intake_keeps_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 241, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpvlqgd5zs'
+
+======================================================================
+ERROR: test_valid_intake_clears_rights_evidence_compliance_blockers (tests.test_card_news_rights_intake.RightsIntakeAttestationIntegrationTests.test_valid_intake_clears_rights_evidence_compliance_blockers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 241, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpjnxqdxt7'
+
+======================================================================
+ERROR: test_absolute_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_absolute_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpustdsaux'
+
+======================================================================
+ERROR: test_evidence_url_without_verified_flag_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_evidence_url_without_verified_flag_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpix0vom8k'
+
+======================================================================
+ERROR: test_forged_approval_with_placeholder_fields_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_forged_approval_with_placeholder_fields_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpq5wvyu08'
+
+======================================================================
+ERROR: test_missing_and_duplicate_card_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_missing_and_duplicate_card_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpbz535f4a'
+
+======================================================================
+ERROR: test_missing_required_field_keeps_blocked (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_missing_required_field_keeps_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpk6eg4719'
+
+======================================================================
+ERROR: test_no_file_returns_none (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_no_file_returns_none)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp08279roq'
+
+======================================================================
+ERROR: test_normal_format_is_accepted (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_normal_format_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpmxlm_xje'
+
+======================================================================
+ERROR: test_output_set_id_mismatch_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_output_set_id_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp68sl02gw'
+
+======================================================================
+ERROR: test_previous_output_set_approval_cannot_be_reused (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_previous_output_set_approval_cannot_be_reused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp6spumqlf'
+
+======================================================================
+ERROR: test_publish_flags_are_never_propagated_even_when_otherwise_valid (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_publish_flags_are_never_propagated_even_when_otherwise_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2sev1yjt'
+
+======================================================================
+ERROR: test_runs_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_runs_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpsbziux4g'
+
+======================================================================
+ERROR: test_staging_path_rejected (tests.test_card_news_rights_intake.RightsIntakeLoaderTests.test_staging_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_rights_intake.py", line 96, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpt7yn3qi5'
+
+======================================================================
+ERROR: test_build_pre_publish_attestation_rejects_scratch_and_absolute_paths_but_accepts_committed_relative (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_build_pre_publish_attestation_rejects_scratch_and_absolute_paths_but_accepts_committed_relative)
+Locks the exact contract the V1.7 fix depends on: CardNewsPublishGate
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw02c3eky'
+
+======================================================================
+ERROR: test_commit_failure_after_staging_never_reaches_attestation_correction (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_commit_failure_after_staging_never_reaches_attestation_correction)
+If the transaction fails while writing the active pointer (after
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw75fyokn'
+
+======================================================================
+ERROR: test_compliance_blocked_attestation_never_exposes_outer_pass (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_compliance_blocked_attestation_never_exposes_outer_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2kitshma'
+
+======================================================================
+ERROR: test_concurrent_reader_never_sees_missing_receipt_or_false_ready_mix (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_concurrent_reader_never_sees_missing_receipt_or_false_ready_mix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzwwtn9yb'
+
+======================================================================
+ERROR: test_interrupted_receipt_update_has_no_missing_file_or_png_gap (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_interrupted_receipt_update_has_no_missing_file_or_png_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmprba3bulv'
+
+======================================================================
+ERROR: test_manifest_path_mismatch_resolved_after_commit_while_rights_blockers_persist (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_manifest_path_mismatch_resolved_after_commit_while_rights_blockers_persist)
+End-to-end proof of the V1.7 fix. After a full stage/rebind/promote
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpbyytnms6'
+
+======================================================================
+ERROR: test_partial_generation_failure_leaves_no_run_scratch_and_no_mixed_state (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_partial_generation_failure_leaves_no_run_scratch_and_no_mixed_state)
+Mixed-generation attack: CardNews renders a real artifact into the
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpd6okr1o8'
+
+======================================================================
+ERROR: test_receipts_complete_before_loose_pngs_are_removed (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_receipts_complete_before_loose_pngs_are_removed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmperrdmrjt'
+
+======================================================================
+ERROR: test_resolve_package_readiness_output_set_id_mismatch_fails_closed (tests.test_workflow_card_news_output_receipts.WorkflowCardNewsReceiptTests.test_resolve_package_readiness_output_set_id_mismatch_fails_closed)
+Even with otherwise-valid committed paths and a well-formed attestation,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_workflow_card_news_output_receipts.py", line 22, in setUp
+    os.chdir(self.root)
+    ~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpc8_jslt_'
+
+======================================================================
+ERROR: test_complete_blocked_or_failed_qa_set_promotes_as_not_release_ready (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_complete_blocked_or_failed_qa_set_promotes_as_not_release_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2w605io3\\sources'
+
+======================================================================
+ERROR: test_interruption_keeps_previous_active_set (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_interruption_keeps_previous_active_set)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpob7j10b9\\sources'
+
+======================================================================
+ERROR: test_partial_mismatch_corrupt_and_wrong_size_fail_closed (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_partial_mismatch_corrupt_and_wrong_size_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpsg57uu5m\\sources'
+
+======================================================================
+ERROR: test_pointer_failure_rolls_back_new_commit_and_preserves_old_pointer (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_pointer_failure_rolls_back_new_commit_and_preserves_old_pointer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpa4iz0nbb\\sources'
+
+======================================================================
+ERROR: test_promotes_complete_set_and_resolves_only_active_manifest (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_promotes_complete_set_and_resolves_only_active_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzkqgmbh5\\sources'
+
+======================================================================
+ERROR: test_retry_is_idempotent (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_retry_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp1hsysqiw\\sources'
+
+======================================================================
+ERROR: test_reversed_input_is_canonicalized_but_duplicate_or_extra_fails (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_reversed_input_is_canonicalized_but_duplicate_or_extra_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp_2tf3661\\sources'
+
+======================================================================
+ERROR: test_tampered_committed_set_is_never_resolved (tests.test_common_card_news_output_set.TestCardNewsOutputSetTransaction.test_tampered_committed_set_is_never_resolved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_common_card_news_output_set.py", line 21, in setUp
+    self.sources.mkdir()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2ifpb7kz\\sources'
+
+======================================================================
+ERROR: test_duplicate_and_outside_paths_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_duplicate_and_outside_paths_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6qb8pwrf\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6qb8pwrf\\storage'
+
+======================================================================
+ERROR: test_empty_corrupt_and_wrong_size_png_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_empty_corrupt_and_wrong_size_png_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpy0v6lli1\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpy0v6lli1\\storage'
+
+======================================================================
+ERROR: test_five_card_result_must_fail_closed_instead_of_ignoring_extra_card (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_five_card_result_must_fail_closed_instead_of_ignoring_extra_card)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6bg74hu0\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6bg74hu0\\storage'
+
+======================================================================
+ERROR: test_interrupted_stage_files_are_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_interrupted_stage_files_are_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpdcj2lajr\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpdcj2lajr\\storage'
+
+======================================================================
+ERROR: test_loose_or_stale_pngs_never_substitute_for_referenced_set (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_loose_or_stale_pngs_never_substitute_for_referenced_set)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpyu89rws3\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpyu89rws3\\storage'
+
+======================================================================
+ERROR: test_manual_image_and_rights_gates_remain_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_manual_image_and_rights_gates_remain_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpz5sjmzwc\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpz5sjmzwc\\storage'
+
+======================================================================
+ERROR: test_output_set_id_missing_incomplete_and_mismatch_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_output_set_id_missing_incomplete_and_mismatch_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp1qwmpfqs\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp1qwmpfqs\\storage'
+
+======================================================================
+ERROR: test_three_cards_duplicate_index_and_order_mismatch_fail_closed (tests.test_card_news_output_set_integrity.TestCardNewsOutputSetIntegrity.test_three_cards_duplicate_index_and_order_mismatch_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] ������ ��θ� ã�� �� �����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpxl_w799_\\storage\\workflow_results'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\Documents\GitHub\AI-Content-OS\tests\test_card_news_output_set_integrity.py", line 15, in setUp
+    (self.root / "storage/workflow_results").mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 726, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpxl_w799_\\storage'
+
+----------------------------------------------------------------------
+Ran 44 tests in 0.236s
+
+FAILED (errors=40)
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpxl_w799_'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpxl_w799_'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp1qwmpfqs'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp1qwmpfqs'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpz5sjmzwc'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpz5sjmzwc'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpyu89rws3'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpyu89rws3'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpdcj2lajr'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpdcj2lajr'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6bg74hu0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6bg74hu0'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpy0v6lli1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmpy0v6lli1'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6qb8pwrf'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\tmp6qb8pwrf'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2ifpb7kz'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2ifpb7kz'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp_2tf3661'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp_2tf3661'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp1hsysqiw'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp1hsysqiw'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzkqgmbh5'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzkqgmbh5'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpa4iz0nbb'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpa4iz0nbb'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpsg57uu5m'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpsg57uu5m'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpob7j10b9'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpob7j10b9'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2w605io3'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2w605io3'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpc8_jslt_'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpc8_jslt_'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmperrdmrjt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmperrdmrjt'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpd6okr1o8'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpd6okr1o8'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpbyytnms6'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpbyytnms6'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmprba3bulv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmprba3bulv'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzwwtn9yb'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpzwwtn9yb'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2kitshma'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmp2kitshma'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw75fyokn'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw75fyokn'
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw02c3eky'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 666, in _exitfunc
+    f()
+    ~^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 940, in _cleanup
+    cls._rmtree(name, ignore_errors=ignore_errors)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\���� �ָ���ȹ�\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] �׼����� �źεǾ����ϴ�: 'C:\\Users\\���� �ָ���ȹ�\\Documents\\GitHub\\AI-Content-OS\\.tmp_test_workspace\\tmpw02c3eky'

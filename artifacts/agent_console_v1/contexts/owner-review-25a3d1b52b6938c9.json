@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-54a399544a4f",
+  "candidate_id": "20260717-2003-C-54a399544a4f",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티",
+  "title": "블랙이 아니면 품을 수 없는 남자를 위한 시크한 블랙 뷰티템 7",
+  "source_urls": [
+    "https://www.gqkorea.co.kr/2026/07/17/%eb%b8%94%eb%9e%99%ec%9d%b4-%ec%95%84%eb%8b%88%eb%a9%b4-%ed%92%88%ec%9d%84-%ec%88%98-%ec%97%86%eb%8a%94-%eb%82%a8%ec%9e%90%eb%a5%bc-%ec%9c%84%ed%95%9c-%ec%8b%9c%ed%81%ac%ed%95%9c-%eb%b8%94%eb%9e%99/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

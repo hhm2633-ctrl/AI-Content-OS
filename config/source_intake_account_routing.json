@@ -1,0 +1,65 @@
+{
+  "schema_version": "source_intake_account_routing_config_v1",
+  "calibration_status": "owner_directive_initial",
+  "routing_scope": "card_news_only",
+  "eligible_decisions": ["GO"],
+  "require_cluster_id": true,
+  "global_cluster_exclusivity": true,
+  "account_tie_priority": [
+    "account_a_news_incident",
+    "account_b_issue_story",
+    "account_c_beauty_fashion"
+  ],
+  "strong_fact_check_categories": [
+    "major_news_policy",
+    "incident_conflict"
+  ],
+  "accounts": {
+    "account_a_news_incident": {
+      "display_name": "Account A",
+      "category_portfolio": [
+        "major_news_policy",
+        "incident_conflict",
+        "economy_market"
+      ],
+      "editorial_scope": [
+        "domestic_news",
+        "world_news",
+        "domestic_incident",
+        "world_incident"
+      ]
+    },
+    "account_b_issue_story": {
+      "display_name": "Account B",
+      "category_portfolio": [
+        "entertainment_relationship",
+        "community_buzz"
+      ],
+      "editorial_scope": [
+        "issue",
+        "story",
+        "dopamine",
+        "relationship",
+        "emotion"
+      ]
+    },
+    "account_c_beauty_fashion": {
+      "display_name": "Account C",
+      "category_portfolio": [
+        "beauty_fashion"
+      ],
+      "editorial_scope": [
+        "fashion",
+        "beauty"
+      ]
+    }
+  },
+  "unassigned_categories": [
+    "lifestyle_knowledge"
+  ],
+  "notes": [
+    "Account ids are logical portfolio ids, not publishing credentials.",
+    "Lifestyle/knowledge stays unassigned until the owner defines its account.",
+    "TOP topic ranking is a separate downstream stage."
+  ]
+}

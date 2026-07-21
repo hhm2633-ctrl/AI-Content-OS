@@ -1,0 +1,3056 @@
+2026-07-14T11:18:12.734616Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-07-14T11:18:12.734676Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-07-14T11:18:14.616638Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-07-14T11:18:14.932461Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-07-14T11:18:14.932489Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-07-14T11:18:14.972363Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-coupang\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 61
+2026-07-14T11:18:14.973269Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-cto-review\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 67
+2026-07-14T11:18:14.975559Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-instagram\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 63
+2026-07-14T11:18:14.979800Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-qa\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 56
+2026-07-14T11:18:14.985236Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-sprint-manager\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 75
+2026-07-14T11:18:14.986294Z  WARN codex_core_skills::loader: ignoring C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\.codex\skills\ai-content-os-trend-collector\agents\openai.yaml: failed to read openai.yaml: invalid utf-8 sequence of 1 bytes from index 71
+OpenAI Codex v0.144.3
+--------
+workdir: C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+model: gpt-5.3-codex-spark
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019f6059-4b1e-7f40-bd0c-3c63f5e13ae3
+--------
+user
+You are Spark working inside AI-Content-OS. Keep output minimal.
+
+Objective: add a tiny persistence wrapper for the Daily Source Collection Engine V0 plan. This is NOT a crawler and NOT workflow integration.
+
+Rules:
+- Do not run py -m src.main.
+- Do not access the web.
+- No Git operations.
+- Do not edit shared docs.
+- Do not touch src/workflow_engine.py, modules/card_news, modules/publishing, modules/compliance.
+- Allowed files only:
+  - modules/source_intake/daily_collection_runner.py
+  - tests/test_daily_source_collection_runner.py
+  - external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+
+Required reading:
+- modules/source_intake/daily_collection_plan.py
+- modules/source_intake/source_intake_schema.py
+- tests/test_daily_source_collection_plan.py
+
+Implement:
+1. New module modules/source_intake/daily_collection_runner.py
+2. Function run_daily_collection_plan(account_profiles=None, today=None, output_root=None) that:
+   - calls build_daily_collection_plan
+   - writes JSON to storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json by default
+   - creates parent directories
+   - writes UTF-8 JSON only
+   - returns dict with status, plan_path, plan
+3. No web calls, no crawling, no LLM, no screenshots.
+4. Tests for default path, custom output_root, valid JSON, unknown lane fail-closed, and no commerce_detail text.
+5. Handoff markdown with implemented/not implemented/tests only.
+
+Validation:
+- py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v
+- py -m compileall modules/source_intake
+
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+codex
+좋아요. 먼저 지정된 3개 파일을 한 번씩만 읽어 현재 플랜/스키마 및 기존 테스트 패턴을 확인한 뒤, 요구한 파일만 단일 패치로 추가/수정하겠습니다.  
+이후 최소한의 테스트(`unittest` 2개)와 `compileall`을 실행합니다.
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-Content -Path modules/source_intake/daily_collection_runner.py' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-Content -Path tests/test_daily_source_collection_plan.py' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-Content -Path modules/source_intake/source_intake_schema.py' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-Content -Path modules/source_intake/daily_collection_plan.py' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+ succeeded in 731ms:
+import unittest
+
+from modules.source_intake.daily_collection_plan import (
+    DEFAULT_LANES,
+    SCHEMA_VERSION,
+    build_daily_collection_plan,
+)
+from modules.source_intake.source_intake_schema import (
+    SOURCE_INTAKE_STORAGE_ROOT,
+    source_data_root,
+)
+
+
+class TestDailySourceCollectionPlan(unittest.TestCase):
+    def setUp(self):
+        self.account_profiles = [
+            "news_society_economy",
+            "entertainment_news",
+            "dopamine_community",
+            "beauty_fashion",
+            "lifestyle_knowledge",
+        ]
+        self.today = "2026-07-14"
+
+    def test_schema_and_known_lanes(self):
+        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+        self.assertEqual(plan["schema_version"], SCHEMA_VERSION)
+        self.assertEqual(len(plan["lanes"]), len(self.account_profiles))
+        self.assertEqual([lane["lane_id"] for lane in plan["lanes"]], self.account_profiles)
+
+        for lane in plan["lanes"]:
+            self.assertEqual(lane["shallow_only"], True)
+            self.assertEqual(lane["deep_dive_enabled"], False)
+            self.assertIn(lane["lane_id"], DEFAULT_LANES)
+            self.assertTrue(lane["storage_policy"]["shallow_only_index"]["small_index_path"])
+            self.assertEqual(
+                lane["storage_policy"]["shallow_only_index"]["small_index_root"],
+                SOURCE_INTAKE_STORAGE_ROOT,
+            )
+
+    def test_unknown_lane_fails_closed(self):
+        plan = build_daily_collection_plan(["ghost_lane"], today=self.today)
+        self.assertEqual(plan["unknown_lanes"], ["ghost_lane"])
+        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
+        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
+        self.assertEqual(plan["lanes"][0]["plan_status"], "lane_unknown")
+        self.assertEqual(plan["plan_status"], "empty_plan")
+
+    def test_storage_policy_uses_c_and_external_f_root(self):
+        plan = build_daily_collection_plan(["news_society_economy"], today=self.today)
+        storage_policy = plan["lanes"][0]["storage_policy"]
+        self.assertEqual(
+            storage_policy["shallow_only_index"]["small_index_root"],
+            SOURCE_INTAKE_STORAGE_ROOT,
+        )
+        self.assertEqual(
+            storage_policy["shallow_only_index"]["small_index_path"].replace("\\", "/"),
+            "storage/source_intake/2026-07-14/shallow_index",
+        )
+        self.assertEqual(
+            storage_policy["deep_dive_raw_artifacts"]["raw_artifacts_root"],
+            source_data_root(),
+        )
+
+    def test_blocked_sources_are_recorded_with_reason(self):
+        plan = build_daily_collection_plan(["dopamine_community", "lifestyle_knowledge"], today=self.today)
+        excluded = []
+        for lane in plan["lanes"]:
+            excluded.extend([entry["source_id"] for entry in lane["excluded_sources"]])
+
+        self.assertIn("instiz", excluded)
+        for lane in plan["lanes"]:
+            for entry in lane["excluded_sources"]:
+                self.assertIn("skip_reason", entry)
+                self.assertEqual(entry["workflow_impact"], "none")
+
+    def test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement(self):
+        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+        for lane in plan["lanes"]:
+            policy = lane["deep_dive_trigger_policy"]
+            self.assertIn("score_threshold", policy)
+            self.assertGreater(policy["score_threshold"], 0)
+            self.assertIn("repeat_source_min_hits", policy)
+            self.assertIsInstance(policy["repeat_source_min_hits"], int)
+            self.assertGreaterEqual(policy["repeat_source_min_hits"], 2)
+
+    def test_commerce_signal_only_in_text(self):
+        # no accidental commerce_detail wording in the planner output
+        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+        serialized = str(plan)
+        self.assertNotIn("commerce_detail", serialized)
+
+ succeeded in 743ms:
+"""Deterministic daily source collection planning for shallow-first intake.
+
+This module is the planning contract only (no crawling, no LLM/token calls).
+It decides:
+- which source IDs are scanned shallowly for each requested lane
+- which sources are blocked/skip-eligible and why
+- default deep-dive trigger guardrails for later phases
+- storage policy for index output and external artifacts
+"""
+
+from __future__ import annotations
+
+import os
+from datetime import date, datetime
+from typing import Any, Dict, List, Optional
+
+from modules.source_intake.source_capability_map import SourceCapabilityMap
+from modules.source_intake.source_intake_metrics import DEFAULT_DEEP_DIVE_THRESHOLD
+from modules.source_intake.source_intake_schema import (
+    SOURCE_INTAKE_STORAGE_ROOT,
+    shallow_index_dir,
+    source_data_root,
+)
+
+SCHEMA_VERSION = "daily_source_collection_plan_v1"
+
+DEFAULT_LANES: Dict[str, List[str]] = {
+    "news_society_economy": [
+        "naver_news",
+        "daum_news",
+        "nate_news_rank",
+        "hankyung_economy",
+        "mk_economy",
+        "moneytoday",
+        "edaily",
+        "yonhap",
+        "newsis",
+        "news1",
+    ],
+    "entertainment_news": [
+        "nate_news_rank",
+        "naver_news",
+        "daum_news",
+        "theqoo",
+        "dcinside",
+        "ppomppu",
+    ],
+    "dopamine_community": [
+        "nate_pann",
+        "fmkorea",
+        "bobaedream",
+        "dcinside",
+        "theqoo",
+        "dogdrip",
+        "ruliweb",
+        "instiz",
+    ],
+    "beauty_fashion": [
+        "theqoo",
+        "nate_pann",
+        "fmkorea",
+    ],
+    "lifestyle_knowledge": [
+        "naver_news",
+        "daum_news",
+        "newsis",
+        "news1",
+        "nate_pann",
+        "instiz",
+    ],
+}
+
+
+def _coerce_today(today: Optional[Any]) -> str:
+    if not today:
+        return date.today().isoformat()
+    if isinstance(today, str):
+        return today
+    if isinstance(today, (datetime, date)):
+        return today.isoformat()
+    return str(today)
+
+
+def _normalise_requested_lanes(account_profiles: Optional[Any]) -> List[str]:
+    if not account_profiles:
+        return list(DEFAULT_LANES.keys())
+    seen = set()
+    ordered: List[str] = []
+    for lane_id in account_profiles:
+        if lane_id in seen:
+            continue
+        seen.add(lane_id)
+        ordered.append(lane_id)
+    return ordered
+
+
+def _coerce_capability_map(source_capabilities: Optional[Any]) -> SourceCapabilityMap:
+    if source_capabilities is None or isinstance(source_capabilities, SourceCapabilityMap):
+        return source_capabilities or SourceCapabilityMap()
+
+    class _DictBackedCapabilityMap:
+        def __init__(self, raw: Any) -> None:
+            self._entries: Dict[str, Dict[str, Any]] = {}
+            if isinstance(raw, dict):
+                if raw.get("sources") and isinstance(raw["sources"], list):
+                    for entry in raw["sources"]:
+                        if isinstance(entry, dict) and entry.get("source_id"):
+                            self._entries[entry["source_id"]] = entry
+                else:
+                    for key, entry in raw.items():
+                        if isinstance(entry, dict):
+                            source_id = entry.get("source_id") or key
+                            self._entries[source_id] = dict(entry, source_id=source_id)
+            elif isinstance(raw, list):
+                for entry in raw:
+                    if isinstance(entry, dict) and entry.get("source_id"):
+                        self._entries[entry["source_id"]] = entry
+
+        def get(self, source_id: str) -> Dict[str, Any]:
+            return self._entries.get(
+                source_id,
+                {
+                    "source_id": source_id,
+                    "url": "",
+                    "source_type": "unknown",
+                    "access_status": "blocked",
+                    "collector_allowed": False,
+                    "blocked_reason": "unknown_source",
+                    "expected_metrics": [],
+                    "channel_candidates": [],
+                },
+            )
+
+        def is_collector_allowed(self, source_id: str) -> bool:
+            entry = self.get(source_id)
+            return bool(entry.get("collector_allowed")) and entry.get("access_status") == "ok"
+
+        def skip_report(self, source_id: str) -> Dict[str, Any]:
+            entry = self.get(source_id)
+            return {
+                "source_id": source_id,
+                "attempted": False,
+                "success": False,
+                "skipped": True,
+                "skip_reason": entry.get("blocked_reason", "access_blocked"),
+                "access_status": entry.get("access_status", "blocked"),
+                "workflow_impact": "none",
+            }
+
+    return _DictBackedCapabilityMap(source_capabilities)
+
+
+def _filter_sources(
+    lane_id: str,
+    source_ids: List[str],
+    capability_map: SourceCapabilityMap,
+) -> Dict[str, Any]:
+    allowed: List[str] = []
+    excluded: List[Dict[str, Any]] = []
+    seen = set()
+    excluded_seen = set()
+
+    for source_id in source_ids:
+        if capability_map.is_collector_allowed(source_id):
+            if source_id not in seen:
+                seen.add(source_id)
+                allowed.append(source_id)
+        elif source_id not in excluded_seen:
+            excluded_seen.add(source_id)
+            report = capability_map.skip_report(source_id)
+            report["lane_id"] = lane_id
+            excluded.append(report)
+
+    return {"shallow_profiles": allowed, "excluded_sources": excluded}
+
+
+def _build_storage_policy(today: str) -> Dict[str, Any]:
+    source_root = source_data_root()
+    shallow_index_path = shallow_index_dir(today).replace("\\", "/")
+
+    return {
+        "shallow_only_index": {
+            "small_index_root": SOURCE_INTAKE_STORAGE_ROOT,
+            "small_index_path": shallow_index_path,
+            "storage_drive": "C",
+        },
+        "deep_dive_raw_artifacts": {
+            "raw_artifacts_root": source_root,
+            "artifacts_drive": os.path.splitdrive(source_root)[0] or "F:",
+            "write_to_external_storage_root": True,
+        },
+    }
+
+
+def build_daily_collection_plan(
+    account_profiles: Optional[List[str]],
+    source_capabilities: Optional[Any] = None,
+    today: Optional[Any] = None,
+) -> Dict[str, Any]:
+    """Build deterministic lane-level daily collection plan.
+
+    The planner is strict but non-fatal:
+    - unknown lane ids are preserved in output with no sources
+    - blocked sources are excluded and explicitly recorded
+    - every output lane is shallow-only by contract
+    """
+    today_str = _coerce_today(today)
+    requested_lanes = _normalise_requested_lanes(account_profiles)
+    capability_map = _coerce_capability_map(source_capabilities)
+
+    lanes: List[Dict[str, Any]] = []
+    unknown_lanes: List[str] = []
+    for lane_id in requested_lanes:
+        source_ids = DEFAULT_LANES.get(lane_id)
+        if source_ids is None:
+            unknown_lanes.append(lane_id)
+            lanes.append({
+                "lane_id": lane_id,
+                "shallow_profiles": [],
+                "excluded_sources": [],
+                "shallow_only": True,
+                "deep_dive_enabled": False,
+                "deep_dive_trigger_policy": {
+                    "enabled": False,
+                    "score_threshold": DEFAULT_DEEP_DIVE_THRESHOLD,
+                    "repeat_source_min_hits": 2,
+                    "repeat_source_window_days": 1,
+                },
+                "storage_policy": _build_storage_policy(today_str),
+                "plan_status": "lane_unknown",
+            })
+            continue
+
+        filtered = _filter_sources(lane_id, source_ids, capability_map)
+        lanes.append({
+            "lane_id": lane_id,
+            "shallow_profiles": filtered["shallow_profiles"],
+            "excluded_sources": filtered["excluded_sources"],
+            "shallow_only": True,
+            "deep_dive_enabled": False,
+            "deep_dive_trigger_policy": {
+                "enabled": False,
+                "score_threshold": DEFAULT_DEEP_DIVE_THRESHOLD,
+                "repeat_source_min_hits": 2,
+                "repeat_source_window_days": 1,
+            },
+            "storage_policy": _build_storage_policy(today_str),
+            "plan_status": "ok" if filtered["shallow_profiles"] else "no_collectable_sources",
+        })
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "date": today_str,
+        "plan_status": "ok" if any(lane["plan_status"] == "ok" for lane in lanes) else "empty_plan",
+        "unknown_lanes": unknown_lanes,
+        "lanes": lanes,
+    }
+
+ succeeded in 771ms:
+"""Source Intake shallow item schema (V1).
+
+Shallow scan contract for the Source Intake & Signal Layer:
+- shallow scan is wide and cheap: title / url / rank / visible comparison metrics only
+- deep dive (raw_html / screenshots / comments / ad capture) happens ONLY after a
+  topic is selected, and is out of scope for V1 (contract constants only)
+- metrics must come from parsed page data; missing values stay None, never guessed
+- ad signals are text-only (ad_text / ad_domain / ad_category_guess); no ad images
+"""
+
+import json
+import os
+import re
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple
+
+SCHEMA_VERSION = "source_intake_shallow_v1"
+
+RIGHTS_STATUS_REFERENCE_ONLY = "reference_only"
+
+CHANNEL_CANDIDATES = [
+    "issue_daily",
+    "love_signal",
+    "dopamine_issue",
+    "style_weather",
+    "commerce_signal",
+]
+
+VISIBLE_METRIC_KEYS = [
+    "views",
+    "comments",
+    "likes",
+    "dislikes",
+    "scraps",
+    "shares",
+]
+
+DERIVED_METRIC_KEYS = [
+    "comment_density",
+    "like_rate",
+    "controversy_score",
+    "velocity_score",
+]
+
+MEDIA_FLAG_KEYS = [
+    "has_image",
+    "image_count",
+    "has_video",
+]
+
+# Ad signals are limited to text-level hints. Any image/screenshot/file style key
+# inside ad_signals is a schema violation by design (cost + rights control).
+AD_SIGNAL_ALLOWED_KEYS = ["ad_text", "ad_domain", "ad_category_guess"]
+AD_SIGNAL_FORBIDDEN_KEY_PATTERN = re.compile(
+    r"(image|img|screenshot|capture|banner_file|path|binary|asset)", re.IGNORECASE
+)
+
+# Metric provenance markers. Anything that admits the number was invented is rejected.
+METRIC_ORIGIN_ALLOWED = ["parsed", "absent"]
+METRIC_ORIGIN_FORBIDDEN = ["fabricated", "estimated", "guessed", "synthetic", "invented"]
+
+SHALLOW_ITEM_REQUIRED_FIELDS = [
+    "item_id",
+    "source_id",
+    "source_type",
+    "channel_candidates",
+    "board_or_category",
+    "title",
+    "url",
+    "rank_position",
+    "published_at",
+    "collected_at",
+    "visible_metrics",
+    "derived_metrics",
+    "media_flags",
+    "ad_signals",
+    "deep_dive_priority",
+    "rights_status",
+]
+
+# ---------------------------------------------------------------------------
+# Storage contract (paths only; V1 writes fixtures/tests, not mass collection)
+# ---------------------------------------------------------------------------
+
+SOURCE_INTAKE_STORAGE_ROOT = os.path.join("storage", "source_intake")
+SOURCE_DATA_STORAGE_CONFIG_PATH = os.path.join("config", "source_data_storage.json")
+DEFAULT_EXTERNAL_SOURCE_DATA_ROOT = "F:/AI-Content-OS-Data"
+
+
+def source_data_root(config_path: str = SOURCE_DATA_STORAGE_CONFIG_PATH) -> str:
+    """Return the external root for large source artifacts.
+
+    Small workflow/index JSON stays inside the repository under storage/.
+    Heavy raw material (HTML, screenshots, comment samples, image candidates)
+    is routed to this external root so the repo and C: drive stay light.
+    """
+    try:
+        with open(config_path, "r", encoding="utf-8") as handle:
+            config = json.load(handle)
+        root = str(config.get("source_data_root", "")).strip()
+        if root:
+            return root.replace("\\", "/")
+    except Exception:
+        pass
+
+    return DEFAULT_EXTERNAL_SOURCE_DATA_ROOT
+
+
+def deep_dive_external_dir(
+    date_str: str,
+    stage: str,
+    source_id: str = "",
+    base_dir: Optional[str] = None,
+) -> str:
+    """External deep-dive path contract for selected topics only."""
+    root = (base_dir or source_data_root()).replace("\\", "/")
+    parts = [root, "source_intake", date_str, "deep_dive", stage]
+    if source_id:
+        parts.append(source_id)
+    return os.path.join(*parts)
+
+
+def shallow_index_dir(date_str: str, base_dir: Optional[str] = None) -> str:
+    """storage/source_intake/YYYY-MM-DD/shallow_index/ contract path."""
+    root = base_dir if base_dir else SOURCE_INTAKE_STORAGE_ROOT
+    return os.path.join(root, date_str, "shallow_index")
+
+
+# Deep-dive stages are a contract only in V1: nothing below may be written during
+# shallow scan. They activate only for topics that pass the deep-dive threshold.
+DEEP_DIVE_STAGE_CONTRACT = {
+    "raw_html": {
+        "subdir": "deep_dive/raw_html",
+        "storage_root": "external_source_data_root",
+        "when": "after_topic_selection",
+        "enabled_in_v1": False,
+    },
+    "screenshots": {
+        "subdir": "deep_dive/screenshots",
+        "storage_root": "external_source_data_root",
+        "when": "after_topic_selection",
+        "enabled_in_v1": False,
+    },
+    "comments": {
+        "subdir": "deep_dive/comments",
+        "storage_root": "external_source_data_root",
+        "when": "after_topic_selection",
+        "enabled_in_v1": False,
+        "note": "V1 stores comment COUNTS only in visible_metrics; comment bodies are deep-dive scope.",
+    },
+    "ad_capture": {
+        "subdir": "deep_dive/ad_signals",
+        "storage_root": "external_source_data_root",
+        "when": "after_topic_selection",
+        "enabled_in_v1": False,
+        "note": "Text/domain/category only even in deep dive. Ad images are never captured.",
+    },
+}
+
+
+# ---------------------------------------------------------------------------
+# Builders
+# ---------------------------------------------------------------------------
+
+def empty_visible_metrics() -> Dict[str, Optional[int]]:
+    return {key: None for key in VISIBLE_METRIC_KEYS}
+
+
+def empty_media_flags() -> Dict[str, Any]:
+    return {key: None for key in MEDIA_FLAG_KEYS}
+
+
+def empty_ad_signals() -> Dict[str, Optional[str]]:
+    return {key: None for key in AD_SIGNAL_ALLOWED_KEYS}
+
+
+def empty_derived_metrics() -> Dict[str, Optional[float]]:
+    return {key: None for key in DERIVED_METRIC_KEYS}
+
+
+def _coerce_count(value: Any) -> Optional[int]:
+    """Coerce a parsed metric to a non-negative int, or None when unusable.
+
+    Strings like '1,234' from HTML are accepted; anything non-numeric or
+    negative becomes None instead of a made-up value.
+    """
+    if value is None or isinstance(value, bool):
+        return None
+
+    if isinstance(value, int):
+        return value if value >= 0 else None
+
+    if isinstance(value, float):
+        if value < 0:
+            return None
+        return int(value)
+
+    if isinstance(value, str):
+        cleaned = value.replace(",", "").strip()
+        if cleaned.isdigit():
+            return int(cleaned)
+        return None
+
+    return None
+
+
+def build_visible_metrics(raw: Optional[Dict[str, Any]]) -> Dict[str, Optional[int]]:
+    metrics = empty_visible_metrics()
+
+    if not isinstance(raw, dict):
+        return metrics
+
+    for key in VISIBLE_METRIC_KEYS:
+        metrics[key] = _coerce_count(raw.get(key))
+
+    return metrics
+
+
+def build_media_flags(raw: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    flags = empty_media_flags()
+
+    if not isinstance(raw, dict):
+        return flags
+
+    if isinstance(raw.get("has_image"), bool):
+        flags["has_image"] = raw["has_image"]
+
+    if isinstance(raw.get("has_video"), bool):
+        flags["has_video"] = raw["has_video"]
+
+    flags["image_count"] = _coerce_count(raw.get("image_count"))
+
+    return flags
+
+
+def build_ad_signals(raw: Optional[Dict[str, Any]]) -> Dict[str, Optional[str]]:
+    signals = empty_ad_signals()
+
+    if not isinstance(raw, dict):
+        return signals
+
+    for key in AD_SIGNAL_ALLOWED_KEYS:
+        value = raw.get(key)
+        if isinstance(value, str) and value.strip():
+            signals[key] = value.strip()
+
+    return signals
+
+
+def build_shallow_item(
+    source_id: str,
+    source_type: str,
+    title: str,
+    url: str,
+    rank_position: Optional[int] = None,
+    board_or_category: str = "",
+    channel_candidates: Optional[List[str]] = None,
+    published_at: Optional[str] = None,
+    collected_at: Optional[str] = None,
+    visible_metrics: Optional[Dict[str, Any]] = None,
+    derived_metrics: Optional[Dict[str, Any]] = None,
+    media_flags: Optional[Dict[str, Any]] = None,
+    ad_signals: Optional[Dict[str, Any]] = None,
+    deep_dive_priority: float = 0.0,
+) -> Dict[str, Any]:
+    """Build a schema-conformant shallow item with safe defaults everywhere."""
+    collected = collected_at or datetime.now().isoformat()
+    candidates = [
+        channel for channel in (channel_candidates or [])
+        if channel in CHANNEL_CANDIDATES
+    ]
+
+    item = {
+        "schema_version": SCHEMA_VERSION,
+        "item_id": f"{source_id}:{url}" if url else f"{source_id}:{title}",
+        "source_id": source_id,
+        "source_type": source_type,
+        "channel_candidates": candidates,
+        "board_or_category": board_or_category or "",
+        "title": title or "",
+        "url": url or "",
+        "rank_position": _coerce_count(rank_position),
+        "published_at": published_at or None,
+        "collected_at": collected,
+        "visible_metrics": build_visible_metrics(visible_metrics),
+        "derived_metrics": dict(empty_derived_metrics(), **(derived_metrics or {})),
+        "media_flags": build_media_flags(media_flags),
+        "ad_signals": build_ad_signals(ad_signals),
+        "deep_dive_priority": float(deep_dive_priority or 0.0),
+        "rights_status": RIGHTS_STATUS_REFERENCE_ONLY,
+        "metrics_origin": "parsed" if _has_any_metric(visible_metrics) else "absent",
+    }
+
+    return item
+
+
+def _has_any_metric(raw: Optional[Dict[str, Any]]) -> bool:
+    if not isinstance(raw, dict):
+        return False
+
+    return any(_coerce_count(raw.get(key)) is not None for key in VISIBLE_METRIC_KEYS)
+
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+
+def validate_shallow_item(item: Any) -> Tuple[bool, List[str]]:
+    """Validate a shallow item. Returns (is_valid, error_list). Never raises."""
+    errors: List[str] = []
+
+    if not isinstance(item, dict):
+        return False, ["item_not_a_dict"]
+
+    for field in SHALLOW_ITEM_REQUIRED_FIELDS:
+        if field not in item:
+            errors.append(f"missing_field:{field}")
+
+    if errors:
+        return False, errors
+
+    if not item.get("title"):
+        errors.append("empty_title")
+
+    if item.get("rights_status") != RIGHTS_STATUS_REFERENCE_ONLY:
+        errors.append("rights_status_must_be_reference_only")
+
+    for channel in item.get("channel_candidates") or []:
+        if channel not in CHANNEL_CANDIDATES:
+            errors.append(f"unknown_channel:{channel}")
+
+    # --- metric provenance: fabricated markers are rejected outright ---
+    origin = item.get("metrics_origin")
+    if origin is not None:
+        origin_text = str(origin).lower()
+        if origin_text in METRIC_ORIGIN_FORBIDDEN:
+            errors.append(f"forbidden_metrics_origin:{origin_text}")
+        elif origin_text not in METRIC_ORIGIN_ALLOWED:
+            errors.append(f"unknown_metrics_origin:{origin_text}")
+
+    if item.get("fabricated_metrics"):
+        errors.append("fabricated_metrics_marker_present")
+
+    # --- visible metrics: non-negative int or None only ---
+    visible = item.get("visible_metrics")
+    if not isinstance(visible, dict):
+        errors.append("visible_metrics_not_a_dict")
+    else:
+        for key in VISIBLE_METRIC_KEYS:
+            value = visible.get(key)
+            if value is None:
+                continue
+            if isinstance(value, bool) or not isinstance(value, int):
+                errors.append(f"metric_not_int_or_null:{key}")
+            elif value < 0:
+                errors.append(f"negative_metric:{key}")
+
+    # --- ad signals: text-only, no image/file style keys ---
+    ad_signals = item.get("ad_signals")
+    if not isinstance(ad_signals, dict):
+        errors.append("ad_signals_not_a_dict")
+    else:
+        for key in ad_signals:
+            if key not in AD_SIGNAL_ALLOWED_KEYS:
+                errors.append(f"ad_signal_key_not_allowed:{key}")
+            if AD_SIGNAL_FORBIDDEN_KEY_PATTERN.search(str(key)):
+                errors.append(f"ad_signal_image_like_key_forbidden:{key}")
+
+    # --- deep dive priority sanity ---
+    priority = item.get("deep_dive_priority")
+    if not isinstance(priority, (int, float)) or isinstance(priority, bool):
+        errors.append("deep_dive_priority_not_numeric")
+    elif priority < 0:
+        errors.append("deep_dive_priority_negative")
+
+    return (len(errors) == 0), errors
+
+
+# ---------------------------------------------------------------------------
+# Shallow index persistence (fixture/test scale in V1)
+# ---------------------------------------------------------------------------
+
+def write_shallow_index(
+    items: List[Dict[str, Any]],
+    date_str: str,
+    source_id: str,
+    base_dir: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Write valid items to the shallow_index contract path.
+
+    Invalid items are dropped and reported, never written. Only a single JSON
+    file per source is produced — no ad image directories, no raw html.
+    """
+    target_dir = shallow_index_dir(date_str, base_dir=base_dir)
+    valid_items = []
+    rejected = []
+
+    for item in items or []:
+        ok, item_errors = validate_shallow_item(item)
+        if ok:
+            valid_items.append(item)
+        else:
+            rejected.append({"item_id": item.get("item_id") if isinstance(item, dict) else None,
+                             "errors": item_errors})
+
+    result = {
+        "status": "skipped_empty",
+        "path": "",
+        "written_count": 0,
+        "rejected_count": len(rejected),
+        "rejected": rejected,
+    }
+
+    if not valid_items:
+        return result
+
+    try:
+        os.makedirs(target_dir, exist_ok=True)
+        path = os.path.join(target_dir, f"{source_id}.json")
+        payload = {
+            "schema_version": SCHEMA_VERSION,
+            "source_id": source_id,
+            "date": date_str,
+            "generated_at": datetime.now().isoformat(),
+            "item_count": len(valid_items),
+            "items": valid_items,
+        }
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+
+        result["status"] = "written"
+        result["path"] = path
+        result["written_count"] = len(valid_items)
+    except Exception as error:
+        result["status"] = "write_failed"
+        result["error"] = str(error)
+
+    return result
+
+2026-07-14T11:18:22.191543Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.9 seconds
+Output:
+Get-Content: 
+Line |
+   2 |  Get-Content -Path modules/source_intake/daily_collection_runner.py
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\daily_collection_runner.py' because it does not exist.
+
+ exited 1 in 881ms:
+Get-Content: 
+Line |
+   2 |  Get-Content -Path modules/source_intake/daily_collection_runner.py
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\daily_collection_runner.py' because it does not exist.
+
+codex
+요구사항에 맞춰 `daily_collection_runner.py`는 현재 파일이 없으므로 새로 추가하고, 실행/직렬화 규칙은 기존 `build_daily_collection_plan` 출력 스냅샷 성질에 맞춰 그대로 매핑하겠습니다. 이제 실행 파일의 상태와 필요한 테스트 뼈대를 추가할 위치를 확인합니다.
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-Content -Path external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'Get-ChildItem -Path tests | Where-Object { $_.Name -eq "test_daily_source_collection_runner.py" } | Select-Object -ExpandProperty Name' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+ succeeded in 662ms:
+2026-07-14T11:18:24.500922Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.8 seconds
+Output:
+Get-Content: 
+Line |
+   2 |  Get-Content -Path external_workclaude/source_collection_engine_v0_spa …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\RUNNER_HANDOFF.md' because it does not exist.
+
+ exited 1 in 750ms:
+Get-Content: 
+Line |
+   2 |  Get-Content -Path external_workclaude/source_collection_engine_v0_spa …
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Cannot find path 'C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\RUNNER_HANDOFF.md' because it does not exist.
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'rg "run_daily|daily_collection|compileall|storage/source_intake" modules/source_intake tests -g"*.py"' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+2026-07-14T11:18:26.429189Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.5 seconds
+Output:
+modules/source_intake\daily_collection_plan.py:def build_daily_collection_plan(
+modules/source_intake\source_intake_schema.py:    """storage/source_intake/YYYY-MM-DD/shallow_index/ contract path."""
+tests\test_daily_source_collection_plan.py:from modules.source_intake.daily_collection_plan import (
+tests\test_daily_source_collection_plan.py:    build_daily_collection_plan,
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["ghost_lane"], today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["news_society_economy"], today=self.today)
+tests\test_daily_source_collection_plan.py:            "storage/source_intake/2026-07-14/shallow_index",
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["dopamine_community", "lifestyle_knowledge"], today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_source_intake_schema.py:            "storage/source_intake/2026-07-14/shallow_index",
+rg: tests\fixtures\card_news_corrupt_run_08gwioja: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\card_news_image_slots_1z7psimd: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\card_news_render_test_nzznzy6e: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_fahes92l: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_qau6pcs5: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_xk1az_uw: 액세스가 거부되었습니다. (os error 5)
+
+ exited 1 in 539ms:
+modules/source_intake\daily_collection_plan.py:def build_daily_collection_plan(
+modules/source_intake\source_intake_schema.py:    """storage/source_intake/YYYY-MM-DD/shallow_index/ contract path."""
+tests\test_daily_source_collection_plan.py:from modules.source_intake.daily_collection_plan import (
+tests\test_daily_source_collection_plan.py:    build_daily_collection_plan,
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["ghost_lane"], today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["news_society_economy"], today=self.today)
+tests\test_daily_source_collection_plan.py:            "storage/source_intake/2026-07-14/shallow_index",
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(["dopamine_community", "lifestyle_knowledge"], today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_daily_source_collection_plan.py:        plan = build_daily_collection_plan(self.account_profiles, today=self.today)
+tests\test_source_intake_schema.py:            "storage/source_intake/2026-07-14/shallow_index",
+rg: tests\fixtures\card_news_corrupt_run_08gwioja: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\card_news_image_slots_1z7psimd: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\card_news_render_test_nzznzy6e: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_fahes92l: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_qau6pcs5: 액세스가 거부되었습니다. (os error 5)
+rg: tests\fixtures\evidence_selector_test_xk1az_uw: 액세스가 거부되었습니다. (os error 5)
+
+codex
+이제 실제 구현 단계입니다.  
+핵심은 플랜 생성만 수행하고 JSON 저장하는 래퍼(`run_daily_collection_plan`)를 추가한 뒤, 요청한 4~5개 시나리오를 포함한 단일 테스트 파일을 추가하는 것입니다. 이어서 유닛 테스트 + `compileall`만 실행합니다.
+apply patch
+patch: completed
+C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\daily_collection_runner.py
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+
+codex
+추가 구현은 끝났고, 이제 테스트 파일과 handoff 문서를 생성해 요구 조건(기본 경로/커스텀 경로/JSON 유효성/unknown lane/fail-closed/commerce_detail 금지)을 바로 커버하겠습니다.
+apply patch
+patch: completed
+C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command "Test-Path -Path external_workclaude\\source_collection_engine_v0_spark" in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+ succeeded in 469ms:
+True
+
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+apply patch
+patch: completed
+C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\RUNNER_HANDOFF.md
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+codex
+구현이 완료되어 기본/커스텀 경로, JSON 검증, 실패-폐쇄 케이스까지 반영했습니다. 이제 요청한 검증 명령 2개를 실행해 통과 여부만 확인하겠습니다.
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'py -m compileall modules/source_intake' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+ succeeded in 696ms:
+Listing 'modules/source_intake'...
+Compiling 'modules/source_intake\\daily_collection_runner.py'...
+
+2026-07-14T11:18:50.271320Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.8 seconds
+Output:
+test_blocked_sources_are_recorded_with_reason (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_blocked_sources_are_recorded_with_reason) ... ok
+test_commerce_signal_only_in_text (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_commerce_signal_only_in_text) ... ok
+test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement) ... ok
+test_schema_and_known_lanes (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_schema_and_known_lanes) ... ok
+test_storage_policy_uses_c_and_external_f_root (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_storage_policy_uses_c_and_external_f_root) ... ok
+test_unknown_lane_fails_closed (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_unknown_lane_fails_closed) ... ok
+test_no_commerce_detail_in_plan (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_no_commerce_detail_in_plan) ... ok
+test_run_daily_collection_plan_custom_output_root (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_custom_output_root) ... ERROR
+test_run_daily_collection_plan_default_path (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_default_path) ... ok
+test_run_daily_collection_plan_writes_valid_json (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_writes_valid_json) ... ok
+test_unknown_lane_fail_closed (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_unknown_lane_fail_closed) ... ok
+
+======================================================================
+ERROR: test_run_daily_collection_plan_custom_output_root (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_custom_output_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py", line 39, in test_run_daily_collection_plan_custom_output_root
+    self.assertEqual(result["status"], "written")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'write_failed' != 'written'
+- write_failed
++ written
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\가산솔~1\\AppData\\Local\\Temp\\tmptzsjfthj'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py", line 32, in test_run_daily_collection_plan_custom_output_root
+    with tempfile.TemporaryDirectory() as tmpdir:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 951, in __exit__
+    self.cleanup()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 955, in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\가산솔~1\\AppData\\Local\\Temp\\tmptzsjfthj'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.060s
+
+FAILED (errors=1)
+
+ exited 1 in 818ms:
+test_blocked_sources_are_recorded_with_reason (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_blocked_sources_are_recorded_with_reason) ... ok
+test_commerce_signal_only_in_text (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_commerce_signal_only_in_text) ... ok
+test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement) ... ok
+test_schema_and_known_lanes (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_schema_and_known_lanes) ... ok
+test_storage_policy_uses_c_and_external_f_root (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_storage_policy_uses_c_and_external_f_root) ... ok
+test_unknown_lane_fails_closed (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_unknown_lane_fails_closed) ... ok
+test_no_commerce_detail_in_plan (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_no_commerce_detail_in_plan) ... ok
+test_run_daily_collection_plan_custom_output_root (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_custom_output_root) ... ERROR
+test_run_daily_collection_plan_default_path (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_default_path) ... ok
+test_run_daily_collection_plan_writes_valid_json (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_writes_valid_json) ... ok
+test_unknown_lane_fail_closed (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_unknown_lane_fail_closed) ... ok
+
+======================================================================
+ERROR: test_run_daily_collection_plan_custom_output_root (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_custom_output_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py", line 39, in test_run_daily_collection_plan_custom_output_root
+    self.assertEqual(result["status"], "written")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'write_failed' != 'written'
+- write_failed
++ written
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen os>", line 369, in walk
+PermissionError: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\가산솔~1\\AppData\\Local\\Temp\\tmptzsjfthj'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py", line 32, in test_run_daily_collection_plan_custom_output_root
+    with tempfile.TemporaryDirectory() as tmpdir:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 951, in __exit__
+    self.cleanup()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 955, in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 613, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 372, in walk
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 611, in onerror
+    onexc(os.scandir, err.filename, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 907, in onexc
+    _resetperms(path)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 287, in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\가산 솔리드옴므\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 276, in _dont_follow_symlinks
+    func(path, *args, follow_symlinks=False)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\가산솔~1\\AppData\\Local\\Temp\\tmptzsjfthj'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.060s
+
+FAILED (errors=1)
+
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..52d5824bfb8f535af29c62feb11d77406abfefdd
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,67 @@
++import json
++import os
++import shutil
++import tempfile
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        with tempfile.TemporaryDirectory() as tmpdir:
++            result = run_daily_collection_plan(
++                account_profiles=["news_society_economy"],
++                today=self.today,
++                output_root=tmpdir,
++            )
++            expected = os.path.join(tmpdir, self.today, "daily_collection_plan.json")
++            self.assertEqual(result["status"], "written")
++            self.assertEqual(result["plan_path"], expected)
++            self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+codex
+한 가지 실패 원인은 `tempfile.TemporaryDirectory()` 정리 단계에서 환경 권한 이슈로 발생했습니다. 커스텀 경로 테스트를 레포 내 고정 임시 디렉터리(`storage/_tmp_runner_output`)로 바꿔 환경 의존성을 제거해 재실행하겠습니다.
+apply patch
+patch: completed
+C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..ba4f27cca6371715712de8dc474b92da3da5c194
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,70 @@
++import json
++import os
++import shutil
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        self.custom_root = os.path.join("storage", "_tmp_runner_output")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        result = run_daily_collection_plan(
++            account_profiles=["news_society_economy"],
++            today=self.today,
++            output_root=self.custom_root,
++        )
++        expected = os.path.join(self.custom_root, self.today, "daily_collection_plan.json")
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], expected)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..ba4f27cca6371715712de8dc474b92da3da5c194
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,70 @@
++import json
++import os
++import shutil
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        self.custom_root = os.path.join("storage", "_tmp_runner_output")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        result = run_daily_collection_plan(
++            account_profiles=["news_society_economy"],
++            today=self.today,
++            output_root=self.custom_root,
++        )
++        expected = os.path.join(self.custom_root, self.today, "daily_collection_plan.json")
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], expected)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+exec
+"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -Command 'py -m compileall modules/source_intake' in C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS
+ succeeded in 559ms:
+Listing 'modules/source_intake'...
+
+ succeeded in 618ms:
+test_blocked_sources_are_recorded_with_reason (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_blocked_sources_are_recorded_with_reason) ... ok
+test_commerce_signal_only_in_text (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_commerce_signal_only_in_text) ... ok
+test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_deep_dive_trigger_policy_has_numeric_gate_and_repeat_requirement) ... ok
+test_schema_and_known_lanes (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_schema_and_known_lanes) ... ok
+test_storage_policy_uses_c_and_external_f_root (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_storage_policy_uses_c_and_external_f_root) ... ok
+test_unknown_lane_fails_closed (tests.test_daily_source_collection_plan.TestDailySourceCollectionPlan.test_unknown_lane_fails_closed) ... ok
+test_no_commerce_detail_in_plan (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_no_commerce_detail_in_plan) ... ok
+test_run_daily_collection_plan_custom_output_root (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_custom_output_root) ... ok
+test_run_daily_collection_plan_default_path (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_default_path) ... ok
+test_run_daily_collection_plan_writes_valid_json (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_run_daily_collection_plan_writes_valid_json) ... ok
+test_unknown_lane_fail_closed (tests.test_daily_source_collection_runner.TestDailyCollectionRunner.test_unknown_lane_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.026s
+
+OK
+
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..ba4f27cca6371715712de8dc474b92da3da5c194
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,70 @@
++import json
++import os
++import shutil
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        self.custom_root = os.path.join("storage", "_tmp_runner_output")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        result = run_daily_collection_plan(
++            account_profiles=["news_society_economy"],
++            today=self.today,
++            output_root=self.custom_root,
++        )
++        expected = os.path.join(self.custom_root, self.today, "daily_collection_plan.json")
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], expected)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+codex
+Implemented.
+
+Updated files:
+- [modules/source_intake/daily_collection_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\daily_collection_runner.py)
+- [tests/test_daily_source_collection_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py)
+- [external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\RUNNER_HANDOFF.md)
+
+Validation run:
+- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v` ✅
+- `py -m compileall modules/source_intake` ✅
+diff --git a/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..58fd3c9d48be3e473e9b5d332e59c5ed2dbfbe4e
+--- /dev/null
++++ b/external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md
+@@ -0,0 +1,20 @@
++# Daily Source Collection Runner - Handoff
++
++## Implemented
++- Added `modules/source_intake/daily_collection_runner.py` with `run_daily_collection_plan`.
++- Added persistence behavior to call `build_daily_collection_plan`, persist UTF-8 JSON, and return `{status, plan_path, plan}`.
++- Added default path handling to `storage/source_intake/<YYYY-MM-DD>/daily_collection_plan.json`.
++- Added `tests/test_daily_source_collection_runner.py` with tests for:
++  - default output path
++  - custom output_root
++  - valid JSON persistence
++  - unknown lane fail-closed
++  - absence of `commerce_detail` text
++
++## Not Implemented
++- No web/LLM/crawler/screenshot integrations.
++- No shared docs or workflow orchestration changes.
++
++## Tests
++- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v`
++- `py -m compileall modules/source_intake`
+diff --git a/modules/source_intake/daily_collection_runner.py b/modules/source_intake/daily_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa00944ba7f1a4bd9be62b2bf9d9e844686ca1c6
+--- /dev/null
++++ b/modules/source_intake/daily_collection_runner.py
+@@ -0,0 +1,73 @@
++"""Persistence wrapper for daily source collection plan generation.
++
++This module intentionally contains no crawling or API calls.
++It only builds a plan from :func:`build_daily_collection_plan` and writes
++the result to disk.
++"""
++
++from __future__ import annotations
++
++import json
++import os
++from datetime import date, datetime
++from typing import Any, Dict, List, Optional
++
++from modules.source_intake.daily_collection_plan import build_daily_collection_plan
++from modules.source_intake.source_intake_schema import SOURCE_INTAKE_STORAGE_ROOT
++
++DEFAULT_OUTPUT_ROOT = SOURCE_INTAKE_STORAGE_ROOT
++
++
++def _coerce_today(today: Optional[Any]) -> str:
++    if not today:
++        return date.today().isoformat()
++    if isinstance(today, str):
++        return today
++    if isinstance(today, (datetime, date)):
++        return today.isoformat()
++    return str(today)
++
++
++def run_daily_collection_plan(
++    account_profiles: Optional[List[str]] = None,
++    today: Optional[Any] = None,
++    output_root: Optional[str] = None,
++) -> Dict[str, Any]:
++    """Build and persist a daily source collection plan.
++
++    Args:
++        account_profiles: Optional lane list for planning.
++        today: Optional date for plan generation.
++        output_root: Root directory for persistence.
++            Defaults to ``storage/source_intake``.
++
++    Returns:
++        dict: status, plan_path, plan
++    """
++    today_str = _coerce_today(today)
++    base_root = output_root or DEFAULT_OUTPUT_ROOT
++    target_dir = os.path.join(base_root, today_str)
++    plan_path = os.path.join(target_dir, "daily_collection_plan.json")
++
++    result = {
++        "status": "write_failed",
++        "plan_path": plan_path,
++        "plan": None,
++    }
++
++    plan = build_daily_collection_plan(
++        account_profiles=account_profiles,
++        today=today_str,
++    )
++    result["plan"] = plan
++
++    try:
++        os.makedirs(target_dir, exist_ok=True)
++        with open(plan_path, "w", encoding="utf-8") as handle:
++            json.dump(plan, handle, ensure_ascii=False, indent=2)
++        result["status"] = "written"
++    except Exception as error:
++        result["status"] = "write_failed"
++        result["error"] = str(error)
++
++    return result
+diff --git a/tests/test_daily_source_collection_runner.py b/tests/test_daily_source_collection_runner.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..ba4f27cca6371715712de8dc474b92da3da5c194
+--- /dev/null
++++ b/tests/test_daily_source_collection_runner.py
+@@ -0,0 +1,70 @@
++import json
++import os
++import shutil
++import unittest
++
++from modules.source_intake.daily_collection_runner import run_daily_collection_plan
++
++
++class TestDailyCollectionRunner(unittest.TestCase):
++    def setUp(self):
++        self.today = "2026-07-14"
++        self.default_path = os.path.join("storage", "source_intake", self.today, "daily_collection_plan.json")
++        self.output_root = os.path.join("storage", "source_intake")
++        self.custom_root = os.path.join("storage", "_tmp_runner_output")
++        if os.path.exists(self.default_path):
++            os.remove(self.default_path)
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def tearDown(self):
++        if os.path.exists(os.path.join(self.output_root, self.today)):
++            shutil.rmtree(os.path.join(self.output_root, self.today), ignore_errors=True)
++        if os.path.exists(self.custom_root):
++            shutil.rmtree(self.custom_root, ignore_errors=True)
++
++    def test_run_daily_collection_plan_default_path(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], self.default_path)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_custom_output_root(self):
++        result = run_daily_collection_plan(
++            account_profiles=["news_society_economy"],
++            today=self.today,
++            output_root=self.custom_root,
++        )
++        expected = os.path.join(self.custom_root, self.today, "daily_collection_plan.json")
++        self.assertEqual(result["status"], "written")
++        self.assertEqual(result["plan_path"], expected)
++        self.assertTrue(os.path.isfile(result["plan_path"]))
++
++    def test_run_daily_collection_plan_writes_valid_json(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++
++        with open(result["plan_path"], "r", encoding="utf-8") as handle:
++            loaded = json.load(handle)
++
++        self.assertEqual(loaded["date"], self.today)
++        self.assertEqual(loaded["schema_version"], result["plan"]["schema_version"])
++        self.assertEqual(result["plan"], loaded)
++
++    def test_unknown_lane_fail_closed(self):
++        result = run_daily_collection_plan(account_profiles=["ghost_lane"], today=self.today)
++        plan = result["plan"]
++
++        self.assertEqual(result["status"], "written")
++        self.assertIn("ghost_lane", plan["unknown_lanes"])
++        self.assertEqual(plan["plan_status"], "empty_plan")
++        self.assertEqual(plan["lanes"][0]["lane_id"], "ghost_lane")
++        self.assertEqual(plan["lanes"][0]["shallow_profiles"], [])
++
++    def test_no_commerce_detail_in_plan(self):
++        result = run_daily_collection_plan(account_profiles=["news_society_economy"], today=self.today)
++        serialized = json.dumps(result["plan"])
++
++        self.assertNotIn("commerce_detail", serialized)
+
+tokens used
+32,350
+Implemented.
+
+Updated files:
+- [modules/source_intake/daily_collection_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\daily_collection_runner.py)
+- [tests/test_daily_source_collection_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_daily_source_collection_runner.py)
+- [external_workclaude/source_collection_engine_v0_spark/RUNNER_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\RUNNER_HANDOFF.md)
+
+Validation run:
+- `py -m unittest tests.test_daily_source_collection_plan tests.test_daily_source_collection_runner -v` ✅
+- `py -m compileall modules/source_intake` ✅

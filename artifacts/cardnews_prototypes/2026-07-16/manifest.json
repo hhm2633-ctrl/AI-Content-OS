@@ -1,0 +1,64 @@
+{
+  "schema_version": "cardnews_prototype_render_manifest_v1",
+  "status": "local_review_only",
+  "publishing_ready": false,
+  "accounts": [
+    {
+      "account_id": "account_a",
+      "plan_path": "artifacts/cardnews_prototypes/2026-07-16/account_a_s2/plan.json",
+      "slide_count": 8,
+      "outputs": [
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_01.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_02.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_03.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_04.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_05.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_06.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_07.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/slide_08.png"
+      ],
+      "contact_sheet": "artifacts/cardnews_prototypes/2026-07-16/previews/account_a_s2/contact_sheet.png",
+      "limits": []
+    },
+    {
+      "account_id": "account_b_issue_story_relationship_emotion",
+      "plan_path": "artifacts/cardnews_prototypes/2026-07-16/account_b_d1/plan.json",
+      "slide_count": 9,
+      "outputs": [
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_01.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_02.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_03.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_04.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_05.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_06.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_07.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_08.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/slide_09.png"
+      ],
+      "contact_sheet": "artifacts/cardnews_prototypes/2026-07-16/previews/account_b_d1/contact_sheet.png",
+      "limits": []
+    },
+    {
+      "account_id": "account_c_beauty_fashion",
+      "plan_path": "artifacts/cardnews_prototypes/2026-07-16/account_c_fashion/plan.json",
+      "slide_count": 8,
+      "outputs": [
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_01.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_02.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_03.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_04.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_05.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_06.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_07.png",
+        "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/slide_08.png"
+      ],
+      "contact_sheet": "artifacts/cardnews_prototypes/2026-07-16/previews/account_c_fashion/contact_sheet.png",
+      "limits": [
+        "official or licensed runway images are not present in the shallow receipt",
+        "generated photoreal assets are not yet attached",
+        "brand-photo attribution alone does not clear reuse rights",
+        "this prototype must not be published"
+      ]
+    }
+  ]
+}

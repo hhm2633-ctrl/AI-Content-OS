@@ -1,0 +1,12 @@
+{
+  "schema_version": "image_first_review_manifest_v2",
+  "generated_by": "Codex CTO integration lane",
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "restricted_internal_editorial_review",
+  "source_recheck_required": true,
+  "actual_publish_requires_explicit_owner_approval": true,
+  "asset_warning": "public-post screenshots and broadcaster imagery require permission/quotation review; identities remain obscured",
+  "fact_status": "unverified owner-provided raw material",
+  "comments_used": false
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-70ec84eda882",
+  "candidate_id": "20260717-2003-A-70ec84eda882",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "TSMC가 걷어낸 반도체 고점론?…“AI 수요 더 강해졌다”",
+  "source_urls": [
+    "https://www.edaily.co.kr/News/Read?newsId=02364886645515504&mediaCodeNo=257"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

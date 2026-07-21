@@ -1,0 +1,246 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-B-19e90e52b9f1",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-B-19e90e52b9f1",
+    "account": "B",
+    "category": "연예·도파민",
+    "title": "말을 잃게 만든 이제동의 컨트롤 반전"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.fmkorea.com/best/10095404591",
+        "publisher": "에펨코리아",
+        "title": "할말을 잃게 만드는 이제동의 미친 컨트롤",
+        "published_at": "2026-07-17T18:00:00+09:00",
+        "source_status": "embedded_video_metadata_and_comments_read",
+        "usage_note": "첨부 영상 '이제동 뮤컨.mp4', 본문 '본인도 할말을 잃어버림', 조회 129,563·추천 416·댓글 138을 확인. 상위 댓글은 키 설정 중 Ctrl+Q 오입력 가능성을 추정했으나 공식 원인으로 단정하지 않음"
+      }
+    ],
+    "comments": [
+      {
+        "author": "익명 A",
+        "text": "그냥 순수잘못누른거같은데 ㅋㅋ",
+        "source_url": "https://www.fmkorea.com/best/10095404591",
+        "usage_status": "source_comment_excerpt_masked",
+        "context": "갑작스러운 종료 장면을 본 상위 댓글의 추정"
+      },
+      {
+        "author": "익명 B",
+        "text": "이런건 처음보네",
+        "source_url": "https://www.fmkorea.com/best/10095404591",
+        "usage_status": "source_comment_excerpt_masked",
+        "context": "예상 밖 결말에 대한 상위 반응"
+      }
+    ],
+    "observed_reaction": {
+      "views": 129563,
+      "recommendations": 416,
+      "comments": 138,
+      "observation_status": "source_page_observed_2026-07-19"
+    }
+  },
+  "story": {
+    "summary": "이제동의 뮤탈리스크 컨트롤이 절정으로 올라가며 보는 사람도 승부를 기대한 순간, 화면이 갑자기 경기 종료로 넘어가 모두가 말을 잃은 짧은 반전 영상이다. 제목의 '미친 컨트롤'을 실력 찬양으로만 끌지 않고, 상위 댓글이 입력 실수 가능성을 추정한 허무한 결말로 정리한다.",
+    "emotional_arc": [
+      "컨트롤 기대감",
+      "손이 빨라지는 절정",
+      "갑작스러운 종료",
+      "정적과 당황",
+      "댓글의 키 입력 추정",
+      "웃음으로 끝난 반전"
+    ]
+  },
+  "slide_count": 6,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "다 잡는 줄 알았는데\n판을 나가버렸습니다",
+      "body": "이제동의 뮤탈 컨트롤이 절정으로 올라간 바로 그 순간이었습니다."
+    },
+    {
+      "page": 2,
+      "role": "build_up",
+      "headline": "손은 쉴 틈이 없고\n병력은 살아남았습니다",
+      "body": "짧은 영상은 고난도 컨트롤이 이어지며 기대를 끝까지 끌어올립니다."
+    },
+    {
+      "page": 3,
+      "role": "turn",
+      "headline": "그런데 갑자기\n경기 종료",
+      "body": "승부가 끝난 게 아니라 화면이 예상치 못한 종료 선택으로 넘어갔습니다."
+    },
+    {
+      "page": 4,
+      "role": "reaction",
+      "headline": "본인도, 보는 사람도\n잠깐 정적",
+      "body": "게시글 설명도 '본인도 할 말을 잃었다'는 한 줄뿐이었습니다."
+    },
+    {
+      "page": 5,
+      "role": "comment_context",
+      "headline": "댓글은 Ctrl+Q를\n의심했습니다",
+      "body": "상위 댓글에서는 키 설정을 바꾼 상태에서 잘못 누른 것 같다는 추정이 나왔습니다."
+    },
+    {
+      "page": 6,
+      "role": "low_friction_cta",
+      "headline": "이런 실수,\n게임하다 해봤어?",
+      "body": "내 손으로 먼저 끝낸 적, 있어?"
+    }
+  ],
+  "feed_caption": "뮤탈리스크 컨트롤이 절정으로 올라가서 '이제 다 잡겠다' 싶은 순간, 화면이 갑자기 경기 종료로 넘어갑니다. 게시글 본문도 '본인도 할 말을 잃었다'는 한 줄. 상위 댓글들은 키 설정을 바꾼 상태에서 Ctrl+Q를 잘못 눌렀을 가능성을 짚었지만, 정확한 원인은 확인된 설명이 아니라 커뮤니티 추정입니다. 그래서 더 허무하고 웃긴 반전이 됐습니다.\n\n다 이긴 줄 알았는데 내 손이 끝내버린 적, 있어?",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "에펨코리아 원문 영상의 반전 구조를 참고한 제목·키캡 중심 자체 편집 재구성"
+      ],
+      "rights_status": "original_editorial_reconstruction_not_gameplay_footage",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 2,
+      "slide_role": "build_up",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "커서 궤적·키 입력 밀도를 추상화한 자체 그래픽, 화면에 '편집 재구성' 표시"
+      ],
+      "rights_status": "original_conceptual_graphic_not_factual_gameplay",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 3,
+      "slide_role": "turn",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "Ctrl·Q 키캡과 종료창을 이용한 자체 편집 재구성, 실제 입력 증거가 아님을 표시"
+      ],
+      "rights_status": "original_editorial_reconstruction_not_input_evidence",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 4,
+      "slide_role": "reaction",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "말풍선이 멈추는 정적·반응 타이포그래피 자체 편집 재구성"
+      ],
+      "rights_status": "original_editorial_graphic_no_source_frame",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 5,
+      "slide_role": "comment_context",
+      "media_type": "editorial",
+      "source_credit": [
+        "에펨코리아에 기록된 실제 상위 댓글 2개를 익명 인용한 자체 패널"
+      ],
+      "source_url": "https://www.fmkorea.com/best/10095404591",
+      "rights_status": "original_editorial_quote_panel_identity_masked",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 6,
+      "slide_role": "low_friction_cta",
+      "media_type": "editorial",
+      "source_credit": [
+        "자체 키보드 단축키 타이포그래피"
+      ],
+      "rights_status": "original_editorial_graphic",
+      "asset_status": "original_editorial_graphic"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-B-19e90e52b9f1",
+    "account": "B",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-B-19e90e52b9f1",
+      "account": "B",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-B-19e90e52b9f1",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "첫 장이 고조된 컨트롤 직후 종료되는 핵심 반전을 자연스럽게 압축한다.",
+        "Ctrl+Q 오입력은 확인된 사실이 아니라 익명 상위 댓글의 추정으로 분명히 제한했다.",
+        "게임 영상이나 입력 증거를 흉내 내지 않는 자체 키캡·궤적·타이포그래피 그래픽만 계획했다."
+      ]
+    }
+  }
+}

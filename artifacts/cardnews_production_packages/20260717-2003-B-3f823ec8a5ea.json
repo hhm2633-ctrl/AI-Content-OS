@@ -1,0 +1,274 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-B-3f823ec8a5ea",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+    "account": "B",
+    "category": "연애·관계",
+    "title": "소개팅 자리 뒤에 친구가 숨어 있었다"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://pann.nate.com/talk/375521355",
+        "publisher": "네이트판",
+        "title": "친구가 소개팅을 시켜줬는데..",
+        "published_at": "2026-07-17T00:57:00+09:00",
+        "source_status": "eight_story_images_and_comments_read",
+        "usage_note": "헤어진 뒤 힘들어하던 글쓴이가 친구 소개로 카페 소개팅에 나갔고, 친구가 뒤에서 몰래 지켜보다 상대 남성과 팔짱을 끼고 나타난 장난, 사과 없는 후속 대화를 확인"
+      }
+    ],
+    "comments": [
+      {
+        "author": "익명 A",
+        "text": "농담인데 왜 그래? 너가 너무 오버 하는거야",
+        "source_url": "https://pann.nate.com/talk/375521355",
+        "usage_status": "source_comment_excerpt_masked",
+        "context": "무례를 장난으로 돌리고 상대 반응을 탓하는 상황을 지적한 상위 댓글의 일부"
+      }
+    ],
+    "observed_reaction": {
+      "views": 52145,
+      "recommendations": 117,
+      "oppositions": 4,
+      "comments": 45,
+      "observation_status": "source_page_observed_2026-07-19"
+    }
+  },
+  "story": {
+    "summary": "이별 뒤 힘들던 글쓴이가 친구의 적극적인 권유로 소개팅에 나갔다. 상대가 계속 숨죽여 웃는 이유를 뒤늦게 확인하자, 친구가 카페 뒤쪽에 숨어 둘을 지켜보고 있었고 상대 남성과 팔짱까지 끼며 장난을 이어갔다. 기대가 수치심과 배신감으로 뒤집히고, 사과 대신 '예민하다'는 말까지 돌아오자 관계를 끊는 이야기다.",
+    "emotional_arc": [
+      "조심스러운 기대",
+      "설명 안 되는 어색함",
+      "뒤쪽에서 발견한 친구",
+      "팔짱 장난의 충격",
+      "수치심과 배신감",
+      "사과 없는 가벼움",
+      "예민하다는 역공",
+      "차단과 경계 설정"
+    ]
+  },
+  "slide_count": 8,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "소개팅 자리 뒤에\n친구가 숨어 있었다",
+      "body": "그 사실을 안 건 상대 남자가 계속 뒤쪽을 보며 웃었기 때문이었습니다."
+    },
+    {
+      "page": 2,
+      "role": "setup",
+      "headline": "이별 뒤 처음 품은 기대",
+      "body": "친구가 꼭 만나보라며 권한 사람이라, 비 오는 날에도 한껏 꾸미고 약속 장소로 갔습니다."
+    },
+    {
+      "page": 3,
+      "role": "unease",
+      "headline": "그런데 자꾸\n혼자 웃었습니다",
+      "body": "대화는 짧았고, 남자는 고개를 숙인 채 뒤쪽을 힐끔거리며 웃었습니다."
+    },
+    {
+      "page": 4,
+      "role": "reveal",
+      "headline": "뒤를 돌아보니\n친구가 있었습니다",
+      "body": "친구는 배 잡고 웃다가 테이블로 와서 글쓴이 옆이 아닌 남자 옆에 앉았습니다."
+    },
+    {
+      "page": 5,
+      "role": "emotion_peak",
+      "headline": "둘이 팔짱까지 끼자\n웃음이 멎었습니다",
+      "body": "정성껏 준비한 자신이 장난감처럼 느껴졌고, 기대는 수치심과 배신감으로 바뀌었습니다."
+    },
+    {
+      "page": 6,
+      "role": "exit",
+      "headline": "아무 말도 못 하고\n그냥 나왔습니다",
+      "body": "친구가 불렀지만 돌아보지 않았고, 집에 오는 길에는 헤어진 연인까지 떠올랐습니다."
+    },
+    {
+      "page": 7,
+      "role": "gaslighting",
+      "headline": "사과 대신 돌아온 말",
+      "body": "친구는 첫인상을 봐주고 싶었다며, 결국 장난인데 왜 그렇게 예민하냐고 되물었습니다."
+    },
+    {
+      "page": 8,
+      "role": "boundary_cta",
+      "headline": "장난이면\n여기까지 괜찮아?",
+      "body": "글쓴이는 친구를 차단했습니다. 이 장난, 당신이라면 관계를 이어갑니까?"
+    }
+  ],
+  "feed_caption": "헤어진 뒤 힘들어하던 글쓴이는 친구가 꼭 만나보라며 권한 사람과 소개팅을 했습니다. 그런데 상대는 대화 내내 뒤쪽을 보며 웃었고, 뒤를 돌아본 순간 친구가 숨어서 둘을 지켜보고 있었다는 걸 알게 됐습니다. 친구는 상대 남성 옆에 앉아 팔짱까지 끼며 장난을 이어갔고, 글쓴이는 자신이 장난감이 된 듯한 수치심에 자리를 나왔습니다. 다음 날 돌아온 건 사과가 아니라 '장난인데 왜 그렇게 예민하냐'는 말이었습니다.\n\n이 장난, 당신이라면 친구 관계를 이어갑니까?",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "네이트판 사연 기반 자체 장면 구성"
+      ],
+      "rights_status": "clearly_labeled_reenactment_auxiliary_not_factual_footage",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 2,
+      "slide_role": "setup",
+      "media_type": "image",
+      "source_credit": [
+        "비 오는 날 카페로 향하는 익명 인물 2D 재연"
+      ],
+      "rights_status": "clearly_labeled_2d_reenactment_auxiliary",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 3,
+      "slide_role": "unease",
+      "media_type": "image",
+      "source_credit": [
+        "대화 중 뒤를 힐끔보는 상대의 2D 재연"
+      ],
+      "rights_status": "clearly_labeled_2d_reenactment_auxiliary",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 4,
+      "slide_role": "reveal",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "카메라 시선이 카페 뒤쪽 친구에게 이동하는 2D 재연"
+      ],
+      "rights_status": "clearly_labeled_reenactment_auxiliary_not_source_video",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 5,
+      "slide_role": "emotion_peak",
+      "media_type": "image",
+      "source_credit": [
+        "팔짱 낀 두 사람과 굳은 글쓴이의 2D 재연"
+      ],
+      "rights_status": "clearly_labeled_2d_reenactment_auxiliary",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 6,
+      "slide_role": "exit",
+      "media_type": "image",
+      "source_credit": [
+        "비 오는 거리로 혼자 나오는 장면의 2D 재연"
+      ],
+      "rights_status": "clearly_labeled_2d_reenactment_auxiliary",
+      "asset_status": "labeled_reenactment"
+    },
+    {
+      "page": 7,
+      "slide_role": "gaslighting",
+      "media_type": "editorial",
+      "source_credit": [
+        "네이트판에 기록된 실제 익명 댓글 한 줄을 사용한 자체 인용 패널"
+      ],
+      "source_url": "https://pann.nate.com/talk/375521355",
+      "rights_status": "original_editorial_quote_panel_identity_masked",
+      "asset_status": "original_editorial_graphic"
+    },
+    {
+      "page": 8,
+      "slide_role": "boundary_cta",
+      "media_type": "editorial",
+      "source_credit": [
+        "자체 메시지 차단 화면 그래픽"
+      ],
+      "rights_status": "original_editorial_graphic_not_fake_chat_capture",
+      "asset_status": "original_editorial_graphic"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+    "account": "B",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+      "account": "B",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "제목과 첫 장이 친구가 소개팅 현장에 숨어 있었다는 핵심 반전을 즉시 전달한다.",
+        "실제 댓글은 익명 출처 인용으로 제한되고, 2D 장면은 전부 '사연 재구성' 라벨을 고정하도록 명시됐다.",
+        "계획된 라벨 재연과 자체 그래픽만 사용하므로 외부 미확보 자산 의존성이 없다."
+      ]
+    }
+  }
+}

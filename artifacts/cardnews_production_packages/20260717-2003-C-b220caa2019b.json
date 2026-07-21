@@ -1,0 +1,198 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-C-b220caa2019b",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-C-b220caa2019b",
+    "account": "C",
+    "category": "패션",
+    "title": "아일릿 원희, 레이스 크롭 톱에 집업 재킷을 더한 출국룩"
+  },
+  "evidence": {
+    "sources": [
+      "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat="
+    ],
+    "source_details": [
+      {
+        "url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat=",
+        "publisher": "패션엔",
+        "published_at": "2026-07-17",
+        "source_type": "selected_photo_article",
+        "claims_used": [
+          "원희가 일본 일정 참석을 위해 인천국제공항에서 출국",
+          "화이트 플라워 레이스 크롭 톱과 민트 그레이 집업 후디 재킷을 레이어드",
+          "청순한 분위기와 Y2K 감성을 섞은 공항 스타일링"
+        ],
+        "photo_credit": "패션엔 권승주 기자 / 사진 최수영 기자"
+      }
+    ],
+    "evidence_status": "sufficient"
+  },
+  "story": {
+    "summary": "원희의 실제 공항 사진을 중심으로, 화이트 레이스의 가벼움과 민트 그레이 집업 재킷의 캐주얼함이 어떻게 한 룩에서 대비를 만드는지 짧게 해설한다.",
+    "angle": "셀럽 사진 나열이 아니라 소재·색·레이어드 세 요소를 읽어주는 착장 해설",
+    "narrative": "가벼운 화이트 레이스 크롭 톱 위에 민트 그레이 집업 후디를 걸쳤다. 얇고 섬세한 안쪽 소재와 캐주얼한 바깥 레이어의 대비가 여름 공항룩에 시선을 만든다.",
+    "arc": [
+      "전체 공항룩 공개",
+      "레이스와 집업의 소재 대비",
+      "화이트와 민트 그레이 색 조합",
+      "여름 레이어드 핵심 정리"
+    ],
+    "commerce_mode": "editorial_only_false_association_guard"
+  },
+  "slide_count": 4,
+  "slides": [
+    {
+      "page": 1,
+      "role": "cover_look",
+      "headline": "가볍게 입었는데, 왜 눈에 띌까?",
+      "body": "원희는 레이스와 집업 재킷을 한 룩에 겹쳤다."
+    },
+    {
+      "page": 2,
+      "role": "material_detail",
+      "headline": "안은 레이스, 밖은 집업",
+      "body": "섬세한 화이트 크롭 톱에 캐주얼한 후디 재킷을 더했다."
+    },
+    {
+      "page": 3,
+      "role": "color_detail",
+      "headline": "화이트 위에 민트 그레이",
+      "body": "색은 부드럽게 맞추고 소재의 차이로 리듬을 만들었다."
+    },
+    {
+      "page": 4,
+      "role": "styling_takeaway",
+      "headline": "여름 레이어드는 대비가 핵심",
+      "body": "두껍게 겹치기보다 가벼운 소재와 다른 질감을 조합한다."
+    }
+  ],
+  "feed_caption": "원희의 출국룩은 아이템 수보다 소재의 대비가 먼저 보였습니다. 화이트 플라워 레이스 크롭 톱 위에 민트 그레이 집업 후디 재킷을 걸쳐 청순한 분위기와 캐주얼한 Y2K 감성을 함께 만들었죠. 여름 레이어드는 두껍게 겹치는 것보다, 가벼운 소재끼리 결을 다르게 잡는 편이 훨씬 산뜻합니다. 사진·내용 참고: 패션엔, 사진 최수영 기자.",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "cover_look",
+      "media_type": "image",
+      "asset_status": "source_reference",
+      "asset_source_url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat=",
+      "source_credit": [
+        "패션엔 / 사진 최수영 기자"
+      ],
+      "rights_note": "원희의 해당 출국 현장을 다룬 실제 기사 사진만 사용",
+      "production_direction": "전신 착장 한 장을 크게 쓰고 훅은 상단 여백에 짧게 배치"
+    },
+    {
+      "page": 2,
+      "slide_role": "material_detail",
+      "media_type": "image",
+      "asset_status": "source_reference",
+      "asset_source_url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat=",
+      "source_credit": [
+        "패션엔 / 사진 최수영 기자"
+      ],
+      "rights_note": "동일 현장 사진 중 레이스와 집업이 함께 보이는 컷 사용",
+      "production_direction": "상반신을 크롭해 레이스와 지퍼·후드 질감이 동시에 보이게 구성"
+    },
+    {
+      "page": 3,
+      "slide_role": "color_detail",
+      "media_type": "image",
+      "asset_status": "source_reference",
+      "asset_source_url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat=",
+      "source_credit": [
+        "패션엔 / 사진 최수영 기자"
+      ],
+      "rights_note": "색을 임의 보정해 다른 제품처럼 보이게 만들지 않음",
+      "production_direction": "화이트와 민트 그레이 두 색을 사진에서 직접 샘플링해 작은 컬러칩으로 표시"
+    },
+    {
+      "page": 4,
+      "slide_role": "styling_takeaway",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat=",
+      "source_credit": [
+        "패션엔 착장 사진을 바탕으로 한 자체 레이어드 도식"
+      ],
+      "rights_note": "새 상품이나 브랜드를 원희 착장으로 오인시키지 않음",
+      "production_direction": "레이스·집업·톤온톤 세 요소만 추출한 간단한 레이어 도식과 원본 사진 일부를 결합"
+    }
+  ],
+  "commerce": {
+    "status": "not_used",
+    "link_issuance": false,
+    "reason": "기사에서 실제 착장 브랜드가 확인되지 않아 유사 상품을 붙이면 원희가 착용하거나 추천한 것으로 오인될 수 있다."
+  },
+  "quality_notes": {
+    "first_frame": "실제 해당 출국룩 전신 사진",
+    "copy_density": "착장 요소 하나당 한 장",
+    "false_association_guard": "브랜드 미확인 유사 상품과 연결하지 않음"
+  },
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-C-b220caa2019b",
+    "account": "C",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-C-b220caa2019b",
+      "account": "C",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-A-224828787208",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-A-224828787208",
+    "account": "A",
+    "category": "경제·생활",
+    "title": "한화證, 美 디지털에셋에 300억원 투자…블록체인 협력 강화"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.edaily.co.kr/News/Read?newsId=05539926645515176&mediaCodeNo=257",
+        "publisher": "이데일리",
+        "title": "한화證, 美 디지털에셋에 300억원 투자…블록체인 협력 강화",
+        "published_at": "2026-07-16T19:02:52+09:00",
+        "source_status": "body_read",
+        "usage_note": "투자 규모·투자 대상·캔톤 네트워크·향후 계획 확인"
+      },
+      {
+        "url": "https://www.hanwhawm.com/main/bbs/indexView.cmd?cc_gubun=&dt_regdate=2026%2F05%2F27&mode=&nn_id=&vc_bid=hanwha1",
+        "publisher": "한화투자증권",
+        "title": "한화투자증권 보도자료",
+        "published_at": null,
+        "source_status": "official_release_search_result_confirmed",
+        "usage_note": "공식 회사 설명과 인용 내용 확인용"
+      }
+    ]
+  },
+  "story": {
+    "summary": "'300억원 투자'라는 숫자에서 시작해, 투자처가 코인 거래소가 아니라 글로벌 금융기관이 쓰는 블록체인 인프라 기업이라는 점을 보여준다. 4월 MOU에서 실제 투자와 네트워크 참여로 넘어간 흐름까지 짧게 연결한다."
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "한화증권이 300억 건 곳\n코인 거래소가 아니었다",
+      "body": "투자 대상은 금융 특화 블록체인 인프라 기업 '디지털에셋'입니다."
+    },
+    {
+      "page": 2,
+      "role": "what_happened",
+      "headline": "4월 MOU에서\n실제 투자까지",
+      "body": "한화투자증권은 협약에 이어 약 300억원 규모의 전략적 투자를 마쳤다고 밝혔습니다."
+    },
+    {
+      "page": 3,
+      "role": "company_context",
+      "headline": "디지털에셋은\n무엇을 만드는 회사?",
+      "body": "골드만삭스와 미국예탁결제원 등이 채택한 '캔톤 네트워크'를 운영합니다."
+    },
+    {
+      "page": 4,
+      "role": "meaning",
+      "headline": "돈만 넣는 투자가 아니라\n네트워크에 들어간다",
+      "body": "한화투자증권은 캔톤 생태계에 참여해 글로벌 금융기관과 협력 기반을 넓힌다는 계획입니다."
+    },
+    {
+      "page": 5,
+      "role": "context",
+      "headline": "한화가 모으는 건\n디지털 금융의 부품들",
+      "body": "데이터·웹3 인프라·실물자산 토큰화 기업에 이어 이번엔 금융 블록체인 인프라까지 투자했습니다."
+    }
+  ],
+  "feed_caption": "한화투자증권이 미국 블록체인 인프라 기업 디지털에셋에 약 300억원을 투자했습니다. 포인트는 투자처가 단순 코인 거래소가 아니라는 점입니다. 디지털에셋은 골드만삭스와 미국예탁결제원 등 글로벌 금융기관이 채택한 금융 특화 블록체인 '캔톤 네트워크'를 운영합니다. 한화투자증권은 지난 4월 MOU에 이어 실제 투자까지 마치고 이 네트워크 생태계에 참여한다는 계획입니다.\n\n300억 투자, 숫자보다 '어디에 들어갔는지'가 더 눈에 들어오나요?\n\n참고: 이데일리, 한화투자증권 보도자료",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "이데일리·한화투자증권 자료 참고·300억원 숫자 자체 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 2,
+      "slide_role": "what_happened",
+      "media_type": "editorial",
+      "source_credit": [
+        "한화투자증권 공식 보도자료 참고·MOU→투자 흐름 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 3,
+      "slide_role": "company_context",
+      "media_type": "editorial",
+      "source_credit": [
+        "Digital Asset/Canton Network 공식 로고·화면 후보, 취득 전"
+      ],
+      "asset_status": "official_asset_discovery_required"
+    },
+    {
+      "page": 4,
+      "slide_role": "meaning",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "이데일리 기사 내용 참고·기관 연결망 자체 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 5,
+      "slide_role": "context",
+      "media_type": "editorial",
+      "source_credit": [
+        "이데일리 기사 내용 참고·투자 포트폴리오 텍스트 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-A-224828787208",
+    "account": "A",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-A-224828787208",
+      "account": "A",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    }
+  }
+}

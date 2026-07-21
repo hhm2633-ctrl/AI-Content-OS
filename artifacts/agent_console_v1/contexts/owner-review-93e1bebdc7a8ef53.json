@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-d0644ab1c033",
+  "candidate_id": "20260717-2003-B-d0644ab1c033",
+  "grade": "2",
+  "account": "B",
+  "category": "연애·관계",
+  "title": "'편스토랑' 김용빈, \"연상 좋아한다\"…솔직한 이상형 고백",
+  "source_urls": [
+    "http://www.queen.co.kr/news/articleView.html?idxno=460438"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,109 @@
+{
+  "contract_id": "NAVER_NEWS_FIXTURE_CONTRACT_V2",
+  "created_at": "2026-07-15",
+  "source_id": "naver_news",
+  "status": "recon_only_no_implementation",
+  "purpose": "Sanitized minimal offline fixtures for a repaired Naver News parser. All fixtures must be hand-trimmed, anonymized where noted, and contain no tracking params, no nlog GDIDs tied to real impressions beyond structure, and no personal data.",
+  "compliance_note": "search.naver.com and news.naver.com robots.txt are 'User-agent: * / Disallow: /'. Owner adjudication or migration to the official Naver Search Open API is required before live collection; fixtures below are for offline parser tests only.",
+  "root_cause_reference": {
+    "rss_endpoint": "https://search.naver.com/search.naver?where=rss&query=<q> returns text/html (full search page), never XML -> ET.ParseError -> parse_failed",
+    "html_fallback": "class 'news_tit' no longer exists on where=news pages (0 occurrences); replaced by sds-comps markup -> empty result -> settings fallback"
+  },
+  "fixtures": [
+    {
+      "fixture_name": "naver_search_news_sds.html",
+      "surface": "keyword news search",
+      "source_url_pattern": "https://search.naver.com/search.naver?where=news&query=<urlencoded_query>&sort=1",
+      "encoding": "utf-8",
+      "rendering": "server_rendered",
+      "min_items": 3,
+      "sanitization": "keep 3 article blocks; replace hashed classes (fender-ui_*, random 16-char) with FENDER_HASH placeholders is NOT allowed - keep them verbatim so parser proves it does not depend on them; replace real headline text with synthetic Korean headlines; keep <mark> tags in one title",
+      "stable_selectors": {
+        "item_anchor": "a[nocr][data-heatmap-target='.tit']",
+        "title": "span.sds-comps-text-type-headline1",
+        "summary_anchor": "a[data-heatmap-target='.body']",
+        "summary": "span.sds-comps-text-type-body1",
+        "publisher_block": ".sds-comps-profile-info-title",
+        "publisher_name": "span.sds-comps-text-type-body2",
+        "result_container": "[data-template-id]"
+      },
+      "unstable_do_not_use": ["fender-ui_*", "random 16-char utility classes", "inline style attrs"],
+      "observable_fields": ["title", "original_publisher_link", "summary", "publisher_name", "relative_time"],
+      "expected_output_schema_per_item": {
+        "keyword": "string (title, tags stripped, html-unescaped)",
+        "link": "string (original publisher article URL)",
+        "summary": "string",
+        "publisher": "string (domain of link, per _extract_publisher)",
+        "published_at": "string (relative time or empty)",
+        "collection_method": "naver_news_html"
+      }
+    },
+    {
+      "fixture_name": "naver_ranking_popularday.html",
+      "surface": "daily ranking",
+      "source_url_pattern": "https://news.naver.com/main/ranking/popularDay.naver",
+      "encoding": "euc-kr",
+      "encoding_warning": "collector currently decodes utf-8 only; fixture must exercise EUC-KR handling",
+      "rendering": "server_rendered",
+      "min_items": 2,
+      "sanitization": "keep one rankingnews_box with 2 ranked items; synthetic titles; keep real class names and n.news.naver.com link shape with fake press/article ids (e.g. 000/0000000001)",
+      "stable_selectors": {
+        "container": "div.rankingnews_box_wrap._popularRanking",
+        "press_box": ".rankingnews_box",
+        "press_name": "strong.rankingnews_name",
+        "rank": "em.list_ranking_num",
+        "title_link": "a.list_title"
+      },
+      "observable_fields": ["rank", "title", "n.news.naver.com article link", "press_name"],
+      "expected_output_schema_per_item": {
+        "keyword": "string (title)",
+        "link": "https://n.news.naver.com/article/<press>/<articleId>",
+        "publisher": "string (press name, not domain)",
+        "rank": "integer 1-5",
+        "collection_method": "naver_news_ranking"
+      }
+    },
+    {
+      "fixture_name": "naver_section_100.html",
+      "surface": "category section page",
+      "source_url_pattern": "https://news.naver.com/section/<sectionId 100..105>",
+      "encoding": "utf-8",
+      "rendering": "server_rendered",
+      "min_items": 2,
+      "sanitization": "keep 2 sa_item blocks; synthetic titles; keep data-nlog-params JSON shape ({\"section1_id\":\"100\",\"rank\":1}) with fake ids; strip data-imp-gdid values to placeholder",
+      "stable_selectors": {
+        "item": ".sa_item",
+        "title": "strong.sa_text_strong",
+        "title_link": "a.sa_text_title",
+        "press": "span.sa_text_press",
+        "datetime": "span.sa_text_datetime b",
+        "category_and_rank_json": "a.sa_text_title[data-nlog-params]"
+      },
+      "observable_fields": ["title", "article link", "press", "relative_time", "section1_id", "rank"],
+      "expected_output_schema_per_item": {
+        "keyword": "string (title)",
+        "link": "https://n.news.naver.com/mnews/article/<press>/<articleId>",
+        "publisher": "string (press name)",
+        "published_at": "string (relative, e.g. 19분전)",
+        "category": "string (section1_id)",
+        "rank": "integer",
+        "collection_method": "naver_news_section"
+      }
+    },
+    {
+      "fixture_name": "naver_rss_returns_html_regression.html",
+      "surface": "dead where=rss endpoint",
+      "source_url_pattern": "https://search.naver.com/search.naver?where=rss&query=<q>",
+      "encoding": "utf-8",
+      "min_items": 0,
+      "sanitization": "first ~40 lines of the HTML doctype page only; enough to trigger ET.ParseError",
+      "expected_behavior": "parser must classify as content_type_drift (or parse_failed) WITHOUT raising, and must proceed to the HTML search fallback; workflow_completed must not regress"
+    }
+  ],
+  "cross_cutting_requirements": {
+    "fallback_first": "all fixture-driven failure paths must end in a usable fallback result, never an exception escaping collect()",
+    "dedupe_key": "link, falling back to keyword (matches _dedupe)",
+    "status_fields": "last_status must report failed_reason/final_error_type consistent with existing priority list in _primary_failed_reason",
+    "no_live_calls_in_tests": "fixture tests must never hit naver hosts"
+  }
+}

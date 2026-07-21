@@ -1,0 +1,688 @@
+{
+  "version": "content_portfolio_v1.1",
+  "count": 18,
+  "production_briefs": [
+    {
+      "content_id": "CN-013",
+      "content_type": "cardnews",
+      "working_title": "반려동물 첫 입양 준비물",
+      "priority": {
+        "tier": "P1",
+        "score": 17.66
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "강아지·고양이, 데려오기 전 이 5가지부터 준비하세요",
+        "입양 첫날 우왕좌왕하지 않는 법",
+        "펫샵 가기 전에 체크리스트부터 보세요"
+      ],
+      "slide_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "선택한 hook 문장 그대로 사용, 반려동물 사진(라이선스 확인) 위에 얹기. 특정 견종/묘종 단정 금지."
+        },
+        {
+          "slide": 2,
+          "role": "problem/context",
+          "direction": "\"입양 첫날 이것 때문에 당황했다\"는 흔한 시행착오 1~2개 서술 (실제 사례 인용 시 출처/동의 필요, 없으면 일반화된 상황 서술로 대체)."
+        },
+        {
+          "slide": 3,
+          "role": "evidence-backed solution",
+          "direction": "필수 준비물 5종(이동장, 급식기, 배변용품, 초기 사료, 동물병원 정보)을 나열. 특정 브랜드 추천 금지, 카테고리명만 사용. 수의사/동물보호단체 공식 자료 인용 시 출처 표기."
+        },
+        {
+          "slide": 4,
+          "role": "cta/source",
+          "direction": "\"입양 전 체크리스트 저장해두기\" CTA + 참고 자료 출처(있는 경우)."
+        }
+      ],
+      "evidence_sourcing_note": "동물병원/동물보호단체 공식 가이드 1건이면 충분 -- SOURCE_REQUIRED 항목 아님(일반 상식 수준), 있으면 신뢰도 강화용으로 인용",
+      "rights_note": "실제 반려동물 사진 사용 시 소유자 동의 및 라이선스 확인 필수, 없으면 일러스트/CardNewsModule fallback 배경 사용",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "CN-014",
+      "content_type": "cardnews",
+      "working_title": "캠핑 초보 준비물 체크리스트",
+      "priority": {
+        "tier": "P1",
+        "score": 16.4
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "캠핑 초보가 꼭 빠뜨리는 준비물 TOP 리스트",
+        "텐트만 챙기면 끝? 이것도 빠졌어요",
+        "첫 캠핑, 이 체크리스트 하나면 충분합니다"
+      ],
+      "slide_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "초보 캠퍼의 흔한 실수(랜턴/방수포 빠뜨림 등) 암시."
+        },
+        {
+          "slide": 2,
+          "role": "problem/context",
+          "direction": "현장에서 준비물이 없어 불편했던 상황을 구체적으로 묘사 (예: 우천 대비 부족)."
+        },
+        {
+          "slide": 3,
+          "role": "evidence-backed solution",
+          "direction": "카테고리별 체크리스트(취침/취사/방한/안전) 4묶음, 각 묶음 3~4개 항목. 특정 브랜드/제품명 없이 카테고리만."
+        },
+        {
+          "slide": 4,
+          "role": "cta/source",
+          "direction": "\"저장해서 캠핑 전날 확인하기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "일반 캠핑 상식 수준, 공식 출처 불필요 -- 다만 안전 관련 항목(방한/화재)은 과장 없이 보수적으로 서술",
+      "rights_note": "이미지는 자체 촬영 또는 라이선스 확인된 캠핑장 일반 사진만 사용",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "CN-016",
+      "content_type": "cardnews",
+      "working_title": "여행 전 짐싸기 체크리스트",
+      "priority": {
+        "tier": "P1",
+        "score": 16.4
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "짐 쌀 때마다 뭔가 빠뜨리는 사람 이거 보세요",
+        "여행 전날 5분이면 끝나는 짐싸기 순서",
+        "캐리어 싸기 전에 이 순서부터 확인하세요"
+      ],
+      "slide_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "여행 당일 뭔가 빠뜨려 당황했던 상황 암시. CROSS_CHANNEL 참고: SH-018(캐리어 짐싸기 순서)와 동일 리서치 재사용 가능, 이 CardNews는 정적 체크리스트, Shorts는 실제 패킹 영상으로 차별화."
+        },
+        {
+          "slide": 2,
+          "role": "problem/context",
+          "direction": "짐 싸다가 여권/충전기 등을 빠뜨린 흔한 사례 서술."
+        },
+        {
+          "slide": 3,
+          "role": "evidence-backed solution",
+          "direction": "필수품 카테고리(서류, 전자기기, 세면용품, 상비약, 의류)별 체크리스트."
+        },
+        {
+          "slide": 4,
+          "role": "cta/source",
+          "direction": "\"여행 전날 이 리스트로 마지막 점검\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "일반 여행 상식 수준, 공식 출처 불필요",
+      "rights_note": "이미지 자체 제작 우선, 캐리어/짐 사진은 라이선스 확인된 스톡만 사용",
+      "ready_to_write": true,
+      "cross_channel_cluster": "CLUSTER-CAMPING_TRAVEL_PACK (see CROSS_CHANNEL_CLUSTERS.json)"
+    },
+    {
+      "content_id": "SH-017",
+      "content_type": "shorts",
+      "working_title": "반려동물 산책 준비물 점검",
+      "priority": {
+        "tier": "P1",
+        "score": 16.6
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "산책 나가기 전 이것부터 챙기세요",
+        "반려견 산책, 준비물 3초 컷"
+      ],
+      "scene_script": [
+        {
+          "scene": 1,
+          "duration_sec": "0-3",
+          "visual": "목줄/하네스를 집어드는 손 클로즈업",
+          "on_screen_text": "산책 준비물, 이거 다 챙기셨나요?"
+        },
+        {
+          "scene": 2,
+          "duration_sec": "3-10",
+          "visual": "현관에서 준비물 없이 나가려다 멈추는 장면(연출)",
+          "on_screen_text": "이것 없이 나가면 곤란해요"
+        },
+        {
+          "scene": 3,
+          "duration_sec": "10-35",
+          "visual": "목줄, 배변봉투, 물병, 인식표를 순서대로 챙기는 장면",
+          "on_screen_text": "목줄 -> 배변봉투 -> 물 -> 인식표"
+        },
+        {
+          "scene": 4,
+          "duration_sec": "35-45",
+          "visual": "완비된 가방을 들고 나가는 장면",
+          "on_screen_text": "저장해두고 산책 전마다 확인하세요"
+        }
+      ],
+      "filming_note": "실제 반려동물과 촬영자 본인 소유 소재만 사용, 타인 반려동물 촬영 시 소유자 동의 필요",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "SH-004",
+      "content_type": "shorts",
+      "working_title": "하루 만보 걷기 루틴 브이로그형",
+      "priority": {
+        "tier": "P1",
+        "score": 15.1
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "매일 만보, 이렇게 채우고 있어요",
+        "만보 채우는 현실적인 루틴 공개"
+      ],
+      "scene_script": [
+        {
+          "scene": 1,
+          "duration_sec": "0-3",
+          "visual": "스마트워치/스마트폰 걸음 수 화면 클로즈업(실제 화면, 가상 수치 삽입 금지)",
+          "on_screen_text": "만보 채우는 현실 루틴"
+        },
+        {
+          "scene": 2,
+          "duration_sec": "3-10",
+          "visual": "출근길 도보 구간 이동 장면",
+          "on_screen_text": "출근길에 반은 채워요"
+        },
+        {
+          "scene": 3,
+          "duration_sec": "10-35",
+          "visual": "점심 산책, 저녁 계단 이용 등 실제 루틴 3컷",
+          "on_screen_text": "점심 산책 + 계단 이용"
+        },
+        {
+          "scene": 4,
+          "duration_sec": "35-45",
+          "visual": "하루 마무리, 걸음 수 화면(실제 촬영 시점 값, 사후 삽입 금지)",
+          "on_screen_text": "저장하고 내일부터 따라해보세요"
+        }
+      ],
+      "filming_note": "화면에 보이는 걸음 수/시간은 촬영 당시 실제 값만 사용 -- 미검증 수치를 자막으로 따로 삽입하지 않는다",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "SH-005",
+      "content_type": "shorts",
+      "working_title": "방 정리 비포애프터",
+      "priority": {
+        "tier": "P1",
+        "score": 15.1
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "이 방, 30분 만에 이렇게 됐습니다",
+        "정리 전/후 이렇게 다릅니다"
+      ],
+      "scene_script": [
+        {
+          "scene": 1,
+          "duration_sec": "0-3",
+          "visual": "정리 전 어수선한 방 전경(비포)",
+          "on_screen_text": "정리 전"
+        },
+        {
+          "scene": 2,
+          "duration_sec": "3-10",
+          "visual": "가장 어수선한 구역 클로즈업",
+          "on_screen_text": "여기부터 손댔어요"
+        },
+        {
+          "scene": 3,
+          "duration_sec": "10-35",
+          "visual": "분류-수납-배치 3단계 정리 장면",
+          "on_screen_text": "분류 -> 수납 -> 배치"
+        },
+        {
+          "scene": 4,
+          "duration_sec": "35-45",
+          "visual": "정리 후 방 전경(애프터), 비포와 동일 앵글",
+          "on_screen_text": "저장하고 이번 주말에 따라해보세요"
+        }
+      ],
+      "filming_note": "비포/애프터는 동일 앵글·동일 조명으로 촬영해 과장 없이 실제 변화만 보여준다",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "IG-010",
+      "content_type": "instagram_feed",
+      "working_title": "반려동물 상식 퀴즈형 카드",
+      "priority": {
+        "tier": "P1",
+        "score": 17.24
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "반려동물 상식, 몇 개나 맞히시나요?",
+        "이 중에 틀린 상식이 있어요"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "\"OX 퀴즈\" 형식 예고, 정답 수 어필 없이 흥미 유발만."
+        },
+        {
+          "slide": 2,
+          "role": "core_info",
+          "direction": "OX 문제 2~3개 제시 (예: '강아지는 사람 음식 다 먹어도 된다 -- OX'), 각 문제는 검증 가능한 일반 상식 범위로 한정."
+        },
+        {
+          "slide": 3,
+          "role": "detail_or_example",
+          "direction": "정답과 짧은 이유 설명, 출처가 필요한 항목(예: 특정 음식 위험성)은 공식 자료 인용 또는 '수의사 상담 권장'으로 마무리."
+        },
+        {
+          "slide": 4,
+          "role": "cta_or_summary",
+          "direction": "\"틀렸다면 저장해두고 다시 확인하기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "동물 위험 식품 등 안전 관련 항목은 SOURCE_REQUIRED로 표시하고 수의사/공식 자료 확인 후 게시, 확인 전에는 해당 문항 보류",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "IG-009",
+      "content_type": "instagram_feed",
+      "working_title": "직장인 점심시간 활용법",
+      "priority": {
+        "tier": "P1",
+        "score": 15.74
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "점심시간 1시간, 이렇게 쓰면 다릅니다",
+        "점심시간 활용법 3가지"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "점심시간을 그냥 흘려보낸 경험 환기."
+        },
+        {
+          "slide": 2,
+          "role": "core_info",
+          "direction": "산책/짧은 낮잠/스트레칭 등 일반적으로 권장되는 활용법 2~3개 (의학적 효과 단정 없이 '도움이 될 수 있다' 수준으로 서술)."
+        },
+        {
+          "slide": 3,
+          "role": "detail_or_example",
+          "direction": "각 활용법을 5~10분 단위로 실천하는 구체 예시."
+        },
+        {
+          "slide": 4,
+          "role": "cta_or_summary",
+          "direction": "\"오늘 점심시간에 하나만 시도해보기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "일반 상식 수준, 공식 출처 불필요 -- 생산성/건강 효과를 단정적 수치로 표현하지 않는다",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "IG-013",
+      "content_type": "instagram_feed",
+      "working_title": "자기계발 습관 만들기 팁",
+      "priority": {
+        "tier": "P1",
+        "score": 15.74
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "작심삼일 안 되는 습관 만들기",
+        "습관, 의지가 아니라 설계입니다"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "작심삼일 경험 환기."
+        },
+        {
+          "slide": 2,
+          "role": "core_info",
+          "direction": "'행동을 작게 쪼개기', '기존 루틴에 붙이기' 등 통용되는 습관 형성 조언 2~3개."
+        },
+        {
+          "slide": 3,
+          "role": "detail_or_example",
+          "direction": "KN-004(습관 형성 21일 법칙 진실)와 교차 인용 -- 21일 법칙의 실제 근거 수준을 과장하지 않고 인용."
+        },
+        {
+          "slide": 4,
+          "role": "cta_or_summary",
+          "direction": "\"오늘 시도할 작은 습관 하나 저장하기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "KN-004와 근거를 공유하므로 별도 소싱 불필요, KN-004의 출처 인용을 그대로 참조",
+      "ready_to_write": true,
+      "cross_channel_cluster": "CLUSTER-LEARNING_HABIT (see CROSS_CHANNEL_CLUSTERS.json)"
+    },
+    {
+      "content_id": "BC-010",
+      "content_type": "brandconnect",
+      "working_title": "브랜드 협찬 이벤트 안내 콘텐츠",
+      "priority": {
+        "tier": "P2",
+        "score": 7.34
+      },
+      "current_readiness": "not_approved",
+      "scaffolding_note": "실제 브랜드 계약 전까지는 문안을 작성하지 않는다. 아래는 계약 성사 즉시 채워 넣을 수 있는 슬라이드 스캐폴드다.",
+      "slide_scaffold": [
+        {
+          "slide": 1,
+          "role": "brand_intro_or_hook",
+          "template": "[BRAND_NAME] 협찬 이벤트 안내 -- [EVENT_NAME_SOURCE_REQUIRED]",
+          "fill_when": "브랜드 확정 후"
+        },
+        {
+          "slide": 2,
+          "role": "event_context",
+          "template": "이벤트 기간: [PERIOD_SOURCE_REQUIRED] / 참여 방법: [METHOD_SOURCE_REQUIRED]",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 3,
+          "role": "evidence_or_claim",
+          "template": "혜택 내용: [BENEFIT_SOURCE_REQUIRED] (브랜드 공식 자료 인용만, 자체 추정 금지)",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 4,
+          "role": "cta_and_disclosure",
+          "template": "참여 CTA + \"#광고 [BRAND_NAME]과 함께합니다\" disclosure",
+          "fill_when": "브랜드/운영자 승인 후"
+        }
+      ],
+      "ready_to_write": "NOT_UNTIL_REAL_BRAND_CONTRACT -- 스캐폴드는 즉시 사용 가능, 실제 문구는 불가"
+    },
+    {
+      "content_id": "BC-011",
+      "content_type": "brandconnect",
+      "working_title": "신제품 출시 카운트다운 콘텐츠",
+      "priority": {
+        "tier": "P2",
+        "score": 7.34
+      },
+      "current_readiness": "not_approved",
+      "scaffolding_note": "실제 브랜드 계약 전까지는 문안을 작성하지 않는다. 아래는 계약 성사 즉시 채워 넣을 수 있는 슬라이드 스캐폴드다.",
+      "slide_scaffold": [
+        {
+          "slide": 1,
+          "role": "brand_intro_or_hook",
+          "template": "[BRAND_NAME] 신제품 출시 D-[N_SOURCE_REQUIRED]",
+          "fill_when": "브랜드 확정 후"
+        },
+        {
+          "slide": 2,
+          "role": "product_teaser",
+          "template": "제품 카테고리/컨셉 티저: [CONCEPT_SOURCE_REQUIRED] (구체 스펙은 출시 전까지 비공개 처리 가능)",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 3,
+          "role": "evidence_or_claim",
+          "template": "확정된 사실만 서술, 미확정 스펙은 노출 금지",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 4,
+          "role": "cta_and_disclosure",
+          "template": "\"출시일 알림 받기\" CTA + 협찬 disclosure",
+          "fill_when": "브랜드/운영자 승인 후"
+        }
+      ],
+      "ready_to_write": "NOT_UNTIL_REAL_BRAND_CONTRACT -- 스캐폴드는 즉시 사용 가능, 실제 문구는 불가"
+    },
+    {
+      "content_id": "BC-006",
+      "content_type": "brandconnect",
+      "working_title": "브랜드 챌린지 참여 유도 콘텐츠",
+      "priority": {
+        "tier": "P2",
+        "score": 7.3
+      },
+      "current_readiness": "not_approved",
+      "scaffolding_note": "실제 브랜드 계약 전까지는 문안을 작성하지 않는다. 아래는 계약 성사 즉시 채워 넣을 수 있는 슬라이드 스캐폴드다.",
+      "slide_scaffold": [
+        {
+          "slide": 1,
+          "role": "brand_intro_or_hook",
+          "template": "[BRAND_NAME] 챌린지 참여하고 [BENEFIT_SOURCE_REQUIRED] 받아가세요",
+          "fill_when": "브랜드 확정 후"
+        },
+        {
+          "slide": 2,
+          "role": "challenge_rules",
+          "template": "참여 방법: [RULE_SOURCE_REQUIRED] / 참여 기간: [PERIOD_SOURCE_REQUIRED]",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 3,
+          "role": "evidence_or_claim",
+          "template": "당첨/혜택 조건은 브랜드 공식 공지문 그대로 인용, 재구성 금지",
+          "fill_when": "브랜드 제공 자료 확정 후"
+        },
+        {
+          "slide": 4,
+          "role": "cta_and_disclosure",
+          "template": "\"지금 참여하기\" CTA + 협찬 disclosure",
+          "fill_when": "브랜드/운영자 승인 후"
+        }
+      ],
+      "ready_to_write": "NOT_UNTIL_REAL_BRAND_CONTRACT -- 스캐폴드는 즉시 사용 가능, 실제 문구는 불가"
+    },
+    {
+      "content_id": "CM-012",
+      "content_type": "commerce_guide",
+      "working_title": "반려동물 사료 고르는 기준",
+      "priority": {
+        "tier": "P1",
+        "score": 13.16
+      },
+      "current_readiness": "planning_only",
+      "comparison_criteria_draft": [
+        {
+          "criterion": "주원료 표기",
+          "direction": "육류/곡물 등 주원료 순서와 비율 표기 여부를 비교 기준으로 제시 (특정 브랜드 우열 판단 없이 '확인 방법'만 안내)"
+        },
+        {
+          "criterion": "연령/체중별 급여량 안내",
+          "direction": "포장에 급여량 가이드가 있는지 여부"
+        },
+        {
+          "criterion": "알레르기 유발 성분 표기",
+          "direction": "일반적으로 알려진 알레르기 유발 성분(곡물류 등) 표기 확인법 -- 특정 성분의 위험성을 단정하지 않는다"
+        },
+        {
+          "criterion": "보관 방법",
+          "direction": "개봉 후 보관 기한 표기 확인"
+        }
+      ],
+      "explicit_gap": "실제 제품명, 가격, 성분 함량 수치는 SOURCE_REQUIRED/PRICE_VERIFICATION_REQUIRED -- 이 브리프는 '무엇을 확인해야 하는지'까지만 작성",
+      "ready_to_write": "CRITERIA_ONLY -- 특정 상품 비교는 실제 소싱 후"
+    },
+    {
+      "content_id": "CM-004",
+      "content_type": "commerce_guide",
+      "working_title": "캠핑 초보 텐트 고르는 기준",
+      "priority": {
+        "tier": "P1",
+        "score": 11.66
+      },
+      "current_readiness": "planning_only",
+      "comparison_criteria_draft": [
+        {
+          "criterion": "내수압 표기",
+          "direction": "수치 자체는 SOURCE_REQUIRED, '내수압 표기가 있는지 확인하라'는 기준만 제시"
+        },
+        {
+          "criterion": "인원 수 대비 실사용 공간",
+          "direction": "표기 인원과 실사용 체감 공간이 다를 수 있다는 점을 안내"
+        },
+        {
+          "criterion": "설치 난이도",
+          "direction": "폴대 개수/설치 방식 기준으로 난이도를 상대적으로 설명 (특정 제품 비교 없이 일반 유형 설명)"
+        },
+        {
+          "criterion": "무게/수납 부피",
+          "direction": "휴대성 판단 기준으로 제시"
+        }
+      ],
+      "explicit_gap": "특정 브랜드/모델명, 가격 비교는 실제 제품 소싱 및 권리 확인 후",
+      "ready_to_write": "CRITERIA_ONLY",
+      "cross_channel_cluster": "CLUSTER-CAMPING_TRAVEL_PACK (see CROSS_CHANNEL_CLUSTERS.json)"
+    },
+    {
+      "content_id": "CM-013",
+      "content_type": "commerce_guide",
+      "working_title": "러닝화 고르는 기준",
+      "priority": {
+        "tier": "P1",
+        "score": 11.66
+      },
+      "current_readiness": "planning_only",
+      "comparison_criteria_draft": [
+        {
+          "criterion": "쿠션/드롭 높이",
+          "direction": "일반적 분류(쿠션형/레이싱형)의 차이를 설명, 특정 제품 지명 없이"
+        },
+        {
+          "criterion": "사용 목적(조깅/마라톤/트레일)",
+          "direction": "목적별 일반적으로 권장되는 특성 설명"
+        },
+        {
+          "criterion": "발볼 너비/사이즈 표기 방식",
+          "direction": "브랜드마다 사이즈 체계가 다를 수 있다는 점을 안내"
+        },
+        {
+          "criterion": "교체 주기",
+          "direction": "일반적으로 권장되는 마모 확인 방법 설명 (특정 주행거리 수치 단정 금지)"
+        }
+      ],
+      "explicit_gap": "특정 브랜드/모델 비교, 실제 가격은 소싱 후",
+      "ready_to_write": "CRITERIA_ONLY"
+    },
+    {
+      "content_id": "KN-004",
+      "content_type": "knowledge_evergreen",
+      "working_title": "습관 형성 21일 법칙 진실",
+      "priority": {
+        "tier": "P1",
+        "score": 16.34
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "21일이면 습관이 된다? 사실 확인해봤습니다",
+        "습관 형성, 21일 법칙의 진짜 근거"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "'21일 법칙'이라는 통설을 언급하며 궁금증 유발."
+        },
+        {
+          "slide": 2,
+          "role": "concept_definition",
+          "direction": "이 통설의 유래(성형외과 의사의 관찰에서 시작된 대중적 통설이라는 점)를 정확히 설명하고, 실제로는 습관마다 형성 기간이 다르다는 점을 명시. 특정 논문 수치를 인용할 경우 출처 표기 필수, 없으면 '통설/대중적으로 알려진 이야기'로 명확히 구분."
+        },
+        {
+          "slide": 3,
+          "role": "practical_application",
+          "direction": "기간에 집착하기보다 '작게 시작해 꾸준히'가 핵심이라는 실천 조언."
+        },
+        {
+          "slide": 4,
+          "role": "cta_summary",
+          "direction": "\"오해하고 있던 상식, 저장해서 공유하기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "통설의 유래를 사실과 다르게 '과학적으로 증명됨'처럼 서술하지 않는다 -- 이것이 이 브리프의 핵심 정직성 포인트",
+      "ready_to_write": true
+    },
+    {
+      "content_id": "KN-008",
+      "content_type": "knowledge_evergreen",
+      "working_title": "시간관리 매트릭스 활용법",
+      "priority": {
+        "tier": "P1",
+        "score": 16.34
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "급한 일만 하다 하루가 끝난다면",
+        "아이젠하워 매트릭스, 이렇게 씁니다"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "매일 급한 일만 처리하다 끝나는 하루 공감 유발."
+        },
+        {
+          "slide": 2,
+          "role": "concept_definition",
+          "direction": "긴급/중요 2축 매트릭스 정의 (통용되는 시간관리 프레임워크로 출처 표기 없이도 사용 가능한 일반 개념)."
+        },
+        {
+          "slide": 3,
+          "role": "practical_application",
+          "direction": "4분면 각각에 실제 업무 예시 1개씩 배치."
+        },
+        {
+          "slide": 4,
+          "role": "cta_summary",
+          "direction": "\"오늘 할 일을 매트릭스에 넣어보기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "일반 통용 프레임워크, 공식 출처 불필요",
+      "ready_to_write": true,
+      "cross_channel_cluster": "CLUSTER-REMOTE_WORK (see CROSS_CHANNEL_CLUSTERS.json)"
+    },
+    {
+      "content_id": "KN-005",
+      "content_type": "knowledge_evergreen",
+      "working_title": "SNS 알고리즘 기본 원리",
+      "priority": {
+        "tier": "P1",
+        "score": 14.84
+      },
+      "current_readiness": "offline_ready",
+      "hook_options": [
+        "내 피드에 이 콘텐츠만 뜨는 이유",
+        "SNS 알고리즘, 이렇게 작동합니다"
+      ],
+      "card_copy_direction": [
+        {
+          "slide": 1,
+          "role": "hook",
+          "direction": "특정 콘텐츠만 계속 보이는 경험 환기."
+        },
+        {
+          "slide": 2,
+          "role": "concept_definition",
+          "direction": "일반적으로 알려진 원리(체류시간/상호작용 신호 기반 추천)를 개괄 수준에서 설명 -- 특정 플랫폼의 비공개 알고리즘 수치를 단정적으로 제시하지 않는다."
+        },
+        {
+          "slide": 3,
+          "role": "practical_application",
+          "direction": "이용자 입장에서 피드를 조정하는 실천 팁(관심 없는 계정 숨기기 등)."
+        },
+        {
+          "slide": 4,
+          "role": "cta_summary",
+          "direction": "\"저장하고 내 피드 점검해보기\" CTA."
+        }
+      ],
+      "evidence_sourcing_note": "플랫폼 공식 발표 이상의 세부 수치/가중치를 단정하지 않는다 -- 일반 원리 수준 유지",
+      "ready_to_write": true
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-A-1257fdf5c746",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-A-1257fdf5c746",
+    "account": "A",
+    "category": "경제·생활",
+    "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.hankyung.com/article/202607170841i",
+        "publisher": "한국경제",
+        "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?",
+        "published_at": "2026-07-17T20:00:00+09:00",
+        "source_status": "body_read",
+        "usage_note": "기사 문장·이미지 캡처를 전재하지 않고 핵심 구분만 새 편집 그래픽으로 재구성"
+      }
+    ]
+  },
+  "story": {
+    "summary": "상속포기를 했다고 모든 돈을 받으면 안 되는 것은 아니다. 기사에서 설명한 사망퇴직금·보험금·해지환급금의 차이를 '누구에게 직접 생긴 권리인가'라는 한 줄 기준으로 풀어낸다."
+  },
+  "slide_count": 6,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "상속 포기했는데\n보험금은 받아도 될까?",
+      "body": "빚을 피하려다 받은 돈 때문에 다시 문제가 생길까, 가장 헷갈리는 지점입니다."
+    },
+    {
+      "page": 2,
+      "role": "core_distinction",
+      "headline": "먼저 볼 건\n'누구의 재산인가'",
+      "body": "고인이 남긴 상속재산인지, 유족에게 직접 생긴 고유재산인지에 따라 달라집니다."
+    },
+    {
+      "page": 3,
+      "role": "death_benefit",
+      "headline": "사망퇴직금은\n유족의 몫일 수 있다",
+      "body": "법률이나 취업규칙이 수령자를 따로 정했다면 유족에게 직접 귀속되는 고유재산으로 본다는 설명입니다."
+    },
+    {
+      "page": 4,
+      "role": "insurance_split",
+      "headline": "보험금은\n수익자부터 확인",
+      "body": "수익자가 '상속인'이면 청구권이 직접 생기지만, 피보험자 자신이 수익자라면 상속재산이 될 수 있습니다."
+    },
+    {
+      "page": 5,
+      "role": "exception",
+      "headline": "해지환급금은\n같이 보면 안 됩니다",
+      "body": "기사는 해지환급금은 원칙적으로 상속재산이라며 함부로 인출하거나 쓰지 말라고 짚었습니다."
+    },
+    {
+      "page": 6,
+      "role": "takeaway",
+      "headline": "이름은 '보험금'이어도\n결론은 다릅니다",
+      "body": "상속포기 여부만 보지 말고 지급 근거와 보험수익자를 먼저 확인해야 한다는 이야기입니다."
+    }
+  ],
+  "feed_caption": "상속을 포기했으면 고인과 관련된 돈은 전부 받으면 안 된다고 생각하기 쉽습니다. 하지만 기사에 따르면 사망퇴직금처럼 유족에게 직접 귀속되는 돈과, 보험계약에서 수익자가 상속인으로 지정된 생명보험금은 상속재산이 아닐 수 있습니다. 반대로 피보험자 자신이 수익자인 보험금이나 해지환급금은 상속재산이 될 수 있어 같은 '보험금'이라는 이름만 보고 판단하면 안 됩니다. 핵심은 상속포기 자체보다 지급 근거와 보험수익자가 누구인지입니다.\n\n보험수익자, 지금 바로 확인할 수 있나요?\n\n참고: 한국경제 「사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?」",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "한국경제 기사 내용 참고·자체 편집 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 2,
+      "slide_role": "core_distinction",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "한국경제 기사 내용 참고·상속재산/고유재산 분기 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 3,
+      "slide_role": "death_benefit",
+      "media_type": "editorial",
+      "source_credit": [
+        "한국경제 기사 내용 참고·급여명세서 형태의 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 4,
+      "slide_role": "insurance_split",
+      "media_type": "editorial",
+      "source_credit": [
+        "한국경제 기사 내용 참고·보험수익자 항목 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 5,
+      "slide_role": "exception",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "한국경제 기사 내용 참고·해지환급금 경고 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 6,
+      "slide_role": "takeaway",
+      "media_type": "editorial",
+      "source_credit": [
+        "한국경제 기사 내용 참고·확인 순서 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-A-1257fdf5c746",
+    "account": "A",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "account": "A",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

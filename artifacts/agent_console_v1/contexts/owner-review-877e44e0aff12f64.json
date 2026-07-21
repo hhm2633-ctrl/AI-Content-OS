@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-f1d93c9f7bee",
+  "candidate_id": "20260717-2003-A-f1d93c9f7bee",
+  "grade": "3",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "\"주가 당장 모르지만, SK하닉 갖고 있으라\"…최태원, 깜짝 조언",
+  "source_urls": [
+    "https://www.hankyung.com/article/2026071709306"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

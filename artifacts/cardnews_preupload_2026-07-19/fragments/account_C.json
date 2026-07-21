@@ -1,0 +1,418 @@
+{
+  "schema_version": "cardnews_preupload_fragment_v1",
+  "as_of": "2026-07-19",
+  "account": "C",
+  "record_count": 4,
+  "inputs": {
+    "selection": "artifacts/cardnews_category_review_2026-07-19/independent_selection_C.json",
+    "repair_package": "artifacts/cardnews_production_packages/repair_inputs/account_C.json",
+    "commerce_stories": [
+      "artifacts/cardnews_category_review_2026-07-19/commerce_story_hair.json",
+      "artifacts/cardnews_category_review_2026-07-19/commerce_story_skincare.json",
+      "artifacts/cardnews_category_review_2026-07-19/commerce_story_travel.json"
+    ],
+    "repair_reuse_note": "The repair package contains prior 2026-07-17 candidates, so its public-copy, false-association and source-lineage guards were reused but its records were not substituted for today's four selections."
+  },
+  "records": [
+    {
+      "candidate_id": "20260719-C-0b54b86fb5d9",
+      "selection_rank": 1,
+      "category": "뷰티·헤어",
+      "title": "지지 하디드가 증명한 갸름한 얼굴의 비결! '하트 레이어스 커트'",
+      "source": {
+        "publisher": "Vogue Korea",
+        "published_at": "2026-07-18",
+        "url": "https://www.vogue.co.kr/2026/07/18/%ec%a7%80%ec%a7%80-%ed%95%98%eb%94%94%eb%93%9c%ea%b0%80-%ec%a6%9d%eb%aa%85%ed%95%9c-%ea%b0%b8%eb%a6%84%ed%95%9c-%ec%96%bc%ea%b5%b4%ec%9d%98-%eb%b9%84%ea%b2%b0-%ed%95%98%ed%8a%b8-%eb%a0%88%ec%9d%b4/",
+        "credit": "Vogue Korea / Instagram @dimitrisgiannetos",
+        "claims_used": [
+          "하트 셰이프 레이어스는 기존 C커트를 현대적으로 재해석한 레이어링이다.",
+          "첫 레이어는 턱 아래에서 시작하고 위쪽은 풍성하게, 아래쪽은 슬림하게 떨어지는 구조다.",
+          "가운데 가르마, 큰 롤 브러시 드라이, 가벼운 헤어스프레이가 기사에 제시된 스타일링 포인트다."
+        ]
+      },
+      "commerce": {
+        "fit": "natural_limited",
+        "mode": "editorial_first_optional_product_last",
+        "accepted_product_ids": ["833447744789601"],
+        "rejected_product_ids": ["808730266482264", "808730266486357"],
+        "reason": "기사에 헤어스프레이 마무리가 직접 제시돼 픽서 한 건만 자연스럽다. 트리트먼트와 오일은 이번 기사 핵심과 직접 연결되지 않아 제외한다.",
+        "link_issuance": false,
+        "disclosure": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_actual_look",
+          "headline": "얼굴 옆에 하트가 생겼다",
+          "body": "지지 하디드가 보여준 올여름 레이어스 커트.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.vogue.co.kr/vogue/2026/07/style_6a5884eff253a.jpg",
+          "source_credit": "Vogue Korea / @dimitrisgiannetos"
+        },
+        {
+          "page": 2,
+          "role": "shape_explainer",
+          "headline": "위는 풍성하게, 아래는 가볍게",
+          "body": "하트처럼 넓어졌다가 턱 아래부터 슬림하게 떨어진다.",
+          "media_type": "actual_editorial_image_crop",
+          "media_url": "https://img.vogue.co.kr/vogue/2026/07/style_6a58850606876-698x930.jpg",
+          "source_credit": "Vogue Korea / @dimitrisgiannetos"
+        },
+        {
+          "page": 3,
+          "role": "cut_point",
+          "headline": "첫 층은 턱 아래에서",
+          "body": "미용실에선 전체 길이와 층이 시작될 위치를 같이 보여준다.",
+          "media_type": "actual_editorial_image_with_original_annotation",
+          "media_url": "https://img.vogue.co.kr/vogue/2026/07/style_6a58850b4d7bf-698x930.jpg",
+          "source_credit": "Vogue Korea / @dimitrisgiannetos"
+        },
+        {
+          "page": 4,
+          "role": "styling_point",
+          "headline": "가운데 가르마가 포인트",
+          "body": "정수리 볼륨과 얼굴 옆 레이어의 흐름이 더 또렷해진다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.vogue.co.kr/vogue/2026/07/style_6a58852e3ff4e-1095x1400.jpg",
+          "source_credit": "Vogue Korea / @gigihadid"
+        },
+        {
+          "page": 5,
+          "role": "how_to",
+          "headline": "큰 롤 브러시로 말고, 식힌 뒤 풀기",
+          "body": "기사에 나온 순서는 드라이한 뒤 모발이 식을 때까지 고정하는 것.",
+          "media_type": "original_editorial_diagram",
+          "media_url": null,
+          "source_credit": "Vogue Korea 기사 기반 자체 도식"
+        },
+        {
+          "page": 6,
+          "role": "optional_commerce",
+          "headline": "마지막 고정은 가볍게",
+          "body": "헤어스프레이는 커트를 만드는 제품이 아니라 모양을 마무리하는 보조 도구다.",
+          "media_type": "brandconnect_actual_product_image_required",
+          "media_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+          "source_credit": "달리프 / Naver Brand Connect",
+          "asset_status": "requires_logged_in_product_image_capture",
+          "fallback": "제품 이미지를 확보하지 못하면 이 장을 삭제하고 6장 편집본으로 마감"
+        },
+        {
+          "page": 7,
+          "role": "outro",
+          "headline": "다음 커트 전에 이 사진 저장",
+          "body": "길이보다 얼굴 옆 층의 시작점을 보여주면 된다.",
+          "media_type": "original_editorial_typography",
+          "media_url": null,
+          "source_credit": "편집 제작"
+        }
+      ],
+      "feed_caption": "지지 하디드가 보여준 ‘하트 셰이프 레이어스’의 핵심은 제품보다 커트선입니다. 위쪽은 풍성하고 아래쪽은 슬림하게 떨어지며, 첫 레이어는 턱 아래에서 시작해 얼굴 옆을 감싸죠. 미용실에서는 원하는 전체 길이와 층이 시작될 위치를 사진으로 같이 보여주고, 집에서는 큰 롤 브러시로 드라이한 뒤 충분히 식혀 풀어보세요. 마지막 고정이 필요할 때만 헤어스프레이를 가볍게 더하면 됩니다.\n\n참고 이미지·내용: Vogue Korea / @dimitrisgiannetos\n상품 정보: Naver Brand Connect\n\n이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
+      "media_readiness": {
+        "status": "ready_with_editorial_fallback",
+        "actual_editorial_images": 4,
+        "original_graphics": 2,
+        "product_assets_ready": 0,
+        "blocker": "Brand Connect product image requires logged-in capture; package can render editorial-only by dropping page 6."
+      }
+    },
+    {
+      "candidate_id": "20260719-C-e33deaa8f48d",
+      "selection_rank": 2,
+      "category": "뷰티·스킨케어",
+      "title": "요즘 사람들이 얼굴에 젤리를 뿌리는 이유?",
+      "source": {
+        "publisher": "Allure Korea",
+        "published_at": "2026-07-17",
+        "url": "https://www.allurekorea.com/2026/07/17/%ec%9a%94%ec%a6%98-%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4-%ec%96%bc%ea%b5%b4%ec%97%90-%ec%a0%a4%eb%a6%ac%eb%a5%bc-%eb%bf%8c%eb%a6%ac%eb%8a%94-%ec%9d%b4%ec%9c%a0/",
+        "credit": "Allure Korea / credited Instagram creators in the source article",
+        "claims_used": [
+          "용기 안에서는 고체 젤처럼 보이지만 분사하면 액체로 나오는 젤리 미스트가 화제가 됐다.",
+          "기사에는 바이오던스, 메디큐브, 런드리유, 더랩바이블랑두 등 실제 젤리 미스트 사례가 소개됐다.",
+          "카드에서는 기사에 나온 제형과 제품 사례만 전달하고 별도 효능 보장은 추가하지 않는다."
+        ]
+      },
+      "commerce": {
+        "fit": "editorial_only",
+        "rejected_product_ids": ["860034829179689", "934665884844385", "807270223669665"],
+        "reason": "저장된 Brand Connect 세 제품은 기사 속 젤리 미스트와 동일 제품이 아니며, 미스트·세럼·크림이라는 넓은 제형만으로 묶으면 광고가 이야기를 덮는다.",
+        "link_issuance": false
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_texture",
+          "headline": "고체인데, 뿌리면 액체?",
+          "body": "SNS를 채운 ‘젤리 미스트’의 정체.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a58499a24fca-675x1200.jpg",
+          "source_credit": "Allure Korea / @maruko_graphy"
+        },
+        {
+          "page": 2,
+          "role": "format_explainer",
+          "headline": "병 안에서는 젤, 밖에서는 미스트",
+          "body": "낯선 제형과 분사 방식이 첫 시선을 잡았다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a584a03ca0de-1200x675.jpg",
+          "source_credit": "Allure Korea / @hongsmakeup"
+        },
+        {
+          "page": 3,
+          "role": "trend_context",
+          "headline": "여름과 만난 새로운 제형",
+          "body": "얼루어는 여러 브랜드가 젤리 미스트를 선보이는 흐름을 소개했다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a584a3fbfdb0-1200x675.jpg",
+          "source_credit": "Allure Korea / @just_sonjoohee"
+        },
+        {
+          "page": 4,
+          "role": "actual_product_case",
+          "headline": "바이오던스의 ‘뿌리는 하이드로겔’",
+          "body": "기사에 소개된 콜라겐 펩타이드 젤리 세럼 미스트.",
+          "media_type": "actual_article_product_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a584ce67d633.jpg",
+          "source_credit": "Allure Korea / @kateridion"
+        },
+        {
+          "page": 5,
+          "role": "actual_product_case",
+          "headline": "메디큐브도 젤리 미스트로",
+          "body": "기사에는 PDRN 핑크 콜라겐 글로우 젤리 미스트가 실렸다.",
+          "media_type": "actual_article_product_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a584d0be8a58-727x1200.jpg",
+          "source_credit": "Allure Korea / @glow_with_redmone_"
+        },
+        {
+          "page": 6,
+          "role": "more_cases",
+          "headline": "런드리유부터 더랩바이블랑두까지",
+          "body": "같은 이름처럼 보여도 제품별 성분과 표현은 다르다.",
+          "media_type": "actual_editorial_image_montage",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a584a7934240-1200x675.jpg",
+          "source_credit": "Allure Korea / credited creators"
+        },
+        {
+          "page": 7,
+          "role": "outro",
+          "headline": "끌린 건 제형, 고를 땐 제품별로",
+          "body": "‘젤리’라는 이름만 같다고 전부 같은 제품은 아니다.",
+          "media_type": "original_editorial_typography",
+          "media_url": null,
+          "source_credit": "편집 제작"
+        }
+      ],
+      "feed_caption": "용기 안에서는 탱글한 젤처럼 보이는데, 뿌리는 순간 액체로 나오는 ‘젤리 미스트’가 SNS에서 눈길을 끌고 있습니다. 얼루어 코리아는 바이오던스, 메디큐브, 런드리유, 더랩바이블랑두 등 실제 제품 사례를 소개했어요. 다만 ‘젤리’라는 이름이 같아도 성분과 사용감은 제품마다 다르니, 제형의 재미와 제품 선택은 나눠 보는 편이 좋습니다.\n\n참고 이미지·내용: Allure Korea 2026.07.17",
+      "media_readiness": {
+        "status": "ready",
+        "actual_editorial_images": 6,
+        "original_graphics": 1,
+        "product_assets_ready": 2,
+        "blocker": null
+      }
+    },
+    {
+      "candidate_id": "20260719-C-dbbeb00497c8",
+      "selection_rank": 3,
+      "category": "패션",
+      "title": "힙하고 스타일리시한 여행 룩을 원한다면",
+      "source": {
+        "publisher": "Allure Korea",
+        "published_at": "2026-07-18",
+        "url": "https://www.allurekorea.com/2026/07/18/%ed%9e%99%ed%95%98%ea%b3%a0-%ec%8a%a4%ed%83%80%ec%9d%bc%eb%a6%ac%ec%8b%9c%ed%95%9c-%ec%97%ac%ed%96%89-%eb%a3%a9%ec%9d%84-%ec%9b%90%ed%95%9c%eb%8b%a4%eb%a9%b4/",
+        "credit": "Allure Korea / Photographer 황병문 / Model 리멍",
+        "claims_used": [
+          "해당 원문은 소도시와 자연 속 느린 휴식을 배경으로 한 여행 패션 화보다.",
+          "셀린느·롱샴·투미, 루이 비통·메종 마르지엘라, 끌로에·생 로랑 등 실제 착장이 명시돼 있다.",
+          "카드는 상품 추천 가이드가 아니라 화보의 소재·실루엣·소품 조합을 짧게 큐레이션한다."
+        ]
+      },
+      "commerce": {
+        "fit": "editorial_only",
+        "rejected_product_ids": ["924762305620960", "867840900767235", "934042471903616"],
+        "reason": "원문은 특정 럭셔리 착장의 화보다. 별도의 바캉스 원피스·백팩·선스틱을 연결하면 원문 모델이 해당 상품을 착용하거나 화보와 관계있는 것처럼 보일 수 있다.",
+        "link_issuance": false
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_actual_editorial",
+          "headline": "여행 룩은 ‘휴식의 속도’까지 입는다",
+          "body": "얼루어가 소도시와 자연을 배경으로 고른 여덟 가지 장면.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b82c3b5db1-923x1200.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 2,
+          "role": "look_detail",
+          "headline": "패치워크 드레스에 젤리 샌들",
+          "body": "셀린느 드레스와 샌들, 롱샴 스카프, 투미 캐리어가 한 장면을 만든다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b82f53cc12-923x1200.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 3,
+          "role": "look_detail",
+          "headline": "셔츠와 와이드 팬츠, 단정한 이동 룩",
+          "body": "루이 비통 셔츠·팬츠에 메종 마르지엘라 타비 뮬을 더했다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b82e494820-923x1200.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 4,
+          "role": "look_detail",
+          "headline": "선글라스 하나로 선명하게",
+          "body": "생 로랑 선글라스와 끌로에 플라밍고 프린트 톱의 대비.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b831e681c9-923x1200.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 5,
+          "role": "look_detail",
+          "headline": "부드러운 실크에 웨스턴 슈즈",
+          "body": "진선의 실크 패널과 이자벨마랑 비즈 슈즈가 질감을 바꾼다.",
+          "media_type": "actual_editorial_image",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b82fdd1410-1200x923.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 6,
+          "role": "look_pattern",
+          "headline": "드레스만이 여행 룩은 아니다",
+          "body": "가죽 보머·브라톱·스키니 팬츠처럼 강한 조합도 화보에 등장한다.",
+          "media_type": "actual_editorial_image_reuse_crop",
+          "media_url": "https://img.allurekorea.com/allure/2026/07/style_6a4b82c3b5db1-923x1200.jpg",
+          "source_credit": "Allure Korea / 황병문"
+        },
+        {
+          "page": 7,
+          "role": "editorial_takeaway",
+          "headline": "공통점은 소재와 소품의 충돌",
+          "body": "실크·가죽·패치워크에 가방과 슈즈를 한 번 더 비틀었다.",
+          "media_type": "original_editorial_collage_from_source_images",
+          "media_url": null,
+          "source_credit": "Allure Korea 이미지 기반 편집"
+        },
+        {
+          "page": 8,
+          "role": "outro",
+          "headline": "이번 여행, 한 가지 질감만 바꿔볼까?",
+          "body": "룩 전체보다 신발·가방·소재 중 하나만 바꿔도 분위기가 달라진다.",
+          "media_type": "original_editorial_typography",
+          "media_url": null,
+          "source_credit": "편집 제작"
+        }
+      ],
+      "feed_caption": "멀리 떠나지 않아도 여행 룩은 달라질 수 있습니다. 얼루어 코리아의 이번 화보는 패치워크 드레스와 젤리 샌들, 셔츠와 와이드 팬츠, 실크와 웨스턴 슈즈처럼 서로 다른 질감을 한 장면 안에서 섞었어요. 그대로 따라 사기보다 신발·가방·소재 중 한 가지만 바꿔도 여행지 사진의 분위기가 선명해집니다.\n\n참고 이미지·착장 정보: Allure Korea 2026.07.18\nPhoto: 황병문 / Model: 리멍",
+      "media_readiness": {
+        "status": "ready",
+        "actual_editorial_images": 5,
+        "original_graphics": 2,
+        "blocker": null
+      }
+    },
+    {
+      "candidate_id": "20260719-C-8bf2a4df5010",
+      "selection_rank": 4,
+      "category": "패션",
+      "title": "레페토 X 버켄스탁, 협업 컬렉션 출시",
+      "source": {
+        "publisher": "Apparel News",
+        "published_at": "2026-07-16",
+        "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226432",
+        "official_url": "https://www.repetto.kr/repetto-x-birkenstock/",
+        "official_news_url": "https://www.repetto.kr/news/view.asp?no=509",
+        "credit": "Repetto Korea official / Apparel News",
+        "claims_used": [
+          "협업 컬렉션은 Arizona, Opera, Scala 세 모델로 구성된다.",
+          "Arizona에는 오버사이즈 라운드 버클과 레페토 컬러, 비시 체크 풋베드가 적용됐다.",
+          "Opera에는 탈부착 가능한 새틴 리본, Scala에는 라운드 토와 슬림 스트랩·리본 디테일이 쓰였다."
+        ]
+      },
+      "commerce": {
+        "fit": "editorial_only",
+        "reason": "브랜드 협업 정보 콘텐츠이므로 Brand Connect 상품을 억지로 붙이지 않고 공식 컬렉션 자료만 큐레이션한다.",
+        "link_issuance": false
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_official_campaign",
+          "headline": "발레와 풋베드가 만났다",
+          "body": "Repetto × Birkenstock, 서로 다른 두 헤리티지의 협업.",
+          "media_type": "official_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_01.jpg",
+          "source_credit": "Repetto Korea official"
+        },
+        {
+          "page": 2,
+          "role": "collection_overview",
+          "headline": "세 가지 이름으로 완성된 컬렉션",
+          "body": "Arizona, Opera, Scala. 익숙한 형태에 레페토의 발레 코드를 얹었다.",
+          "media_type": "official_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_02.jpg",
+          "source_credit": "Repetto Korea official"
+        },
+        {
+          "page": 3,
+          "role": "model_detail_arizona",
+          "headline": "Arizona는 버클부터 달라졌다",
+          "body": "오버사이즈 라운드 버클과 레페토 컬러, 비시 체크 풋베드.",
+          "media_type": "official_product_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_03.jpg",
+          "source_credit": "Repetto Korea official"
+        },
+        {
+          "page": 4,
+          "role": "model_detail_opera",
+          "headline": "Opera는 새틴 리본을 묶었다",
+          "body": "탈부착 리본과 보우 디테일로 발레 슈즈의 분위기를 가져왔다.",
+          "media_type": "official_product_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_04.jpg",
+          "source_credit": "Repetto Korea official"
+        },
+        {
+          "page": 5,
+          "role": "model_detail_scala",
+          "headline": "Scala는 더 가느다란 선으로",
+          "body": "라운드 토와 두 개의 슬림 스트랩, 작은 리본으로 정리했다.",
+          "media_type": "official_product_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_05.jpg",
+          "source_credit": "Repetto Korea official"
+        },
+        {
+          "page": 6,
+          "role": "editorial_outro",
+          "headline": "편안함을 발레의 언어로 번역하면",
+          "body": "버클·리본·체크처럼 작은 코드가 협업의 인상을 만든다.",
+          "media_type": "official_campaign_image",
+          "media_url": "https://www.repetto.kr/images/pc/birkenstock/birkenstock_d_img_06.jpg",
+          "source_credit": "Repetto Korea official"
+        }
+      ],
+      "feed_caption": "레페토와 버켄스탁의 협업은 완전히 새로운 신발을 만들기보다 익숙한 형태에 서로의 코드를 섞었습니다. Arizona에는 오버사이즈 라운드 버클과 비시 체크 풋베드를, Opera에는 탈부착 새틴 리본을, Scala에는 라운드 토와 슬림 스트랩·리본 디테일을 더했어요. 편안함과 발레 무드가 어디에서 만났는지 공식 이미지를 따라 짧게 정리했습니다.\n\nImages & info: Repetto Korea official\n참고: Apparel News 2026.07.16",
+      "media_readiness": {
+        "status": "ready",
+        "official_campaign_images": 6,
+        "supporting_editorial_image": "https://www.apparelnews.co.kr/upfiles/manage/202607/f507e31bc46aed567611c6735fe403e7.jpg",
+        "official_longform_asset": "https://www.repetto.kr/data/SmartEditContent/20260716182503_4135_1_RE.jpg",
+        "blocker": null
+      }
+    }
+  ],
+  "handoff": {
+    "completed_record_count": 4,
+    "media_ready_record_count": 3,
+    "ready_with_fallback_record_count": 1,
+    "natural_commerce_record_count": 1,
+    "editorial_only_record_count": 3,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false,
+    "git_executed": false
+  }
+}

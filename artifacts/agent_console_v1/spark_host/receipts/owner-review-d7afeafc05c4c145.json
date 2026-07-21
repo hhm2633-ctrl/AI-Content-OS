@@ -1,0 +1,66 @@
+{
+  "schema_version": "spark_host_receipt_v1",
+  "status": "completed",
+  "model_reasoning_summary": "none",
+  "job_id": "owner-review-d7afeafc05c4c145",
+  "summary": "경기도는 7월 17일 20:46경 재난안전대책본부 비상 2단계로 격상하며 취약 시간대 폭우·피해 관리 강화 계획을 발표했다. 시군 강우량/특보, 시설물 통제, 주민대피 현황을 집중 점검하고 하천변·산간계곡·지하차도 등 침수 우려 구간의 외출 자제를 안내한다.",
+  "outputs": {
+    "topic": "경기 최대 300mm 이상 비 예보·비상 2단계 가동",
+    "sources": [
+      {
+        "provider": "news1 via daum",
+        "url": "https://v.daum.net/v/20260717204637541",
+        "published_at": "2026-07-17T20:46:00+09:00"
+      },
+      {
+        "provider": "requested_source",
+        "url": "https://www.yna.co.kr/view/AKR20260717052500061?section=society/all",
+        "status": "not_reachable_from_host_runner",
+        "note": "blocked direct fetch in this run; used 공개 재배포 기사 요약으로 교차 확인"
+      }
+    ],
+    "fact_pack": {
+      "governor_action": "재난안전대책본부 비상 2단계 가동(도민 경보 및 대응 체계 강화)",
+      "forecast": "18일까지 100~200mm, 일부 300mm 이상 강수 예보",
+      "intensity": "특히 18일 자정~낮 사이 시간당 30~80mm 예상",
+      "staffing": "풍수해 대응 인원 57명(공무원 39명 + 자체상황실 18명)",
+      "public_safety_message": "강한 비가 오면 하천변 산책로, 지하차도, 둔치 주차장 등 침수 우려 지역 외출 자제"
+    },
+    "cardnews_plan": {
+      "account": "A",
+      "category": "news",
+      "recommended_slides": 5,
+      "tone": "짧고 객관적인 브리핑형",
+      "slide_script": [
+        {
+          "slide": 1,
+          "role": "headline",
+          "copy": "경기도 ‘비상 2단계’ 가동\n최대 300mm 이상 비 예보"
+        },
+        {
+          "slide": 2,
+          "role": "핵심상황",
+          "copy": "7월 17일 20시경 비상 1단계에서 2단계로 상향\n시군별 강우량·시설 통제·피해 현황 집중 점검"
+        },
+        {
+          "slide": 3,
+          "role": "수치",
+          "copy": "예보: 7월 17일 저녁~19일 100~200mm\n많은 곳 300mm 이상\n강도: 시간당 30~80mm"
+        },
+        {
+          "slide": 4,
+          "role": "대응체계",
+          "copy": "자체상황실 18명 포함 총 57명 근무\n도·시군 협력 점검 후 취약지 사전 점검"
+        },
+        {
+          "slide": 5,
+          "role": "생활안전",
+          "copy": "산간계곡·하천 야영장·캠핑장\n지하차도·둔치주차장 피해서 대피 안전 확보"
+        }
+      ]
+    }
+  },
+  "warnings": [
+    "원문 YNA 링크는 직접 크롤링이 제한되어 대체 공개 링크 기반으로 정리함"
+  ]
+}

@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Higgsfield" [ref=e5]
+      - navigation "Main" [ref=e9]:
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - link "Explore" [ref=e14] [cursor=pointer]:
+              - /url: /
+          - separator [ref=e15]
+          - listitem [ref=e16]:
+            - link "Image" [ref=e17] [cursor=pointer]:
+              - /url: /ai/image?model=nano-banana-pro
+          - listitem [ref=e18]:
+            - link "Video" [ref=e19] [cursor=pointer]:
+              - /url: /ai/video
+          - listitem [ref=e20]:
+            - link "Audio" [ref=e21] [cursor=pointer]:
+              - /url: /audio
+          - listitem [ref=e22]:
+            - link "Cinema Studio" [ref=e23] [cursor=pointer]:
+              - /url: /generate
+          - separator [ref=e24]
+          - listitem [ref=e25]:
+            - link "MCP & CLI New" [ref=e26] [cursor=pointer]:
+              - /url: /mcp
+              - text: MCP & CLI
+              - generic [ref=e27]: New
+          - listitem [ref=e28]:
+            - link "Academy New" [ref=e29] [cursor=pointer]:
+              - /url: /academy
+              - text: Academy
+              - generic [ref=e30]: New
+          - listitem [ref=e31]:
+            - link "Supercomputer" [ref=e32] [cursor=pointer]:
+              - /url: /supercomputer
+          - listitem [ref=e40]:
+            - link "Plugins New" [ref=e41] [cursor=pointer]:
+              - /url: /plugins/after-effects
+              - text: Plugins
+              - generic [ref=e42]: New
+          - listitem [ref=e43]:
+            - link "Marketing Studio" [ref=e44] [cursor=pointer]:
+              - /url: /marketing-studio/product
+          - listitem [ref=e45]:
+            - link "Canvas" [ref=e46] [cursor=pointer]:
+              - /url: /canvas
+          - listitem [ref=e47]:
+            - link "Originals" [ref=e48] [cursor=pointer]:
+              - /url: /original-series
+          - listitem [ref=e49]:
+            - link "Shorts Studio" [ref=e50] [cursor=pointer]:
+              - /url: /shorts-studio
+          - listitem [ref=e51]:
+            - link "Explainer" [ref=e52] [cursor=pointer]:
+              - /url: /explainer
+  - main [ref=e58]
+  - contentinfo [ref=e536]:
+    - navigation [ref=e537]:
+      - paragraph [ref=e538]:
+        - generic [ref=e539]: © 2026 Higgsfield, Inc.
+        - generic [ref=e540]: All rights reserved.
+      - list [ref=e541]:
+        - listitem
+        - listitem [ref=e542]:
+          - link "Cookie Notice" [ref=e543] [cursor=pointer]:
+            - /url: /cookie-notice
+        - listitem [ref=e544]:
+          - link "Terms" [ref=e545] [cursor=pointer]:
+            - /url: /terms-of-use-agreement
+        - listitem [ref=e546]:
+          - link "Privacy" [ref=e547] [cursor=pointer]:
+            - /url: /privacy-policy

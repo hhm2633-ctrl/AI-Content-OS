@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-fbb3876c08d4",
+  "candidate_id": "20260717-2003-C-fbb3876c08d4",
+  "grade": "3",
+  "account": "C",
+  "category": "뷰티",
+  "title": "딱 적당한 삶이 주는 행복, 스웨덴의 라이프스타일 '라곰'에 대하여",
+  "source_urls": [
+    "https://www.vogue.co.kr/2026/07/17/%eb%94%b1-%ec%a0%81%eb%8b%b9%ed%95%9c-%ec%82%b6%ec%9d%b4-%ec%a3%bc%eb%8a%94-%ed%96%89%eb%b3%b5-%ec%8a%a4%ec%9b%a8%eb%8d%b4%ec%9d%98-%eb%9d%bc%ec%9d%b4%ed%94%84%ec%8a%a4%ed%83%80%ec%9d%bc-%eb%9d%bc/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

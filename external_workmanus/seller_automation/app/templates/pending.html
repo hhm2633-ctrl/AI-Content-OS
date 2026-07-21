@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>승인 대기 · 셀러 자동화</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="center-wrap">
+    <div class="card narrow">
+      <h1>접근 권한이 없는 기기입니다</h1>
+      <p class="sub">
+        이 기기는 아직 승인되지 않았습니다. 이미 승인된 기기(관리자)에서
+        로그인 후 이 기기를 승인해 주세요.
+      </p>
+      <label>이 기기 식별 코드</label>
+      <div class="mono">{{ device.device_token[:16] }}…</div>
+      <p class="muted" style="margin-top:16px">
+        승인 후 이 페이지를 새로고침하면 로그인 화면으로 이동합니다.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+{
+  "contract_name": "naver_ranking_category_fixture_contract",
+  "contract_version": "1.0.0",
+  "created_at": "2026-07-15",
+  "status": "recon_only_do_not_implement_without_compliance_gate",
+  "source_domain": "news.naver.com",
+  "compliance_gate": {
+    "robots_txt": "User-agent: * Disallow: / (only Facebook/Twitter preview bots allowed); AI training / RAG bot access explicitly prohibited",
+    "verdict": "Live scraping violates robots.txt and likely Naver/publisher terms. Fixtures below are for OFFLINE parser tests only. Production collection must go through the Naver Open API or an explicit legal/compliance approval.",
+    "attribution_required": "Publisher name + original article URL must be preserved in every record. Article body text must never be stored or republished from these pages.",
+    "credentials": "None used, none required, none permitted (no Naver API HUB secrets in this path)."
+  },
+  "encoding_notes": {
+    "ranking_page": "EUC-KR (decode as euc-kr; utf-8 decoding produces mojibake)",
+    "section_page": "UTF-8",
+    "section_more_endpoint": "UTF-8 JSON"
+  },
+  "url_contracts": {
+    "ranking_page": {
+      "url": "https://news.naver.com/main/ranking/popularDay.naver",
+      "date_control": "?date=YYYYMMDD (KST), verified",
+      "pagination": "none (single page, all publisher boxes)",
+      "rendering": "server-rendered"
+    },
+    "section_page": {
+      "url_template": "https://news.naver.com/section/{sid}",
+      "sids": { "politics": "100", "economy": "101", "society": "102", "life_culture": "103", "world": "104", "it_science": "105" },
+      "verified_sids": ["101", "102", "104"],
+      "rendering": "server-rendered"
+    },
+    "section_more_endpoint": {
+      "url_template": "https://news.naver.com/section/template/SECTION_ARTICLE_LIST?sid={sid}&pageNo={pageNo}&next={cursor}",
+      "response_shape": "{ component: {}, renderedComponent: { SECTION_ARTICLE_LIST: '<html fragment>' }, uhv: ... }",
+      "cursor_protocol": {
+        "has_next_attr": "data-has-next",
+        "cursor_name_attr": "data-cursor-name (value: 'next')",
+        "cursor_attr": "data-cursor",
+        "cursor_format": "YYYYMMDDHHMMSS (KST timestamp, walks backward in time)"
+      },
+      "verified": true
+    },
+    "entertainment_ranking": {
+      "url": "https://entertain.naver.com/ranking",
+      "redirects_to": "https://m.entertain.naver.com/ranking",
+      "rendering": "SPA shell (~2KB), JavaScript-only, no embedded state payload",
+      "status": "BLOCKED_FOR_STATIC_FETCH",
+      "action": "defer; do not implement via HTML scraping"
+    }
+  },
+  "selectors": {
+    "ranking_page": {
+      "publisher_group": "div.rankingnews_box",
+      "publisher_name": "strong.rankingnews_name",
+      "publisher_home_link": "a.rankingnews_box_head[href]",
+      "item": "ul.rankingnews_list > li",
+      "item_rank": "em.list_ranking_num",
+      "item_title": "div.list_content > a.list_title",
+      "item_url": "a.list_title[href]",
+      "item_relative_time": "span.list_time",
+      "item_thumbnail": "a.list_img > img[src]",
+      "item_video_badge": "strong.r_ico.r_vod_small (optional)"
+    },
+    "section_page": {
+      "item": "li.sa_item",
+      "item_title": "a.sa_text_title > strong.sa_text_strong",
+      "item_url": "a.sa_text_title[href]",
+      "item_lede": "div.sa_text_lede",
+      "item_publisher": "div.sa_text_press",
+      "item_relative_time": "div.sa_text_datetime > b",
+      "item_thumbnail": "div.sa_thumb img[data-src]",
+      "item_cluster_count": "span.sa_text_cluster_num (optional)",
+      "item_office_article_id": "a.sa_text_cmt[data-object-id] format 'news{officeId},{articleId}' (optional)",
+      "item_rank_in_headline_block": "a.sa_text_title[data-nlog-params] JSON key 'rank' (strip before fixture storage; record derived integer only)"
+    },
+    "article_url_patterns": [
+      "https://n.news.naver.com/article/{officeId}/{articleId}",
+      "https://n.news.naver.com/mnews/article/{officeId}/{articleId}"
+    ]
+  },
+  "fixture_types": {
+    "ranking_page_fixture": {
+      "description": "Sanitized snapshot of popularDay.naver for offline parser tests",
+      "max_publisher_groups": 3,
+      "max_items_per_group": 5,
+      "fields": {
+        "fixture_type": { "type": "string", "const": "ranking_page", "required": true },
+        "source_url": { "type": "string", "required": true },
+        "fetched_at": { "type": "string", "format": "ISO-8601 KST", "required": true },
+        "encoding": { "type": "string", "const": "euc-kr", "required": true },
+        "ranking_date": { "type": "string", "format": "YYYYMMDD", "required": true },
+        "groups": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "publisher_name": { "type": "string", "required": true },
+            "publisher_office_id": { "type": "string", "pattern": "^\\d{3}$", "required": true },
+            "articles": {
+              "type": "array",
+              "items": {
+                "rank": { "type": "integer", "min": 1, "max": 5, "required": true },
+                "title": { "type": "string", "required": true },
+                "url": { "type": "string", "pattern": "n.news.naver.com/article/", "required": true },
+                "office_id": { "type": "string", "required": true },
+                "article_id": { "type": "string", "required": true },
+                "relative_time": { "type": "string", "required": false },
+                "has_video": { "type": "boolean", "required": false }
+              }
+            }
+          }
+        }
+      }
+    },
+    "section_page_fixture": {
+      "description": "Sanitized snapshot of /section/{sid} (or a SECTION_ARTICLE_LIST fragment) for offline parser tests",
+      "max_items": 10,
+      "fields": {
+        "fixture_type": { "type": "string", "const": "section_page", "required": true },
+        "source_url": { "type": "string", "required": true },
+        "fetched_at": { "type": "string", "format": "ISO-8601 KST", "required": true },
+        "encoding": { "type": "string", "const": "utf-8", "required": true },
+        "category": { "type": "string", "enum": ["politics", "economy", "society", "life_culture", "world", "it_science"], "required": true },
+        "sid": { "type": "string", "required": true },
+        "articles": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "position": { "type": "integer", "min": 1, "required": true, "note": "document order; equals data-nlog rank within headline block when present" },
+            "title": { "type": "string", "required": true },
+            "url": { "type": "string", "pattern": "n.news.naver.com/(mnews/)?article/", "required": true },
+            "office_id": { "type": "string", "required": true },
+            "article_id": { "type": "string", "required": true },
+            "publisher": { "type": "string", "required": true },
+            "lede": { "type": "string", "required": false, "max_length": 200 },
+            "relative_time": { "type": "string", "required": false, "example": "12분전" },
+            "thumbnail_url": { "type": "string", "required": false },
+            "cluster_count": { "type": "integer", "required": false }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "required": false,
+          "fields": {
+            "endpoint": { "type": "string" },
+            "page_no": { "type": "integer" },
+            "cursor": { "type": "string", "format": "YYYYMMDDHHMMSS" },
+            "has_next": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "sanitization_rules": [
+    "Strip all tracking/analytics attributes before storing fixture HTML or derived records: nclicks(...), data-nlog-area, data-nlog-params, data-imp-gdid, data-imp-index, data-clk, data-ticket.",
+    "Store derived structured records (the field schemas above), not raw HTML, wherever possible; if raw HTML snippets are kept for parser tests, truncate to the minimal block and apply the attribute stripping rule.",
+    "Never store article body text, comments, comment counts attributable to users, or any user-identifying data.",
+    "Cap fixture size: max 3 publisher groups (ranking) / max 10 articles (section) per fixture file.",
+    "Always record fetched_at, source_url, and encoding so staleness is auditable.",
+    "Preserve publisher attribution (publisher name + original URL) in every record.",
+    "Fixtures live under tests fixtures only; they must not feed production content generation."
+  ],
+  "known_risks": [
+    "Selectors are unversioned Naver internals and can change without notice; parser must fail soft into the project's fallback chain (cache -> settings keywords -> placeholder).",
+    "Ranking page is per-publisher top-5 with no category filter; category coverage requires section pages instead.",
+    "Section timestamps are relative Korean strings; absolute times are not available on list pages.",
+    "Entertainment category is not obtainable from these routes (SPA-only).",
+    "robots.txt prohibits generic and AI-agent crawling; this contract does not authorize live collection."
+  ]
+}

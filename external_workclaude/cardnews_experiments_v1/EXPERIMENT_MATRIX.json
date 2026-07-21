@@ -1,0 +1,115 @@
+{
+  "status": "PLANNED_NOT_RENDERED",
+  "note": "6개 브리프 전부 기획 단계 문서이며 렌더링·게시는 수행하지 않음. 성과 예측은 전부 hypothesis_only로 표기.",
+  "design_rules": [
+    "각 쌍은 동일 topic_content_id·evidence_basis·cta를 사용",
+    "각 쌍은 정확히 1개 변수만 변경(표지 훅 | 스토리 구조 | 비주얼 레이아웃 중 1개)",
+    "EXP-2는 content_evidence_basis·cta·cover_hook·visual_tone·copy_length_rule을 양 arm에서 동일하게 고정하고 slide_structure만 변경",
+    "3개 쌍은 서로 다른 3개 분야(건강·피트니스 / 생활정보 / 지식·자기계발) 사용",
+    "engagement_mechanic(pattern.instagram_learning.engagement_mechanic.dm_keyword_cta)은 실험 대상에서 제외",
+    "control 브리프는 CN-006의 기존 baseline 관행을 참고만 하며 CN-006 자체는 미수정"
+  ],
+  "briefs": [
+    {
+      "brief_id": "EXP1-CONTROL",
+      "pair_id": "EXP-1",
+      "arm": "control",
+      "topic_content_id": "CN-010",
+      "category": "건강·피트니스",
+      "variable_tested": "표지 훅",
+      "variable_value": "CN-006 baseline식 평서형 정보 타이틀(수사적 장치 없음)",
+      "pattern_id_applied": null,
+      "evidence_urls_applied": [],
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "기존 baseline과 동일 수준의 저장/공유 반응을 보일 것으로 가정(비교 기준점, 우열 예단 없음)"
+    },
+    {
+      "brief_id": "EXP1-VARIANT",
+      "pair_id": "EXP-1",
+      "arm": "experiment",
+      "topic_content_id": "CN-010",
+      "category": "건강·피트니스",
+      "variable_tested": "표지 훅",
+      "variable_value": "인용·반전형 헤드라인(pattern.instagram_learning.content_pattern.quote_reversal_hook)",
+      "pattern_id_applied": "pattern.instagram_learning.content_pattern.quote_reversal_hook",
+      "evidence_urls_applied": ["https://www.instagram.com/p/DaNcegIkmEy/"],
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "표지 클릭·완독률이 control 대비 개선될 수 있다는 가설이나, 원 근거가 n=1·타 분야(뉴스·시사) 관측이라 실제 방향과 크기는 미지수"
+    },
+    {
+      "brief_id": "EXP2-CONTROL",
+      "pair_id": "EXP-2",
+      "arm": "control",
+      "topic_content_id": "CN-017",
+      "category": "생활정보",
+      "variable_tested": "스토리 구조",
+      "variable_value": "4슬라이드 순차 안내 구조(표지→순차 절차→순차 절차→CTA)",
+      "slide_count": 4,
+      "slide_structure": "동일 표지→순차 안내(용기·장소)→순차 안내(개봉 날짜)→동일 CTA",
+      "content_evidence_basis": "evidence_not_required: 결과를 약속하지 않는 절차형 체크리스트(용기 선택·장소 선택·개봉 날짜 기록)",
+      "cta": "저장해두고 원두 살 때마다 확인하세요",
+      "cover_hook": "원두 보관 체크리스트",
+      "visual_tone": "사물·주방 환경 중심의 낮은 자극도 정보형 톤",
+      "copy_length_rule": "각 슬라이드 headline 1개와 body 1~2개 짧은 절차 문장",
+      "pattern_id_applied": null,
+      "evidence_urls_applied": [],
+      "pattern_provenance_role": "not_applicable_to_control; content_evidence_basis remains evidence_not_required",
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "기존 baseline과 동일 수준의 저장/공유 반응을 보일 것으로 가정(비교 기준점, 우열 예단 없음)"
+    },
+    {
+      "brief_id": "EXP2-VARIANT",
+      "pair_id": "EXP-2",
+      "arm": "experiment",
+      "topic_content_id": "CN-017",
+      "category": "생활정보",
+      "variable_tested": "스토리 구조",
+      "variable_value": "번호형 큐레이션 리스트 구조(4슬라이드 버전) (pattern.instagram_learning.content_pattern.numbered_curation_list_structure)",
+      "slide_count": 4,
+      "slide_structure": "동일 표지→번호형 목록 1·2(용기·장소)→번호형 목록 3(개봉 날짜)→동일 CTA",
+      "content_evidence_basis": "evidence_not_required: 결과를 약속하지 않는 절차형 체크리스트(용기 선택·장소 선택·개봉 날짜 기록)",
+      "cta": "저장해두고 원두 살 때마다 확인하세요",
+      "cover_hook": "원두 보관 체크리스트",
+      "visual_tone": "사물·주방 환경 중심의 낮은 자극도 정보형 톤",
+      "copy_length_rule": "각 슬라이드 headline 1개와 body 1~2개 짧은 절차 문장",
+      "pattern_id_applied": "pattern.instagram_learning.content_pattern.numbered_curation_list_structure",
+      "evidence_urls_applied": [
+        "https://www.instagram.com/p/DZZko8HESg3/",
+        "https://www.instagram.com/p/DMR7KeXyMRs/",
+        "https://www.instagram.com/p/DZ1m16hEoJS/"
+      ],
+      "pattern_provenance_role": "experimental_structure_provenance_only; not content evidence and not performance proof",
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "저장 지표가 달라질 수 있다는 가설. pattern_id와 evidence_urls는 번호형 구조가 관측된 출처를 나타낼 뿐, 콘텐츠 사실 근거나 성과 원인 증거로 사용하지 않음"
+    },
+    {
+      "brief_id": "EXP3-CONTROL",
+      "pair_id": "EXP-3",
+      "arm": "control",
+      "topic_content_id": "KN-008",
+      "category": "지식·자기계발",
+      "variable_tested": "비주얼 레이아웃",
+      "variable_value": "CN-006 baseline식 자체 제작 인포그래픽(캐릭터 일러스트 없음, 실사 미사용)",
+      "pattern_id_applied": null,
+      "evidence_urls_applied": [],
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "기존 baseline과 동일 수준의 저장/공유 반응을 보일 것으로 가정(비교 기준점, 우열 예단 없음)"
+    },
+    {
+      "brief_id": "EXP3-VARIANT",
+      "pair_id": "EXP-3",
+      "arm": "experiment",
+      "topic_content_id": "KN-008",
+      "category": "지식·자기계발",
+      "variable_tested": "비주얼 레이아웃",
+      "variable_value": "캐릭터 의인화 일러스트 + 파스텔톤 배경(pattern.instagram_learning.content_pattern.healthcare_public_character_illustration)",
+      "pattern_id_applied": "pattern.instagram_learning.content_pattern.healthcare_public_character_illustration",
+      "evidence_urls_applied": [
+        "https://www.instagram.com/p/DX540sxj3kb/",
+        "https://www.instagram.com/p/DMumn3wvugh/"
+      ],
+      "expected_outcome_status": "hypothesis_only",
+      "expected_outcome": "체류/완독이 개선될 수 있다는 가설이나, 원 근거가 n=2·타 분야(건강) 관측이라 지식 콘텐츠로의 전이 효과는 미지수"
+    }
+  ]
+}

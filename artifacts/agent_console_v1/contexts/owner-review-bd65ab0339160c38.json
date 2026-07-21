@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-dca96f8fdffd",
+  "candidate_id": "20260717-2003-B-dca96f8fdffd",
+  "grade": "1",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "[EWC 8강: GEN vs JDG] 세라핀 CC 미쳤어요! 용한타 승리하는 젠지! ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ",
+  "source_urls": [
+    "https://www.fmkorea.com/best/10095985480"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

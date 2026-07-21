@@ -1,0 +1,22 @@
+{
+  "schema_version": "cardnews_package_quality_loop_v1",
+  "max_cycles": 10,
+  "cycles_executed": 2,
+  "editorial_cycles_executed": 6,
+  "receipts": [
+    {
+      "cycle": 1,
+      "checked_count": 12,
+      "passed_count": 12,
+      "failed_count": 0,
+      "failures": []
+    },
+    {
+      "cycle": 2,
+      "checked_count": 12,
+      "passed_count": 12,
+      "failed_count": 0,
+      "failures": []
+    }
+  ]
+}

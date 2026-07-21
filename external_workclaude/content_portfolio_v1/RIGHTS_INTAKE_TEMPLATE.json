@@ -1,0 +1,43 @@
+{
+  "version": "content_portfolio_v1.2",
+  "description": "Reusable intake form schema for the rights/operator team to fill per content item before publish. Every value below is null or an explicit placeholder token -- this file is a form, not a filled record. Copy one 'intake_record' block per content_id and complete it with real, verified values before the corresponding blocker_code is considered resolved.",
+  "intake_record_schema": {
+    "content_id": "REQUIRED -- must match a real CONTENT_BACKLOG.json content_id",
+    "sources": [
+      {
+        "source_id": null,
+        "source_type": "PLACEHOLDER -- one of: document, merchant_input, manufacturer_source, marketplace_export, official_document, regulator_document, community_post",
+        "source_name": null,
+        "source_locator": "SOURCE_REQUIRED -- document title/location description, never a live URL fabricated by this template",
+        "retrieved_at": null,
+        "rights_or_permission": "RIGHTS_REVIEW_REQUIRED -- one of: merchant_authorized, merchant_owned, owned, licensed, permitted, granted, permission_confirmed, or NOT_YET_CONFIRMED"
+      }
+    ],
+    "images": [
+      {
+        "image_id": null,
+        "capture_type": "PLACEHOLDER -- one of: self_shot, cardnews_fallback_generated, licensed_stock",
+        "photographer_or_source": null,
+        "consent_or_license_proof": "RIGHTS_REVIEW_REQUIRED -- description of the proof document, not the document itself",
+        "third_party_visible": "PLACEHOLDER -- true/false; if true, consent_or_license_proof must cover third-party consent"
+      }
+    ],
+    "operator_signoff": {
+      "reviewer_name": null,
+      "reviewed_at": null,
+      "decision": "PLACEHOLDER -- one of: approved_for_manual_upload, blocked, needs_more_evidence",
+      "blocker_codes_open": [],
+      "notes": null
+    }
+  },
+  "allowed_placeholder_tokens": [
+    "SOURCE_REQUIRED",
+    "PRICE_VERIFICATION_REQUIRED",
+    "RIGHTS_REVIEW_REQUIRED",
+    "CURRENT_DATA_REQUIRED",
+    "OPERATOR_APPROVAL_REQUIRED",
+    "PLATFORM_POLICY_REVIEW_REQUIRED",
+    "NOT_YET_CONFIRMED"
+  ],
+  "hard_rule": "No field in a completed intake_record may contain a fabricated URL, image file, price, performance figure, or rights approval. A field that cannot yet be verified stays as one of the allowed_placeholder_tokens or null -- it is never filled with a plausible-looking guess."
+}

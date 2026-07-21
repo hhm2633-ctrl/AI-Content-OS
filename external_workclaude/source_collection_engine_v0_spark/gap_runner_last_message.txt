@@ -1,0 +1,28 @@
+Implemented.
+
+- Added `run_collection_gap_report(...)` in `modules/source_intake/collection_gap_runner.py`:
+  - Signature: `run_collection_gap_report(collection_result_path=None, today=None, output_root=None) -> dict`
+  - Default input: `storage/source_intake/<today>/daily_shallow_collection.json`
+  - Default outputs:
+    - `storage/source_intake/<today>/collection_gap_report.json`
+    - `storage/source_intake/<today>/collector_implementation_queue.json`
+  - On missing input: returns `{"status": "input_missing", ...}` and writes no outputs.
+  - On success: builds gap report via `build_collection_gap_report`, extracts non-`OK` items from `recommended_implementation_order`, assigns:
+    - `rank`, `source_id`, `status`, `lane_impact`, `recommended_owner`, `next_action`
+    - owner mapping: `Spark`/`Claude`/`Codex` per heuristic
+  - Queue payload written as `{"implementation_queue": [...]}`.
+
+- Added tests in `tests/test_collection_gap_runner.py` covering:
+  - missing input case
+  - successful write of both outputs
+  - queue excludes `OK`
+  - deterministic rank
+  - no `commerce_detail` key in queue items
+
+- Added handoff note file:
+  - `external_workclaude/source_collection_engine_v0_spark/GAP_RUNNER_HANDOFF.md`
+  - contents: `not implemented only`, `tests only`, `next light Spark tasks only`
+
+Validation run:
+- `py -m compileall modules/source_intake` ✅
+- `py -m unittest tests.test_collection_gap_runner tests.test_collection_gap_report -v` ✅

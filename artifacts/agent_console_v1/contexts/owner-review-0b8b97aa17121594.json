@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-2fba5d8ebc0f",
+  "candidate_id": "20260717-2003-C-2fba5d8ebc0f",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·메이크업",
+  "title": "제니와 젠다야가 선택한 올여름 메이크업 키 포인트는?",
+  "source_urls": [
+    "https://www.allurekorea.com/2026/07/16/%ec%a0%9c%eb%8b%88%ec%99%80-%ec%a0%a0%eb%8b%a4%ec%95%bc%ea%b0%80-%ec%84%a0%ed%83%9d%ed%95%9c-%ec%98%ac%ec%97%ac%eb%a6%84-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85-%ed%82%a4-%ed%8f%ac%ec%9d%b8%ed%8a%b8/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

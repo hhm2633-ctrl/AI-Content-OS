@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-8182fee10a34",
+  "candidate_id": "20260717-2003-C-8182fee10a34",
+  "grade": "3",
+  "account": "C",
+  "category": "뷰티",
+  "title": "사우나 친구가 은근히 평생 가는 이유",
+  "source_urls": [
+    "https://www.wkorea.com/2026/07/17/%ec%82%ac%ec%9a%b0%eb%82%98-%ec%b9%9c%ea%b5%ac%ea%b0%80-%ec%9d%80%ea%b7%bc%ed%9e%88-%ed%8f%89%ec%83%9d-%ea%b0%80%eb%8a%94-%ec%9d%b4%ec%9c%a0/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

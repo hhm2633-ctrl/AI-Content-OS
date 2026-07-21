@@ -1,0 +1,277 @@
+- generic [ref=f69e4]:
+  - generic [ref=f69e9]:
+    - generic [ref=f69e12]:
+      - link [ref=f69e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f69e22]
+      - generic [ref=f69e25]:
+        - link [ref=f69e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f69e35]
+        - link [ref=f69e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f69e45]
+        - link [ref=f69e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f69e55]:
+            - img "메시지" [ref=f69e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f69e60]: "1"
+        - link [ref=f69e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f69e71]
+        - link [ref=f69e79] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f69e84]
+        - link [ref=f69e92] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f69e97]
+        - link [ref=f69e103] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f69e108]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f69e109]
+      - generic [ref=f69e110]:
+        - link [ref=f69e113] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f69e118]
+        - link [ref=f69e121] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f69e126]
+    - generic [ref=f69e129]:
+      - main [ref=f69e130]:
+        - generic [ref=f69e131]:
+          - generic [ref=f69e145]:
+            - generic [ref=f69e147]:
+              - button [ref=f69e152] [cursor=pointer]:
+                - link [ref=f69e154]:
+                  - img "jwon.ig님의 프로필 사진" [ref=f69e155]
+              - generic [ref=f69e158]:
+                - generic [ref=f69e159]:
+                  - link "jwon.ig" [ref=f69e167] [cursor=pointer]:
+                    - /url: /jwon.ig/
+                  - link "THE 8, Vernon • singasong" [ref=f69e174] [cursor=pointer]:
+                    - /url: /reels/audio/2059878424601687/
+                    - generic [ref=f69e177]:
+                      - text: THE 8, Vernon
+                      - generic [ref=f69e178]: •
+                      - text: singasong
+                - button "팔로잉" [ref=f69e180] [cursor=pointer]
+              - button [ref=f69e183] [cursor=pointer]:
+                - img "옵션 더 보기" [ref=f69e186]
+            - separator [ref=f69e190]
+            - generic [ref=f69e192]:
+              - generic [ref=f69e194]:
+                - link [ref=f69e199] [cursor=pointer]:
+                  - /url: /jwon.ig/
+                  - img "jwon.ig님의 프로필 사진" [ref=f69e200]
+                - generic [ref=f69e204]:
+                  - generic [ref=f69e205]:
+                    - link "jwon.ig" [ref=f69e209] [cursor=pointer]:
+                      - /url: /jwon.ig/
+                    - time [ref=f69e214]: 9시간
+                  - generic [ref=f69e215]:
+                    - text: GPT-5.6이 Sol·Terra·Luna로 나뉘었다는데, 뭐가 다른 걸까요?먼저 이것만 기억하시면 됩니다.5.6은 모델의 세대이고,Sol·Terra·Luna는 성능과 속도, 비용에 따른 등급입니다.☀️ Sol복잡한 코딩, 깊은 조사와 분석처럼중요하고 어려운 작업에 적합합니다.🌍 Terra자료 정리, 글 초안, 일반적인 코딩처럼대부분의 실무에 균형 있게 사용할 수 있습니다.🌙 Luna짧은 요약, 문장 분류, 반복 작업처럼가볍고 빠르게 처리할 때 적합합니다.한 문장으로 정리하면,Sol은 강력하게Terra는 균형 있게Luna는 빠르고 저렴하게무조건 성능이 높은 모델을 쓰는 것이 아니라,내가 하려는 일의 난이도에 맞춰 고르는 방식입니다.나중에 다시 볼 수 있도록 저장&공유해 주세요.Sol·Terra·Luna 중 가장 궁금한 모델을 댓글로 남겨주시면 자세히 정리해 드리겠습니다.
+                    - link "#GPT56" [ref=f69e216] [cursor=pointer]:
+                      - /url: /explore/tags/gpt56/
+                    - link "#챗GPT" [ref=f69e217] [cursor=pointer]:
+                      - /url: /explore/tags/%EC%B1%97gpt/
+                    - link "#생성형AI" [ref=f69e218] [cursor=pointer]:
+                      - /url: /explore/tags/%EC%83%9D%EC%84%B1%ED%98%95ai/
+                    - link "#AI활용법" [ref=f69e219] [cursor=pointer]:
+                      - /url: /explore/tags/ai%ED%99%9C%EC%9A%A9%EB%B2%95/
+                    - link "#워프센스" [ref=f69e220] [cursor=pointer]:
+                      - /url: /explore/tags/%EC%9B%8C%ED%94%84%EC%84%BC%EC%8A%A4/
+              - generic [ref=f69e224]:
+                - link [ref=f69e230] [cursor=pointer]:
+                  - /url: /wjd.ckdrjs/
+                  - img "wjd.ckdrjs님의 프로필 사진" [ref=f69e231]
+                - generic [ref=f69e232]:
+                  - generic [ref=f69e233]:
+                    - generic [ref=f69e235]:
+                      - generic [ref=f69e236]:
+                        - link "wjd.ckdrjs" [ref=f69e241] [cursor=pointer]:
+                          - /url: /wjd.ckdrjs/
+                        - link [ref=f69e246] [cursor=pointer]:
+                          - /url: /p/DamFkK5zv_W/c/18233439817311408/
+                          - time [ref=f69e247]: 7시간
+                      - generic [ref=f69e248]: 출처가 어떻게되나요? 써보셨나요
+                    - button "답글 달기" [ref=f69e251] [cursor=pointer]
+                  - button [ref=f69e258] [cursor=pointer]:
+                    - img "좋아요" [ref=f69e261]
+            - generic [ref=f69e263]:
+              - generic [ref=f69e264]:
+                - generic [ref=f69e265]:
+                  - button [ref=f69e268] [cursor=pointer]:
+                    - img "좋아요" [ref=f69e271]
+                  - button "3" [ref=f69e273] [cursor=pointer]
+                  - button [ref=f69e275] [cursor=pointer]:
+                    - img "댓글 달기" [ref=f69e277]
+                  - button "1" [ref=f69e279] [cursor=pointer]
+                  - button [ref=f69e280] [cursor=pointer]:
+                    - img "리포스트" [ref=f69e281]
+                  - button [ref=f69e283] [cursor=pointer]:
+                    - img "공유하기" [ref=f69e284]
+                - button [ref=f69e289] [cursor=pointer]:
+                  - button [ref=f69e290]:
+                    - img "저장" [ref=f69e292]
+              - link [ref=f69e296] [cursor=pointer]:
+                - /url: /jwon.ig/reel/DamFkK5zv_W/
+                - time [ref=f69e298]: 9시간 전
+            - generic [ref=f69e301]:
+              - link [ref=f69e302]
+              - generic [ref=f69e304]:
+                - button [ref=f69e306] [cursor=pointer]:
+                  - img "이모티콘" [ref=f69e308]
+                - textbox "댓글 달기..." [ref=f69e310]
+          - separator [ref=f69e312]
+          - generic [ref=f69e313]:
+            - generic [ref=f69e315]:
+              - link "jwon.ig" [ref=f69e316] [cursor=pointer]:
+                - /url: /jwon.ig/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f69e319]:
+              - generic [ref=f69e320]:
+                - link [ref=f69e322] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaiGHXfz6v1/
+                  - 'img "AI 에이전트도 그냥 고르면 안 됩니다. 작업 방식에 따라 맞는 도구가 다릅니다. 헤르메스는 오래 켜두는 자동화에 강합니다. 장기 메모리와 개인 비서형 운영에 어울립니다. 클로드코드는 복잡한 실무 코드 작업에 강합니다. 여러 파일을 보고, 깊은 맥락을 이해해야 할 때 좋습니다. 코덱스는 빠른 수정과 정리 작업에 좋습니다. 가볍게 고치고, 리뷰하고, 정돈할 때 편합니다. 정답은 하나가 아닙니다. 중요한 건 “내 작업에 맞는 도구”를 고르는 것입니다. 자세한 비교가 필요하시면 저를 팔로우하고 댓글에 “에이전트”라고 남겨주세요. #헤르메스 #클로드코드 #코덱스 #AI에이전트 #워프센스" [ref=f69e325]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f69e328] [cursor=pointer]:
+                  - /url: /jwon.ig/p/Dae7TOxEzf9/
+                  - 'img "한창 클로드를 쓰고 있는데 사용량 한도이 도달해서 짜증난 적 많을 겁니다. 클로드는 토큰 소모량이 높기로 유명합니다. 무턱대고 썼다간 제대로 쓰지도 못하고 토큰 한도에 걸립니다. 그래서 무조건 비싼 플랜을 쓰는 것보다 토큰을 덜 쓰는 습관이 먼저입니다. 같은 질문을 해도 어떻게 묻고, 어떤 모델을 쓰고, 언제 작업하느냐에 따라 토큰 소모량이 크게 달라집니다. 클로드 토큰을 아끼는 7가지 방법 1. 원시인 답변법 쓰기 2. 코드 리뷰 그래프 활용하기 3. Opus만 고집하지 않기 4. PDF는 먼저 압축하기 5. 세션 타이밍 이용하기 6. COMPACT 스킬 만들기 7. 피크 시간 피하기 클로드를 자주 쓰는 분이라면 저장해두고 작업할 때마다 확인해보세요. 더 자세한 가이드가 필요하시면 댓글에 “토큰” 이라고 남겨주세요. #클로드 #Claude #AI활용 ##토큰절약 #워프센스" [ref=f69e331]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f69e334] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DacdZUrz7Si/
+                  - 'img "AI를 잘 쓰는 사람은 하나만 고집하지 않습니다. 만들고 실행할 땐 ChatGPT 긴 글을 정리하고 다듬을 땐 Claude 자료를 찾고 출처를 확인할 땐 Perplexity 구글 문서·메일·드라이브 안에서 일할 땐 Gemini 도구마다 잘하는 일이 다릅니다. 일에 맞춰 AI를 바꾸면 결과물의 속도와 퀄리티도 달라집니다. 나중에 또 볼 수 있도록 저장해두세요. 더 자세한 AI 활용법이 필요하시면 팔로우하고 AI 라고 남겨주세요. #ChatGPT #Claude #Perplexity #Gemini #워프센스" [ref=f69e337]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+              - generic [ref=f69e339]:
+                - link [ref=f69e341] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaaYvgbT3fU/
+                  - 'img "실제로 해외에서 클로드를 자주 비하하던 유저가 차단을 당한 사례가 있었습니다. 차단 당한 유저는 아래와 같이 비꼬는 말을 자주 했다고 합니다. \"너 미쳤어?\" \"네 뇌는 클라우드에 있어, 아니면 무릎에 있어?\" \"오늘 일할 기분이 아냐?\" \"그따위로 생각하지마\" \"너 또 추측하고 있냐?\" AI를 인간으로 대우해서도 안 되겠지만 그렇다고 너무 비하도 하면 안 되는 것 같습니다. AI 자주 쓰신다면 이 내용은 꼭 저장해두세요. #클로드 #Claude #AI활용 #AI프롬프트 #워프센스" [ref=f69e344]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f69e347] [cursor=pointer]:
+                  - /url: /jwon.ig/p/DaVTkhBkyTp/
+                  - 'img "현존 최고의 모델이라고 하는 클로드 FABLE 5, 7월 7일 유료 플랜 종료전까지! 꼭 제대로 활용해 보세요! 1. 앱 핵심 기능 분석 후 직접 만들기 2. 코드베이스 전체 버그 찾기 3. 자는 동안 게임 만들기 4. 주식 투자 기법 검증하기 5. 전문가 조언 받기 FABLE 5는 7월 7일 이후에는 종량제 방식으로 바뀌기 때문에, 사용료가 더 올라갈 수 있습니다. 그러니 그 전까지 최대한 활용해 보세요! 자세한 시작 프롬프트가 필요하시면 댓글에 ‘페이블5’ 남겨주세요. 공유 & 저장해두고 써보세요. #클로드 #Claude #FABLE5 #클로드코드 #워프센스" [ref=f69e350]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f69e353] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaSuktXT3CL/
+                  - 'img "클로드 FABLE 5가 다시 공개되었습니다. 그런데 비용이 만만찮습니다. 비용때문에 사용하기 어렵다면? 대안으로 KIMI를 고려해 보시는 것도 좋을 것 같습니다. KIMI K2.7 Code는 오픈소스 코딩 모델이라 비용 부담을 줄이면서 테스트해볼 수 있습니다. 물론 클로드를 바로 대체한다기보다는 “비용 때문에 Claude Code를 마음껏 못 쓰는 분들”에게 현실적인 비교 대상에 가깝습니다. 나중에 다시 보려면 저장해두세요. 자세한 정보를 원하신다면 저를 팔로우하고 “키미” 또는 “KIMI”라고 남겨주세요. #FABLE5 #KIMI #키미 #클로드코드 #워프센스" [ref=f69e356]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+      - contentinfo [ref=f69e358]:
+        - generic [ref=f69e359]:
+          - generic [ref=f69e361]:
+            - link "Meta" [ref=f69e363] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f69e366] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f69e369] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f69e372] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f69e375] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f69e378] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f69e381] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f69e384] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f69e387] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f69e390] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f69e393] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f69e396] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f69e399] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f69e402] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f69e405] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f69e407]:
+            - generic [ref=f69e408] [cursor=pointer]:
+              - generic [ref=f69e409]:
+                - generic [ref=f69e410]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f69e413]
+              - combobox "표시 언어 변경" [ref=f69e415]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f69e416]: © 2026 Instagram from Meta
+  - button [ref=f69e419] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f69e420]:
+      - generic [ref=f69e421]:
+        - generic [ref=f69e423]:
+          - img "메시지" [ref=f69e424]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f69e427]: "1"
+        - generic [ref=f69e430]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f69e433]:
+        - img "사용자 아바타" [ref=f69e436]

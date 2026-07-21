@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-04a43f508b99",
+  "candidate_id": "20260717-2003-C-04a43f508b99",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티",
+  "title": "마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다",
+  "source_urls": [
+    "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

@@ -1,0 +1,17 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 22:45:12
+- task: DCInside offline list parser + fixture regression tests (Spark low-cost fixture-only)
+- changed_files:
+  - modules/trend_collector/dcinside_parser.py
+  - tests/test_dcinside_parser.py
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_20260715_224512.md
+- checks:
+  - py -m compileall src modules tests
+  - py -m unittest tests.test_dcinside_parser
+- notes:
+  - Added parser-only offline DCInside list parser that only reads tr.ub-content.us-post rows.
+  - Parsed fields include title/url/origin_board_tag/posted_at/views/comments/recommends and rank.
+  - Added regression tests with fixture HTML including non-us-post skip and comment slash parsing.
+- check_results:
+  - compileall: passed
+  - unittest: passed

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-b4ff60056981",
+  "candidate_id": "20260717-2003-C-b4ff60056981",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·스킨케어",
+  "title": "요즘 피부과에 남자들이 줄 선 이유, 남성 제모 전 알아야 할 것",
+  "source_urls": [
+    "https://www.gqkorea.co.kr/2026/07/15/%ec%9a%94%ec%a6%98-%ed%94%bc%eb%b6%80%ea%b3%bc%ec%97%90-%eb%82%a8%ec%9e%90%eb%93%a4%ec%9d%b4-%ec%a4%84-%ec%84%a0-%ec%9d%b4%ec%9c%a0-%eb%82%a8%ec%84%b1-%ec%a0%9c%eb%aa%a8-%ec%a0%84-%ec%95%8c%ec%95%84/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

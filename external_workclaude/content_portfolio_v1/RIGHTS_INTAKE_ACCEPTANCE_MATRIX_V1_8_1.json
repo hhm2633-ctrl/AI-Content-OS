@@ -1,0 +1,143 @@
+{
+  "version": "v1.8.1-rights-intake-acceptance-matrix",
+  "generated_at_utc": "2026-07-13T12:00:00Z",
+  "contract_expectations": {
+    "record_count": 24,
+    "unique_content_count": 12,
+    "card_news_record_count": 16,
+    "cardnews_content_count": 4,
+    "required_fields": [
+      "origin",
+      "role",
+      "rights_status",
+      "rights_evidence",
+      "source_url",
+      "reference_verified",
+      "topic_relevance",
+      "authenticity_status",
+      "operator_checklist",
+      "commercial_relationship_reviewed",
+      "output_set_id",
+      "card_path",
+      "publish_ready",
+      "actual_publish"
+    ],
+    "placeholder_tokens": [
+      null,
+      "",
+      "REQUIRED_RIGHTS_INPUT",
+      "REQUIRED_TOPIC_RELEVANCE",
+      "REQUIRED_ORIGIN_INPUT",
+      "PENDING",
+      "REQUIRED_ROLE_INPUT",
+      "REQUIRED_AUTHENTICITY_STATUS",
+      "REQUIRED_SOURCE_URL",
+      "REQUIRED_PLACEHOLDER",
+      "required_for_publish_scope",
+      "REQUIRED_RIGHTS_EVIDENCE_ID",
+      "REQUIRED_EVIDENCE_TYPE",
+      "REQUIRED_PROOF_LOCATOR"
+    ],
+    "target_output_set_id": "91a28c88912849b58fa608330a217467"
+  },
+  "fixture_expectations_count": 11,
+  "expected_pass_count": 1,
+  "expected_fail_count": 10,
+  "fixture_expectations": [
+    {
+      "case_id": "normal",
+      "expected_pass": true,
+      "expected_blocker_codes": []
+    },
+    {
+      "case_id": "missing_fields",
+      "expected_pass": false,
+      "expected_blocker_codes": ["MISSING_REQUIRED_FIELDS"]
+    },
+    {
+      "case_id": "forged_approval",
+      "expected_pass": false,
+      "expected_blocker_codes": ["FORGED_APPROVAL"]
+    },
+    {
+      "case_id": "absolute_path",
+      "expected_pass": false,
+      "expected_blocker_codes": ["PATH_FORBIDDEN_ABSOLUTE"]
+    },
+    {
+      "case_id": "runs_path",
+      "expected_pass": false,
+      "expected_blocker_codes": ["PATH_FORBIDDEN_RUNS_OR_STAGING"]
+    },
+    {
+      "case_id": "staging_path",
+      "expected_pass": false,
+      "expected_blocker_codes": ["PATH_FORBIDDEN_RUNS_OR_STAGING"]
+    },
+    {
+      "case_id": "output_set_id_mismatch",
+      "expected_pass": false,
+      "expected_blocker_codes": ["OUTPUT_SET_ID_MISMATCH"]
+    },
+    {
+      "case_id": "publish_flags_manipulated",
+      "expected_pass": false,
+      "expected_blocker_codes": ["PUBLISH_FLAG_TRUE"]
+    },
+    {
+      "case_id": "publish_ready_type_confusion",
+      "expected_pass": false,
+      "expected_blocker_codes": ["PUBLISH_FLAG_TYPE_INVALID"]
+    },
+    {
+      "case_id": "rights_output_set_whitespace",
+      "expected_pass": false,
+      "expected_blocker_codes": ["OUTPUT_SET_ID_WHITESPACE_BLOCK"]
+    },
+    {
+      "case_id": "rights_evidence_shape_spoof",
+      "expected_pass": false,
+      "expected_blocker_codes": ["RIGHTS_EVIDENCE_INVALID_TYPE"]
+    }
+  ],
+  "protected_artifacts": [
+    {
+      "path": "external_workclaude/content_portfolio_v1/MANIFEST_PATH_FIX_V1_7.json",
+      "sha256": "5469fe76deca336a0d3996d0e40e2863ab50642228ae92d1bf29ad8aeddc9aa0"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/MANIFEST_PATH_FIX_V1_7.md",
+      "sha256": "7aa0f7a6def3dd2fd01541bdeca9e5f4ce7064a8aead4abc11a0c1987b700704"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/QA_REPORT_V1_7.md",
+      "sha256": "54695bc10fad3fda7e33058d7ad7a27470a04f8982d28677b80e91085b53c5ac"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/QA_REPORT_V1_8.md",
+      "sha256": "f67c39f73e6124dce9608e7db24c25e55d915e808e2c0bc6877f47dbd85907c8"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/RIGHTS_INTAKE_ATTACK_FIXTURES_V1_8.json",
+      "sha256": "eb19ed20b56e99d942b863d88352d32e295aa5a92667a4f4640e7ec35866bdd8"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/RIGHTS_INTAKE_CONTRACT_V1_8.json",
+      "sha256": "2ae9eedd097fa00c7572d0ce6c80a016eb764aa54fc13b0ca9ae27baa3774d49"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/RIGHTS_INTAKE_IMPLEMENTATION_HANDOFF_V1_8.md",
+      "sha256": "35a932591cecdca1f3c032f2b88d1eaa6bcd4d74beecc40e258ee7a75ffb64a7"
+    },
+    {
+      "path": "external_workclaude/content_portfolio_v1/RIGHTS_INTAKE_OPERATOR_GUIDE_V1_8.md",
+      "sha256": "26541d9ea9393e88b3325167ef5ef881728f0f041372bb95860746383f89aec0"
+    }
+  ],
+  "notes": [
+    "normal은 BLOCKER 없이 pass",
+    "기존 공격 7개 + 신규 공격 3개는 단일 실패 블로커 코드로 fail 처리",
+    "absolute path / .runs / .staging / output_set_id whitespace / publish 타입 혼재를 직접 차단",
+    "기존 V1.7/V1.8 산출물 바이트는 baseline 기준 0 변경을 assert"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-07-17",
+  "product": "OpenAI Codex Desktop for Windows",
+  "package_name": "OpenAI.Codex",
+  "version": "26.707.12708.0",
+  "package_full_name": "OpenAI.Codex_26.707.12708.0_x64__2p2nqsd0c76g0",
+  "purpose": "Pre-update baseline for a later capability and AI-Content-OS usefulness comparison",
+  "notes": [
+    "The packaged codex.exe denied direct --version execution from the shell.",
+    "The Windows AppX package version was read successfully.",
+    "No update, installation, Git operation, publishing action, or automation was performed by Codex."
+  ]
+}

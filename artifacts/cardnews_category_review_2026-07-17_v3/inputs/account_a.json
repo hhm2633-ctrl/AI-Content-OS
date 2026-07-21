@@ -1,0 +1,419 @@
+{
+  "schema_version": "cardnews_owner_review_input_v1",
+  "as_of": "2026-07-17T11:00:00+09:00",
+  "account": "A",
+  "candidates": [
+    {
+      "account": "A",
+      "category": "국내뉴스",
+      "id": "A-DN-01",
+      "title": "민주 최고위, 송영길·김용 후보자격 예외 인정",
+      "context": "복당·당비 요건 논란 끝 표결로 출마를 허용하고 당무위원회에 부의했다.",
+      "published_at": "2026-07-17T10:46:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0101_202607171046370157",
+        "https://www.khan.co.kr/politics"
+      ],
+      "visual_assets": "국회·후보 사진, 당규 조항 캡처, 표결 흐름 그래픽",
+      "risk": "정파성 주의, 후속 당무위원회 결정 확인 필요",
+      "duplicate_group": "DG-PARTY-ELIGIBILITY",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "국내뉴스",
+      "id": "A-DN-02",
+      "title": "심우정 전 총장 딸 채용예정자 취소·담당자 징계 요구",
+      "context": "외교부가 지원 자격 미충족으로 판단하고 당시 채용 담당자 3명의 징계를 요구했다.",
+      "published_at": "2026-07-17T06:53:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/news/endPagePrintPopup.do?news_id=N1008662070"
+      ],
+      "visual_assets": "외교부·국립외교원 전경, 채용 공고 자격요건 문서",
+      "risk": "당사자 반론과 감사 원문 추가 확인 필요",
+      "duplicate_group": "DG-HIRING-QUALIFICATION",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "국내뉴스",
+      "id": "A-DN-03",
+      "title": "잠실7동 투표소 CCTV 67시간 공개",
+      "context": "투표용지 부족과 투표 중단 당시 선거관리위원회의 대응이 CCTV에 기록됐다.",
+      "published_at": "2026-07-17T00:14:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/amp/news.amp?news_id=N1008661971"
+      ],
+      "visual_assets": "실제 CCTV, 투표 중단 타임라인, 투표소 외경",
+      "risk": "영상 저작권, 선거 불신 조장 방지, 맥락 균형 필요",
+      "duplicate_group": "DG-ELECTION-CCTV",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "국내뉴스",
+      "id": "A-DN-04",
+      "title": "제헌절까지 후반기 국회 원 구성 불발",
+      "context": "국회 공전이 40일 넘게 이어진 가운데 여야 장외 공방과 특검·필리버스터 충돌이 예고됐다.",
+      "published_at": "2026-07-16T23:11:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0101_202607162311314262"
+      ],
+      "visual_assets": "국회 본회의장, 여야 집회, 일정 타임라인",
+      "risk": "17일 오전 주요 이슈로 이어진 전일 보도이며 정파적 문구와 탄핵 주장을 사실과 분리해야 함",
+      "duplicate_group": "DG-ASSEMBLY-DEADLOCK",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-01",
+      "title": "장윤기 사건, 계획범죄 의심 정황 보고가 묵살됐다는 진술",
+      "context": "초동수사 때 피의자가 피해자를 미리 알았던 정황을 확인하고도 추가수사가 없었다는 진술을 특수단이 확보했다.",
+      "published_at": "2026-07-17T06:17:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/amp/news.amp?news_id=N1008662048",
+        "https://www.ytn.co.kr/_ln/0115_202607162146285144"
+      ],
+      "visual_assets": "수사 브리핑, 공기계·수사 단계 그래픽, 공식 사과 영상",
+      "risk": "미성년 피해자 개인정보와 2차 가해 방지, 수사 중인 내용을 단정하지 말 것",
+      "duplicate_group": "DG-JANG-INVESTIGATION",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-02",
+      "title": "행안장관 장윤기 부실수사 사과·민간 감찰기구 제시",
+      "context": "경찰 외부 감시와 보완수사 미이행 시 수사팀 변경 등을 포함한 쇄신책이 제시됐다.",
+      "published_at": "2026-07-16T21:46:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0115_202607162146285144"
+      ],
+      "visual_assets": "장관 브리핑 영상, 쇄신책 조항 그래픽",
+      "risk": "17일 오전 주요 이슈로 이어진 전일 보도이며 A-IC-01과 같은 사건의 정책 후속편",
+      "duplicate_group": "DG-JANG-INVESTIGATION",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-03",
+      "title": "경찰 순환근무제 도입에 내부 반발·실효성 논란",
+      "context": "지역 유착 차단 취지와 생활권·수사 연속성 문제가 충돌하고 있다.",
+      "published_at": "2026-07-17T10:52:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0103_202607171052467683",
+        "https://www.ytn.co.kr/_ln/0103_202607162146376746"
+      ],
+      "visual_assets": "경찰청, 내부 게시판 비식별 캡처, 계급별 순환규정 그래픽",
+      "risk": "내부 반응의 대표성과 익명 인용 검증 필요",
+      "duplicate_group": "DG-JANG-REFORM",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-04",
+      "title": "10대 4명, 훔친 차로 서울에서 천안까지 100km 무면허 질주",
+      "context": "도심 추격 끝에 검거됐고 검찰은 미성년과 증거인멸 우려 등을 고려해 영장을 청구하지 않았다.",
+      "published_at": "2026-07-17T06:56:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/news/endPagePrintPopup.do?news_id=N1008662071"
+      ],
+      "visual_assets": "실제 추격 영상, 이동 경로 지도, 차량 장면",
+      "risk": "미성년 신원 보호, 모방범죄와 범죄 미화 방지",
+      "duplicate_group": "DG-TEEN-CAR-CHASE",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-05",
+      "title": "광산서 전 형사과장 구속영장·강력팀장 유족 사과",
+      "context": "장윤기 사건 부실수사 의혹이 현직 경찰 책임 수사로 확대됐다.",
+      "published_at": "2026-07-16T22:41:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0115_202607162241017867"
+      ],
+      "visual_assets": "경찰서, 영장 절차 그래픽, 공식 발언",
+      "risk": "17일 오전 주요 이슈로 이어진 전일 보도이며 수사 중인 혐의를 단정하지 말고 피해자를 보호해야 함",
+      "duplicate_group": "DG-JANG-INVESTIGATION",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "사건·갈등",
+      "id": "A-IC-06",
+      "title": "친구 살해 뒤 거리 활보 피의자 신상공개",
+      "context": "24세 피의자의 신상이 공개되며 온라인 관심이 급증했다.",
+      "published_at": "2026-07-17T10:00:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0522_202607171000013443"
+      ],
+      "visual_assets": "공식 신상공개 자료와 경찰 브리핑만 제한적으로 사용",
+      "risk": "극고위험: 잔혹성, 선정성, 유족 2차 피해 우려로 제작 전 별도 윤리 게이트 필요",
+      "duplicate_group": "DG-FRIEND-MURDER",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-01",
+      "title": "트럼프, 대국민 연설서 이란전 '곧 결실' 주장",
+      "context": "전쟁 성과를 강조했지만 새로운 제안은 내놓지 않았다.",
+      "published_at": "2026-07-17T10:36:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0104_202607171036536706",
+        "https://news.sbs.co.kr/amp/news.amp?news_id=N1008662064"
+      ],
+      "visual_assets": "백악관 연설 영상, 이란 지도, 발언과 실제 조치 대비 그래픽",
+      "risk": "대통령 주장과 확인된 사실 분리, 전쟁 영상 민감성",
+      "duplicate_group": "DG-US-IRAN-WAR",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-02",
+      "title": "미군 이란 6일째 공습·이란 인프라 보복 경고",
+      "context": "호르무즈에 이어 홍해 수송로까지 확전할 수 있다는 우려가 커졌다.",
+      "published_at": "2026-07-17T06:20:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/amp/news.amp?news_id=N1008662064",
+        "https://www.khan.co.kr/world"
+      ],
+      "visual_assets": "공습·항구 사진, 호르무즈·바브엘만데브 지도, 해운 경로",
+      "risk": "속보 변동, 사상자 검증, 충격 영상 제한",
+      "duplicate_group": "DG-US-IRAN-WAR",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-03",
+      "title": "미 유학생 비자 체류 4년 제한, 한국인 학생·가족 1.3만명 영향",
+      "context": "F·J 비자의 체류를 4년으로 고정하고 이후 엄격한 연장 심사를 적용하는 규정이 9월 중순 발효될 예정이다.",
+      "published_at": "2026-07-17T07:23:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0104_202607170723251644",
+        "https://news.sbs.co.kr/news/endPagePrintPopup.do?news_id=N1008662068"
+      ],
+      "visual_assets": "비자 문서, 미국 국토안보부, 숫자 인포그래픽, 캠퍼스",
+      "risk": "최종 규정 원문과 예외 조항 확인 필요",
+      "duplicate_group": "DG-US-STUDENT-VISA",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-04",
+      "title": "브라질, 미국 25% 관세에 보복 절차 착수",
+      "context": "무역갈등이 10월 브라질 대선 개입 논쟁으로 번지고 있다.",
+      "published_at": "2026-07-17T09:11:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0104_202607170911143198"
+      ],
+      "visual_assets": "양국 정상·국기, 관세 품목 그래픽, 무역 흐름",
+      "risk": "보복 대상과 발효 시점 후속 확인 필요",
+      "duplicate_group": "DG-US-BRAZIL-TARIFF",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-05",
+      "title": "퇴임 앞둔 스타머 마지막 키이우 방문·우크라 국방장관 해임 논란",
+      "context": "영국의 지원 재확인과 우크라이나 새 내각의 리더십 갈등이 동시에 부각됐다.",
+      "published_at": "2026-07-17T05:30:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0104_202607170530316536"
+      ],
+      "visual_assets": "키이우 정상회담, 훈장 수여, 새 내각 인물 카드",
+      "risk": "전황과 정치 평가가 빠르게 변할 수 있음",
+      "duplicate_group": "DG-UKRAINE-LEADERSHIP",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "세계뉴스",
+      "id": "A-WN-06",
+      "title": "아르헨 선수단 포클랜드 현수막, 영국이 FIFA 조사 촉구",
+      "context": "월드컵 승리 세리머니가 영유권 갈등과 결승 출전금지 주장으로 확대됐다.",
+      "published_at": "2026-07-17T01:17:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/news/endPagePrintPopup.do?news_id=N1008662003"
+      ],
+      "visual_assets": "실제 현수막 사진, 포클랜드 지도, 과거 징계 비교",
+      "risk": "스포츠·민족 갈등 선동 방지, FIFA 공식 입장 후속 확인 필요",
+      "duplicate_group": "DG-FALKLAND-BANNER",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-01",
+      "title": "한국은행 42개월 만에 기준금리 2.75%로 인상",
+      "context": "물가·성장·환율 대응을 위해 긴축으로 전환하면서 빚투·영끌 부담이 커졌다.",
+      "published_at": "2026-07-17T06:30:00+09:00",
+      "urls": [
+        "https://news.sbs.co.kr/amp/news.amp?news_id=N1008662050",
+        "https://www.newsis.com/view/NISX20260716_0003711929"
+      ],
+      "visual_assets": "한국은행 금통위, 금리 추이, 가계이자 계산 그래픽",
+      "risk": "개인 금융 조언이 아님을 명시하고 수치 기준일을 표시해야 함",
+      "duplicate_group": "DG-KR-RATE-HIKE",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-02",
+      "title": "한은 추가 인상 시사, 주담대 상단 8% 우려",
+      "context": "기준금리 인상 후속으로 가계부채 1,866조원과 소비 위축 문제가 생활비 이슈로 부각됐다.",
+      "published_at": "2026-07-17T11:00:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0102_202607171100386331"
+      ],
+      "visual_assets": "주담대 금리대·월상환액 비교, 한국은행 발언",
+      "risk": "A-EL-01 후속편이며 은행별 실제 금리 차이를 밝혀야 함",
+      "duplicate_group": "DG-KR-RATE-HIKE",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-03",
+      "title": "7월부터 국민연금 보험료 상·하한 인상",
+      "context": "월소득 659만원 초과 가입자는 2만900원, 41만원 미만 가입자는 950원을 더 부담한다.",
+      "published_at": "2026-07-17T05:18:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0103_202607170518485909"
+      ],
+      "visual_assets": "급여명세서, 소득구간 표, 국민연금공단 공식자료",
+      "risk": "직장인 본인부담과 지역가입자 부담을 구분해 표시해야 함",
+      "duplicate_group": "DG-PENSION-PREMIUM",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-04",
+      "title": "18일 새벽 경기·강원·충남 시간당 80mm 극한호우 예보",
+      "context": "제헌절 연휴 중부권 폭우의 고비가 예상돼 지역별 시간대 확인이 중요하다.",
+      "published_at": "2026-07-17T09:53:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0108_202607170953426568",
+        "https://www.newsis.com/view/NISX20260716_0003713040"
+      ],
+      "visual_assets": "기상청 레이더·예보 지도, 침수 행동요령",
+      "risk": "공익 안내형으로 관심도가 낮을 수 있으나 숨기지 않았으며 제작 시 최신 예보 갱신 필요",
+      "duplicate_group": "DG-EXTREME-RAIN",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-05",
+      "title": "갈색여치 수도권 북상·아파트와 야영장 출몰",
+      "context": "고온으로 서식지가 북상한 것으로 추정되며 농작물 피해와 생활 불편이 함께 제기됐다.",
+      "published_at": "2026-07-17T09:15:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0103_202607170915509761"
+      ],
+      "visual_assets": "현장 곤충 영상, 분포 지도, 크기 비교",
+      "risk": "혐오 이미지 강도를 조절하고 방제 정보는 공식 자료로 확인해야 함",
+      "duplicate_group": "DG-BROWN-KATYDID",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-06",
+      "title": "무더위에 반려동물 털 바짝 깎으면 오히려 위험",
+      "context": "털의 공기층이 열 차단에 필요해 짧은 미용보다 빗질이 권고됐다.",
+      "published_at": "2026-07-17T02:33:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0105_202607170233443199"
+      ],
+      "visual_assets": "강아지·고양이 털 구조, 빗질 장면, 수의대 전문가",
+      "risk": "품종과 건강 상태별 예외가 있어 수의학 정보를 일반화하지 말아야 함",
+      "duplicate_group": "DG-PET-HEAT",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-07",
+      "title": "임신중지 약물 도입 논쟁 재점화",
+      "context": "불법 유통이 늘어난 가운데 정부가 의사 처방 도입을 검토하고 의료계는 안전성 우려를 제기했다.",
+      "published_at": "2026-07-17T06:36:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0103_202607170636413637"
+      ],
+      "visual_assets": "약물은 공식 자료만 사용, 7년 입법 공백 타임라인, 적발 건수 그래픽",
+      "risk": "의료·법률 고위험 주제로 복용법 제공 금지와 균형 취재가 필수",
+      "duplicate_group": "DG-ABORTION-MEDICATION",
+      "status": "OWNER_UNLABELED"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "id": "A-EL-08",
+      "title": "삼성·SK하이닉스 급락과 단일종목 레버리지 ETF 규제 강화",
+      "context": "코스피 6.37% 급락 뒤 신규 상장 중단, 예탁금 3천만원, 매매단위 확대 조치가 나왔다.",
+      "published_at": "2026-07-16T20:02:00+09:00",
+      "urls": [
+        "https://www.ytn.co.kr/_ln/0134_202607162002041031",
+        "https://www.newsis.com/view/NISX20260716_0003712742"
+      ],
+      "visual_assets": "지수 차트, 금융당국 대책표, 레버리지 구조 설명",
+      "risk": "17일 오전 헤드라인으로 이어진 전일 보도이며 투자 권유 금지, 시장 수치 시각 표시 필요",
+      "duplicate_group": "DG-LEVERAGED-ETF",
+      "status": "OWNER_UNLABELED"
+    }
+  ],
+  "exclusion_ledger": [
+    {
+      "account": "A",
+      "category": "사건·이슈",
+      "id": "EX-SEWOL-01",
+      "title": "대학병원 앱 생년월일 예시 '20140416' 논란·업체 사과",
+      "context": "대학병원 앱의 생년월일 입력 예시가 세월호 참사를 연상시킨다는 논란 뒤 업체가 사과했다.",
+      "published_at": "2026-07-15T08:52:12+09:00",
+      "urls": [
+        "https://www.newsis.com/view/NISX20260715_0003709700"
+      ],
+      "visual_assets": "수집대장 확인용 기사와 공식 사과문만 기록",
+      "risk": "세월호 참사 연계 소재는 콘텐츠 훅·예시·논쟁·참여 유도에 사용 금지",
+      "duplicate_group": "DG-SEWOL-APP-DATE",
+      "status": "HARD_EXCLUDE_NOT_HIDDEN",
+      "reason": "owner-feedback-20260717-sewol-hard-exclusion에 따른 전면 제외",
+      "action": "수집대장에만 표시하고 카드·훅·CTA·제작에는 사용하지 않음"
+    }
+  ],
+  "coverage_note": "2026-07-17 11:00 KST 기준 공개 웹에서 확인 가능한 YTN, SBS, 뉴시스, 경향 보도를 중심으로 수집한 제한적 스냅샷이다. 연합뉴스와 KBS 일부는 robots 차단, 로그인형 SNS와 포털 실시간판은 미수집이므로 인터넷 전체 전수가 아니다. 관심도에 따른 임의 선별은 하지 않았고 동일 사건 보도만 duplicate_group으로 묶었다.",
+  "counts": {
+    "domestic_news": {
+      "raw_mentions": 6,
+      "deduped": 4
+    },
+    "incident_conflict": {
+      "raw_mentions": 11,
+      "deduped": 6
+    },
+    "world_news": {
+      "raw_mentions": 10,
+      "deduped": 6
+    },
+    "economy_life": {
+      "raw_mentions": 12,
+      "deduped": 8
+    },
+    "total": {
+      "raw_mentions": 39,
+      "deduped": 24
+    },
+    "exclusion_ledger": 1
+  }
+}

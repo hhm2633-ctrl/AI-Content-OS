@@ -1,0 +1,312 @@
+{
+  "schema_version": "cardnews_design_source_catalog.v1",
+  "catalog_id": "cardnews_design_learning_20260715",
+  "catalog_date": "2026-07-15",
+  "classification": "competitor_reference",
+  "usage_scope": "analysis_only",
+  "render_allowed": false,
+  "sample_summary": {
+    "post_count": 2,
+    "observed_slide_count": 11,
+    "unique_sha256_count": 11,
+    "duplicate_file_count": 0,
+    "independence_warning": "Eleven unique files represent eleven observed slides from two posts, not eleven independent posts."
+  },
+  "evidence_policy": {
+    "allowed_tiers": [
+      "benchmark_observed",
+      "hypothesis_only"
+    ],
+    "performance_causal_claims_allowed": false,
+    "public_ui_counts": "raw_public_ui_snapshot_not_causal",
+    "rights_status": "third_party_unlicensed_reference",
+    "asset_role": "competitor_reference",
+    "production_render_use": "prohibited"
+  },
+  "crop_contract": {
+    "coordinate_system": "original_652x1280_top_left_origin_exclusive_end",
+    "detection_required": true,
+    "aspect_check": {
+      "width": 652,
+      "height": 816,
+      "width_to_height": 0.7990196078
+    },
+    "failure_behavior": "manual_crop_required",
+    "observation_rule": "Only the detected central carousel frame is eligible for benchmark observation. Instagram overlays inside the frame must still be masked or excluded.",
+    "detection_notes": [
+      "Source A and Source B have different frame y offsets.",
+      "Brightness threshold alone is unsafe for dark photographic Source A slides.",
+      "Validate a continuous frame boundary and the expected 652:816 aspect ratio.",
+      "Never learn from the raw screenshot when frame detection fails."
+    ]
+  },
+  "global_contamination_exclusions": [
+    "top advertising or recommendation copy outside the carousel frame",
+    "Instagram account handle, profile image, verification badge and post chrome",
+    "audio or music metadata",
+    "raw likes, comments, shares, saves or other reaction UI",
+    "bottom navigation and action controls",
+    "carousel page counter and mute icon overlaid inside the detected frame",
+    "watermarks, logos and platform UI"
+  ],
+  "posts": [
+    {
+      "post_id": "source_a_kirin_cookie_post_6_10_to_10_10",
+      "source_label": "SOURCE_A",
+      "observed_account_handle": "kirin.cookie",
+      "public_output_handle": "kirin.c***",
+      "same_post_binding": true,
+      "carousel_total": 10,
+      "observed_slide_indexes": [6, 7, 8, 9, 10],
+      "ordered_slide_ids": [
+        "source_a_slide_06",
+        "source_a_slide_07",
+        "source_a_slide_08",
+        "source_a_slide_09",
+        "source_a_slide_10"
+      ],
+      "unobserved_slide_indexes": [1, 2, 3, 4, 5],
+      "source_roots": [
+        "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/"
+      ],
+      "file_order_note": "Folder numbering is reverse relative to the observed carousel order.",
+      "observed_bbox": {
+        "x": 0,
+        "y": 169,
+        "width": 652,
+        "height": 816,
+        "x_range": "[0,652)",
+        "y_range": "[169,985)"
+      },
+      "contamination_list": [
+        "government policy-funding advertisement above the carousel",
+        "Instagram account and audio UI",
+        "reaction counts and action controls",
+        "bottom navigation",
+        "in-frame carousel counter such as 10/10",
+        "in-frame mute icon"
+      ],
+      "visible_engagement_snapshot": {
+        "values": [3832, 7810, 237, 858],
+        "metric_labels_verified": false,
+        "observation_time_known": false,
+        "reach_known": false,
+        "follower_baseline_known": false,
+        "paid_distribution_known": false,
+        "evidence_tier": "benchmark_observed",
+        "causal_use_allowed": false
+      },
+      "rights": {
+        "classification": "competitor_reference",
+        "rights_status": "third_party_unlicensed_reference",
+        "usage_scope": "analysis_only",
+        "render_allowed": false
+      },
+      "slides": [
+        {
+          "slide_id": "source_a_slide_06",
+          "carousel_index": 6,
+          "carousel_total": 10,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/5-Photo-5.jpg",
+          "sha256": "FF4C999D6581E01500EBA3363806C113B6B9C11DC89806723B68D504C3C4DCF0",
+          "bytes": 100246,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "receipt-note material skin",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_a_slide_07",
+          "carousel_index": 7,
+          "carousel_total": 10,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/4-Photo-4.jpg",
+          "sha256": "6383D13BA8C85DACF7D6570D22BED79AE36826EFA2311E7613DFD64C2CE7EAD6",
+          "bytes": 115931,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "cafe-glass marker material skin",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_a_slide_08",
+          "carousel_index": 8,
+          "carousel_total": 10,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/3-Photo-3.jpg",
+          "sha256": "DA905BB00DA80AB8A67B88E6134B18AED1B5CC0ED4716C7C39C7153A9DED26A1",
+          "bytes": 99442,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "open-book memo material skin",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_a_slide_09",
+          "carousel_index": 9,
+          "carousel_total": 10,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/2-Photo-2.jpg",
+          "sha256": "7CF437AFC05272A97B14F85A64614B985FD80F56EC78E85CD3C8A1113ACFE7B8",
+          "bytes": 118455,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "ruled-notebook material skin",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_a_slide_10",
+          "carousel_index": 10,
+          "carousel_total": 10,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/2f1ea6f5-b751-4482-a232-ee1f04a71ee8/1-Photo-1.jpg",
+          "sha256": "86CC54500DE972913B90120E3048BA438CA24D63ACF713C5DF52944E850A4E81",
+          "bytes": 109960,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "paper-and-sticky-note reward CTA",
+          "evidence_tier": "benchmark_observed"
+        }
+      ]
+    },
+    {
+      "post_id": "source_b_godseng_mom_post_4_11_to_9_11",
+      "source_label": "SOURCE_B",
+      "observed_account_handle": "godseng.mom",
+      "public_output_handle": "godseng.m**",
+      "same_post_binding": true,
+      "carousel_total": 11,
+      "observed_slide_indexes": [4, 5, 6, 7, 8, 9],
+      "ordered_slide_ids": [
+        "source_b_slide_04",
+        "source_b_slide_05",
+        "source_b_slide_06",
+        "source_b_slide_07",
+        "source_b_slide_08",
+        "source_b_slide_09"
+      ],
+      "unobserved_slide_indexes": [1, 2, 3, 10, 11],
+      "source_roots": [
+        "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/",
+        "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/1-Photo-1.jpg"
+      ],
+      "file_order_note": "The single 0668 file is slide 4/11 from this same post. The 270 folder numbering is reverse relative to carousel indexes 5/11 through 9/11.",
+      "scope_exclusion": "Other files in the 0668 directory were not supplied as Source B inputs and are excluded.",
+      "observed_bbox": {
+        "x": 0,
+        "y": 263,
+        "width": 652,
+        "height": 816,
+        "x_range": "[0,652)",
+        "y_range": "[263,1079)"
+      },
+      "contamination_list": [
+        "sauce.solution advertisement or recommendation copy above the carousel",
+        "Instagram account and audio UI",
+        "reaction counts and action controls",
+        "bottom navigation",
+        "in-frame carousel counter such as 9/11",
+        "in-frame mute icon"
+      ],
+      "visible_engagement_snapshot": {
+        "values": [750, 2177, 145, 1062],
+        "metric_labels_verified": false,
+        "observation_time_known": false,
+        "reach_known": false,
+        "follower_baseline_known": false,
+        "paid_distribution_known": false,
+        "evidence_tier": "benchmark_observed",
+        "causal_use_allowed": false
+      },
+      "rights": {
+        "classification": "competitor_reference",
+        "rights_status": "third_party_unlicensed_reference",
+        "usage_scope": "analysis_only",
+        "render_allowed": false
+      },
+      "slides": [
+        {
+          "slide_id": "source_b_slide_04",
+          "carousel_index": 4,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/1-Photo-1.jpg",
+          "sha256": "5A449DAA1168CB9E7D7AFE169DD85350A4B95A2C5A6A8E29B0851CD04F99A71D",
+          "bytes": 76819,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "topic-bank stage",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_b_slide_05",
+          "carousel_index": 5,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/5-Photo-5.jpg",
+          "sha256": "A1D6BEB5DEB8CEAF2543A0B1A7BF9BAFB4B75C336E4192C653B74E5D12EFEAA1",
+          "bytes": 78412,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "hook-sentence stage",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_b_slide_06",
+          "carousel_index": 6,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/4-Photo-4.jpg",
+          "sha256": "421F47CF4821072CB956626EC08004518EEE7680D9B665AEA222027389D05F9A",
+          "bytes": 79181,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "script stage",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_b_slide_07",
+          "carousel_index": 7,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/3-Photo-3.jpg",
+          "sha256": "BF96C925B1679FF556AF3BC51EFF9B8ABDA4E7414BEC73C502E3E68C5CB16F53",
+          "bytes": 85401,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "thumbnail-copy stage",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_b_slide_08",
+          "carousel_index": 8,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/2-Photo-2.jpg",
+          "sha256": "CC172AF0B04427715FCAB62140EF4A4140CED53BFB695F6CEBBFB8BE166B000C",
+          "bytes": 80488,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "content-reuse stage",
+          "evidence_tier": "benchmark_observed"
+        },
+        {
+          "slide_id": "source_b_slide_09",
+          "carousel_index": 9,
+          "carousel_total": 11,
+          "path": "C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/.codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/270ab293-40be-4029-af66-d1c8d85b8b57/1-Photo-1.jpg",
+          "sha256": "2EC3B73649C454C28786D1F9AE9558024256643AFEFAA54F88AF6A235E6BAA25",
+          "bytes": 78110,
+          "width": 652,
+          "height": 1280,
+          "observed_pattern": "all-in-one prompt reward preview",
+          "evidence_tier": "benchmark_observed"
+        }
+      ]
+    }
+  ],
+  "deduplication": {
+    "algorithm": "SHA-256",
+    "scoped_file_count": 11,
+    "unique_count": 11,
+    "duplicate_pairs": [],
+    "post_binding_precedes_file_uniqueness": true
+  },
+  "prohibited_derivations": [
+    "Do not copy or near-copy source screenshots, text, prompts, handles, watermarks, icons, doodles, handwriting, palette or box composition.",
+    "Do not treat visible engagement UI as validated design performance.",
+    "Do not use the sources as factual claim evidence, rights evidence or social proof.",
+    "Do not infer DM automation or reward delivery from a keyword CTA when the delivery channel is not observed."
+  ]
+}

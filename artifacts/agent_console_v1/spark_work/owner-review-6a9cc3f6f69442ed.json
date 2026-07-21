@@ -1,0 +1,13 @@
+{
+  "job_id": "owner-review-6a9cc3f6f69442ed",
+  "story_hook": "댓글이 증명한 오늘의 도파민 이슈",
+  "additional_materials": [
+    "원문 캡처",
+    "실제 댓글 본문",
+    "감정 흐름 타임라인"
+  ],
+  "product_connection": {
+    "possible": false,
+    "reason": "현재 주제는 감정 반응 기반 연예 이슈로 상품 연결 근거가 직접적으로 부족하다."
+  }
+}

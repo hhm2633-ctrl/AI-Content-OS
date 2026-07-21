@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0.0",
+  "binding_id": "naver-blog-story-learning-20260715",
+  "review_status": "hypothesis",
+  "evidence_status": "source_required",
+  "permitted_use": "structure_example_only",
+  "source_claim_ids": [],
+  "reviewed_at": "2026-07-15",
+  "source_sets": [
+    {
+      "source_set_id": "bundle-a-blog-story-structure",
+      "bundle_id": "0668c370-70b9-4f9d-bec3-c26c57d424b8",
+      "included_asset_count": 4,
+      "included_sequence": [2, 3, 4, 5],
+      "scope": "blog_story_structure_only"
+    },
+    {
+      "source_set_id": "bundle-b-blog-story-structure",
+      "bundle_id": "9f96287b-9e33-4e6f-a6f4-62a075fb9135",
+      "included_asset_count": 5,
+      "included_sequence": [1, 2, 3, 4, 5],
+      "scope": "blog_story_structure_only"
+    }
+  ],
+  "excluded_sources": [
+    {
+      "bundle_id": "0668c370-70b9-4f9d-bec3-c26c57d424b8",
+      "asset_name": "1-Photo-1.jpg",
+      "reason": "CardNews SOURCE B; explicitly outside this learning set",
+      "read_for_this_review": false
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "bundle-a-page-2",
+      "source_set_id": "bundle-a-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/2-Photo-2.jpg",
+      "sha256": "686f5fe02a9d12155ab3348d49e7cc50c99280d0b55f7d512b69b3498c2cfd90",
+      "media_type": "image/jpeg",
+      "sequence": 2,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["final_self_check", "reader_context_and_purpose", "experience_over_keyword_copy", "category_consistency", "sponsorship_disclosure"],
+      "excluded_example_values": ["product_title_example", "product_category_example", "search_outcome_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-a-page-3",
+      "source_set_id": "bundle-a-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/3-Photo-3.jpg",
+      "sha256": "4e921b594b936c79890a206c76945a99c565f258ce09e12094e19b99a9064c54",
+      "media_type": "image/jpeg",
+      "sequence": 3,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["final_self_check", "summary_table_check", "experience_check", "disclosure_check"],
+      "excluded_example_values": ["background_scene", "product_context"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-a-page-4",
+      "source_set_id": "bundle-a-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/4-Photo-4.jpg",
+      "sha256": "98b75a980d5a086b81022180c7e03146b79f967bde2a8ad375f4b9e26f550366",
+      "media_type": "image/jpeg",
+      "sequence": 4,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["search_query_faq", "final_self_check_cta"],
+      "excluded_example_values": ["sunscreen", "skin_type", "skin_effect", "cleansing", "vegan_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-a-page-5",
+      "source_set_id": "bundle-a-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/0668c370-70b9-4f9d-bec3-c26c57d424b8/5-Photo-5.jpg",
+      "sha256": "09aa04c6ce5ba3abf84d9f80cf474d7ebed5dffb46ef31340d14d36ff4d448c4",
+      "media_type": "image/jpeg",
+      "sequence": 5,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["category_consistency", "experience_evidence", "search_query_faq"],
+      "excluded_example_values": ["purchase_story", "delivery_story", "product_benefit", "ranking_effect_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-b-page-1",
+      "source_set_id": "bundle-b-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/9f96287b-9e33-4e6f-a6f4-62a075fb9135/1-Photo-1.jpg",
+      "sha256": "3bcf9614fa99d0cb9c35e5e881e4f3d755d98d7314fcf9ba5f5bf2ad71c42555",
+      "media_type": "image/jpeg",
+      "sequence": 1,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["experience_evidence", "image_text_binding"],
+      "excluded_example_values": ["food_scene", "dwell_time_claim", "algorithm_penalty_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-b-page-2",
+      "source_set_id": "bundle-b-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/9f96287b-9e33-4e6f-a6f4-62a075fb9135/2-Photo-2.jpg",
+      "sha256": "145af0e7137bf1fbe0ad814be534ca18f7f65033c3bacd28d1cd6a71303c6d1b",
+      "media_type": "image/jpeg",
+      "sequence": 2,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["image_text_binding"],
+      "excluded_example_values": ["food_scene", "algorithm_image_understanding_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-b-page-3",
+      "source_set_id": "bundle-b-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/9f96287b-9e33-4e6f-a6f4-62a075fb9135/3-Photo-3.jpg",
+      "sha256": "cfdec3f837e9418e7d36ae15633563109cef82cb9af53c76407ab4dc7b2d9d52",
+      "media_type": "image/jpeg",
+      "sequence": 3,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["comparison_table", "official_information_vs_experience"],
+      "excluded_example_values": ["sunscreen", "spf", "pa_rating", "skin_effect", "ingredient", "certification", "duration", "sensory_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-b-page-4",
+      "source_set_id": "bundle-b-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/9f96287b-9e33-4e6f-a6f4-62a075fb9135/4-Photo-4.jpg",
+      "sha256": "4918a71cd6aefb35f1f74ddb469e2116b666302e60fc6d113240d94c5d24771f",
+      "media_type": "image/jpeg",
+      "sequence": 4,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["comparison_table_placement", "image_text_binding"],
+      "excluded_example_values": ["travel_scene", "recommendation_snippet_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    },
+    {
+      "asset_id": "bundle-b-page-5",
+      "source_set_id": "bundle-b-blog-story-structure",
+      "workspace_relative_path": ".codex-remote-attachments/019f5976-886d-7022-bbad-4230358aabac/9f96287b-9e33-4e6f-a6f4-62a075fb9135/5-Photo-5.jpg",
+      "sha256": "cb7dd08f2cf44792f1abd2dc5a5a7ea5d1db535012a426180fc76a7006b6020a",
+      "media_type": "image/jpeg",
+      "sequence": 5,
+      "included": true,
+      "permitted_use": "structure_example_only",
+      "extracted_structure": ["opening_summary", "comparison_table", "image_text_binding", "reader_context_and_purpose", "objective_source", "search_query_faq", "final_self_check"],
+      "excluded_example_values": ["before_after_performance_claim"],
+      "claim_scope": "observed_layout_and_copy_structure_only",
+      "rights_status": "unknown"
+    }
+  ],
+  "allowed_learning_scope": [
+    "slot_order",
+    "section_placement",
+    "text_image_semantic_binding",
+    "reader_context_and_purpose",
+    "experience_evidence_shape",
+    "category_consistency",
+    "search_query_faq_shape",
+    "sponsorship_disclosure",
+    "final_self_check"
+  ],
+  "prohibited_learning_scope": [
+    "product_facts",
+    "sunscreen_or_spf_facts",
+    "skin_effect_claims",
+    "ranking_claims",
+    "naver_algorithm_mechanism_claims",
+    "performance_claims",
+    "sourcepacket_or_pattern_registration"
+  ],
+  "unknowns": [
+    "canonical_source_urls",
+    "publisher_and_published_at",
+    "rights_and_reuse_permission",
+    "complete_article_context_and_original_order",
+    "actual_sponsorship_status",
+    "real_search_or_engagement_performance"
+  ]
+}

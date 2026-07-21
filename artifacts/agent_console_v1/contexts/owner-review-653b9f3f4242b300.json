@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-981e94854953",
+  "candidate_id": "20260717-2003-A-981e94854953",
+  "grade": "3",
+  "account": "A",
+  "category": "사회·이슈",
+  "title": "[시사천국] 이범 \"'괴물 부모'는 세계적 현상…학교는 왜 전쟁터가 됐나...",
+  "source_urls": [
+    "https://news.cpbc.co.kr/article/1174423?division=NAVER"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

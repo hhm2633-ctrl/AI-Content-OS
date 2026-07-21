@@ -1,0 +1,101 @@
+{
+  "schema_version": "full_collection_owner_review_v3",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "A",
+  "category": "world_news",
+  "topic": "117년 된 지브롤터 육로 장벽이 열린 날",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "breaking",
+      "media_type": "image",
+      "headline": "117년 된 장벽,\n0시에 열렸다",
+      "asset": "gibraltar_current_01.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "지브롤터와 스페인 사이의 육로 검문 시설이 7월 15일 철거됐다. 브렉시트 이후 이어진 협상이 실제 통행 변화로 이어진 첫날이다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 2,
+      "role": "map",
+      "media_type": "editorial",
+      "headline": "영국령인데, 육지는 스페인과 붙어 있다",
+      "asset": "self-authored map over CC0 background",
+      "copy_density": "minimal",
+      "lower_third_body": "지브롤터는 영국령이지만 육지는 스페인 라리네아와 바로 맞닿아 있다. 국경은 주민들의 출퇴근과 생활을 매일 가르던 선이었다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 3,
+      "role": "the_night",
+      "media_type": "image",
+      "headline": "장벽을 걷어낸 밤",
+      "asset": "gibraltar_current_02.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "현장에서는 장벽과 검색대를 걷어내는 작업이 밤새 진행됐다. 다음 날부터 사람과 차량은 상시 검문 없이 오가기 시작했다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 4,
+      "role": "first_crossing",
+      "media_type": "image",
+      "headline": "여권을 보여주던\n육로 검문이 멈췄다",
+      "asset": "gibraltar_video_frame.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "예전에는 육로를 지날 때마다 여권 확인을 받아야 했다. 이제 일상 통행의 가장 눈에 띄는 장벽이 사라졌다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 5,
+      "role": "the_people",
+      "media_type": "image",
+      "headline": "매일 약 1만 5천 명",
+      "asset": "la_linea_2024.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "스페인 쪽에서 지브롤터로 출근하는 사람은 하루 약 1만5천 명이다. 이번 변화는 관광보다 먼저 생활권의 변화다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 6,
+      "role": "what_changed",
+      "media_type": "image",
+      "headline": "장벽은 열렸지만",
+      "asset": "gibraltar_airport.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "검문이 완전히 없어진 것은 아니다. 외부에서 들어오는 여행객 심사는 공항과 항만 쪽으로 옮겨간다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 7,
+      "role": "the_line",
+      "media_type": "image",
+      "headline": "주권은 그대로",
+      "asset": "gibraltar_current_01.jpg",
+      "copy_density": "minimal",
+      "lower_third_body": "영유권 문제가 해결된 것은 아니며 주권도 그대로다. 달라진 것은 육로의 상시 검문과 물리적 장벽이다.",
+      "body_sentence_count": 2
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "UK Government",
+      "url": "https://www.gov.uk/government/news/uk-finalises-historic-treaty-with-eu-to-secure-economic-future-of-gibraltar",
+      "role": "primary facts"
+    },
+    {
+      "publisher": "Government of Gibraltar",
+      "url": "https://www.gibraltar.gov.gi/press-releases/another-historic-day-for-gibraltar-as-checks-removed-from-frontier-5612026-12204",
+      "role": "primary event confirmation"
+    },
+    {
+      "publisher": "AP",
+      "url": "https://apnews.com/article/spain-gibraltar-uk-brexit-9113dd58dc8220826038022e84e3b662",
+      "role": "independent report and licensed imagery"
+    }
+  ],
+  "feed_caption": "117년 동안 지브롤터와 스페인 사이를 가르던 육로 장벽이 7월 15일 철거됐습니다. 브렉시트 이후 4년 넘게 이어진 협상 끝에 약 1만5천 명의 통근자가 매일 지나던 길의 상시 검문이 멈춘 것입니다. 다만 영유권과 주권 문제가 해결된 것은 아니며, 외부 입국 심사는 공항과 항만으로 이동합니다.\n\n자료: 영국 정부·지브롤터 정부 공식 발표, AP 교차확인\n※ 내부 검토본이며 이미지 사용권과 최신 사실을 게시 전 다시 확인해야 합니다."
+}

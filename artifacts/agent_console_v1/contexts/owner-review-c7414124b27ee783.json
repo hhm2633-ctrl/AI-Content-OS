@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-19e90e52b9f1",
+  "candidate_id": "20260717-2003-B-19e90e52b9f1",
+  "grade": "1",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "할말을 잃게 만드는 이제동의 미친 컨트롤",
+  "source_urls": [
+    "https://www.fmkorea.com/best/10095404591"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

@@ -1,0 +1,87 @@
+{
+  "source": "news1",
+  "site": "https://www.news1.kr",
+  "recon_date": "2026-07-15",
+  "publisher": "뉴스1",
+  "rendering": "nextjs_ssr",
+  "access": {
+    "login_required": false,
+    "captcha_observed": false,
+    "waf": "akamai_edge_cache_60s",
+    "robots_allowed_paths": ["/latest", "/trend", "/{section}", "/{section}/{subsection}"],
+    "robots_disallowed_paths": ["/ads", "/jebo", "/search"],
+    "user_agent_note": "Use a normal desktop-browser UA; AI-crawler UAs (GPTBot etc.) are robots-disallowed."
+  },
+  "canonical_urls": {
+    "latest": "https://www.news1.kr/latest",
+    "latest_paginated": "https://www.news1.kr/latest?page={n}",
+    "ranking": "https://www.news1.kr/trend",
+    "category": "https://www.news1.kr/{section}",
+    "subcategory": "https://www.news1.kr/{section}/{subsection}",
+    "article": "https://www.news1.kr/{section}/{subsection}/{article_id}",
+    "category_sitemap": "https://www.news1.kr/api/feeds/category/",
+    "next_data_route": "https://www.news1.kr/_next/data/{buildId}/latest.json?page={n}",
+    "next_data_route_note": "buildId rotates per deploy; read from __NEXT_DATA__.buildId in any page HTML. Prefer parsing __NEXT_DATA__ from the HTML page itself."
+  },
+  "extraction": {
+    "primary": {
+      "method": "embedded_json",
+      "selector": "script#__NEXT_DATA__",
+      "paths": {
+        "latest": "props.pageProps.data",
+        "ranking": "props.pageProps.data",
+        "category_top": "props.pageProps.sectionTop",
+        "subcategory_list": "props.pageProps.subsectionData",
+        "subcategory_meta": ["props.pageProps.sectionName", "props.pageProps.subsectionName", "props.pageProps.sectionId", "props.pageProps.subsectionId"]
+      },
+      "rank_rule": "ranking page has no rank field; rank = array index + 1"
+    },
+    "fallback": {
+      "method": "html_selectors",
+      "item_container": "div.row-bottom-border-2 > div.row",
+      "title_link": "h2.n1-header-title-1-2 > a[href]",
+      "summary": "span.n1-header-desc-1",
+      "author": "div.entry-meta span",
+      "thumbnail": "a > img[alt]",
+      "note": "pubdate is not present in list HTML; only available via __NEXT_DATA__"
+    }
+  },
+  "item_schema": {
+    "id": {"type": "int", "required": true, "example": 6228304},
+    "title": {"type": "str", "required": true, "note": "may contain HTML entities; unescape"},
+    "sub_title": {"type": "str", "required": false, "note": "may contain <br>; strip tags"},
+    "badge": {"type": "str", "required": false},
+    "url": {"type": "str", "required": true, "note": "site-relative; prefix https://www.news1.kr", "example": "/society/labor/6228304"},
+    "image": {"type": "str", "required": false, "note": "absolute image.news1.kr URL"},
+    "author": {"type": "str", "required": false, "example": "조용훈 기자"},
+    "pubdate": {"type": "str", "required": true, "format": "YYYY-MM-DD HH:MM:SS", "timezone": "Asia/Seoul"},
+    "pubdate_kor": {"type": "str", "required": false, "note": "often empty"},
+    "time_ago": {"type": "str", "required": false, "note": "often empty"},
+    "summary": {"type": "str", "required": false, "note": "first ~500 chars of body"},
+    "section": {"type": "str", "required": false, "note": "ranking payload only; Korean label e.g. 연예"},
+    "related": {"type": "str", "required": false, "note": "often empty"}
+  },
+  "fixture_files": {
+    "description": "Sanitized minimal offline fixtures a future collector's tests must run against. Each HTML fixture is a skeleton page containing only a truncated script#__NEXT_DATA__ block (3 items max, summaries shortened to <=80 chars, real author names may be kept, no ad/tracking markup). JSON fixtures mirror props.pageProps exactly.",
+    "planned": [
+      {"name": "news1_latest_page.html", "represents": "https://www.news1.kr/latest", "must_contain": ["script#__NEXT_DATA__", "props.pageProps.data (3 items)", "h2.n1-header-title-1-2 fallback markup for 1 item"]},
+      {"name": "news1_trend_page.html", "represents": "https://www.news1.kr/trend", "must_contain": ["script#__NEXT_DATA__", "props.pageProps.data (3 items, rank order)"]},
+      {"name": "news1_subsection_page.html", "represents": "https://www.news1.kr/society/labor", "must_contain": ["script#__NEXT_DATA__", "props.pageProps.subsectionData (3 items)", "sectionName/subsectionName"]},
+      {"name": "news1_latest_pageprops.json", "represents": "_next/data latest.json?page=2", "must_contain": ["pageProps.data"]},
+      {"name": "news1_malformed.html", "represents": "fallback trigger", "must_contain": ["page without script#__NEXT_DATA__ to exercise HTML-selector fallback and cache fallback"]}
+    ],
+    "sanitization_rules": [
+      "truncate arrays to 3 items",
+      "shorten summary/sub_title to <= 80 chars",
+      "remove all script tags except __NEXT_DATA__",
+      "remove ad, tracking, srcSet/base64 placeholder attributes",
+      "keep real field names, URL shapes, and date format unchanged"
+    ]
+  },
+  "collector_recommendations": {
+    "preferred_pages": ["/latest?page={n}", "/trend"],
+    "polling_note": "Edge cache is 60s; polling more often than once per minute returns cached content.",
+    "fallback_chain": "live __NEXT_DATA__ -> HTML selectors -> cache file -> settings keywords -> hardcoded placeholder (per AI-Content-OS fallback-first contract)",
+    "not_implemented": "This is reconnaissance only; no collector module was implemented."
+  }
+}

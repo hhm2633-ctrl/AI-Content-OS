@@ -1,0 +1,34 @@
+Implemented as requested.
+
+### Changed files
+- [modules/source_intake/collector_work_order_generator.py](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/modules/source_intake/collector_work_order_generator.py)
+- [tests/test_collector_work_order_generator.py](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/tests/test_collector_work_order_generator.py)
+- [external_workclaude/source_collection_engine_v0_spark/WORK_ORDER_GENERATOR_HANDOFF.md](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/external_workclaude/source_collection_engine_v0_spark/WORK_ORDER_GENERATOR_HANDOFF.md)
+
+### What was implemented
+- Added `generate_collector_work_orders(queue_path=None, today=None, output_dir=None, max_orders=3)` returning a result dict.
+- Defaults:
+  - `queue_path`: `storage/source_intake/<today>/collector_implementation_queue.json`
+  - `output_dir`: `external_workclaude/source_collector_work_orders/<today>/`
+- Generates markdown files only for `recommended_owner == "Claude"`, up to `max_orders`.
+- Includes required sections:
+  - `## objective`
+  - `## owned files`
+  - `## prohibited files`
+  - `## required reading`
+  - `## completion checks`
+  - `## handoff format`
+- Uses safe deterministic filenames containing `source_id` and `status`.
+- Missing queue returns `status: input_missing` and writes no files.
+- Added tests for:
+  - missing input
+  - max 3 files generated
+  - excludes Spark/Codex owners
+  - required headings present
+  - deterministic filenames
+  - no `commerce_detail` text
+
+### Validation run
+- `py -m compileall modules/source_intake` ✅
+- `py -m unittest tests.test_collector_work_order_generator -v` ✅ (4 passed)
+

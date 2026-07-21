@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-296794dd70aa",
+  "candidate_id": "20260717-2003-B-296794dd70aa",
+  "grade": "3",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "같이 모텔가면 동의한거라고 생각한다는게",
+  "source_urls": [
+    "https://pann.nate.com/talk/375520859"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,109 @@
+{
+  "contract_name": "mk_economy_fixture_contract",
+  "version": "1.0.0",
+  "generated_at": "2026-07-15T10:45:00+09:00",
+  "source": {
+    "publisher": "매일경제",
+    "publisher_en": "Maeil Business Newspaper",
+    "site": "https://www.mk.co.kr",
+    "compliance": {
+      "robots_general_ua": "no Disallow for User-agent: * (editorial pages not robots-restricted for conventional clients)",
+      "robots_ai_ua": "AI-identifying user agents (anthropic-ai, ClaudeBot, GPTBot, etc.) Disallow: / except /intro and /news/pick surfaces",
+      "llms_txt": "https://www.mk.co.kr/llms.txt authorizes AI/RAG use of MK Pick only; requires attribution '매일경제' and deep links",
+      "no_premium_content": true,
+      "no_full_article_bodies_in_fixtures": true
+    }
+  },
+  "surfaces": {
+    "economy_latest": {
+      "url": "https://www.mk.co.kr/news/economy",
+      "rendering": "server_rendered",
+      "item_selector": "a.news_item[data-section=\"최신기사\"]",
+      "fields": {
+        "article_id": { "from": "data-id attribute or last URL path segment", "type": "string", "example": "12098864" },
+        "url": { "from": "href", "pattern": "https://www.mk.co.kr/news/{section}/{article_id}" },
+        "title": { "from": "h4 inside .art_area", "type": "string" },
+        "summary": { "from": "p.art_desc", "type": "string", "sanitize": "truncate to 120 chars in fixtures" },
+        "relative_time": { "from": "p.time_info", "type": "string", "format": "Korean relative, e.g. '1시간 전'" },
+        "date": { "from": ".time_area span", "format": "MM.DD + YYYY (no clock time on list page)" },
+        "thumbnail": { "from": ".list_thumb img[src]", "host": "wimg.mk.co.kr", "sanitize": "may be replaced with placeholder URL in fixtures" },
+        "category_path": { "from": "data-category_1depth/2depth/3depth attributes", "example": ["뉴스", "경제", "홈"] },
+        "order": { "from": "data-idx", "format": "zero-padded 3-digit string" }
+      },
+      "items_per_page": 10,
+      "pagination": "JS load-more only (a.art_more, no href); use sitemap for depth"
+    },
+    "economy_ranking": {
+      "url": "https://www.mk.co.kr/news/ranking/economy",
+      "rendering": "server_rendered",
+      "item_count": 20,
+      "item_selectors": {
+        "rank_1_to_10": "a[data-section=\"인기뉴스\"] with em.news_num (rank), .headline .text (title), .a_pnews_img img (thumbnail)",
+        "rank_11_to_20": "li.popular_news_node > a.news_item.type_num with em.news_num_else (rank), h3.news_ttl (title)"
+      },
+      "fields": {
+        "rank": { "from": "data-idx (canonical, '001'-'020') or em.news_num / em.news_num_else text", "type": "integer" },
+        "article_id": { "from": "data-id attribute", "type": "string" },
+        "url": { "from": "href", "note": "ranked items may point to any /news/{section}/ path" },
+        "title": { "from": ".headline .text (top10) or h3.news_ttl (11-20)", "type": "string" },
+        "category_path": { "from": "data-category_* attributes", "example": ["뉴스", "인기뉴스", "경제"] }
+      },
+      "timestamps": "none on ranking page",
+      "tabs": ["all", "economy", "financial", "business", "stock", "realestate", "it", "opinion", "politics", "society", "world", "culture", "sports"]
+    },
+    "latest_articles_sitemap": {
+      "url": "https://www.mk.co.kr/sitemap/latest-articles/",
+      "rendering": "google_news_sitemap_xml",
+      "recommended": true,
+      "note": "Most stable machine contract; advertised in robots.txt. Filter <loc> containing /news/economy/ for economy-only.",
+      "fields": {
+        "url": { "from": "<loc>" },
+        "title": { "from": "<news:title>" },
+        "published_at": { "from": "<news:publication_date>", "format": "ISO-8601 with +09:00 offset" },
+        "publisher": { "from": "<news:publication><news:name>", "constant": "매일경제" },
+        "keywords": { "from": "<news:keywords>", "format": "comma-separated Korean keywords" },
+        "image": { "from": "<image:image><image:loc>", "optional": true }
+      }
+    },
+    "mk_pick_ai_sanctioned": {
+      "url": "https://www.mk.co.kr/news/pick",
+      "rendering": "server_rendered",
+      "categories": ["qa", "solution", "casestudy", "corporate", "brand", "all"],
+      "item_selector": "a[href*=\"/news/pick/\"] with numeric trailing id",
+      "fields": {
+        "url": { "pattern": "https://www.mk.co.kr/news/pick/{article_id}" },
+        "title": { "from": "h3.main_tit" },
+        "summary": { "from": "p.main_desc", "sanitize": "truncate to 120 chars in fixtures" },
+        "thumbnail": { "from": ".main_thumb img[src]" }
+      },
+      "attribution_required": "매일경제 (Maeil Business Newspaper) + deep link to source article"
+    }
+  },
+  "normalized_fixture_record": {
+    "description": "Sanitized record shape for offline fixtures consumed by a future MK collector. No full bodies, no premium content, summaries truncated.",
+    "required_fields": ["source", "surface", "article_id", "url", "title", "collected_at"],
+    "schema": {
+      "source": "mk",
+      "surface": "economy_latest | economy_ranking | latest_articles_sitemap | mk_pick",
+      "article_id": "string (numeric)",
+      "url": "string (canonical https://www.mk.co.kr/news/...)",
+      "title": "string (verbatim visible title)",
+      "summary": "string|null (max 120 chars, truncated with ellipsis)",
+      "rank": "integer|null (ranking surface only, 1-20)",
+      "category_path": "array of strings|null (from data-category_* attributes)",
+      "published_at": "string|null (ISO-8601 +09:00; only sitemap surface provides exact time)",
+      "relative_time": "string|null (list-page Korean relative time, informational only)",
+      "thumbnail_url": "string|null (may be placeholder in fixtures)",
+      "publisher": "매일경제",
+      "collected_at": "string (ISO-8601 +09:00, collection timestamp)",
+      "fixture_sanitized": true
+    }
+  },
+  "blockers_observed": {
+    "captcha": false,
+    "login_wall": false,
+    "paywall_on_inspected_pages": false,
+    "bot_challenge": false,
+    "notes": "Claude Code WebFetch is blocked for mk.co.kr; plain HTTP fetch of list pages returned 200 with full SSR HTML. /news/all/ is 404."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "spark_task_queue_v1",
+  "generated_at": "2026-07-20T11:31:06.528563Z",
+  "queue_source": "tests\\tmp_spark_task_queue\\deterministic\\collector_implementation_queue.json",
+  "task_count": 3,
+  "spark_task_queue": [
+    {
+      "rank": 1,
+      "source_id": "alpha",
+      "status": "FAILED",
+      "lane_impact": [
+        "a"
+      ],
+      "task_type": "diagnostic_contract"
+    },
+    {
+      "rank": 2,
+      "source_id": "alpha",
+      "status": "NOT_IMPLEMENTED",
+      "lane_impact": [
+        "a"
+      ],
+      "task_type": "diagnostic_contract"
+    },
+    {
+      "rank": 3,
+      "source_id": "zeta",
+      "status": "NOT_IMPLEMENTED",
+      "lane_impact": [
+        "a"
+      ],
+      "task_type": "diagnostic_contract"
+    }
+  ]
+}

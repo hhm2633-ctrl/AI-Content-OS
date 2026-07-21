@@ -1,0 +1,90 @@
+{
+  "contract_name": "nate_news_rank_fixture_contract",
+  "version": "1.0",
+  "source_id": "nate_news_rank",
+  "recon_reference": "NATE_NEWS_RANK_RECON.md",
+  "recon_date": "2026-07-15",
+  "compliance_gate": {
+    "robots_txt_status": "Disallow: / for User-agent: * on news.nate.com",
+    "live_collection_allowed": false,
+    "note": "Live collection is blocked pending an explicit owner policy decision recorded in DECISIONS.md. Until then the collector must operate fixture/cache-only."
+  },
+  "request": {
+    "url_template": "https://news.nate.com/rank/interest?sc={category}&p=day&date={YYYYMMDD}",
+    "verified_rank_types": ["interest", "cmt"],
+    "categories": ["all", "sisa", "pol", "eco", "soc", "int", "its", "pho", "spo", "ent"],
+    "lane_mapping": {
+      "entertainment_news": ["ent"],
+      "news_society_economy": ["soc", "eco"]
+    },
+    "items_per_page": 50,
+    "pages_needed": 1,
+    "rendering": "server_rendered_static_html",
+    "requires_javascript": false,
+    "requires_login": false
+  },
+  "selectors": {
+    "item_rank": "dl.mduRank dt em",
+    "rich_item_container": "div.mduSubjectList",
+    "rich_item_link": "div.mlt01 a.lt1[href*='/view/']",
+    "rich_item_headline": "h2.tit",
+    "rich_item_publisher_and_date": "span.medium (text = publisher, child em = YYYY-MM-DD)",
+    "compact_item_container": "ul.mduSubject.mduRankSubject li",
+    "compact_item_link": "a[href^='//news.nate.com/view/']",
+    "compact_item_headline": "a h2",
+    "compact_item_publisher": "span.medium (no date em)",
+    "comment_count_cmt_ranking_only": "dl.mduRank dd span.comment em",
+    "rank_change_interest_only": "dl.mduRank dd span.up | span.down | span.noupdown"
+  },
+  "output_item_schema": {
+    "rank": "int, 1-based, required",
+    "title": "string, HTML-entity-decoded headline, may be source-truncated with trailing '...', required",
+    "url": "string, https-normalized permalink https://news.nate.com/view/YYYYMMDDnNNNNN (mid query param stripped or kept verbatim — pick one and be consistent), required",
+    "article_id": "string, pattern ^\\d{8}n\\d{5}$, required",
+    "publisher": "string, required",
+    "published_date": "string YYYY-MM-DD or null (only ranks 1-5 expose it)",
+    "category": "string, the requested sc parameter (not per-item data), required",
+    "rank_change": "object {direction: 'up'|'down'|'none', delta: int} or null",
+    "comment_count": "int or null (only available from /rank/cmt)",
+    "snippet": "string or null (ranks 1-5 only)",
+    "thumbnail_url": "string or null (ranks 1-5 only)"
+  },
+  "fixture_file_expectation": {
+    "location_hint": "tests fixture directory chosen by Spark per existing collector test conventions",
+    "content": "sanitized static HTML sample covering both markup tiers (at least one rank 1-5 rich item and two rank 6+ compact items) plus one expected-output JSON",
+    "sanitization": "replace real headlines/publishers/ids with representative placeholders; keep markup structure byte-faithful"
+  },
+  "sample_items_sanitized": [
+    {
+      "rank": 1,
+      "title": "샘플 헤드라인: 리치 아이템 (썸네일·요약 포함)",
+      "url": "https://news.nate.com/view/20260715n00001",
+      "article_id": "20260715n00001",
+      "publisher": "샘플일보",
+      "published_date": "2026-07-15",
+      "category": "all",
+      "rank_change": { "direction": "none", "delta": 0 },
+      "comment_count": null,
+      "snippet": "샘플 요약 텍스트...",
+      "thumbnail_url": "https://thumbnews.nateimg.co.kr/news90/sample.jpg"
+    },
+    {
+      "rank": 7,
+      "title": "샘플 헤드라인: 컴팩트 아이템 (제목·언론사만)",
+      "url": "https://news.nate.com/view/20260715n00007",
+      "article_id": "20260715n00007",
+      "publisher": "샘플경제",
+      "published_date": null,
+      "category": "all",
+      "rank_change": { "direction": "up", "delta": 1 },
+      "comment_count": null,
+      "snippet": null,
+      "thumbnail_url": null
+    }
+  ],
+  "fallback_contract": {
+    "chain": ["fixture_or_cache", "settings_keywords", "hardcoded_placeholder"],
+    "must_never": "raise an exception that fails workflow_completed",
+    "record_fields": ["fallback_used", "collection_summary"]
+  }
+}

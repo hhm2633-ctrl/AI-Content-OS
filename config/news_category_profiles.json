@@ -1,0 +1,67 @@
+{
+  "schema_version": "news_category_profiles_v1",
+  "mode": "selective",
+  "note": "Run only the profiles you need per run. All profiles are shallow-first; deep_dive is never auto-triggered.",
+  "profiles": [
+    {
+      "profile_id": "domestic_news",
+      "purpose": "한국 오늘 주요뉴스/포털 반복 확인",
+      "sources": ["naver_news", "daum_news", "nate_news_rank"],
+      "channels": ["issue_daily"],
+      "risk_flags": [],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "portal-news centric; the default everyday profile"
+    },
+    {
+      "profile_id": "incident_accident",
+      "purpose": "사건/사고/재난/민폐/갑질/분쟁성 이슈",
+      "sources": ["naver_news", "daum_news", "nate_news_rank", "yonhap", "newsis", "news1", "bobaedream", "fmkorea"],
+      "channels": ["issue_daily", "dopamine_issue"],
+      "risk_flags": ["privacy", "defamation", "crime_claim", "graphic_incident"],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "news-first with community sources as secondary signal"
+    },
+    {
+      "profile_id": "entertainment_news",
+      "purpose": "연예/셀럽/방송/아이돌 이슈. 관계/연애 계정 후보 보조.",
+      "sources": ["nate_news_rank", "naver_news", "daum_news", "theqoo", "dcinside"],
+      "channels": ["love_signal", "dopamine_issue"],
+      "risk_flags": ["privacy", "rumor", "minor", "harassment"],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "rumor/minor risks require compliance review downstream"
+    },
+    {
+      "profile_id": "world_news",
+      "purpose": "국제/전쟁/외교/재난/글로벌 이슈",
+      "sources": ["naver_news", "daum_news", "nate_news_rank", "yonhap", "newsis", "news1"],
+      "channels": ["issue_daily"],
+      "risk_flags": ["war", "death", "graphic_incident", "geopolitical_claim"],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "Korean portal and wire sources provide international-news coverage"
+    },
+    {
+      "profile_id": "economy_news",
+      "purpose": "금리/부동산/환율/물가/기업/시장/정책",
+      "sources": ["hankyung_economy", "mk_economy", "moneytoday", "edaily", "naver_news", "daum_news"],
+      "channels": ["issue_daily", "commerce_signal"],
+      "risk_flags": ["investment_advice", "price_prediction", "financial_claim"],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "commerce_signal only — this profile never produces commerce detail pages"
+    },
+    {
+      "profile_id": "society_policy",
+      "purpose": "정부정책/복지/노동/교육/법안/제도 변화",
+      "sources": ["naver_news", "daum_news", "yonhap", "newsis", "news1"],
+      "channels": ["issue_daily"],
+      "risk_flags": ["political_persuasion", "policy_misread", "legal_claim"],
+      "scan_depth": "shallow",
+      "deep_dive_auto": false,
+      "notes": "official/wire sources (yonhap/newsis/news1) preferred over community"
+    }
+  ]
+}

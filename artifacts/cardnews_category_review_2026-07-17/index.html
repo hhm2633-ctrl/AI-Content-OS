@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI-Content-OS 카테고리별 카드뉴스 데스크 검토</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b0d12; --panel:#151923; --muted:#aeb5c3; --line:#292f3c; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:#f7f8fa; font-family:"Malgun Gothic",sans-serif; }
+    header { padding:64px 5vw 36px; border-bottom:1px solid var(--line); background:radial-gradient(circle at 15% 0,#243454 0,transparent 42%); }
+    h1 { margin:0 0 14px; font-size:46px; letter-spacing:-2px; }
+    header p { max-width:950px; color:var(--muted); line-height:1.7; font-size:18px; }
+    .status { display:inline-block; margin-top:10px; padding:10px 16px; border-radius:999px; background:#42242a; color:#ffb4b4; font-weight:700; }
+    section { padding:42px 5vw 60px; }
+    .account-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:22px; }
+    h2 { margin:0; font-size:34px; }
+    .grammar { color:var(--muted); max-width:760px; text-align:right; line-height:1.55; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(390px,1fr)); gap:26px; }
+    article { overflow:hidden; background:var(--panel); border:1px solid var(--line); border-radius:22px; box-shadow:0 18px 55px #0008; }
+    article img { width:100%; display:block; background:#eee; }
+    .meta { padding:22px; }
+    h3 { margin:0 0 8px; font-size:25px; }
+    .meta p { color:var(--muted); line-height:1.55; min-height:48px; }
+    .buttons { display:flex; gap:10px; flex-wrap:wrap; }
+    a { color:white; text-decoration:none; font-weight:700; }
+    .primary,.secondary { display:inline-block; padding:11px 16px; border-radius:999px; }
+    .primary { background:#ff5148; }
+    .secondary { border:1px solid #4a5366; }
+    .a { border-top:5px solid #2d89ff; } .b { border-top:5px solid #ff5148; } .c { border-top:5px solid #d896ff; }
+    footer { padding:36px 5vw 60px; color:var(--muted); border-top:1px solid var(--line); }
+  </style>
+</head>
+<body>
+<header>
+  <h1>카테고리별 카드뉴스 · 데스크 검토본</h1>
+  <p>뉴스·사건·경제는 근거와 맥락, 이슈·썰·관계는 감정과 장면 전개, 패션·뷰티는 실제 이미지와 편집자 해설을 중심으로 서로 다른 문법을 적용했습니다. 고정 4장이 아닌 7~10장 가변 구성입니다.</p>
+  <span class="status">내부 검토 전용 · 권리/근거 승인 전 게시 불가</span>
+</header>
+
+<section>
+  <div class="account-head"><h2>ACCOUNT A · 뉴스 / 사건 / 경제</h2><div class="grammar">사실 → 근거 → 영향 → 확인 공백. 사건은 감정 자극보다 증거 순서, 경제는 숫자가 생활에 미치는 영향을 먼저 보여줍니다.</div></div>
+  <div class="grid">
+    <article class="a"><a href="account_a/news_legal_explainer/contact_sheet.png"><img src="account_a/news_legal_explainer/contact_sheet.png"></a><div class="meta"><h3>뉴스·법률 해설 · 7장</h3><p>법 개정 이슈를 대상·시점·현실 변화 순서로 풀어낸 설명형.</p><div class="buttons"><a class="primary" href="account_a/news_legal_explainer/slide_01.png">첫 장</a><a class="secondary" href="account_a/index.html">A 전체</a></div></div></article>
+    <article class="a"><a href="account_a/incident_ai_fake_chat/contact_sheet.png"><img src="account_a/incident_ai_fake_chat/contact_sheet.png"></a><div class="meta"><h3>AI 가짜 카톡 사건 · 9장</h3><p>사건 타임라인·보도 근거·피해 전환을 분리한 증거형.</p><div class="buttons"><a class="primary" href="account_a/incident_ai_fake_chat/slide_01.png">첫 장</a><a class="secondary" href="account_a/index.html">A 전체</a></div></div></article>
+    <article class="a"><a href="account_a/economy_leverage_etf/contact_sheet.png"><img src="account_a/economy_leverage_etf/contact_sheet.png"></a><div class="meta"><h3>레버리지 ETF · 8장</h3><p>예탁금 3천만 원이 실제 투자자에게 바꾸는 것을 설명하는 경제형.</p><div class="buttons"><a class="primary" href="account_a/economy_leverage_etf/slide_01.png">첫 장</a><a class="secondary" href="account_a/index.html">A 전체</a></div></div></article>
+    <article class="a"><a href="account_a/world_news_visa/contact_sheet.png"><img src="account_a/world_news_visa/contact_sheet.png"></a><div class="meta"><h3>세계뉴스·미국 유학 비자 · 8장</h3><p>F-1 체류 최대 4년 규정이 한국 유학생에게 바꾸는 것을 설명.</p><div class="buttons"><a class="primary" href="account_a/world_news_visa/slide_01.png">첫 장</a><a class="secondary" href="account_a/index.html">A 전체</a></div></div></article>
+    <article class="a"><a href="account_a/world_incident_iran_tracking/contact_sheet.png"><img src="account_a/world_incident_iran_tracking/contact_sheet.png"></a><div class="meta"><h3>세계사건·위치추적 정황 · 9장</h3><p>로밍망·광고기술 악용 정황과 실제 공격 인과 미확인을 분리.</p><div class="buttons"><a class="primary" href="account_a/world_incident_iran_tracking/slide_01.png">첫 장</a><a class="secondary" href="account_a/index.html">A 전체</a></div></div></article>
+  </div>
+</section>
+
+<section>
+  <div class="account-head"><h2>ACCOUNT B · 이슈 / 썰 / 관계</h2><div class="grammar">짧은 감정 훅 → 장면별 진전 → 실제 반응 → 사람 말투 마무리. 사연은 AI 재구성을 명시하고 실제 댓글만 씁니다.</div></div>
+  <div class="grid">
+    <article class="b"><a href="account_b/relationship_real_story/contact_sheet.png"><img src="account_b/relationship_real_story/contact_sheet.png"></a><div class="meta"><h3>관계·가족 실화 · 8장</h3><p>냉장고 경계 침범과 남편의 침묵을 2D 장면으로 재구성.</p><div class="buttons"><a class="primary" href="account_b/relationship_real_story/slide_01.png">첫 장</a><a class="secondary" href="account_b/index.html">B 전체</a></div></div></article>
+    <article class="b"><a href="account_b/dating_dopamine/contact_sheet.png"><img src="account_b/dating_dopamine/contact_sheet.png"></a><div class="meta"><h3>데이트·도파민 · 8장</h3><p>“얼굴도 못 봤는데, 헉”에서 시작해 차단까지 가는 경고형 썰.</p><div class="buttons"><a class="primary" href="account_b/dating_dopamine/slide_01.png">첫 장</a><a class="secondary" href="account_b/index.html">B 전체</a></div></div></article>
+  </div>
+</section>
+
+<section>
+  <div class="account-head"><h2>ACCOUNT C · 패션 / 뷰티</h2><div class="grammar">실제 참조 이미지가 본문입니다. 패션은 공식 콘셉트와 대표 룩을 편집자가 해설하고, 뷰티는 계절성·제품·사용 맥락을 이미지 중심으로 보여줍니다.</div></div>
+  <div class="grid">
+    <article class="c"><a href="account_c/fashion_dior_2027ss/contact_sheet.png"><img src="account_c/fashion_dior_2027ss/contact_sheet.png"></a><div class="meta"><h3>DIOR MEN 2027 S/S · 10장</h3><p>‘친숙함의 재창조’를 실제 룩·소재·아카이브 코드로 해설.</p><div class="buttons"><a class="primary" href="account_c/fashion_dior_2027ss/slides/slide_01.png">첫 장</a><a class="secondary" href="account_c/index.html">C 전체</a></div></div></article>
+    <article class="c"><a href="account_c/beauty_summer_perfume/contact_sheet.png"><img src="account_c/beauty_summer_perfume/contact_sheet.png"></a><div class="meta"><h3>35℃ 여름 향수 · 9장</h3><p>폭염에서 향이 빨리 사라지는 이유와 향조별 실제 제품을 연결.</p><div class="buttons"><a class="primary" href="account_c/beauty_summer_perfume/slides/slide_01.png">첫 장</a><a class="secondary" href="account_c/index.html">C 전체</a></div></div></article>
+  </div>
+</section>
+<footer>검토 갤러리 노출 기준 총 9개 카테고리 · 76장 · 1080×1350. 세월호 연계 소재는 소유자 지시로 전면 제외했습니다. 모든 결과는 내부 검토용이며 게시 전 원문·권리·최신 상태 확인이 필요합니다.</footer>
+</body></html>

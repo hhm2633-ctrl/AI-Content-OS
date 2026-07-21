@@ -1,0 +1,4 @@
+- button "메시지 메시지" [ref=f41e10] [cursor=pointer]:
+  - generic [ref=f41e12]:
+    - img "메시지" [ref=f41e14]
+    - generic [ref=f41e17]: 메시지

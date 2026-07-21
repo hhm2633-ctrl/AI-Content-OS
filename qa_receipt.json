@@ -1,0 +1,383 @@
+{
+  "schema_version": "cardnews_visual_qa_receipt_v1",
+  "receipt_id": "visual-qa-visual-qa-sample-20260720-representative",
+  "output_set_id": "visual-qa-sample-20260720",
+  "reviewed_at": "2026-07-20T05:46:22.290386+00:00",
+  "maker": {
+    "id": "cardnews-renderer"
+  },
+  "reviewer": {
+    "id": "independent-visual-qa-auto",
+    "independent_from_maker": true
+  },
+  "scope": {
+    "kind": "representative",
+    "accounts": [
+      "A"
+    ],
+    "candidate_ids": [
+      "20260717-2003-A-1257fdf5c746"
+    ]
+  },
+  "decision": "approve",
+  "slides": [
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 1,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_01.png",
+      "image_sha256": "ba044496b1b9742e827f9de5d0b816a467c9a36ffe3ded5a05514349fbc8867d",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.437812,
+          "std_gray": 0.315443,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 12,
+          "avg_text_conf": 0.9594,
+          "text_char_count": 150,
+          "input_bytes": 959678,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "상속 포기했는데\n보험금은 받아도 될까?",
+            "cosine_similarity": 0.235073
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 2,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_02.png",
+      "image_sha256": "aacc3dd8dc58fd7b18849b68947ad7f11c23ed0e56a281fc9327ad5c3b9aa6f7",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.233523,
+          "std_gray": 0.15783,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 10,
+          "avg_text_conf": 0.9761,
+          "text_char_count": 146,
+          "input_bytes": 364748,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "먼저 볼 건\n'누구의 재산인가'",
+            "cosine_similarity": 0.205075
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 3,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_03.png",
+      "image_sha256": "4c31f94f910ea3399a999312f047f8bb8cd1bc7c7bf63a54b59e8a2300390708",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.225271,
+          "std_gray": 0.267127,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 10,
+          "avg_text_conf": 0.8804,
+          "text_char_count": 150,
+          "input_bytes": 1703213,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "법률이나 취업규칙이 수령자를 따로 정했다면 유족에게 직접 귀속되는 고유재산으로 본다는 설명입니다.",
+            "cosine_similarity": 0.198763
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 4,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_04.png",
+      "image_sha256": "59ba00e44027180a6f4b92545f29c361f6c4775a58b1b5e105b72035feba687e",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.071702,
+          "std_gray": 0.165287,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 11,
+          "avg_text_conf": 0.961,
+          "text_char_count": 169,
+          "input_bytes": 330433,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "보험금은\n수익자부터 확인",
+            "cosine_similarity": 0.238238
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 5,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_05.png",
+      "image_sha256": "3e276b3c1c6a071f86af6de81eceb97788fbec34e8c220d53d81c5c29bdceda3",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.453393,
+          "std_gray": 0.298146,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 9,
+          "avg_text_conf": 0.9768,
+          "text_char_count": 155,
+          "input_bytes": 1882092,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "기사는 해지환급금은 원칙적으로 상속재산이라며 함부로 인출하거나 쓰지 말라고 짚었습니다.",
+            "cosine_similarity": 0.22033
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "page": 6,
+      "image_path": "artifacts\\cardnews_category_review_2026-07-17_v3\\account_a_gibraltar\\slide_06.png",
+      "image_sha256": "21b669ff501a3a8ff8fed27ed86c57bc80662d317a9dc9790bdecec1c5bf97ea",
+      "analysis_contract": {
+        "source": "pixel_contract",
+        "openclip_ready": true,
+        "paddleocr_ready": true,
+        "openclip_timeout_seconds": 30.0,
+        "ocr_timeout_seconds": 30.0
+      },
+      "findings": {
+        "mobile_readability": "pass",
+        "copy_readability": "pass",
+        "content_not_blank": "pass",
+        "subject_focus": "pass",
+        "subject_crop_preserved": "pass",
+        "story_progression": "pass",
+        "comment_readability": "not_applicable"
+      },
+      "analysis": {
+        "visual_signal": {
+          "width": 1080,
+          "height": 1350,
+          "mean_gray": 0.363115,
+          "std_gray": 0.239242,
+          "blankness_proxy": 0.0
+        },
+        "ocr": {
+          "status": "completed",
+          "success": true,
+          "line_count": 13,
+          "avg_text_conf": 0.9039,
+          "text_char_count": 161,
+          "input_bytes": 1352493,
+          "reason": ""
+        },
+        "openclip": {
+          "status": "passed",
+          "reason": "",
+          "runtime_ready": true,
+          "best": {
+            "topic": "경제·생활",
+            "cosine_similarity": 0.222325
+          }
+        }
+      }
+    }
+  ],
+  "analysis_contract": {
+    "openclip_ready": true,
+    "paddleocr_ready": true,
+    "openclip_timeout_seconds": 30.0,
+    "ocr_timeout_seconds": 30.0,
+    "openclip_probe": {
+      "schema_version": "openclip_runtime_probe_v1",
+      "status": "ready",
+      "ready": true,
+      "runtime_root": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip",
+      "model_root": "F:\\AI-Content-OS-Data\\external_tools\\models\\openclip\\timm--resnet50_clip.openai--ec3d92cf63a5",
+      "provenance_path": "F:\\AI-Content-OS-Data\\external_tools\\provenance\\openclip\\install_manifest.json",
+      "python_executable": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip\\Scripts\\python.exe",
+      "model": {
+        "repository": "timm/resnet50_clip.openai",
+        "model_name": "RN50-quickgelu",
+        "revision": "ec3d92cf63a5f9d591f0d611b736895966c73076",
+        "path": "F:\\AI-Content-OS-Data\\external_tools\\models\\openclip\\timm--resnet50_clip.openai--ec3d92cf63a5\\open_clip_model.safetensors",
+        "bytes": 408291932,
+        "sha256": "da0baa37fb2211eee5729ab69ed587eb10d48f5b7076ceeed01552fc3d4cb4ee"
+      },
+      "licenses": {
+        "code": {
+          "spdx": "MIT",
+          "commercial_reuse": true,
+          "path": "F:\\AI-Content-OS-Data\\external_tools\\runtimes\\openclip\\Lib\\site-packages\\open_clip_torch-3.3.0.dist-info\\licenses\\LICENSE",
+          "sha256": "4a5b4f13ea4792a8211a69f32d2b460b6d520e57cd23c6301e707c76a6e97a55"
+        },
+        "weights": {
+          "spdx": "MIT",
+          "commercial_reuse": true,
+          "evidence": "https://huggingface.co/timm/resnet50_clip.openai/tree/ec3d92cf63a5f9d591f0d611b736895966c73076"
+        }
+      },
+      "capabilities": {
+        "image_embedding": true,
+        "text_embedding": true,
+        "normalized_similarity": true,
+        "offline_cpu": true
+      },
+      "checks": {
+        "provenance_schema": true,
+        "runtime_python": true,
+        "runtime_version": true,
+        "code_license": true,
+        "weight_repository": true,
+        "weight_model": true,
+        "weight_revision": true,
+        "weight_access": true,
+        "weight_license": true,
+        "weight_integrity": true,
+        "offline_smoke": true
+      },
+      "errors": [],
+      "boundaries": {
+        "offline_only": true,
+        "owner_assets": false,
+        "remote_service": false,
+        "model_download": false,
+        "training_or_finetuning": false,
+        "production_selection": false
+      }
+    }
+  }
+}

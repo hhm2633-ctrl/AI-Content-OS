@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-80f9cabd1853",
+  "candidate_id": "20260717-2003-C-80f9cabd1853",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·메이크업",
+  "title": "무더위에 숨 고르는 화장품 시장… 틈새공략 아이템 눈길 [최기자의 화...",
+  "source_urls": [
+    "https://www.meconomynews.com/news/articleView.html?idxno=132890"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

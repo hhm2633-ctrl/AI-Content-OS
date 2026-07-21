@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "source_registry": "knowledge/patterns/pattern_registry.jsonl",
+    "excluded_pattern": {
+      "pattern_id": "pattern.instagram_learning.engagement_mechanic.dm_keyword_cta",
+      "domain": "engagement_mechanic",
+      "reason": "사용자 지시로 실험 대상에서 제외. DM 유도/댓글 키워드 CTA 메커니즘이며 promotion_policy.md 상 기본/우선 추천 CTA로 사용 금지된 패턴."
+    },
+    "note": "각 pattern_id는 knowledge/patterns/pattern_registry.jsonl의 실제 레코드(status=CANDIDATE, confidence 0.25~0.5)를 그대로 참조함. 이 문서 자체는 레지스트리를 수정하지 않으며 읽기 전용 결속표임."
+  },
+  "pairs": [
+    {
+      "pair_id": "EXP-1",
+      "variable_tested": "표지 훅(cover hook)",
+      "pattern_id": "pattern.instagram_learning.content_pattern.quote_reversal_hook",
+      "pattern_evidence_status": "hypothesis_only",
+      "pattern_confidence": 0.25,
+      "pattern_observation_count": 1,
+      "pattern_account_count": 1,
+      "pattern_category_count": 1,
+      "evidence_urls": ["https://www.instagram.com/p/DaNcegIkmEy/"],
+      "dataset_hash": "sha256:df265c098ff2222c2f06dce5f763a34bd62bdd8add5ea81b5f22f199bb83a10a",
+      "import_version": "instagram_broad_learning_v1.v1",
+      "control_brief_id": "EXP1-CONTROL",
+      "experiment_brief_id": "EXP1-VARIANT",
+      "topic_content_id": "CN-010",
+      "topic_title": "초보자를 위한 홈트레이닝 루틴",
+      "category": "건강·피트니스",
+      "cross_domain_transfer_note": "원 근거(evidence_urls)의 관측 분야는 뉴스·시사(거제 이슈)이며, 이번 브리프의 적용 분야(건강·피트니스)와 다름 — 패턴을 원 관측 분야 밖으로 전이(transfer) 적용하는 것이므로 추가적인 미검증 가정이 더해짐(2중 hypothesis_only)."
+    },
+    {
+      "pair_id": "EXP-2",
+      "variable_tested": "스토리 구조(story structure)",
+      "pattern_id": "pattern.instagram_learning.content_pattern.numbered_curation_list_structure",
+      "pattern_evidence_status": "benchmark_observed",
+      "pattern_confidence": 0.5,
+      "pattern_observation_count": 3,
+      "pattern_account_count": 3,
+      "pattern_category_count": 3,
+      "evidence_urls": [
+        "https://www.instagram.com/p/DZZko8HESg3/",
+        "https://www.instagram.com/p/DMR7KeXyMRs/",
+        "https://www.instagram.com/p/DZ1m16hEoJS/"
+      ],
+      "dataset_hash": "sha256:df265c098ff2222c2f06dce5f763a34bd62bdd8add5ea81b5f22f199bb83a10a",
+      "import_version": "instagram_broad_learning_v1.v1",
+      "control_brief_id": "EXP2-CONTROL",
+      "experiment_brief_id": "EXP2-VARIANT",
+      "topic_content_id": "CN-017",
+      "topic_title": "커피 원두 보관법",
+      "category": "생활정보",
+      "cross_domain_transfer_note": "원 근거의 관측 분야는 여행·지역/생활정보/유머·이슈 3개이며 생활정보가 그중 하나로 겹침 — 3개 중 가장 도메인 적합성이 높은 조합. 그럼에도 '고반응과의 인과성은 별개의 미검증 주장'이라는 원 패턴의 caveat이 그대로 적용됨."
+    },
+    {
+      "pair_id": "EXP-3",
+      "variable_tested": "비주얼 레이아웃(visual layout)",
+      "pattern_id": "pattern.instagram_learning.content_pattern.healthcare_public_character_illustration",
+      "pattern_evidence_status": "benchmark_observed",
+      "pattern_confidence": 0.5,
+      "pattern_observation_count": 2,
+      "pattern_account_count": 2,
+      "pattern_category_count": 1,
+      "evidence_urls": [
+        "https://www.instagram.com/p/DX540sxj3kb/",
+        "https://www.instagram.com/p/DMumn3wvugh/"
+      ],
+      "dataset_hash": "sha256:df265c098ff2222c2f06dce5f763a34bd62bdd8add5ea81b5f22f199bb83a10a",
+      "import_version": "instagram_broad_learning_v1.v1",
+      "control_brief_id": "EXP3-CONTROL",
+      "experiment_brief_id": "EXP3-VARIANT",
+      "topic_content_id": "KN-008",
+      "topic_title": "시간관리 매트릭스 활용법",
+      "category": "지식·자기계발",
+      "cross_domain_transfer_note": "원 근거의 관측 분야는 건강(병원 계정)이며 이번 적용 분야(지식·자기계발)와 다름 — 패턴을 원 관측 분야 밖으로 전이 적용(2중 hypothesis_only). 표본 수(n=2, 계정 2)도 매우 작아 원 패턴 자체의 강도도 약함."
+    }
+  ],
+  "control_baseline_reference": {
+    "source_document": "external_workclaude/content_portfolio_v1/TOP20_IMAGE_BRIEFS.md (CN-006 섹션, #8)",
+    "modification_status": "미수정 — 읽기 전용 참고만 함",
+    "baseline_conventions_reused_for_all_controls": [
+      "4슬라이드 구조: hook(상황/사물 이미지, 인물 클로즈업 지양) → problem/context → evidence-backed solution(근거 문구 여백 확보) → cta/source(저장·공유 유도 마무리)",
+      "표지 훅: 주제를 직설적으로 드러내는 상황/사물 이미지 + 평서형 정보 전달 타이틀(인용·반전 등 수사적 장치 없음)",
+      "비주얼: 자체 제작 인포그래픽 우선, 실사 합성 이미지 미사용, 캐릭터 의인화 일러스트 없음",
+      "CTA: 저장/공유 유도형 소프트 CTA만 사용, 댓글 유도·DM 유도 없음"
+    ]
+  }
+}

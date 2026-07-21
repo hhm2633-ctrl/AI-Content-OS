@@ -1,0 +1,29 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "UNKNOWN_EDITORIAL_REUSE_NOT_CLEARED",
+  "rights_note": "기사 페이지의 실제 이미지를 내부 데스크톱 검토 시안에만 사용. 게시·배포 전 이미지별 권리 확인 또는 사용권 확보 필요.",
+  "generated_media_used": false,
+  "fake_comments_used": false,
+  "owner_review_target": "desktop",
+  "primary_source": {
+    "publisher": "Vogue Korea",
+    "url": "https://www.vogue.co.kr/2026/07/11/%EC%99%9C-%EB%82%B4-%ED%96%A5%EC%88%98%EB%8A%94-10%EB%B6%84-%EB%A7%8C%EC%97%90-%EC%82%AC%EB%9D%BC%EC%A7%88%EA%B9%8C-35%E2%84%83%EC%97%90%EB%8F%84-%EB%81%84%EB%96%A1%EC%97%86%EB%8A%94-%EC%97%AC/",
+    "published_at": "2026-07-11",
+    "commercial_disclosure": "Vogue article contains affiliate product links; this review package adds no affiliate link"
+  },
+  "content_basis": [
+    "피부 온도와 증발",
+    "피부 pH·피지·건조",
+    "그린&아로마",
+    "화이트 머스크",
+    "가벼운 우디",
+    "시트러스",
+    "아쿠아&오조닉"
+  ],
+  "production_gaps": [
+    "기사·제품 이미지 라이선스 미확인",
+    "기사의 약 40% 수치에 연결된 원 연구 출처 미확인",
+    "제품 가격·재고·제휴 여부 미검증"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "schema_version": "cardnews_prototype_plan.v1",
+  "plan_id": "account_a_s2_2026-07-16",
+  "account_id": "account_a",
+  "account_portfolio": [
+    "국내뉴스",
+    "사건"
+  ],
+  "topic_id": "S2",
+  "topic_label": "동네 폭군",
+  "language": "ko-KR",
+  "slide_count": 8,
+  "story_rhythm": [
+    "분노 유발 훅",
+    "갈등의 시작",
+    "폭력·협박으로 확대",
+    "피해 주민 주장",
+    "근거 경계",
+    "실제 댓글 예약",
+    "실제 반대·보완 댓글 예약",
+    "직접 CTA"
+  ],
+  "source_receipt": "storage/source_intake/2026-07-16/account_a_field_final/2026-07-16/daily_shallow_collection.json",
+  "evidence": {
+    "source_count": 1,
+    "agreement_status": "single_source",
+    "source_id": "newsis",
+    "source_name": "뉴시스",
+    "article_id": "NISX20260716_0003712985",
+    "headline": "\"왜 경찰도 못 잡나 했더니\"…'동네 폭군' 50대 여성의 정체",
+    "link": "https://www.newsis.com/view/NISX20260716_0003712985",
+    "published_at": "2026.07.16 19:43:08",
+    "category": "society",
+    "surface": "list",
+    "collection_method": "newsis_articleList2",
+    "is_fallback": false,
+    "shallow_summary": "강원 원주시의 한 아파트에서 층간소음 갈등으로 시작된 이웃 간 다툼이 상습 폭행과 협박으로 번지면서 경찰이 수사에 나섰다. 피해 주민들은 가해 여성의 반복적인 폭력에도 경찰이 미온적으로 대응해 피해가 커졌다고 주장하고 있다. 16일 JTBC '사건반장'에 따르면 원주의 한 아파트에 거주하는 A씨는 지난해부터 아래층 주민의 지인인 50대 여성",
+    "summary_truncated": true,
+    "thumbnail_available": true,
+    "thumbnail_rights_verified": false
+  },
+  "production_contract": {
+    "publish_ready": false,
+    "article_detail_fetch_allowed": false,
+    "source_thumbnail_use_allowed": false,
+    "generated_media_may_be_evidence": false,
+    "comment_panels_publishable": false,
+    "required_source_credit": "뉴시스 · 2026.07.16 · NISX20260716_0003712985",
+    "generated_visual_label": "사건 흐름 재구성 그래픽 · 실제 현장 화면 아님"
+  },
+  "slides": [
+    {
+      "slide_number": 1,
+      "slide_role": "cover_anger_hook",
+      "media_type": "editorial",
+      "headline": "왜 경찰도 못 잡나 했더니",
+      "body": "원주 아파트의 ‘동네 폭군’ 사건",
+      "source_credit": "뉴시스 · 2026.07.16",
+      "evidence_status": "supported_by_shallow_headline_and_summary",
+      "rights_status": "editorial_text_only_source_thumbnail_blocked",
+      "asset_status": "editorial_background_required",
+      "production_notes": "50대 여성의 얼굴·신원·현장 사진을 추정하거나 생성하지 않는다."
+    },
+    {
+      "slide_number": 2,
+      "slide_role": "conflict_origin",
+      "media_type": "editorial",
+      "headline": "시작은 층간소음 갈등",
+      "body": "뉴시스 목록 요약에 따르면 원주의 한 아파트에서 이웃 간 다툼이 시작됐다.",
+      "source_credit": "뉴시스 목록 요약",
+      "evidence_status": "supported_by_shallow_summary",
+      "rights_status": "paraphrased_attributed_editorial_text",
+      "asset_status": "abstract_apartment_editorial_required",
+      "production_notes": "특정 아파트 외관이나 실제 세대 위치를 재현하지 않는다."
+    },
+    {
+      "slide_number": 3,
+      "slide_role": "escalation",
+      "media_type": "motion_graphic",
+      "headline": "다툼은 폭행과 협박으로 번졌다",
+      "body": "보도 요약은 갈등이 상습 폭행과 협박으로 확대됐다고 전한다.",
+      "source_credit": "뉴시스 목록 요약",
+      "evidence_status": "supported_by_shallow_summary",
+      "rights_status": "generated_abstract_graphic_only_not_evidence",
+      "asset_status": "motion_design_required",
+      "production_notes": "점층적으로 커지는 텍스트와 경고색만 사용한다. ‘실제 현장 화면 아님’ 라벨 필수."
+    },
+    {
+      "slide_number": 4,
+      "slide_role": "resident_claim",
+      "media_type": "editorial",
+      "headline": "주민들은 왜 더 분노했나",
+      "body": "피해 주민들은 경찰의 미온적 대응 때문에 피해가 커졌다고 주장했다.",
+      "source_credit": "뉴시스 목록 요약 · 피해 주민 주장",
+      "evidence_status": "attributed_claim_not_independently_verified",
+      "rights_status": "paraphrased_attributed_editorial_text",
+      "asset_status": "claim_label_layout_required",
+      "production_notes": "경찰의 과실을 확정 사실로 쓰지 않고 ‘주민 주장’ 라벨을 본문과 같은 화면에 둔다."
+    },
+    {
+      "slide_number": 5,
+      "slide_role": "evidence_boundary",
+      "media_type": "editorial",
+      "headline": "현재 확인된 건 여기까지",
+      "body": "경찰 수사 착수는 보도됐지만, 구체적 사건 횟수·경찰 공식 입장·혐의 확정 여부는 이 목록 자료만으로 확인할 수 없다.",
+      "source_credit": "뉴시스 단일 목록 자료",
+      "evidence_status": "mixed_supported_and_explicit_gaps",
+      "rights_status": "editorial_text_only",
+      "asset_status": "evidence_checklist_layout_required",
+      "production_notes": "‘확인됨’과 ‘추가 확인 필요’를 두 구역으로 분리한다."
+    },
+    {
+      "slide_number": 6,
+      "slide_role": "real_comment_panel_primary_reserved",
+      "media_type": "screenshot",
+      "headline": "실제 반응 패널 A",
+      "body": "실제 공개 댓글 원문과 사용 권리를 확보하기 전에는 비워 둔다.",
+      "source_credit": null,
+      "evidence_status": "blocked_no_real_comment_data",
+      "rights_status": "blocked_pending_comment_rights_and_pii_review",
+      "asset_status": "blocked",
+      "production_notes": "댓글 생성 금지. 확보 시 계정명 마스킹, PII 제거, 의견 라벨, 원문 링크와 수집 시각이 필요하다."
+    },
+    {
+      "slide_number": 7,
+      "slide_role": "real_comment_panel_counterview_reserved",
+      "media_type": "screenshot",
+      "headline": "실제 반대·보완 반응 패널 B",
+      "body": "반대 또는 보완 관점의 실제 댓글이 없으면 이 패널은 제작하지 않는다.",
+      "source_credit": null,
+      "evidence_status": "blocked_no_real_comment_data",
+      "rights_status": "blocked_pending_comment_rights_and_pii_review",
+      "asset_status": "blocked",
+      "production_notes": "균형을 꾸미기 위한 가상 댓글이나 합성 캡처를 만들지 않는다. 실제 자료 미확보 시 슬라이드 삭제 후 총 7장으로 재승인한다."
+    },
+    {
+      "slide_number": 8,
+      "slide_role": "direct_low_friction_cta",
+      "media_type": "editorial",
+      "headline": "경찰 대응, 충분했어? 아니었어?",
+      "body": "둘 중 하나만 댓글로 남겨줘.",
+      "source_credit": "사건 근거: 뉴시스 · 2026.07.16",
+      "evidence_status": "audience_prompt_not_factual_claim",
+      "rights_status": "original_editorial_copy",
+      "asset_status": "cta_layout_required",
+      "production_notes": "저장·공유 강요 없이 한 문장 CTA로 끝낸다."
+    }
+  ],
+  "unresolved_gaps": [
+    {
+      "gap": "single_source_only",
+      "impact": "사건 내용과 피해 주민 주장을 다른 출처로 교차 확인하지 못했다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "truncated_shallow_summary",
+      "impact": "목록 요약 마지막 문장이 중간에서 끊겨 이후 세부 내용을 사용할 수 없다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "exact_incident_timeline_unknown",
+      "impact": "폭행·협박의 횟수, 날짜, 구체적 순서를 카드에 쓸 수 없다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "police_official_response_unknown",
+      "impact": "경찰 대응에 대한 공식 설명이나 반론이 없어 주민 주장과 구분해야 한다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "legal_status_unknown",
+      "impact": "입건·혐의·처분 상태를 확정적으로 표현할 수 없다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "real_comments_unavailable",
+      "impact": "슬라이드 6~7은 실제 댓글과 권리·PII 검토가 완료될 때까지 제작 및 게시할 수 없다.",
+      "required_before_publish": true
+    },
+    {
+      "gap": "visual_rights_unverified",
+      "impact": "영수증의 썸네일을 사용할 수 없으며 실제 현장 사진·영상도 확보되지 않았다.",
+      "required_before_publish": true
+    }
+  ],
+  "invented_data": {
+    "facts": false,
+    "comments": false,
+    "screenshots": false,
+    "source_footage": false,
+    "identity_details": false
+  }
+}

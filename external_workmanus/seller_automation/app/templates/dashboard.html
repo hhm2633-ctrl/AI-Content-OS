@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>대시보드 · 셀러 자동화</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h1>대시보드</h1>
+      <div class="row-inline">
+        <a class="btn btn-gray btn-sm" href="/products">상품 목록</a>
+        <a class="btn btn-gray btn-sm" href="/settings">설정</a>
+        <a class="btn btn-gray btn-sm" href="/logout">로그아웃</a>
+      </div>
+    </div>
+    <p class="sub">국내 도매 위탁상품 수집 → 가공 → 마켓 등록 자동화</p>
+
+    <!-- 통계 -->
+    <div class="card">
+      <h2 style="margin-top:0">수집 현황</h2>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">{{ stats.total }}</div><div class="stat-label">전체 상품</div></div>
+        {% for key, label in site_labels.items() %}
+        <div class="stat"><div class="stat-num">{{ stats.by_site.get(key, 0) }}</div><div class="stat-label">{{ label }}</div></div>
+        {% endfor %}
+        <div class="stat"><div class="stat-num">{{ stats.listed }}</div><div class="stat-label">등록 완료</div></div>
+        <div class="stat"><div class="stat-num">{{ stats.dryrun }}</div><div class="stat-label">dry-run</div></div>
+      </div>
+    </div>
+
+    <!-- 수집 실행 -->
+    <div class="card" style="margin-top:20px">
+      <h2 style="margin-top:0">상품 수집 실행</h2>
+      <p class="muted">설정에 저장된 도매 계정으로 상품을 수집합니다. 수집 후 <a href="/products">상품 목록</a>에서 확인하세요.</p>
+      <div class="row-inline" style="flex-wrap:wrap;gap:14px">
+        <label class="chk"><input type="checkbox" class="site-chk" value="luckyfresh" checked> 럭키프레시</label>
+        <label class="chk"><input type="checkbox" class="site-chk" value="econfarm" checked> 이컨팜</label>
+        <label class="chk"><input type="checkbox" class="site-chk" value="choigozip" checked> 최고집</label>
+        <label class="chk">최대 수집 개수(사이트당)
+          <input type="number" id="maxItems" value="50" min="1" style="width:90px;padding:6px 8px">
+        </label>
+        <button class="btn btn-green btn-sm" id="btnCollect" type="button">수집 시작</button>
+      </div>
+      <div id="jobPanel" class="job-panel" style="display:none">
+        <div class="progress"><div class="progress-bar" id="progBar" style="width:0%"></div></div>
+        <div class="mono" id="jobMsg" style="margin-top:8px"></div>
+        <pre class="job-log" id="jobLog"></pre>
+      </div>
+    </div>
+
+    <!-- 기기 관리 -->
+    <div class="card" style="margin-top:20px">
+      <h2 style="margin-top:0">접속 기기 관리</h2>
+      <p class="muted">승인된 기기만 로그인할 수 있습니다. 새 기기가 접속하면 아래 목록에 '대기' 상태로 나타납니다.</p>
+      <table>
+        <thead>
+          <tr><th>별칭</th><th>식별코드</th><th>최초 IP</th><th>상태</th><th>관리</th></tr>
+        </thead>
+        <tbody>
+          {% for d in devices %}
+          <tr>
+            <td>
+              <form method="post" action="/devices/{{ d.id }}/label" class="row-inline">
+                <input type="text" name="label" value="{{ d.label }}" placeholder="예: 내 노트북" style="width:130px;padding:6px 8px">
+                <button class="btn-sm btn-gray" type="submit">저장</button>
+              </form>
+            </td>
+            <td class="mono">
+              {{ d.device_token[:12] }}…
+              {% if d.device_token == current_token %}<span class="tag-me">현재 기기</span>{% endif %}
+            </td>
+            <td class="mono">{{ d.first_ip }}</td>
+            <td>
+              {% if d.approved %}<span class="badge ok">승인됨</span>
+              {% else %}<span class="badge wait">대기</span>{% endif %}
+            </td>
+            <td>
+              <div class="row-inline">
+              {% if d.approved %}
+                <form method="post" action="/devices/{{ d.id }}/block">
+                  <button class="btn-sm btn-red" type="submit">차단</button>
+                </form>
+              {% else %}
+                <form method="post" action="/devices/{{ d.id }}/approve">
+                  <button class="btn-sm btn-green" type="submit">승인</button>
+                </form>
+              {% endif %}
+                <form method="post" action="/devices/{{ d.id }}/delete"
+                      onsubmit="return confirm('이 기기를 삭제할까요?');">
+                  <button class="btn-sm btn-gray" type="submit">삭제</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 비밀번호 변경 -->
+    <div class="card" style="margin-top:20px">
+      <h2 style="margin-top:0">비밀번호 변경</h2>
+      <form method="post" action="/change-password" class="row-inline">
+        <input type="password" name="new_password" placeholder="새 비밀번호 (4자 이상)" style="max-width:260px">
+        <button class="btn-sm" type="submit">변경</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  const btn = document.getElementById('btnCollect');
+  const panel = document.getElementById('jobPanel');
+  const bar = document.getElementById('progBar');
+  const msg = document.getElementById('jobMsg');
+  const log = document.getElementById('jobLog');
+  let timer = null;
+
+  btn.addEventListener('click', async () => {
+    const sites = Array.from(document.querySelectorAll('.site-chk:checked')).map(c => c.value);
+    if (sites.length === 0) { alert('수집할 사이트를 선택하세요.'); return; }
+    const maxItems = parseInt(document.getElementById('maxItems').value) || null;
+    btn.disabled = true;
+    panel.style.display = 'block';
+    msg.textContent = '작업 시작 중...';
+    bar.style.width = '0%';
+    const r = await fetch('/api/collect', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({sites, max_items: maxItems}),
+    });
+    const data = await r.json();
+    if (data.error) { msg.textContent = '오류: ' + data.error; btn.disabled = false; return; }
+    poll(data.job_id);
+  });
+
+  function poll(jobId) {
+    if (timer) clearInterval(timer);
+    timer = setInterval(async () => {
+      const r = await fetch('/api/jobs/' + jobId);
+      const j = await r.json();
+      if (j.error) return;
+      bar.style.width = (j.progress || 0) + '%';
+      msg.textContent = j.message || '';
+      log.textContent = (j.logs || []).slice(-15).join('\n');
+      if (j.status === 'done' || j.status === 'error') {
+        clearInterval(timer);
+        btn.disabled = false;
+        if (j.status === 'done') setTimeout(() => location.reload(), 1500);
+      }
+    }, 1000);
+  }
+  </script>
+</body>
+</html>

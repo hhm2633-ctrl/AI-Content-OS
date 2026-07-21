@@ -1,0 +1,36 @@
+MoneyToday Collect Failed: sitemap / final_error_type=network_error
+MoneyToday Collect Failed: homepage_ranking / final_error_type=network_error
+MoneyToday Collect Failed: breakingnews / final_error_type=network_error
+MoneyToday Collect Started
+MoneyToday Collect Finished
+Naver News Collect Started
+Naver News Collect Failed: AI automation / final_error_type=connection_refused
+Naver News Collect Failed: content automation / final_error_type=connection_refused
+Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+Naver News Collect Failed: smart store / final_error_type=connection_refused
+Trend Collector Retry Scheduled: retry_count=1, final_error_type=connection_refused, delay_seconds=0.5
+Naver News Collect Failed: AI automation / final_error_type=connection_refused
+Naver News Collect Failed: content automation / final_error_type=connection_refused
+Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+Naver News Collect Failed: smart store / final_error_type=connection_refused
+Trend Collector Retry Scheduled: retry_count=2, final_error_type=connection_refused, delay_seconds=1.0
+Naver News Collect Failed: AI automation / final_error_type=connection_refused
+Naver News Collect Failed: content automation / final_error_type=connection_refused
+Naver News Collect Failed: Instagram monetization / final_error_type=connection_refused
+Naver News Collect Failed: smart store / final_error_type=connection_refused
+Naver News Settings Keyword Fallback Used
+Naver News Collect Finished
+MoneyToday Collect Started
+MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+Trend Collector Retry Scheduled: retry_count=1, final_error_type=connection_refused, delay_seconds=0.5
+MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+Trend Collector Retry Scheduled: retry_count=2, final_error_type=connection_refused, delay_seconds=1.0
+MoneyToday Collect Failed: sitemap / final_error_type=connection_refused
+MoneyToday Collect Failed: homepage_ranking / final_error_type=connection_refused
+MoneyToday Collect Failed: breakingnews / final_error_type=connection_refused
+MoneyToday Cache Fallback Used
+MoneyToday Collect Finished

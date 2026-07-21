@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-e1a3f4f5a7ce",
+  "candidate_id": "20260717-2003-C-e1a3f4f5a7ce",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·헤어",
+  "title": "날씨도 더운데 숏컷 어때요? 화사부터 유아까지, 숏컷 팸에 합류",
+  "source_urls": [
+    "https://www.allurekorea.com/2026/07/15/%eb%82%a0%ec%94%a8%eb%8f%84-%eb%8d%94%ec%9a%b4%eb%8d%b0-%ec%88%8f%ec%bb%b7-%ec%96%b4%eb%95%8c%ec%9a%94-%ed%99%94%ec%82%ac%eb%b6%80%ed%84%b0-%ec%9c%a0%ec%95%84%ea%b9%8c%ec%a7%80-%ec%88%8f%ec%bb%b7/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

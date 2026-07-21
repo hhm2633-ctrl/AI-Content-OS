@@ -1,0 +1,426 @@
+{
+  "schema_version": "source_bound_preupload_fragment_v1",
+  "date": "2026-07-19",
+  "account": "B",
+  "record_count": 4,
+  "render_ready_count": 4,
+  "blocked_count": 0,
+  "records": [
+    {
+      "candidate_id": "20260719-B-f7c153fdfe11",
+      "category": "연예·도파민",
+      "title": "왕복 6시간 갔는데, 같은 곡이 또 나왔다",
+      "production_status": "render_ready_with_reference_assets",
+      "evidence": {
+        "source_url": "https://pann.nate.com/talk/375524568",
+        "source_id": "nate_pann",
+        "source_scope": "공개 커뮤니티 원글 작성자의 공연 후기와 공개 댓글이며 공연 사실 전체를 독립 확인한 자료가 아님",
+        "raw_html_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-f7c153fdfe11/original_post.html",
+        "scene_facts_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-f7c153fdfe11/reconstruction_scene_facts.json",
+        "source_screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-f7c153fdfe11/original_post.png",
+        "rights_status": "reference_only_source_screenshot"
+      },
+      "real_comment_evidence": {
+        "captured_count": 10,
+        "identity_masked": true,
+        "selected": [
+          {
+            "text": "근데 미안한데 지금 시간이 적다고 까는게 아님ㅋㅋㅋㅋㅋㅋㅋ 환복 하나도 안하기 안무 다 날려먹기 ㅂ시간 40분동안 같은곡을 다섯반씩 반복하는게 장상이라고 생각함??",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-f7c153fdfe11/comment_005_masked.png",
+            "source_url": "https://pann.nate.com/talk/375524568",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          },
+          {
+            "text": "개꿀아니냐? 100분공연에 무대장치도 없고 vcr도 없고 옷도 안 갈아입고ㅋㅋㅋㅋ 춤도 70분은 안 추고 가수만 개꿀ㅋㅋㅋ",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-f7c153fdfe11/comment_010_masked.png",
+            "source_url": "https://pann.nate.com/talk/375524568",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          }
+        ]
+      },
+      "story": {
+        "summary": "원글 작성자는 공연을 보기 위해 왕복 6시간을 이동했지만 1시간 40분의 구성, 환복 없음, 커버곡 없음, 같은 곡 반복, 멀리 있는 좌석과의 교류 부족 때문에 실망했다고 적었다. 카드에서는 이를 공연의 확정 평가가 아니라 한 관객의 기대가 불만으로 바뀐 흐름과 실제 댓글 반응으로 다룬다.",
+        "emotional_arc": [
+          "긴 이동 끝의 기대",
+          "짧게 느껴진 공연 구성",
+          "반복되는 곡에서 생긴 당황",
+          "환복·커버곡 부재에 쌓인 불만",
+          "멀리 있는 좌석에서 느낀 소외감",
+          "실제 댓글이 더한 공감과 비판",
+          "다음 공연을 다시 갈지 망설임"
+        ]
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "emotion_hook",
+          "headline": "왕복 6시간 갔는데\n같은 곡이 또 나왔다",
+          "body": "기대하던 첫 콘서트가 끝난 뒤, 원글 작성자는 ‘뭐부터 말해야 할지 모르겠다’고 적었습니다.",
+          "media": "source screenshot의 제목·본문 일부를 읽을 수 있게 크롭하고 네이트판 출처 표시"
+        },
+        {
+          "page": 2,
+          "role": "expectation",
+          "headline": "멀리서 온 만큼\n기대도 컸습니다",
+          "body": "원글 작성자는 공연을 위해 왕복 6시간을 이동했다고 밝혔습니다.",
+          "media": "밝은 색상의 이동시간 타이포그래피; 사실 영상처럼 보이는 재연 금지"
+        },
+        {
+          "page": 3,
+          "role": "complaint_build",
+          "headline": "불만은 공연 길이보다\n구성에 쌓였습니다",
+          "body": "원글은 1시간 40분, 환복 없음, 커버곡 없음, 같은 곡 반복을 차례로 지적했습니다.",
+          "media": "원글 주장 4개를 짧은 체크 카드로 구성하고 ‘작성자 주장’ 라벨 유지"
+        },
+        {
+          "page": 4,
+          "role": "emotion_peak",
+          "headline": "‘멀리 있는 좌석은\n눈길도 못 받았다’",
+          "body": "노래뿐 아니라 관객과의 교류에서도 소외감을 느꼈다는 것이 원글의 핵심 감정이었습니다.",
+          "media": "밝은 공연장 좌석 추상 그래픽; 실제 공연 현장으로 오인될 생성 장면 금지"
+        },
+        {
+          "page": 5,
+          "role": "real_comment",
+          "headline": "댓글도 시간보다\n구성을 먼저 짚었습니다",
+          "body": "신원을 가린 실제 댓글입니다.",
+          "media": "comment_005_masked.png 원본 비율 유지, 확대만 허용"
+        },
+        {
+          "page": 6,
+          "role": "meaning",
+          "headline": "팬이 원한 건\n‘더 오래’만이 아니었습니다",
+          "body": "같은 시간이라도 무대·곡·의상·교류가 어떻게 채워졌는지가 만족을 갈랐다는 반응입니다.",
+          "media": "원글과 캡처 댓글에서 확인된 항목만 사용한 자체 편집 그래픽"
+        },
+        {
+          "page": 7,
+          "role": "live_cta",
+          "headline": "이 구성이면\n다음 공연도 갈 수 있어?",
+          "body": "공연 길이보다 더 중요하게 보는 한 가지는 무엇입니까?",
+          "media": "밝은 아이보리·라임 포인트 타이포그래피"
+        }
+      ],
+      "feed_caption": "왕복 6시간을 이동해 공연을 본 한 관객이 네이트판에 긴 불만을 남겼습니다. 원글 작성자는 공연이 1시간 40분이었고 환복과 커버곡이 없었으며 같은 곡이 여러 번 반복됐다고 주장했습니다. 멀리 있는 좌석과의 교류가 부족했다는 아쉬움도 적었습니다. 캡처한 실제 댓글에서도 단순히 시간이 짧다는 문제보다 곡·안무·의상 등 공연 구성이 기대에 못 미쳤다는 반응이 이어졌습니다. 이 내용은 공개 커뮤니티 후기와 댓글을 정리한 것이며 공연 전체에 대한 독립 확인이나 단정은 아닙니다.\n\n이 구성이면, 다음 공연도 갈 수 있어?\n\n출처: 네이트판 ‘코르티스 콘서트 병크 ㄹㅈㄷ찍음’ 원글·공개 댓글",
+      "blockers": []
+    },
+    {
+      "candidate_id": "20260719-B-76afd18b07cd",
+      "category": "연예·도파민",
+      "title": "노래 한 곡과 빨간 옷 한 장, 이게 럽스타일까",
+      "production_status": "render_ready_with_reference_assets",
+      "evidence": {
+        "source_url": "https://pann.nate.com/talk/375523851",
+        "source_id": "nate_pann",
+        "source_scope": "커뮤니티 원글이 두 Instagram 게시물을 연결한 주장만 확인; 두 인물의 관계나 의도는 확인되지 않음",
+        "raw_html_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-76afd18b07cd/original_post.html",
+        "scene_facts_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-76afd18b07cd/reconstruction_scene_facts.json",
+        "source_screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-76afd18b07cd/original_post.png",
+        "rights_status": "reference_only_source_screenshot"
+      },
+      "real_comment_evidence": {
+        "captured_count": 10,
+        "identity_masked": true,
+        "selected": [
+          {
+            "text": "ㅋㅋㅋ장난하나 걸인레드 모름? 해외에선 ㅈㄴ 유명한 퀴어밴드인데 그냥 외국인이 검정치마 오혁 이런류 노래 올리는거랑 비슷한거임",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-76afd18b07cd/comment_001_masked.png",
+            "source_url": "https://pann.nate.com/talk/375523851",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          },
+          {
+            "text": "병먹금~~!! 이딴글에 굳이 반응해주지말자 누가봐도 어그로",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-76afd18b07cd/comment_003_masked.png",
+            "source_url": "https://pann.nate.com/talk/375523851",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          }
+        ]
+      },
+      "story": {
+        "summary": "한 커뮤니티 글은 정국이 girl in red의 ‘Midnight Love’를 올린 뒤 약 3시간 후 윈터가 빨간 옷 사진을 올렸다며 두 게시물을 럽스타그램으로 연결했다. 그러나 캡처한 댓글은 유명한 음악을 공유했다는 이유만으로 관계를 연결할 수 없고 어그로에 반응하지 말자는 쪽으로 급격히 식었다. 카드는 열애 사실이 아니라 온라인에서 우연이 증거처럼 소비되는 과정을 보여준다.",
+        "emotional_arc": [
+          "같은 날이라는 발견",
+          "노래와 빨간 옷을 잇는 호기심",
+          "3시간 차이에 커진 의심",
+          "댓글이 제시한 다른 설명",
+          "어그로라는 반발",
+          "확인된 관계는 없다는 정리",
+          "우연을 서사로 만드는 온라인 반응"
+        ]
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "doubt_hook",
+          "headline": "노래 한 곡, 빨간 옷 한 장\n이게 럽스타라고?",
+          "body": "한 커뮤니티 글이 같은 날 올라온 두 게시물을 연결했습니다.",
+          "media": "source screenshot 제목·본문 일부 크롭; 실존 인물 사진을 별도 수집하거나 합성하지 않음"
+        },
+        {
+          "page": 2,
+          "role": "clue_one",
+          "headline": "원글이 잡은 첫 단서\n‘Midnight Love’",
+          "body": "원글은 정국이 해당 곡을 올렸다고 적었습니다. 이 카드가 게시물의 실제 의도를 확인한 것은 아닙니다.",
+          "media": "곡명 타이포그래피와 ‘원글 주장’ 라벨"
+        },
+        {
+          "page": 3,
+          "role": "clue_two",
+          "headline": "약 3시간 뒤\n빨간 옷 사진",
+          "body": "원글은 윈터의 게시 시점과 색을 두 번째 단서로 연결했습니다.",
+          "media": "3시간 간격을 보여주는 밝은 타임라인; 게시물 원본처럼 보이는 생성 캡처 금지"
+        },
+        {
+          "page": 4,
+          "role": "reaction_turn",
+          "headline": "그런데 댓글은\n바로 브레이크를 걸었습니다",
+          "body": "girl in red가 널리 알려진 음악이라는 실제 댓글 반응이 붙었습니다.",
+          "media": "comment_001_masked.png 원본 비율 유지"
+        },
+        {
+          "page": 5,
+          "role": "reaction_peak",
+          "headline": "‘어그로에 반응하지 말자’",
+          "body": "신원을 가린 또 다른 실제 댓글은 추측 자체를 거부했습니다.",
+          "media": "comment_003_masked.png 원본 비율 유지"
+        },
+        {
+          "page": 6,
+          "role": "boundary",
+          "headline": "겹친 건 두 게시물\n관계는 확인되지 않았습니다",
+          "body": "같은 날의 노래와 색만으로 두 사람의 의도나 관계를 단정할 수는 없습니다.",
+          "media": "두 점이 가까워도 선으로 자동 연결되지 않는 자체 편집 그래픽"
+        },
+        {
+          "page": 7,
+          "role": "live_cta",
+          "headline": "이 정도 단서로는\n아직 못 믿겠는데?",
+          "body": "온라인이 우연을 서사로 바꾸는 순간은 어디부터라고 봅니까?",
+          "media": "밝은 코랄·코발트 타이포그래피"
+        }
+      ],
+      "feed_caption": "한 네이트판 글이 같은 날 올라온 두 Instagram 게시물을 ‘럽스타그램’으로 연결했습니다. 원글은 정국이 girl in red의 ‘Midnight Love’를 올린 뒤 약 3시간 후 윈터가 빨간 옷 사진을 올렸다고 주장했습니다. 하지만 캡처된 실제 댓글에서는 해당 음악이 널리 알려져 있다는 설명과 함께, 근거가 약한 추측에 반응하지 말자는 반발이 나왔습니다. 확인된 것은 커뮤니티 원글과 댓글의 반응뿐이며 두 사람의 관계나 게시 의도는 확인되지 않았습니다.\n\n이 정도 단서로는 아직 못 믿겠는데?\n\n출처: 네이트판 ‘윈터랑 정국이 럽스타그램 했네’ 원글·공개 댓글",
+      "blockers": []
+    },
+    {
+      "candidate_id": "20260719-B-94dd09be74a6",
+      "category": "연애·관계",
+      "title": "신혼인데 남편이 나를 ‘전우’ 같다고 했다",
+      "production_status": "render_ready_with_reference_assets",
+      "evidence": {
+        "source_url": "https://pann.nate.com/talk/375523957",
+        "source_id": "nate_pann",
+        "source_scope": "익명 원글 작성자의 부부관계 고민과 공개 댓글이며 배우자 입장이나 의학적 원인은 확인되지 않음",
+        "raw_html_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-94dd09be74a6/original_post.html",
+        "scene_facts_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/nate_pann--20260719-B-94dd09be74a6/reconstruction_scene_facts.json",
+        "source_screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-94dd09be74a6/original_post.png",
+        "rights_status": "reference_only_source_screenshot"
+      },
+      "real_comment_evidence": {
+        "captured_count": 10,
+        "identity_masked": true,
+        "selected": [
+          {
+            "text": "60중반이었다가 86키로 된거면 20키로 찐거잖아...",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/nate_pann--20260719-B-94dd09be74a6/comment_001_masked.png",
+            "source_url": "https://pann.nate.com/talk/375523957",
+            "is_real_comment": true,
+            "rights_status": "reference_only",
+            "editorial_note": "포착 댓글 중 모욕 표현이 없는 짧은 사실 확인형 한 줄만 사용; 외모 비하 댓글은 결과물에서 제외"
+          }
+        ]
+      },
+      "story": {
+        "summary": "결혼 2년이 안 된 글쓴이는 남편과 일상적인 애정 표현과 친밀함은 여전하지만 부부관계의 간격만 길어져 혼란스럽다고 적었다. 용기 내 이유를 묻자 남편은 처음엔 아니라고 하다가 결국 ‘전우 같다’고 표현했고, 글쓴이는 체중 변화가 원인인지 스스로를 의심했다. 카드는 몸을 품평하지 않고 애정과 욕망 사이에서 설명을 듣지 못한 혼란, 상처가 된 한 단어, 다시 대화해야 할 지점을 따라간다.",
+        "emotional_arc": [
+          "신혼의 가까운 일상",
+          "부부관계 간격이 길어지며 생긴 불안",
+          "혼자 외모를 원인으로 의심함",
+          "직접 이유를 묻는 용기",
+          "‘전우 같다’는 말의 충격",
+          "댓글이 체중에만 몰리는 2차 상처",
+          "원인 단정 대신 대화가 필요하다는 결론",
+          "관계를 지킬 다음 질문"
+        ]
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "emotion_hook",
+          "headline": "신혼인데 남편이 날\n‘전우’ 같다고 했습니다",
+          "body": "다정함은 그대로인데, 부부관계만 달라졌다는 익명 사연입니다.",
+          "media": "원문 제목·핵심 문장 source screenshot 크롭, 신원 비노출"
+        },
+        {
+          "page": 2,
+          "role": "warm_setup",
+          "headline": "평소에는 여전히\n가장 가까운 사람",
+          "body": "글쓴이는 포옹과 뽀뽀, 일상의 표현이 많고 늘 함께 지낸다고 적었습니다.",
+          "media": "밝은 생활 공간의 비식별 2D 재구성 계획; 실제 부부 사진처럼 표시 금지"
+        },
+        {
+          "page": 3,
+          "role": "unease",
+          "headline": "그런데 한 가지만\n예전 같지 않았습니다",
+          "body": "몇 달 전부터 부부관계의 간격이 길어지자 혼자 이유를 찾기 시작했습니다.",
+          "media": "같은 공간에서 시선이 엇갈리는 밝은 톤 2D 장면 계획"
+        },
+        {
+          "page": 4,
+          "role": "self_doubt",
+          "headline": "혹시 살이 쪄서일까",
+          "body": "글쓴이는 체중 변화를 떠올리며 원인을 자기 외모에서 찾고 있었습니다.",
+          "media": "체중계 숫자를 자극적으로 확대하지 않고 거울 앞 망설임만 표현"
+        },
+        {
+          "page": 5,
+          "role": "emotion_peak",
+          "headline": "용기 내 물었더니\n‘전우 같다’는 말",
+          "body": "남편은 단어 선택을 잘못한 것 같다고 했지만, 글쓴이에게는 이미 상처가 됐습니다.",
+          "media": "두 인물 사이 거리가 느껴지는 2D 장면 계획; 표정은 충격과 미안함으로 구분"
+        },
+        {
+          "page": 6,
+          "role": "real_comment",
+          "headline": "댓글은 곧바로\n체중 변화에 꽂혔습니다",
+          "body": "모욕적인 외모 비하 댓글은 제외하고, 신원을 가린 실제 한 줄만 보여줍니다.",
+          "media": "comment_001_masked.png 원본 비율 유지"
+        },
+        {
+          "page": 7,
+          "role": "meaning",
+          "headline": "하지만 글쓴이가 원하는 건\n몸 평가가 아니었습니다",
+          "body": "다정함과 부부관계의 변화가 왜 함께 존재하는지, 배우자의 솔직한 설명을 듣고 싶은 혼란이었습니다.",
+          "media": "밝은 여백과 대화 말풍선의 간격으로 감정 전환 표현"
+        },
+        {
+          "page": 8,
+          "role": "live_cta",
+          "headline": "‘전우 같다’ 다음에\n무슨 말을 물어봐야 할까",
+          "body": "상처를 키우지 않으면서 다시 대화를 시작한다면, 첫 문장은 무엇이어야 합니까?",
+          "media": "따뜻한 아이보리·코랄 톤, 어두운 비극 연출 금지"
+        }
+      ],
+      "feed_caption": "결혼한 지 2년이 안 된 글쓴이는 남편과 일상적인 애정 표현은 여전하지만 부부관계의 간격만 길어졌다고 적었습니다. 혼자 체중 변화를 원인으로 의심하다가 용기 내 이유를 물었고, 남편에게서 ‘전우 같다’는 말을 들었습니다. 남편은 단어 선택을 잘못한 것 같다고 했지만 글쓴이에게는 이미 상처가 됐습니다. 실제 댓글은 체중 변화에 집중했지만, 이 사연에서 글쓴이가 묻는 건 단순한 몸 평가가 아니라 다정함과 욕망의 변화가 왜 함께 나타나는지였습니다. 배우자의 입장이나 의학적 원인은 확인되지 않은 익명 사연입니다.\n\n‘전우 같다’ 다음에, 무슨 말을 물어봐야 할까?\n\n출처: 네이트판 ‘신혼인데 남편한테 전우같다는 소리 들었어요’ 원글·공개 댓글",
+      "blockers": []
+    },
+    {
+      "candidate_id": "20260719-B-0d825da3befa",
+      "category": "현실썰",
+      "title": "미용실 다녀왔더니 우리 강아지가 달라졌다",
+      "production_status": "render_ready_with_reference_assets",
+      "evidence": {
+        "source_url": "https://www.fmkorea.com/best/10102144333",
+        "source_id": "fmkorea",
+        "source_scope": "공개 게시물의 8장 이미지 서사와 공개 댓글을 확인한 유머 콘텐츠이며 원저작 영상이나 당사자 사실을 독립 확인한 자료는 아님",
+        "source_screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/fmkorea--20260719-B-0d825da3befa/original_post.png",
+        "raw_html_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/fmkorea--20260719-B-0d825da3befa/original_post.html",
+        "scene_facts_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/raw_html/fmkorea--20260719-B-0d825da3befa/reconstruction_scene_facts.json",
+        "source_media_count": 8,
+        "observed_reaction": {
+          "views": 355172,
+          "recommendations": 1118,
+          "comments": 107,
+          "observation_status": "source_page_observed_2026-07-19"
+        },
+        "rights_status": "reference_only_source_screenshot"
+      },
+      "real_comment_evidence": {
+        "captured_count": 10,
+        "identity_masked": true,
+        "selected": [
+          {
+            "text": "리트리버 찹츄라고 불리는거 너무 귀여워 ㅋㅋㅋㅋㅋ",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/fmkorea--20260719-B-0d825da3befa/comment_003_masked.png",
+            "source_url": "https://www.fmkorea.com/best/10102144333",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          },
+          {
+            "text": "아니 낯선사람이 데려가면 저항을 하라고...",
+            "screenshot_path": "F:/AI-Content-OS-Data/source_intake/2026-07-19/deep_dive/screenshots/fmkorea--20260719-B-0d825da3befa/comment_010_masked.png",
+            "source_url": "https://www.fmkorea.com/best/10102144333",
+            "is_real_comment": true,
+            "rights_status": "reference_only"
+          }
+        ]
+      },
+      "story": {
+        "summary": "공개 게시물의 이미지 서사는 미국에 사는 줄리 부부가 반려견 에이미를 미용실에 맡긴 뒤, 집으로 데려온 골든리트리버가 전과 달리 예민해 보이는 장면으로 시작한다. 함께 살던 고양이까지 낯선 듯 경계하자 부부가 미용실을 다시 찾고, ‘성격이 변한 에이미’가 아니라 닮은 다른 리트리버를 데려왔다는 반전으로 이어진다. 실제 댓글은 낯선 사람을 따라간 리트리버의 순한 성격을 웃음 포인트로 받아들였다.",
+        "emotional_arc": [
+          "순둥한 에이미를 미용실에 맡김",
+          "돌아온 뒤 달라진 표정",
+          "부부가 사춘기나 예민함을 의심",
+          "함께 살던 고양이의 경계",
+          "미용실을 다시 찾아가는 긴장",
+          "닮은 다른 리트리버였다는 반전",
+          "낯선 사람도 따라간 순둥함에 터진 댓글"
+        ]
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "surprise_hook",
+          "headline": "미용실 다녀오더니\n우리 강아지가 달라졌다",
+          "body": "순둥했던 에이미가 갑자기 예민해 보이기 시작했습니다.",
+          "media": "original_post.png의 첫 강아지 장면을 읽을 수 있게 크롭하고 FMKorea 출처 표시"
+        },
+        {
+          "page": 2,
+          "role": "warm_setup",
+          "headline": "줄리 부부는 에이미를\n평소처럼 맡겼습니다",
+          "body": "미용을 마치고 데려온 골든리트리버도 겉보기에는 익숙한 얼굴이었습니다.",
+          "media": "게시물 첫 번째 이미지 패널 사용, 원문 자막 보존"
+        },
+        {
+          "page": 3,
+          "role": "unease",
+          "headline": "그런데 표정도, 반응도\n어딘가 달랐습니다",
+          "body": "부부는 미용 뒤 조금 예민해진 것이라고 생각했습니다.",
+          "media": "게시물의 미용 후 강아지 장면 크롭, 밝은 배경 유지"
+        },
+        {
+          "page": 4,
+          "role": "clue",
+          "headline": "먼저 이상함을 느낀 건\n집에 있던 고양이",
+          "body": "고양이가 낯선 강아지를 보듯 경계하자 부부도 다시 의심하기 시작했습니다.",
+          "media": "게시물의 고양이 장면과 짧은 원문 자막 사용"
+        },
+        {
+          "page": 5,
+          "role": "reveal",
+          "headline": "성격이 변한 게 아니라\n에이미가 아니었습니다",
+          "body": "게시물은 미용실에서 닮은 골든리트리버가 바뀌어 집에 왔다는 반전으로 이어집니다.",
+          "media": "source screenshot의 강아지 전후 장면을 나란히 배치; 새 동물 이미지를 생성하지 않음"
+        },
+        {
+          "page": 6,
+          "role": "real_comment",
+          "headline": "댓글이 더 웃은 건\n너무 순순히 따라온 것",
+          "body": "‘낯선 사람이 데려가면 저항을 하라고…’ 신원을 가린 실제 댓글입니다.",
+          "media": "comment_010_masked.png 원본 비율 유지"
+        },
+        {
+          "page": 7,
+          "role": "comic_close",
+          "headline": "주인보다 먼저 알아본 고양이\n아무나 따라간 리트리버",
+          "body": "이 반전, 몇 장에서 눈치챘습니까?",
+          "media": "comment_003_masked.png와 밝은 옐로·블루 타이포그래피"
+        }
+      ],
+      "feed_caption": "미국에 사는 줄리 부부는 반려견 에이미를 미용실에 맡겼습니다. 그런데 미용을 마치고 집에 온 에이미가 전보다 예민해 보였고, 함께 살던 고양이까지 낯선 강아지를 보듯 경계했습니다. 부부가 미용실을 다시 찾아간 뒤 드러난 반전은 성격이 변한 게 아니라, 닮은 다른 골든리트리버를 데려왔다는 것이었습니다. 실제 댓글은 ‘낯선 사람이 데려가면 저항을 하라고…’라며 너무 순순히 따라온 리트리버를 더 웃긴 포인트로 꼽았습니다. 이 카드는 FMKorea에 공개된 이미지 서사와 댓글을 재구성한 것입니다.\n\n주인보다 먼저 알아본 고양이, 아무나 따라간 리트리버. 너는 몇 장에서 눈치챘어?\n\n출처: FMKorea ‘미용실 다녀온 후 예민해진 찹츄’ 게시물·공개 댓글",
+      "blockers": []
+    }
+  ],
+  "account_level_notes": [
+    "세 Nate Pann 후보와 한 FMKorea 후보 모두 원문 전체 화면과 신원을 가린 실제 댓글 캡처 10개씩 확인됨",
+    "댓글 패널은 실제 캡처가 있는 경우만 사용하며 모욕·외모 비하가 강한 댓글은 선택하지 않음",
+    "연예 추측 후보는 관계를 단정하지 않고 커뮤니티 주장과 반박 댓글의 온도 차를 중심으로 구성",
+    "관계 썰의 2D 재구성은 실제 원문 장면만 사용하고 전체 화면을 과도하게 어둡게 만들지 않음",
+    "FMKorea 유머 후보는 확보된 원문 이미지 서사와 실제 댓글만 사용하고 새로운 동물 장면을 생성하지 않음"
+  ]
+}

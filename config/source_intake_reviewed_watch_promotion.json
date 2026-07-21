@@ -1,0 +1,27 @@
+{
+  "schema_version": "source_intake_reviewed_watch_promotion_config_v1",
+  "eligible_review_state": "approved",
+  "eligible_reviewed_stage2_label": "GO",
+  "required_original_stage2_status": "ok",
+  "required_original_stage2_decision": "WATCH",
+  "strong_fact_check_categories": [
+    "major_news_policy",
+    "incident_conflict"
+  ],
+  "source_attribution_only_categories": [
+    "economy_market",
+    "entertainment_relationship",
+    "community_buzz",
+    "beauty_fashion",
+    "lifestyle_knowledge"
+  ],
+  "require_human_reviewer": true,
+  "require_timezone_aware_reviewed_at": true,
+  "require_empty_hard_and_soft_risks": true,
+  "require_valid_common_minimum": true,
+  "notes": [
+    "Human approval is evaluated by this separate gate and never mutates the source Stage-2 WATCH record.",
+    "Strong categories still require completed strong fact-check evidence and explicit risk clearance.",
+    "Every promoted candidate remains production_ready=false and publishing_ready=false."
+  ]
+}

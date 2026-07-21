@@ -1,0 +1,113 @@
+{
+  "contract_name": "hankyung_economy_fixture_contract",
+  "version": "1.0.0",
+  "source_id": "hankyung_economy",
+  "publisher": "hankyung",
+  "recon_reference": "HANKYUNG_ECONOMY_RECON.md",
+  "recon_date": "2026-07-15",
+  "endpoints": {
+    "latest": "https://www.hankyung.com/all-news",
+    "ranking": "https://www.hankyung.com/ranking",
+    "economy_section": "https://www.hankyung.com/economy",
+    "economy_subcategory_pattern": "https://www.hankyung.com/economy/{slug}",
+    "article_pattern": "https://www.hankyung.com/article/{article_id}",
+    "sitemap_latest": "https://www.hankyung.com/sitemap/latest-article.xml"
+  },
+  "robots_prohibited_paths": ["/api/", "/ext-api/", "/app-data/", "/tag/", "/print/", "/article/download/"],
+  "access_policy": {
+    "max_requests_per_run": 3,
+    "min_delay_seconds_between_requests": 3,
+    "user_agent_required": true,
+    "cloudflare_challenge_markers": ["window._cf_chl_opt", "Just a moment"],
+    "on_challenge": "abort_live_collect_and_use_cache_fallback",
+    "paid_sections_forbidden": ["PRO", "premium"]
+  },
+  "selectors": {
+    "economy_list": {
+      "item": "div.news-list-wrap ul.news-list > li div.news-item",
+      "title": "h2.news-tit > a",
+      "url": "h2.news-tit > a@href",
+      "published_at": "p.txt-date",
+      "category_label": "span.depth3 > a",
+      "category_url": "span.depth3 > a@href",
+      "thumbnail": "figure.thumb img@src"
+    },
+    "all_news_list": {
+      "item": "ul.allnews-list > li[data-aid]",
+      "article_id": "@data-aid",
+      "title": "h2.news-tit > a",
+      "url": "h2.news-tit > a@href",
+      "published_at": "p.txt-date",
+      "thumbnail": "div.thumb img@src"
+    },
+    "ranking_list": {
+      "item": "ul.ranking-news-list > li",
+      "rank": "em.rank.txt-num",
+      "title": "div.news-item h2.news-tit > a",
+      "url": "div.news-item h2.news-tit > a@href",
+      "published_at": "p.txt-date"
+    }
+  },
+  "normalized_item_schema": {
+    "type": "object",
+    "required": ["source", "article_id", "title", "url", "published_at", "collected_at"],
+    "properties": {
+      "source": { "type": "string", "const": "hankyung_economy" },
+      "article_id": { "type": "string", "pattern": "^[0-9]{12,13}[A-Za-z]?$", "description": "From data-aid or trailing path segment of /article/{id}" },
+      "title": { "type": "string", "minLength": 1, "description": "Visible headline text, HTML-entity-decoded, whitespace-collapsed" },
+      "url": { "type": "string", "pattern": "^https://www\\.hankyung\\.com/article/", "description": "Absolute canonical article URL" },
+      "category": { "type": ["string", "null"], "description": "Sub-category label (e.g. 경제정책); null on all-news/ranking lists" },
+      "category_slug": { "type": ["string", "null"], "description": "e.g. economic-policy, from /economy/{slug} link" },
+      "rank": { "type": ["integer", "null"], "minimum": 1, "description": "Only for ranking-list items" },
+      "publisher": { "type": "string", "const": "hankyung" },
+      "published_at": { "type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}\\.[0-9]{2} [0-9]{2}:[0-9]{2}$", "description": "Raw site format YYYY.MM.DD HH:mm, KST" },
+      "published_at_iso": { "type": "string", "format": "date-time", "description": "Normalized ISO-8601 with +09:00 offset" },
+      "thumbnail_url": { "type": ["string", "null"], "pattern": "^https://img\\.hankyung\\.com/" },
+      "collected_at": { "type": "string", "format": "date-time" },
+      "fallback_used": { "type": "boolean", "default": false }
+    }
+  },
+  "sanitization_rules": {
+    "description": "Committed fixtures must not carry real editorial content.",
+    "rules": [
+      "Replace real headlines with synthetic Korean same-length placeholders (e.g. '테스트 경제 기사 제목 NN').",
+      "Replace article_id digits with synthetic ids keeping the ^[0-9]{12,13}[A-Za-z]?$ shape.",
+      "Rewrite urls to match the synthetic article_id.",
+      "Replace thumbnail urls with 'https://img.hankyung.com/photo/000000/XX.00000000.3.jpg' shape placeholders.",
+      "Keep published_at format and plausible ordering; shift real timestamps by a random offset.",
+      "Never include article body text, reporter names, or paid-section URLs in fixtures."
+    ]
+  },
+  "sample_sanitized_fixture": [
+    {
+      "source": "hankyung_economy",
+      "article_id": "2026071500001",
+      "title": "테스트 경제 기사 제목 1",
+      "url": "https://www.hankyung.com/article/2026071500001",
+      "category": "경제정책",
+      "category_slug": "economic-policy",
+      "rank": null,
+      "publisher": "hankyung",
+      "published_at": "2026.07.15 08:00",
+      "published_at_iso": "2026-07-15T08:00:00+09:00",
+      "thumbnail_url": "https://img.hankyung.com/photo/000000/XX.00000000.3.jpg",
+      "collected_at": "2026-07-15T10:30:00+09:00",
+      "fallback_used": false
+    },
+    {
+      "source": "hankyung_economy",
+      "article_id": "202607150000a",
+      "title": "테스트 랭킹 기사 제목 2",
+      "url": "https://www.hankyung.com/article/202607150000a",
+      "category": null,
+      "category_slug": null,
+      "rank": 1,
+      "publisher": "hankyung",
+      "published_at": "2026.07.14 14:00",
+      "published_at_iso": "2026-07-14T14:00:00+09:00",
+      "thumbnail_url": "https://img.hankyung.com/photo/000000/XX.00000000.3.jpg",
+      "collected_at": "2026-07-15T10:30:00+09:00",
+      "fallback_used": false
+    }
+  ]
+}

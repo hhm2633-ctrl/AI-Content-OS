@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-9e5eff5df269",
+  "candidate_id": "20260717-2003-A-9e5eff5df269",
+  "grade": "1",
+  "account": "A",
+  "category": "국내외 뉴스",
+  "title": "'김천 91㎜ 폭우' 구미·김천 북부 호우경보…대구·경북 일부 호우특보",
+  "source_urls": [
+    "https://www.news1.kr/local/daegu-gyeongbuk/6231424"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,20 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-1257fdf5c746",
+  "candidate_id": "20260717-2003-A-1257fdf5c746",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?",
+  "source_urls": [
+    "https://www.hankyung.com/article/202607170841i"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-4f6fe8168b4b",
+  "candidate_id": "20260717-2003-C-4f6fe8168b4b",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "[리뷰] 프라다 2027 S/S 남성복 컬렉션 이탈리아 럭셔리 브랜드 프라다가 '클래리티(Clarity.명료함)'를 주제로 절제된 미학의 신개념 미니멀리즘 2027 S/S 남성복 컬렉션을 선보였다.",
+  "source_urls": [
+    "https://www.fashionn.com/board/read_new.php?table=1028&number=61428&page=1&sel=&search=&sel_cat="
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

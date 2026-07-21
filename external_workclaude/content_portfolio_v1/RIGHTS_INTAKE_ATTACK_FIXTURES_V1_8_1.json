@@ -1,0 +1,357 @@
+{
+  "version": "v1.8.1",
+  "generated_at_utc": "2026-07-13T07:27:01.139235Z",
+  "base_set_id": "91a28c88912849b58fa608330a217467",
+  "source_contract": "RIGHTS_INTAKE_CONTRACT_V1_8.json",
+  "fixtures": {
+    "normal": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "operator_capture",
+        "role": "content_operator",
+        "rights_status": "PENDING_VERIFICATION",
+        "rights_evidence": {
+          "evidence_id": "evidence-CN-013-1",
+          "evidence_type": "self_produced_content_log",
+          "proof_locator": "local_file:storage/evidence/CN-013/card_1_notes.md"
+        },
+        "source_url": "storage/evidence/91a28c88912849b58fa608330a217467/CN-013/card_1_notes.md",
+        "reference_verified": false,
+        "topic_relevance": "required_for_publish_scope",
+        "authenticity_status": "PENDING_REVIEW",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "missing_fields": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "rights_evidence": null,
+        "reference_verified": false,
+        "operator_checklist": {
+          "source_opened": null,
+          "rights_reviewed": null,
+          "claims_reviewed": null,
+          "attribution_reviewed": null,
+          "final_asset_reviewed": null
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "forged_approval": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "trusted_partner",
+        "role": "published_asset",
+        "rights_status": "publishable_asset",
+        "rights_evidence": {
+          "evidence_id": "PLACEHOLDER_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": ""
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": true,
+        "topic_relevance": true,
+        "authenticity_status": "VERIFIED",
+        "operator_checklist": {
+          "source_opened": true,
+          "rights_reviewed": true,
+          "claims_reviewed": true,
+          "attribution_reviewed": true,
+          "final_asset_reviewed": true
+        },
+        "commercial_relationship_reviewed": true,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "absolute_path": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\storage\\output_sets\\card_news\\sets\\91a28c88912849b58fa608330a217467\\cards\\card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "runs_path": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": ".runs/C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\storage\\output_sets\\card_news\\sets\\91a28c88912849b58fa608330a217467\\cards\\card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "staging_path": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": ".staging/C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\storage\\output_sets\\card_news\\sets\\91a28c88912849b58fa608330a217467\\cards\\card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "output_set_id_mismatch": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "0badbeef000000000000000000000000",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "publish_flags_manipulated": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": true,
+        "actual_publish": true
+      }
+    ],
+    "publish_ready_type_confusion": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": "true",
+        "actual_publish": "false"
+      }
+    ],
+    "rights_output_set_whitespace": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": {
+          "evidence_id": "REQUIRED_RIGHTS_EVIDENCE_ID",
+          "evidence_type": "REQUIRED_EVIDENCE_TYPE",
+          "proof_locator": "REQUIRED_PROOF_LOCATOR"
+        },
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": " 91a28c88912849b58fa608330a217467 ",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ],
+    "rights_evidence_shape_spoof": [
+      {
+        "record_id": "CN-013:1",
+        "content_id": "CN-013",
+        "working_title": "반려동물 첫 입양 준비물",
+        "content_type": "cardnews",
+        "card_index": 1,
+        "origin": "REQUIRED_ORIGIN_INPUT",
+        "role": "REQUIRED_ROLE_INPUT",
+        "rights_status": "RIGHTS_REVIEW_REQUIRED",
+        "rights_evidence": "REDACTED_JSON_PAYLOAD",
+        "source_url": "REQUIRED_SOURCE_URL",
+        "reference_verified": false,
+        "topic_relevance": "REQUIRED_TOPIC_RELEVANCE",
+        "authenticity_status": "REQUIRED_AUTHENTICITY_STATUS",
+        "operator_checklist": {
+          "source_opened": false,
+          "rights_reviewed": false,
+          "claims_reviewed": false,
+          "attribution_reviewed": false,
+          "final_asset_reviewed": false
+        },
+        "commercial_relationship_reviewed": false,
+        "output_set_id": "91a28c88912849b58fa608330a217467",
+        "card_path": "storage/output_sets/card_news/sets/91a28c88912849b58fa608330a217467/cards/card_news_1.png",
+        "publish_ready": false,
+        "actual_publish": false
+      }
+    ]
+  }
+}

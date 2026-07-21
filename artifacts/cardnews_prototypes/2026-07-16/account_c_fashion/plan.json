@@ -1,0 +1,118 @@
+{
+  "schema_version": "cardnews_prototype_plan_v1",
+  "prototype_status": "local_review_only",
+  "account_id": "account_c_beauty_fashion",
+  "category": "fashion",
+  "topic_id": "fashionn:61428",
+  "title": "프라다 2027 S/S 남성복 컬렉션",
+  "editorial_angle": "불필요한 것을 지운 날렵한 미니멀리즘을 이미지 중심으로 해석",
+  "source": {
+    "publisher": "패션엔",
+    "url": "https://www.fashionn.com/board/read_new.php?table=1028&number=61428&sel_cat=",
+    "published_at": "2026-06-22",
+    "rights_status": "reference_only_unverified",
+    "publish_gate": "official_press_or_licensed_assets_required"
+  },
+  "visual_contract": {
+    "image_ratio_target": 0.88,
+    "copy_style": "one_short_line_per_slide",
+    "generated_media_label": "AI 재구성 이미지",
+    "brand_truth_guard": "generated looks must not be described as Prada products or runway footage"
+  },
+  "slides": [
+    {
+      "page": 1,
+      "slide_role": "cover",
+      "media_type": "image",
+      "headline": "프라다가\n다 지웠다",
+      "body": "2027 S/S · CLARITY",
+      "scene": "날렵한 직선 실루엣의 런웨이 전신 이미지, 넓은 여백",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "2027 S/S 컬렉션 요소 참고 · AI 재구성",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 2,
+      "slide_role": "visual_thesis",
+      "media_type": "image",
+      "headline": "이번 시즌은\n명료함",
+      "body": "과장 대신 선택",
+      "scene": "화이트 배경, 직선 재킷 실루엣 하나만 크게",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "패션엔 컬렉션 리뷰 참고",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 3,
+      "slide_role": "silhouette_detail",
+      "media_type": "image",
+      "headline": "재킷은 짧고\n선은 더 날렵하게",
+      "body": "SLIM + CROPPED",
+      "scene": "크롭 재킷과 슬림 팬츠의 옆선 클로즈업",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "패션엔 컬렉션 리뷰 참고",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 4,
+      "slide_role": "material_detail",
+      "media_type": "image",
+      "headline": "익숙한 소재를\n낯선 형태로",
+      "body": "가죽 · 데님 · 오간자",
+      "scene": "세 가지 소재 질감의 패션 에디토리얼 삼분할",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "패션엔 컬렉션 리뷰 참고",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 5,
+      "slide_role": "seasonal_relevance",
+      "media_type": "image",
+      "headline": "폭염엔\n시어 슈트",
+      "body": "가볍고 투명한 레이어",
+      "scene": "반투명 화이트 셔츠 재킷의 밝은 여름 룩",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "패션엔 컬렉션 리뷰 참고 · AI 재구성",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 6,
+      "slide_role": "save_summary",
+      "media_type": "editorial",
+      "headline": "눈여겨볼\n3가지",
+      "body": "크롭 재킷 / 플랫 포켓 / 민소매 V넥",
+      "scene": "세 가지 디테일을 큰 이미지 조각으로 나눈 저장용 요약",
+      "asset_status": "prototype_graphic_available",
+      "source_credit": "패션엔 컬렉션 리뷰 요약",
+      "rights_status": "editorial_summary"
+    },
+    {
+      "page": 7,
+      "slide_role": "wearable_translation",
+      "media_type": "image",
+      "headline": "현실에선\n이렇게 입는다",
+      "body": "짧은 재킷 + 슬림 팬츠 + 얇은 이너",
+      "scene": "브랜드 로고 없는 현실적인 도심 여름 착장",
+      "asset_status": "generated_reconstruction_needed",
+      "source_credit": "컬렉션 요소 참고 · AI 재구성 이미지",
+      "rights_status": "generated_label_required"
+    },
+    {
+      "page": 8,
+      "slide_role": "debate_cta",
+      "media_type": "editorial",
+      "headline": "이 미니멀리즘\n입을 수 있다?",
+      "body": "가능 vs 런웨이에서만",
+      "scene": "두 개의 선택 영역과 짧은 댓글 유도",
+      "asset_status": "prototype_graphic_available",
+      "source_credit": "리뷰 시안 · 게시 전 권리 확인 필요",
+      "rights_status": "local_review_only"
+    }
+  ],
+  "known_limitations": [
+    "official or licensed runway images are not present in the shallow receipt",
+    "generated photoreal assets are not yet attached",
+    "brand-photo attribution alone does not clear reuse rights",
+    "this prototype must not be published"
+  ]
+}

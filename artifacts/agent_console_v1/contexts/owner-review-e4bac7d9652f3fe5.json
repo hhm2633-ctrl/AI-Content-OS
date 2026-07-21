@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-a96353d3db9b",
+  "candidate_id": "20260717-2003-A-a96353d3db9b",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·이슈",
+  "title": "\"버스가 운전기사 자가용인가?\"…서울 시내버스 '라디오 금지' 조례 요구...",
+  "source_urls": [
+    "https://www.ngonews.kr/news/articleView.html?idxno=233184"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

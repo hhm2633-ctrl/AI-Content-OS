@@ -1,0 +1,560 @@
+- generic [active] [ref=f6e1]:
+  - generic:
+    - link "본문 바로가기" [ref=f6e2] [cursor=pointer]:
+      - /url: "#mainContent"
+    - link "메뉴 바로가기" [ref=f6e3] [cursor=pointer]:
+      - /url: "#gnbContent"
+  - generic [ref=f6e5]:
+    - banner [ref=f6e6]:
+      - generic [ref=f6e8]:
+        - heading [level=1] [ref=f6e9]:
+          - link "Daum" [ref=f6e10] [cursor=pointer]:
+            - /url: https://daum.net
+          - link "뉴스" [ref=f6e21] [cursor=pointer]:
+            - /url: https://news.daum.net
+        - generic [ref=f6e25]:
+          - strong: 관련 서비스
+          - list [ref=f6e26]:
+            - listitem [ref=f6e27]:
+              - link "연예" [ref=f6e28] [cursor=pointer]:
+                - /url: https://entertain.daum.net
+            - listitem [ref=f6e29]:
+              - link "스포츠" [ref=f6e30] [cursor=pointer]:
+                - /url: https://sports.daum.net
+            - listitem [ref=f6e31]:
+              - link "날씨" [ref=f6e32] [cursor=pointer]:
+                - /url: https://weather.daum.net
+        - button "공유하기" [ref=f6e35] [cursor=pointer]
+      - generic [ref=f6e37]:
+        - navigation [ref=f6e38]:
+          - generic [ref=f6e39]:
+            - heading "메인메뉴" [level=2]
+            - menu [ref=f6e43]:
+              - menuitem "홈" [ref=f6e45] [cursor=pointer]
+              - menuitem "기후/환경" [ref=f6e48] [cursor=pointer]
+              - menuitem "사회" [ref=f6e51] [cursor=pointer]
+              - menuitem "경제" [ref=f6e54] [cursor=pointer]
+              - menuitem "정치" [ref=f6e57] [cursor=pointer]
+              - menuitem "국제" [ref=f6e60] [cursor=pointer]
+              - menuitem "문화" [ref=f6e63] [cursor=pointer]
+              - menuitem "생활" [ref=f6e66] [cursor=pointer]
+              - menuitem "IT/과학" [ref=f6e69] [cursor=pointer]
+              - menuitem "인물" [ref=f6e72] [cursor=pointer]
+              - menuitem "지식/칼럼" [ref=f6e75] [cursor=pointer]
+              - menuitem "연재" [ref=f6e78] [cursor=pointer]
+        - generic [ref=f6e81]:
+          - strong: 홈 하위메뉴
+          - menu [ref=f6e84]:
+            - menuitem "매거진" [ref=f6e86] [cursor=pointer]
+    - generic [ref=f6e88]:
+      - article [ref=f6e89]:
+        - generic [ref=f6e90]:
+          - generic [ref=f6e91]:
+            - strong [ref=f6e93]:
+              - generic [ref=f6e94]: 이 시각 주요뉴스
+            - list [ref=f6e95]:
+              - listitem [ref=f6e96]:
+                - link "동영상 [날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입 [앵커] 강한 비구름이 동쪽으로 빠져나가면서 비의 강도는 한층 약해졌습니다. 다만, 서해 상에서 새로운 비구름이 유입되고 있어 새벽까지는 곳곳에서 강한 비가 이어질 가능성이 있습니다. 취재기자 연결해 자세한 기상 현황과 전망 알아보겠습니다. 김민경 기자, 비가 많이 약해진 것 같은데, 현재 비바람 상황 자세히 전해주시죠. [기자] 네, 온대저기 YTN 26분 전" [ref=f6e97] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715035818381
+                  - generic [ref=f6e98]: 동영상
+                  - generic [ref=f6e100]:
+                    - strong [ref=f6e101]: "[날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입"
+                    - paragraph [ref=f6e102]: "[앵커] 강한 비구름이 동쪽으로 빠져나가면서 비의 강도는 한층 약해졌습니다. 다만, 서해 상에서 새로운 비구름이 유입되고 있어 새벽까지는 곳곳에서 강한 비가 이어질 가능성이 있습니다. 취재기자 연결해 자세한 기상 현황과 전망 알아보겠습니다. 김민경 기자, 비가 많이 약해진 것 같은데, 현재 비바람 상황 자세히 전해주시죠. [기자] 네, 온대저기"
+                    - generic [ref=f6e103]: YTN 26분 전
+              - listitem [ref=f6e105]:
+                - link "105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합) 뉴시스 1시간 전" [ref=f6e106] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715025954753
+                  - generic [ref=f6e109]:
+                    - strong [ref=f6e110]: 105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합)
+                    - generic [ref=f6e111]: 뉴시스 1시간 전
+              - listitem [ref=f6e113]:
+                - link "최임위 공익위원 \"도급제 적용 등 최저임금 제도 개선 권고\"(종합) 뉴시스 3시간 전" [ref=f6e114] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715012350437
+                  - generic [ref=f6e117]:
+                    - strong [ref=f6e118]: 최임위 공익위원 "도급제 적용 등 최저임금 제도 개선 권고"(종합)
+                    - generic [ref=f6e119]: 뉴시스 3시간 전
+              - listitem [ref=f6e121]:
+                - link "최저임금위원장 \"30원 차이였는데…표결 아쉬워\"(종합2보) 뉴시스 3시간 전" [ref=f6e122] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005651222
+                  - generic [ref=f6e125]:
+                    - strong [ref=f6e126]: 최저임금위원장 "30원 차이였는데…표결 아쉬워"(종합2보)
+                    - generic [ref=f6e127]: 뉴시스 3시간 전
+              - listitem [ref=f6e129]:
+                - link "이 대통령 \"英, 韓 성장 도운 고마운 나라\"…앤 공주 \"韓 조선 경이로운 수준\"(종합) 뉴시스 4시간 전" [ref=f6e130] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001148764
+                  - generic [ref=f6e133]:
+                    - strong [ref=f6e134]: 이 대통령 "英, 韓 성장 도운 고마운 나라"…앤 공주 "韓 조선 경이로운 수준"(종합)
+                    - generic [ref=f6e135]: 뉴시스 4시간 전
+              - listitem [ref=f6e137]:
+                - link "李대통령 \"英, 성장 도운 고마운 나라\"…앤 공주 \"英 방문 희망\"(종합) 뉴스1 5시간 전" [ref=f6e138] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714234327126
+                  - generic [ref=f6e141]:
+                    - strong [ref=f6e142]: 李대통령 "英, 성장 도운 고마운 나라"…앤 공주 "英 방문 희망"(종합)
+                    - generic [ref=f6e143]: 뉴스1 5시간 전
+              - listitem [ref=f6e145]:
+                - link "[단독] 법사위 '보완수사' 기관의견 청취...\"검찰 출석도 검토 중\" 아이뉴스24 5시간 전" [ref=f6e146] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714233907024
+                  - generic [ref=f6e149]:
+                    - strong [ref=f6e150]: "[단독] 법사위 '보완수사' 기관의견 청취...\"검찰 출석도 검토 중\""
+                    - generic [ref=f6e151]: 아이뉴스24 5시간 전
+              - listitem [ref=f6e153]:
+                - link "우크라 의회, 총리 사임안 가결…젤렌스키 내각 개편 본격화(종합) 뉴스1 5시간 전" [ref=f6e154] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714233240956
+                  - generic [ref=f6e157]:
+                    - strong [ref=f6e158]: 우크라 의회, 총리 사임안 가결…젤렌스키 내각 개편 본격화(종합)
+                    - generic [ref=f6e159]: 뉴스1 5시간 전
+              - listitem [ref=f6e161]:
+                - link "동영상 이 대통령, 내일부터 2차 업무보고...국민도 참관해 '검증' YTN 5시간 전" [ref=f6e162] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714230418685
+                  - generic [ref=f6e163]: 동영상
+                  - generic [ref=f6e166]:
+                    - strong [ref=f6e167]: 이 대통령, 내일부터 2차 업무보고...국민도 참관해 '검증'
+                    - generic [ref=f6e168]: YTN 5시간 전
+            - link "새로운 뉴스" [ref=f6e171] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e173]: 뉴스
+          - generic [ref=f6e175]:
+            - insertion
+          - generic [ref=f6e176]:
+            - strong [ref=f6e178]:
+              - generic [ref=f6e179]: 오늘의 연재
+            - generic [ref=f6e180]:
+              - tablist [ref=f6e181]:
+                - generic [ref=f6e182]:
+                  - tab "음식이야기" [selected] [ref=f6e183] [cursor=pointer]
+                  - tab "마주앉아 인터뷰" [ref=f6e184] [cursor=pointer]
+                  - tab "에세이" [ref=f6e185] [cursor=pointer]
+                  - tab "과학이야기" [ref=f6e186] [cursor=pointer]
+                  - tab "경제정책" [ref=f6e187] [cursor=pointer]
+                  - tab "함께, 동물" [ref=f6e188] [cursor=pointer]
+                  - tab "오비추어리" [ref=f6e189] [cursor=pointer]
+                  - tab "미디어" [ref=f6e190] [cursor=pointer]
+                  - tab "환경" [ref=f6e191] [cursor=pointer]
+                  - tab "여론조사" [ref=f6e192] [cursor=pointer]
+              - button "다음 탭" [ref=f6e194] [cursor=pointer]
+            - list [ref=f6e196]:
+              - listitem [ref=f6e197]:
+                - link "입맛 까다롭고 SNS 즐기는 한국, 세계 식음료 브랜드 격전지로 몇 년 사이 서울의 강남, 성수동, 명동 등을 중심으로 글로벌 외식 브랜드 매장이 줄줄이 문을 열었다. 중국 밀크티 브랜드 차지, 스페인 추로스 브랜드 츄레리아 산 로만, 미국 핫도그 브랜드 핑크스 핫도그와 멕시칸 음식 전문점 치폴레 등. 특히 최근 중국과 중화권 브랜드의 한국 진출 사례가 눈에 띈다. 훠궈로 유명한 하이디라오가 명동에 연 양꼬치 전문점 동아일보 4시간 전" [ref=f6e198] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003231968
+                  - generic [ref=f6e199]:
+                    - strong [ref=f6e200]: 입맛 까다롭고 SNS 즐기는 한국, 세계 식음료 브랜드 격전지로
+                    - paragraph [ref=f6e201]: 몇 년 사이 서울의 강남, 성수동, 명동 등을 중심으로 글로벌 외식 브랜드 매장이 줄줄이 문을 열었다. 중국 밀크티 브랜드 차지, 스페인 추로스 브랜드 츄레리아 산 로만, 미국 핫도그 브랜드 핑크스 핫도그와 멕시칸 음식 전문점 치폴레 등. 특히 최근 중국과 중화권 브랜드의 한국 진출 사례가 눈에 띈다. 훠궈로 유명한 하이디라오가 명동에 연 양꼬치 전문점
+                    - generic [ref=f6e202]: 동아일보 4시간 전
+              - listitem [ref=f6e204]:
+                - link "한국은 영계 통째로 끓인 삼계탕으로 보신… 美·中·아프리카도 닭국물로 지친 몸 달래[정주영이 만난 ‘세상의 식탁’] ‘닭 한 마리’는 번역하기 어려운 음식 이름이다. 복날을 앞두고 미국인 친구와 삼계탕집을 찾았다. 대기 줄이 너무 길어 아쉽지만 근처 닭집으로 향했다. “닭 한 마리”라고 큼지막하게 쓰인 간판을 친구가 번역 앱으로 찍으니 화면에 “One Chicken”이 뜬다. 생각지도 못한 ‘3인칭 외국인 시점’에서 나도 궁금해졌다. 프라이드치킨이나 로스트치킨처럼 조 문화일보 19시간 전" [ref=f6e205] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714091843130
+                  - generic [ref=f6e208]:
+                    - strong [ref=f6e209]: 한국은 영계 통째로 끓인 삼계탕으로 보신… 美·中·아프리카도 닭국물로 지친 몸 달래[정주영이 만난 ‘세상의 식탁’]
+                    - paragraph [ref=f6e210]: ‘닭 한 마리’는 번역하기 어려운 음식 이름이다. 복날을 앞두고 미국인 친구와 삼계탕집을 찾았다. 대기 줄이 너무 길어 아쉽지만 근처 닭집으로 향했다. “닭 한 마리”라고 큼지막하게 쓰인 간판을 친구가 번역 앱으로 찍으니 화면에 “One Chicken”이 뜬다. 생각지도 못한 ‘3인칭 외국인 시점’에서 나도 궁금해졌다. 프라이드치킨이나 로스트치킨처럼 조
+                    - generic [ref=f6e211]: 문화일보 19시간 전
+              - listitem [ref=f6e213]:
+                - link "한 해에 딱 한 달만 나오는 ‘비파’를 아시나요 ● 겨우내 꽃 피우고 봄 내내 영글어 초여름에 먹는 열매 ● 여러 과일 풍미 닮았지만 대체재 없는 독보적 매력 ● 열매 놓친 아쉬움은 사계절 마실 비파잎 차로 달래 전통시장, 대형마트, 동네 슈퍼 가릴 것 없이 수박이 잔뜩 쌓여 있는 광경을 봤다. 때는 5월. 그늘에 들어서면 산산하고, 한낮 햇살 아래 움직이면 땀이 얼핏 배어나는 시기였다. 빨리 저무는 봄 신동아 21시간 전" [ref=f6e214] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714070242816
+                  - generic [ref=f6e217]:
+                    - strong [ref=f6e218]: 한 해에 딱 한 달만 나오는 ‘비파’를 아시나요
+                    - paragraph [ref=f6e219]: ● 겨우내 꽃 피우고 봄 내내 영글어 초여름에 먹는 열매 ● 여러 과일 풍미 닮았지만 대체재 없는 독보적 매력 ● 열매 놓친 아쉬움은 사계절 마실 비파잎 차로 달래 전통시장, 대형마트, 동네 슈퍼 가릴 것 없이 수박이 잔뜩 쌓여 있는 광경을 봤다. 때는 5월. 그늘에 들어서면 산산하고, 한낮 햇살 아래 움직이면 땀이 얼핏 배어나는 시기였다. 빨리 저무는 봄
+                    - generic [ref=f6e220]: 신동아 21시간 전
+              - listitem [ref=f6e222]:
+                - link "[맛있는 이야기] 안심은 ‘담백’ 채끝은 ‘감칠맛’…노릇노릇 갈색 한점 ‘소고기’ 예전엔 동네마다 구멍가게가 하나씩 있었다. 아이들은 낮이고 밤이고 수시로 들락거리며 과자나 아이스크림을 사 먹었다. 자주 가다보면 가게 주인과도 자연스레 얼굴을 익혔다. 물건을 사고파는 곳이었지만, 동시에 동네의 작은 사랑방이기도 했다. 요즘엔 그런 장면을 보기 어렵다. 구멍가게 자리는 대부분 편의점으로 바뀌었다. 물건은 많아졌고 계산은 빨라졌지만 서로 농민신문 21시간 전" [ref=f6e223] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714070031721
+                  - generic [ref=f6e226]:
+                    - strong [ref=f6e227]: "[맛있는 이야기] 안심은 ‘담백’ 채끝은 ‘감칠맛’…노릇노릇 갈색 한점 ‘소고기’"
+                    - paragraph [ref=f6e228]: 예전엔 동네마다 구멍가게가 하나씩 있었다. 아이들은 낮이고 밤이고 수시로 들락거리며 과자나 아이스크림을 사 먹었다. 자주 가다보면 가게 주인과도 자연스레 얼굴을 익혔다. 물건을 사고파는 곳이었지만, 동시에 동네의 작은 사랑방이기도 했다. 요즘엔 그런 장면을 보기 어렵다. 구멍가게 자리는 대부분 편의점으로 바뀌었다. 물건은 많아졌고 계산은 빨라졌지만 서로
+                    - generic [ref=f6e229]: 농민신문 21시간 전
+              - listitem [ref=f6e231]:
+                - link "[K-VIBE] 최만순의 약이 되는 K-푸드…씀바귀, 빈 곳을 채우는 쓴맛 [※ 편집자 주 = 문화체육관광부 집계 기준 2025년 K-콘텐츠 수출액은 149억 달러로 역대 최고를 기록했습니다. 이제 K-콘텐츠와 K-컬처는 언어와 국경을 넘어 지구촌 곳곳에서 실시간으로 향유되고 있습니다. 바야흐로 '한류 4.0'의 시대입니다. 연합뉴스 동포·다문화부 K컬처팀은 독자 여러분께 새로운 시선으로 한국 문화를 바라보는 데 도움이 되고자 전 연합뉴스 2일 전" [ref=f6e232] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260713140200210
+                  - generic [ref=f6e235]:
+                    - strong [ref=f6e236]: "[K-VIBE] 최만순의 약이 되는 K-푸드…씀바귀, 빈 곳을 채우는 쓴맛"
+                    - paragraph [ref=f6e237]: "[※ 편집자 주 = 문화체육관광부 집계 기준 2025년 K-콘텐츠 수출액은 149억 달러로 역대 최고를 기록했습니다. 이제 K-콘텐츠와 K-컬처는 언어와 국경을 넘어 지구촌 곳곳에서 실시간으로 향유되고 있습니다. 바야흐로 '한류 4.0'의 시대입니다. 연합뉴스 동포·다문화부 K컬처팀은 독자 여러분께 새로운 시선으로 한국 문화를 바라보는 데 도움이 되고자 전"
+                    - generic [ref=f6e238]: 연합뉴스 2일 전
+            - link "새로운 연재" [ref=f6e241] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e243]: 연재
+          - generic [ref=f6e244]:
+            - generic [ref=f6e245]:
+              - strong [ref=f6e246]:
+                - generic [ref=f6e247]: 시사 매거진
+              - button "도움말" [ref=f6e249] [cursor=pointer]
+            - list [ref=f6e253]:
+              - listitem [ref=f6e254]:
+                - link "진중권 “한동훈 조기 창당? 패배주의…어차피 장동혁은 아웃” (시사저널=박성의 기자) 진중권 동양대 교수가 14일 정치권 일각에서 제기되는 한동훈 무소속 의원의 신당 창당 가능성을 두고 \"모든 일을 다 해보기도 전에 당을 나가는 것은 패배주의\"라며 부정적인 입장을 밝혔다. 국민의힘에 복당해 주도권을 되찾는 데 집중해야 한다는 주장이다. 진 교수는 이날 시사저널TV 《시사끝짱》에 출연해 한 의원의 신당 창당설과 관련해 시사저널 7시간 전" [ref=f6e255] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714214636750
+                  - generic [ref=f6e258]:
+                    - strong [ref=f6e259]: 진중권 “한동훈 조기 창당? 패배주의…어차피 장동혁은 아웃”
+                    - paragraph [ref=f6e260]: (시사저널=박성의 기자) 진중권 동양대 교수가 14일 정치권 일각에서 제기되는 한동훈 무소속 의원의 신당 창당 가능성을 두고 "모든 일을 다 해보기도 전에 당을 나가는 것은 패배주의"라며 부정적인 입장을 밝혔다. 국민의힘에 복당해 주도권을 되찾는 데 집중해야 한다는 주장이다. 진 교수는 이날 시사저널TV 《시사끝짱》에 출연해 한 의원의 신당 창당설과 관련해
+                    - generic [ref=f6e261]: 시사저널 7시간 전
+              - listitem [ref=f6e263]:
+                - link "불타는 집값에…‘文 부동산 트라우마’ 마주한 李대통령 (시사저널=박성의 기자) \"수요를 통제하면 비정상적 집값 상승이 없을 것으로 봤는데 시장은 달리 봤다. 공급이 부족하다고 인식했다.\" 2021년 12월7일 이재명 당시 더불어민주당 대선후보는 서울 마포구에서 열린 '주택청약 사각지대 간담회'에서 이같이 말했다. 이 후보는 \"정부는 금융·대출·거래 제한을 통해 수요를 억제하면 집값을 안정시킬 수 있다고 판단했 시사저널 7시간 전" [ref=f6e264] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714213237563
+                  - generic [ref=f6e267]:
+                    - strong [ref=f6e268]: 불타는 집값에…‘文 부동산 트라우마’ 마주한 李대통령
+                    - paragraph [ref=f6e269]: (시사저널=박성의 기자) "수요를 통제하면 비정상적 집값 상승이 없을 것으로 봤는데 시장은 달리 봤다. 공급이 부족하다고 인식했다." 2021년 12월7일 이재명 당시 더불어민주당 대선후보는 서울 마포구에서 열린 '주택청약 사각지대 간담회'에서 이같이 말했다. 이 후보는 "정부는 금융·대출·거래 제한을 통해 수요를 억제하면 집값을 안정시킬 수 있다고 판단했
+                    - generic [ref=f6e270]: 시사저널 7시간 전
+            - link "새로운 뉴스 현재 페이지 1 / 전체 페이지 3" [ref=f6e273] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e275]: 뉴스
+              - generic [ref=f6e276]:
+                - generic: 현재 페이지
+                - emphasis [ref=f6e277]: "1"
+                - text: /
+                - generic: 전체 페이지
+                - text: "3"
+          - generic [ref=f6e278]:
+            - generic [ref=f6e279]:
+              - strong [ref=f6e280]:
+                - generic [ref=f6e281]: 라이프 매거진
+              - button "도움말" [ref=f6e283] [cursor=pointer]
+            - list [ref=f6e287]:
+              - listitem [ref=f6e288]:
+                - link "줄기세포로 정자 만든다…실험실에서 인공 정자 구현 성공 미국 연구팀이 실험실에서 인간의 혈액 세포를 이용해 정자를 만들어내는 데 성공했다. 펜실베이니아대 의과대학 연구팀은 혈액에서 얻은 인간 세포를 유도 만능줄기세포(iPS세포)로 얻은 뒤 이를 생식세포 계열로 분화시켜 인공 고환 형태의 조직을 만들어 생쥐 신장에 이식했다. 이번 연구 결과는 남성 난임 연구와 치료법 개발에 새로운 가능성을 제시했다는 점에서 의의 하이닥 7시간 전" [ref=f6e289] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210209995
+                  - generic [ref=f6e292]:
+                    - strong [ref=f6e293]: 줄기세포로 정자 만든다…실험실에서 인공 정자 구현 성공
+                    - paragraph [ref=f6e294]: 미국 연구팀이 실험실에서 인간의 혈액 세포를 이용해 정자를 만들어내는 데 성공했다. 펜실베이니아대 의과대학 연구팀은 혈액에서 얻은 인간 세포를 유도 만능줄기세포(iPS세포)로 얻은 뒤 이를 생식세포 계열로 분화시켜 인공 고환 형태의 조직을 만들어 생쥐 신장에 이식했다. 이번 연구 결과는 남성 난임 연구와 치료법 개발에 새로운 가능성을 제시했다는 점에서 의의
+                    - generic [ref=f6e295]: 하이닥 7시간 전
+              - listitem [ref=f6e297]:
+                - link "다크서클, 원인별 개선 방법은? [1분 Q&A] Q. 눈 아래 다크서클이 심한데 개선하는 방법이 있을까요? 눈가가 항상 어둡고 피곤해 보인다는 말을 자주 듣습니다. 화장해도 다크서클이 잘 가려지지 않고, 눈 아래 지방이 튀어나온 것처럼 보여 고민인데요. 눈 아래 지방 때문인지, 색소나 혈관 때문인지, 원인에 따라 개선 방법이 달라지는지 궁금합니다. 눈 아래 지방 재배치나 레이저 시술 등 어떤 방법이 제 하이닥 8시간 전" [ref=f6e298] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714203210488
+                  - generic [ref=f6e301]:
+                    - strong [ref=f6e302]: 다크서클, 원인별 개선 방법은? [1분 Q&A]
+                    - paragraph [ref=f6e303]: Q. 눈 아래 다크서클이 심한데 개선하는 방법이 있을까요? 눈가가 항상 어둡고 피곤해 보인다는 말을 자주 듣습니다. 화장해도 다크서클이 잘 가려지지 않고, 눈 아래 지방이 튀어나온 것처럼 보여 고민인데요. 눈 아래 지방 때문인지, 색소나 혈관 때문인지, 원인에 따라 개선 방법이 달라지는지 궁금합니다. 눈 아래 지방 재배치나 레이저 시술 등 어떤 방법이 제
+                    - generic [ref=f6e304]: 하이닥 8시간 전
+            - link "새로운 뉴스 현재 페이지 1 / 전체 페이지 3" [ref=f6e307] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e309]: 뉴스
+              - generic [ref=f6e310]:
+                - generic: 현재 페이지
+                - emphasis [ref=f6e311]: "1"
+                - text: /
+                - generic: 전체 페이지
+                - text: "3"
+          - generic [ref=f6e312]:
+            - strong [ref=f6e314]:
+              - link [ref=f6e315] [cursor=pointer]:
+                - /url: https://news.daum.net/photo
+            - generic [ref=f6e318]:
+              - tablist [ref=f6e319]:
+                - generic [ref=f6e320]:
+                  - tab "포토뉴스" [selected] [ref=f6e321] [cursor=pointer]
+                  - tab "TF사진관" [ref=f6e322] [cursor=pointer]
+                  - tab "포토뉴스" [ref=f6e323] [cursor=pointer]
+                  - tab "한강로 사진관" [ref=f6e324] [cursor=pointer]
+                  - tab "모멘트" [ref=f6e325] [cursor=pointer]
+                  - tab "오마이포토" [ref=f6e326] [cursor=pointer]
+                  - tab "뉴스1 PICK" [ref=f6e327] [cursor=pointer]
+                  - tab "쿠키포토" [ref=f6e328] [cursor=pointer]
+                  - tab "경향포토" [ref=f6e329] [cursor=pointer]
+                  - tab "렌즈로 본 세상" [ref=f6e330] [cursor=pointer]
+                  - tab "오늘의 1면 사진" [ref=f6e331] [cursor=pointer]
+                  - tab "포토IN" [ref=f6e332] [cursor=pointer]
+                  - tab "청계천 옆 사진관" [ref=f6e333] [cursor=pointer]
+                  - tab "한 컷의 울림" [ref=f6e334] [cursor=pointer]
+                  - tab "사진잇슈" [ref=f6e335] [cursor=pointer]
+                  - tab "노컷한컷" [ref=f6e336] [cursor=pointer]
+                  - tab "정동길 옆 사진관" [ref=f6e337] [cursor=pointer]
+                  - tab "아이포토" [ref=f6e338] [cursor=pointer]
+                  - tab "포토多이슈" [ref=f6e339] [cursor=pointer]
+              - button "다음 탭" [ref=f6e341] [cursor=pointer]
+            - list
+            - link "새로운 포토" [ref=f6e344] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e346]: 포토
+      - complementary [ref=f6e347]:
+        - generic [ref=f6e348]:
+          - generic [ref=f6e349]:
+            - strong [ref=f6e351]:
+              - generic [ref=f6e352]: 💬 '사람'이야기
+            - list [ref=f6e353]:
+              - listitem [ref=f6e354]:
+                - link "[안혜리의 인생]“학교 지배하는 ‘기분 상해 죄’…학생 불편은 교사 죄” 중앙일보 4시간 전" [ref=f6e355] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001610807
+                  - generic [ref=f6e357]:
+                    - strong [ref=f6e358]: "[안혜리의 인생]“학교 지배하는 ‘기분 상해 죄’…학생 불편은 교사 죄”"
+                    - generic [ref=f6e359]: 중앙일보 4시간 전
+              - listitem [ref=f6e361]:
+                - link "“내 고향 강원 자랑스럽게”… 출향도민 미래 동행 당부 강원도민일보 4시간 전" [ref=f6e362] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000916730
+                  - generic [ref=f6e365]:
+                    - strong [ref=f6e366]: “내 고향 강원 자랑스럽게”… 출향도민 미래 동행 당부
+                    - generic [ref=f6e367]: 강원도민일보 4시간 전
+              - listitem [ref=f6e369]:
+                - link "[인터뷰…공감] ‘인천공항 역사의 산증인’ 고영호 보안경비팀 계장 경인일보 9시간 전" [ref=f6e370] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714191444958
+                  - generic [ref=f6e373]:
+                    - strong [ref=f6e374]: "[인터뷰…공감] ‘인천공항 역사의 산증인’ 고영호 보안경비팀 계장"
+                    - generic [ref=f6e375]: 경인일보 9시간 전
+              - listitem [ref=f6e377]:
+                - link "[인터뷰] 김종수 자산관리공사 부산지역본부장 “가계·기업 재기, 취약계층 생활안정 돕는 든든한 이웃” 부산일보 10시간 전" [ref=f6e378] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714175846663
+                  - generic [ref=f6e381]:
+                    - strong [ref=f6e382]: "[인터뷰] 김종수 자산관리공사 부산지역본부장 “가계·기업 재기, 취약계층 생활안정 돕는 든든한 이웃”"
+                    - generic [ref=f6e383]: 부산일보 10시간 전
+              - listitem [ref=f6e385]:
+                - link "노래가 된 소설 ‘캐리어’... “영화로 만들어 주세요” 문화일보 11시간 전" [ref=f6e386] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714173307635
+                  - generic [ref=f6e389]:
+                    - strong [ref=f6e390]: 노래가 된 소설 ‘캐리어’... “영화로 만들어 주세요”
+                    - generic [ref=f6e391]: 문화일보 11시간 전
+            - link "새로운 기사" [ref=f6e394] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e396]: 기사
+          - generic [ref=f6e397]:
+            - generic [ref=f6e398]:
+              - strong [ref=f6e399]:
+                - generic [ref=f6e400]: 인터랙티브 페이지 모음
+              - button "도움말" [ref=f6e402] [cursor=pointer]
+            - list [ref=f6e404]:
+              - listitem [ref=f6e405]:
+                - link "예산으로 보는 이재명 vs 윤석열 “대한민국이 어떤 곳이냐고 묻는다면, 답은 아주 쉽다. 연간 700조원을 쓰는 정치집단이다.” 경향신문 (새창열림)" [ref=f6e406] [cursor=pointer]:
+                  - /url: https://www.khan.co.kr/kh_storytelling/2025/budget/
+                  - generic [ref=f6e408]:
+                    - strong [ref=f6e409]: 예산으로 보는 이재명 vs 윤석열
+                    - paragraph [ref=f6e410]: “대한민국이 어떤 곳이냐고 묻는다면, 답은 아주 쉽다. 연간 700조원을 쓰는 정치집단이다.”
+                    - generic [ref=f6e411]: 경향신문
+                  - generic: (새창열림)
+              - listitem [ref=f6e415]:
+                - link "숨은 농민 찾기 혹시 잘 알고 지내는 농민 있으세요? 아는 농부가 있으면 농촌과 먹거리 문제가 다르게 보입니다. 경향신문 (새창열림)" [ref=f6e416] [cursor=pointer]:
+                  - /url: https://www.khan.co.kr/kh_storytelling/2025/inequal/
+                  - generic [ref=f6e418]:
+                    - strong [ref=f6e419]: 숨은 농민 찾기
+                    - paragraph [ref=f6e420]: 혹시 잘 알고 지내는 농민 있으세요? 아는 농부가 있으면 농촌과 먹거리 문제가 다르게 보입니다.
+                    - generic [ref=f6e421]: 경향신문
+                  - generic: (새창열림)
+            - button "더보기" [ref=f6e426] [cursor=pointer]
+          - generic [ref=f6e428]:
+            - generic [ref=f6e429]:
+              - strong [ref=f6e430]:
+                - generic [ref=f6e431]: 실시간 트렌드
+              - generic [ref=f6e432]: 오늘 01:02
+              - button "도움말" [ref=f6e434] [cursor=pointer]
+            - list [ref=f6e436]:
+              - listitem [ref=f6e437]:
+                - link "1 위, 민경욱 의식불명 , 동일" [ref=f6e438] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AF%BC%EA%B2%BD%EC%9A%B1%20%EC%9D%98%EC%8B%9D%EB%B6%88%EB%AA%85
+                  - emphasis [ref=f6e439]:
+                    - text: "1"
+                    - generic: 위,
+                  - strong [ref=f6e440]: 민경욱 의식불명
+                  - generic [ref=f6e441]: ", 동일"
+              - listitem [ref=f6e442]:
+                - link "2 위, 트럼프 통행료 , 하락" [ref=f6e443] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%8A%B8%EB%9F%BC%ED%94%84%20%ED%86%B5%ED%96%89%EB%A3%8C
+                  - emphasis [ref=f6e444]:
+                    - text: "2"
+                    - generic: 위,
+                  - strong [ref=f6e445]: 트럼프 통행료
+                  - generic [ref=f6e446]: ", 하락"
+              - listitem [ref=f6e447]:
+                - link "3 위, 하트 시그널 5 정규리 , 신규" [ref=f6e448] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%98%ED%8A%B8%20%EC%8B%9C%EA%B7%B8%EB%84%90%205%20%EC%A0%95%EA%B7%9C%EB%A6%AC
+                  - emphasis [ref=f6e449]:
+                    - text: "3"
+                    - generic: 위,
+                  - strong [ref=f6e450]: 하트 시그널 5 정규리
+                  - generic [ref=f6e451]: ", 신규"
+              - listitem [ref=f6e452]:
+                - link "4 위, 시간추적자 설록 , 신규" [ref=f6e453] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EC%8B%9C%EA%B0%84%EC%B6%94%EC%A0%81%EC%9E%90%20%EC%84%A4%EB%A1%9D
+                  - emphasis [ref=f6e454]:
+                    - text: "4"
+                    - generic: 위,
+                  - strong [ref=f6e455]: 시간추적자 설록
+                  - generic [ref=f6e456]: ", 신규"
+              - listitem [ref=f6e457]:
+                - link "5 위, 모태솔로지만 연애는 하고 싶어 시즌2 , 신규" [ref=f6e458] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AA%A8%ED%83%9C%EC%86%94%EB%A1%9C%EC%A7%80%EB%A7%8C%20%EC%97%B0%EC%95%A0%EB%8A%94%20%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20%EC%8B%9C%EC%A6%8C2
+                  - emphasis [ref=f6e459]:
+                    - text: "5"
+                    - generic: 위,
+                  - strong [ref=f6e460]: 모태솔로지만 연애는 하고 싶어 시즌2
+                  - generic [ref=f6e461]: ", 신규"
+              - listitem [ref=f6e462]:
+                - link "6 위, 한민수 국회의원 , 신규" [ref=f6e463] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%9C%EB%AF%BC%EC%88%98%20%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90
+                  - emphasis [ref=f6e464]:
+                    - text: "6"
+                    - generic: 위,
+                  - strong [ref=f6e465]: 한민수 국회의원
+                  - generic [ref=f6e466]: ", 신규"
+              - listitem [ref=f6e467]:
+                - link "7 위, 백룸 , 신규" [ref=f6e468] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%B0%B1%EB%A3%B8
+                  - emphasis [ref=f6e469]:
+                    - text: "7"
+                    - generic: 위,
+                  - strong [ref=f6e470]: 백룸
+                  - generic [ref=f6e471]: ", 신규"
+              - listitem [ref=f6e472]:
+                - link "8 위, 클릭비 김상혁 , 신규" [ref=f6e473] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%81%B4%EB%A6%AD%EB%B9%84%20%EA%B9%80%EC%83%81%ED%98%81
+                  - emphasis [ref=f6e474]:
+                    - text: "8"
+                    - generic: 위,
+                  - strong [ref=f6e475]: 클릭비 김상혁
+                  - generic [ref=f6e476]: ", 신규"
+              - listitem [ref=f6e477]:
+                - link "9 위, 26년 초복 , 신규" [ref=f6e478] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=26%EB%85%84%20%EC%B4%88%EB%B3%B5
+                  - emphasis [ref=f6e479]:
+                    - text: "9"
+                    - generic: 위,
+                  - strong [ref=f6e480]: 26년 초복
+                  - generic [ref=f6e481]: ", 신규"
+              - listitem [ref=f6e482]:
+                - link "10 위, 100분 토론 , 신규" [ref=f6e483] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=100%EB%B6%84%20%ED%86%A0%EB%A1%A0
+                  - emphasis [ref=f6e484]:
+                    - text: "10"
+                    - generic: 위,
+                  - strong [ref=f6e485]: 100분 토론
+                  - generic [ref=f6e486]: ", 신규"
+          - generic [ref=f6e488]:
+            - insertion
+          - generic [ref=f6e489]:
+            - strong [ref=f6e491]:
+              - generic [ref=f6e492]: 오늘의 그래픽
+            - list [ref=f6e493]:
+              - listitem [ref=f6e494]:
+                - link "[그래픽] 시간당 최저임금 추이 연합뉴스 5시간 전" [ref=f6e495] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714234039034
+                  - generic [ref=f6e497]:
+                    - strong [ref=f6e498]: "[그래픽] 시간당 최저임금 추이"
+                    - generic [ref=f6e499]: 연합뉴스 5시간 전
+            - link "새로운 그래픽" [ref=f6e502] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e504]: 그래픽
+          - generic [ref=f6e505]:
+            - strong [ref=f6e507]:
+              - link [ref=f6e508] [cursor=pointer]:
+                - /url: https://news.daum.net/cartoon
+            - list [ref=f6e511]:
+              - listitem [ref=f6e512]:
+                - link "[경기만평] 내가 해봐서 아는데... 경기일보 1시간 전" [ref=f6e513] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715030621774
+                  - generic [ref=f6e515]:
+                    - strong [ref=f6e516]: "[경기만평] 내가 해봐서 아는데..."
+                    - generic [ref=f6e517]: 경기일보 1시간 전
+            - link "새로운 만평" [ref=f6e520] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e522]: 만평
+          - generic [ref=f6e523]:
+            - generic [ref=f6e524]:
+              - strong [ref=f6e525]:
+                - link [ref=f6e526] [cursor=pointer]:
+                  - /url: https://issue.daum.net/news/reportage
+              - button "도움말" [ref=f6e530] [cursor=pointer]
+            - list [ref=f6e532]:
+              - listitem [ref=f6e533]:
+                - link "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’ 여성경제신문 4시간 전" [ref=f6e534] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001224771
+                  - generic [ref=f6e536]:
+                    - strong [ref=f6e537]: "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’"
+                    - generic [ref=f6e538]: 여성경제신문 4시간 전
+              - listitem [ref=f6e540]:
+                - link "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁 동아일보 5시간 전" [ref=f6e541] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714230750705
+                  - generic [ref=f6e543]:
+                    - strong [ref=f6e544]: "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁"
+                    - generic [ref=f6e545]: 동아일보 5시간 전
+              - listitem [ref=f6e547]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 7시간 전" [ref=f6e548] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215156817
+                  - generic [ref=f6e549]: 동영상
+                  - generic [ref=f6e551]:
+                    - strong [ref=f6e552]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f6e553]: KBS 7시간 전
+              - listitem [ref=f6e555]:
+                - link "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤 인천일보 8시간 전" [ref=f6e556] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714202504399
+                  - generic [ref=f6e558]:
+                    - strong [ref=f6e559]: "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤"
+                    - generic [ref=f6e560]: 인천일보 8시간 전
+              - listitem [ref=f6e562]:
+                - link "동영상 [현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’ KBS 8시간 전" [ref=f6e563] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714201241189
+                  - generic [ref=f6e564]: 동영상
+                  - generic [ref=f6e566]:
+                    - strong [ref=f6e567]: "[현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’"
+                    - generic [ref=f6e568]: KBS 8시간 전
+              - listitem [ref=f6e570]:
+                - link "동영상 [현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막” 채널A 9시간 전" [ref=f6e571] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714193612404
+                  - generic [ref=f6e572]: 동영상
+                  - generic [ref=f6e574]:
+                    - strong [ref=f6e575]: "[현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막”"
+                    - generic [ref=f6e576]: 채널A 9시간 전
+              - listitem [ref=f6e578]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 9시간 전" [ref=f6e579] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714191413949
+                  - generic [ref=f6e580]: 동영상
+                  - generic [ref=f6e582]:
+                    - strong [ref=f6e583]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f6e584]: KBS 9시간 전
+              - listitem [ref=f6e586]:
+                - link "동영상 [현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살” 중부일보 9시간 전" [ref=f6e587] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714185659556
+                  - generic [ref=f6e588]: 동영상
+                  - generic [ref=f6e590]:
+                    - strong [ref=f6e591]: "[현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살”"
+                    - generic [ref=f6e592]: 중부일보 9시간 전
+            - link "새로운 뉴스" [ref=f6e595] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f6e597]: 뉴스
+          - generic [ref=f6e598]:
+            - strong [ref=f6e600]:
+              - generic [ref=f6e601]: 🧭 다음뉴스 안내서
+            - list [ref=f6e602]:
+              - listitem [ref=f6e603]:
+                - link "고침, 정정・반론 보도 모음 다음뉴스" [ref=f6e604] [cursor=pointer]:
+                  - /url: https://news.daum.net/correct
+                  - generic [ref=f6e607]:
+                    - strong [ref=f6e608]: 고침, 정정・반론 보도 모음
+                    - generic [ref=f6e609]: 다음뉴스
+              - listitem [ref=f6e611]:
+                - link "다음채널 제휴안내 다음뉴스" [ref=f6e612] [cursor=pointer]:
+                  - /url: https://channel.daum.net/studio
+                  - generic [ref=f6e615]:
+                    - strong [ref=f6e616]: 다음채널 제휴안내
+                    - generic [ref=f6e617]: 다음뉴스
+              - listitem [ref=f6e619]:
+                - link "다음뉴스 고객센터 다음뉴스" [ref=f6e620] [cursor=pointer]:
+                  - /url: https://cs.daum.net/faq/service/63/category/4639
+                  - generic [ref=f6e623]:
+                    - strong [ref=f6e624]: 다음뉴스 고객센터
+                    - generic [ref=f6e625]: 다음뉴스
+              - listitem [ref=f6e627]:
+                - link "다음뉴스 제휴 언론사 다음뉴스" [ref=f6e628] [cursor=pointer]:
+                  - /url: https://news.daum.net/cplist
+                  - generic [ref=f6e631]:
+                    - strong [ref=f6e632]: 다음뉴스 제휴 언론사
+                    - generic [ref=f6e633]: 다음뉴스
+    - contentinfo [ref=f6e635]:
+      - generic [ref=f6e637]:
+        - list [ref=f6e638]:
+          - listitem [ref=f6e639]:
+            - link "다음뉴스 서비스안내" [ref=f6e640] [cursor=pointer]:
+              - /url: /news/edit
+          - listitem [ref=f6e641]:
+            - link "24시간 뉴스센터" [ref=f6e642] [cursor=pointer]:
+              - /url: /news/newscenter24
+          - listitem [ref=f6e643]:
+            - link "공지사항" [ref=f6e644] [cursor=pointer]:
+              - /url: https://brunch.co.kr/@daumnews
+          - listitem [ref=f6e645]:
+            - link "서비스 약관/정책" [ref=f6e646] [cursor=pointer]:
+              - /url: https://policy.daum.net/policy/info
+        - generic [ref=f6e647]: "기사배열책임자: 임광욱청소년보호책임자: 이호원"
+        - generic [ref=f6e649]: 뉴스 기사에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며, axz의 입장과 다를 수 있습니다.
+        - link "© AXZ Corp." [ref=f6e651] [cursor=pointer]:
+          - /url: https://axzcorp.com/
+    - button "홈 화면 설정" [ref=f6e653] [cursor=pointer]

@@ -1,0 +1,20 @@
+Implemented.
+
+- Added `build_collection_gap_report` in [`modules/source_intake/collection_gap_report.py`](C:/Users/%EA%B0%80%EC%82%B0%20%EC%86%94%EB%A6%AC%EB%93%9C%EC%98%A8%EB%AC%B4/Documents/GitHub/AI-Content-OS/modules/source_intake/collection_gap_report.py).
+  - Reads a dict or JSON path.
+  - Outputs per-source statuses only among `NOT_IMPLEMENTED`, `FALLBACK_ONLY`, `FAILED`, `OK`.
+  - Detects skipped sources (`skip_reason`, including `collector_not_implemented`), attempted fallback-success (`is_fallback` or `collection_method` containing `fallback/settings/cache`), failed attempts, and lane impact from plan lanes.
+  - Adds deterministic recommendation ordering with scoring rules matching your priorities, including penalty for blocked/login/access failures.
+
+- Added tests in [`tests/test_collection_gap_report.py`](C:/Users/%EA%B0%80%EC%82%B0%20%EC%86%94%EB%A6%AC%EB%93%9C%EC%98%A8%EB%AC%B4/Documents/GitHub/AI-Content-OS/tests/test_collection_gap_report.py).
+  - Covers fake payload cases for not-implemented, fallback-only, failed.
+  - Includes current-file smoke path if `storage/source_intake/2026-07-14/daily_shallow_collection.json` exists.
+
+- Added handoff doc in [`external_workclaude/source_collection_engine_v0_spark/GAP_REPORT_HANDOFF.md`](C:/Users/%EA%B0%80%EC%82%B0%20%EC%86%94%EB%A6%AC%EB%93%9C%EC%98%A8%EB%AC%B4/Documents/GitHub/AI-Content-OS/external_workclaude/source_collection_engine_v0_spark/GAP_REPORT_HANDOFF.md) with only:
+  - not implemented
+  - fallback only
+  - recommended Spark vs Claude next
+
+Validation run:
+- `py -m unittest tests.test_collection_gap_report tests.test_daily_source_collection_executor tests.test_daily_source_collection_plan -v` ✅
+- `py -m compileall modules/source_intake` ✅

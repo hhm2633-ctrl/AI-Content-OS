@@ -1,0 +1,486 @@
+- generic [ref=f33e4]:
+  - generic [ref=f33e9]:
+    - generic [ref=f33e12]:
+      - link [ref=f33e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f33e22]
+      - generic [ref=f33e25]:
+        - link [ref=f33e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f33e35]
+        - link [ref=f33e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f33e45]
+        - link [ref=f33e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f33e55]:
+            - img "메시지" [ref=f33e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f33e60]: "1"
+        - link [ref=f33e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f33e71]
+        - link [ref=f33e79] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f33e84]
+        - link [ref=f33e92] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f33e97]
+        - link [ref=f33e103] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f33e108]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f33e109]
+      - generic [ref=f33e110]:
+        - link [ref=f33e113] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f33e118]
+        - link [ref=f33e121] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f33e126]
+    - generic [ref=f33e129]:
+      - main [ref=f33e130]:
+        - generic [ref=f33e131]:
+          - generic [ref=f33e133]:
+            - generic [ref=f33e145]:
+              - list [ref=f33e147]:
+                - listitem [ref=f33e148]
+                - listitem [ref=f33e149]
+                - listitem [ref=f33e158]
+              - button "다음" [ref=f33e167] [cursor=pointer]
+            - generic [ref=f33e170]:
+              - generic [ref=f33e172]:
+                - button [ref=f33e177] [cursor=pointer]:
+                  - link [ref=f33e179]:
+                    - img "platformtree_님의 프로필 사진" [ref=f33e180]
+                - generic [ref=f33e183]:
+                  - generic [ref=f33e187]:
+                    - link "platformtree_" [ref=f33e192] [cursor=pointer]:
+                      - /url: /platformtree_/
+                    - img "인증됨" [ref=f33e197]
+                  - button "팔로우" [ref=f33e200] [cursor=pointer]
+                - button [ref=f33e203] [cursor=pointer]:
+                  - img "옵션 더 보기" [ref=f33e206]
+              - separator [ref=f33e210]
+              - generic [ref=f33e212]:
+                - generic [ref=f33e214]:
+                  - link [ref=f33e219] [cursor=pointer]:
+                    - /url: /platformtree_/
+                    - img "platformtree_님의 프로필 사진" [ref=f33e220]
+                  - generic [ref=f33e224]:
+                    - generic [ref=f33e225]:
+                      - link "platformtree_ 인증됨" [ref=f33e229] [cursor=pointer]:
+                        - /url: /platformtree_/
+                        - generic [ref=f33e231]:
+                          - generic [ref=f33e232]: platformtree_
+                          - img "인증됨" [ref=f33e234]
+                      - time [ref=f33e237]: 19시간
+                    - generic [ref=f33e238]:
+                      - text: 카드뉴스라고 댓글 남기시면 25개 바이럴 후킹공식플레이북 전략 전체본 보내드릴께요
+                      - link "#카드뉴스만들기" [ref=f33e239] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%EB%A7%8C%EB%93%A4%EA%B8%B0/
+                      - link "#카드뉴스디자인" [ref=f33e240] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%EB%94%94%EC%9E%90%EC%9D%B8/
+                      - link "#카드뉴스템플릿" [ref=f33e241] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4%ED%85%9C%ED%94%8C%EB%A6%BF/
+                      - link "#카피라이팅" [ref=f33e242] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%B9%B4%ED%94%BC%EB%9D%BC%EC%9D%B4%ED%8C%85/
+                - generic [ref=f33e243]:
+                  - generic [ref=f33e246]:
+                    - link [ref=f33e252] [cursor=pointer]:
+                      - /url: /daybydaykorea/
+                      - img "daybydaykorea님의 프로필 사진" [ref=f33e253]
+                    - generic [ref=f33e254]:
+                      - generic [ref=f33e255]:
+                        - generic [ref=f33e257]:
+                          - generic [ref=f33e258]:
+                            - link "daybydaykorea" [ref=f33e263] [cursor=pointer]:
+                              - /url: /daybydaykorea/
+                            - link [ref=f33e268] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18156313984483098/
+                              - time [ref=f33e269]: 18시간
+                          - generic [ref=f33e270]: 카드뉴스
+                        - button "답글 달기" [ref=f33e273] [cursor=pointer]
+                      - button [ref=f33e280] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e283]
+                  - generic [ref=f33e287]:
+                    - link [ref=f33e293] [cursor=pointer]:
+                      - /url: /goldmrs_d/
+                      - img "goldmrs_d님의 프로필 사진" [ref=f33e294]
+                    - generic [ref=f33e295]:
+                      - generic [ref=f33e296]:
+                        - generic [ref=f33e298]:
+                          - generic [ref=f33e299]:
+                            - link "goldmrs_d" [ref=f33e304] [cursor=pointer]:
+                              - /url: /goldmrs_d/
+                            - link [ref=f33e309] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18187916350387447/
+                              - time [ref=f33e310]: 13시간
+                          - generic [ref=f33e311]: 카드뉴스
+                        - button "답글 달기" [ref=f33e314] [cursor=pointer]
+                      - button [ref=f33e321] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e324]
+                  - generic [ref=f33e328]:
+                    - link [ref=f33e334] [cursor=pointer]:
+                      - /url: /mimi77life/
+                      - img "mimi77life님의 프로필 사진" [ref=f33e335]
+                    - generic [ref=f33e336]:
+                      - generic [ref=f33e337]:
+                        - generic [ref=f33e339]:
+                          - generic [ref=f33e340]:
+                            - link "mimi77life" [ref=f33e345] [cursor=pointer]:
+                              - /url: /mimi77life/
+                            - link [ref=f33e350] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18110999825510586/
+                              - time [ref=f33e351]: 11시간
+                          - generic [ref=f33e352]: 카드뉴스
+                        - button "답글 달기" [ref=f33e355] [cursor=pointer]
+                      - button [ref=f33e362] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e365]
+                  - generic [ref=f33e369]:
+                    - link [ref=f33e375] [cursor=pointer]:
+                      - /url: /nokome78/
+                      - img "nokome78님의 프로필 사진" [ref=f33e376]
+                    - generic [ref=f33e377]:
+                      - generic [ref=f33e378]:
+                        - generic [ref=f33e380]:
+                          - generic [ref=f33e381]:
+                            - link "nokome78" [ref=f33e386] [cursor=pointer]:
+                              - /url: /nokome78/
+                            - link [ref=f33e391] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18127019473648643/
+                              - time [ref=f33e392]: 18시간
+                          - generic [ref=f33e393]: 카드뉴스
+                        - button "답글 달기" [ref=f33e396] [cursor=pointer]
+                      - button [ref=f33e403] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e406]
+                  - generic [ref=f33e410]:
+                    - link [ref=f33e416] [cursor=pointer]:
+                      - /url: /web._moment/
+                      - img "web._moment님의 프로필 사진" [ref=f33e417]
+                    - generic [ref=f33e418]:
+                      - generic [ref=f33e419]:
+                        - generic [ref=f33e421]:
+                          - generic [ref=f33e422]:
+                            - link "web._moment 인증됨" [ref=f33e427] [cursor=pointer]:
+                              - /url: /web._moment/
+                              - generic [ref=f33e429]:
+                                - generic [ref=f33e430]: web._moment
+                                - img "인증됨" [ref=f33e432]
+                            - link [ref=f33e435] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18479370121098276/
+                              - time [ref=f33e436]: 12시간
+                          - generic [ref=f33e437]: 카드뉴스
+                        - button "답글 달기" [ref=f33e440] [cursor=pointer]
+                      - button [ref=f33e447] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e450]
+                  - generic [ref=f33e454]:
+                    - link [ref=f33e460] [cursor=pointer]:
+                      - /url: /seandangvn/
+                      - img "seandangvn님의 프로필 사진" [ref=f33e461]
+                    - generic [ref=f33e462]:
+                      - generic [ref=f33e463]:
+                        - generic [ref=f33e465]:
+                          - generic [ref=f33e466]:
+                            - link "seandangvn" [ref=f33e471] [cursor=pointer]:
+                              - /url: /seandangvn/
+                            - link [ref=f33e476] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18077157428667502/
+                              - time [ref=f33e477]: 17시간
+                          - generic [ref=f33e478]: 카드뉴스
+                        - button "답글 달기" [ref=f33e481] [cursor=pointer]
+                      - button [ref=f33e488] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e491]
+                  - generic [ref=f33e495]:
+                    - link [ref=f33e501] [cursor=pointer]:
+                      - /url: /gyungchun_tarotist/
+                      - img "gyungchun_tarotist님의 프로필 사진" [ref=f33e502]
+                    - generic [ref=f33e503]:
+                      - generic [ref=f33e504]:
+                        - generic [ref=f33e506]:
+                          - generic [ref=f33e507]:
+                            - link "gyungchun_tarotist" [ref=f33e512] [cursor=pointer]:
+                              - /url: /gyungchun_tarotist/
+                            - link [ref=f33e517] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18013537349863730/
+                              - time [ref=f33e518]: 16시간
+                          - generic [ref=f33e519]: 카드뉴스
+                        - button "답글 달기" [ref=f33e522] [cursor=pointer]
+                      - button [ref=f33e529] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e532]
+                  - generic [ref=f33e536]:
+                    - link [ref=f33e542] [cursor=pointer]:
+                      - /url: /sunpowerlee_teamorning/
+                      - img "sunpowerlee_teamorning님의 프로필 사진" [ref=f33e543]
+                    - generic [ref=f33e544]:
+                      - generic [ref=f33e545]:
+                        - generic [ref=f33e547]:
+                          - generic [ref=f33e548]:
+                            - link "sunpowerlee_teamorning" [ref=f33e553] [cursor=pointer]:
+                              - /url: /sunpowerlee_teamorning/
+                            - link [ref=f33e558] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/17888633052412483/
+                              - time [ref=f33e559]: 5시간
+                          - generic [ref=f33e560]: 카드뉴스
+                        - button "답글 달기" [ref=f33e563] [cursor=pointer]
+                      - button [ref=f33e570] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e573]
+                  - generic [ref=f33e577]:
+                    - link [ref=f33e583] [cursor=pointer]:
+                      - /url: /yuryjunymom/
+                      - img "yuryjunymom님의 프로필 사진" [ref=f33e584]
+                    - generic [ref=f33e585]:
+                      - generic [ref=f33e586]:
+                        - generic [ref=f33e588]:
+                          - generic [ref=f33e589]:
+                            - link "yuryjunymom" [ref=f33e594] [cursor=pointer]:
+                              - /url: /yuryjunymom/
+                            - link [ref=f33e599] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/17961155180961516/
+                              - time [ref=f33e600]: 8시간
+                          - generic [ref=f33e601]: 카드뉴스
+                        - button "답글 달기" [ref=f33e604] [cursor=pointer]
+                      - button [ref=f33e611] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e614]
+                  - generic [ref=f33e618]:
+                    - link [ref=f33e624] [cursor=pointer]:
+                      - /url: /ravendermint/
+                      - img "ravendermint님의 프로필 사진" [ref=f33e625]
+                    - generic [ref=f33e626]:
+                      - generic [ref=f33e627]:
+                        - generic [ref=f33e629]:
+                          - generic [ref=f33e630]:
+                            - link "ravendermint" [ref=f33e635] [cursor=pointer]:
+                              - /url: /ravendermint/
+                            - link [ref=f33e640] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/18080001698444718/
+                              - time [ref=f33e641]: 12시간
+                          - generic [ref=f33e642]: 카드뉴스
+                        - button "답글 달기" [ref=f33e645] [cursor=pointer]
+                      - button [ref=f33e652] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e655]
+                  - generic [ref=f33e659]:
+                    - link [ref=f33e665] [cursor=pointer]:
+                      - /url: /ddaksoo9/
+                      - img "ddaksoo9님의 프로필 사진" [ref=f33e666]
+                    - generic [ref=f33e667]:
+                      - generic [ref=f33e668]:
+                        - generic [ref=f33e670]:
+                          - generic [ref=f33e671]:
+                            - link "ddaksoo9" [ref=f33e676] [cursor=pointer]:
+                              - /url: /ddaksoo9/
+                            - link [ref=f33e681] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/17996143331979844/
+                              - time [ref=f33e682]: 9시간
+                          - generic [ref=f33e683]: 카드뉴스
+                        - button "답글 달기" [ref=f33e686] [cursor=pointer]
+                      - button [ref=f33e693] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e696]
+                  - generic [ref=f33e700]:
+                    - link [ref=f33e706] [cursor=pointer]:
+                      - /url: /my.fancy.choice/
+                      - img "my.fancy.choice님의 프로필 사진" [ref=f33e707]
+                    - generic [ref=f33e708]:
+                      - generic [ref=f33e709]:
+                        - generic [ref=f33e711]:
+                          - generic [ref=f33e712]:
+                            - link "my.fancy.choice" [ref=f33e717] [cursor=pointer]:
+                              - /url: /my.fancy.choice/
+                            - link [ref=f33e722] [cursor=pointer]:
+                              - /url: /p/Dak-dwSk3W-/c/17885548089600955/
+                              - time [ref=f33e723]: 7시간
+                          - generic [ref=f33e724]: 카드뉴스
+                        - button "답글 달기" [ref=f33e727] [cursor=pointer]
+                      - button [ref=f33e734] [cursor=pointer]:
+                        - img "좋아요" [ref=f33e737]
+                  - progressbar [ref=f33e741]:
+                    - img "읽어들이는 중..." [ref=f33e742]
+              - generic [ref=f33e755]:
+                - generic [ref=f33e756]:
+                  - generic [ref=f33e757]:
+                    - button [ref=f33e760] [cursor=pointer]:
+                      - img "좋아요" [ref=f33e763]
+                    - button "66" [ref=f33e765] [cursor=pointer]
+                    - button [ref=f33e767] [cursor=pointer]:
+                      - img "댓글 달기" [ref=f33e769]
+                    - button "143" [ref=f33e771] [cursor=pointer]
+                    - button [ref=f33e772] [cursor=pointer]:
+                      - img "리포스트" [ref=f33e773]
+                    - button "3" [ref=f33e775] [cursor=pointer]
+                    - button [ref=f33e776] [cursor=pointer]:
+                      - img "공유하기" [ref=f33e777]
+                  - button [ref=f33e782] [cursor=pointer]:
+                    - button [ref=f33e783]:
+                      - img "저장" [ref=f33e785]
+                - generic [ref=f33e788]:
+                  - link [ref=f33e790] [cursor=pointer]:
+                    - /url: /p/Dak-dwSk3W-/liked_by/
+                    - button [ref=f33e793]:
+                      - link [ref=f33e794]
+                  - generic [ref=f33e796]:
+                    - link "grappt_" [ref=f33e797] [cursor=pointer]:
+                      - /url: /grappt_/
+                    - text: 님
+                    - link "외 65명" [ref=f33e798] [cursor=pointer]:
+                      - /url: /p/Dak-dwSk3W-/liked_by/
+                    - text: 이 좋아합니다
+                - link [ref=f33e802] [cursor=pointer]:
+                  - /url: /platformtree_/p/Dak-dwSk3W-/
+                  - time [ref=f33e804]: 19시간 전
+              - generic [ref=f33e807]:
+                - link [ref=f33e808]
+                - generic [ref=f33e810]:
+                  - button [ref=f33e812] [cursor=pointer]:
+                    - img "이모티콘" [ref=f33e814]
+                  - textbox "댓글 달기..." [ref=f33e816]
+          - separator [ref=f33e818]
+          - generic [ref=f33e819]:
+            - generic [ref=f33e821]:
+              - link "platformtree_" [ref=f33e822] [cursor=pointer]:
+                - /url: /platformtree_/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f33e825]:
+              - generic [ref=f33e826]:
+                - link [ref=f33e828] [cursor=pointer]:
+                  - /url: /platformtree_/p/DaiPg2SE4W8/
+                  - 'img "클로드라고 댓글 남기시면 7가지 학습 프롬프트 보내드릴께요 #클로드ai #클로드 #자기계발 #자기개발" [ref=f33e831]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f33e834] [cursor=pointer]:
+                  - /url: /platformtree_/p/DadRFaIk85l/
+                  - 'img "클로드 라고 댓글 남기시면 7만팔로워 만든 프롬프트 정리본 보내드릴께요 #클로드코드 #클로드ai #인스타팔로워 #인스타팔로워늘리는법" [ref=f33e837]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f33e840] [cursor=pointer]:
+                  - /url: /platformtree_/p/DaajGxok288/
+                  - 'img "팔로워 라고 댓글 남기시면 구체적인 자료 보내드릴께요 #인스타팔로워 #인스타팔로워늘리기 #인스타팔로워늘리는법 #카드뉴스 #카드뉴스디자인" [ref=f33e843]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+              - generic [ref=f33e845]:
+                - link [ref=f33e847] [cursor=pointer]:
+                  - /url: /platformtree_/p/DaYLl2Ok9iy/
+                  - 'img "인스타그램이라고 댓글 남기시면 구체적인 이메일 문구화 방법 보내드릴께요 #인스타계정관리 #인스타비활성화복구 #인스타비활성화" [ref=f33e850]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f33e853] [cursor=pointer]:
+                  - /url: /platformtree_/p/DaTJDd9E1LJ/
+                  - 'img "포맷 이라고 댓글 남겨 주시면 성과 좋은 짧은 영상 포맷 20가지 예시까지 정리한 전체 자료 보내드릴께요 #인스타주제 #인스타콘텐츠 #마케팅자동화 대박" [ref=f33e856]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f33e859] [cursor=pointer]:
+                  - /url: /platformtree_/p/DaDV0IhE3Xb/
+                  - 'img "GPS라고 댓글 남기시면 5년을 바꿀 콘텐츠 시스템 자료 보내드릴께요 #콘텐츠 #콘텐츠기획 #콘텐츠자동화" [ref=f33e862]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+      - contentinfo [ref=f33e864]:
+        - generic [ref=f33e865]:
+          - generic [ref=f33e867]:
+            - link "Meta" [ref=f33e869] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f33e872] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f33e875] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f33e878] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f33e881] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f33e884] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f33e887] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f33e890] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f33e893] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f33e896] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f33e899] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f33e902] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f33e905] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f33e908] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f33e911] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f33e913]:
+            - generic [ref=f33e914] [cursor=pointer]:
+              - generic [ref=f33e915]:
+                - generic [ref=f33e916]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f33e919]
+              - combobox "표시 언어 변경" [ref=f33e921]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f33e922]: © 2026 Instagram from Meta
+  - button [ref=f33e925] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f33e926]:
+      - generic [ref=f33e927]:
+        - generic [ref=f33e929]:
+          - img "메시지" [ref=f33e930]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f33e933]: "1"
+        - generic [ref=f33e936]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f33e939]:
+        - img "사용자 아바타" [ref=f33e942]

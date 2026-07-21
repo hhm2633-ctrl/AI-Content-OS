@@ -1,0 +1,4622 @@
+{
+  "schema_version": "owner_cardnews_latest_collection_v1",
+  "as_of": "2026-07-17T20:38:25.048347+09:00",
+  "raw_collection_file": "storage/source_intake/2026-07-17/daily_shallow_collection.json",
+  "raw_item_count": 374,
+  "candidate_count": 131,
+  "account_counts": {
+    "A": 42,
+    "B": 40,
+    "C": 49
+  },
+  "candidates": [
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제·생활",
+      "id": "20260717-2003-A-e8e6bdbd9c8f",
+      "title": "\"제헌절이 살렸다\" 공포 속 개미, \"갖고 있으라\" 최태원에 \"믿는다\"",
+      "context": "“제헌절이 살렸다”17일 한 포털사이트의 SK하이닉스 종목토론방에 올라온 글이다.SNS 등 온라인에 올라온 SK하이닉스 주식 관련 최태원 회장 밈(meme)이번주 들어 출렁이던 SK하이닉스 주가는 전날 11% 하락한 184만2000원에 정규장 거래를 마무리했다. 미국...",
+      "published_at": "2026-07-17T15:32:56+09:00",
+      "collected_at": "2026-07-18T05:38:20.119848+09:00",
+      "urls": [
+        "https://www.edaily.co.kr/News/Read?newsId=02843766645515504&mediaCodeNo=257"
+      ],
+      "source_ids": [
+        "edaily"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "economy",
+      "id": "20260717-2003-A-f1d93c9f7bee",
+      "title": "\"주가 당장 모르지만, SK하닉 갖고 있으라\"…최태원, 깜짝 조언",
+      "context": "hankyung 공개 목록. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-17 20:00",
+      "collected_at": "2026-07-17T20:38:15.098551+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/2026071709306"
+      ],
+      "source_ids": [
+        "hankyung_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제·생활",
+      "id": "20260717-2003-A-70ec84eda882",
+      "title": "TSMC가 걷어낸 반도체 고점론?…“AI 수요 더 강해졌다”",
+      "context": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 시장 기대를 크게 웃도는 사상 최대 실적에 이어 연간 매출과 설비투자 전망까지 상향하면서 인공지능(AI) 반도체 고점론을 누그러뜨렸다. 16일 국내 반도체주는 차익실현 매물에 급락했지만, AI 반도체 생산을...",
+      "published_at": "2026-07-17T08:00:04+09:00",
+      "collected_at": "2026-07-18T05:38:20.119908+09:00",
+      "urls": [
+        "https://www.edaily.co.kr/News/Read?newsId=02364886645515504&mediaCodeNo=257"
+      ],
+      "source_ids": [
+        "edaily"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제",
+      "id": "20260717-2003-A-423030e98d97",
+      "title": "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!",
+      "context": "첫 브랜드 모델로 배우 윤경호 발탁, 신규 캠페인 전격 공개 15일부터 유튜브·인스타그램 및 주요 OTT·디지털 채널서 필름 론칭윤경호 첫 브랜드 모델 발탁과 캠페인 공개 일정 앳홈(대표 양정호)이 전개하는 가전 브랜드 ‘(Minix)’가 배우 윤경호를 첫 브랜드 모델로 발탁하고 신규 브랜드 캠페인 ‘나는 안 해, 미닉스가 해’를 공개한다. 윤경호는 유튜브",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:18.530428+09:00",
+      "urls": [
+        "https://www.mk.co.kr/news/pick/12097951"
+      ],
+      "source_ids": [
+        "mk_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제",
+      "id": "20260717-2003-A-bdfb88a094bf",
+      "title": "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시",
+      "context": "한정 판매 수량 및 판매 기간 해태제과가 국민 초코케이크 오예스에 보라색 참마 우베를 입힌 ‘오예스 우베라떼’를 출시한다. 3달 동안 30만 케이스만 한정 판매하는 스페셜 에디션이다. 디저트 카페에서 맛보던 우베라떼의 매력을 오예스만의 촉촉한 식감으로 재현한 프리미엄 우베라떼 케이크다. 수분 함량 및 원료 구성 오예스는 국내 과자 중 최고 수준의 수분 함량",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:18.530444+09:00",
+      "urls": [
+        "https://www.mk.co.kr/news/pick/12097081"
+      ],
+      "source_ids": [
+        "mk_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제·생활",
+      "id": "20260717-2003-A-6a12a3725eb6",
+      "title": "국민연금 ‘부동산실 이해상충’ 연쇄 인사…준법라인까지 대기발령[마켓인]",
+      "context": "국민연금이 부동산투자실의 이해상충 유착 논란과 관련해 부동산투자실장을 전격 대기발령 조치했다. 특히 기금운용본부의 내부 통제를 담당하는 준법지원실 책임자급 인사 2명도 함께 직무에서 배제되면서, '역삼 센터필드' 위탁운용사(GP) 교체 무산 사태의 후폭풍이 '연쇄 문...",
+      "published_at": "2026-07-17T17:20:04+09:00",
+      "collected_at": "2026-07-18T05:38:20.118038+09:00",
+      "urls": [
+        "https://www.edaily.co.kr/News/Read?newsId=02902806645515504&mediaCodeNo=257"
+      ],
+      "source_ids": [
+        "edaily"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제",
+      "id": "20260717-2003-A-648e6477a698",
+      "title": "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지",
+      "context": "공모전 접수 기간과 수상자 규모 매일유업(대표 김선희, 이인기)이 ‘제2회 대학생 AI 영상 공모전’을 개최한다. 제작 영상 접수는 8월 17일까지 진행되며 수상자 8명을 선정해 총상금 1200만원을 지급한다. 수상자에게는 대외활동 크루 참여 기회도 함께 제공된다. 최종 당선작은 8월 31일 발표될 예정이다. 응모 주제와 제품 부문 이번 공모전의 응모 주제",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:18.530458+09:00",
+      "urls": [
+        "https://www.mk.co.kr/news/pick/12098382"
+      ],
+      "source_ids": [
+        "mk_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "thebio",
+      "id": "20260717-2003-A-a7f671fda42b",
+      "title": "보건의료노조 \"총파업 찬성률 93% 가결…인력 확충·임금 개선\"",
+      "context": "\"쟁의 조정 신청 103개 사업장 중 91개 투표 完…파업은 각 지부 교섭 결과 따라 결정\" 전국보건의료산업노동조합(보건의료노조)의 총파업 찬반 투표가 찬성률 93%로 가결됐다. 17일 뉴시스에 따르면 이날 보건의료노조는 쟁의행위 찬반 투표가 86.91%의 투표율을 기록한 가운데 93.79%가 찬성했다고 밝혔다. 노조는 \"의료대란과 의료개혁의 혼란을 견디며 환자 곁과 의료현장을 지켜 온 보건의료 노동자들의 절실한 요구가 반영된",
+      "published_at": "2026.07.17 20:24",
+      "collected_at": "2026-07-17T20:38:18.800370",
+      "urls": [
+        "https://www.mt.co.kr/thebio/2026/07/17/2026071720163261469"
+      ],
+      "source_ids": [
+        "moneytoday"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "economy",
+      "id": "20260717-2003-A-1257fdf5c746",
+      "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?",
+      "context": "hankyung 공개 목록. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-17 20:00",
+      "collected_at": "2026-07-17T20:38:15.098606+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/202607170841i"
+      ],
+      "source_ids": [
+        "hankyung_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "economy",
+      "id": "20260717-2003-A-6a1ec10d3114",
+      "title": "영국 새 총리에 버넘 하원의원 확정…20일 취임",
+      "context": "hankyung 공개 목록. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-17 20:16",
+      "collected_at": "2026-07-17T20:38:15.098488+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/2026071713487"
+      ],
+      "source_ids": [
+        "hankyung_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제",
+      "id": "20260717-2003-A-718aca34e2a2",
+      "title": "유니세프 한국위원회 ‘엑설런스’ 캠페인 전개…9인 셀럽과 정기후원 참여자에 반지 제공",
+      "context": "유니세프 엑설런스 캠페인이란 유니세프 한국위원회가 전 세계 어린이의 교육과 미래를 지원하기 위한 후원 캠페인 ‘유니세프 엑설런스(UNICEF Excellence)’를 전개한다. 이번 캠페인은 어린이들이 재난과 빈곤 속에서 생존하는 것을 넘어, 교육을 통해 자신의 삶을 주도하고 미래를 선택할 수 있도록 지원한다는 취지로 마련됐다. 캠페인 슬로건은 ‘Prove",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:18.530392+09:00",
+      "urls": [
+        "https://www.mk.co.kr/news/pick/12100018"
+      ],
+      "source_ids": [
+        "mk_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "경제·생활",
+      "raw_category": "경제·생활",
+      "id": "20260717-2003-A-224828787208",
+      "title": "한화證, 美 디지털에셋에 300억원 투자…블록체인 협력 강화",
+      "context": "한화투자증권이 글로벌 금융 특화 블록체인 인프라 기업인 디지털에셋(Digital Asset Holdings LLC)에 약 300억원을 투자하며 디지털 자산 분야 협력을 확대한다.한화투자증권은 미국 뉴욕에 본사를 둔 디지털에셋에 약 300억원 규모의 전략적 투자를 완료...",
+      "published_at": "2026-07-16T19:02:52+09:00",
+      "collected_at": "2026-07-18T05:38:20.120002+09:00",
+      "urls": [
+        "https://www.edaily.co.kr/News/Read?newsId=05539926645515176&mediaCodeNo=257"
+      ],
+      "source_ids": [
+        "edaily"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내외 뉴스",
+      "raw_category": "국내외 뉴스",
+      "id": "20260717-2003-A-a282e634df24",
+      "title": "김건희 측, 대법에 의견서…\"이진관 판결, 상급심 변수 아니다\"",
+      "context": "정치자금법 위반 사건 상고심 선고를 앞둔 김건희 여사 측이 윤석열 전 대통령 '무상 여론조사' 1심 판결 영향은 제한적이라는 취지의 의견서를 대법원에 제출했다.17일 법조계에 따르면 김 여사 측은 '명태균 무상 여론조사 의혹' 상고심을 담당하는 대법원 2부(주심 박영재 대법관)에 추가 의견서를 제출했다.해당 의견서는 \"서울중앙지법 형사합의33부(부장판사 이진관)의 윤 전 대통령 1심 판결이 김 여사 사건에 미치는 영향은 제한적",
+      "published_at": "2026-07-17 20:35:52",
+      "collected_at": "2026-07-17T20:38:20.929570",
+      "urls": [
+        "https://www.news1.kr/society/court-prosecution/6231425"
+      ],
+      "source_ids": [
+        "news1"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내외 뉴스",
+      "raw_category": "국내외 뉴스",
+      "id": "20260717-2003-A-9e5eff5df269",
+      "title": "'김천 91㎜ 폭우' 구미·김천 북부 호우경보…대구·경북 일부 호우특보",
+      "context": "대구와 경북 일부 지역에 호우경보와 호우주의보가 발효됐다.17일 대구기상청에 따르면 이날 오후 8시 10분 기준 구미와 김천 북부에는 호우경보가, 경산, 청도, 칠곡, 상주, 의성, 경주 서부와 대구 일부 지역에는 호우주의보가 각각 발효 중이다.일강수량은 김천 91㎜, 구미 78㎜, 경주 산내 57㎜, 대구 달성 51㎜, 경산 50㎜, 청도 44㎜를 기록했다.",
+      "published_at": "2026-07-17 20:30:05",
+      "collected_at": "2026-07-17T20:38:20.929602",
+      "urls": [
+        "https://www.news1.kr/local/daegu-gyeongbuk/6231424"
+      ],
+      "source_ids": [
+        "news1"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내외 뉴스",
+      "raw_category": "국내외 뉴스",
+      "id": "20260717-2003-A-3ff28590cd99",
+      "title": "강릉 영동고속도 '4중 추돌' 차량 화재…내일 전 차로 '정상화'(종합2보)",
+      "context": "강원 강릉의 한 고속도로 터널 안에서 차량 4대가 잇따라 추돌한 뒤 화재가 발생해 한때 전면 통제됐던 통행이 일부 재개됐지만, 전 차로 정상화는 18일 이뤄질 전망이다.17일 강원소방본부 등에 따르면 이날 오전 11시 52분쯤 강릉 왕산면 영동고속도로 강릉 방향 대관령4터널에서 BMW, 카니발, 싼타페, 그랜저 등 차량 4대가 잇따라 추돌한 뒤 싼타페에서 불이 났다.신고를 받고 출동한 소방당국은 이날 낮 12시 22분 대응 1",
+      "published_at": "2026-07-17 20:24:22",
+      "collected_at": "2026-07-17T20:38:20.929628",
+      "urls": [
+        "https://www.news1.kr/local/kangwon/6231423"
+      ],
+      "source_ids": [
+        "news1"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내외 뉴스",
+      "raw_category": "international",
+      "id": "20260717-2003-A-640584bd3cec",
+      "title": "美, 이란 민간시설로 공습확대… 이란, 걸프전역 미군자산에 맞불",
+      "context": "연합뉴스 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:20.444009",
+      "urls": [
+        "https://www.yna.co.kr/view/AKR20260717043600009?section=international/all"
+      ],
+      "source_ids": [
+        "yonhap"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내외 뉴스",
+      "raw_category": "국내외 뉴스",
+      "id": "20260717-2003-A-ad76412df7ce",
+      "title": "전 국가대표 권창훈, 인니 무대 진출…신태용 지도 받는다",
+      "context": "전 한국축구 국가대표 미드필더 권창훈이 인도네시아 무대로 진출, 신태용 감독이 지휘하는 페르시자 자카르타에 입단했다.자카르타는 17일(한국시간) 권창훈과 2년 계약을 맺었다고 발표했다. 자카르타는 \"한국 국가대표였던 권창훈의 풍부한 경험과 멀티 플레이 능력은 공격진에 힘을 더해줄 것\"이라고 기대했다.자카르타는 인도네시아 대표팀 감독을 역임했던 신태용 감독이 지난달부터 지휘봉을 잡은 팀이다.신태용과 권창훈 감독은 2016 리우 ",
+      "published_at": "2026-07-17 20:01:53",
+      "collected_at": "2026-07-17T20:38:20.929649",
+      "urls": [
+        "https://www.news1.kr/sports/soccer/6231422"
+      ],
+      "source_ids": [
+        "news1"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내정치",
+      "raw_category": "politics",
+      "id": "20260717-2003-A-b8252b7f7dbe",
+      "title": "'검찰 선후배' 이건태·한동훈, 22일 보완수사권 공개토론",
+      "context": "[the300] 이건태 더불어민주당 의원과 한동훈 무소속 의원이 검찰 보완수사권 관련 공개토론을 실시한다. 사법연수원 19기인 이 의원과 27기인 한 의원 모두 검찰 출신이다. 이 의원과 한 의원은 17일 자신의 SNS(소셜미디어)를 통해 오는 22일 오후 5시 JTBC에서 공개토론을 진행하기로 합의했다고 밝혔다. 당초 23일 같은 시각 진행하려고 했으나 이재명 대통령 주재로 '부동선정책 대토론회'가 열려 하루 앞당긴 것이다.",
+      "published_at": "2026.07.17 20:33",
+      "collected_at": "2026-07-17T20:38:18.800339",
+      "urls": [
+        "https://www.mt.co.kr/politics/2026/07/17/2026071720170242181"
+      ],
+      "source_ids": [
+        "moneytoday"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "국내정치",
+      "raw_category": "politics",
+      "id": "20260717-2003-A-33434db6f651",
+      "title": "與, 김민석·정청래 등 당 대표 예비후보 5인 확정…최고위원은 14명",
+      "context": "[the300] 더불어민주당 차기 당 대표 예비후보 5인을 최종 확정됐다. 최고위원 예비후보는 현역 의원 9명을 포함한 총 14명이다. 민주당은 오는 21일 예비경선을 통해 당 대표 후보 3명, 최고위원 후보 8명을 추릴 예정이다. 민주당 중앙당 선거관리위원회는 17일 이같은 내용의 당 대표 및 최고위원 예비후보 등록 현황을 발표했다. 당 대표 예비후보 5인은 김민석 예비후보(전 국무총리), 고민정 예비후보(전 최고위원), 정",
+      "published_at": "2026.07.17 20:05",
+      "collected_at": "2026-07-17T20:38:18.800376",
+      "urls": [
+        "https://www.mt.co.kr/politics/2026/07/17/2026071719394990111"
+      ],
+      "source_ids": [
+        "moneytoday"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-81988f5c7db4",
+      "title": "\"도약하는 장흥, 함께 여는 미래\"...25일 '정남진 물 축제' 개막",
+      "context": "■ 진행 : 윤보리 앵커, 정채운 앵커 ■ 출연 : 사 순 문 전남광주통합특별시 장흥군수 * 아래 텍스트는 실제 방송 내용과 차이가 있을 수 있으니 보다 정확한 내용은 방송으로 확인하시기 바랍니다. 인용 시 [YTN 뉴스와이드] 명시해주시기 바랍니다. [앵커] 서울 광화문에서 남쪽으로 직선을 그으면 나오는 곳이 바로 '정남진' 전남 장흥입니다. 민",
+      "published_at": "10분 전",
+      "collected_at": "2026-07-17T20:38:14.675468",
+      "urls": [
+        "https://v.daum.net/v/20260717202810321"
+      ],
+      "source_ids": [
+        "daum_news"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "사회·사건",
+      "id": "20260717-2003-A-005a3258ba68",
+      "title": "김천북부·구미 호우경보…대구·경북 일부 지역 시간당 50mm 강한 비",
+      "context": "3mm, 봉화 11.7 mm로 기록됐다. ※CBS노컷뉴스는 여러분의 제보로 함께 세상을 바꿉니다. 각종 비리와 부당대우, 사건사고와 미담 등 모든 얘깃거리를 알려주세요.이메일 : 카카오톡 : @노컷뉴스사이트 : https://url.kr/b71afn",
+      "published_at": "Fri, 17 Jul 2026 20:31:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.540260+09:00",
+      "urls": [
+        "https://www.nocutnews.co.kr/news/6549663?utm_source=naver&utm_medium=article&utm_campaign=20260717083003"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사건 사고"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-54b45bfb6a07",
+      "title": "불교가 맺어준 인연, 금지옥엽으로…'나는 절로' 1호 부모 나왔다",
+      "context": "미혼남녀 만남 템플스테이 '나는 절로'에서 인연을 맺은 부부가 부모가 됐다. 17일 대한불교조계종 사회복지재단에 따르면, 2024년 8월 '나는 절로' 강원 양양 낙산사편에 참가했던 30대 부부가 지난 16일 아들을 낳았다. 부부는 당시 견우 5호, 직녀 8호로 최종 커플이 됐고, 지난해 10월 부부의 연을 맺었다. '나는 절로'는 저출",
+      "published_at": "2026.07.17 20:33:32",
+      "collected_at": "2026-07-17T20:38:20.630235",
+      "urls": [
+        "https://www.newsis.com/view/NISX20260717_0003713416"
+      ],
+      "source_ids": [
+        "newsis"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-9c094c732377",
+      "title": "토요일 중부지방 300㎜ 이상 폭우…돌풍·천둥번개까지 '장마 절정'",
+      "context": "토요일인 18일은 전국이 대체로 흐린 가운데 중부지방을 중심으로 돌풍과 천둥·번개를 동반한 매우 강한 비가 쏟아질 것으로 예상된다. 수도권(서울·인천·경기)과 강원도는 전날 밤부터 이어지는 비로 100∼200㎜의 강수량이 예상된다. 일부 지역은 300㎜ 이상의 폭우가 예보됐다....",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:20.443905",
+      "urls": [
+        "https://www.yna.co.kr/view/AKR20260717048300004?section=society/all"
+      ],
+      "source_ids": [
+        "yonhap"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-5be0a68b5948",
+      "title": "\"장윤기 사건 미흡 대응 반성\"…경찰직협, 경찰 지휘부 총사퇴 요구",
+      "context": "전국경찰직장협의회(경찰직협)가 17일 오후 대전 동구 애트대회의실에서 긴급 임시대의원대회를 열고 장윤기 사건 부실 대응 책임을 물어 광주경찰청장과 유재성 경찰청장 직무대행의 즉각 사퇴를 요구했다. 경찰직협은 결의문을 통해 \"장윤기 사건 대응 과정에서 나타난 일부 현장 경찰관들의 안일한 업무 처리와 미흡한 대응은 어떠한 이유로도 정당화될 수",
+      "published_at": "2026.07.17 20:32:41",
+      "collected_at": "2026-07-17T20:38:20.630320",
+      "urls": [
+        "https://www.newsis.com/view/NISX20260717_0003713418"
+      ],
+      "source_ids": [
+        "newsis"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-23652dc036e9",
+      "title": "경기 최대 300㎜ 이상 비 예보…'비상 2단계' 가동",
+      "context": "연합뉴스 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:20.443953",
+      "urls": [
+        "https://www.yna.co.kr/view/AKR20260717052500061?section=society/all"
+      ],
+      "source_ids": [
+        "yonhap"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-40fa844831d3",
+      "title": "서울시약, 편의점 상비약 확대 중단 촉구 \"안전성부터 따져야\"",
+      "context": "약사공론 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "14분 전",
+      "collected_at": "2026-07-17T20:38:14.675521",
+      "urls": [
+        "https://v.daum.net/v/20260717202349257"
+      ],
+      "source_ids": [
+        "daum_news"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "사회·사건",
+      "id": "20260717-2003-A-4a4409ce4870",
+      "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+      "context": "사건 사고 소식, 조승현 기자가 보도합니다. [기자] 터널이 끝나가는 지점에서 차들이 급히 속도를 줄입니다. 검은색 승합차가 앞선 차를 들이받고, 뒤따르던 SUV와 승용차도 제때 멈추지 못하면서 4중 추돌 사고로...",
+      "published_at": "Fri, 17 Jul 2026 20:10:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.540377+09:00",
+      "urls": [
+        "https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사건 사고"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-947ebcc7ad43",
+      "title": "'마키아벨리' 꺼낸 유동규...재판장은 \"사실과 추측 구별하라\"",
+      "context": "오마이뉴스 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "25분 전",
+      "collected_at": "2026-07-17T20:38:14.675560",
+      "urls": [
+        "https://v.daum.net/v/20260717201237095"
+      ],
+      "source_ids": [
+        "daum_news"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "사회·사건",
+      "id": "20260717-2003-A-7a153dd733d6",
+      "title": "EU, 구글에 부과한 '과징금 8조 원' 8년 만에 수령",
+      "context": "※CBS노컷뉴스는 여러분의 제보로 함께 세상을 바꿉니다. 각종 비리와 부당대우, 사건사고와 미담 등 모든 얘깃거리를 알려주세요.이메일 : 카카오톡 : @노컷뉴스사이트 : https://url.kr/b71afn",
+      "published_at": "Fri, 17 Jul 2026 20:04:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.540413+09:00",
+      "urls": [
+        "https://www.nocutnews.co.kr/news/6549658?utm_source=naver&utm_medium=article&utm_campaign=20260717080303"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사건 사고"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-ede7cb5bb32f",
+      "title": "농식품부, 호우 대비 긴급 점검…저수지 누수·산사태 여부 확인",
+      "context": "연합뉴스 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:20.443984",
+      "urls": [
+        "https://www.yna.co.kr/view/AKR20260717041100030?section=society/all"
+      ],
+      "source_ids": [
+        "yonhap"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-e3de40697529",
+      "title": "충남경찰, 압수수색 관련 전교조 주장 일부 사실과 달라",
+      "context": "경찰이 지난 16일 전국교직원노동조합 충남지부 압수수색 관련 긴급 성명을 낸 데 대해 일부 주장이 사실과 다르다고 반박했다. 17일 충남경찰청 반부패경제범죄수사대는 \"전교조 충남지부 압수수색과 관련한 전교조 주장에 대해 일부 사실과 다르다\"고 보도자료를 통해 밝혔다. 경찰은 우선 영장 유효기간이 지난 현재까지 휴대전화를 반환받지",
+      "published_at": "2026.07.17 20:12:42",
+      "collected_at": "2026-07-17T20:38:20.630384",
+      "urls": [
+        "https://www.newsis.com/view/NISX20260717_0003713378"
+      ],
+      "source_ids": [
+        "newsis"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-32614d57df45",
+      "title": "[10분 문화톡] 숏폼이 만든 신드롬…K-POP 흥행 공식이 바뀐다",
+      "context": "EBS 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "1시간 전",
+      "collected_at": "2026-07-17T20:38:14.675596",
+      "urls": [
+        "https://v.daum.net/v/20260717190840434"
+      ],
+      "source_ids": [
+        "daum_news"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "사회·사건",
+      "id": "20260717-2003-A-827af36d65bf",
+      "title": "고려아연, 간호사 후원한다…근무환경 개선 지원",
+      "context": "※CBS노컷뉴스는 여러분의 제보로 함께 세상을 바꿉니다. 각종 비리와 부당대우, 사건사고와 미담 등 모든 얘깃거리를 알려주세요.이메일 : 카카오톡 : @노컷뉴스사이트 : https://url.kr/b71afn",
+      "published_at": "Fri, 17 Jul 2026 20:04:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.540441+09:00",
+      "urls": [
+        "https://www.nocutnews.co.kr/news/6549659?utm_source=naver&utm_medium=article&utm_campaign=20260717080303"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사건 사고"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "society",
+      "id": "20260717-2003-A-197f764ad42d",
+      "title": "보건의료노조 \"총파업 93% 찬성…성실히 교섭 나서야\"",
+      "context": "전국보건의료산업노동조합(보건의료노조)이 실시한 총파업 찬반 투표가 93%의 압도적인 찬성률로 가결됐다. 보건의료노조는 쟁의행위 찬반 투표가 86.91%의 투표율을 기록한 가운데 93.79%가 찬성했다고 17일 밝혔다. 보건의료노조는 \"의료대란과 의료개혁의 혼란을 견디며 환자 곁과 의료현장을 지켜 온 보건의료 노동자들의 절실한 요구가",
+      "published_at": "2026.07.17 19:52:15",
+      "collected_at": "2026-07-17T20:38:20.630443",
+      "urls": [
+        "https://www.newsis.com/view/NISX20260717_0003713404"
+      ],
+      "source_ids": [
+        "newsis"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "사회·사건",
+      "raw_category": "사회·사건",
+      "id": "20260717-2003-A-2ce53b4e3d6c",
+      "title": "터널·아파트·공장까지…제헌절 연휴 전국 곳곳 화재",
+      "context": "연휴 사건·사고, 엄승현 기자입니다. [기자] 차량이 비상등을 키며 갑작스럽게 서행하자 뒤따라오던 차량이 속도를 이기지 못하고 들이받습니다. 뒤이어 다른 차들도 연쇄 추돌 사고를 일으키더니 희뿌연 연기와 함께...",
+      "published_at": "Fri, 17 Jul 2026 18:38:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.540466+09:00",
+      "urls": [
+        "http://www.yonhapnewstv.co.kr/news/MYH20260717183730c8A"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사건 사고"
+    },
+    {
+      "account": "A",
+      "category": "사회·이슈",
+      "raw_category": "사회·이슈",
+      "id": "20260717-2003-A-d7272c546f69",
+      "title": "“‘스타벅스 응원’, 역사 몰라 벌어진 일” 지적에…중학교 근현대사...",
+      "context": "앞서 교육부는 △중학교 역사 과목의 근현대사 비중 확대 △중학교 사회 교과군(사회·역사·도덕) 교육시간... 읽어 보면 그 자체로 다 이해돼야 하는데 부족하다”며 “역사 문제가 이슈가 됐기도 하거니와 본래...",
+      "published_at": "Fri, 17 Jul 2026 20:34:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.620629+09:00",
+      "urls": [
+        "https://www.sedaily.com/article/20068921?ref=naver"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사회 이슈"
+    },
+    {
+      "account": "A",
+      "category": "사회·이슈",
+      "raw_category": "사회·이슈",
+      "id": "20260717-2003-A-73c2baaa03b1",
+      "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까? [세종의 가...",
+      "context": "전문 변호사들이 조세, 상속, 노동, 공정거래, M&A, 금융 등 다양한 분야의 법률 이슈를 다루며, 주요 판결... 역시 사회보장적 성격을 가지므로 상속재산에 포함되지 않고 상속인의 고유재산으로 인정된다. 생명보험금은 계약...",
+      "published_at": "Fri, 17 Jul 2026 20:01:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.620681+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/202607170841i"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사회 이슈"
+    },
+    {
+      "account": "A",
+      "category": "사회·이슈",
+      "raw_category": "사회·이슈",
+      "id": "20260717-2003-A-a96353d3db9b",
+      "title": "\"버스가 운전기사 자가용인가?\"…서울 시내버스 '라디오 금지' 조례 요구...",
+      "context": "서울 시내버스를 운행하는 기사들의 라디오 청취를 둘러싼 논란이 시민들 사이에서 이슈로 떠오르고 있다.... 공공교통 서비스에서 기사의 근무권과 승객의 이용권이 어디에서 균형을 이뤄야 하는지를 묻는 사회적...",
+      "published_at": "Fri, 17 Jul 2026 19:48:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.620709+09:00",
+      "urls": [
+        "https://www.ngonews.kr/news/articleView.html?idxno=233184"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사회 이슈"
+    },
+    {
+      "account": "A",
+      "category": "사회·이슈",
+      "raw_category": "사회·이슈",
+      "id": "20260717-2003-A-981e94854953",
+      "title": "[시사천국] 이범 \"'괴물 부모'는 세계적 현상…학교는 왜 전쟁터가 됐나...",
+      "context": "▷아니 그런데 사회가 더 고도화되고 발전되고 또 뭐 맞벌이도 하고 그러면 오히려 직접 보는 것보다 다 맡길... 그런데 지금 이제 ‘참교육’, 이건 화제가 되고 뜨거운 어떤 이슈가 되면서 우리가 그런 디텐션과 같은...",
+      "published_at": "Fri, 17 Jul 2026 19:42:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.620729+09:00",
+      "urls": [
+        "https://news.cpbc.co.kr/article/1174423?division=NAVER"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사회 이슈"
+    },
+    {
+      "account": "A",
+      "category": "사회·이슈",
+      "raw_category": "사회·이슈",
+      "id": "20260717-2003-A-dbb4d1cf4432",
+      "title": "서이초 3주기, 교사들 다시 거리로…\"아동복지법 개정해야\"",
+      "context": "교권 추락의 민낯을 드러내며 우리 사회에 큰 경종을 울렸던 서이초 교사 사망 사건이 내일로 3주기를... 저는 개인적으로 최근 이슈가 되었던 체험학습 포기 사태도 같은 맥락으로 이해하고 있습니다. 네, 최소한 기분을...",
+      "published_at": "Fri, 17 Jul 2026 19:08:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.620748+09:00",
+      "urls": [
+        "http://news.ebs.co.kr/ebsnews/allView/60748509/N"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "사회 이슈"
+    },
+    {
+      "account": "A",
+      "category": "생활·스포츠",
+      "raw_category": "economy",
+      "id": "20260717-2003-A-a1d8f7a82f87",
+      "title": "슈퍼컴퓨터도 찍었다…2026 월드컵 우승 예측 결과 봤더니",
+      "context": "hankyung 공개 목록. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-17 20:34",
+      "collected_at": "2026-07-17T20:38:15.098401+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/2026071708327"
+      ],
+      "source_ids": [
+        "hankyung_economy"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "A",
+      "category": "생활·스포츠",
+      "raw_category": "sports",
+      "id": "20260717-2003-A-4c3058775bd3",
+      "title": "여자배구 정관장 \"코치 부적절한 행위 죄송…필요한 후속 조치 이행\"",
+      "context": "1월 당시 소속 코치 A씨, 회식 자리서 선수에게 부적절한 행위…구단, 5월 인지 후 조치 나서 A씨는 사직서 제출 후 구단 떠나…정관장 \"선수단 보호 최우선, 예방 교육·관리 체계 강화\" 여자 프로배구팀 정관장 레드스파크스(정관장)가 연초 선수단 회식에서 발생한 코치의 부적절한 행위에 대해 사과하고 후속 조치 이행 계획을 밝혔다. 17일 정관장은 공식 SNS(소셜미디어)에 해당 내용을 담은 공식 입장문을 게재했다. 지난 1월",
+      "published_at": "2026.07.17 20:29",
+      "collected_at": "2026-07-17T20:38:18.800361",
+      "urls": [
+        "https://www.mt.co.kr/sports/2026/07/17/2026071719511120895"
+      ],
+      "source_ids": [
+        "moneytoday"
+      ],
+      "source_count": 1,
+      "rank_position": null,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-d0644ab1c033",
+      "title": "'편스토랑' 김용빈, \"연상 좋아한다\"…솔직한 이상형 고백",
+      "context": "식사 도중에는 자연스럽게 연애와 결혼 이야기가 이어졌다. 손빈아는 \"한복이 잘 어울리는 사람이 이상형\"이라며 배우 수애와 이영애를 이상형으로 꼽았다. 반면 김용빈은 \"나를 잘 챙겨주고, 캔도 따주고, 배려심이...",
+      "published_at": "Fri, 17 Jul 2026 14:16:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.803664+09:00",
+      "urls": [
+        "http://www.queen.co.kr/news/articleView.html?idxno=460438"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연애 결혼"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-19b84746e4eb",
+      "title": "술자리 끊고 얼굴·몸매에 올인... 능력남 만나 퇴사한다는 20대 여성의...",
+      "context": "연애와 결혼 이후의 태도에 대해서도 언급했다. A씨는 \"연애할 때도 항상 남편이 1순위였고 내조를 열심히 하면서도 상대를 옥죄지 않았다\"며 \"양가를 잘 챙기고 내조에 집중해줬으면 좋겠다는 남편의 뜻에 따라 곧 퇴사를...",
+      "published_at": "Fri, 17 Jul 2026 14:06:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.803719+09:00",
+      "urls": [
+        "https://www.insight.co.kr/news/563476"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연애 결혼"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-3f823ec8a5ea",
+      "title": "친구가 소개팅을 시켜줬는데..",
+      "context": "pann.nate.com 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251705",
+      "urls": [
+        "https://pann.nate.com/talk/375521355"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": 94,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-641694255a8b",
+      "title": "한그루, 감성 카페 앞 반려견과 여유 한때",
+      "context": "연기자로서 한그루를 널리 알린 작품으로는 2014년 tvN 드라마 '연애 말고 결혼'이 있다. 이 작품에서 주장미 역을 맡아 로맨틱 코미디 장르에서 코믹하면서도 솔직한 캐릭터를 선보였고, 극 중에서 보여준...",
+      "published_at": "Fri, 17 Jul 2026 12:34:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.803742+09:00",
+      "urls": [
+        "https://www.topstarnews.net/news/articleView.html?idxno=16137533"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연애 결혼"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-00b84b26772d",
+      "title": "“연애도 결혼도 못하고”…스스로 평생 혼자일 것 같다는 여성들의 6가...",
+      "context": "연애를 하고 싶지만 관계를 맺기 어렵다고 느끼며 \"나는 평생 혼자일 것 같다\"고 생각하는 여성들이 있다. 이른바 '펨셀(femcel·female involuntary celibates)'로 불린다. 이 펨셀 여성들이 경험하는 심리적 특성과 연애에 대한...",
+      "published_at": "Fri, 17 Jul 2026 12:15:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.803762+09:00",
+      "urls": [
+        "https://kormedi.com/?p=2835421"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연애 결혼"
+    },
+    {
+      "account": "B",
+      "category": "연애·관계",
+      "raw_category": "연애·관계",
+      "id": "20260717-2003-B-678d06bc0e26",
+      "title": "결혼정보회사 제이노블, 고위 전문직 전용 상품 '전문직 플랜' 런칭",
+      "context": "이번에 선보인 '전문직 플랜'은 업무 강도가 높고 프라이버시 보호를 중시하는 고위 전문직 엘리트들이 평소 연애와 결혼을 준비하는 과정에서 '첫 만남 약속 잡기(시간 및 장소 조율)' 단계부터 큰 피로감과 스트레스를...",
+      "published_at": "Fri, 17 Jul 2026 10:10:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.803782+09:00",
+      "urls": [
+        "https://www.mhns.co.kr/news/articleView.html?idxno=753554"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연애 결혼"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-4e3797e584f3",
+      "title": "MC몽, 8월 콘서트 개최 예고는 허언?…공연장 측 “대관 문의 없었다”",
+      "context": "예스24 라이브홀 관계자는 전날 sbs 연예뉴스와의 통화에서 “현재까지 MC몽 공연과 관련해 별도로 문의가 들어온 사항은 없으며, 대관이 이뤄지지 않은 것도 맞다”고 선을 그었다. 실제로 16일 공식 홈페이지에 공개된...",
+      "published_at": "Fri, 17 Jul 2026 15:10:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.722620+09:00",
+      "urls": [
+        "https://sports.khan.co.kr/article/202607171509003?pt=nv"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연예 뉴스"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-35afa2222679",
+      "title": "르세라핌은 어쩌다 이렇게 된걸까",
+      "context": "원래도 1군이었던적이 없지만 그래도 1.5군~2군 정도였는데",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251674",
+      "urls": [
+        "https://pann.nate.com/talk/375520876"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": 198,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-c906c6f236dd",
+      "title": "심우정 딸 근황",
+      "context": "bobaedream.co.kr 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854054",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011025&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": 39,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머",
+      "id": "20260717-2003-B-8121972176f1",
+      "title": "전북축구협회 사이트 근황",
+      "context": "fmkorea.com 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "5 시간 전",
+      "collected_at": "2026-07-17T20:38:21.620149",
+      "urls": [
+        "https://www.fmkorea.com/index.php?mid=best2&sort_index=pop&order_type=desc&document_srl=10094545023"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": 1715,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "국내축구",
+      "id": "20260717-2003-B-9a259b490410",
+      "title": "[KBS] 전북 축구협회장(축협 투표 유권자) \"박지성 이영표가 선수 때나 레전드지, 지들이 인생을 얼마나 살았고 뭘 안다고 말을 함부로 해쌌는지\" (실제 육성)",
+      "context": "fmkorea.com 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "7 시간 전",
+      "collected_at": "2026-07-17T20:38:21.620171",
+      "urls": [
+        "https://www.fmkorea.com/index.php?mid=best2&sort_index=pop&order_type=desc&document_srl=10094203961"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": 2695,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-b97919eb6c56",
+      "title": "[잇슈 연예 브리핑] \"돈 빌려주고 춤 상담도\" 부실 복무 인정 송민호, 재...",
+      "context": "연예계 핫한 뉴스를 '잇슈 연예 브리핑'에서 살펴봤다. ① '호프' 첫날 33만 명 관람…올해 개봉작 중 최다 나홍진 감독의 신작 '호프'가 개봉일에 33만 관객을 사로잡으며 뜨거운 관심을 입증했다. 지난 16일 영화관입장권...",
+      "published_at": "Fri, 17 Jul 2026 11:57:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.722675+09:00",
+      "urls": [
+        "https://www.obsnews.co.kr/news/articleView.html?idxno=1530880"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연예 뉴스"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-296794dd70aa",
+      "title": "같이 모텔가면 동의한거라고 생각한다는게",
+      "context": "너무 어이없음 그냥 모텔이란곳에 쉬러 or 진짜 그냥 자러가는거지 몸허락한다는게 전...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251698",
+      "urls": [
+        "https://pann.nate.com/talk/375520859"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": 235,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-d53931f070a6",
+      "title": "주진우가 나올때마다 궁금한거 하나.jpg",
+      "context": "bobaedream.co.kr 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854071",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011023&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": 42,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머",
+      "id": "20260717-2003-B-066ac7d346c9",
+      "title": "ㅇㅎ?) 발랑 까진 가루녀 개과천선하는.manhwa",
+      "context": "fmkorea.com 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "5 시간 전",
+      "collected_at": "2026-07-17T20:38:21.620177",
+      "urls": [
+        "https://www.fmkorea.com/index.php?mid=best2&sort_index=pop&order_type=desc&document_srl=10094649233"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": 1655,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-6016824db5d8",
+      "title": "르네상스 시절 찍힌 사진 한장.jpg",
+      "context": "bobaedream.co.kr 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854075",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011024&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": 34,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-1306f34dbbf1",
+      "title": "편승엽, 故 길은정 '사기 결혼' 의혹 재조명-딸 끝내 눈물",
+      "context": "\"사실이 바로잡힌 내용은 뉴스 한 번, 연예 프로그램 한 번 정도 소개되고 끝이었다.\" 편승엽은 \"억울함을 제대로 바로잡을 기회가 있었으면 좋겠다\"며 끝내 눈시울을 붉혔다. 그의 딸 편수지 역시 아버지의 오랜 상처를...",
+      "published_at": "Fri, 17 Jul 2026 07:12:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.722700+09:00",
+      "urls": [
+        "https://www.mediafine.co.kr/news/articleView.html?idxno=83751"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연예 뉴스"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-4113f33d84e5",
+      "title": "MC몽, 8월 콘서트 예고했는데…공연장 측 \"대관 이뤄지지 않았다\"",
+      "context": "16일 SBS연예뉴스 보도에 따르면 대관처로 지목된 YES24 라이브홀 관계자는 \"현재까지 MC몽 공연과 관련해 별도로 문의가 들어온 사항은 없다\"며 \"대관이 이뤄지지 않은 것도 맞다\"고 입장을 전했다. 실제로 공연장 공식...",
+      "published_at": "Thu, 16 Jul 2026 16:54:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.722720+09:00",
+      "urls": [
+        "https://www.tvreport.co.kr/entertainment/article/1061724/"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연예 뉴스"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-6aa0fa14088b",
+      "title": "[쿠팡] 곰곰 촉촉 반숙란 (냉장), 30구, 1개 (11,400원) (로켓프레쉬)",
+      "context": "fmkorea.com 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.620181",
+      "urls": [
+        "https://www.fmkorea.com/10093543999?x9=1"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": 147,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-9527cafaf1e4",
+      "title": "아주버님네 자식을 제가 키우게생겼어요",
+      "context": "안녕하세요 15개월 아기 키우고있는 29살여자입니다 아.. 어디서부터 적어야할지.. 일단 남...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251710",
+      "urls": [
+        "https://pann.nate.com/talk/375521789"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": 73,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-bc4c16292ecb",
+      "title": "이재명은 소시오패스!!!",
+      "context": "bobaedream.co.kr 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854079",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011022&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": 35,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "LoL",
+      "id": "20260717-2003-B-dca96f8fdffd",
+      "title": "[EWC 8강: GEN vs JDG] 세라핀 CC 미쳤어요! 용한타 승리하는 젠지! ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ",
+      "context": "fmkorea.com 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "1 분 전",
+      "collected_at": "2026-07-17T20:38:21.620184",
+      "urls": [
+        "https://www.fmkorea.com/best/10095985480"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": 62,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-a66692e3803e",
+      "title": "복귀 공연 직접 예고한 MC몽… 공연장 측은 “대관 문의 없었다”",
+      "context": "SBS연예뉴스에 따르면 YES24 라이브홀 측은 “현재까지 MC몽 공연과 관련해 별도로 문의받은 내용이 없으며 대관도 이뤄지지 않았다”고 밝혔다. YES24 라이브홀 공식 홈페이지에도 MC몽이 언급한 날짜의 공연 일정은...",
+      "published_at": "Thu, 16 Jul 2026 16:49:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.722740+09:00",
+      "urls": [
+        "https://biz.chosun.com/entertainment/enter_general/2026/07/16/ZFC642LH3FFJRBTJSKMTB6RLGE/?utm_source=naver&utm_medium=original&utm_campaign=biz"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "연예 뉴스"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "신유머/이슈/움짤",
+      "id": "20260717-2003-B-a32401fd5e29",
+      "title": "전북 축구협회 근황 ㄷㄷㄷㄷ",
+      "context": "bobaedream.co.kr 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854081",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011020&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": 47,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-b5e34079b931",
+      "title": "네이버페이 쓰는사람들 꼭봐",
+      "context": "ㅈㄱㄴ..⭐ 걷기만 하면 포인트받는건데 포인트받은걸로 네이버페이 포인트 같은걸로 받을수있...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251716",
+      "urls": [
+        "https://pann.nate.com/talk/375521580"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 6,
+      "reaction_count": 51,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-21315b2e08b5",
+      "title": "신천지 대단하네",
+      "context": "bobaedream.co.kr 공개 목록 6위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854084",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011021&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 6,
+      "reaction_count": 32,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머",
+      "id": "20260717-2003-B-19e90e52b9f1",
+      "title": "할말을 잃게 만드는 이제동의 미친 컨트롤",
+      "context": "fmkorea.com 공개 목록 6위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "1 분 전",
+      "collected_at": "2026-07-17T20:38:21.620188",
+      "urls": [
+        "https://www.fmkorea.com/best/10095404591"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 6,
+      "reaction_count": 55,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "LoL",
+      "id": "20260717-2003-B-89553bcd9c7c",
+      "title": "[EWC 8강: T1 vs HLE] 페이즈, 구마유시 2연 솔킬ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+      "context": "fmkorea.com 공개 목록 7위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2 분 전",
+      "collected_at": "2026-07-17T20:38:21.620191",
+      "urls": [
+        "https://www.fmkorea.com/best/10096006275"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 7,
+      "reaction_count": 251,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-5cb340f1c56c",
+      "title": "쓰레드가 어떤 곳이냐?ㅎㅎ 궁금하신 분",
+      "context": "bobaedream.co.kr 공개 목록 7위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854087",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011013&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 7,
+      "reaction_count": 54,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-dbcf45e83db1",
+      "title": "존재만으로도",
+      "context": "힘이 되는 사람 힘들 때 생각나는 사람 웃게 해주고 싶은 사람 힘든건 하지 말았으면",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251718",
+      "urls": [
+        "https://pann.nate.com/talk/375521378"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 7,
+      "reaction_count": 40,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "LoL",
+      "id": "20260717-2003-B-e5c8a792e0c8",
+      "title": "[EWC GEN vs JDG] 캐니언 용스틸 ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ",
+      "context": "fmkorea.com 공개 목록 8위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "3 분 전",
+      "collected_at": "2026-07-17T20:38:21.620193",
+      "urls": [
+        "https://www.fmkorea.com/best/10095925549"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 8,
+      "reaction_count": 94,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-09d90bf39746",
+      "title": "김채원 진짜 많이 늙었다…….",
+      "context": "카리나도 언젠가부턴가 슬슬 삭은지 됐는데 김채원도 그러네…. 윈터랑 신유나랑 장원...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251721",
+      "urls": [
+        "https://pann.nate.com/talk/375521202"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 8,
+      "reaction_count": 46,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-5f9e3814df21",
+      "title": "인터벌 트레이닝을 하지 않아도 되는 이유.JPG",
+      "context": "bobaedream.co.kr 공개 목록 8위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854090",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011014&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 8,
+      "reaction_count": 36,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-eb5e1affff92",
+      "title": "\"손 탈탈\" 조회수 87만?.. \"악마의 편집\" 고발",
+      "context": "bobaedream.co.kr 공개 목록 9위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854092",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011007&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 9,
+      "reaction_count": 85,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "LoL",
+      "id": "20260717-2003-B-7b6da39e7031",
+      "title": "[EWC 8강: T1 vs HLE] 이새끼들 누구에요? ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "context": "fmkorea.com 공개 목록 9위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "4 분 전",
+      "collected_at": "2026-07-17T20:38:21.620196",
+      "urls": [
+        "https://www.fmkorea.com/best/10095990819"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 9,
+      "reaction_count": 166,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-baf033fc78e7",
+      "title": "김수현 복귀 근황",
+      "context": "복귀성공함",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251724",
+      "urls": [
+        "https://pann.nate.com/talk/375521496"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 9,
+      "reaction_count": 49,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "유머게시판",
+      "id": "20260717-2003-B-2293efe16a52",
+      "title": "개고기가 유게의 두 닉에게 긁혔다는 증거",
+      "context": "bobaedream.co.kr 공개 목록 10위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.854094",
+      "urls": [
+        "https://www.bobaedream.co.kr/view?code=best&No=1011006&vdate="
+      ],
+      "source_ids": [
+        "bobaedream"
+      ],
+      "source_count": 1,
+      "rank_position": 10,
+      "reaction_count": 25,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "야구",
+      "id": "20260717-2003-B-912d6c16d9e3",
+      "title": "몬스터월을 넘기는 허인서의 투런ㄷㄷㄷㄷ",
+      "context": "fmkorea.com 공개 목록 10위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "4 분 전",
+      "collected_at": "2026-07-17T20:38:21.620199",
+      "urls": [
+        "https://www.fmkorea.com/best/10095997255"
+      ],
+      "source_ids": [
+        "fmkorea"
+      ],
+      "source_count": 1,
+      "rank_position": 10,
+      "reaction_count": 167,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "연예·도파민",
+      "raw_category": "연예·도파민",
+      "id": "20260717-2003-B-fcf10e41de6a",
+      "title": "배우 고윤정 옛날 얼굴이 더 좋아",
+      "context": "근거없는 추측은 안하고 그냥 시간지나면서 변한거라고 생각하지만 옛날의 풋풋하고 ...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251727",
+      "urls": [
+        "https://pann.nate.com/talk/375521273"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 10,
+      "reaction_count": 31,
+      "media_count": 1,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "B",
+      "category": "현실썰",
+      "raw_category": "현실썰",
+      "id": "20260717-2003-B-b674af9b1dd6",
+      "title": "이거 예쁜애들은 다 공감할거임",
+      "context": "남사친 사귀기 어려운거 진짜 예쁜애들은 다 공감하지않음? 난 쟤들을 백퍼 친구로보고 반신욕...",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:21.251713",
+      "urls": [
+        "https://pann.nate.com/talk/375521236"
+      ],
+      "source_ids": [
+        "nate_pann"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": 64,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "웰니스",
+      "id": "20260717-2003-C-fbb3876c08d4",
+      "title": "딱 적당한 삶이 주는 행복, 스웨덴의 라이프스타일 '라곰'에 대하여",
+      "context": "Vogue Korea 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.603747+09:00",
+      "urls": [
+        "https://www.vogue.co.kr/2026/07/17/%eb%94%b1-%ec%a0%81%eb%8b%b9%ed%95%9c-%ec%82%b6%ec%9d%b4-%ec%a3%bc%eb%8a%94-%ed%96%89%eb%b3%b5-%ec%8a%a4%ec%9b%a8%eb%8d%b4%ec%9d%98-%eb%9d%bc%ec%9d%b4%ed%94%84%ec%8a%a4%ed%83%80%ec%9d%bc-%eb%9d%bc/"
+      ],
+      "source_ids": [
+        "vogue_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "grooming",
+      "id": "20260717-2003-C-54a399544a4f",
+      "title": "블랙이 아니면 품을 수 없는 남자를 위한 시크한 블랙 뷰티템 7",
+      "context": "gq_grooming 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:24.036564+09:00",
+      "urls": [
+        "https://www.gqkorea.co.kr/2026/07/17/%eb%b8%94%eb%9e%99%ec%9d%b4-%ec%95%84%eb%8b%88%eb%a9%b4-%ed%92%88%ec%9d%84-%ec%88%98-%ec%97%86%eb%8a%94-%eb%82%a8%ec%9e%90%eb%a5%bc-%ec%9c%84%ed%95%9c-%ec%8b%9c%ed%81%ac%ed%95%9c-%eb%b8%94%eb%9e%99/"
+      ],
+      "source_ids": [
+        "gq_grooming"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티",
+      "id": "20260717-2003-C-cd4ff82a40b4",
+      "title": "여름엔 성가시니까 눈 화장은 과감히 패스할게요",
+      "context": "W Korea 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.682124+09:00",
+      "urls": [
+        "https://www.wkorea.com/2026/07/17/%ec%97%ac%eb%a6%84%ec%97%94-%ec%84%b1%ea%b0%80%ec%8b%9c%eb%8b%88%ea%b9%8c-%eb%88%88-%ed%99%94%ec%9e%a5%ec%9d%80-%ea%b3%bc%ea%b0%90%ed%9e%88-%ed%8c%a8%ec%8a%a4%ed%95%a0%ea%b2%8c%ec%9a%94/"
+      ],
+      "source_ids": [
+        "wkorea_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "웰니스",
+      "id": "20260717-2003-C-737ebbe7c43e",
+      "title": "맨발로 소금 밟기, 숙면에 도움이 되는지 전문가에게 물었습니다",
+      "context": "Vogue Korea 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.603747+09:00",
+      "urls": [
+        "https://www.vogue.co.kr/2026/07/17/%eb%a7%a8%eb%b0%9c%eb%a1%9c-%ec%86%8c%ea%b8%88-%eb%b0%9f%ea%b8%b0-%ec%88%99%eb%a9%b4%ec%97%90-%eb%8f%84%ec%9b%80%ec%9d%b4-%eb%90%98%eb%8a%94%ec%a7%80-%ec%a0%84%eb%ac%b8%ea%b0%80%ec%97%90%ea%b2%8c/"
+      ],
+      "source_ids": [
+        "vogue_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티",
+      "id": "20260717-2003-C-8182fee10a34",
+      "title": "사우나 친구가 은근히 평생 가는 이유",
+      "context": "W Korea 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.682124+09:00",
+      "urls": [
+        "https://www.wkorea.com/2026/07/17/%ec%82%ac%ec%9a%b0%eb%82%98-%ec%b9%9c%ea%b5%ac%ea%b0%80-%ec%9d%80%ea%b7%bc%ed%9e%88-%ed%8f%89%ec%83%9d-%ea%b0%80%eb%8a%94-%ec%9d%b4%ec%9c%a0/"
+      ],
+      "source_ids": [
+        "wkorea_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "grooming",
+      "id": "20260717-2003-C-1b8324689cc9",
+      "title": "16만 원으로 앤드류 가필드 풍성한 장발 따라하는 꿀팁",
+      "context": "gq_grooming 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.13",
+      "collected_at": "2026-07-17T20:38:24.036564+09:00",
+      "urls": [
+        "https://www.gqkorea.co.kr/2026/07/13/16%eb%a7%8c-%ec%9b%90%ec%9c%bc%eb%a1%9c-%ec%95%a4%eb%93%9c%eb%a3%a8-%ea%b0%80%ed%95%84%eb%93%9c-%ed%92%8d%ec%84%b1%ed%95%9c-%ec%9e%a5%eb%b0%9c-%eb%94%b0%eb%9d%bc%ed%95%98%eb%8a%94-%ea%bf%80%ed%8c%81/"
+      ],
+      "source_ids": [
+        "gq_grooming"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티",
+      "id": "20260717-2003-C-7a68ba1d933f",
+      "title": "필라테스 vs 요가 vs 헬스, 정신 건강에 더 좋은 운동은?",
+      "context": "W Korea 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.16",
+      "collected_at": "2026-07-17T20:38:23.682124+09:00",
+      "urls": [
+        "https://www.wkorea.com/2026/07/16/%ed%95%84%eb%9d%bc%ed%85%8c%ec%8a%a4-vs-%ec%9a%94%ea%b0%80-vs-%ed%97%ac%ec%8a%a4-%ec%a0%95%ec%8b%a0-%ea%b1%b4%ea%b0%95%ec%97%90-%eb%8d%94-%ec%a2%8b%ec%9d%80-%ec%9a%b4%eb%8f%99%ec%9d%80/"
+      ],
+      "source_ids": [
+        "wkorea_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티",
+      "id": "20260717-2003-C-cd790e9d543e",
+      "title": "복날의 삼계탕만큼 챙겨 먹어야 할 제철 채소 4",
+      "context": "W Korea 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.15",
+      "collected_at": "2026-07-17T20:38:23.682124+09:00",
+      "urls": [
+        "https://www.wkorea.com/2026/07/15/%eb%b3%b5%eb%82%a0%ec%9d%98-%ec%82%bc%ea%b3%84%ed%83%95%eb%a7%8c%ed%81%bc-%ec%b1%99%ea%b2%a8-%eb%a8%b9%ec%96%b4%ec%95%bc-%ed%95%98%eb%8a%94-%ec%a0%9c%ec%b2%a0-%ec%b1%84%ec%86%8c-4/"
+      ],
+      "source_ids": [
+        "wkorea_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "grooming",
+      "id": "20260717-2003-C-bc429ab14c38",
+      "title": "여유 좀 되는 남자의 상징인 ‘예쁜 손’, 제대로 관리하는 법 4",
+      "context": "gq_grooming 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.12",
+      "collected_at": "2026-07-17T20:38:24.036564+09:00",
+      "urls": [
+        "https://www.gqkorea.co.kr/2026/07/12/%ec%97%ac%ec%9c%a0-%ec%a2%80-%eb%90%98%eb%8a%94-%eb%82%a8%ec%9e%90%ec%9d%98-%ec%83%81%ec%a7%95%ec%9d%b8-%ec%98%88%ec%81%9c-%ec%86%90-%ec%a0%9c%eb%8c%80%eb%a1%9c-%ea%b4%80%eb%a6%ac/"
+      ],
+      "source_ids": [
+        "gq_grooming"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티 아이템",
+      "id": "20260717-2003-C-1c9452aedabd",
+      "title": "정원의 향을 맡고, 흙의 중심을 잡는 도예가 이경환",
+      "context": "Vogue Korea 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.16",
+      "collected_at": "2026-07-17T20:38:23.603747+09:00",
+      "urls": [
+        "https://www.vogue.co.kr/2026/07/16/%ec%a0%95%ec%9b%90%ec%9d%98-%ed%96%a5%ec%9d%84-%eb%a7%a1%ea%b3%a0-%ed%9d%99%ec%9d%98-%ec%a4%91%ec%8b%ac%ec%9d%84-%ec%9e%a1%eb%8a%94-%eb%8f%84%ec%98%88%ea%b0%80-%ec%9d%b4%ea%b2%bd%ed%99%98/"
+      ],
+      "source_ids": [
+        "vogue_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티 트렌드",
+      "id": "20260717-2003-C-04a43f508b99",
+      "title": "마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다",
+      "context": "Vogue Korea 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.16",
+      "collected_at": "2026-07-17T20:38:23.603747+09:00",
+      "urls": [
+        "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/"
+      ],
+      "source_ids": [
+        "vogue_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "뷰티",
+      "id": "20260717-2003-C-451151c7ec5d",
+      "title": "안정형 애인 알아보는 법 5",
+      "context": "W Korea 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.15",
+      "collected_at": "2026-07-17T20:38:23.682124+09:00",
+      "urls": [
+        "https://www.wkorea.com/2026/07/15/%ec%95%88%ec%a0%95%ed%98%95-%ec%95%a0%ec%9d%b8-%ec%95%8c%ec%95%84%eb%b3%b4%eb%8a%94-%eb%b2%95-5/"
+      ],
+      "source_ids": [
+        "wkorea_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티",
+      "raw_category": "grooming",
+      "id": "20260717-2003-C-6c2dc4c716b5",
+      "title": "알아두면 평생 쓰는, 신발 오래 깨끗하게 신는 사람들의 관리법 7",
+      "context": "gq_grooming 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.11",
+      "collected_at": "2026-07-17T20:38:24.036564+09:00",
+      "urls": [
+        "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/"
+      ],
+      "source_ids": [
+        "gq_grooming"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·메이크업",
+      "raw_category": "뷰티·메이크업",
+      "id": "20260717-2003-C-f9adbd250913",
+      "title": "NCT WISH, 오프라 코스메틱 앰버서더 발탁...한·일 공략",
+      "context": "글로벌 메이크업 브랜드다. 브랜드 측은 \"하이라이터로 '빛나는 순간'을 선사하는 오프라의 브랜드... 특히 NCT WISH의 영향력을 바탕으로, 신제품 론칭 캠페인은 국내뿐만 아니라 해외 시장까지 아우르는 스케일로 전개될...",
+      "published_at": "Fri, 17 Jul 2026 13:10:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.969431+09:00",
+      "urls": [
+        "https://www.slist.kr/news/articleView.html?idxno=752426"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "메이크업 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·메이크업",
+      "raw_category": "뷰티·메이크업",
+      "id": "20260717-2003-C-80f9cabd1853",
+      "title": "무더위에 숨 고르는 화장품 시장… 틈새공략 아이템 눈길 [최기자의 화...",
+      "context": "본지는 스킨케어, 메이크업, 바디, 헤어 등 화장품 트렌드를 품목별로 분석해 금주의 추천 화장품을 소개한다. 여름 무더위가 절정으로 치닫는 7월 3주차에는 예년보다 화장품 신제품 출시가 다소 주춤한 모습이었다....",
+      "published_at": "Fri, 17 Jul 2026 10:00:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.969507+09:00",
+      "urls": [
+        "https://www.meconomynews.com/news/articleView.html?idxno=132890"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "메이크업 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·메이크업",
+      "raw_category": "MAKEUP",
+      "id": "20260717-2003-C-2fba5d8ebc0f",
+      "title": "제니와 젠다야가 선택한 올여름 메이크업 키 포인트는?",
+      "context": "Allure Korea 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.16",
+      "collected_at": "2026-07-17T20:38:23.480006+09:00",
+      "urls": [
+        "https://www.allurekorea.com/2026/07/16/%ec%a0%9c%eb%8b%88%ec%99%80-%ec%a0%a0%eb%8b%a4%ec%95%bc%ea%b0%80-%ec%84%a0%ed%83%9d%ed%95%9c-%ec%98%ac%ec%97%ac%eb%a6%84-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85-%ed%82%a4-%ed%8f%ac%ec%9d%b8%ed%8a%b8/"
+      ],
+      "source_ids": [
+        "allure_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·메이크업",
+      "raw_category": "뷰티·메이크업",
+      "id": "20260717-2003-C-aa4ece03164a",
+      "title": "\"뉴욕에 띄운 K뷰티 카드\"…마녀공장, 글루타치온 시장 정조준",
+      "context": "예정 신제품을 선보이며 현지 미디어와 인플루언서들에게 브랜드 경쟁력을 소개했다고 16일 밝혔다.... 밀착되는 사용감과 로션과 같은 발림성이 특징이며, 메이크업 전에도 밀림 없이 사용할 수 있는 텍스처로 현지...",
+      "published_at": "Thu, 16 Jul 2026 16:50:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.969528+09:00",
+      "urls": [
+        "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065599239937892"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "메이크업 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·메이크업",
+      "raw_category": "뷰티·메이크업",
+      "id": "20260717-2003-C-6b1fafcd1f68",
+      "title": "블루엘리펀트 황리단길, 신세계 아울렛 ‘바캉스 메가 딜’ 外 [똑똑한...",
+      "context": "매장에서는 2026 S/S 시즌 신제품 라인업을 비롯해 다양한 아이웨어 컬렉션을 만나볼 수 있다. 고경민... ◇ 토니모리, 펩타이드 제품군 13종 확대 토니모리는 스킨케어부터 색조 메이크업까지 펩타이드 제품군 총 13종을...",
+      "published_at": "Thu, 16 Jul 2026 16:30:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.969546+09:00",
+      "urls": [
+        "https://www.ekn.kr/web/view.php?key=20260716022133110"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "메이크업 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·스킨케어",
+      "raw_category": "SKINCARE",
+      "id": "20260717-2003-C-85b6b3ca1782",
+      "title": "요즘 사람들이 얼굴에 젤리를 뿌리는 이유?",
+      "context": "Allure Korea 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.480006+09:00",
+      "urls": [
+        "https://www.allurekorea.com/2026/07/17/%ec%9a%94%ec%a6%98-%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4-%ec%96%bc%ea%b5%b4%ec%97%90-%ec%a0%a4%eb%a6%ac%eb%a5%bc-%eb%bf%8c%eb%a6%ac%eb%8a%94-%ec%9d%b4%ec%9c%a0/"
+      ],
+      "source_ids": [
+        "allure_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·스킨케어",
+      "raw_category": "grooming",
+      "id": "20260717-2003-C-b4ff60056981",
+      "title": "요즘 피부과에 남자들이 줄 선 이유, 남성 제모 전 알아야 할 것",
+      "context": "gq_grooming 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.15",
+      "collected_at": "2026-07-17T20:38:24.036564+09:00",
+      "urls": [
+        "https://www.gqkorea.co.kr/2026/07/15/%ec%9a%94%ec%a6%98-%ed%94%bc%eb%b6%80%ea%b3%bc%ec%97%90-%eb%82%a8%ec%9e%90%eb%93%a4%ec%9d%b4-%ec%a4%84-%ec%84%a0-%ec%9d%b4%ec%9c%a0-%eb%82%a8%ec%84%b1-%ec%a0%9c%eb%aa%a8-%ec%a0%84-%ec%95%8c%ec%95%84/"
+      ],
+      "source_ids": [
+        "gq_grooming"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·향수",
+      "raw_category": "뷰티·향수",
+      "id": "20260717-2003-C-c419e4bbd887",
+      "title": "본투스탠드아웃, 콜라 향수 출시...바세린, 워터프루프 선크림 출시",
+      "context": "여름철 무더위와 야외활동 수요를 겨냥한 뷰티 신제품이 잇따라 출시되고 있다. 사진=본투스탠드아웃... 차가운 콜라를 마실 때 느껴지는 짜릿한 청량감을 표현해 여름철이나 활기찬 페스티벌 분위기와 잘 어울리는 향수...",
+      "published_at": "Thu, 16 Jul 2026 22:16:00 +0900",
+      "collected_at": "2026-07-17T20:38:25.046173+09:00",
+      "urls": [
+        "https://www.slist.kr/news/articleView.html?idxno=752333"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "향수 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·향수",
+      "raw_category": "뷰티·향수",
+      "id": "20260717-2003-C-3c8e3b7f7241",
+      "title": "2026 여름 메이크업 시장, 글로벌은 '스키니피케이션', K-뷰티는 '경험'",
+      "context": "최근 출시된 에스티 로더, 맥(M·A·C), 디올, 3CE와 헤라, 글린트, 에이지투웨니스, 에뛰드, 에스쁘아의 신제품... 에뛰드는 빙그레의 쌍쌍바·바밤바·체리마루와 협업해 향수와 재미 요소를 결합한 컬렉션을 선보였다....",
+      "published_at": "Thu, 16 Jul 2026 15:44:00 +0900",
+      "collected_at": "2026-07-17T20:38:25.046228+09:00",
+      "urls": [
+        "https://www.thebk.co.kr/news/articleView.html?idxno=310471"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "향수 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·향수",
+      "raw_category": "뷰티·향수",
+      "id": "20260717-2003-C-36c5bb70d285",
+      "title": "슈몽드 향수, 중소벤처기업부·토스쇼핑 '2026년 TOPS' 선정 기념 특별 ...",
+      "context": "프리미엄 니치 향수 브랜드 슈몽드(ChouMonde,엠지코리아 대표 김시중)가 중소벤처기업부와 토스쇼핑이... 확보하고 신제품 라인업을 확대했다. 2024년에는 브랜딩을 강화하며 성수·한남 지역에서 오프라인 팝업스토어를...",
+      "published_at": "Thu, 16 Jul 2026 10:56:00 +0900",
+      "collected_at": "2026-07-17T20:38:25.046254+09:00",
+      "urls": [
+        "https://www.handmk.com/news/articleView.html?idxno=41410"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "향수 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·향수",
+      "raw_category": "뷰티·향수",
+      "id": "20260717-2003-C-101b561adc62",
+      "title": "본투스탠드아웃, '콜라 어딕트 오 드 퍼퓸' 출시… 콜라 향 담은 신제품...",
+      "context": "받은 신제품 '콜라 어딕트 오 드 퍼퓸'을 출시했다. '콜라 어딕트 오 드 퍼퓸'은 시원하면서도 중독적인 콜라 향을 구현한 향수다. 설탕과 카페인, 산미, 탄산 등 콜라를 다시 찾게 만드는 요소들을 향으로 풀어낸 것이...",
+      "published_at": "Thu, 16 Jul 2026 09:52:00 +0900",
+      "collected_at": "2026-07-17T20:38:25.046276+09:00",
+      "urls": [
+        "https://www.fashionbiz.co.kr/article/227942"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "향수 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·향수",
+      "raw_category": "뷰티·향수",
+      "id": "20260717-2003-C-daca17c5aced",
+      "title": "본투스탠드아웃, 콜라 향 담은 '콜라 어딕트 오 드 퍼퓸' 출시",
+      "context": "아티스틱 퍼퓸 브랜드 본투스탠드아웃(BORNTOSTANDOUT®)은 콜라의 청량감과 달콤한 향을 모티브로 한 신제품... 가볍게 사용할 수 있는 향수로 국내 소비자들에게도 새로운 향 경험을 제안하고 싶다\"고 말했다.",
+      "published_at": "Thu, 16 Jul 2026 09:48:00 +0900",
+      "collected_at": "2026-07-17T20:38:25.046297+09:00",
+      "urls": [
+        "http://www.beyondpost.co.kr/view.php?ud=20260716094408972046a9e4dd7f_30"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "향수 신제품"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·헤어",
+      "raw_category": "HAIR",
+      "id": "20260717-2003-C-d3a4279cc3b6",
+      "title": "이 머리색이면 여름 내내 예쁨 유지 가능!",
+      "context": "Allure Korea 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.16",
+      "collected_at": "2026-07-17T20:38:23.480006+09:00",
+      "urls": [
+        "https://www.allurekorea.com/2026/07/16/%ec%9d%b4-%eb%a8%b8%eb%a6%ac%ec%83%89%ec%9d%b4%eb%a9%b4-%ec%97%ac%eb%a6%84-%eb%82%b4%eb%82%b4-%ec%98%88%ec%81%a8-%ec%9c%a0%ec%a7%80-%ea%b0%80%eb%8a%a5/"
+      ],
+      "source_ids": [
+        "allure_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·헤어",
+      "raw_category": "뷰티 트렌드",
+      "id": "20260717-2003-C-e09c3aa1710e",
+      "title": "검은 머리 질렸다면? 제니퍼 로렌스처럼 '여름 브라운'이 답입니다",
+      "context": "Vogue Korea 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.17",
+      "collected_at": "2026-07-17T20:38:23.603747+09:00",
+      "urls": [
+        "https://www.vogue.co.kr/2026/07/17/%ea%b2%80%ec%9d%80-%eb%a8%b8%eb%a6%ac-%ec%a7%88%eb%a0%b8%eb%8b%a4%eb%a9%b4-%ec%a0%9c%eb%8b%88%ed%8d%bc-%eb%a1%9c%eb%a0%8c%ec%8a%a4%ec%b2%98%eb%9f%bc-%ec%97%ac%eb%a6%84-%eb%b8%8c%eb%9d%bc%ec%9a%b4/"
+      ],
+      "source_ids": [
+        "vogue_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·헤어",
+      "raw_category": "HAIR",
+      "id": "20260717-2003-C-e1a3f4f5a7ce",
+      "title": "날씨도 더운데 숏컷 어때요? 화사부터 유아까지, 숏컷 팸에 합류",
+      "context": "Allure Korea 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.15",
+      "collected_at": "2026-07-17T20:38:23.480006+09:00",
+      "urls": [
+        "https://www.allurekorea.com/2026/07/15/%eb%82%a0%ec%94%a8%eb%8f%84-%eb%8d%94%ec%9a%b4%eb%8d%b0-%ec%88%8f%ec%bb%b7-%ec%96%b4%eb%95%8c%ec%9a%94-%ed%99%94%ec%82%ac%eb%b6%80%ed%84%b0-%ec%9c%a0%ec%95%84%ea%b9%8c%ec%a7%80-%ec%88%8f%ec%bb%b7/"
+      ],
+      "source_ids": [
+        "allure_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "뷰티·헤어",
+      "raw_category": "HAIR",
+      "id": "20260717-2003-C-145cd25e7107",
+      "title": "비 올 때 시든 상추처럼 축 처진 앞머리, 요즘은 이렇게 복구합니다",
+      "context": "Allure Korea 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026.07.15",
+      "collected_at": "2026-07-17T20:38:23.480006+09:00",
+      "urls": [
+        "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/"
+      ],
+      "source_ids": [
+        "allure_beauty"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-f95700863c7b",
+      "title": "[리뷰] 디올 2027 S/S 남성복 컬렉션 프랑스 럭셔리 디올이 스타일, 소재, 기법까지 아우르는 친숙함의 재창조와 고유의 그루브와 마법을 불어넣은 2027 S/S 남성복 컬렉션을 선보였다.",
+      "context": "fashionn.com 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:22.705935+09:00",
+      "urls": [
+        "https://www.fashionn.com/board/read_new.php?table=1028&number=61491&sel_cat="
+      ],
+      "source_ids": [
+        "fashionn"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션/여성복",
+      "id": "20260717-2003-C-694835d83681",
+      "title": "베네통코리아, 아름다운가게와 '의류 기부 캠페인' 성료",
+      "context": "[어패럴뉴스 정지은 기자] 베네통코리아(대표 김규완)가 전개하는 패션 브랜드 베네통(Benetton), 시슬리(Sisley), 베네통키즈(Benetton Kids)가 재단법인 아름다운가게와 함께 진행한 의류 기부 캠페인 ‘그린 비(GREEN B) 프로젝트’를 성공적으로 마무리했다.",
+      "published_at": "2026/07/16",
+      "collected_at": "2026-07-17T20:38:23.421461+09:00",
+      "urls": [
+        "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226437"
+      ],
+      "source_ids": [
+        "apparelnews"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-94055bdbebcc",
+      "title": "오프라코스메틱, 첫 브랜드 앰배서더로 NCT WISH 발탁",
+      "context": "fashionbiz.co.kr 공개 목록 1위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-17T02:00:00.000Z",
+      "collected_at": "2026-07-17T20:38:23.310776+09:00",
+      "urls": [
+        "https://fashionbiz.co.kr/article/227968",
+        "https://www.fashionbiz.co.kr/article/227968"
+      ],
+      "source_ids": [
+        "fashionbiz",
+        "naver_api_hub"
+      ],
+      "source_count": 2,
+      "rank_position": 1,
+      "reaction_count": 0,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window",
+      "duplicate_group": "exact:20260717-2003-C-94055bdbebcc"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-4eb1e6933596",
+      "title": "요즘 젠지는 유행 대신 아카이브 패션을 발굴합니다",
+      "context": "매주 쏟아지는 SPA 브랜드의 신제품, 알고리즘이 기계적으로 추천하는 트렌드, 손가락 하나로 끝나는 결제... 요즘 세대의 패션은 구매가 아닌 큐레이션의 영역으로 이동했다. 이런 흐름의 기저에는 구체적이고...",
+      "published_at": "Fri, 17 Jul 2026 17:56:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.889834+09:00",
+      "urls": [
+        "https://www.elle.co.kr/article/1905390"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 1,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "패션 신제품"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-93d539639c2b",
+      "title": "[리뷰] 톰 브라운 2027 S/S 남성복 컬렉션 미국 패션 디자이너 '톰 브라운이 18년만에 밀라노 패션위크에 컴백, 전통과 혁신적인 테일러링이 조화를 이룬 2027 S/S 남성복 컬렉션을 선보였다.",
+      "context": "fashionn.com 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:22.705935+09:00",
+      "urls": [
+        "https://www.fashionn.com/board/read_new.php?table=1028&number=61445&sel_cat="
+      ],
+      "source_ids": [
+        "fashionn"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-44b2878b8e8d",
+      "title": "[유통체크업] 여름 수요 잡자… 마케팅 경쟁 '후끈'",
+      "context": "한정판 신제품 출시를 확대하며 매출 증대를 노린다. 17일 편의점업계에 따르면 코리아세븐이 운영하는... 패션업계는 냉감 소재와 자외선 차단 상품을 중심으로 수요를 공략한다. LF 닥스액세서리는 우양산 생산량을...",
+      "published_at": "Fri, 17 Jul 2026 14:00:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.889884+09:00",
+      "urls": [
+        "http://www.the-biz.co.kr/news/articleView.html?idxno=724436"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "패션 신제품"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-8f6d21b7e071",
+      "title": "‘와디즈’ 월 이용자 1000만명 돌파… 국내 넘어 해외 참여도 확대",
+      "context": "fashionbiz.co.kr 공개 목록 2위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-16T09:00:00.000Z",
+      "collected_at": "2026-07-17T20:38:23.310776+09:00",
+      "urls": [
+        "https://fashionbiz.co.kr/article/227970"
+      ],
+      "source_ids": [
+        "fashionbiz"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": 0,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션/라이선스",
+      "id": "20260717-2003-C-c906b7086df7",
+      "title": "마코빌, '치타부' 팝업스토어 오픈",
+      "context": "[어패럴뉴스 박해영 기자] 크로스미디어 콘텐츠 IP 스타트업 마코빌(대표 이주현)이 여름방학을 맞아 글로벌 키즈 IP '치타부(Cheetahboo)' 팝업스토어를 현대백화점 판교점에서 오픈한다.",
+      "published_at": "2026/07/16",
+      "collected_at": "2026-07-17T20:38:23.421461+09:00",
+      "urls": [
+        "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226436"
+      ],
+      "source_ids": [
+        "apparelnews"
+      ],
+      "source_count": 1,
+      "rank_position": 2,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-4574ba169672",
+      "title": "\"협업 제품 어때요?\"... 패션업계 여름 틈새 공략 '후끈' [최기자의 패션...",
+      "context": "기자] 패션 시장에는 매일같이 수많은 신제품이 쏟아진다. 때문에 그 속에서 정확하게 내가 원하는 제품을, 최신 트렌드에 부합되는 제품을 찾기는 쉽지 않다. 화려한 광고 뒤에 가려진 진짜 주목할 아이템은...",
+      "published_at": "Fri, 17 Jul 2026 12:00:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.889906+09:00",
+      "urls": [
+        "https://www.meconomynews.com/news/articleView.html?idxno=132892"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "패션 신제품"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-4f6fe8168b4b",
+      "title": "[리뷰] 프라다 2027 S/S 남성복 컬렉션 이탈리아 럭셔리 브랜드 프라다가 '클래리티(Clarity.명료함)'를 주제로 절제된 미학의 신개념 미니멀리즘 2027 S/S 남성복 컬렉션을 선보였다.",
+      "context": "fashionn.com 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:22.705935+09:00",
+      "urls": [
+        "https://www.fashionn.com/board/read_new.php?table=1028&number=61428&page=1&sel=&search=&sel_cat="
+      ],
+      "source_ids": [
+        "fashionn"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-9b7a45f7a88e",
+      "title": "‘마리떼 x 레스포색’ F/W 체크 디테일 살린 협업 컬렉션 출시",
+      "context": "fashionbiz.co.kr 공개 목록 3위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-16T08:50:00.000Z",
+      "collected_at": "2026-07-17T20:38:23.310776+09:00",
+      "urls": [
+        "https://fashionbiz.co.kr/article/227969"
+      ],
+      "source_ids": [
+        "fashionbiz"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": 0,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "상권유통/백화점",
+      "id": "20260717-2003-C-1c8deb3b8a7d",
+      "title": "이랜드리테일, NC픽스 강서점 확장 리뉴얼",
+      "context": "[어패럴뉴스 정민경 기자] 이랜드리테일(대표 채성원)이 오프프라이스 사업 경쟁력 강화를 위해 핵심 점포인 ‘NC픽스’ 강서점을 기존 200평에서 약 320평으로 확장 리뉴얼 오픈했다.",
+      "published_at": "2026/07/16",
+      "collected_at": "2026-07-17T20:38:23.421461+09:00",
+      "urls": [
+        "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226434"
+      ],
+      "source_ids": [
+        "apparelnews"
+      ],
+      "source_count": 1,
+      "rank_position": 3,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-c5761890a238",
+      "title": "[리뷰] 돌체앤가바나 2027 S/S 남성복 컬렉션 이탈리아 럭셔리 하우스 돌체앤가바나가 '시칠리아 휴가(Vacanze Siciliane)'를 주제로 2027 S/S 남성복 컬렉션을 선보였다.",
+      "context": "fashionn.com 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:22.705935+09:00",
+      "urls": [
+        "https://www.fashionn.com/board/read_new.php?table=1028&number=61419&sel_cat="
+      ],
+      "source_ids": [
+        "fashionn"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-69a7e38e6f3d",
+      "title": "[현장] ‘리센느도 방문한’ 2026 캐릭터 라이선싱 페어, SMC 등 120여개 기업 참가",
+      "context": "fashionbiz.co.kr 공개 목록 4위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-16T08:20:00.000Z",
+      "collected_at": "2026-07-17T20:38:23.310776+09:00",
+      "urls": [
+        "https://fashionbiz.co.kr/article/227967"
+      ],
+      "source_ids": [
+        "fashionbiz"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": 0,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션/제화",
+      "id": "20260717-2003-C-87d419b4ab4e",
+      "title": "레페토 X 버켄스탁, 협업 컬렉션 출시",
+      "context": "[어패럴뉴스 박해영 기자] 스타럭스 레페토코리아(대표 안종훈)의 프랑스 럭셔리 브랜드 레페토가 버켄스탁(BIRKENSTOCK)과 협업 컬렉션을 선보인다.",
+      "published_at": "2026/07/16",
+      "collected_at": "2026-07-17T20:38:23.421461+09:00",
+      "urls": [
+        "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226432"
+      ],
+      "source_ids": [
+        "apparelnews"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-52419867f5a5",
+      "title": "폭염이 바꾼 여름 패션 공식… \"냉감·티셔츠·라이트 포멀 경쟁\" [최기...",
+      "context": "기자] 패션 시장에는 매일같이 수많은 신제품이 쏟아진다. 때문에 그 속에서 정확하게 내가 원하는 제품을, 최신 트렌드에 부합되는 제품을 찾기는 쉽지 않다. 화려한 광고 뒤에 가려진 진짜 주목할 아이템은...",
+      "published_at": "Fri, 17 Jul 2026 12:00:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.889933+09:00",
+      "urls": [
+        "https://www.meconomynews.com/news/articleView.html?idxno=132893"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 4,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "패션 신제품"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-ef8242117fd6",
+      "title": "'G쇼크'는 옛말…여성들 사로잡은 '싸구려 시계'의 반란",
+      "context": "최근에는 브랜드 개편과 신제품 출시를 통해 단순한 저가 시계에서 벗어나 패션 액세서리로 인식이 변화하고 있다. 최근엔 인도와 브라질 등 신흥국에서 판매가 증가하면서 카시오 워치의 존재감이 커지고 있다....",
+      "published_at": "Fri, 17 Jul 2026 11:01:00 +0900",
+      "collected_at": "2026-07-17T20:38:24.889951+09:00",
+      "urls": [
+        "https://www.hankyung.com/article/202607096130i"
+      ],
+      "source_ids": [
+        "naver_api_hub"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "naver_latest_supplement",
+      "query": "패션 신제품"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-3594c7cfb3a1",
+      "title": "'입고 싶은 옷 만들었더니 189억'… 플로움, 4층 규모 브랜드 스페이스 열다",
+      "context": "fashionbiz.co.kr 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "2026-07-16T08:00:00.000Z",
+      "collected_at": "2026-07-17T20:38:23.310776+09:00",
+      "urls": [
+        "https://fashionbiz.co.kr/article/227962"
+      ],
+      "source_ids": [
+        "fashionbiz"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": 0,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션",
+      "id": "20260717-2003-C-b220caa2019b",
+      "title": "[패션엔 포토] 아일릿 원희, 공항에 뜬 여친? 레이스 크롭 톱에 집업 재킷 툭 여친 출국룩",
+      "context": "fashionn.com 공개 목록 5위. 원문을 열어 세부 내용을 확인할 후보입니다.",
+      "published_at": "",
+      "collected_at": "2026-07-17T20:38:22.705935+09:00",
+      "urls": [
+        "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat="
+      ],
+      "source_ids": [
+        "fashionn"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    },
+    {
+      "account": "C",
+      "category": "패션",
+      "raw_category": "패션/유아동복",
+      "id": "20260717-2003-C-2d5372d38e51",
+      "title": "뉴나, '익싸 넥스트' 런칭 기념 CJ온스타일 라방 진행",
+      "context": "[어패럴뉴스 정민경 기자] 아용품 전문기업 에이원월드(대표 이준호)의 네덜란드 프리미엄 육아 브랜드 뉴나(Nuna)가 7월 24일 오전 10시 CJ온스타일 육아 라이브 채널 '맘만하니'를 통해 초경량 절충형 유모차 ‘익싸 넥스트(IXXA next)’ 런칭 라이브를 진행한다.",
+      "published_at": "2026/07/16",
+      "collected_at": "2026-07-17T20:38:23.421461+09:00",
+      "urls": [
+        "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226428"
+      ],
+      "source_ids": [
+        "apparelnews"
+      ],
+      "source_count": 1,
+      "rank_position": 5,
+      "reaction_count": null,
+      "media_count": null,
+      "status": "OWNER_UNLABELED",
+      "selection_stage": "bounded_source_window"
+    }
+  ],
+  "exclusion_ledger": [
+    {
+      "source_id": "naver_news",
+      "title": "[A 주간 서머리] 경제·산업계 \"한은 금리인상 단행...삼성전자, 수리 자...",
+      "url": "https://www.asiaa.co.kr/news/articleView.html?idxno=255400",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "'AI race shifts from building models to rebuilding companies'",
+      "url": "https://www.koreatimes.co.kr/path/A2026071712380004803",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "[#통신 풍향계] SKT '휴가철 통신 품질 관리'·KT '신속 복구 체계' 가동...",
+      "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=847488",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "AI가 기업 업무를 직접 실행한다…오라클, 퓨전용 에이전틱 앱 개발 환...",
+      "url": "https://www.venturesquare.net/1099320/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "AI가 논문 쓰고 AI가 심사했다…베슬AI, ‘랄프톤’ GPU 인프라 지원",
+      "url": "https://www.venturesquare.net/1099291/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "AI가 마케팅도, 커머스도 실행한다…세일즈포스가 제시한 ‘에이전틱 엔...",
+      "url": "https://www.venturesquare.net/1099261/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Remedi Surges, HLB Hits Limit Down as FDA Blow Weighs[K-Bio Pulse]",
+      "url": "https://www.edaily.co.kr/news/newspath.asp?newsid=02715846645514848",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "구독 수익화 늘린다…에이비일팔공, 레비뉴캣과 손잡고 시장 공략",
+      "url": "https://www.venturesquare.net/1098368/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "[Booktopia] \"Thinking Needs a Walk Too\": Why Independent Thought Matters ...",
+      "url": "https://www.nc.press/news/articleView.html?idxno=620486",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "AI robots to help manage public wellness at Seoul’s iconic design hub",
+      "url": "https://www.koreatimes.co.kr/path/A2026071010080002845",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "“창업부터 AI·숏폼까지 한 번에”…부산창경, 7월 W-DAY로 실전 역량 ...",
+      "url": "https://www.venturesquare.net/1093382/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Meta Subscription Push Could Add Billions in Recurring Revenue, Says Rose...",
+      "url": "https://www.econotimes.com/Meta-Subscription-Push-Could-Add-Billions-in-Recurring-Revenue-Says-Rosenblatt-1742959",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Kakao's Meta-Style AI Strategy Lacks Meta-Like Ecosystem Support",
+      "url": "https://it.chosun.com/news/articleView.html?idxno=2023092160390",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Change Doesn’t Happen the Way You Think",
+      "url": "https://www.nytimes.com/2026/04/05/opinion/change-self-transformation-industry.html?partner=naver",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "The ‘Summer House’ Scandal, Reunion and ‘The Aftermath,’ Explained",
+      "url": "https://www.nytimes.com/2026/04/01/style/bravo-summer-house-west-wilson-amanda-batula.html?partner=naver",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Is IBM a Canary in the Tech Coal Mine?",
+      "url": "https://www.nytimes.com/2026/07/15/business/dealbook/ibm-ai-software-consulting.html?partner=naver",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "[우리품의 아프리카인](43) \"이젠 지하철 제옆에도 사람들이 앉아요\"",
+      "url": "https://www.yna.co.kr/view/AKR20260713037400898?input=1195m",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "This Healthy Roasted Fish Al Pastor Is Already Earning Raves",
+      "url": "https://www.nytimes.com/2026/07/12/dining/this-healthy-roasted-fish-al-pastor-is-already-earning-raves.html?partner=naver",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "“이 캔맥주, 왜 편의점보다 우리 가게가 비쌀까”… 정용희 링크업 대...",
+      "url": "https://www.venturesquare.net/1093558/",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "naver_news",
+      "title": "Trump Is Promoting ‘Freedom Fuel’ for $3.47 a Gallon. Who’s Behind It...",
+      "url": "https://www.nytimes.com/2026/07/10/us/freedom-fuel-gas-stations.html?partner=naver",
+      "reason": "default_ai_automation_query_replaced_by_cardnews_queries"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "죽은 아내에게서 카톡이 왔다...그 남편 만났습니다 [여기,잇슈]",
+      "url": "https://v.daum.net/v/20260717182210952",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "승률 99%로 시작한 패배…신진서는 자신의 바둑을 잃었다 [여기는 논설실]",
+      "url": "https://v.daum.net/v/20260717172809273",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "'평화'의 섬 제주에 '살상'의 우주 군사 기술이?",
+      "url": "https://v.daum.net/v/20260717170948043",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "“매출 반토막 났다” “손님 구경도 못했다” 폭염이 야속한 전통시장 [세상&]",
+      "url": "https://v.daum.net/v/20260717164710711",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "“모기 물린 줄 알았는데 돌연 응급실행”…여름철 ‘이 병’ 방치했다간 패혈증까지",
+      "url": "https://v.daum.net/v/20260717163951628",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "송영길 김용 출마 허용에 ‘친명 친청’ 갈등 부각…“불공정” 논란도",
+      "url": "https://v.daum.net/v/20260717203010347",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "'안규백 방위 두번 소집, 행정착오냐 불법이냐' YTN 기자-軍부대변인 설전",
+      "url": "https://v.daum.net/v/20260717194240764",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "[뉴스추적] 민주 전당대회 후보 자격 '충돌'…보수 잠룡 5각 구도",
+      "url": "https://v.daum.net/v/20260717193244680",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "헌법 파괴 국회 보이콧하고… ‘참정권 수호’ 시민 품으로 간 장동혁",
+      "url": "https://v.daum.net/v/20260717184409137",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "김혜경 저려도 손터는 건 결례? 민주당 \"주진우 왜곡 드러나도 궤변\"",
+      "url": "https://v.daum.net/v/20260717183249037",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "'대통령 세종 집무실' 설계 지연… 2029년 문 열 수 있나",
+      "url": "https://v.daum.net/v/20260717180107666",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "주북 몽골대사 “판문점에서 주한대사와 만나 업무협의 희망”…대북 소통 창구 될까",
+      "url": "https://v.daum.net/v/20260717174812509",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "‘安·韓 대전’이 한동훈 복당 스텝 꼬이게 했나",
+      "url": "https://v.daum.net/v/20260717174037423",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "daum_news",
+      "title": "해수부, 2030년 부산 신청사 완공... 핵심 과제 본격 시동",
+      "url": "https://v.daum.net/v/20260717173507364",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "title": "[ܵ] ° 50 ,  ߴ ǽ Ÿ ٴڼ ...",
+      "url": "https://news.nate.com/view/20260717n11601",
+      "reason": "unreadable_text_encoding"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "title": "ڹ г ! \"̿ǥ ȴٰ\" ߾ ź\"...",
+      "url": "https://news.nate.com/view/20260717n11397",
+      "reason": "unreadable_text_encoding"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "title": "Ʈ 40 κ ߶硦 ȿ 12졤8 ڳ ä ߰",
+      "url": "https://news.nate.com/view/20260717n11107",
+      "reason": "source_not_in_current_account_portfolios"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "title": "ƳԼ ī Դ١ ϴ [,ս]",
+      "url": "https://news.nate.com/view/20260717n11555",
+      "reason": "source_not_in_current_account_portfolios"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "title": "\", ܵ ס ӽ ȵ Ŵϱ\" ѱ ûҳ, ...",
+      "url": "https://news.nate.com/view/20260717n05850",
+      "reason": "source_not_in_current_account_portfolios"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "비 한방울 안 왔는데…LA 한복판 '물바다' 된 기막힌 이유",
+      "url": "https://www.hankyung.com/article/2026071712697",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "한강 소설 아비뇽 무대 올린 연출가 \"여성의 서사로 잊힌 역사 무대에 불러냈다\"",
+      "url": "https://www.hankyung.com/article/202607171293i",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "美 언론사들 '트럼프 연설' 생중계 거부…동물·퀴즈쇼 방송",
+      "url": "https://www.hankyung.com/article/2026071712867",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "부정선거 강연 중 쓰러진 민경욱…뇌출혈 수술 후 의식 회복",
+      "url": "https://www.hankyung.com/article/2026071713077",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "\"한국인 조상은 중국인\" 논란 장위안…어떻게 지내나 봤더니",
+      "url": "https://www.hankyung.com/article/2026071713047",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "\"피의 복수\" 이란, 美 보복 타격…호르무즈 긴장 '최고조'",
+      "url": "https://www.hankyung.com/article/2026071713027",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "\"주식 계좌 녹아요\" 눈물 흘리더니…개미 돈 다시 몰리는 곳",
+      "url": "https://www.hankyung.com/article/2026071694066",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "박세훈 AI연구소, '아시아 로하스 산업대전' 보건복지부 장관상 수상",
+      "url": "https://www.hankyung.com/article/202607171299i",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "CTX 연말 제3자 공고 추진…2034년 말 개통 목표",
+      "url": "https://www.hankyung.com/article/202607171296i",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "국회 장내 소란, 90%가 법사위…국토·행안은 '무더기 법안 심사'",
+      "url": "https://www.hankyung.com/article/202607171131i",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "\"한번에 80만원씩 써요\"…폭염 특수에 불티난 가전 뭐길래",
+      "url": "https://www.hankyung.com/article/202607168080g",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "서울대공원 시베리아호랑이 '사랑이', 미국으로 이민 간 사연",
+      "url": "https://www.hankyung.com/article/2026071712677",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "신진서 \"한 달 준비한 게 한 수에 날아가…2국은 후반 끝내기 바둑 둘 것\"",
+      "url": "https://www.hankyung.com/article/2026071712441",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "상변에서 백 압박했어야",
+      "url": "https://www.hankyung.com/article/2026071712421",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "카타고 개발자 \"인간의 도전의지·성취 보여줄 대국\"",
+      "url": "https://www.hankyung.com/article/2026071712431",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "수억대 연봉 '네오 블루칼라'…젠슨 황의 전망, 현실로 성큼",
+      "url": "https://www.hankyung.com/article/2026071712001",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "얼굴 스캔하는데, 개인정보 유출되면 어쩌나",
+      "url": "https://www.hankyung.com/article/2026071712201",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "정중동 전략?…'얼굴' 안 내미는 카카오페이",
+      "url": "https://www.hankyung.com/article/2026071712191",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "전쟁 속에서도…팔레스타인 대학생 학사모 쓰고 '활짝'",
+      "url": "https://www.hankyung.com/article/2026071712401",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "우주 망원경 구조하는 팔 세개 달린 로봇",
+      "url": "https://www.hankyung.com/article/2026071712351",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "title": "中 병원, 환자 데이터 본격 판매…AI 학습용 의료정보 거래 확산",
+      "url": "https://www.hankyung.com/article/2026071712361",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "mk_economy",
+      "title": "“제발 굿즈 내주세요” 댓글 요청에 유한킴벌리, 크리넥스 ‘슥삵 에디션’ 한정 출시",
+      "url": "https://www.mk.co.kr/news/pick/12096929",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "'축구의 신' 메시냐 '신성' 야말이냐…슈퍼컴퓨터가 찍은 월드컵 우승팀",
+      "url": "https://www.mt.co.kr/world/2026/07/17/2026071719180386315",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "나홍진 '호프' 100만 돌파했지만…\"명작\"vs\"실망\" 엇갈린 반응",
+      "url": "https://www.mt.co.kr/culture/2026/07/17/2026071719405513938",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "[속보]與 최고위원 예비후보, 현역 국회의원 9명 포함 총 14명 등록",
+      "url": "https://www.mt.co.kr/politics/2026/07/17/2026071719354031724",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "[속보]與 당 대표 예비후보, 김민석·고민정·정청래·김보미·송영길 5인",
+      "url": "https://www.mt.co.kr/politics/2026/07/17/2026071719333610753",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "술 취해 도로에 누워있던 20대 여성…차량에 치여 '의식불명'",
+      "url": "https://www.mt.co.kr/society/2026/07/17/2026071717481545453",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "[내일 날씨]토요일 전국 '물폭탄' 예고…최대 250㎜ 이상 폭우",
+      "url": "https://www.mt.co.kr/society/2026/07/17/2026071715035370445",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "아파트서 40대 부부 추락사…집 안엔 12살·8살 자녀 숨진 채 발견",
+      "url": "https://www.mt.co.kr/society/2026/07/17/2026071717391281772",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "moneytoday",
+      "title": "심우정 딸 '채용 취소'…외교부 \"응시자격 미충족, 관련자 징계의결\"",
+      "url": "https://www.mt.co.kr/politics/2026/07/17/2026071717420063758",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "한투AC, 美 오리건 UAS 액셀러레이터와 맞손…K-방산·드론 스타트업 美 진출 지원",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05533366645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "단일종목 레버리지 기본예탁금 3000만원…\"제약으로 느낄 것\"(종합)",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05516966645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "[일문일답]\"레버리지 상폐? 시장 과열이 문제 …상폐 요건 아냐\"",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05448086645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "리가켐바이오, 5000억 조달 조건 정정…전환가 12만1400원으로 하향",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05369366645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "인콘, 5대 1 주식병합 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05343126645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "하이로닉, 주당 233원 현금배당 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05339846645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "다보링크, 30억 규모 전환사채권 발행 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05326726645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "빌리언스, 5대 1 주식병합 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05320166645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "KIC, 한국형 테마섹 '시동'…법부터 바꾸고 내년 실탄 쏜다",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05310326645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "케이바이오랩스, 5대 1 주식병합 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05307046645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "이엘씨, 20억 규모 자사주 신탁계약 체결 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05284086645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "\"임대료 늘고, 금융비용 줄고\" 한화리츠, 순이익 61% 뛰었다",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05261126645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "단일종목 레버리지 대책 발표 후에도…삼전·닉스, NXT서 낙폭 확대[특징주]",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05231606645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "예탁결제원, 외국인 투자 문턱 낮췄다…LEI 확인서 한 달 만에 200건",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05103686645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "[마켓인]홈플러스, 2000억 자금 수혈 성공…파산 대신 항고 택한다",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=05002006645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "베뉴지, 376억 규모 교환사채권 발행 결정",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=04906886645515176&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "존슨앤드존슨, 강력한 실적에 목표주가·투자의견 동시 상향-프리덤 캐피털",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=03358726645515504&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "우버, 딜리버리 히어로 인수에 시너지 기대…\"밸류 적정 수준 평가 받을 것\"-시티즌스",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=03325926645515504&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "\"저가 커피마저 부담\"...불황에 '100원꼴' 커피믹스의 귀환[이 집! 지금, 이 맛]",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=03299686645515504&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "[마켓톡스]AI 자본 지출 둔화 가능성…반도체서 하이퍼스케일러로 눈돌리는 월가",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=03263606645515504&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "edaily",
+      "title": "실종 열흘 만에…50대 여성, 오피스텔 주차타워서 숨진 채 발견",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=03270166645515504&mediaCodeNo=257",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美·이란 충돌 격화 속 호르무즈 해협서 유조선 피격",
+      "url": "https://www.yna.co.kr/view/AKR20260717047300108?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美·이란 충돌, 걸프국 인프라로 불똥…확전 우려",
+      "url": "https://www.yna.co.kr/view/AKR20260717052800108?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "트럼프 \"中, 2020년 대선 광범위 개입\"…美언론들 \"음모론 재탕\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717026151071?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "중간선거 앞둔 트럼프, 강성지지층 겨냥 부정선거론 26분 연설",
+      "url": "https://www.yna.co.kr/view/AKR20260717033000071?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "트럼프 연설 대신 동물 쇼 방송…美언론사 우르르 생중계 거부",
+      "url": "https://www.yna.co.kr/view/AKR20260717034500009?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "李대통령 '빛의위원회' 출범행사 …\"누구도 헌법 위 군림 안돼\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717045000001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "李대통령 \"12월3일 국민주권의날 지정…위대한역사 반드시 기억\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717022100001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "최태원, \"SK하이닉스 주식, 샀다 팔았다 말고 갖고 있으면 돼\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717026000003?section=economy/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "'삼전닉스' 레버리지 한달간 7조원 흡수…보완대책 통할까",
+      "url": "https://www.yna.co.kr/view/AKR20260716209500008?section=market-plus/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美비자 제한에 유학준비 학생들 초비상…\"입시 앞두고 청천벽력\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717030800004?section=society/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美, 유학생 비자 4년 제한…체류 韓학생·가족 1만3천명 영향 파장",
+      "url": "https://www.yna.co.kr/view/AKR20260716213252071?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美비자 제한 직격탄 맞은 한국 유학생들 \"불확실성에 조마조마\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717012100075?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "제헌절에도 네탓 공방…'대화·타협' 실종에 국회 파행 계속",
+      "url": "https://www.yna.co.kr/view/AKR20260717049100001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "조의장 \"내년 국민주권 개헌안 마련…2028년 5월 말까지 매듭\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717028500001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "제헌절 행사 대신 잠실집회 간 장동혁…\"與 헌법파괴 항의 의미\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717050700001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "與, 송영길·김용에 '후보자격 예외' 인정…출마 허용",
+      "url": "https://www.yna.co.kr/view/AKR20260717022453001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "與전대에 대표 5명·최고위원 14명 후보등록…21일 컷오프",
+      "url": "https://www.yna.co.kr/view/AKR20260717055200001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "통합 사관학교 의견수렴 본격화…8월 초중반 공청회 검토",
+      "url": "https://www.yna.co.kr/view/AKR20260716198800504?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "4년제 통합 국군사관학교 대전 자운대에…기본계획 발표",
+      "url": "https://www.yna.co.kr/view/AKR20260716039653001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "한미간 현안 누적에 주미대사 긴급호출…안보협의 영향 촉각",
+      "url": "https://www.yna.co.kr/view/AKR20260717034100504?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "한국의 美군함 건조 가능할까…\"'분산형 조선'이 해법\" 의견대두",
+      "url": "https://www.yna.co.kr/view/AKR20260717012300071?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "美의회, 中메모리칩 구매금지 촉구…\"韓·日·EU와 협력하라\"",
+      "url": "https://www.yna.co.kr/view/AKR20260717041700009?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "시진핑 \"AI 발전, 한 국가 독주 아닌 교향곡돼야\"…美에 도전장",
+      "url": "https://www.yna.co.kr/view/AKR20260717032651009?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "영국 새 총리에 버넘 확정…선명한 노동당 색깔·지역분권 약속",
+      "url": "https://www.yna.co.kr/view/AKR20260717055951085?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "영국 노동당 정부 구원투수로 공식 등판한 '북부의 왕' 버넘",
+      "url": "https://www.yna.co.kr/view/AKR20260716210400085?section=international/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "yonhap",
+      "title": "보완수사권 유지 61%·폐지 23%…韓 복당 찬성 28%·반대 37%[한국갤럽]",
+      "url": "https://www.yna.co.kr/view/AKR20260717027400001?section=politics/all",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "서이초 3주기 앞두고 거리로 모인 교사들 \"아동복지법 개정해야\" [뉴시스Pic]",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713402",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "야생동물 방지 울타리치던 60대, 감전사고로 사망",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713381",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "실종 50대 여성, 강서구 오피스텔 주차타워서 숨진 채 발견",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713394",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "서이초 3주기 앞두고 모인 교사들 \"아동복지법 개정하라\"",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713377",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "출산 많을수록 골절 위험 쑥…원인은 '이것' 공백",
+      "url": "https://www.newsis.com/view/NISX20260715_0003710089",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "종합특검, 수사 기간 막바지 구속영장 '무더기' 기각…기각률 65%",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713342",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "의정부 아파트서 부부 추락사…자녀 2명도 숨진 채 발견",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713365",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "중부지방 물폭탄 예고…낮 최고 31도 무더위[내일날씨]",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713361",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "내일 새벽 중부지방 집중호우…행안부 \"중대본 선제 가동\"",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713354",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "필리핀서 거액 마약 밀반입, 유통도 했다…30대 징역7년",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713344",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "반포대교 진입로서 만취 운전 차량 전복…한때 도로 통제",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713340",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "이천 마장면서 트레일러 차량이 전봇대 '쾅'…한때 '정전'",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713324",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "부산 아파트 3층서 화재…구조자 24명 중 12명 연기흡입(종합)",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713323",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "시흥 월곶동 포구서 선박 화재, 30분만에 초진…사상없어",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713316",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "좋은 시어머니 되려다…매일 전화하는 며느리에 \"지쳤다\"",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713294",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "newsis",
+      "title": "마을버스, 정류장 돌진 '6명 부상'…70대 기사 \"졸음운전\"",
+      "url": "https://www.newsis.com/view/NISX20260717_0003713300",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "트럼프 '부정선거' 주장에 중·러 \"내정 간섭한 적 없다\" 반박(종합)",
+      "url": "https://www.news1.kr/world/northeast-asia/6231420",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "티니핑·헬로카봇 찾던 아이들, 새로운 캐럭터에 빠져들다…캐릭터라이선싱페어[리뷰]",
+      "url": "https://www.news1.kr/life-culture/general-cultural/6231421",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "'실종 신고 열흘 만에' 오피스텔 주차타워서 50대 여성 숨진 채 발견",
+      "url": "https://www.news1.kr/society/incident-accident/6231419",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "이란 주변국 민간 시설도 피해…쿠웨이트 발전소 손상",
+      "url": "https://www.news1.kr/world/middleeast-africa/6231418",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "트럼프 선거 개입 주장에 중국 \"완전히 터무니 없어\" 반발",
+      "url": "https://www.news1.kr/world/northeast-asia/6231417",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "與 전당대회 김민석·고민정·정청래·김보미·송영길 당대표 5파전",
+      "url": "https://www.news1.kr/politics/assembly/6231414",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "밀양 호우주의보 발효…밤까지 시간당 20~30㎜ '강한 비'",
+      "url": "https://www.news1.kr/local/busan-gyeongnam/6231415",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "이건태-한동훈, 22일 '검찰 보완수사권' 맞장 토론…jtbc 생방",
+      "url": "https://www.news1.kr/politics/assembly/6231410",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "러시아, 트럼프 선거개입 주장에 \"타국 내정 간섭 안 해\"",
+      "url": "https://www.news1.kr/world/europe/6231413",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "KIA 나성범, SSG전 김민준 상대로 '통산 300홈런'…역대 16번째",
+      "url": "https://www.news1.kr/sports/baseball/6231412",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "'나는 절로' 1호 아기 탄생…낙산사 견우 5호·직녀 8호 커플 '득남'",
+      "url": "https://www.news1.kr/life-culture/religion/6231411",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "KT 힐리어드, 잠실 LG전서 3회 선제 만루 홈런 '쾅'",
+      "url": "https://www.news1.kr/sports/baseball/6231409",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "엿새째 美공습 당한 이란, 시리아·쿠웨이트 등 6개국 미군기지에 보복(종합)",
+      "url": "https://www.news1.kr/world/middleeast-africa/6231408",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "장동혁 \"야당주도 국민 특검 우선\"…제헌절 행사 불참 후 올공서 확성기",
+      "url": "https://www.news1.kr/politics/assembly/6231405",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "영국서 이란 정보기관 지원 혐의로 30대 남성 체포",
+      "url": "https://www.news1.kr/world/europe/6231406",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "제헌절 연휴 첫날 대천해수욕장 '북적'…10만 인파 여름 만끽",
+      "url": "https://www.news1.kr/local/daejeon-chungnam/6231400",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "군포 어린이공원 물놀이터서 에어바운스 전도…어린이 5명 경상",
+      "url": "https://www.news1.kr/local/gyeonggi/6231401",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "정선군·한림대, AI 활용 동영상 제작 교육 속성 과정 운영",
+      "url": "https://www.news1.kr/local/kangwon/6231392",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "의정부서 일가족 4명 숨지는 등 제헌절 연휴 첫날 사건사고 속출(종합)",
+      "url": "https://www.news1.kr/local/gyeonggi/6231396",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "충남 전역에 18~19일 최대 250㎜ 호우 예보…비상 1단계 가동",
+      "url": "https://www.news1.kr/local/daejeon-chungnam/6231397",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "news1",
+      "title": "외교부, 세계유산해석 국제회의 개최…세계유산위 앞두고 국제규범 논의 주도",
+      "url": "https://www.news1.kr/press/press-release/6231398",
+      "reason": "outside_news_source_top4_review_window"
+    },
+    {
+      "source_id": "theqoo",
+      "title": "(펌) 유자녀 돌싱은 재혼하면 안 되겠어요",
+      "url": "https://theqoo.net/hot/4279889037",
+      "reason": "cached_or_fallback_not_current"
+    },
+    {
+      "source_id": "theqoo",
+      "title": "(펌) 답변 없는 글",
+      "url": "https://theqoo.net/hot/4279889038",
+      "reason": "cached_or_fallback_not_current"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "[패션엔 포토] 레드벨벳 아이린, 마스크로 가려도 청순! 러블리 화이트 프릴 블라우스 태국 출국",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61756&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "[패션엔 포토] 고현정, 우아한 청담동 나들이! 시대를 초월한 블랙앤화이트 클래식한 투피스룩",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1023&number=61743&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "이해리, 요즘 삿포로 여행 스타일! 긴 팔 티셔츠에 숄더 랩핑이면 충분 여행룩",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1024&number=61754&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "정유미, 푸꾸옥에서 낭만을 입었네! 청순 민소매 미니에 숄더 래핑 리조트 바캉스룩",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1024&number=61753&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "한지혜, 쇼츠에는 반팔이 국룰! 티셔츠 하나로 끝낸 쇼츠&티셔츠 섬머룩",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1024&number=61752&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "트위드 재킷",
+      "url": "https://www.fashionn.com/shoppingn/npick_view_new.php?num=139&page=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 김도훈 anderssonbell",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=666",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 김세형 ajobyajo",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=665",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 고민우, 최현범 artsdebase",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=664",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 이시안 ceeann",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=663",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 최충훈 DOUCAN",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=662",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "2026 SS 박윤희 GREEDILOUS",
+      "url": "https://www.fashionn.com/stylen/collection_review_new.php?number=661",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "바바패션, 영컨템포러리 'JJ지고트' 손나은 여름 크로셰 니트 '인기폭발' 크로셰 탑을 비롯해 니트 카디건, 니트 원피스 등 크로셰 관련 니트 제품군 인기템...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61755&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "멋쟁이는 여름에도 ‘재킷’을 입는다! 새로운 여름 패션 공식 재킷 라이트 포멀! LF는 최근 길어진 여름에 하이브리드 패션이 확산하면서 격식은 유지하면서 시원하...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61749&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "인동에프엔 쉬즈미스•리스트, 패러다임 대전환! 아우터 중심 SPA 마켓 선점한다 인동에프엔의 쉬즈미스와 리스트가 그 동안 쌓아온 여성 아우터 기획력과 베트남 직영공장을 기반으로 한 직생산•...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1004&number=61438&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "K2, 하이킹부터 일상까지! 여름 산행 위한 올라 하이킹 티셔츠 출시 속건•신축성 갖춘 기능성 소재에 감각적인 레터링과 캐릭터 그래픽 디자인 더해",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61748&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "마리떼 프랑소와 저버, 레스포색과 2026년 F/W 협업 컬렉션 ‘Play on Check’ 출시 백팩, 미니백, 레이어드하기 좋은 오발 형태의 키링까지 총 11가지의 다채로운 스...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61747&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "쁘렝땅, 이번 여름 시원하고 가볍게! 일상도 출근도 품격있는 데일리 럭셔리 섬머룩 빨라진 여름 격식있는 소프트 포멀룩이 인기를 끈다. 하이엔드 럭셔리 여성복 '쁘렝땅(PRENDANG)'이 선보인 청량감...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1004&number=61139&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "바쁜 아침 상하의 고민 끝! 출근부터 휴양지까지 한벌로 끝낸 원피스 스타일 트렌드 상하의 조합 고민없는 원피스의 계절이 돌아왔다. 아이디룩이 전개하는 프렌치 컨템포러리 브랜드 '베르니스' '아...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1004&number=61126&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "형지I&C 본, 섬머 스트라이프로 2030 공략 출근길부터 휴양지까지 섬머룩 제안 2030 고객 겨냥한 이색 협업 및 스트라이프 아이템 호응에 여름 시즌 라인업 대폭 ...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61746&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "스튜디오톰보이•보브, 동남아 진출 가속도! 싱가포르 메트로백화점에 단독 매장 오픈 스튜디오톰보이 헤리티지 바탕으로 자유로운 K캐주얼, 보브 감각적인 디자인의 K컨...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61745&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "아카이브 앱크, 여름 무더위에 메쉬•레트로 아이템 인기! 호마이카 코어 스니커즈 6차 리오더 아일렛 플랫폼 샌들 초도물량 소진… 힙스터들의 성지 ‘고성 글라스하우스’에 팝업 ...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61744&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "신세계인터내셔날 맨온더분, 국내외 빈티지숍 4곳과 협업 청담에 빈티지 마켓 연다 청담 플래그십 스토어에서 용정콜렉션, 올드굿띵즈 등 4곳과 시계, 아이웨어, 의...",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1006&number=61732&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "[패션엔숏] 에스파 카리나, 봄날의 잇걸! 스웨이드 재킷과 시스루가 만난 섹시한 아웃핏",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1008&number=60605&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionn",
+      "title": "한국패션협회, 국내 최대 규모 B2B 패션 수주 전시회 ‘K-Fashion Connect’ 개최 라이징 K-패션 브랜드 78개사 참가… 해외 바이어•글로벌 유통 플랫폼과 비즈니스 확대 기대",
+      "url": "https://www.fashionn.com/board/read_new.php?table=1003&number=61738&sel_cat=",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "메르시앤에스· UCLA, 드라마 '최애데뷔' 제작지원… 콘텐츠 마케팅 강화",
+      "url": "https://fashionbiz.co.kr/article/227966",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "AZH, 새 브랜드 모델에 임지연 발탁… AI 비주얼 캠페인 공개",
+      "url": "https://fashionbiz.co.kr/article/227965",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "티켓투더문·인도솔, 롯데백화점 청량리점 팝업 오픈… 여름 시즌 대표 제품 한자리에",
+      "url": "https://fashionbiz.co.kr/article/227964",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "에이피알, 2년 연속 중간 배당 실시 '주주환원' 정책 지속",
+      "url": "https://fashionbiz.co.kr/article/227963",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "비전크로마재팬, 패션 컬러렌즈 브랜드 eeys 한국 공식 온라인 스토어 7월 오픈",
+      "url": "https://fashionbiz.co.kr/article/227960",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "레프트서울, 더현대서울에서 첫 브랜드 팝업스토어 진행",
+      "url": "https://fashionbiz.co.kr/article/227959",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "패션협회, 국내 최대 B2B 수주전 ‘K-패션커넥트’ 일주일 앞으로",
+      "url": "https://fashionbiz.co.kr/article/227958",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "빅사이즈 여성복 '로미스토리', 롯데 영등포 팝업 시작으로 신규 출점 가속",
+      "url": "https://fashionbiz.co.kr/article/227957",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "스노우피크어패럴, 로고부터 캠핑 감성까지 '서머 티셔츠' 컬렉션 공개",
+      "url": "https://fashionbiz.co.kr/article/227956",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "쏘내추럴, 올리브영N 성수서 팝업 진행… 대표 제품 체험 공간 마련",
+      "url": "https://fashionbiz.co.kr/article/227955",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "아크메드라비, 전설적 록 밴드 ‘롤링스톤즈’ 협업 컬렉션 공개",
+      "url": "https://fashionbiz.co.kr/article/227930",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "LA '조용한 럭셔리' 브로슈워커, 글로벌 1호 플래그십 도산에 열었다",
+      "url": "https://fashionbiz.co.kr/article/227954",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "Y-3, 스케이트보더 마크 곤잘레스와의 만남... 협업 컬렉션 공개",
+      "url": "https://fashionbiz.co.kr/article/227953",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "지센, 'AI 아트 콘테스트' 영상편 개최… 총상금 550만원",
+      "url": "https://fashionbiz.co.kr/article/227952",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "‘제품력+유통혁신’ 스케쳐스코리아, 상반기 전년동기比 20% 매출 성장",
+      "url": "https://fashionbiz.co.kr/article/227951",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "신세계 센텀시티, 'K-헤리티지' 열어... 한국 문화 쇼케이스 장으로",
+      "url": "https://fashionbiz.co.kr/article/227950",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "이랜드월드, 패션업계 최초로 관세청 AEO 최고등급 ‘AAA’ 획득",
+      "url": "https://fashionbiz.co.kr/article/227949",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "폭염에도 단정하게… LF, '라이트 포멀' 트렌드 타고 리오더 행진",
+      "url": "https://fashionbiz.co.kr/article/227948",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "한세엠케이, 유아~성인 통합 ‘패밀리 멤버십’ 선봬… 500개 매장서 이용",
+      "url": "https://fashionbiz.co.kr/article/227947",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "블루엘리펀트, 관광 상권 싹쓸이… 부산·제주 이어 경주 오픈",
+      "url": "https://fashionbiz.co.kr/article/227946",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "본(BON), 2030 남성 겨냥 '서머 스트라이프 컬렉션' 출시",
+      "url": "https://fashionbiz.co.kr/article/227945",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "아카이브앱크, 여름 잡화 수요 잡았다… 메시·웨지힐 매출 ↑",
+      "url": "https://fashionbiz.co.kr/article/227944",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "톤28 '펩타시카 세럼 겔 패드' 시코르서 전체 판매 1위 등극",
+      "url": "https://fashionbiz.co.kr/article/227943",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "라운드부터 일상까지 ‘먼싱웨어’ 프리미엄 라이프스타일 룩 제안",
+      "url": "https://fashionbiz.co.kr/article/227940",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "fashionbiz",
+      "title": "본투스탠드아웃, '콜라 어딕트 오 드 퍼퓸' 출시… 콜라 향 담은 신제품 선봬",
+      "url": "https://fashionbiz.co.kr/article/227942",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "팀버랜드, 자크뮈스와 협업 슈즈 출시",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226423",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "브로슈 워커, 메종 플래그십 스토어 오픈",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226421",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "네이버, 'N배송 FBN' 오픈 베타 서비스 시작",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226420",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "슈즈 '바바라' 롯데 상인점 오픈",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226417",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "한세엠케이,120만 멤버십 계정 통합",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226419",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "이랜드월드, 관세청 AEO 최고등급 'AAA' 획득",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226418",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "제주 애월의 바닷가, 던스트의 '더 오션'",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226415",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "스케쳐스, 상반기 매출액 전년비 20% 성장",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226416",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "태광산업·대한화섬, 친환경 기능성 소재 주목",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226413",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "한국패션협회, B2B 패션 수주 전시회 개최",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226414",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "알렉산드르 드 파리, 성수 매장 오픈",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226412",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "블루엘리펀트, 경주 황리단길 신규 스토어 오픈",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226411",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "美 햄버거 ‘파이브가이즈’, 대치동 매장 오픈",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226410",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "롯데백화점, '2026 캐릭터 라이센싱 페어' 참가",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226409",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "아이스크림 ‘벤슨’, 런칭 1년 만에 20호점 돌파",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?page=1&cat=CAT100&searchKey=&searchWord=&idx=226407",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "K뷰티 상반기 수출액 첫 10조 돌파…미국 20.7%로 급성장",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226368",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "달라진 여성복 성공 키워드, '팬덤과 자사몰'",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226391",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "빅3 백화점 56개 점포, 5월 누계 매출 20% 신장",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226392",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "AI 활용, 명품 브랜드의 '생존 과제' 부상",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226369",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "한국콜마, 생산부터 연구개발까지 전사적 'AI 전환'",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226370",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "케이비젼 '정서불안 김햄찌' 오프라인 팝업",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226372",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "코닥어패럴, 한국 성공 발판으로 글로벌 확장",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226394",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "브롬톤 런던, 의류와 자전거 결합한 라이프스타일 브랜드로",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226374",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "패션사 뷰티 브랜드 판도 바꾼 LF '아떼'",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226396",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "apparelnews",
+      "title": "[유미애] 패션 업계의 '장인'이라 불리던 이들은 왜 추락했나",
+      "url": "https://www.apparelnews.co.kr/news/news_view/?idx=226395",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "놓치지 않을 거예요, 여돌들이 꼭 사수하는 하이라이터 위치!",
+      "url": "https://www.allurekorea.com/2026/07/14/%eb%86%93%ec%b9%98%ec%a7%80-%ec%95%8a%ec%9d%84-%ea%b1%b0%ec%98%88%ec%9a%94-%ec%97%ac%eb%8f%8c%eb%93%a4%ec%9d%b4-%ea%bc%ad-%ec%82%ac%ec%88%98%ed%95%98%eb%8a%94-%ed%95%98%ec%9d%b4%eb%9d%bc%ec%9d%b4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "요즘 멋쟁이들처럼 ‘집게 핀’으로 힙하게 헤어 스타일링하는 방법",
+      "url": "https://www.allurekorea.com/2026/07/14/%ec%9a%94%ec%a6%98-%eb%a9%8b%ec%9f%81%ec%9d%b4%eb%93%a4%ec%9d%b4-%ea%b3%a0%eb%ac%b4%ec%a4%84-%eb%8c%80%ec%8b%a0-%ec%9d%b4%ea%b2%83%ec%9c%bc%eb%a1%9c-%eb%a8%b8%eb%a6%ac-%eb%ac%b6/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "‘카리나 & 리센느 원이’ 고양이상 메이크업 공식 3가지",
+      "url": "https://www.allurekorea.com/2026/07/13/%ec%b9%b4%eb%a6%ac%eb%82%98-%eb%a6%ac%ec%84%bc%eb%8a%90-%ec%9b%90%ec%9d%b4-%ea%b3%a0%ec%96%91%ec%9d%b4%ec%83%81-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85-%ea%b3%b5%ec%8b%9d-3%ea%b0%80%ec%a7%80/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "헤어스타일로 얼굴 리프팅 & 윤곽 효과?! 요즘 제일 핫한 윤곽펌!",
+      "url": "https://www.allurekorea.com/2026/07/13/%ed%97%a4%ec%96%b4%ec%8a%a4%ed%83%80%ec%9d%bc%eb%a1%9c-%ec%96%bc%ea%b5%b4-%eb%a6%ac%ed%94%84%ed%8c%85-%ec%9c%a4%ea%b3%bd-%ed%9a%a8%ea%b3%bc-%ec%9a%94%ec%a6%98-%ec%a0%9c%ec%9d%bc-%ed%95%ab/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "기미, 주근깨, 흑자 방지하는 힙한 서머 버킷햇 스타일",
+      "url": "https://www.allurekorea.com/2026/07/13/%ea%b8%b0%eb%af%b8-%ec%a3%bc%ea%b7%bc%ea%b9%a8-%ed%9d%91%ec%9e%90-%eb%b0%a9%ec%a7%80%ed%95%98%eb%8a%94-%ed%9e%99%ed%95%9c-%ec%84%9c%eb%a8%b8-%eb%b2%84%ed%82%b7%ed%96%87-%ec%8a%a4%ed%83%80%ec%9d%bc/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "집에서 간편하게 ‘등드름’ 없애는 확실한 방법 4",
+      "url": "https://www.allurekorea.com/2026/07/12/%ec%a7%91%ec%97%90%ec%84%9c-%ea%b0%84%ed%8e%b8%ed%95%98%ea%b2%8c-%eb%93%b1%eb%93%9c%eb%a6%84-%ec%97%86%ec%95%a0%eb%8a%94-%ed%99%95%ec%8b%a4%ed%95%9c-%eb%b0%a9%eb%b2%95-4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "휴가지 인생샷 만드는 선키스드 메이크업",
+      "url": "https://www.allurekorea.com/2026/07/11/%ed%9c%b4%ea%b0%80%ec%a7%80-%ec%9d%b8%ec%83%9d%ec%83%b7-%eb%a7%8c%eb%93%9c%eb%8a%94-%ec%84%a0%ed%82%a4%ec%8a%a4%eb%93%9c-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "김민하, 정호연, 젠다야의 여름 메이크업, 공통점이 있습니다",
+      "url": "https://www.allurekorea.com/2026/07/10/%ea%b9%80%eb%af%bc%ed%95%98-%ec%a0%95%ed%98%b8%ec%97%b0-%ec%a0%a0%eb%8b%a4%ec%95%bc%ec%9d%98-%ec%97%ac%eb%a6%84-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85-%ea%b3%b5%ed%86%b5%ec%a0%90%ec%9d%b4-%ec%9e%88/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "백리스 입기 전 여기부터 확인하세요! 등이 예뻐지는 관리 꿀팁",
+      "url": "https://www.allurekorea.com/2026/07/10/%eb%b0%b1%eb%a6%ac%ec%8a%a4-%ec%9e%85%ea%b8%b0-%ec%a0%84-%ec%97%ac%ea%b8%b0%eb%b6%80%ed%84%b0-%ed%99%95%ec%9d%b8%ed%95%98%ec%84%b8%ec%9a%94-%eb%93%b1%ec%9d%b4-%ec%98%88%eb%bb%90%ec%a7%80%eb%8a%94/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "장원영의 소두 치트키, ‘쿠루미’ 헤어가 왜 난리일까",
+      "url": "https://www.allurekorea.com/2026/07/09/%ec%9e%a5%ec%9b%90%ec%98%81%ec%9d%98-%ec%86%8c%eb%91%90-%ec%b9%98%ed%8a%b8%ed%82%a4-%ec%bf%a0%eb%a3%a8%eb%af%b8-%ed%97%a4%ec%96%b4%ea%b0%80-%ec%99%9c-%eb%82%9c%eb%a6%ac%ec%9d%bc/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "Part 3. 7월 업데이트된 신상 킥 뷰티템",
+      "url": "https://www.allurekorea.com/2026/07/09/part-3-7%ec%9b%94-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8%eb%90%9c-%ec%8b%a0%ec%83%81-%ed%82%a5-%eb%b7%b0%ed%8b%b0%ed%85%9c-%ec%82%ac%eb%b3%b8/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "allure_beauty",
+      "title": "패션 액세서리로 진화된 뷰티 아이템",
+      "url": "https://www.allurekorea.com/2026/07/17/%ed%8c%a8%ec%85%98-%ec%95%a1%ec%84%b8%ec%84%9c%eb%a6%ac%eb%a1%9c-%ec%a7%84%ed%99%94%eb%90%9c-%eb%b7%b0%ed%8b%b0-%ec%95%84%ec%9d%b4%ed%85%9c/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "얼굴이 훨씬 어려 보이는, 볼 터치 바르는 법 3",
+      "url": "https://www.vogue.co.kr/2026/07/16/%ec%96%bc%ea%b5%b4%ec%9d%b4-%ed%9b%a8%ec%94%ac-%ec%96%b4%eb%a0%a4-%eb%b3%b4%ec%9d%b4%eb%8a%94-%eb%b3%bc-%ed%84%b0%ec%b9%98-%eb%b0%94%eb%a5%b4%eb%8a%94-%eb%b2%95-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "머리 길이는 유지하면서 갈라진 끝만 다듬는 헤어 커트를 해봤습니다",
+      "url": "https://www.vogue.co.kr/2026/07/15/%eb%a8%b8%eb%a6%ac-%ea%b8%b8%ec%9d%b4%eb%8a%94-%ec%9c%a0%ec%a7%80%ed%95%98%eb%a9%b4%ec%84%9c-%ea%b0%88%eb%9d%bc%ec%a7%84-%eb%81%9d%eb%a7%8c-%eb%8b%a4%eb%93%ac%eb%8a%94-%ed%97%a4%ec%96%b4-%ec%bb%a4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "5분 만에 뚝딱! 항염증에 효과적인 간단하고 맛있는 간식 5",
+      "url": "https://www.vogue.co.kr/2026/07/15/5%eb%b6%84-%eb%a7%8c%ec%97%90-%eb%9a%9d%eb%94%b1-%ed%95%ad%ec%97%bc%ec%a6%9d%ec%97%90-%ed%9a%a8%ea%b3%bc%ec%a0%81%ec%9d%b8-%ea%b0%84%eb%8b%a8%ed%95%98%ea%b3%a0-%eb%a7%9b%ec%9e%88%eb%8a%94-%ea%b0%84/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "왜 우리는 항상 휴가 때 아플까요?",
+      "url": "https://www.vogue.co.kr/2026/07/14/%ec%99%9c-%ec%9a%b0%eb%a6%ac%eb%8a%94-%ed%95%ad%ec%83%81-%ed%9c%b4%ea%b0%80-%eb%95%8c-%ec%95%84%ed%94%8c%ea%b9%8c%ec%9a%94/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "안 씻어도 된다며? 전문가가 '세척 완료' 채소도 다시 씻으라는 이유",
+      "url": "https://www.vogue.co.kr/2026/07/14/%ec%95%88-%ec%94%bb%ec%96%b4%eb%8f%84-%eb%90%9c%eb%8b%a4%eb%a9%b0-%ec%a0%84%eb%ac%b8%ea%b0%80%ea%b0%80-%ec%84%b8%ec%b2%99-%ec%99%84%eb%a3%8c-%ec%b1%84%ec%86%8c%eb%8f%84-%eb%8b%a4%ec%8b%9c/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "유럽 폭염에 오히려 인기 폭발한 K-크림!",
+      "url": "https://www.vogue.co.kr/2026/07/15/%ec%9c%a0%eb%9f%bd-%ed%8f%ad%ec%97%bc%ec%97%90-%ec%98%a4%ed%9e%88%eb%a0%a4-%ec%9d%b8%ea%b8%b0-%ed%8f%ad%eb%b0%9c%ed%95%9c-k-%ed%81%ac%eb%a6%bc/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "올여름엔 건강한 일본식 젤 네일이 대세입니다",
+      "url": "https://www.vogue.co.kr/2026/07/15/%ec%98%ac%ec%97%ac%eb%a6%84%ec%97%94-%ea%b1%b4%ea%b0%95%ed%95%9c-%ec%9d%bc%eb%b3%b8%ec%8b%9d-%ec%a0%a4-%eb%84%a4%ec%9d%bc%ec%9d%b4-%eb%8c%80%ec%84%b8%ec%9e%85%eb%8b%88%eb%8b%a4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "셀럽들이 사랑하는 여름 페디큐어 컬러 15",
+      "url": "https://www.vogue.co.kr/2026/07/14/%ec%85%80%eb%9f%bd%eb%93%a4%ec%9d%b4-%ec%82%ac%eb%9e%91%ed%95%98%eb%8a%94-%ec%97%ac%eb%a6%84-%ed%8e%98%eb%94%94%ed%81%90%ec%96%b4-%ec%bb%ac%eb%9f%ac-15/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "축 처지고 풀풀 날린다면, 셀럽들이 선택한 스칸디나비아 커트",
+      "url": "https://www.vogue.co.kr/2026/07/13/%ec%b6%95-%ec%b2%98%ec%a7%80%ea%b3%a0-%ed%92%80%ed%92%80-%eb%82%a0%eb%a6%b0%eb%8b%a4%eb%a9%b4-%ec%85%80%eb%9f%bd%eb%93%a4%ec%9d%b4-%ec%84%a0%ed%83%9d%ed%95%9c-%ec%8a%a4%ec%b9%b8%eb%94%94%eb%82%98/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "단단함의 조건, 뼈도 관리가 필요하다",
+      "url": "https://www.vogue.co.kr/2026/07/13/%eb%8b%a8%eb%8b%a8%ed%95%a8%ec%9d%98-%ec%a1%b0%ea%b1%b4-%eb%bc%88%eb%8f%84-%ea%b4%80%eb%a6%ac%ea%b0%80-%ed%95%84%ec%9a%94%ed%95%98%eb%8b%a4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "매일 30초, '장수 자세'가 몸을 바꾸기 시작합니다",
+      "url": "https://www.vogue.co.kr/2026/07/11/%eb%a7%a4%ec%9d%bc-30%ec%b4%88-%ec%9e%a5%ec%88%98-%ec%9e%90%ec%84%b8%ea%b0%80-%eb%aa%b8%ec%9d%84-%eb%b0%94%ea%be%b8%ea%b8%b0-%ec%8b%9c%ec%9e%91%ed%95%a9%eb%8b%88%eb%8b%a4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "왜 내 향수는 10분 만에 사라질까? 35℃에도 끄떡없는 여름 향수 법칙",
+      "url": "https://www.vogue.co.kr/2026/07/11/%ec%99%9c-%eb%82%b4-%ed%96%a5%ec%88%98%eb%8a%94-10%eb%b6%84-%eb%a7%8c%ec%97%90-%ec%82%ac%eb%9d%bc%ec%a7%88%ea%b9%8c-35%e2%84%83%ec%97%90%eb%8f%84-%eb%81%84%eb%96%a1%ec%97%86%eb%8a%94-%ec%97%ac/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "하버드 의대가 꼽은 '장 건강·염증 잡아주는' 최고의 과일 6가지",
+      "url": "https://www.vogue.co.kr/2026/07/10/%ed%95%98%eb%b2%84%eb%93%9c-%ec%9d%98%eb%8c%80%ea%b0%80-%ea%bc%bd%ec%9d%80-%ec%9e%a5-%ea%b1%b4%ea%b0%95%c2%b7%ec%97%bc%ec%a6%9d-%ec%9e%a1%ec%95%84%ec%a3%bc%eb%8a%94-%ec%b5%9c%ea%b3%a0%ec%9d%98/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "가는 모발에 볼륨과 윤기를 더해주는 최고의 샴푸를 찾았습니다",
+      "url": "https://www.vogue.co.kr/2026/07/10/%ea%b0%80%eb%8a%94-%eb%aa%a8%eb%b0%9c%ec%97%90-%eb%b3%bc%eb%a5%a8%ea%b3%bc-%ec%9c%a4%ea%b8%b0%eb%a5%bc-%eb%8d%94%ed%95%b4%ec%a3%bc%eb%8a%94-%ec%b5%9c%ea%b3%a0%ec%9d%98-%ec%83%b4%ed%91%b8%eb%a5%bc/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "지금의 웰니스, 가장 조용한 방식으로 건강해지기",
+      "url": "https://www.vogue.co.kr/2026/07/10/%ec%a7%80%ea%b8%88%ec%9d%98-%ec%9b%b0%eb%8b%88%ec%8a%a4-%ea%b0%80%ec%9e%a5-%ec%a1%b0%ec%9a%a9%ed%95%9c-%eb%b0%a9%ec%8b%9d%ec%9c%bc%eb%a1%9c-%ea%b1%b4%ea%b0%95%ed%95%b4%ec%a7%80%ea%b8%b0/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "피부과 전문의들이 '젊어 보이는 손'을 위해 쓰는 핸드크림 5",
+      "url": "https://www.vogue.co.kr/2026/07/09/%ed%94%bc%eb%b6%80%ea%b3%bc-%ec%a0%84%eb%ac%b8%ec%9d%98%eb%93%a4%ec%9d%b4-%ec%a0%8a%ec%96%b4-%eb%b3%b4%ec%9d%b4%eb%8a%94-%ec%86%90%ec%9d%84-%ec%9c%84%ed%95%b4-%ec%93%b0%eb%8a%94-%ed%95%b8%eb%93%9c/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "SNS에서 난리 난 혀 클리너, 솔직한 30일 사용기",
+      "url": "https://www.vogue.co.kr/2026/07/09/sns%ec%97%90%ec%84%9c-%eb%82%9c%eb%a6%ac-%eb%82%9c-%ed%98%80-%ed%81%b4%eb%a6%ac%eb%84%88-%ec%86%94%ec%a7%81%ed%95%9c-30%ec%9d%bc-%ec%82%ac%ec%9a%a9%ea%b8%b0/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "vogue_beauty",
+      "title": "뷰티 전문가 8인이 꼽은 궁극의 브러시",
+      "url": "https://www.vogue.co.kr/2026/07/09/%eb%b7%b0%ed%8b%b0-%ec%a0%84%eb%ac%b8%ea%b0%80-8%ec%9d%b8%ec%9d%b4-%ea%bc%bd%ec%9d%80-%ea%b6%81%ea%b7%b9%ec%9d%98-%eb%b8%8c%eb%9f%ac%ec%8b%9c/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "소유가 '뼈말라'가 될 수 있었던 마지막 다이어트 치트키",
+      "url": "https://www.wkorea.com/2026/07/14/%ec%86%8c%ec%9c%a0%ea%b0%80-%eb%bc%88%eb%a7%90%eb%9d%bc%ea%b0%80-%eb%90%a0-%ec%88%98-%ec%9e%88%ec%97%88%eb%8d%98-%eb%a7%88%ec%a7%80%eb%a7%89-%eb%8b%a4%ec%9d%b4%ec%96%b4%ed%8a%b8-%ec%b9%98%ed%8a%b8/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "요즘, 다 큰 어른들이 왁뿌볼을 사는 심리 3",
+      "url": "https://www.wkorea.com/2026/07/11/%ec%9a%94%ec%a6%98-%eb%8b%a4-%ed%81%b0-%ec%96%b4%eb%a5%b8%ec%9d%b4-%ec%99%81%eb%bf%8c%eb%b3%bc%ec%9d%84-%ec%82%ac%eb%8a%94-%ec%8b%ac%eb%a6%ac-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "다정하지만 만만하지 않은 사람들의 공통점 3",
+      "url": "https://www.wkorea.com/2026/07/10/%eb%8b%a4%ec%a0%95%ed%95%98%ec%a7%80%eb%a7%8c-%eb%a7%8c%eb%a7%8c%ed%95%98%ec%a7%80-%ec%95%8a%ec%9d%80-%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%98-%ea%b3%b5%ed%86%b5%ec%a0%90-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "바야흐로 뷰티 씬에도 찾아온 컬러의 해방",
+      "url": "https://www.wkorea.com/2026/07/08/%eb%b0%94%ec%95%bc%ed%9d%90%eb%a1%9c-%eb%b7%b0%ed%8b%b0-%ec%94%ac%ec%97%90%eb%8f%84-%ec%b0%be%ec%95%84%ec%98%a8-%ec%bb%ac%eb%9f%ac%ec%9d%98-%ed%95%b4%eb%b0%a9/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "이건 몰랐지? 냉동 과일이 생과일보다 좋은 이유 3",
+      "url": "https://www.wkorea.com/2026/07/08/%ec%9d%b4%ea%b1%b4-%eb%aa%b0%eb%9e%90%ec%a7%80-%eb%83%89%eb%8f%99-%ea%b3%bc%ec%9d%bc%ec%9d%b4-%ec%83%9d%ea%b3%bc%ec%9d%bc%eb%b3%b4%eb%8b%a4-%ec%a2%8b%ec%9d%80-%ec%9d%b4%ec%9c%a0-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "나이 차이 나는 커플이 자주 싸우는 이유 3",
+      "url": "https://www.wkorea.com/2026/07/07/%eb%82%98%ec%9d%b4-%ec%b0%a8%ec%9d%b4-%eb%82%98%eb%8a%94-%ec%bb%a4%ed%94%8c%ec%9d%b4-%ec%9e%90%ec%a3%bc-%ec%8b%b8%ec%9a%b0%eb%8a%94-%ec%9d%b4%ec%9c%a0-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "요즘 제니가 즐겨하는 스모키 메이크업 포인트는 ‘이것’",
+      "url": "https://www.wkorea.com/2026/07/06/%ec%9a%94%ec%a6%98-%ec%a0%9c%eb%8b%88%ea%b0%80-%ec%a6%90%ea%b2%a8%ed%95%98%eb%8a%94-%ec%8a%a4%eb%aa%a8%ed%82%a4-%eb%a9%94%ec%9d%b4%ed%81%ac%ec%97%85-%ed%8f%ac%ec%9d%b8%ed%8a%b8%eb%8a%94/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "냉장고에 넣어둔 마스크, 정말 더 효과 있을까요?",
+      "url": "https://www.wkorea.com/2026/07/05/%eb%83%89%ec%9e%a5%ea%b3%a0%ec%97%90-%eb%84%a3%ec%96%b4%eb%91%94-%eb%a7%88%ec%8a%a4%ed%81%ac-%ec%a0%95%eb%a7%90-%eb%8d%94-%ed%9a%a8%ea%b3%bc%ea%b0%80-%ec%9e%88%ec%9d%84%ea%b9%8c%ec%9a%94/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "나만 그래? 퇴근만 하면 오히려 무기력해지는 이유 4",
+      "url": "https://www.wkorea.com/2026/07/05/%eb%82%98%eb%a7%8c-%ea%b7%b8%eb%9e%98-%ed%87%b4%ea%b7%bc%eb%a7%8c-%ed%95%98%eb%a9%b4-%ec%98%a4%ed%9e%88%eb%a0%a4-%eb%ac%b4%ea%b8%b0%eb%a0%a5%ed%95%b4%ec%a7%80%eb%8a%94-%ec%9d%b4%ec%9c%a0-4/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "title": "최화정, 홍진경의 여름 다이어트 메뉴 3",
+      "url": "https://www.wkorea.com/2026/07/04/%ec%b5%9c%ed%99%94%ec%a0%95-%ed%99%8d%ec%a7%84%ea%b2%bd%ec%9d%98-%ec%97%ac%eb%a6%84-%eb%8b%a4%ec%9d%b4%ec%96%b4%ed%8a%b8-%eb%a9%94%eb%89%b4-3/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "옷 잘 입기 전에 먼저 생각할 것, 쉽게 깔끔해 보이는 여름철 남자 그루밍 팁",
+      "url": "https://www.gqkorea.co.kr/2026/07/11/%ec%98%b7-%ec%9e%98-%ec%9e%85%ea%b8%b0-%ec%a0%84%ec%97%90-%eb%a8%bc%ec%a0%80-%ec%83%9d%ea%b0%81%ed%95%a0-%ea%b2%83-%ec%89%bd%ea%b2%8c-%ea%b9%94%eb%81%94%ed%95%b4-%eb%b3%b4%ec%9d%b4%eb%8a%94-%ec%97%ac/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "은근히 취향 드러내는 아이템, 여름에 쓰기 좋은 핸드워시 추천 8",
+      "url": "https://www.gqkorea.co.kr/2026/07/08/%ec%9d%80%ea%b7%bc%ed%9e%88-%ec%b7%a8%ed%96%a5-%eb%93%9c%eb%9f%ac%eb%82%b4%eb%8a%94-%ec%95%84%ec%9d%b4%ed%85%9c-%ec%97%ac%eb%a6%84%ec%97%90-%ec%93%b0%ea%b8%b0-%ec%a2%8b%ec%9d%80-%ed%95%b8%eb%93%9c/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "남자를 위한 최고의 산뜻한 시트러스 계열 향수 추천 5",
+      "url": "https://www.gqkorea.co.kr/2026/07/08/%eb%82%a8%ec%9e%90%eb%a5%bc-%ec%9c%84%ed%95%9c-%ec%b5%9c%ea%b3%a0%ec%9d%98-%ec%82%b0%eb%9c%bb%ed%95%9c-%ec%8b%9c%ed%8a%b8%eb%9f%ac%ec%8a%a4-%ea%b3%84%ec%97%b4-%ed%96%a5%ec%88%98-%ec%b6%94%ec%b2%9c-5/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "해외 남자들 찬양 중, 아주 간편한 한국식 그루밍 팁 10가지",
+      "url": "https://www.gqkorea.co.kr/2026/07/02/%ed%95%b4%ec%99%b8-%eb%82%a8%ec%9e%90-%ec%82%ac%ec%9d%b4%ec%97%90%ec%84%9c-%ec%b0%ac%ec%96%91-%ec%a4%91-%ec%95%84%ec%a3%bc-%ea%b0%84%ed%8e%b8%ed%95%9c-%ed%95%9c%ea%b5%ad%ec%8b%9d-%ea%b7%b8%eb%a3%a8/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "향수 뿌리면 기관지 상한다고 하는데, 진짜일까? 전문가 의견",
+      "url": "https://www.gqkorea.co.kr/2026/07/01/%ed%96%a5%ec%88%98-%eb%bf%8c%eb%a6%ac%eb%a9%b4-%ea%b8%b0%ea%b4%80%ec%a7%80-%ec%83%81%ed%95%9c%eb%8b%a4%ea%b3%a0-%ed%95%98%eb%8a%94%eb%8d%b0-%ec%a7%84%ec%a7%9c%ec%9d%bc%ea%b9%8c-%ec%a0%84%eb%ac%b8/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "월드컵으로 본 올여름 남자 헤어스타일 확실한 유행, '이 부분' 탈색",
+      "url": "https://www.gqkorea.co.kr/2026/07/01/%ec%9b%94%eb%93%9c%ec%bb%b5%ec%9c%bc%eb%a1%9c-%eb%b3%b8-%ec%98%ac%ec%97%ac%eb%a6%84-%eb%82%a8%ec%9e%90-%ed%97%a4%ec%96%b4%ec%8a%a4%ed%83%80%ec%9d%bc-%ed%99%95%ec%8b%a4%ed%95%9c-%ec%9c%a0%ed%96%89/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    },
+    {
+      "source_id": "gq_grooming",
+      "title": "태닝부터 쿨링까지, 건강한 여름 피부를 위한 그루밍 아이템 추천",
+      "url": "https://www.gqkorea.co.kr/2026/06/30/%ed%83%9c%eb%8b%9d%eb%b6%80%ed%84%b0-%ec%bf%a8%eb%a7%81%ea%b9%8c%ec%a7%80-%ea%b1%b4%ea%b0%95%ed%95%9c-%ec%97%ac%eb%a6%84-%ed%94%bc%eb%b6%80%eb%a5%bc-%ec%9c%84%ed%95%9c-%ea%b7%b8%eb%a3%a8%eb%b0%8d/",
+      "reason": "outside_fashion_beauty_source_top5_review_window"
+    }
+  ],
+  "exclusion_count": 277,
+  "source_counts": {
+    "edaily": 4,
+    "hankyung_economy": 4,
+    "mk_economy": 4,
+    "moneytoday": 4,
+    "news1": 4,
+    "yonhap": 4,
+    "daum_news": 4,
+    "naver_api_hub": 35,
+    "newsis": 4,
+    "nate_pann": 10,
+    "bobaedream": 10,
+    "fmkorea": 10,
+    "vogue_beauty": 5,
+    "gq_grooming": 5,
+    "wkorea_beauty": 5,
+    "allure_beauty": 5,
+    "fashionn": 5,
+    "apparelnews": 5,
+    "fashionbiz": 5
+  },
+  "coverage_note": "원수집 전체를 보존하고 뉴스 소스당 상위 4건, 커뮤니티 소스당 상위 10건, 패션·뷰티 소스당 상위 5건과 계정별 네이버 최신 검색을 소유자 검토창에 노출. 캐시·깨진 문자열·기본 AI 검색 결과·창 밖 항목은 exclusion_ledger에 사유와 함께 보존.",
+  "owner_labels_applied": false,
+  "publishing_executed": false
+}

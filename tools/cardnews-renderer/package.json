@@ -1,0 +1,19 @@
+{
+  "name": "ai-content-os-cardnews-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local static and motion rendering dependencies for AI-Content-OS CardNews.",
+  "scripts": {
+    "smoke": "node smoke.mjs"
+  },
+  "dependencies": {
+    "@motion-canvas/2d": "3.17.2",
+    "@motion-canvas/core": "3.17.2",
+    "@resvg/resvg-js": "2.6.2",
+    "fabric": "7.4.0",
+    "satori": "0.28.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}

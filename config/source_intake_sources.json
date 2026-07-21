@@ -1,0 +1,602 @@
+{
+  "schema_version": "source_intake_sources_v1",
+  "last_access_check": "2026-07-16",
+  "sources": [
+    {
+      "source_id": "naver_news",
+      "url": "https://news.naver.com/",
+      "source_type": "news",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "comments"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "daum_news",
+      "url": "https://news.daum.net/",
+      "source_type": "news",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "comments"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "nate_news_rank",
+      "url": "https://news.nate.com/rank/?mid=n1000",
+      "source_type": "news",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": [
+        "rank_position",
+        "comments"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "yonhap",
+      "url": "https://www.yna.co.kr/",
+      "source_type": "news_wire",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily"
+      ]
+    },
+    {
+      "source_id": "newsis",
+      "url": "https://www.newsis.com/",
+      "source_type": "news_wire",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily"
+      ]
+    },
+    {
+      "source_id": "news1",
+      "url": "https://www.news1.kr/",
+      "source_type": "news_wire",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily"
+      ]
+    },
+    {
+      "source_id": "hankyung_economy",
+      "url": "https://www.hankyung.com/economy",
+      "source_type": "news_economy",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "commerce_signal"
+      ]
+    },
+    {
+      "source_id": "mk_economy",
+      "url": "https://www.mk.co.kr/economy/",
+      "source_type": "news_economy",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "commerce_signal"
+      ]
+    },
+    {
+      "source_id": "moneytoday",
+      "url": "https://www.mt.co.kr/",
+      "source_type": "news_economy",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "commerce_signal"
+      ]
+    },
+    {
+      "source_id": "edaily",
+      "url": "https://www.edaily.co.kr/",
+      "source_type": "news_economy",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "commerce_signal"
+      ]
+    },
+    {
+      "source_id": "nate_pann",
+      "url": "https://pann.nate.com/talk/ranking",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "love_signal",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "fmkorea",
+      "url": "https://www.fmkorea.com/best",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "bobaedream",
+      "url": "https://www.bobaedream.co.kr/list?code=best",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "issue_daily",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "dcinside",
+      "url": "https://www.dcinside.com/",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "dopamine_issue",
+        "issue_daily"
+      ]
+    },
+    {
+      "source_id": "theqoo",
+      "url": "https://theqoo.net/hot",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments"
+      ],
+      "channel_candidates": [
+        "love_signal",
+        "style_weather",
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "ppomppu",
+      "url": "https://www.ppomppu.co.kr/hot.php",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes",
+        "dislikes"
+      ],
+      "channel_candidates": [
+        "commerce_signal",
+        "issue_daily"
+      ]
+    },
+    {
+      "source_id": "ruliweb",
+      "url": "https://bbs.ruliweb.com/best/humor",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "dogdrip",
+      "url": "https://www.dogdrip.net/dogdrip",
+      "source_type": "community",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "expected_metrics": [
+        "rank_position",
+        "views",
+        "comments",
+        "likes"
+      ],
+      "channel_candidates": [
+        "dopamine_issue"
+      ]
+    },
+    {
+      "source_id": "fashionn",
+      "url": "https://www.fashionn.com/",
+      "source_type": "fashion_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "public_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "fashion",
+      "account_c_source_role": "editorial_information",
+      "topic_selection_role": "primary_editorial",
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "fashionbiz",
+      "url": "https://fashionbiz.co.kr/",
+      "source_type": "fashion_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "public_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "fashion",
+      "account_c_source_role": "editorial_information",
+      "topic_selection_role": "primary_editorial",
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "low",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "apparelnews",
+      "url": "https://www.apparelnews.co.kr/",
+      "source_type": "fashion_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "public_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "fashion",
+      "account_c_source_role": "editorial_information",
+      "topic_selection_role": "primary_editorial",
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "low",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "beautynury",
+      "url": "https://www.beautynury.com/news/lists/cat/10",
+      "source_type": "beauty_industry_editorial",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "allow_live_fetch": false,
+      "blocked_reason": "python_tls_handshake_failed_2026_07_16",
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "public_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "industry_reference",
+      "topic_selection_role": "supporting_industry",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "low",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "cosin",
+      "url": "https://www.cosinkorea.com/news/article_list_all.html",
+      "source_type": "beauty_industry_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "public_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "industry_reference",
+      "topic_selection_role": "supporting_industry",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "low",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "allure_beauty",
+      "url": "https://www.allurekorea.com/beauty/",
+      "source_type": "beauty_consumer_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "consumer_beauty_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "consumer_editorial",
+      "topic_selection_role": "primary_consumer_editorial",
+      "account_c_audience": "women_general",
+      "beauty_topic_categories": ["skincare", "makeup", "hair", "body", "fragrance", "nail", "celebrity_beauty"],
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "vogue_beauty",
+      "url": "https://www.vogue.co.kr/beauty",
+      "source_type": "beauty_consumer_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "consumer_beauty_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "consumer_editorial",
+      "topic_selection_role": "primary_consumer_editorial",
+      "account_c_audience": "women_general",
+      "beauty_topic_categories": ["skincare", "makeup", "hair", "body", "fragrance", "nail", "celebrity_beauty"],
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "wkorea_beauty",
+      "url": "https://www.wkorea.com/beauty/",
+      "source_type": "beauty_consumer_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "consumer_beauty_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "consumer_editorial",
+      "topic_selection_role": "primary_consumer_editorial",
+      "account_c_audience": "women_general",
+      "beauty_topic_categories": ["skincare", "makeup", "hair", "body", "fragrance", "nail", "celebrity_beauty"],
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "gq_grooming",
+      "url": "https://www.gqkorea.co.kr/style/grooming/",
+      "source_type": "beauty_consumer_editorial",
+      "access_status": "ok",
+      "collector_allowed": true,
+      "allow_live_fetch": true,
+      "expected_metrics": ["rank_position"],
+      "channel_candidates": ["style_weather"],
+      "signal_scope": "consumer_beauty_editorial_list_order",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "consumer_editorial",
+      "topic_selection_role": "primary_consumer_editorial",
+      "account_c_audience": "men",
+      "beauty_topic_categories": ["grooming", "skincare", "hair_scalp", "shaving", "body", "fragrance"],
+      "editorial_topic_eligible": true,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "musinsa_monthly_ranking",
+      "url": "https://www.musinsa.com/main/musinsa/ranking",
+      "source_type": "platform_ranking",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "blocked_reason": "public_shell_without_product_metadata",
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "platform_specific_monthly_ranking",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "fashion",
+      "account_c_source_role": "platform_demand",
+      "topic_selection_role": "supporting_demand",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "high",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "oliveyoung_ranking",
+      "url": "https://www.oliveyoung.co.kr/store/main/getBestList.do",
+      "source_type": "retailer_ranking",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "blocked_reason": "http_403_live_check_2026_07_16",
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "retailer_specific",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "retailer_demand",
+      "topic_selection_role": "supporting_retail",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "high",
+      "promotion_sensitive": true,
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "musinsa_boutique",
+      "url": "https://www.musinsa.com/main/boutique",
+      "source_type": "luxury_reference_catalog",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "blocked_reason": "public_shell_without_product_metadata",
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "platform_specific_catalog",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "fashion",
+      "account_c_source_role": "luxury_reference",
+      "topic_selection_role": "post_selection_catalog",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": false,
+      "post_selection_only": true,
+      "commercial_influence": "high",
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "musinsa_beauty",
+      "url": "https://www.musinsa.com/main/beauty",
+      "source_type": "beauty_retail_catalog",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "blocked_reason": "public_shell_without_product_metadata",
+      "expected_metrics": [
+        "rank_position"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "platform_specific_retail",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "retailer_demand",
+      "topic_selection_role": "supporting_retail",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "high",
+      "promotion_sensitive": true,
+      "universal_trend_claimed": false
+    },
+    {
+      "source_id": "glowpick_ranking",
+      "url": "https://www.glowpick.com/products/brand-new",
+      "source_type": "consumer_review_ranking",
+      "access_status": "blocked",
+      "collector_allowed": false,
+      "blocked_reason": "nextjs_stream_without_parseable_product_metadata",
+      "expected_metrics": [
+        "rank_position",
+        "rating",
+        "review_count"
+      ],
+      "channel_candidates": [
+        "style_weather"
+      ],
+      "signal_scope": "platform_specific_consumer_aggregate",
+      "account_portfolio": "account_c_beauty_fashion",
+      "account_c_vertical": "beauty",
+      "account_c_source_role": "consumer_review_evidence",
+      "topic_selection_role": "supporting_consumer_evidence",
+      "editorial_topic_eligible": false,
+      "supporting_topic_signal": true,
+      "post_selection_only": false,
+      "commercial_influence": "medium",
+      "promotion_sensitive": true,
+      "experience_review_sensitive": true,
+      "universal_trend_claimed": false
+    }
+  ]
+}

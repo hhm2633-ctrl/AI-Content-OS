@@ -1,0 +1,7 @@
+{
+  "_comment": "Commerce Phase 2A marketplace contract overrides. Optional, additive per-field override on top of the built-in contracts in modules/commerce/contract_loader.py (SMARTSTORE_CONTRACT / COUPANG_CONTRACT). Empty by default this Sprint -- populate contract_overrides.<platform>.<field> only once a research doc confirms a platform_field name currently marked null/UNKNOWN. See modules/commerce/contract_loader.py::load_contract() for the merge rule.",
+  "contract_overrides": {
+    "smartstore": {},
+    "coupang": {}
+  }
+}

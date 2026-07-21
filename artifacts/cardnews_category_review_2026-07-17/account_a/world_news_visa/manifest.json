@@ -1,0 +1,28 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "comments_used": false,
+  "generated_evidence_used": false,
+  "publisher_asset_rights": "unverified; internal review only",
+  "claim_boundary": "reported attempts and official threat disclosures are separated from unconfirmed attack causation",
+  "required_before_publish": [
+    "recheck official effective date and transition rules",
+    "license or replace publisher imagery",
+    "re-open every source",
+    "legal/editorial review for military and immigration claims"
+  ],
+  "sources": [
+    {
+      "publisher": "머니투데이",
+      "url": "https://www.mt.co.kr/world/2026/07/16/2026071622465641646"
+    },
+    {
+      "publisher": "News1",
+      "url": "https://www.news1.kr/world/usa-canada/6231085"
+    },
+    {
+      "publisher": "연합뉴스",
+      "url": "https://www.yna.co.kr/view/AKR20260716213200071?section=international/all"
+    }
+  ]
+}

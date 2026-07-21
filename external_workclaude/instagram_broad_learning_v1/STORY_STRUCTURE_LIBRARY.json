@@ -1,0 +1,97 @@
+{
+  "status_standard": "허용 상태값은 benchmark_observed(evidence_urls 2건 이상) 또는 hypothesis_only(evidence_urls 1건) 두 가지뿐.",
+  "correction_note": "이전 버전에서 '증상 공감→의인화 설명→자가진단→내원유도형' 구조의 근거로 인용된 https://www.instagram.com/p/C9_QVFFPrKf_유사 는 RAW_OBSERVATIONS.json에 없는 URL이었음. Chrome 재확인 결과 실제 게시물(C9_QVFFPrKf, psshkr, 2024-07-29)은 존재하나 1년 이내 기준을 충족하지 못해 RAW에 추가하지 않았고, 해당 URL 및 이를 유일한 근거로 삼던 예시를 제거함. 이 구조는 이제 evidence_urls 1건(DX540sxj3kb)만 남아 confidence를 hypothesis_only로 조정함.",
+  "structures": [
+    {
+      "structure": "기승전결 뉴스 큐레이션형",
+      "steps": ["이슈 제기", "현장/인터뷰 인용", "여론 재인용", "참여 유도 질문"],
+      "evidence_urls": ["https://www.instagram.com/p/DaNcegIkmEy/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "목차 요약형",
+      "steps": ["타이틀+시한 강조", "챕터 목록 나열(3~5개)", "각 챕터는 후속 슬라이드에서 설명 예상"],
+      "evidence_urls": ["https://www.instagram.com/p/DYi2I6WEefP/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "문제-공식-행동유도형",
+      "steps": ["문제 제기(공감)", "문제의 중요성/이유 설명", "N단계 공식 제시", "행동 유도(저장/댓글)"],
+      "evidence_urls": ["https://www.instagram.com/p/DaCzy3oD-RH/", "https://www.instagram.com/p/DZ9rgG0D_1Y/", "https://www.instagram.com/p/DZwFmZvgT-c/"],
+      "observation_count": 3,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed",
+      "note": "3건 중 2건(sellwell_labbs)이 동일 계정 — 계정 수(2)가 반복 횟수(3)보다 적음"
+    },
+    {
+      "structure": "VS 비교 구조",
+      "steps": ["나쁜 예 vs 괜찮은 예 vs 좋은 예 3단 비교", "좋은 예의 조건 리스트"],
+      "evidence_urls": ["https://www.instagram.com/p/DZ-P1r_k_ox/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "번호형 큐레이션 리스트",
+      "steps": ["주제 제시", "장소/계정/제품을 번호로 나열", "각 항목 반복 포맷(위치+한줄평+팁)"],
+      "evidence_urls": ["https://www.instagram.com/p/DZZko8HESg3/", "https://www.instagram.com/p/DMR7KeXyMRs/", "https://www.instagram.com/p/DZ1m16hEoJS/"],
+      "observation_count": 3,
+      "account_count": 3,
+      "category_count": 3,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "structure": "성과 인증 → 노하우 공개형",
+      "steps": ["성과 수치 제시", "핵심 인사이트 요약", "댓글/DM 유도"],
+      "evidence_urls": ["https://www.instagram.com/p/DadGwa9GhH3/", "https://www.instagram.com/p/DZupSq1ICoT/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "structure": "증상 공감 → 의인화 설명 → 자가진단 → 내원유도형(병원 마케팅형)",
+      "steps": ["증상 공감 질문", "원인을 캐릭터/비유로 설명", "자가진단법 제시", "내원/연락처 안내"],
+      "evidence_urls": ["https://www.instagram.com/p/DX540sxj3kb/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "인문학 해설형(인용-배경-의의)",
+      "steps": ["책 속 인용구 제시", "시대적 배경 설명", "저서의 의의 해설"],
+      "evidence_urls": ["https://www.instagram.com/p/DPn9L_EiZWf/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "사건-논란 제기-의견 유도형",
+      "steps": ["사건 개요 요약", "논란 포인트 제시", "독자 의견 요청(댓글)"],
+      "evidence_urls": ["https://www.instagram.com/p/DVe4qprE4r_/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "structure": "데이터 브리핑형",
+      "steps": ["날짜/이벤트 라벨", "핵심 지표 카드 나열", "해설 텍스트"],
+      "evidence_urls": ["https://www.instagram.com/p/Dav8rULEl4G/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    }
+  ]
+}

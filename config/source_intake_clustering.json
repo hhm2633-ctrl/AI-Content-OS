@@ -1,0 +1,218 @@
+{
+  "schema_version": "source_intake_clustering_config_v1",
+  "config_version": "source_intake_clustering_v1",
+  "default_profile_id": "strict_news_incident",
+  "profiles": {
+    "strict_news_incident": {
+      "label": "strict_news_incident",
+      "match": {
+        "title_similarity_min": 0.82,
+        "title_term_overlap_min": 2,
+        "time_window_hours": 6.0,
+        "allow_missing_publication_time": false,
+        "missing_publication_score": 0.0,
+        "require_time_or_source_identity": true,
+        "match_score_min": 0.75,
+        "link_score_min": 0.75
+      },
+      "weights": {
+        "title": 0.55,
+        "time": 0.22,
+        "source_identity": 0.13,
+        "origin_overlap": 0.10
+      },
+      "match_requirements": {
+        "require_source_identity": false
+      }
+    },
+    "loose_community": {
+      "label": "loose_community",
+      "match": {
+        "title_similarity_min": 0.55,
+        "title_term_overlap_min": 1,
+        "time_window_hours": 36.0,
+        "allow_missing_publication_time": true,
+        "missing_publication_score": 0.30,
+        "require_time_or_source_identity": false,
+        "match_score_min": 0.58,
+        "link_score_min": 0.67
+      },
+      "weights": {
+        "title": 0.54,
+        "time": 0.16,
+        "source_identity": 0.20,
+        "origin_overlap": 0.10
+      },
+      "match_requirements": {
+        "require_source_identity": false
+      }
+    },
+    "loose_entertainment": {
+      "label": "loose_entertainment",
+      "match": {
+        "title_similarity_min": 0.57,
+        "title_term_overlap_min": 1,
+        "time_window_hours": 48.0,
+        "allow_missing_publication_time": true,
+        "missing_publication_score": 0.28,
+        "require_time_or_source_identity": false,
+        "match_score_min": 0.60,
+        "link_score_min": 0.68
+      },
+      "weights": {
+        "title": 0.52,
+        "time": 0.18,
+        "source_identity": 0.20,
+        "origin_overlap": 0.10
+      },
+      "match_requirements": {
+        "require_source_identity": false
+      }
+    },
+    "loose_fashion_beauty": {
+      "label": "loose_fashion_beauty",
+      "match": {
+        "title_similarity_min": 0.54,
+        "title_term_overlap_min": 1,
+        "time_window_hours": 60.0,
+        "allow_missing_publication_time": true,
+        "missing_publication_score": 0.30,
+        "require_time_or_source_identity": false,
+        "match_score_min": 0.56,
+        "link_score_min": 0.66
+      },
+      "weights": {
+        "title": 0.58,
+        "time": 0.12,
+        "source_identity": 0.20,
+        "origin_overlap": 0.10
+      },
+      "match_requirements": {
+        "require_source_identity": false
+      }
+    },
+    "loose_lifestyle": {
+      "label": "loose_lifestyle",
+      "match": {
+        "title_similarity_min": 0.52,
+        "title_term_overlap_min": 1,
+        "time_window_hours": 72.0,
+        "allow_missing_publication_time": true,
+        "missing_publication_score": 0.32,
+        "require_time_or_source_identity": false,
+        "match_score_min": 0.55,
+        "link_score_min": 0.65
+      },
+      "weights": {
+        "title": 0.56,
+        "time": 0.13,
+        "source_identity": 0.21,
+        "origin_overlap": 0.10
+      },
+      "match_requirements": {
+        "require_source_identity": false
+      }
+    }
+  },
+  "selection_rules": [
+    {
+      "profile_id": "strict_news_incident",
+      "source_id_in": [
+        "naver_news",
+        "daum_news",
+        "nate_news_rank",
+        "yonhap",
+        "newsis",
+        "news1",
+        "hankyung_economy",
+        "mk_economy",
+        "moneytoday",
+        "edaily"
+      ],
+      "category_tokens_any": [
+        "news",
+        "news_breaking",
+        "incident",
+        "accident",
+        "disaster",
+        "earthquake",
+        "crime",
+        "politic",
+        "economy",
+        "issue",
+        "사건",
+        "사고",
+        "뉴스",
+        "재난",
+        "정치",
+        "국제",
+        "사회"
+      ]
+    },
+    {
+      "profile_id": "loose_community",
+      "source_id_in": [
+        "nate_pann",
+        "fmkorea",
+        "bobaedream",
+        "dcinside",
+        "theqoo",
+        "ppomppu",
+        "ruliweb",
+        "dogdrip"
+      ]
+    },
+    {
+      "profile_id": "loose_entertainment",
+      "lane_id_in": [
+        "love_signal",
+        "dopamine_issue"
+      ],
+      "category_tokens_any": [
+        "entertainment",
+        "celebrity",
+        "drama",
+        "movie",
+        "idol",
+        "music",
+        "연예",
+        "연예인",
+        "연애",
+        "아이돌",
+        "영화",
+        "드라마"
+      ]
+    },
+    {
+      "profile_id": "loose_fashion_beauty",
+      "lane_id_in": [
+        "style_weather"
+      ],
+      "category_tokens_any": [
+        "fashion",
+        "beauty",
+        "style",
+        "lifestyle",
+        "outfit",
+        "skincare",
+        "makeup",
+        "패션",
+        "뷰티",
+        "스타일",
+        "화장"
+      ]
+    },
+    {
+      "profile_id": "loose_lifestyle",
+      "category_tokens_any": [
+        "생활",
+        "lifestyle",
+        "daily",
+        "daily_life",
+        "living",
+        "home",
+        "household"
+      ]
+    }
+  ]
+}

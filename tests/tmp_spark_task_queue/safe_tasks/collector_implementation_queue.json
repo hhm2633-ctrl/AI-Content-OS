@@ -1,0 +1,49 @@
+{
+  "implementation_queue": [
+    {
+      "rank": 1,
+      "source_id": "diagnostic_contract_alpha",
+      "status": "NOT_IMPLEMENTED",
+      "recommended_owner": "Spark",
+      "lane_impact": [
+        "a"
+      ]
+    },
+    {
+      "rank": 2,
+      "source_id": "nate_html_news",
+      "status": "NOT_IMPLEMENTED",
+      "recommended_owner": "Spark",
+      "lane_impact": [
+        "a"
+      ]
+    },
+    {
+      "rank": 3,
+      "source_id": "browser_workflow",
+      "status": "NOT_IMPLEMENTED",
+      "recommended_owner": "Spark",
+      "lane_impact": [
+        "a"
+      ]
+    },
+    {
+      "rank": 4,
+      "source_id": "daum_news",
+      "status": "FALLBACK_ONLY",
+      "recommended_owner": "Claude",
+      "lane_impact": [
+        "a"
+      ]
+    },
+    {
+      "rank": 5,
+      "source_id": "instiz",
+      "status": "FAILED",
+      "recommended_owner": "Spark",
+      "lane_impact": [
+        "a"
+      ]
+    }
+  ]
+}

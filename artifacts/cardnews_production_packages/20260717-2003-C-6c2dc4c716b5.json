@@ -1,0 +1,224 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-C-6c2dc4c716b5",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+    "account": "C",
+    "category": "패션·신발관리",
+    "title": "신발 오래 깨끗하게 신는 사람들의 관리법"
+  },
+  "evidence": {
+    "sources": [
+      "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/"
+    ],
+    "source_details": [
+      {
+        "url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+        "publisher": "GQ Korea",
+        "published_at": "2026-07-11",
+        "source_type": "selected_article",
+        "claims_used": [
+          "같은 신발을 매일 신지 않고 최소 24시간가량 말리는 습관",
+          "젖은 신발은 직접 열 대신 내부 수분을 제거한 뒤 통풍되는 그늘에서 자연 건조",
+          "가죽·스웨이드·캔버스는 소재별 전용 클리너와 브러시 사용",
+          "외출 후 부드러운 브러시나 마른 천으로 오염을 가볍게 제거",
+          "장기 보관 시 통풍되는 장소와 더스트백·상자·실리카겔 활용"
+        ]
+      }
+    ],
+    "evidence_status": "sufficient"
+  },
+  "story": {
+    "summary": "비싼 관리용품을 나열하지 않고, 신발을 오래 신는 사람들의 반복 가능한 다섯 습관을 건조·오염 제거·소재별 관리·보관 순서로 보여준다.",
+    "angle": "제품 광고 없이 오늘부터 바로 바꿀 수 있는 신발 관리 루틴",
+    "narrative": "신발이 빨리 낡는 건 가격보다 젖은 채로 다시 신고 오염을 오래 두는 습관과 연결된다. 하루 쉬게 하고, 젖었을 때는 열풍 대신 그늘에서 말리고, 소재에 맞는 도구로 가볍게 닦은 뒤 통풍되는 곳에 보관한다.",
+    "arc": [
+      "빨리 낡는 일상 습관",
+      "하루 쉬게 하기",
+      "젖었을 때 자연 건조",
+      "소재별 가벼운 청소",
+      "보관까지 관리로 보기"
+    ],
+    "commerce_mode": "editorial_only_no_verified_product_match"
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "cover_problem",
+      "headline": "비싼 신발도 금방 낡는 이유",
+      "body": "신고 난 뒤의 작은 습관이 신발 상태를 바꾼다."
+    },
+    {
+      "page": 2,
+      "role": "rest_and_dry",
+      "headline": "같은 신발은 하루 쉬게",
+      "body": "땀과 습기가 마를 시간을 주고, 젖었다면 그늘에서 천천히 말린다."
+    },
+    {
+      "page": 3,
+      "role": "heat_guard",
+      "headline": "드라이어와 히터는 멀리",
+      "body": "급한 열 대신 마른 천으로 물기를 빼고 통풍되는 곳에 둔다."
+    },
+    {
+      "page": 4,
+      "role": "material_care",
+      "headline": "소재가 다르면 닦는 법도 다르다",
+      "body": "가죽·스웨이드·캔버스에 맞는 브러시와 클리너를 구분한다."
+    },
+    {
+      "page": 5,
+      "role": "storage_takeaway",
+      "headline": "신발장은 보관보다 건조 먼저",
+      "body": "먼지를 턴 뒤 통풍되는 곳에 두고, 오래 둘 땐 습기까지 관리한다."
+    }
+  ],
+  "feed_caption": "신발을 오래 깨끗하게 신는 사람들은 비싼 관리용품보다 반복하는 습관이 먼저였습니다. 같은 신발을 매일 신지 않고 충분히 말리고, 비에 젖었다면 드라이어나 히터 대신 마른 천으로 물기를 뺀 뒤 통풍되는 그늘에서 천천히 건조합니다. 외출 후 먼지를 가볍게 털고 가죽·스웨이드·캔버스에 맞는 도구를 구분하는 것도 중요합니다. 오래 보관할 때는 통풍과 습기 관리까지 챙겨보세요. 참고: GQ Korea 2026년 7월 11일 기사.",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "cover_problem",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+      "source_credit": [
+        "GQ Korea 기사 내용을 바탕으로 한 자체 새 신발·낡은 신발 실루엣"
+      ],
+      "rights_note": "기사 사진 없이 일반 신발 실루엣과 마모선만 자체 제작",
+      "production_direction": "같은 형태의 신발 두 개에 깨끗함과 마모선을 대비해 훅을 즉시 이해시킴"
+    },
+    {
+      "page": 2,
+      "slide_role": "rest_and_dry",
+      "media_type": "motion_graphic",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+      "source_credit": [
+        "GQ Korea 기사 기반 자체 24시간 건조 그래픽"
+      ],
+      "rights_note": "기사의 최소 24시간 건조 설명만 시계·신발 아이콘으로 도식화",
+      "production_direction": "신발 한 켤레가 24시간 시계를 지나며 마르는 짧은 루프 모션"
+    },
+    {
+      "page": 3,
+      "slide_role": "heat_guard",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+      "source_credit": [
+        "GQ Korea 기사 기반 자체 열풍 금지·그늘 건조 도식"
+      ],
+      "rights_note": "제품이나 특정 브랜드 없이 드라이어·히터와 자연 건조의 차이만 표시",
+      "production_direction": "열풍 아이콘에는 X, 마른 천과 통풍선에는 체크 표시"
+    },
+    {
+      "page": 4,
+      "slide_role": "material_care",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+      "source_credit": [
+        "GQ Korea 기사 기반 자체 소재·도구 매칭 그래픽"
+      ],
+      "rights_note": "가죽·스웨이드·캔버스와 일반 브러시 아이콘만 사용하고 상품 추천은 하지 않음",
+      "production_direction": "세 소재 샘플과 서로 다른 관리 도구를 선으로 연결"
+    },
+    {
+      "page": 5,
+      "slide_role": "storage_takeaway",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+      "source_credit": [
+        "GQ Korea 기사 기반 자체 신발장·통풍·습기 관리 그래픽"
+      ],
+      "rights_note": "기사에 나온 보관 원칙만 일반 아이콘으로 시각화",
+      "production_direction": "먼지 제거→통풍→장기 보관의 세 단계 체크리스트"
+    }
+  ],
+  "commerce": {
+    "status": "not_used",
+    "link_issuance": false,
+    "reason": "현재 후보 데이터에 소재별로 검증된 관리 상품이 없어 생활 가이드에 상품을 억지로 붙이지 않는다."
+  },
+  "quality_notes": {
+    "first_frame": "기사 사진 없이 자체 신발 마모 실루엣으로 완결",
+    "copy_density": "일상 습관 하나당 한 장",
+    "asset_guard": "모든 장면이 자체 편집 그래픽으로 제작 가능하며 실사 획득을 전제하지 않음"
+  },
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+    "account": "C",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+      "account": "C",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

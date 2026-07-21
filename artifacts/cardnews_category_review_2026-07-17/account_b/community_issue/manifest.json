@@ -1,0 +1,17 @@
+{
+  "source_url": "https://pann.nate.com/talk/375519754",
+  "source_type": "community_single_source",
+  "actual_comments_used": true,
+  "source_image": "original post screenshot",
+  "rights_status": "unknown_review_only",
+  "publishing_ready": false,
+  "owner_review_status": "REJECTED_AND_EXCLUDED",
+  "owner_review_reason": "세월호 참사 연계 소재는 민감성과 사회적 상처 위험 때문에 콘텐츠 후보에서 전면 제외",
+  "excluded_from_gallery": true,
+  "gaps": [
+    "source timestamp missing in collection",
+    "app operator not independently verified",
+    "intent unverified",
+    "official response not collected"
+  ]
+}

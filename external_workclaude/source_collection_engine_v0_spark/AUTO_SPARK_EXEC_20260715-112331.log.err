@@ -1,0 +1,6 @@
+error: unexpected argument '솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\AUTO_SPARK_LAST_20260715-112331.md' found
+
+Usage: codex exec [OPTIONS] [PROMPT]
+       codex exec [OPTIONS] <COMMAND> [ARGS]
+
+For more information, try '--help'.

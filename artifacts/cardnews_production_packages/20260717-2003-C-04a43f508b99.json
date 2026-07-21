@@ -1,0 +1,242 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-C-04a43f508b99",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-C-04a43f508b99",
+    "account": "C",
+    "category": "뷰티",
+    "title": "마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다"
+  },
+  "evidence": {
+    "sources": [
+      "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/"
+    ],
+    "source_details": [
+      {
+        "url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+        "publisher": "보그 코리아",
+        "published_at": "2026-07-16",
+        "source_type": "selected_article",
+        "claims_used": [
+          "마트에서도 좋은 샴푸를 찾을 수 있으며 판매처보다 포뮬러가 중요",
+          "샴푸는 모발 상태보다 두피 상태를 기준으로 선택",
+          "손상된 모발은 컨디셔너나 헤어 마스크를 중간부터 끝부분에 사용해 관리",
+          "설페이트 유무만 이분법적으로 보기보다 세정 성분의 균형을 확인"
+        ]
+      }
+    ],
+    "evidence_status": "sufficient"
+  },
+  "story": {
+    "summary": "비싼 샴푸와 마트 샴푸의 대결로 몰지 않고, 가격표에서 두피 상태와 포뮬러로 선택 기준을 옮기는 실용 가이드로 구성한다.",
+    "angle": "가격과 판매처보다 두피 상태·세정 성분 균형을 먼저 보는 선택 기준",
+    "narrative": "마트 샴푸도 기본 세정 역할을 충분히 할 수 있다는 전문가 설명에서 시작한다. 제품 전면의 손상모 문구보다 지성·건성·민감성 등 두피 상태를 먼저 보고, 손상된 모발은 컨디셔너나 마스크로 따로 관리한다.",
+    "arc": [
+      "비쌀수록 좋다는 선입견",
+      "마트 제품도 가능한 이유",
+      "두피 상태로 기준 이동",
+      "손상모 관리 분리",
+      "세정 성분 균형 확인",
+      "현실적인 선택 원칙"
+    ],
+    "commerce_mode": "editorial_only_until_formula_verified"
+  },
+  "slide_count": 6,
+  "slides": [
+    {
+      "page": 1,
+      "role": "cover_question",
+      "headline": "샴푸, 비쌀수록 좋을까?",
+      "body": "전문가들이 먼저 보라는 건 가격표가 아니었다."
+    },
+    {
+      "page": 2,
+      "role": "myth_shift",
+      "headline": "마트라고 낮게 볼 필요는 없다",
+      "body": "판매처만으로 품질을 정할 수 없고, 포뮬러를 함께 봐야 한다."
+    },
+    {
+      "page": 3,
+      "role": "selection_rule",
+      "headline": "먼저 볼 건 모발이 아니다",
+      "body": "샴푸는 지성·건성·민감성처럼 내 두피 상태에 맞춰 고른다."
+    },
+    {
+      "page": 4,
+      "role": "care_split",
+      "headline": "손상모 관리는 따로",
+      "body": "컨디셔너와 마스크는 모발 중간부터 끝부분에 사용한다."
+    },
+    {
+      "page": 5,
+      "role": "ingredient_rule",
+      "headline": "성분표는 균형으로 보기",
+      "body": "설페이트 유무만 보지 말고 여러 세정 성분의 조합을 살핀다."
+    },
+    {
+      "page": 6,
+      "role": "takeaway",
+      "headline": "결론은 두피에 맞는 포뮬러",
+      "body": "가격보다 내 두피와 세정 성분의 균형을 먼저 확인한다."
+    }
+  ],
+  "feed_caption": "마트 샴푸라고 무조건 떨어지는 것도, 비싼 샴푸라고 무조건 더 좋은 것도 아닙니다. 전문가들이 공통으로 강조한 기준은 판매처나 가격보다 포뮬러와 내 두피 상태였습니다. 지성·건성·민감성처럼 두피를 먼저 보고 샴푸를 고르고, 건조하거나 손상된 모발은 컨디셔너와 헤어 마스크로 따로 관리하는 방식이 현실적입니다. 성분표 역시 설페이트 한 단어만 보기보다 세정 성분이 어떻게 조합됐는지를 살펴보세요. 참고: 보그 코리아 2026년 7월 16일 기사.",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "cover_question",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 내용을 바탕으로 한 자체 가격표 대비 그래픽"
+      ],
+      "rights_note": "특정 제품을 우열 비교하지 않고 질문만 시각화",
+      "production_direction": "비싼 병과 마트 진열 실루엣 사이에 큰 물음표를 두고 훅만 표시"
+    },
+    {
+      "page": 2,
+      "slide_role": "myth_shift",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 문장을 바탕으로 한 자체 판매처·포뮬러 비교 그래픽"
+      ],
+      "rights_note": "확보되지 않은 비포·애프터 이미지를 사용하지 않고 기사 주장만 도식화",
+      "production_direction": "마트 진열 아이콘과 포뮬러 라벨을 두고 ‘판매처만으로 품질을 정할 수 없다’고 표시"
+    },
+    {
+      "page": 3,
+      "slide_role": "selection_rule",
+      "media_type": "motion_graphic",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 기반 자체 두피 유형 그래픽"
+      ],
+      "rights_note": "의학 진단이 아니라 기사에 나온 선택 기준만 도식화",
+      "production_direction": "지성·건성·민감성 세 단어가 두피 아이콘 주위를 차례로 나타나는 짧은 모션"
+    },
+    {
+      "page": 4,
+      "slide_role": "care_split",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 기반 자체 사용 부위 도식"
+      ],
+      "rights_note": "샴푸와 컨디셔너의 사용 부위만 구분",
+      "production_direction": "두피와 모발 끝을 서로 다른 색으로 표시해 사용 부위를 한눈에 구분"
+    },
+    {
+      "page": 5,
+      "slide_role": "ingredient_rule",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 성분 설명을 바탕으로 한 자체 세정 성분 조합 그래픽"
+      ],
+      "rights_note": "확보되지 않은 실제 성분표 화면을 사용하지 않고 기사에서 설명한 균형 개념만 도식화",
+      "production_direction": "서로 다른 세정 성분 블록이 균형을 이루는 도식과 ‘한 성분보다 조합’ 문구를 표시"
+    },
+    {
+      "page": 6,
+      "slide_role": "takeaway",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+      "source_credit": [
+        "보그 코리아 기사 기반 자체 체크리스트"
+      ],
+      "rights_note": "상품 추천 대신 확인 순서만 제공",
+      "production_direction": "두피 상태→세정 성분 균형→가격 순서의 3단 체크리스트"
+    }
+  ],
+  "commerce": {
+    "status": "not_used",
+    "link_issuance": false,
+    "reason": "현재 매칭 상품 데이터에는 두피 유형과 전성분 조합이 검증돼 있지 않아 기사 선택 기준에 맞는 제품으로 단정할 수 없다."
+  },
+  "quality_notes": {
+    "first_frame": "가격표 대비로 질문을 즉시 이해",
+    "copy_density": "선택 기준 하나당 한 장",
+    "product_guard": "키워드가 샴푸라는 이유만으로 특정 제품을 추천하지 않음"
+  },
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-C-04a43f508b99",
+    "account": "C",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-C-04a43f508b99",
+      "account": "C",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-C-04a43f508b99",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

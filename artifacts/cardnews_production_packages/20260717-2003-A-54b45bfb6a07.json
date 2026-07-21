@@ -1,0 +1,182 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-A-54b45bfb6a07",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-A-54b45bfb6a07",
+    "account": "A",
+    "category": "사회·사건",
+    "title": "불교가 맺어준 인연, 금지옥엽으로…'나는 절로' 1호 부모 나왔다"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://www.newsis.com/view/NISX20260717_0003713416",
+        "publisher": "뉴시스",
+        "title": "불교가 맺어준 인연, 금지옥엽으로…'나는 절로' 1호 부모 나왔다",
+        "published_at": "2026-07-17T20:33:32+09:00",
+        "source_status": "body_read",
+        "usage_note": "2024년 8월 낙산사 참가, 최종 커플, 2025년 10월 결혼, 2026년 7월 16일 출산의 흐름 확인"
+      }
+    ]
+  },
+  "story": {
+    "summary": "낙산사 템플스테이에서 최종 커플이 된 두 사람이 결혼을 거쳐 '나는 절로' 첫 부모가 된 실제 시간의 흐름을 따라간다. 행사 소개보다 만남이 가족으로 이어진 변화에 초점을 둔다."
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "절에서 만난 두 사람\n첫 아이가 태어났다",
+      "body": "'나는 절로'에서 이어진 인연이 프로그램 첫 부모가 됐습니다."
+    },
+    {
+      "page": 2,
+      "role": "first_meeting",
+      "headline": "시작은 2024년 8월\n낙산사였습니다",
+      "body": "30대 남녀 참가자는 견우 5호와 직녀 8호로 만나 최종 커플이 됐습니다."
+    },
+    {
+      "page": 3,
+      "role": "marriage",
+      "headline": "1년 뒤인 지난해 10월\n부부가 됐고",
+      "body": "템플스테이에서 시작된 만남은 실제 결혼으로 이어졌습니다."
+    },
+    {
+      "page": 4,
+      "role": "birth",
+      "headline": "그리고 7월 16일\n아들이 태어났습니다",
+      "body": "재단이 전한 '나는 절로'의 첫 출산 소식입니다."
+    },
+    {
+      "page": 5,
+      "role": "program_outcome",
+      "headline": "지금까지 결혼 3쌍\n다음 결혼도 10월",
+      "body": "재단에 따르면 프로그램을 통해 세 커플이 결혼했고 한 커플이 추가 결혼을 앞두고 있습니다."
+    }
+  ],
+  "feed_caption": "강원 양양 낙산사에서 열린 미혼남녀 템플스테이 '나는 절로'에서 만난 두 사람이 프로그램의 첫 부모가 됐습니다. 두 사람은 2024년 8월 견우 5호와 직녀 8호로 참가해 최종 커플이 됐고, 지난해 10월 결혼했습니다. 그리고 7월 16일 아들이 태어났습니다. 재단에 따르면 '나는 절로'를 통해 지금까지 세 커플이 결혼했고, 오는 10월에도 한 커플이 결혼을 앞두고 있습니다.\n\n절에서 시작된 인연이 진짜 가족까지 이어졌네요.\n\n참고: 뉴시스",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "뉴시스 보도 참고·사찰 지붕과 아기 발도장 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 2,
+      "slide_role": "first_meeting",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "뉴시스 보도 참고·낙산사/견우5호/직녀8호 연결 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 3,
+      "slide_role": "marriage",
+      "media_type": "editorial",
+      "source_credit": [
+        "뉴시스 보도 참고·2025년 10월 달력과 반지 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 4,
+      "slide_role": "birth",
+      "media_type": "editorial",
+      "source_credit": [
+        "뉴시스 보도 참고·2026년 7월 16일 날짜와 출생 상징 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 5,
+      "slide_role": "program_outcome",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "뉴시스 보도 참고·결혼 3쌍과 추가 1쌍 집계 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-A-54b45bfb6a07",
+    "account": "A",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-A-54b45bfb6a07",
+      "account": "A",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-A-54b45bfb6a07",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

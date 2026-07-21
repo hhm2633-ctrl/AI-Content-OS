@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-b674af9b1dd6",
+  "candidate_id": "20260717-2003-B-b674af9b1dd6",
+  "grade": "3",
+  "account": "B",
+  "category": "현실썰",
+  "title": "이거 예쁜애들은 다 공감할거임",
+  "source_urls": [
+    "https://pann.nate.com/talk/375521236"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

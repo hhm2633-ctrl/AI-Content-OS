@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-85b6b3ca1782",
+  "candidate_id": "20260717-2003-C-85b6b3ca1782",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·스킨케어",
+  "title": "요즘 사람들이 얼굴에 젤리를 뿌리는 이유?",
+  "source_urls": [
+    "https://www.allurekorea.com/2026/07/17/%ec%9a%94%ec%a6%98-%ec%82%ac%eb%9e%8c%eb%93%a4%ec%9d%b4-%ec%96%bc%ea%b5%b4%ec%97%90-%ec%a0%a4%eb%a6%ac%eb%a5%bc-%eb%bf%8c%eb%a6%ac%eb%8a%94-%ec%9d%b4%ec%9c%a0/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

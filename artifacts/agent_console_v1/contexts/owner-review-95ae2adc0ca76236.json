@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-f95700863c7b",
+  "candidate_id": "20260717-2003-C-f95700863c7b",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "[리뷰] 디올 2027 S/S 남성복 컬렉션 프랑스 럭셔리 디올이 스타일, 소재, 기법까지 아우르는 친숙함의 재창조와 고유의 그루브와 마법을 불어넣은 2027 S/S 남성복 컬렉션을 선보였다.",
+  "source_urls": [
+    "https://www.fashionn.com/board/read_new.php?table=1028&number=61491&sel_cat="
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

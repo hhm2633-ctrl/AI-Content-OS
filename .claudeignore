@@ -1,0 +1,17 @@
+graph.json
+graphify-out/
+.codex-remote-attachments/
+owner_analysis_inbox/
+storage/
+artifacts/
+tmp/
+.tmp/
+.tmp_test_workspace/
+.codex-test-tmp/
+.claude/worktrees/
+external_workclaude/
+external_workcodex/
+external_workmanus/
+aoc-rc-*/
+source_*_tmp/
+source_intake_bundle_*/

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "taxonomy_id": "ai-content-os-knowledge-v1",
+  "unknown_fallback": {
+    "category": "unknown",
+    "preserve_explicit_values": true,
+    "route_automatically": false
+  },
+  "categories": [
+    {"id":"research_evidence","aliases":["research","evidence","근거","리서치"],"keywords":["research","evidence","source","citation","provenance","fact","근거","출처","인용","조사","검증"],"default_domains":["research"]},
+    {"id":"trend_intelligence","aliases":["trend","viral","트렌드"],"keywords":["trend","viral","seasonal","news","community","트렌드","유행","뉴스","커뮤니티"],"default_domains":["trend"]},
+    {"id":"social_instagram","aliases":["instagram","reels","social","인스타그램","릴스"],"keywords":["instagram","reels","social","competitor account","engagement","save rate","share rate","인스타그램","릴스","경쟁 계정"],"default_domains":["instagram","competitor"]},
+    {"id":"card_news","aliases":["cardnews","carousel","카드뉴스"],"keywords":["card news","cardnews","carousel","slide","layout","typography","카드뉴스","레이아웃","타이포그래피"],"default_domains":["card_news","content"]},
+    {"id":"short_form_video","aliases":["shorts","short_form","video","쇼츠","영상"],"keywords":["shorts","short-form","video","scene","subtitle","render","timeline","쇼츠","영상","장면","자막","렌더링"],"default_domains":["shorts","content"]},
+    {"id":"commerce_affiliate","aliases":["commerce","affiliate","coupang","커머스","제휴"],"keywords":["commerce","affiliate","product","offer","price","stock","coupang","amazon","커머스","제품","가격","재고","제휴"],"default_domains":["commerce","affiliate"]},
+    {"id":"publishing_operations","aliases":["publishing","publish","operations","발행","운영"],"keywords":["publishing","publish","schedule","queue","caption","hashtag","approval","발행","게시","일정","캡션","해시태그","승인"],"default_domains":["publishing"]},
+    {"id":"policy_compliance","aliases":["policy","compliance","rights","security","정책","권리","보안"],"keywords":["policy","compliance","rights","license","copyright","privacy","security","credential","terms","dmca","정책","저작권","개인정보","보안","약관"],"default_domains":["compliance","security"]},
+    {"id":"architecture_tooling","aliases":["architecture","tooling","code","아키텍처","도구"],"keywords":["architecture","contract","schema","workflow","engine","adapter","developer tool","codegraph","아키텍처","계약","스키마","워크플로","엔진"],"default_domains":["architecture"]},
+    {"id":"performance_analytics","aliases":["performance","analytics","metrics","성과","분석"],"keywords":["performance","analytics","metric","kpi","score","conversion","revenue","roi","성과","분석","지표","매출","전환"],"default_domains":["performance","analytics"]},
+    {"id":"brand_content_strategy","aliases":["brand","content","strategy","브랜드","콘텐츠"],"keywords":["brand","content strategy","audience","hook","cta","story","campaign","브랜드","콘텐츠","타깃","훅","캠페인"],"default_domains":["brand","content"]}
+  ],
+  "domains": ["affiliate","analytics","architecture","brand","card_news","commerce","competitor","compliance","content","instagram","performance","publishing","research","security","shorts","trend"],
+  "teams": ["research_intelligence","trend_collector","instagram_research","competitor_learning","card_news","shorts","commerce","publishing","compliance","architecture","performance_analytics","brand_content"],
+  "routing_rules": [
+    {"category":"research_evidence","teams":["research_intelligence"]},
+    {"category":"trend_intelligence","teams":["trend_collector","research_intelligence"]},
+    {"category":"social_instagram","teams":["instagram_research","competitor_learning"]},
+    {"category":"card_news","teams":["card_news"]},
+    {"category":"short_form_video","teams":["shorts"]},
+    {"category":"commerce_affiliate","teams":["commerce","compliance"]},
+    {"category":"publishing_operations","teams":["publishing","compliance"]},
+    {"category":"policy_compliance","teams":["compliance"]},
+    {"category":"architecture_tooling","teams":["architecture"]},
+    {"category":"performance_analytics","teams":["performance_analytics"]},
+    {"category":"brand_content_strategy","teams":["brand_content"]}
+  ],
+  "source_type_defaults": {"policy":["policy_compliance"],"program":["architecture_tooling"],"repository":["architecture_tooling"],"analysis":["research_evidence"],"research":["research_evidence"]}
+}

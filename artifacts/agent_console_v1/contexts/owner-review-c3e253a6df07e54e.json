@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-1b8324689cc9",
+  "candidate_id": "20260717-2003-C-1b8324689cc9",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티",
+  "title": "16만 원으로 앤드류 가필드 풍성한 장발 따라하는 꿀팁",
+  "source_urls": [
+    "https://www.gqkorea.co.kr/2026/07/13/16%eb%a7%8c-%ec%9b%90%ec%9c%bc%eb%a1%9c-%ec%95%a4%eb%93%9c%eb%a3%a8-%ea%b0%80%ed%95%84%eb%93%9c-%ed%92%8d%ec%84%b1%ed%95%9c-%ec%9e%a5%eb%b0%9c-%eb%94%b0%eb%9d%bc%ed%95%98%eb%8a%94-%ea%bf%80%ed%8c%81/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

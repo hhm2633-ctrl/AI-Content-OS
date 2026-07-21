@@ -1,0 +1,115 @@
+{
+  "source": "newsis",
+  "recon_date": "2026-07-15",
+  "canonical_base_url": "https://www.newsis.com",
+  "robots": {
+    "disallowed_paths": ["/common/", "/search/", "/ar_detail/"],
+    "sitemaps": [
+      "https://www.newsis.com/sitemap.xml",
+      "https://www.newsis.com/newsis_news_google.xml"
+    ]
+  },
+  "surfaces": {
+    "latest": {
+      "url": "https://www.newsis.com/realnews/",
+      "pagination": "?page={n}",
+      "server_rendered": true,
+      "items_per_page": 20,
+      "item_selector": "ul.articleList2 > li div.boxStyle05",
+      "fields": {
+        "headline": {"selector": "div.txtCont p.tit a", "attr": "text", "required": true},
+        "link": {"selector": "div.txtCont p.tit a", "attr": "href", "required": true, "note": "relative path /view/{article_id}"},
+        "article_id": {"derive": "regex on link", "pattern": "NIS[XI]\\d{8}_\\d{10}", "required": true},
+        "summary": {"selector": "div.txtCont p.txt a", "attr": "text", "required": false},
+        "reporter": {"selector": "div.txtCont p.time span", "attr": "text", "required": false},
+        "published_at": {"selector": "div.txtCont p.time", "attr": "text_after_span", "format": "YYYY.MM.DD HH:MM:SS", "timezone": "Asia/Seoul", "required": true},
+        "thumbnail": {"selector": "div.thumCont img", "attr": "src", "required": false, "note": "protocol-relative //image.newsis.com/..."},
+        "publisher": {"constant": "뉴시스"},
+        "category": {"derive": "from requested cid/scid, not in item markup"}
+      }
+    },
+    "category_list": {
+      "url_template": "https://www.newsis.com/{section}/list/?cid={cid}&scid={scid}&page={n}",
+      "server_rendered": true,
+      "items_per_page": 20,
+      "same_item_schema_as": "latest",
+      "cid_map": {
+        "10300": {"section": "politic", "label": "정치"},
+        "10100": {"section": "world", "label": "국제"},
+        "10400": {"section": "economy", "label": "경제"},
+        "15000": {"section": "money", "label": "금융"},
+        "13000": {"section": "business", "label": "산업"},
+        "13100": {"section": "health", "label": "IT·바이오"},
+        "10200": {"section": "society", "label": "사회"},
+        "14000": {"section": "metro", "label": "수도권"},
+        "10800": {"section": "region", "label": "지방"},
+        "10700": {"section": "culture", "label": "문화"},
+        "10500": {"section": "sports", "label": "스포츠"},
+        "10600": {"section": "entertainment", "label": "연예"}
+      }
+    },
+    "ranking": {
+      "embedded_in": "any section or list page",
+      "standalone_url": null,
+      "note": "/rank/ does not exist; redirects to /error/",
+      "server_rendered": true,
+      "container_selector": "div.rankBox",
+      "tab_selector": "div#topnews{n}",
+      "tabs": {
+        "1": "종합", "2": "정치", "3": "국제", "4": "경제", "5": "금융", "6": "산업",
+        "7": "IT·바이오", "8": "사회", "9": "수도권", "10": "지방", "11": "문화",
+        "12": "스포츠", "13": "연예"
+      },
+      "item_selector": "ul.left li a (ranks 1-6) then ul.right li a (ranks 7-12)",
+      "rank_rule": "DOM order, left list before right list",
+      "fields": {
+        "headline": {"selector": "a", "attr": "text", "required": true},
+        "link": {"selector": "a", "attr": "href", "required": true},
+        "rank": {"derive": "1-based DOM position across left+right lists", "required": true}
+      },
+      "parser_note": "markup contains an unclosed </ul>; use lenient HTML parser (BeautifulSoup/lxml), never strict XML"
+    },
+    "breaking_ticker": {
+      "container_selector": "div.quickNews ul.newsList",
+      "item_selector": "li[pushdate]",
+      "fields": {
+        "headline": {"selector": "a", "attr": "text", "required": true},
+        "link": {"selector": "a", "attr": "href", "required": true},
+        "pushed_at": {"selector": "li", "attr": "pushdate", "format": "YYYYMMDDHHMMSS", "timezone": "Asia/Seoul", "required": true}
+      }
+    }
+  },
+  "pagination": {
+    "block_selector": "div#paging_t1",
+    "page_link_selector": "span.num a",
+    "param": "page",
+    "verified": "page=1 and page=2 return distinct item sets"
+  },
+  "access": {
+    "method": "plain HTTPS GET",
+    "user_agent": "generic desktop browser UA sufficient",
+    "javascript_required": false,
+    "login_required": false,
+    "captcha_observed": false,
+    "encoding": "utf-8",
+    "stop_conditions": ["non-200 status", "redirect to /error/", "any challenge/captcha page"]
+  },
+  "fixture_rules": {
+    "max_items_per_surface": 3,
+    "sanitization": {
+      "headline": "replace with placeholder Korean text",
+      "summary": "replace with placeholder Korean text",
+      "reporter": "replace with '테스트기자'",
+      "article_id": "rewrite to reserved pattern NISX19700101_0000000001..3",
+      "thumbnail": "replace src with //image.newsis.com/FIXTURE_thm.jpg",
+      "published_at": "use fixed epoch-era timestamps 1970.01.01 00:00:0N"
+    },
+    "prohibited_in_fixtures": ["live article bodies", "real images", "full page snapshots"],
+    "parser_acceptance_checks": [
+      "extracts 3/3 items from sanitized ul.articleList2 fixture",
+      "assigns ranks 1-12 in left-then-right DOM order from rankBox fixture",
+      "parses li[pushdate] to Asia/Seoul datetime",
+      "builds ?page=N URLs from cid/scid without touching robots-disallowed paths"
+    ]
+  }
+}

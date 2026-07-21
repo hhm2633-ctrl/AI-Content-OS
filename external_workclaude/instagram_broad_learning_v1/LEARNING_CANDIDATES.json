@@ -1,0 +1,69 @@
+{
+  "status_standard": "허용 상태값은 benchmark_observed(evidence_urls 2건 이상) 또는 hypothesis_only(evidence_urls 1건, 또는 인과·비교 주장을 포함해 구조 반복만으로 근거가 부족한 경우) 두 가지뿐. candidate/validated/proven 등 승격 표현 및 'benchmark_observed(구조 반복)'류의 괄호 부연 표현은 전부 제거함.",
+  "correction_note": "이전 버전에서 confidence 필드에 'benchmark_observed(구조 반복)', 'benchmark_observed(빈도)' 등 표준 외 표기가 있었음 — 전부 표준 두 값 중 하나로 교정하고 부연 설명은 'note' 필드로 이동함. 또한 evidence_urls 2건 이상인데도 hypothesis_only로 남아있던 항목(#2)은 benchmark_observed로 재조정함.",
+  "note": "CN-006 비교·수정 제안은 이번 단계에서 수행하지 않음(사용자 지시).",
+  "candidates": [
+    {
+      "candidate": "댓글에 특정 키워드를 남기면 DM으로 자료를 보내주는 CTA가 있는 게시물은 댓글:좋아요 비율이 반복적으로 높게 나타난다",
+      "evidence_urls": [
+        "https://www.instagram.com/p/DaCzy3oD-RH/","https://www.instagram.com/p/DYUI6eKk80S/",
+        "https://www.instagram.com/p/DZnQtl3Eq-_/","https://www.instagram.com/p/DZwFmZvgT-c/",
+        "https://www.instagram.com/p/DZ-P1r_k_ox/","https://www.instagram.com/p/DZaM-F2EhBr/",
+        "https://www.instagram.com/p/DY_j-R4kUw1/","https://www.instagram.com/p/DZsBFesH6EI/",
+        "https://www.instagram.com/p/DaNEjI7ieUa/","https://www.instagram.com/p/DZupSq1ICoT/",
+        "https://www.instagram.com/p/DadGwa9GhH3/"
+      ],
+      "observation_count": 11,
+      "account_count": 11,
+      "category_count": 2,
+      "confidence": "benchmark_observed",
+      "note": "인과관계(CTA가 반응을 유발한다는 결론)는 별개의 미검증 주장이며 이 confidence는 '비율 패턴이 반복 관측되었다'는 사실에만 적용됨"
+    },
+    {
+      "candidate": "지역/기관 공지형 카드뉴스는 텍스트 오버레이보다 실사진 비중이 높고 CTA가 거의 없다",
+      "evidence_urls": ["https://www.instagram.com/p/DYDv7qTkhII/", "https://www.instagram.com/p/DZZko8HESg3/", "https://www.instagram.com/p/DYi2I6WEefP/"],
+      "observation_count": 3,
+      "account_count": 3,
+      "category_count": 2,
+      "confidence": "benchmark_observed",
+      "note": "이전 버전에서는 hypothesis_only로 표기되었으나 evidence_urls 3건(계정 3개, 분야 2개)으로 표준 기준(2건 이상)을 충족해 수정함"
+    },
+    {
+      "candidate": "인용·반전형 헤드라인 + 인물 사진 표지는 탐색(Explore) 알고리즘 확산에 유리할 수 있다",
+      "evidence_urls": ["https://www.instagram.com/p/DaNcegIkmEy/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only",
+      "note": "n=1, 이전 단계(instagram_feed_discovery_v1)에서도 동일 계정 관찰이 있었으나 독립 표본 아님"
+    },
+    {
+      "candidate": "번호형 큐레이션 리스트 구조(장소/계정/제품 N개 나열, 각 항목 동일 포맷 반복)는 여행·지역, 생활정보, 유머·이슈 분야에서 공통적으로 나타난다",
+      "evidence_urls": ["https://www.instagram.com/p/DZZko8HESg3/", "https://www.instagram.com/p/DMR7KeXyMRs/", "https://www.instagram.com/p/DZ1m16hEoJS/"],
+      "observation_count": 3,
+      "account_count": 3,
+      "category_count": 3,
+      "confidence": "benchmark_observed",
+      "note": "구조 반복 자체는 확인됨. 고반응과의 인과성은 별개의 미검증 주장(hypothesis)이며 이 confidence에 포함되지 않음"
+    },
+    {
+      "candidate": "병원/공공기관 계정은 캐릭터 의인화 일러스트 + 파스텔톤 배경을 반복 사용한다",
+      "evidence_urls": ["https://www.instagram.com/p/DX540sxj3kb/", "https://www.instagram.com/p/DMumn3wvugh/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed",
+      "note": "시각 스타일 반복(n=2)만을 주장함. '이런 계정의 좋아요 반응이 낮은 편'이라는 비교 주장은 표본 2건으로는 근거가 약해 이 candidate에서 분리했으며, 별도로 확정 주장하지 않음(팔로워 미확인으로 반응 고저 자체도 절대값 기준일 뿐)"
+    },
+    {
+      "candidate": "게시 직후(수 시간 내) 관찰 시 반응이 0인 것은 정상 범위이며 콘텐츠 품질과 무관할 수 있다",
+      "evidence_urls": ["https://www.instagram.com/p/Dav8rULEl4G/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only",
+      "note": "단일 사례, 시간 경과에 따른 재관찰 없음(세션 내 1회성 관찰)"
+    }
+  ],
+  "explicitly_out_of_scope_this_stage": "CN-006(미니멀리즘 시작하는 법) 대비 위 패턴들의 적용 가능성 평가 및 수정 제안은 사용자 지시에 따라 이번 단계에서 다루지 않음."
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": "instagram_carousel_deep_learning_v1",
+  "status": "CANDIDATE_OBSERVATIONS",
+  "observed_at": "2026-07-17T00:30:00+09:00",
+  "method": "Public Instagram post pages were opened read-only in Chrome. No login, likes, comments, follows, saves, shares, or publishing actions were performed. Screenshots and visible copy were reviewed slide by slide.",
+  "performance_boundary": "Public reaction counts are point-in-time observations, not causal performance evidence. No pattern is VERIFIED or PROMOTED.",
+  "observations": [
+    {
+      "observation_id": "codex_issue_001",
+      "account_group": "B_issue_story",
+      "source_url": "https://www.instagram.com/p/DaNcegIkmEy/",
+      "public_reaction_snapshot": {"likes_display": "2.1만", "comments_display": "341"},
+      "slide_count_observed": 13,
+      "cover_copy": "리센느에게 먹칠하면 안된다고 말한 거제시 근황",
+      "reviewed_slide_copy": [
+        "지금 리센느로 거제가 많이 알려진 상태인데",
+        "거제 해수욕장 개장을 앞두고 여러곳에서 바가지에 대한 우려가 많았다고함",
+        "그래서 기자가 직접 방문해서 공무원들이랑 상인들을 만나러 갔음"
+      ],
+      "visual_sequence": [
+        "인물 실사진 풀프레임과 대형 흰색 타이포 표지",
+        "실제 영상 프레임 위에 실제 반응 캡처를 겹치고 하단에 한 문장만 배치",
+        "같은 장면을 유지하며 문장을 조금씩 전진시켜 정보 공개 속도를 조절",
+        "현장 인터뷰 프레임으로 전환해 주장보다 취재 행동을 먼저 보여줌"
+      ],
+      "candidate_learning": [
+        "사건·이슈 캐러셀은 매 장 완결 설명보다 다음 장으로 이어지는 한 문장 전진이 효과적인 구조 후보",
+        "실제 댓글과 실제 영상 프레임은 장식이 아니라 이야기 진행 근거로 사용",
+        "같은 레이아웃 반복도 정보와 감정이 전진하면 지루함보다 연속성을 만들 수 있음"
+      ],
+      "risks": ["실제 댓글의 PII와 사용권 검토 필요", "출처와 영상 권리 확인 필요", "범용 CTA 문구는 owner 기준에 맞게 별도 재작성 필요"],
+      "screenshots": [
+        "artifacts/instagram_learning/2026-07-17/issue_reference_cover.png",
+        "artifacts/instagram_learning/2026-07-17/issue_reference_slide4.png"
+      ]
+    },
+    {
+      "observation_id": "codex_fashion_editorial_001",
+      "account_group": "C_fashion_beauty",
+      "source_url": "https://www.instagram.com/p/DSMLi5akyKb/",
+      "public_reaction_snapshot": {"likes_display": "1.1천", "comments_display": "7"},
+      "slide_count_observed": 10,
+      "cover_copy": "타카히로 미야시타의 고뇌에 대하여 어느 청춘이 남긴 넘버나인의 족적",
+      "reviewed_slide_copy_summary": [
+        "2장은 일본 패션을 동경하는 이유를 질문한 뒤 디자이너의 진정성과 독보적 비주얼이라는 논지를 제시",
+        "3장은 디자이너의 유년기와 옷에 대한 집착을 인물 사진과 함께 서술"
+      ],
+      "visual_sequence": [
+        "흑백 아카이브 실사진과 매거진형 제목 표지",
+        "텍스트 전용 장으로 문제의식과 글의 관점을 먼저 확립",
+        "작은 인물 사진과 짧은 문단을 결합해 연대기 서사를 전개"
+      ],
+      "candidate_learning": [
+        "패션 역사·디자이너 서사는 투표형 CTA 없이 편집자의 관점과 근거로 끝낼 수 있음",
+        "표지의 감정적 문장 뒤 본문은 왜 이 인물을 봐야 하는지를 설명해야 함",
+        "시즌 컬렉션에 그대로 복제하지 말고 공식 컨셉과 실제 룩 해설로 변환해야 함"
+      ],
+      "risks": ["본문 텍스트 밀도가 모바일에서 과도할 수 있음", "아카이브 이미지 권리 확인 필요", "단일 사례이므로 성과 일반화 금지"],
+      "screenshots": [
+        "artifacts/instagram_learning/2026-07-17/fashion_reference_cover.png",
+        "artifacts/instagram_learning/2026-07-17/fashion_reference_slide3.png"
+      ]
+    },
+    {
+      "observation_id": "codex_fashion_ootd_001",
+      "account_group": "C_fashion_beauty",
+      "source_url": "https://www.instagram.com/p/DSKUlHQD9mN/",
+      "public_reaction_snapshot": {"likes_display": "61", "comments_display": "1"},
+      "slide_count_observed": 8,
+      "cover_copy": "한소희 사복 패션 알아보기",
+      "reviewed_slide_copy": "테켓(TEKET) Boogle Reversible Down Jacket (Black) 309,000won",
+      "visual_sequence": [
+        "실제 인물 사진을 거의 전체 화면으로 사용하고 표지 문구는 하단에만 배치",
+        "본문은 실제 착장 사진, 제품 누끼, 브랜드·제품명·가격을 한 화면에 결합",
+        "한 장에 한 아이템만 설명해 넘길 이유를 유지"
+      ],
+      "candidate_learning": [
+        "착장 정보 캐러셀은 글보다 실제 이미지와 정확한 제품 식별이 우선",
+        "상품 정보는 이미지 흐름을 해치지 않도록 하단 고정 영역에 짧게 배치",
+        "상품 제휴 여부와 무관하게 제품명·가격·시점 근거가 확인돼야 함"
+      ],
+      "risks": ["인물·제품 이미지 권리 확인 필요", "가격은 시점 표기와 재확인 필요", "낮은 반응 수치이므로 성과 패턴으로 승격 금지"],
+      "screenshots": [
+        "artifacts/instagram_learning/2026-07-17/fashion_ootd_reference_cover.png",
+        "artifacts/instagram_learning/2026-07-17/fashion_ootd_reference_slide2.png"
+      ]
+    }
+  ],
+  "immediate_design_corrections": [
+    "고정 4장 구조를 사용하지 않는다",
+    "사건·썰과 패션 정보물에 같은 CTA 문법을 사용하지 않는다",
+    "사건·썰은 한 장당 행동·발언·증거 하나만 공개한다",
+    "시즌 패션은 공식 컨셉과 대표 실제 룩을 편집자가 해설한다",
+    "패션·뷰티는 실제 이미지가 주인공이며 텍스트는 사진을 덮지 않는다"
+  ]
+}

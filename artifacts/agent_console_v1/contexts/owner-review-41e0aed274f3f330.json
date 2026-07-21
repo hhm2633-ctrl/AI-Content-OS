@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-7a153dd733d6",
+  "candidate_id": "20260717-2003-A-7a153dd733d6",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "EU, 구글에 부과한 '과징금 8조 원' 8년 만에 수령",
+  "source_urls": [
+    "https://www.nocutnews.co.kr/news/6549658?utm_source=naver&utm_medium=article&utm_campaign=20260717080303"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

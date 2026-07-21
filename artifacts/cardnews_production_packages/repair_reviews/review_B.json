@@ -1,0 +1,89 @@
+{
+  "schema_version": "cardnews_repair_review_v2",
+  "cycle": 5,
+  "account": "B",
+  "input": "artifacts/cardnews_production_packages/repair_inputs/account_B.json",
+  "summary": {
+    "record_count": 4,
+    "pass_count": 4,
+    "revise_count": 0,
+    "block_count": 0,
+    "remaining_issue_count": 0,
+    "issue_count": 0,
+    "forbidden_media_dependency_count": 0
+  },
+  "records": [
+    {
+      "candidate_id": "20260717-2003-B-09d90bf39746",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "원문의 모욕적 외모 표현을 반복하지 않고 추천 23·반대 82의 반응 역전을 훅으로 삼았다.",
+        "실제 댓글은 익명 처리됐고, 품평 피로감은 편집자의 해석으로 분리 표기됐다.",
+        "모든 매체 계획은 자체 편집 그래픽이며 확보되지 않은 사진이나 영상에 의존하지 않는다."
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-B-1306f34dbbf1",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "not_applicable",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "첫 장은 오래된 의혹 자체보다 판결 뒤에도 남은 가족의 낙인을 중심으로 감정선을 잡았다.",
+        "법원 판단과 가족 발언은 파인뉴스가 재조명한 방송 내용에 귀속되며 별도 추정으로 확장하지 않는다.",
+        "영상·실존 인물 재연 없이 자체 타임라인, 문서 그래픽, 짧은 출처 인용 패널만 계획했다."
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "제목과 첫 장이 친구가 소개팅 현장에 숨어 있었다는 핵심 반전을 즉시 전달한다.",
+        "실제 댓글은 익명 출처 인용으로 제한되고, 2D 장면은 전부 '사연 재구성' 라벨을 고정하도록 명시됐다.",
+        "계획된 라벨 재연과 자체 그래픽만 사용하므로 외부 미확보 자산 의존성이 없다."
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-B-19e90e52b9f1",
+      "decision": "pass",
+      "checks": {
+        "top_title_story_hook": "pass",
+        "natural_non_abusive_korean": "pass",
+        "separate_feed_caption": "pass",
+        "source_claim_alignment": "pass",
+        "anonymous_comment_or_reenactment_labels": "pass",
+        "media_dependency": "pass"
+      },
+      "issues": [],
+      "notes": [
+        "첫 장이 고조된 컨트롤 직후 종료되는 핵심 반전을 자연스럽게 압축한다.",
+        "Ctrl+Q 오입력은 확인된 사실이 아니라 익명 상위 댓글의 추정으로 분명히 제한했다.",
+        "게임 영상이나 입력 증거를 흉내 내지 않는 자체 키캡·궤적·타이포그래피 그래픽만 계획했다."
+      ]
+    }
+  ]
+}

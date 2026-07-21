@@ -1,0 +1,666 @@
+{
+  "schema_version": "account_package_repair_inputs_v1",
+  "account": "C",
+  "record_count": 4,
+  "records": [
+    {
+      "candidate_id": "20260717-2003-C-52419867f5a5",
+      "request_id": "owner_review:20260717-2003-C-52419867f5a5",
+      "account": "C",
+      "category": "패션",
+      "title": "폭염이 넓힌 냉감 상의… 여성 반팔부터 남성 긴팔 반집업까지",
+      "source_urls": [
+        "https://www.meconomynews.com/news/articleView.html?idxno=132893"
+      ],
+      "evidence": {
+        "sources": [
+          "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+          "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+          "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673"
+        ],
+        "source_details": [
+          {
+            "url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+            "publisher": "시장경제",
+            "published_at": "2026-07-17T11:58:00+09:00",
+            "source_type": "selected_article",
+            "claims_used": [
+              "폭염 대응이 여름 패션 경쟁의 핵심으로 부상",
+              "냉감·흡습속건 등 기능성이 티셔츠·데님·골프웨어·여성복으로 확장",
+              "여성복에서는 반팔 재킷·셔켓·경량 소재의 라이트 포멀 흐름이 등장"
+            ]
+          },
+          {
+            "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+            "publisher": "네이버 브랜드커넥트 상품 데이터",
+            "source_type": "selected_catalog_product",
+            "claims_used": [
+              "아이더 남성 여름 긴팔 아이스 냉감 기능성 반집업 티셔츠 MM25202"
+            ]
+          },
+          {
+            "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673",
+            "publisher": "네이버 브랜드커넥트 상품 데이터",
+            "source_type": "selected_catalog_product",
+            "claims_used": [
+              "아이더 여성 반팔 여름 기능성 냉감 아이스 라운드 티셔츠 WM25225"
+            ]
+          }
+        ],
+        "evidence_status": "sufficient"
+      },
+      "story": {
+        "summary": "7월 17일 폭염 대응 패션 기사를 첫 장에 바로 제시하고, 냉감 상의가 여성 반팔과 남성 긴팔 반집업처럼 성별과 형태별로 넓어진 두 사례를 보여준다.",
+        "angle": "폭염 대응 패션 경쟁에서 냉감·흡습속건 기능과 성별·형태별 제품 확장을 차례로 보여주는 편집형 커머스",
+        "narrative": "7월 17일 기사에서 폭염 대응 경쟁을 짚은 장면으로 시작한다. 냉감 기능이 한 가지 공용 티셔츠에 머물지 않고 여성 반팔과 남성 긴팔 반집업처럼 성별과 소매·넥 형태를 달리한 제품군으로 넓어진 흐름을 두 사례로 보여준다.",
+        "arc": [
+          "폭염 대응 여름 패션 경쟁",
+          "냉감·흡습속건 기능 확장",
+          "성별과 소매·넥 형태별 제품 확장",
+          "여성 반팔 사례 공개",
+          "남성 긴팔 반집업 사례 공개"
+        ],
+        "commerce_mode": "natural_after_editorial_context"
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_issue",
+          "headline": "폭염이 바꾼 여름 상의",
+          "body": "7월 17일 기사에는 폭염 대응 패션 경쟁이 담겼다."
+        },
+        {
+          "page": 2,
+          "role": "trend_context",
+          "headline": "냉감에 흡습속건까지",
+          "body": "여름 상의의 기능 경쟁이 냉감과 흡습속건으로 넓어졌다."
+        },
+        {
+          "page": 3,
+          "role": "product_range_context",
+          "headline": "형태도 한 가지가 아니다",
+          "body": "여성 반팔과 남성 긴팔 반집업처럼 성별과 형태별 사례가 등장했다."
+        },
+        {
+          "page": 4,
+          "role": "product_reveal",
+          "headline": "여성 냉감 상의는 반팔까지",
+          "body": "여성용 라운드 반팔처럼 가볍게 입는 형태로 제품군이 넓어졌다."
+        },
+        {
+          "page": 5,
+          "role": "choice_guide",
+          "headline": "남성 냉감 상의는 반집업까지",
+          "body": "남성용 긴팔 반집업처럼 소매와 넥 형태를 달리한 사례도 있다."
+        }
+      ],
+      "feed_caption": "7월 17일 패션 기사에는 폭염 대응 경쟁과 함께 냉감·흡습속건 기능이 여름옷 전반으로 확장된 흐름이 담겼습니다. 이번 카드에는 여성용 라운드 반팔과 남성용 긴팔 반집업을 서로 대체하는 선택지가 아니라, 냉감 상의가 성별과 형태별로 다양해진 두 가지 사례로 담았습니다. 참고: 시장경제 2026년 7월 17일 기사, 네이버 브랜드커넥트 상품 정보.",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "cover_issue",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+          "source_credit": "시장경제 2026년 7월 17일 기사 제목을 바탕으로 한 자체 편집 그래픽",
+          "rights_note": "기사에 나온 폭염 대응 패션 경쟁만 시각화하고 상품은 노출하지 않음",
+          "production_direction": "폭염을 상징하는 열기 그래픽과 여름 상의 실루엣을 구성하고, 날짜·기사 근거는 하단에 작게 표시"
+        },
+        {
+          "page": 2,
+          "slide_role": "trend_context",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+          "source_credit": "시장경제 기사 내용을 바탕으로 한 자체 기능성 소재 그래픽",
+          "rights_note": "미확보 기사 사진을 사용하지 않고 기사에 나온 냉감·흡습속건 기능 확장만 도식화",
+          "production_direction": "냉감과 흡습속건 키워드를 소재 조직·물방울 아이콘과 함께 간결하게 보여줌"
+        },
+        {
+          "page": 3,
+          "slide_role": "product_range_context",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+          "source_credit": "시장경제 기사와 상품명 정보를 바탕으로 한 자체 제품군 확장 그래픽",
+          "rights_note": "미확보 브랜드 사진 대신 여성 반팔·남성 긴팔 반집업의 형태 차이만 시각화",
+          "production_direction": "여성 반팔과 남성 긴팔 반집업의 실루엣을 나란히 두고 성별·소매·넥 형태를 구분"
+        },
+        {
+          "page": 4,
+          "slide_role": "product_reveal",
+          "media_type": "video",
+          "asset_status": "product_source",
+          "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673",
+          "asset_source_urls": [
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673"
+          ],
+          "source_credit": "네이버 브랜드커넥트 / 아이더 여성 냉감 반팔 상품 상세 이미지",
+          "rights_note": "여성 반팔 상품의 실제 상세 이미지만 사용하며 착용 효과는 새로 주장하지 않음",
+          "production_direction": "여성 냉감 반팔의 정면·디테일 이미지만 묶고 성별·제품명을 명확히 표시"
+        },
+        {
+          "page": 5,
+          "slide_role": "choice_guide",
+          "media_type": "editorial",
+          "asset_status": "product_source",
+          "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+          "asset_source_urls": [
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657"
+          ],
+          "source_credit": "네이버 브랜드커넥트 / 아이더 남성 냉감 긴팔 반집업 상품 이미지",
+          "rights_note": "남성 긴팔 반집업 상품명에서 확인되는 소매와 넥 형태만 설명",
+          "production_direction": "남성 냉감 긴팔 반집업의 정면·디테일 이미지만 묶고 독립 사례로 표시"
+        }
+      ],
+      "commerce": {
+        "status": "natural_match",
+        "placement": "slides_4_to_5_only",
+        "link_issuance": false,
+        "products": [
+          {
+            "product_id": "945088891696673",
+            "name": "아이더 여성 반팔 여름 기능성 냉감 아이스 라운드 티셔츠 WM25225"
+          },
+          {
+            "product_id": "936537841850657",
+            "name": "아이더 남성 여름 긴팔 아이스 냉감 기능성 반집업 티셔츠 MM25202"
+          }
+        ],
+        "fit_reason": "원문이 폭염과 냉감 기능성 의류의 확장을 직접 다루며, 두 상품은 여성 반팔과 남성 긴팔 반집업으로 성별·소매·넥 형태가 넓어진 사례를 보여준다."
+      },
+      "quality_notes": {
+        "first_frame": "상품을 숨기고 폭염 이슈를 먼저 제시",
+        "copy_density": "장당 짧은 문장 1개",
+        "false_association_guard": "기사와 무관한 셀럽 이미지 사용 금지"
+      },
+      "blocked": false,
+      "blocker": null
+    },
+    {
+      "candidate_id": "20260717-2003-C-145cd25e7107",
+      "request_id": "owner_review:20260717-2003-C-145cd25e7107",
+      "account": "C",
+      "category": "뷰티·헤어",
+      "title": "비 올 때 시든 상추처럼 축 처진 앞머리, 요즘은 이렇게 복구합니다",
+      "source_urls": [
+        "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/"
+      ],
+      "evidence": {
+        "sources": [
+          "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+          "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+          "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655"
+        ],
+        "source_details": [
+          {
+            "url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+            "publisher": "얼루어 코리아",
+            "published_at": "2026-07-15",
+            "source_type": "selected_article",
+            "claims_used": [
+              "핀을 포인트로 활용하면 갈라지고 들러붙는 앞머리를 여름 스타일로 바꿀 수 있음",
+              "핀 고정 전 백콤·드라이 샴푸·텍스처 스프레이를 가볍게 사용할 수 있음",
+              "오일이나 젤은 끝부분 위주로 아주 소량 사용해 웻헤어 결을 연출"
+            ]
+          },
+          {
+            "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+            "publisher": "네이버 브랜드커넥트 상품 데이터",
+            "source_type": "selected_catalog_product",
+            "claims_used": [
+              "달리프 글램 스타일링 헤어픽서 앞머리 잔머리고정 뿌리볼륨 헤어스프레이 200ml"
+            ]
+          },
+          {
+            "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+            "publisher": "네이버 브랜드커넥트 상품 데이터",
+            "source_type": "selected_catalog_product",
+            "claims_used": [
+              "아로마티카 로즈마리 드라이 샴푸 파우더 10g"
+            ]
+          }
+        ],
+        "evidence_status": "sufficient"
+      },
+      "story": {
+        "summary": "비와 습기에 앞머리가 무너지는 순간을 훅으로 잡고, 자르는 대신 핀·드라이 샴푸·가벼운 고정·소량의 젤로 실패를 스타일로 바꾸는 순서를 보여준다.",
+        "angle": "장마철 실패 장면을 바로 따라 할 수 있는 세 가지 복구법으로 전환",
+        "narrative": "앞머리가 갈라지고 이마에 붙는 상황에서 시작한다. 핀으로 숨기는 대신 포인트를 만들고, 고정 전 드라이 샴푸나 텍스처 제품을 가볍게 더하거나 소량의 젤로 웻헤어 결을 살린다.",
+        "arc": [
+          "습기에 무너진 앞머리",
+          "핀으로 포인트 전환",
+          "고정 전 가벼운 준비",
+          "붙은 결을 웻헤어로 활용",
+          "상황별 도구 선택"
+        ],
+        "commerce_mode": "article_named_method_to_matching_product"
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_problem",
+          "headline": "비 오면 앞머리부터 무너진다",
+          "body": "갈라지고 붙었다면, 포기하기 전에 세 가지만 바꿔본다."
+        },
+        {
+          "page": 2,
+          "role": "method_pin",
+          "headline": "숨기지 말고 핀으로 포인트",
+          "body": "가르마를 나누고 한쪽이나 양쪽에 핀을 꽂아 흐트러짐을 스타일로 바꾼다."
+        },
+        {
+          "page": 3,
+          "role": "method_hold",
+          "headline": "고정 전, 가볍게 한 번",
+          "body": "유분과 처짐엔 드라이 샴푸, 모양을 잡을 땐 픽서를 가볍게 쓴다."
+        },
+        {
+          "page": 4,
+          "role": "method_wet",
+          "headline": "붙었다면 웻헤어처럼",
+          "body": "오일이나 젤을 손끝에 아주 조금 묻혀 끝부분의 결만 정리한다."
+        },
+        {
+          "page": 5,
+          "role": "choice_guide",
+          "headline": "오늘은 핀, 파우더, 픽서 중 하나",
+          "body": "흐트러짐엔 핀, 유분엔 파우더, 모양 고정엔 픽서로 나눈다."
+        }
+      ],
+      "feed_caption": "비 오는 날 앞머리가 갈라지고 붙었다면 도구를 많이 쓰기보다 상태부터 나눠보세요. 흐트러진 모양은 핀으로 정리하고, 유분과 처짐에는 드라이 샴푸를 가볍게, 모양 고정이 더 필요할 때는 픽서를 소량 사용합니다. 이미 붙은 결은 오일이나 젤을 끝부분에만 살짝 묻혀 웻헤어처럼 정리할 수 있습니다. 참고: 얼루어 코리아 2026년 7월 15일 기사.",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "cover_problem",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+          "source_credit": "얼루어 코리아 기사 내용을 바탕으로 한 자체 습기·앞머리 그래픽",
+          "rights_note": "미확보 기사 이미지를 사용하지 않고 갈라짐·붙음 현상만 도식화",
+          "production_direction": "습도 게이지와 갈라진 앞머리 선을 크게 배치해 문제를 즉시 보여줌"
+        },
+        {
+          "page": 2,
+          "slide_role": "method_pin",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+          "source_credit": "얼루어 코리아 기사 방법을 바탕으로 한 자체 헤어핀 위치 도식",
+          "rights_note": "미확보 인플루언서 이미지를 사용하지 않고 핀 위치만 자체 그래픽으로 설명",
+          "production_direction": "가르마와 한쪽·양쪽 핀 위치를 선과 작은 핀 아이콘으로 표시"
+        },
+        {
+          "page": 3,
+          "slide_role": "method_hold",
+          "media_type": "video",
+          "asset_status": "product_source",
+          "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+          "asset_source_urls": [
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601"
+          ],
+          "source_credit": "네이버 브랜드커넥트 / 아로마티카 드라이 샴푸·달리프 헤어픽서 상품 이미지",
+          "rights_note": "드라이 샴푸와 픽서의 서로 다른 사용 상황만 표시하고 같은 기능으로 단정하지 않음",
+          "production_direction": "드라이 샴푸에는 ‘유분·처짐’, 픽서에는 ‘모양 고정’ 라벨을 각각 표시"
+        },
+        {
+          "page": 4,
+          "slide_role": "method_wet",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/",
+          "source_credit": "얼루어 코리아 기사 방법을 바탕으로 한 자체 젤 사용량 도식",
+          "rights_note": "미확보 결과 이미지를 쓰지 않고 손끝 소량·모발 끝 사용 위치만 설명",
+          "production_direction": "손끝의 작은 점과 모발 끝부분을 연결해 ‘아주 조금’ 사용을 시각화"
+        },
+        {
+          "page": 5,
+          "slide_role": "choice_guide",
+          "media_type": "editorial",
+          "asset_status": "product_source",
+          "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+          "asset_source_urls": [
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266498655",
+            "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601"
+          ],
+          "source_credit": "자체 헤어핀 아이콘 + 네이버 브랜드커넥트 드라이 샴푸·픽서 상품 이미지",
+          "rights_note": "핀은 자체 아이콘, 두 상품은 실제 상세 이미지로 구분하며 개인 사용 후기는 만들지 않음",
+          "production_direction": "핀에는 ‘흐트러짐’, 드라이 샴푸에는 ‘유분’, 픽서에는 ‘모양 고정’만 표시"
+        }
+      ],
+      "commerce": {
+        "status": "natural_match",
+        "placement": "slides_3_and_5",
+        "link_issuance": false,
+        "products": [
+          {
+            "product_id": "808730266498655",
+            "name": "아로마티카 로즈마리 드라이 샴푸 파우더 10g"
+          },
+          {
+            "product_id": "833447744789601",
+            "name": "달리프 글램 스타일링 헤어픽서 앞머리 잔머리고정 뿌리볼륨 헤어스프레이 200ml"
+          }
+        ],
+        "fit_reason": "드라이 샴푸는 원문이 직접 제시한 방법과 연결된다. 헤어픽서는 원문의 텍스처 스프레이와 같은 기능으로 단정하지 않고, 앞머리 고정이 더 필요한 경우의 인접 상품으로만 제시한다."
+      },
+      "quality_notes": {
+        "first_frame": "습기에 무너진 앞머리 클로즈업",
+        "copy_density": "방법 하나당 한 장",
+        "product_guard": "효과 보장·사용 후기·하루 종일 유지 표현을 추가하지 않음"
+      },
+      "blocked": false,
+      "blocker": null
+    },
+    {
+      "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+      "request_id": "owner_review:20260717-2003-C-6c2dc4c716b5",
+      "account": "C",
+      "category": "패션·신발관리",
+      "title": "신발 오래 깨끗하게 신는 사람들의 관리법",
+      "source_urls": [
+        "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/"
+      ],
+      "evidence": {
+        "sources": [
+          "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/"
+        ],
+        "source_details": [
+          {
+            "url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+            "publisher": "GQ Korea",
+            "published_at": "2026-07-11",
+            "source_type": "selected_article",
+            "claims_used": [
+              "같은 신발을 매일 신지 않고 최소 24시간가량 말리는 습관",
+              "젖은 신발은 직접 열 대신 내부 수분을 제거한 뒤 통풍되는 그늘에서 자연 건조",
+              "가죽·스웨이드·캔버스는 소재별 전용 클리너와 브러시 사용",
+              "외출 후 부드러운 브러시나 마른 천으로 오염을 가볍게 제거",
+              "장기 보관 시 통풍되는 장소와 더스트백·상자·실리카겔 활용"
+            ]
+          }
+        ],
+        "evidence_status": "sufficient"
+      },
+      "story": {
+        "summary": "비싼 관리용품을 나열하지 않고, 신발을 오래 신는 사람들의 반복 가능한 다섯 습관을 건조·오염 제거·소재별 관리·보관 순서로 보여준다.",
+        "angle": "제품 광고 없이 오늘부터 바로 바꿀 수 있는 신발 관리 루틴",
+        "narrative": "신발이 빨리 낡는 건 가격보다 젖은 채로 다시 신고 오염을 오래 두는 습관과 연결된다. 하루 쉬게 하고, 젖었을 때는 열풍 대신 그늘에서 말리고, 소재에 맞는 도구로 가볍게 닦은 뒤 통풍되는 곳에 보관한다.",
+        "arc": [
+          "빨리 낡는 일상 습관",
+          "하루 쉬게 하기",
+          "젖었을 때 자연 건조",
+          "소재별 가벼운 청소",
+          "보관까지 관리로 보기"
+        ],
+        "commerce_mode": "editorial_only_no_verified_product_match"
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_problem",
+          "headline": "비싼 신발도 금방 낡는 이유",
+          "body": "신고 난 뒤의 작은 습관이 신발 상태를 바꾼다."
+        },
+        {
+          "page": 2,
+          "role": "rest_and_dry",
+          "headline": "같은 신발은 하루 쉬게",
+          "body": "땀과 습기가 마를 시간을 주고, 젖었다면 그늘에서 천천히 말린다."
+        },
+        {
+          "page": 3,
+          "role": "heat_guard",
+          "headline": "드라이어와 히터는 멀리",
+          "body": "급한 열 대신 마른 천으로 물기를 빼고 통풍되는 곳에 둔다."
+        },
+        {
+          "page": 4,
+          "role": "material_care",
+          "headline": "소재가 다르면 닦는 법도 다르다",
+          "body": "가죽·스웨이드·캔버스에 맞는 브러시와 클리너를 구분한다."
+        },
+        {
+          "page": 5,
+          "role": "storage_takeaway",
+          "headline": "신발장은 보관보다 건조 먼저",
+          "body": "먼지를 턴 뒤 통풍되는 곳에 두고, 오래 둘 땐 습기까지 관리한다."
+        }
+      ],
+      "feed_caption": "신발을 오래 깨끗하게 신는 사람들은 비싼 관리용품보다 반복하는 습관이 먼저였습니다. 같은 신발을 매일 신지 않고 충분히 말리고, 비에 젖었다면 드라이어나 히터 대신 마른 천으로 물기를 뺀 뒤 통풍되는 그늘에서 천천히 건조합니다. 외출 후 먼지를 가볍게 털고 가죽·스웨이드·캔버스에 맞는 도구를 구분하는 것도 중요합니다. 오래 보관할 때는 통풍과 습기 관리까지 챙겨보세요. 참고: GQ Korea 2026년 7월 11일 기사.",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "cover_problem",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+          "source_credit": "GQ Korea 기사 내용을 바탕으로 한 자체 새 신발·낡은 신발 실루엣",
+          "rights_note": "기사 사진 없이 일반 신발 실루엣과 마모선만 자체 제작",
+          "production_direction": "같은 형태의 신발 두 개에 깨끗함과 마모선을 대비해 훅을 즉시 이해시킴"
+        },
+        {
+          "page": 2,
+          "slide_role": "rest_and_dry",
+          "media_type": "motion_graphic",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+          "source_credit": "GQ Korea 기사 기반 자체 24시간 건조 그래픽",
+          "rights_note": "기사의 최소 24시간 건조 설명만 시계·신발 아이콘으로 도식화",
+          "production_direction": "신발 한 켤레가 24시간 시계를 지나며 마르는 짧은 루프 모션"
+        },
+        {
+          "page": 3,
+          "slide_role": "heat_guard",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+          "source_credit": "GQ Korea 기사 기반 자체 열풍 금지·그늘 건조 도식",
+          "rights_note": "제품이나 특정 브랜드 없이 드라이어·히터와 자연 건조의 차이만 표시",
+          "production_direction": "열풍 아이콘에는 X, 마른 천과 통풍선에는 체크 표시"
+        },
+        {
+          "page": 4,
+          "slide_role": "material_care",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+          "source_credit": "GQ Korea 기사 기반 자체 소재·도구 매칭 그래픽",
+          "rights_note": "가죽·스웨이드·캔버스와 일반 브러시 아이콘만 사용하고 상품 추천은 하지 않음",
+          "production_direction": "세 소재 샘플과 서로 다른 관리 도구를 선으로 연결"
+        },
+        {
+          "page": 5,
+          "slide_role": "storage_takeaway",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.gqkorea.co.kr/2026/07/11/%ec%95%8c%ec%95%84%eb%91%90%eb%a9%b4-%ed%8f%89%ec%83%9d-%ec%93%b0%eb%8a%94-%ec%8b%a0%eb%b0%9c-%ec%98%a4%eb%9e%98-%ea%b9%a8%eb%81%97%ed%95%98%ea%b2%8c-%ec%8b%a0%eb%8a%94-%ec%82%ac%eb%9e%8c%eb%93%a4/",
+          "source_credit": "GQ Korea 기사 기반 자체 신발장·통풍·습기 관리 그래픽",
+          "rights_note": "기사에 나온 보관 원칙만 일반 아이콘으로 시각화",
+          "production_direction": "먼지 제거→통풍→장기 보관의 세 단계 체크리스트"
+        }
+      ],
+      "commerce": {
+        "status": "not_used",
+        "link_issuance": false,
+        "reason": "현재 후보 데이터에 소재별로 검증된 관리 상품이 없어 생활 가이드에 상품을 억지로 붙이지 않는다."
+      },
+      "quality_notes": {
+        "first_frame": "기사 사진 없이 자체 신발 마모 실루엣으로 완결",
+        "copy_density": "일상 습관 하나당 한 장",
+        "asset_guard": "모든 장면이 자체 편집 그래픽으로 제작 가능하며 실사 획득을 전제하지 않음"
+      },
+      "blocked": false,
+      "blocker": null
+    },
+    {
+      "candidate_id": "20260717-2003-C-04a43f508b99",
+      "request_id": "owner_review:20260717-2003-C-04a43f508b99",
+      "account": "C",
+      "category": "뷰티",
+      "title": "마트 샴푸도 괜찮을까? 전문가들의 답은 의외였습니다",
+      "source_urls": [
+        "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/"
+      ],
+      "evidence": {
+        "sources": [
+          "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/"
+        ],
+        "source_details": [
+          {
+            "url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+            "publisher": "보그 코리아",
+            "published_at": "2026-07-16",
+            "source_type": "selected_article",
+            "claims_used": [
+              "마트에서도 좋은 샴푸를 찾을 수 있으며 판매처보다 포뮬러가 중요",
+              "샴푸는 모발 상태보다 두피 상태를 기준으로 선택",
+              "손상된 모발은 컨디셔너나 헤어 마스크를 중간부터 끝부분에 사용해 관리",
+              "설페이트 유무만 이분법적으로 보기보다 세정 성분의 균형을 확인"
+            ]
+          }
+        ],
+        "evidence_status": "sufficient"
+      },
+      "story": {
+        "summary": "비싼 샴푸와 마트 샴푸의 대결로 몰지 않고, 가격표에서 두피 상태와 포뮬러로 선택 기준을 옮기는 실용 가이드로 구성한다.",
+        "angle": "가격과 판매처보다 두피 상태·세정 성분 균형을 먼저 보는 선택 기준",
+        "narrative": "마트 샴푸도 기본 세정 역할을 충분히 할 수 있다는 전문가 설명에서 시작한다. 제품 전면의 손상모 문구보다 지성·건성·민감성 등 두피 상태를 먼저 보고, 손상된 모발은 컨디셔너나 마스크로 따로 관리한다.",
+        "arc": [
+          "비쌀수록 좋다는 선입견",
+          "마트 제품도 가능한 이유",
+          "두피 상태로 기준 이동",
+          "손상모 관리 분리",
+          "세정 성분 균형 확인",
+          "현실적인 선택 원칙"
+        ],
+        "commerce_mode": "editorial_only_until_formula_verified"
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "cover_question",
+          "headline": "샴푸, 비쌀수록 좋을까?",
+          "body": "전문가들이 먼저 보라는 건 가격표가 아니었다."
+        },
+        {
+          "page": 2,
+          "role": "myth_shift",
+          "headline": "마트라고 낮게 볼 필요는 없다",
+          "body": "판매처만으로 품질을 정할 수 없고, 포뮬러를 함께 봐야 한다."
+        },
+        {
+          "page": 3,
+          "role": "selection_rule",
+          "headline": "먼저 볼 건 모발이 아니다",
+          "body": "샴푸는 지성·건성·민감성처럼 내 두피 상태에 맞춰 고른다."
+        },
+        {
+          "page": 4,
+          "role": "care_split",
+          "headline": "손상모 관리는 따로",
+          "body": "컨디셔너와 마스크는 모발 중간부터 끝부분에 사용한다."
+        },
+        {
+          "page": 5,
+          "role": "ingredient_rule",
+          "headline": "성분표는 균형으로 보기",
+          "body": "설페이트 유무만 보지 말고 여러 세정 성분의 조합을 살핀다."
+        },
+        {
+          "page": 6,
+          "role": "takeaway",
+          "headline": "결론은 두피에 맞는 포뮬러",
+          "body": "가격보다 내 두피와 세정 성분의 균형을 먼저 확인한다."
+        }
+      ],
+      "feed_caption": "마트 샴푸라고 무조건 떨어지는 것도, 비싼 샴푸라고 무조건 더 좋은 것도 아닙니다. 전문가들이 공통으로 강조한 기준은 판매처나 가격보다 포뮬러와 내 두피 상태였습니다. 지성·건성·민감성처럼 두피를 먼저 보고 샴푸를 고르고, 건조하거나 손상된 모발은 컨디셔너와 헤어 마스크로 따로 관리하는 방식이 현실적입니다. 성분표 역시 설페이트 한 단어만 보기보다 세정 성분이 어떻게 조합됐는지를 살펴보세요. 참고: 보그 코리아 2026년 7월 16일 기사.",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "cover_question",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 내용을 바탕으로 한 자체 가격표 대비 그래픽",
+          "rights_note": "특정 제품을 우열 비교하지 않고 질문만 시각화",
+          "production_direction": "비싼 병과 마트 진열 실루엣 사이에 큰 물음표를 두고 훅만 표시"
+        },
+        {
+          "page": 2,
+          "slide_role": "myth_shift",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 문장을 바탕으로 한 자체 판매처·포뮬러 비교 그래픽",
+          "rights_note": "확보되지 않은 비포·애프터 이미지를 사용하지 않고 기사 주장만 도식화",
+          "production_direction": "마트 진열 아이콘과 포뮬러 라벨을 두고 ‘판매처만으로 품질을 정할 수 없다’고 표시"
+        },
+        {
+          "page": 3,
+          "slide_role": "selection_rule",
+          "media_type": "motion_graphic",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 기반 자체 두피 유형 그래픽",
+          "rights_note": "의학 진단이 아니라 기사에 나온 선택 기준만 도식화",
+          "production_direction": "지성·건성·민감성 세 단어가 두피 아이콘 주위를 차례로 나타나는 짧은 모션"
+        },
+        {
+          "page": 4,
+          "slide_role": "care_split",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 기반 자체 사용 부위 도식",
+          "rights_note": "샴푸와 컨디셔너의 사용 부위만 구분",
+          "production_direction": "두피와 모발 끝을 서로 다른 색으로 표시해 사용 부위를 한눈에 구분"
+        },
+        {
+          "page": 5,
+          "slide_role": "ingredient_rule",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 성분 설명을 바탕으로 한 자체 세정 성분 조합 그래픽",
+          "rights_note": "확보되지 않은 실제 성분표 화면을 사용하지 않고 기사에서 설명한 균형 개념만 도식화",
+          "production_direction": "서로 다른 세정 성분 블록이 균형을 이루는 도식과 ‘한 성분보다 조합’ 문구를 표시"
+        },
+        {
+          "page": 6,
+          "slide_role": "takeaway",
+          "media_type": "editorial",
+          "asset_status": "original_editorial_graphic",
+          "asset_source_url": "https://www.vogue.co.kr/2026/07/16/%eb%a7%88%ed%8a%b8-%ec%83%b4%ed%91%b8%eb%8f%84-%ea%b4%9c%ec%b0%ae%ec%9d%84%ea%b9%8c-%ec%a0%84%eb%ac%b8%ea%b0%80%eb%93%a4%ec%9d%98-%eb%8b%b5%ec%9d%80-%ec%9d%98%ec%99%b8%ec%98%80%ec%8a%b5%eb%8b%88/",
+          "source_credit": "보그 코리아 기사 기반 자체 체크리스트",
+          "rights_note": "상품 추천 대신 확인 순서만 제공",
+          "production_direction": "두피 상태→세정 성분 균형→가격 순서의 3단 체크리스트"
+        }
+      ],
+      "commerce": {
+        "status": "not_used",
+        "link_issuance": false,
+        "reason": "현재 매칭 상품 데이터에는 두피 유형과 전성분 조합이 검증돼 있지 않아 기사 선택 기준에 맞는 제품으로 단정할 수 없다."
+      },
+      "quality_notes": {
+        "first_frame": "가격표 대비로 질문을 즉시 이해",
+        "copy_density": "선택 기준 하나당 한 장",
+        "product_guard": "키워드가 샴푸라는 이유만으로 특정 제품을 추천하지 않음"
+      },
+      "blocked": false,
+      "blocker": null
+    }
+  ],
+  "handoff": {
+    "completed_record_count": 4,
+    "blocked_record_count": 0,
+    "blockers": [],
+    "natural_commerce_record_count": 2,
+    "editorial_only_record_count": 2,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false,
+    "external_write_executed": false
+  }
+}

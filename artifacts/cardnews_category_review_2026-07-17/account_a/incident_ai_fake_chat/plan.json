@@ -1,0 +1,116 @@
+{
+  "schema_version": "owner_review_carousel_plan_v1",
+  "account": "A",
+  "category": "incident_conflict",
+  "topic": "AI로 조작한 카카오톡 대화와 현금인출증을 수사기관에 제출한 사건",
+  "slide_count": 9,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "media_type": "image",
+      "headline": "AI로 만든 가짜 카톡.\n진짜 피해자가 무고범이 됐다",
+      "body": "",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "publisher_image_unverified_internal_review_only"
+    },
+    {
+      "slide": 2,
+      "role": "timeline",
+      "media_type": "editorial",
+      "headline": "시작은 타인의 이름으로\n받은 1,900만 원 대출",
+      "body": "2024년 1월·8월, 타인 인적사항 도용|피해자 명의로 대출 신청한 것처럼 꾸밈|검찰은 1,900만 원 대출 혐의를 적시",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 3,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "피해자가 고소하자\n증거가 ‘새로’ 생겼다",
+      "body": "보도에 따르면 피고인은 피해자에게 현금 1,900만 원을 빌려줬다가 돌려받았다는 취지의 자료를 만들었다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 4,
+      "role": "evidence",
+      "media_type": "editorial",
+      "headline": "그 자료는 AI로 조작한\n카카오톡 대화와 현금인출증",
+      "body": "검찰 조사 내용으로 보도된 사실이며, 실제 대화 원본이나 캡처는 공개 자료에서 확보하지 못했다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 5,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "조작 자료가 들어간 곳은\nSNS가 아니라 수사기관",
+      "body": "경찰에 제출됐고, 법정에서는 허위 증언까지 한 혐의가 더해졌다고 보도됐다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 6,
+      "role": "impact",
+      "media_type": "editorial",
+      "headline": "결국 뒤집힌 사람",
+      "body": "사기 피해를 신고한 B씨가\n한때 무고 혐의로 재판에 넘겨졌다고 보도됐다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 7,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "검찰이 적용한 혐의",
+      "body": "위계공무집행방해·위증 등.\n대구지검은 26세 A씨를 구속기소했다고 밝혔다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 8,
+      "role": "check",
+      "media_type": "editorial",
+      "headline": "AI 시대에 ‘캡처 한 장’만\n믿으면 안 되는 이유",
+      "body": "원본 기기·계정 기록 확인|금융 거래 원본과 시간대 대조|제출 경로와 파일 생성 이력 확인",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 9,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "이 사건의 핵심은\nAI가 아니라 검증 절차다",
+      "body": "그럴듯한 화면은 만들 수 있다.\n하지만 진짜 기록은 원본·시간·거래·제출 경로가 함께 맞아야 한다.",
+      "source_credit": [
+        "머니투데이(뉴시스 인용)"
+      ],
+      "rights_status": "original_editorial_layout"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "머니투데이(뉴시스 인용)",
+      "url": "https://www.mt.co.kr/society/2026/07/16/2026071620130254093"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-4eb1e6933596",
+  "candidate_id": "20260717-2003-C-4eb1e6933596",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "요즘 젠지는 유행 대신 아카이브 패션을 발굴합니다",
+  "source_urls": [
+    "https://www.elle.co.kr/article/1905390"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

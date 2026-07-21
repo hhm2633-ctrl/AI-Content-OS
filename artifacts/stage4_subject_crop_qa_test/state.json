@@ -1,0 +1,52 @@
+{
+  "schema_version": "cardnews_production_controller_state_v1",
+  "controller_id": "stage4-test-controller",
+  "state": "representative_render_recorded",
+  "sequence": 0,
+  "batch_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "candidate_ids": [
+    "qa-c1"
+  ],
+  "accounts": [
+    "A"
+  ],
+  "packages": [
+    {
+      "candidate_id": "qa-c1",
+      "account": "A",
+      "package_hash": "0",
+      "completion_receipt_hash": "1"
+    }
+  ],
+  "hard_rule_evidence": [
+    {
+      "claim_id": "OD-CARD-017",
+      "rule": "test",
+      "source": "stage4"
+    },
+    {
+      "claim_id": "OD-CARD-018",
+      "rule": "test",
+      "source": "stage4"
+    },
+    {
+      "claim_id": "OD-CARD-019",
+      "rule": "test",
+      "source": "stage4"
+    },
+    {
+      "claim_id": "OD-CARD-020",
+      "rule": "test",
+      "source": "stage4"
+    }
+  ],
+  "hard_rule_hash": "48b39e14d55a184c4c4579e8f6f26eb9015f9330ceb5cd607d52b283f12ded47",
+  "representatives": {
+    "A": "qa-c1"
+  },
+  "representative_output_set_ids": {
+    "qa-c1": "stage4-near-fail-set"
+  },
+  "used_receipt_ids": [],
+  "state_hash": "ed9b3a185df6152eb726249aef6c490b0943b139f961c228e19bc80f254d8959"
+}

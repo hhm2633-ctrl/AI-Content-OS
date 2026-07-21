@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-648e6477a698",
+  "candidate_id": "20260717-2003-A-648e6477a698",
+  "grade": "3",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "매일유업 대학생 AI 영상 공모전 개최…상금 1200만원·콘텐츠 크루 기회까지",
+  "source_urls": [
+    "https://www.mk.co.kr/news/pick/12098382"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

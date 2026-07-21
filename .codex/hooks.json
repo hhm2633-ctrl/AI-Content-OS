@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/session_context.py\"",
+            "commandWindows": "py -3 \"C:\\Users\\\uac00\uc0b0 \uc194\ub9ac\ub4dc\uc634\ubbc0\\Documents\\GitHub\\AI-Content-OS\\.codex\\hooks\\session_context.py\"",
+            "timeout": 15,
+            "statusMessage": "Loading AI-Content-OS operating guard"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Bash|unified_exec|exec_command|apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_guard.py\"",
+            "commandWindows": "py -3 \"C:\\Users\\\uac00\uc0b0 \uc194\ub9ac\ub4dc\uc634\ubbc0\\Documents\\GitHub\\AI-Content-OS\\.codex\\hooks\\pre_tool_use_guard.py\"",
+            "timeout": 15,
+            "statusMessage": "Checking AI-Content-OS safety and file ownership"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\Users\\\uac00\uc0b0 \uc194\ub9ac\ub4dc\uc634\ubbc0\\.local\\bin\\graphify.EXE hook-check"
+          }
+        ]
+      }
+    ]
+  }
+}

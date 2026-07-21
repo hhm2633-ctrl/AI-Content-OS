@@ -1,0 +1,10 @@
+{
+  "host_call_verified": true,
+  "model": "gpt-5.3-codex-spark",
+  "model_reasoning_summary": "none",
+  "result": "host_invocation_succeeded",
+  "agent_result": "read_stale_local_state",
+  "verified_at": "2026-07-18T11:04:34.726794Z",
+  "backend": "spark",
+  "local_project_adapter_connected": false
+}

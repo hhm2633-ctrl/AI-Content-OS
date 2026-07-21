@@ -1,0 +1,28 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "factual_basis": "local live collection plus linked publisher articles",
+  "comments_used": false,
+  "generated_evidence_used": false,
+  "publisher_asset_rights": "unverified; cover images are internal review references only",
+  "required_before_publish": [
+    "re-open every source and recheck claims/timestamps",
+    "replace or license publisher images",
+    "legal/editorial review for allegation wording",
+    "verify current implementation date for market rules"
+  ],
+  "sources": [
+    {
+      "publisher": "이데일리",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=06546886645515176&mediaCodeNo=257"
+    },
+    {
+      "publisher": "News1",
+      "url": "https://www.news1.kr/society/court-prosecution/6231083"
+    },
+    {
+      "publisher": "머니투데이",
+      "url": "https://www.mt.co.kr/society/2026/07/16/2026071616531328287"
+    }
+  ]
+}

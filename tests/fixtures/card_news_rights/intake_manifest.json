@@ -1,0 +1,28 @@
+{
+  "fixture_classification": "technical_fixture_not_publish_approved",
+  "topic_terms": ["카드뉴스", "권리", "검증"],
+  "assets": [{
+    "asset_path": "tests/fixtures/card_news_rights/first_party_technical_fixture.png",
+    "source_url": "https://example.org/first-party-test-fixture",
+    "source_name": "AI-Content-OS first-party technical fixture",
+    "captured_at": "2026-07-12T09:00:00+09:00",
+    "copyright_status": "owned",
+    "permission_evidence": {
+      "type": "ownership_record",
+      "reference": "tests/fixtures/card_news_rights/ownership_record.txt",
+      "review_status": "approved",
+      "reviewed_at": "2026-07-12T10:00:00+09:00",
+      "asset_path": "tests/fixtures/card_news_rights/first_party_technical_fixture.png"
+    },
+    "asset_role": "topic_evidence",
+    "topic_terms": ["카드뉴스", "권리", "검증"],
+    "topic_relevance_note": "권리 입력 검증 절차를 시험하는 first-party 기술 fixture다.",
+    "topic_relevance_review": {
+      "status": "confirmed",
+      "reviewed_by": "fixture-maintainer",
+      "reviewed_at": "2026-07-12T10:05:00+09:00"
+    },
+    "attribution_required": true,
+    "attribution_text": "AI-Content-OS test fixture"
+  }]
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-dbb4d1cf4432",
+  "candidate_id": "20260717-2003-A-dbb4d1cf4432",
+  "grade": "3",
+  "account": "A",
+  "category": "사회·이슈",
+  "title": "서이초 3주기, 교사들 다시 거리로…\"아동복지법 개정해야\"",
+  "source_urls": [
+    "http://news.ebs.co.kr/ebsnews/allView/60748509/N"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "image_first_review_manifest_v2",
+  "generated_by": "Codex CTO integration lane",
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "restricted_internal_editorial_review",
+  "source_recheck_required": true,
+  "actual_publish_requires_explicit_owner_approval": true,
+  "asset_warning": "AP/JW imagery is license-required and used only for internal concept review; Wikimedia assets retain file-level licenses",
+  "claim_boundary": "land-frontier routine checks and physical barrier removal; sovereignty remains unresolved"
+}

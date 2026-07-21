@@ -1,0 +1,28 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "UNKNOWN_EDITORIAL_REUSE_NOT_CLEARED",
+  "rights_note": "기사 페이지의 실제 이미지를 내부 데스크톱 검토 시안에만 사용. 게시·배포 전 이미지별 권리 확인 또는 사용권 확보 필요.",
+  "generated_media_used": false,
+  "fake_comments_used": false,
+  "owner_review_target": "desktop",
+  "primary_source": {
+    "publisher": "FashionN",
+    "url": "https://www.fashionn.com/board/read_new.php?number=61491&sel_cat=&table=1028",
+    "published_at": "2026-06-25",
+    "copyright_notice": "FashionN page states unauthorized reproduction/redistribution prohibited"
+  },
+  "content_basis": [
+    "친숙함의 재창조",
+    "오버사이즈 턱시도",
+    "프린트 하운즈투스",
+    "1979 꾸뛰르 모티브",
+    "블랭킷·까나쥬 재해석",
+    "Fred again.. 커스텀 믹스"
+  ],
+  "production_gaps": [
+    "공식 Dior 이미지 라이선스 미확인",
+    "룩별 공식 번호 미확인",
+    "게시용 원본 고해상도 확보 필요"
+  ]
+}

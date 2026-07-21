@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-4574ba169672",
+  "candidate_id": "20260717-2003-C-4574ba169672",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "\"협업 제품 어때요?\"... 패션업계 여름 틈새 공략 '후끈' [최기자의 패션...",
+  "source_urls": [
+    "https://www.meconomynews.com/news/articleView.html?idxno=132892"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

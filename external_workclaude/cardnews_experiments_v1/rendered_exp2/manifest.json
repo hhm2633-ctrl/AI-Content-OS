@@ -1,0 +1,135 @@
+{
+  "experiment_id": "EXP-2",
+  "topic_content_id": "CN-017",
+  "status": "OFFLINE_RENDER_COMPLETE",
+  "variable_tested": "story_structure_only",
+  "learning_pattern_applied": "pattern.instagram_learning.content_pattern.numbered_curation_list_structure",
+  "visual_family_applied": "인물/실사진 풀프레임 + 하단 좌측 볼드 타이포",
+  "visual_family_evidence_class": "benchmark_observed",
+  "contact_sheet": "external_workclaude/cardnews_experiments_v1/rendered_exp2/EXP2_control_vs_variant_contact_sheet.png",
+  "actual_publish": false,
+  "arms": [
+    {
+      "arm": "control",
+      "status": "offline_mockup_rendered",
+      "qa": {
+        "card_count_ok": true,
+        "resolution_ok": true,
+        "decode_ok": true,
+        "copy_preserved": true
+      },
+      "cards": [
+        {
+          "index": 1,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/control/card_news_1.png",
+          "headline": "원두 보관 체크리스트",
+          "body": "세 가지만 순서대로 확인하세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_1.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "88159452ce0ca4e1a2b919e096bcc63f9b42e7c7dbe3933b50f3f342359f0e20"
+        },
+        {
+          "index": 2,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/control/card_news_2.png",
+          "headline": "차례대로 정해요",
+          "body": "사용할 용기를 고르세요.\n보관할 장소를 정하세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_2.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "eca388fc2f0d7fbcc5b057776c13acf930ba79b7459360a2ce10b6e002a68b0e"
+        },
+        {
+          "index": 3,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/control/card_news_3.png",
+          "headline": "마지막으로 기록해요",
+          "body": "개봉 날짜를 적어두세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_3.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "7a0a0691e3c17d3327d0ea24581611ce1264374264a88b3252e971b4a5cce9d0"
+        },
+        {
+          "index": 4,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/control/card_news_4.png",
+          "headline": "다음 원두를 열기 전에",
+          "body": "이 체크리스트를 저장하세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_4.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "4c222608e82ee72aacb32fbefeb27d658efcd892a50dfc474e08f0fa97fc1010"
+        }
+      ],
+      "actual_publish": false
+    },
+    {
+      "arm": "variant",
+      "status": "offline_mockup_rendered",
+      "qa": {
+        "card_count_ok": true,
+        "resolution_ok": true,
+        "decode_ok": true,
+        "copy_preserved": true
+      },
+      "cards": [
+        {
+          "index": 1,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/variant/card_news_1.png",
+          "headline": "원두 보관 체크리스트",
+          "body": "세 가지만 순서대로 확인하세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_1.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "88159452ce0ca4e1a2b919e096bcc63f9b42e7c7dbe3933b50f3f342359f0e20"
+        },
+        {
+          "index": 2,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/variant/card_news_2.png",
+          "headline": "1·2번 먼저 확인",
+          "body": "1. 사용할 용기 고르기\n2. 보관할 장소 정하기",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_2.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "36aeb0f63be1e8f6f12a42d17ade8b154417d306ebb3d151dd21403667c66997"
+        },
+        {
+          "index": 3,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/variant/card_news_3.png",
+          "headline": "3번까지 기록",
+          "body": "3. 개봉 날짜 적기",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_3.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "e9c335d88f4ff92ea025e005f56855bbd22db4a35f7bb83a108d7f70caf45ca5"
+        },
+        {
+          "index": 4,
+          "path": "external_workclaude/cardnews_experiments_v1/rendered_exp2/variant/card_news_4.png",
+          "headline": "다음 원두를 열기 전에",
+          "body": "이 체크리스트를 저장하세요.",
+          "background_path": "external_workclaude/cardnews_experiments_v1/assets/coffee_visual_panels_v1/coffee_visual_4.png",
+          "size": [
+            1080,
+            1080
+          ],
+          "sha256": "4c222608e82ee72aacb32fbefeb27d658efcd892a50dfc474e08f0fa97fc1010"
+        }
+      ],
+      "actual_publish": false
+    }
+  ]
+}

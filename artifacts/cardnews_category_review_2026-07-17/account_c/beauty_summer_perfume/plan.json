@@ -1,0 +1,81 @@
+{
+  "schema_version": "cardnews_review_plan_v1",
+  "account": "C_fashion_beauty",
+  "category": "beauty",
+  "topic": "35℃ 여름 향수 법칙",
+  "slide_count": 9,
+  "editorial_mode": "seasonal_visual_practical_guide",
+  "forced_cta": false,
+  "slides": [
+    {
+      "role": "cover",
+      "media_type": "image",
+      "headline": "왜 내 향수만\n10분 만에 사라질까?",
+      "asset": "beauty_04.jpg"
+    },
+    {
+      "role": "mechanism",
+      "media_type": "editorial",
+      "headline": "땀만의 문제가 아니다",
+      "asset": "beauty_01.jpg"
+    },
+    {
+      "role": "data",
+      "media_type": "editorial",
+      "headline": "32°C",
+      "asset": "beauty_02.jpg"
+    },
+    {
+      "role": "note_green",
+      "media_type": "image",
+      "headline": "그린 & 아로마",
+      "assets": [
+        "beauty_02.jpg",
+        "beauty_10.jpg"
+      ]
+    },
+    {
+      "role": "note_musk",
+      "media_type": "product",
+      "headline": "화이트 머스크",
+      "assets": [
+        "beauty_05.jpg",
+        "beauty_06.jpg"
+      ]
+    },
+    {
+      "role": "note_woody",
+      "media_type": "product",
+      "headline": "가벼운 우디",
+      "asset": "beauty_07.jpg"
+    },
+    {
+      "role": "note_citrus",
+      "media_type": "product",
+      "headline": "시트러스의 함정",
+      "asset": "beauty_08.jpeg"
+    },
+    {
+      "role": "note_aqua",
+      "media_type": "product",
+      "headline": "아쿠아 & 오조닉",
+      "assets": [
+        "beauty_04.jpg",
+        "beauty_09.jpeg"
+      ]
+    },
+    {
+      "role": "checklist",
+      "media_type": "editorial",
+      "headline": "폭염 향수 체크",
+      "asset": "beauty_03.jpg"
+    }
+  ],
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "UNKNOWN_EDITORIAL_REUSE_NOT_CLEARED",
+  "rights_note": "기사 페이지의 실제 이미지를 내부 데스크톱 검토 시안에만 사용. 게시·배포 전 이미지별 권리 확인 또는 사용권 확보 필요.",
+  "generated_media_used": false,
+  "fake_comments_used": false,
+  "owner_review_target": "desktop"
+}

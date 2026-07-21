@@ -1,0 +1,552 @@
+- generic [ref=f63e4]:
+  - generic [ref=f63e9]:
+    - generic [ref=f63e12]:
+      - link [ref=f63e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f63e22]
+      - generic [ref=f63e25]:
+        - link [ref=f63e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f63e35]
+        - link [ref=f63e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f63e45]
+        - link [ref=f63e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f63e55]:
+            - img "메시지" [ref=f63e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f63e60]: "1"
+        - link [ref=f63e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f63e71]
+        - link [ref=f63e79] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f63e84]
+        - link [ref=f63e92] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f63e97]
+        - link [ref=f63e103] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f63e108]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f63e109]
+      - generic [ref=f63e110]:
+        - link [ref=f63e113] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f63e118]
+        - link [ref=f63e121] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f63e126]
+    - generic [ref=f63e129]:
+      - main [ref=f63e130]:
+        - generic [ref=f63e131]:
+          - generic [ref=f63e133]:
+            - generic [ref=f63e145]:
+              - list [ref=f63e147]:
+                - listitem [ref=f63e148]
+                - listitem [ref=f63e149]
+                - listitem [ref=f63e158]
+              - button "다음" [ref=f63e167] [cursor=pointer]
+            - generic [ref=f63e170]:
+              - generic [ref=f63e172]:
+                - button [ref=f63e177] [cursor=pointer]:
+                  - link [ref=f63e179]:
+                    - img "jwon.ig님의 프로필 사진" [ref=f63e180]
+                - generic [ref=f63e183]:
+                  - link "jwon.ig" [ref=f63e192] [cursor=pointer]:
+                    - /url: /jwon.ig/
+                  - button "팔로잉" [ref=f63e197] [cursor=pointer]
+                - button [ref=f63e200] [cursor=pointer]:
+                  - img "옵션 더 보기" [ref=f63e203]
+              - separator [ref=f63e207]
+              - generic [ref=f63e209]:
+                - generic [ref=f63e211]:
+                  - link [ref=f63e216] [cursor=pointer]:
+                    - /url: /jwon.ig/
+                    - img "jwon.ig님의 프로필 사진" [ref=f63e217]
+                  - generic [ref=f63e221]:
+                    - generic [ref=f63e222]:
+                      - link "jwon.ig" [ref=f63e226] [cursor=pointer]:
+                        - /url: /jwon.ig/
+                      - generic [ref=f63e230]: 수정됨
+                      - generic [ref=f63e231]: •
+                      - time [ref=f63e233]: 3일
+                    - generic [ref=f63e234]:
+                      - text: 한창 클로드를 쓰고 있는데 사용량 한도이 도달해서 짜증난 적 많을 겁니다.클로드는 토큰 소모량이 높기로 유명합니다.무턱대고 썼다간 제대로 쓰지도 못하고 토큰 한도에 걸립니다.그래서 무조건 비싼 플랜을 쓰는 것보다 토큰을 덜 쓰는 습관이 먼저입니다.같은 질문을 해도어떻게 묻고,어떤 모델을 쓰고,언제 작업하느냐에 따라토큰 소모량이 크게 달라집니다.클로드 토큰을 아끼는 7가지 방법1. 원시인 답변법 쓰기2. 코드 리뷰 그래프 활용하기3. Opus만 고집하지 않기4. PDF는 먼저 압축하기5. 세션 타이밍 이용하기6. COMPACT 스킬 만들기7. 피크 시간 피하기클로드를 자주 쓰는 분이라면 저장해두고 작업할 때마다 확인해보세요.더 자세한 가이드가 필요하시면 댓글에 “토큰” 이라고 남겨주세요.
+                      - link "#클로드" [ref=f63e235] [cursor=pointer]:
+                        - /url: /explore/tags/%ED%81%B4%EB%A1%9C%EB%93%9C/
+                      - link "#Claude" [ref=f63e236] [cursor=pointer]:
+                        - /url: /explore/tags/claude/
+                      - link "#AI활용" [ref=f63e237] [cursor=pointer]:
+                        - /url: /explore/tags/ai%ED%99%9C%EC%9A%A9/
+                      - text: "#"
+                      - link "#토큰절약" [ref=f63e238] [cursor=pointer]:
+                        - /url: /explore/tags/%ED%86%A0%ED%81%B0%EC%A0%88%EC%95%BD/
+                      - link "#워프센스" [ref=f63e239] [cursor=pointer]:
+                        - /url: /explore/tags/%EC%9B%8C%ED%94%84%EC%84%BC%EC%8A%A4/
+                - generic [ref=f63e240]:
+                  - generic [ref=f63e241]:
+                    - generic [ref=f63e243]:
+                      - link [ref=f63e249] [cursor=pointer]:
+                        - /url: /hbm2525/
+                        - img "hbm2525님의 프로필 사진" [ref=f63e250]
+                      - generic [ref=f63e251]:
+                        - generic [ref=f63e252]:
+                          - generic [ref=f63e254]:
+                            - generic [ref=f63e255]:
+                              - link "hbm2525" [ref=f63e260] [cursor=pointer]:
+                                - /url: /hbm2525/
+                              - link [ref=f63e265] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18382563046204698/
+                                - time [ref=f63e266]: 3일
+                            - generic [ref=f63e267]: 토큰
+                          - button "답글 달기" [ref=f63e270] [cursor=pointer]
+                        - button [ref=f63e277] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e280]
+                    - button "답글 1개 모두 보기" [ref=f63e283] [cursor=pointer]
+                  - generic [ref=f63e287]:
+                    - generic [ref=f63e289]:
+                      - link [ref=f63e295] [cursor=pointer]:
+                        - /url: /ddah_o/
+                        - img "ddah_o님의 프로필 사진" [ref=f63e296]
+                      - generic [ref=f63e297]:
+                        - generic [ref=f63e298]:
+                          - generic [ref=f63e300]:
+                            - generic [ref=f63e301]:
+                              - link "ddah_o" [ref=f63e306] [cursor=pointer]:
+                                - /url: /ddah_o/
+                              - link [ref=f63e311] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17985116211040539/
+                                - time [ref=f63e312]: 3일
+                            - generic [ref=f63e313]: 토큰
+                          - button "답글 달기" [ref=f63e316] [cursor=pointer]
+                        - button [ref=f63e323] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e326]
+                    - button "답글 1개 모두 보기" [ref=f63e329] [cursor=pointer]
+                  - generic [ref=f63e333]:
+                    - generic [ref=f63e335]:
+                      - link [ref=f63e341] [cursor=pointer]:
+                        - /url: /kkokkio89/
+                        - img "kkokkio89님의 프로필 사진" [ref=f63e342]
+                      - generic [ref=f63e343]:
+                        - generic [ref=f63e344]:
+                          - generic [ref=f63e346]:
+                            - generic [ref=f63e347]:
+                              - link "kkokkio89" [ref=f63e352] [cursor=pointer]:
+                                - /url: /kkokkio89/
+                              - link [ref=f63e357] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17891235351577640/
+                                - time [ref=f63e358]: 2일
+                            - generic [ref=f63e359]: 토큰
+                          - button "답글 달기" [ref=f63e362] [cursor=pointer]
+                        - button [ref=f63e369] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e372]
+                    - button "답글 1개 모두 보기" [ref=f63e375] [cursor=pointer]
+                  - generic [ref=f63e379]:
+                    - generic [ref=f63e381]:
+                      - link [ref=f63e387] [cursor=pointer]:
+                        - /url: /updown14705147/
+                        - img "updown14705147님의 프로필 사진" [ref=f63e388]
+                      - generic [ref=f63e389]:
+                        - generic [ref=f63e390]:
+                          - generic [ref=f63e392]:
+                            - generic [ref=f63e393]:
+                              - link "updown14705147" [ref=f63e398] [cursor=pointer]:
+                                - /url: /updown14705147/
+                              - link [ref=f63e403] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17970003564065449/
+                                - time [ref=f63e404]: 1시간
+                            - generic [ref=f63e405]: 토큰
+                          - button "답글 달기" [ref=f63e408] [cursor=pointer]
+                        - button [ref=f63e415] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e418]
+                    - button "답글 1개 모두 보기" [ref=f63e421] [cursor=pointer]
+                  - generic [ref=f63e425]:
+                    - generic [ref=f63e427]:
+                      - link [ref=f63e433] [cursor=pointer]:
+                        - /url: /jjo9810/
+                        - img "jjo9810님의 프로필 사진" [ref=f63e434]
+                      - generic [ref=f63e435]:
+                        - generic [ref=f63e436]:
+                          - generic [ref=f63e438]:
+                            - generic [ref=f63e439]:
+                              - link "jjo9810" [ref=f63e444] [cursor=pointer]:
+                                - /url: /jjo9810/
+                              - link [ref=f63e449] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18612107530028390/
+                                - time [ref=f63e450]: 16시간
+                            - generic [ref=f63e451]: 토큰
+                          - button "답글 달기" [ref=f63e454] [cursor=pointer]
+                        - button [ref=f63e461] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e464]
+                    - button "답글 1개 모두 보기" [ref=f63e467] [cursor=pointer]
+                  - generic [ref=f63e471]:
+                    - generic [ref=f63e473]:
+                      - link [ref=f63e479] [cursor=pointer]:
+                        - /url: /sejin3004/
+                        - img "sejin3004님의 프로필 사진" [ref=f63e480]
+                      - generic [ref=f63e481]:
+                        - generic [ref=f63e482]:
+                          - generic [ref=f63e484]:
+                            - generic [ref=f63e485]:
+                              - link "sejin3004" [ref=f63e490] [cursor=pointer]:
+                                - /url: /sejin3004/
+                              - link [ref=f63e495] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17942190564255766/
+                                - time [ref=f63e496]: 2일
+                            - generic [ref=f63e497]: 토큰
+                          - button "답글 달기" [ref=f63e500] [cursor=pointer]
+                        - button [ref=f63e507] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e510]
+                    - button "답글 1개 모두 보기" [ref=f63e513] [cursor=pointer]
+                  - generic [ref=f63e517]:
+                    - generic [ref=f63e519]:
+                      - link [ref=f63e525] [cursor=pointer]:
+                        - /url: /i__am__sun/
+                        - img "i__am__sun님의 프로필 사진" [ref=f63e526]
+                      - generic [ref=f63e527]:
+                        - generic [ref=f63e528]:
+                          - generic [ref=f63e530]:
+                            - generic [ref=f63e531]:
+                              - link "i__am__sun" [ref=f63e536] [cursor=pointer]:
+                                - /url: /i__am__sun/
+                              - link [ref=f63e541] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18123286207682055/
+                                - time [ref=f63e542]: 2일
+                            - generic [ref=f63e543]: 토큰
+                          - button "답글 달기" [ref=f63e546] [cursor=pointer]
+                        - button [ref=f63e553] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e556]
+                    - button "답글 1개 모두 보기" [ref=f63e559] [cursor=pointer]
+                  - generic [ref=f63e563]:
+                    - generic [ref=f63e565]:
+                      - link [ref=f63e571] [cursor=pointer]:
+                        - /url: /geowin10/
+                        - img "geowin10님의 프로필 사진" [ref=f63e572]
+                      - generic [ref=f63e573]:
+                        - generic [ref=f63e574]:
+                          - generic [ref=f63e576]:
+                            - generic [ref=f63e577]:
+                              - link "geowin10" [ref=f63e582] [cursor=pointer]:
+                                - /url: /geowin10/
+                              - link [ref=f63e587] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17940982155255701/
+                                - time [ref=f63e588]: 17시간
+                            - generic [ref=f63e589]: 토큰
+                          - button "답글 달기" [ref=f63e592] [cursor=pointer]
+                        - button [ref=f63e599] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e602]
+                    - button "답글 1개 모두 보기" [ref=f63e605] [cursor=pointer]
+                  - generic [ref=f63e609]:
+                    - generic [ref=f63e611]:
+                      - link [ref=f63e617] [cursor=pointer]:
+                        - /url: /leejulia78/
+                        - img "leejulia78님의 프로필 사진" [ref=f63e618]
+                      - generic [ref=f63e619]:
+                        - generic [ref=f63e620]:
+                          - generic [ref=f63e622]:
+                            - generic [ref=f63e623]:
+                              - link "leejulia78" [ref=f63e628] [cursor=pointer]:
+                                - /url: /leejulia78/
+                              - link [ref=f63e633] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18344619205175819/
+                                - time [ref=f63e634]: 2일
+                            - generic [ref=f63e635]: 토큰
+                          - button "답글 달기" [ref=f63e638] [cursor=pointer]
+                        - button [ref=f63e645] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e648]
+                    - button "답글 1개 모두 보기" [ref=f63e651] [cursor=pointer]
+                  - generic [ref=f63e655]:
+                    - generic [ref=f63e657]:
+                      - link [ref=f63e663] [cursor=pointer]:
+                        - /url: /jessica0324_0324/
+                        - img "jessica0324_0324님의 프로필 사진" [ref=f63e664]
+                      - generic [ref=f63e665]:
+                        - generic [ref=f63e666]:
+                          - generic [ref=f63e668]:
+                            - generic [ref=f63e669]:
+                              - link "jessica0324_0324" [ref=f63e674] [cursor=pointer]:
+                                - /url: /jessica0324_0324/
+                              - link [ref=f63e679] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17869724463689138/
+                                - time [ref=f63e680]: 2일
+                            - generic [ref=f63e681]: 토큰
+                          - button "답글 달기" [ref=f63e684] [cursor=pointer]
+                        - button [ref=f63e691] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e694]
+                    - button "답글 1개 모두 보기" [ref=f63e697] [cursor=pointer]
+                  - generic [ref=f63e701]:
+                    - generic [ref=f63e703]:
+                      - link [ref=f63e709] [cursor=pointer]:
+                        - /url: /jmk0729/
+                        - img "jmk0729님의 프로필 사진" [ref=f63e710]
+                      - generic [ref=f63e711]:
+                        - generic [ref=f63e712]:
+                          - generic [ref=f63e714]:
+                            - generic [ref=f63e715]:
+                              - link "jmk0729" [ref=f63e720] [cursor=pointer]:
+                                - /url: /jmk0729/
+                              - link [ref=f63e725] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17879776662475498/
+                                - time [ref=f63e726]: 3일
+                            - generic [ref=f63e727]: 토큰
+                          - button "답글 달기" [ref=f63e730] [cursor=pointer]
+                        - button [ref=f63e737] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e740]
+                    - button "답글 1개 모두 보기" [ref=f63e743] [cursor=pointer]
+                  - generic [ref=f63e747]:
+                    - generic [ref=f63e749]:
+                      - link [ref=f63e755] [cursor=pointer]:
+                        - /url: /j.yoonshik96/
+                        - img "j.yoonshik96님의 프로필 사진" [ref=f63e756]
+                      - generic [ref=f63e757]:
+                        - generic [ref=f63e758]:
+                          - generic [ref=f63e760]:
+                            - generic [ref=f63e761]:
+                              - link "j.yoonshik96" [ref=f63e766] [cursor=pointer]:
+                                - /url: /j.yoonshik96/
+                              - link [ref=f63e771] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18383426605202654/
+                                - time [ref=f63e772]: 3일
+                            - generic [ref=f63e773]: 토큰
+                          - button "답글 달기" [ref=f63e776] [cursor=pointer]
+                        - button [ref=f63e783] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e786]
+                    - button "답글 1개 모두 보기" [ref=f63e789] [cursor=pointer]
+                  - generic [ref=f63e793]:
+                    - generic [ref=f63e795]:
+                      - link [ref=f63e801] [cursor=pointer]:
+                        - /url: /love_myself3307/
+                        - img "love_myself3307님의 프로필 사진" [ref=f63e802]
+                      - generic [ref=f63e803]:
+                        - generic [ref=f63e804]:
+                          - generic [ref=f63e806]:
+                            - generic [ref=f63e807]:
+                              - link "love_myself3307" [ref=f63e812] [cursor=pointer]:
+                                - /url: /love_myself3307/
+                              - link [ref=f63e817] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17952506432999750/
+                                - time [ref=f63e818]: 22시간
+                            - generic [ref=f63e819]: 토큰
+                          - button "답글 달기" [ref=f63e822] [cursor=pointer]
+                        - button [ref=f63e829] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e832]
+                    - button "답글 1개 모두 보기" [ref=f63e835] [cursor=pointer]
+                  - generic [ref=f63e839]:
+                    - generic [ref=f63e841]:
+                      - link [ref=f63e847] [cursor=pointer]:
+                        - /url: /eodboss/
+                        - img "eodboss님의 프로필 사진" [ref=f63e848]
+                      - generic [ref=f63e849]:
+                        - generic [ref=f63e850]:
+                          - generic [ref=f63e852]:
+                            - generic [ref=f63e853]:
+                              - link "eodboss" [ref=f63e858] [cursor=pointer]:
+                                - /url: /eodboss/
+                              - link [ref=f63e863] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/18026970965830231/
+                                - time [ref=f63e864]: 2일
+                            - generic [ref=f63e865]: 토큰
+                          - button "답글 달기" [ref=f63e868] [cursor=pointer]
+                        - button [ref=f63e875] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e878]
+                    - button "답글 1개 모두 보기" [ref=f63e881] [cursor=pointer]
+                  - generic [ref=f63e885]:
+                    - generic [ref=f63e887]:
+                      - link [ref=f63e893] [cursor=pointer]:
+                        - /url: /pakteone/
+                        - img "pakteone님의 프로필 사진" [ref=f63e894]
+                      - generic [ref=f63e895]:
+                        - generic [ref=f63e896]:
+                          - generic [ref=f63e898]:
+                            - generic [ref=f63e899]:
+                              - link "pakteone" [ref=f63e904] [cursor=pointer]:
+                                - /url: /pakteone/
+                              - link [ref=f63e909] [cursor=pointer]:
+                                - /url: /p/Dae7TOxEzf9/c/17862477891637334/
+                                - time [ref=f63e910]: 2일
+                            - generic [ref=f63e911]: 토큰
+                          - button "답글 달기" [ref=f63e914] [cursor=pointer]
+                        - button [ref=f63e921] [cursor=pointer]:
+                          - img "좋아요" [ref=f63e924]
+                    - button "답글 1개 모두 보기" [ref=f63e927] [cursor=pointer]
+                  - progressbar [ref=f63e933]:
+                    - img "읽어들이는 중..." [ref=f63e934]
+              - generic [ref=f63e947]:
+                - generic [ref=f63e948]:
+                  - generic [ref=f63e949]:
+                    - button [ref=f63e952] [cursor=pointer]:
+                      - img "좋아요" [ref=f63e955]
+                    - button "25" [ref=f63e957] [cursor=pointer]
+                    - button [ref=f63e959] [cursor=pointer]:
+                      - img "댓글 달기" [ref=f63e961]
+                    - button "65" [ref=f63e963] [cursor=pointer]
+                    - button [ref=f63e964] [cursor=pointer]:
+                      - img "리포스트" [ref=f63e965]
+                    - button "4" [ref=f63e967] [cursor=pointer]
+                    - button [ref=f63e968] [cursor=pointer]:
+                      - img "공유하기" [ref=f63e969]
+                  - button [ref=f63e974] [cursor=pointer]:
+                    - button [ref=f63e975]:
+                      - img "저장" [ref=f63e977]
+                - link [ref=f63e981] [cursor=pointer]:
+                  - /url: /jwon.ig/p/Dae7TOxEzf9/
+                  - time [ref=f63e983]: 3일 전
+              - generic [ref=f63e986]:
+                - link [ref=f63e987]
+                - generic [ref=f63e989]:
+                  - button [ref=f63e991] [cursor=pointer]:
+                    - img "이모티콘" [ref=f63e993]
+                  - textbox "댓글 달기..." [ref=f63e995]
+          - separator [ref=f63e997]
+          - generic [ref=f63e998]:
+            - generic [ref=f63e1000]:
+              - link "jwon.ig" [ref=f63e1001] [cursor=pointer]:
+                - /url: /jwon.ig/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f63e1004]:
+              - generic [ref=f63e1005]:
+                - link [ref=f63e1007] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DamFkK5zv_W/
+                  - 'img "GPT-5.6이 Sol·Terra·Luna로 나뉘었다는데, 뭐가 다른 걸까요? 먼저 이것만 기억하시면 됩니다. 5.6은 모델의 세대이고, Sol·Terra·Luna는 성능과 속도, 비용에 따른 등급입니다. ☀️ Sol 복잡한 코딩, 깊은 조사와 분석처럼 중요하고 어려운 작업에 적합합니다. 🌍 Terra 자료 정리, 글 초안, 일반적인 코딩처럼 대부분의 실무에 균형 있게 사용할 수 있습니다. 🌙 Luna 짧은 요약, 문장 분류, 반복 작업처럼 가볍고 빠르게 처리할 때 적합합니다. 한 문장으로 정리하면, Sol은 강력하게 Terra는 균형 있게 Luna는 빠르고 저렴하게 무조건 성능이 높은 모델을 쓰는 것이 아니라, 내가 하려는 일의 난이도에 맞춰 고르는 방식입니다. 나중에 다시 볼 수 있도록 저장&공유해 주세요. Sol·Terra·Luna 중 가장 궁금한 모델을 댓글로 남겨주시면 자세히 정리해 드리겠습니다. #GPT56 #챗GPT #생성형AI #AI활용법 #워프센스" [ref=f63e1010]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f63e1013] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaiGHXfz6v1/
+                  - 'img "AI 에이전트도 그냥 고르면 안 됩니다. 작업 방식에 따라 맞는 도구가 다릅니다. 헤르메스는 오래 켜두는 자동화에 강합니다. 장기 메모리와 개인 비서형 운영에 어울립니다. 클로드코드는 복잡한 실무 코드 작업에 강합니다. 여러 파일을 보고, 깊은 맥락을 이해해야 할 때 좋습니다. 코덱스는 빠른 수정과 정리 작업에 좋습니다. 가볍게 고치고, 리뷰하고, 정돈할 때 편합니다. 정답은 하나가 아닙니다. 중요한 건 “내 작업에 맞는 도구”를 고르는 것입니다. 자세한 비교가 필요하시면 저를 팔로우하고 댓글에 “에이전트”라고 남겨주세요. #헤르메스 #클로드코드 #코덱스 #AI에이전트 #워프센스" [ref=f63e1016]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f63e1019] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DacdZUrz7Si/
+                  - 'img "AI를 잘 쓰는 사람은 하나만 고집하지 않습니다. 만들고 실행할 땐 ChatGPT 긴 글을 정리하고 다듬을 땐 Claude 자료를 찾고 출처를 확인할 땐 Perplexity 구글 문서·메일·드라이브 안에서 일할 땐 Gemini 도구마다 잘하는 일이 다릅니다. 일에 맞춰 AI를 바꾸면 결과물의 속도와 퀄리티도 달라집니다. 나중에 또 볼 수 있도록 저장해두세요. 더 자세한 AI 활용법이 필요하시면 팔로우하고 AI 라고 남겨주세요. #ChatGPT #Claude #Perplexity #Gemini #워프센스" [ref=f63e1022]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+              - generic [ref=f63e1024]:
+                - link [ref=f63e1026] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaaYvgbT3fU/
+                  - 'img "실제로 해외에서 클로드를 자주 비하하던 유저가 차단을 당한 사례가 있었습니다. 차단 당한 유저는 아래와 같이 비꼬는 말을 자주 했다고 합니다. \"너 미쳤어?\" \"네 뇌는 클라우드에 있어, 아니면 무릎에 있어?\" \"오늘 일할 기분이 아냐?\" \"그따위로 생각하지마\" \"너 또 추측하고 있냐?\" AI를 인간으로 대우해서도 안 되겠지만 그렇다고 너무 비하도 하면 안 되는 것 같습니다. AI 자주 쓰신다면 이 내용은 꼭 저장해두세요. #클로드 #Claude #AI활용 #AI프롬프트 #워프센스" [ref=f63e1029]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f63e1032] [cursor=pointer]:
+                  - /url: /jwon.ig/p/DaVTkhBkyTp/
+                  - 'img "현존 최고의 모델이라고 하는 클로드 FABLE 5, 7월 7일 유료 플랜 종료전까지! 꼭 제대로 활용해 보세요! 1. 앱 핵심 기능 분석 후 직접 만들기 2. 코드베이스 전체 버그 찾기 3. 자는 동안 게임 만들기 4. 주식 투자 기법 검증하기 5. 전문가 조언 받기 FABLE 5는 7월 7일 이후에는 종량제 방식으로 바뀌기 때문에, 사용료가 더 올라갈 수 있습니다. 그러니 그 전까지 최대한 활용해 보세요! 자세한 시작 프롬프트가 필요하시면 댓글에 ‘페이블5’ 남겨주세요. 공유 & 저장해두고 써보세요. #클로드 #Claude #FABLE5 #클로드코드 #워프센스" [ref=f63e1035]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f63e1038] [cursor=pointer]:
+                  - /url: /jwon.ig/reel/DaSuktXT3CL/
+                  - 'img "클로드 FABLE 5가 다시 공개되었습니다. 그런데 비용이 만만찮습니다. 비용때문에 사용하기 어렵다면? 대안으로 KIMI를 고려해 보시는 것도 좋을 것 같습니다. KIMI K2.7 Code는 오픈소스 코딩 모델이라 비용 부담을 줄이면서 테스트해볼 수 있습니다. 물론 클로드를 바로 대체한다기보다는 “비용 때문에 Claude Code를 마음껏 못 쓰는 분들”에게 현실적인 비교 대상에 가깝습니다. 나중에 다시 보려면 저장해두세요. 자세한 정보를 원하신다면 저를 팔로우하고 “키미” 또는 “KIMI”라고 남겨주세요. #FABLE5 #KIMI #키미 #클로드코드 #워프센스" [ref=f63e1041]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+      - contentinfo [ref=f63e1043]:
+        - generic [ref=f63e1044]:
+          - generic [ref=f63e1046]:
+            - link "Meta" [ref=f63e1048] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f63e1051] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f63e1054] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f63e1057] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f63e1060] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f63e1063] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f63e1066] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f63e1069] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f63e1072] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f63e1075] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f63e1078] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f63e1081] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f63e1084] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f63e1087] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f63e1090] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f63e1092]:
+            - generic [ref=f63e1093] [cursor=pointer]:
+              - generic [ref=f63e1094]:
+                - generic [ref=f63e1095]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f63e1098]
+              - combobox "표시 언어 변경" [ref=f63e1100]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f63e1101]: © 2026 Instagram from Meta
+  - button [ref=f63e1104] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f63e1105]:
+      - generic [ref=f63e1106]:
+        - generic [ref=f63e1108]:
+          - img "메시지" [ref=f63e1109]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f63e1112]: "1"
+        - generic [ref=f63e1115]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f63e1118]:
+        - img "사용자 아바타" [ref=f63e1121]

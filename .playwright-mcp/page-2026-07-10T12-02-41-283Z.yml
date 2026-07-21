@@ -1,0 +1,408 @@
+- generic [ref=f47e4]:
+  - generic [ref=f47e7]:
+    - generic [ref=f47e9]:
+      - generic [ref=f47e12]:
+        - link [ref=f47e17] [cursor=pointer]:
+          - /url: /
+          - img "Instagram" [ref=f47e22]
+        - generic [ref=f47e25]:
+          - link [ref=f47e30] [cursor=pointer]:
+            - /url: /
+            - img "홈" [ref=f47e35]
+          - link [ref=f47e40] [cursor=pointer]:
+            - /url: /reels/
+            - img "릴스" [ref=f47e45]
+          - link [ref=f47e52] [cursor=pointer]:
+            - /url: /direct/inbox/
+            - generic [ref=f47e55]:
+              - img "메시지" [ref=f47e57]
+              - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f47e60]: "1"
+          - link [ref=f47e66] [cursor=pointer]:
+            - /url: /explore/
+            - img "검색" [ref=f47e71]
+          - link [ref=f47e79] [cursor=pointer]:
+            - /url: "#"
+            - img "알림" [ref=f47e84]
+          - link [ref=f47e92] [cursor=pointer]:
+            - /url: "#"
+            - img "새로운 게시물" [ref=f47e97]
+          - link [ref=f47e103] [cursor=pointer]:
+            - /url: /ho_hong_hongs/
+            - link [ref=f47e108]:
+              - img "ho_hong_hongs님의 프로필 사진" [ref=f47e109]
+        - generic [ref=f47e110]:
+          - link [ref=f47e113] [cursor=pointer]:
+            - /url: "#"
+            - img "설정" [ref=f47e118]
+          - link [ref=f47e121] [cursor=pointer]:
+            - /url: "#"
+            - img "Meta의 다른 앱" [ref=f47e126]
+      - generic [ref=f47e129]:
+        - main [ref=f47e130]:
+          - generic [ref=f47e131]:
+            - generic [ref=f47e133]:
+              - generic [ref=f47e145]:
+                - list [ref=f47e147]:
+                  - listitem [ref=f47e148]
+                  - listitem [ref=f47e149]:
+                    - group "Video player" [ref=f47e164]:
+                      - slider "볼륨 조정" [ref=f47e165]:
+                        - button [ref=f47e169] [cursor=pointer]:
+                          - img "오디오 소리 꺼짐" [ref=f47e170]
+                  - listitem [ref=f47e172]:
+                    - generic [ref=f47e177] [cursor=pointer]:
+                      - button [ref=f47e178]
+                      - button [ref=f47e183]:
+                        - img "태그" [ref=f47e185]
+                      - generic:
+                        - link "palette.hyein":
+                          - /url: /palette.hyein/
+                      - generic:
+                        - link "soo_ketchbooks":
+                          - /url: /soo_ketchbooks/
+                      - generic:
+                        - link "kennenblog":
+                          - /url: /kennenblog/
+                      - generic:
+                        - link "studio.unicorn_":
+                          - /url: /studio.unicorn_/
+                - button "다음" [ref=f47e187] [cursor=pointer]
+              - generic [ref=f47e190]:
+                - generic [ref=f47e192]:
+                  - button [ref=f47e197] [cursor=pointer]:
+                    - link [ref=f47e199]:
+                      - img "ppt_studiooo님의 프로필 사진" [ref=f47e200]
+                  - generic [ref=f47e203]:
+                    - generic [ref=f47e207]:
+                      - link "ppt_studiooo" [ref=f47e212] [cursor=pointer]:
+                        - /url: /ppt_studiooo/
+                      - img "인증됨" [ref=f47e217]
+                    - button "팔로잉" [ref=f47e220] [cursor=pointer]
+                  - button [ref=f47e223] [cursor=pointer]:
+                    - img "옵션 더 보기" [ref=f47e226]
+                - separator [ref=f47e230]
+                - generic [ref=f47e232]:
+                  - generic [ref=f47e234]:
+                    - link [ref=f47e239] [cursor=pointer]:
+                      - /url: /ppt_studiooo/
+                      - img "ppt_studiooo님의 프로필 사진" [ref=f47e240]
+                    - generic [ref=f47e244]:
+                      - generic [ref=f47e245]:
+                        - link "ppt_studiooo 인증됨" [ref=f47e249] [cursor=pointer]:
+                          - /url: /ppt_studiooo/
+                          - generic [ref=f47e251]:
+                            - generic [ref=f47e252]: ppt_studiooo
+                            - img "인증됨" [ref=f47e254]
+                        - time [ref=f47e257]: 23주
+                      - generic [ref=f47e258]: 행복한 생일주간 끝!!
+                  - generic [ref=f47e259]:
+                    - generic [ref=f47e260]:
+                      - generic [ref=f47e262]:
+                        - link [ref=f47e268] [cursor=pointer]:
+                          - /url: /soo_ketchbooks/
+                          - img "soo_ketchbooks님의 프로필 사진" [ref=f47e269]
+                        - generic [ref=f47e270]:
+                          - generic [ref=f47e271]:
+                            - generic [ref=f47e273]:
+                              - generic [ref=f47e274]:
+                                - link "soo_ketchbooks" [ref=f47e279] [cursor=pointer]:
+                                  - /url: /soo_ketchbooks/
+                                - link [ref=f47e284] [cursor=pointer]:
+                                  - /url: /p/DT9V5ovCQbc/c/18080555372228641/
+                                  - time [ref=f47e285]: 23주
+                              - generic [ref=f47e286]: 미미님 앞으로도 행복하세요 . 🎂🤍
+                            - generic [ref=f47e288]:
+                              - button "좋아요 2개" [ref=f47e289] [cursor=pointer]
+                              - button "답글 달기" [ref=f47e292] [cursor=pointer]
+                          - button [ref=f47e299] [cursor=pointer]:
+                            - img "좋아요" [ref=f47e302]
+                      - button "답글 1개 모두 보기" [ref=f47e305] [cursor=pointer]
+                    - generic [ref=f47e309]:
+                      - generic [ref=f47e311]:
+                        - link [ref=f47e317] [cursor=pointer]:
+                          - /url: /hn__hannah/
+                          - img "hn__hannah님의 프로필 사진" [ref=f47e318]
+                        - generic [ref=f47e319]:
+                          - generic [ref=f47e320]:
+                            - generic [ref=f47e322]:
+                              - generic [ref=f47e323]:
+                                - link "hn__hannah" [ref=f47e328] [cursor=pointer]:
+                                  - /url: /hn__hannah/
+                                - link [ref=f47e333] [cursor=pointer]:
+                                  - /url: /p/DT9V5ovCQbc/c/18071551868415169/
+                                  - time [ref=f47e334]: 23주
+                              - generic [ref=f47e335]: 미미 행복한 시간 보냈다니 다행이야🥰 곧 한국에서 보자아!!
+                            - generic [ref=f47e337]:
+                              - button "좋아요 1개" [ref=f47e338] [cursor=pointer]
+                              - button "답글 달기" [ref=f47e341] [cursor=pointer]
+                          - button [ref=f47e348] [cursor=pointer]:
+                            - img "좋아요" [ref=f47e351]
+                      - button "답글 1개 모두 보기" [ref=f47e354] [cursor=pointer]
+                    - generic [ref=f47e358]:
+                      - generic [ref=f47e360]:
+                        - link [ref=f47e366] [cursor=pointer]:
+                          - /url: /palette.hyein/
+                          - img "palette.hyein님의 프로필 사진" [ref=f47e367]
+                        - generic [ref=f47e368]:
+                          - generic [ref=f47e369]:
+                            - generic [ref=f47e371]:
+                              - generic [ref=f47e372]:
+                                - link "palette.hyein 인증됨" [ref=f47e377] [cursor=pointer]:
+                                  - /url: /palette.hyein/
+                                  - generic [ref=f47e379]:
+                                    - generic [ref=f47e380]: palette.hyein
+                                    - img "인증됨" [ref=f47e382]
+                                - link [ref=f47e385] [cursor=pointer]:
+                                  - /url: /p/DT9V5ovCQbc/c/17908620594333511/
+                                  - time [ref=f47e386]: 23주
+                              - generic [ref=f47e387]: 생일축하해요 미미쨩🔥🤓🦋💞
+                            - generic [ref=f47e389]:
+                              - button "좋아요 1개" [ref=f47e390] [cursor=pointer]
+                              - button "답글 달기" [ref=f47e393] [cursor=pointer]
+                          - button [ref=f47e400] [cursor=pointer]:
+                            - img "좋아요" [ref=f47e403]
+                      - button "답글 1개 모두 보기" [ref=f47e406] [cursor=pointer]
+                    - generic [ref=f47e410]:
+                      - generic [ref=f47e412]:
+                        - link [ref=f47e418] [cursor=pointer]:
+                          - /url: /countryside.mouse/
+                          - img "countryside.mouse님의 프로필 사진" [ref=f47e419]
+                        - generic [ref=f47e420]:
+                          - generic [ref=f47e421]:
+                            - generic [ref=f47e423]:
+                              - generic [ref=f47e424]:
+                                - link "countryside.mouse 인증됨" [ref=f47e429] [cursor=pointer]:
+                                  - /url: /countryside.mouse/
+                                  - generic [ref=f47e431]:
+                                    - generic [ref=f47e432]: countryside.mouse
+                                    - img "인증됨" [ref=f47e434]
+                                - link [ref=f47e437] [cursor=pointer]:
+                                  - /url: /p/DT9V5ovCQbc/c/18081120377243169/
+                                  - time [ref=f47e438]: 23주
+                              - generic [ref=f47e439]: 막내 사감쌤 ㅇㅈ합니다
+                            - generic [ref=f47e441]:
+                              - button "좋아요 2개" [ref=f47e442] [cursor=pointer]
+                              - button "답글 달기" [ref=f47e445] [cursor=pointer]
+                          - button [ref=f47e452] [cursor=pointer]:
+                            - img "좋아요" [ref=f47e455]
+                      - button "답글 1개 모두 보기" [ref=f47e458] [cursor=pointer]
+                    - generic [ref=f47e462]:
+                      - generic [ref=f47e464]:
+                        - link [ref=f47e470] [cursor=pointer]:
+                          - /url: /beyondbetterbrand/
+                          - img "beyondbetterbrand님의 프로필 사진" [ref=f47e471]
+                        - generic [ref=f47e472]:
+                          - generic [ref=f47e473]:
+                            - generic [ref=f47e475]:
+                              - generic [ref=f47e476]:
+                                - link "beyondbetterbrand" [ref=f47e481] [cursor=pointer]:
+                                  - /url: /beyondbetterbrand/
+                                - link [ref=f47e486] [cursor=pointer]:
+                                  - /url: /p/DT9V5ovCQbc/c/17875131996393306/
+                                  - time [ref=f47e487]: 23주
+                              - generic [ref=f47e488]: 아니 생일주간이셨다니!!!! 늦었지만 생일 축하드립니다🎉
+                            - generic [ref=f47e490]:
+                              - button "좋아요 1개" [ref=f47e491] [cursor=pointer]
+                              - button "답글 달기" [ref=f47e494] [cursor=pointer]
+                          - button [ref=f47e501] [cursor=pointer]:
+                            - img "좋아요" [ref=f47e504]
+                      - button "답글 1개 모두 보기" [ref=f47e507] [cursor=pointer]
+                - generic [ref=f47e511]:
+                  - generic [ref=f47e512]:
+                    - generic [ref=f47e513]:
+                      - button [ref=f47e516] [cursor=pointer]:
+                        - img "좋아요" [ref=f47e519]
+                      - button "86" [ref=f47e521] [cursor=pointer]
+                      - button [ref=f47e523] [cursor=pointer]:
+                        - img "댓글 달기" [ref=f47e525]
+                      - button "12" [ref=f47e527] [cursor=pointer]
+                      - button [ref=f47e528] [cursor=pointer]:
+                        - img "리포스트" [ref=f47e529]
+                      - button [ref=f47e531] [cursor=pointer]:
+                        - img "공유하기" [ref=f47e532]
+                    - button [ref=f47e537] [cursor=pointer]:
+                      - button [ref=f47e538]:
+                        - img "저장" [ref=f47e540]
+                  - generic [ref=f47e543]:
+                    - link [ref=f47e545] [cursor=pointer]:
+                      - /url: /p/DT9V5ovCQbc/liked_by/
+                      - button [ref=f47e548]:
+                        - link [ref=f47e549]
+                    - generic [ref=f47e551]:
+                      - link "kennenblog" [ref=f47e552] [cursor=pointer]:
+                        - /url: /kennenblog/
+                      - text: 님
+                      - link "외 85명" [ref=f47e553] [cursor=pointer]:
+                        - /url: /p/DT9V5ovCQbc/liked_by/
+                      - text: 이 좋아합니다
+                  - link [ref=f47e557] [cursor=pointer]:
+                    - /url: /ppt_studiooo/p/DT9V5ovCQbc/
+                    - time [ref=f47e559]: 1월 26일
+                - generic [ref=f47e562]:
+                  - link [ref=f47e563]
+                  - generic [ref=f47e565]:
+                    - button [ref=f47e567] [cursor=pointer]:
+                      - img "이모티콘" [ref=f47e569]
+                    - textbox "댓글 달기..." [ref=f47e571]
+            - separator [ref=f47e573]
+            - generic [ref=f47e574]:
+              - generic [ref=f47e576]:
+                - link "ppt_studiooo" [ref=f47e577] [cursor=pointer]:
+                  - /url: /ppt_studiooo/
+                - text: 님의 게시물 더 보기
+              - generic [ref=f47e580]:
+                - generic [ref=f47e581]:
+                  - link [ref=f47e583] [cursor=pointer]:
+                    - /url: /ppt_studiooo/p/DKrhXLvpbIt/
+                    - img "사실 tmi 엄청 많은 PPT 계정이지만😚, 그래도 PPT로 쭉- 잘 성장하고 있습니다! 1. 한국강사교육진흥원 수석위원 교육인 2. 피튜디오 인터뷰 기사 3. 원했던 기업 강의들을 진행하고, 4. 언제 어디서든 간편히 들을 수 있는 PPT 강의 5. 촬영은 언제나 떨려요😖 6. 열심히 일했지만 몸은 엉망진창, 만성 두드러기 7. 강사의 가방 속 준비물들은 이러합니다 +앞으로의 성장도 🌈🦄 🔗PPT 강의는 프로필 링크에서 신청" [ref=f47e586]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "슬라이드"
+                  - link [ref=f47e589] [cursor=pointer]:
+                    - /url: /ppt_studiooo/p/DNmwaIEJPop/
+                    - 'img "CJ 인재원에서 신입사원 교육 +새벽부터 비가 엄청 쏟아진 날☔️ 커리큘럼 중 특별 코너로 조별 과제를 넣어봤는데 아주 인기 폭발이었던,,, (내용은 비밀) 무도키즈도 있고 에반반게리온부터 베르톨트까지 등장했던 강렬했던 수업ㅋㅋㅋ 신입사원 교육 맞냐며,,, #ppt #powerpoint #강의 #강사" [ref=f47e592]'
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "슬라이드"
+                  - link [ref=f47e595] [cursor=pointer]:
+                    - /url: /ppt_studiooo/p/DGUg7bXpNlG/
+                    - img "📍2025 1-2월 피튜디오 보고서 + 뒤에는 그냥 찐 일상사진 1. 더현대에 저 있어요!! IFC몰-더현대 사이에 있는 디지털갤러리들마다 나옴 더현대 가시는 분들 저 찾아주세요🫶🏻 2. Apple 워크샵 PPT 강의 조금 애플스럽게 입고 싶어서👩🏻‍💻(매우 주관적ㅋㅋ) 청청 패션으로 강의한 날👖 3. 삼성강남 PPT 강의 아주 캐주얼하게 진행된 강의! 사실 2번 Apple 워크샵과 같은 날이었는데 옷만👔 바꿔 입고 강의했어요ㅎㅎ 비하인드 4. CJ 신입사원 교육 신입사원 교육은 언제나 즐거워💗 리액션도 잘해주시고 반응도 최상ㅋㅋㅋ 리액션을 너무 잘해주셔서 처음에 몰카인 줄 알고 ’잠깐 타임!! 여러분 저 놀리는 거 아니시죠?‘ 물어보면서 강의했어요ㅋㅋ 이틀 연속으로 7시간씩 강의했지만 오히려 제가 더 많은 열정과 에너지를 얻고 온 거 같아요! 🙌🏻 5. LG 연구원 대상 강의 서초R&D캠퍼스 대회의실에서 진행한 PPT 강의! 모두 적극 참여해 주셔서 즐거웠던 시간이었습니다✨ 6. 2월 PPT 캠프 4기!! 3주간 자기개발러들 모두 개근한...! 그 유명한 강의!! (자칭ㅎㅎ) 열정을 가지고 참여해 주셔서 즐거운 분위기로 끝까지 함께 달렸습니다요🏃🏻‍♀️ + 강의를 다니다 보니 좋은 분도 많이 만나고, 이전에 저에게 악플 단 분도 만나고ㅋㅋ (사과 받아냄ㅎㅎ) 앞으로도 열심히 해보겠습니다! 저의 성장을 지켜봐 주세요😍" [ref=f47e598]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "슬라이드"
+                - generic [ref=f47e600]:
+                  - link [ref=f47e602] [cursor=pointer]:
+                    - /url: /ppt_studiooo/reel/DaZ-qVbzj7S/
+                    - img "AI 공부하는 요즘 내 상태 어깨가 너무 무거워🥺 다들 어찌 그리 빠르게 공부하나요 나야말로 꿀팁 좀...🫨" [ref=f47e605]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "클립"
+                  - link [ref=f47e608] [cursor=pointer]:
+                    - /url: /ppt_studiooo/reel/DZwyhCJz-WZ/
+                    - img "노트북 들고 서촌가서 일하기👩🏻‍💻" [ref=f47e611]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "클립"
+                  - link [ref=f47e614] [cursor=pointer]:
+                    - /url: /ppt_studiooo/p/DYy-hWwIDJq/
+                    - img "맥 PPT 헷갈릴 때 많자나요! (헤매는..! 오타수정이 안돼잉🥹)" [ref=f47e617]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img "슬라이드"
+        - contentinfo [ref=f47e619]:
+          - generic [ref=f47e620]:
+            - generic [ref=f47e622]:
+              - link "Meta" [ref=f47e624] [cursor=pointer]:
+                - /url: https://about.meta.com/
+              - link "소개" [ref=f47e627] [cursor=pointer]:
+                - /url: https://about.instagram.com/
+              - link "블로그" [ref=f47e630] [cursor=pointer]:
+                - /url: https://about.instagram.com/blog/
+              - link "채용 정보" [ref=f47e633] [cursor=pointer]:
+                - /url: https://about.instagram.com/about-us/careers
+              - link "도움말" [ref=f47e636] [cursor=pointer]:
+                - /url: https://help.instagram.com/
+              - link "API" [ref=f47e639] [cursor=pointer]:
+                - /url: https://developers.facebook.com/docs/instagram
+              - link "개인정보처리방침" [ref=f47e642] [cursor=pointer]:
+                - /url: /legal/privacy/
+              - link "약관" [ref=f47e645] [cursor=pointer]:
+                - /url: /legal/terms/
+              - link "위치" [ref=f47e648] [cursor=pointer]:
+                - /url: /explore/locations/
+              - link "인기" [ref=f47e651] [cursor=pointer]:
+                - /url: /popular/
+              - link "Instagram Lite" [ref=f47e654] [cursor=pointer]:
+                - /url: /web/lite/
+              - link "Meta AI" [ref=f47e657] [cursor=pointer]:
+                - /url: https://www.meta.ai/?utm_source=foa_web_footer
+              - link "Threads" [ref=f47e660] [cursor=pointer]:
+                - /url: https://www.threads.com/
+              - link "연락처 업로드 & 비사용자" [ref=f47e663] [cursor=pointer]:
+                - /url: https://www.facebook.com/help/instagram/261704639352628
+              - link "Meta Verified" [ref=f47e666] [cursor=pointer]:
+                - /url: /accounts/meta_verified/?entrypoint=web_footer
+            - generic [ref=f47e668]:
+              - generic [ref=f47e669] [cursor=pointer]:
+                - generic [ref=f47e670]:
+                  - generic [ref=f47e671]: 한국어
+                  - img "아래쪽 V자형 아이콘" [ref=f47e674]
+                - combobox "표시 언어 변경" [ref=f47e676]:
+                  - option "Afrikaans"
+                  - option "العربية"
+                  - option "Čeština"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Ελληνικά"
+                  - option "English"
+                  - option "English (UK)"
+                  - option "Español (España)"
+                  - option "Español"
+                  - option "فارسی"
+                  - option "Suomi"
+                  - option "Français"
+                  - option "עברית"
+                  - option "Bahasa Indonesia"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어" [selected]
+                  - option "Bahasa Melayu"
+                  - option "Norsk"
+                  - option "Nederlands"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Português (Portugal)"
+                  - option "Русский"
+                  - option "Svenska"
+                  - option "ภาษาไทย"
+                  - option "Filipino"
+                  - option "Türkçe"
+                  - option "中文(简体)"
+                  - option "中文(台灣)"
+                  - option "বাংলা"
+                  - option "ગુજરાતી"
+                  - option "हिन्दी"
+                  - option "Hrvatski"
+                  - option "Magyar"
+                  - option "ಕನ್ನಡ"
+                  - option "മലയാളം"
+                  - option "मराठी"
+                  - option "नेपाली"
+                  - option "ਪੰਜਾਬੀ"
+                  - option "සිංහල"
+                  - option "Slovenčina"
+                  - option "தமிழ்"
+                  - option "తెలుగు"
+                  - option "اردو"
+                  - option "Tiếng Việt"
+                  - option "中文(香港)"
+                  - option "Български"
+                  - option "Français (Canada)"
+                  - option "Română"
+                  - option "Српски"
+                  - option "Українська"
+              - generic [ref=f47e677]: © 2026 Instagram from Meta
+    - button [ref=f47e680] [cursor=pointer]:
+      - tooltip "댓글 18 결혼/연애 상태 1" [ref=f47e682]:
+        - generic [ref=f47e684]:
+          - generic [ref=f47e685]:
+            - generic "댓글" [ref=f47e686]
+            - generic [ref=f47e687]: "18"
+          - generic [ref=f47e689]:
+            - generic "결혼/연애 상태" [ref=f47e690]
+            - generic [ref=f47e691]: "1"
+  - button [ref=f47e695] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f47e696]:
+      - generic [ref=f47e697]:
+        - generic [ref=f47e699]:
+          - img "메시지" [ref=f47e700]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f47e703]: "1"
+        - generic [ref=f47e706]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f47e709]:
+        - img "사용자 아바타" [ref=f47e712]

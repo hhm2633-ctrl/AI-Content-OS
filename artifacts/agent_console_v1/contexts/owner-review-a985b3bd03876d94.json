@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-423030e98d97",
+  "candidate_id": "20260717-2003-A-423030e98d97",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "“나는 안 해, 미닉스가 해”…앳홈 미닉스, 음식물 쓰레기 처리 스트레스 끝!",
+  "source_urls": [
+    "https://www.mk.co.kr/news/pick/12097951"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

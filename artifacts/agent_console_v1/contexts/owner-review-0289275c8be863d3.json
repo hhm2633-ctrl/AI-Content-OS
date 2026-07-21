@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-d3a4279cc3b6",
+  "candidate_id": "20260717-2003-C-d3a4279cc3b6",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·헤어",
+  "title": "이 머리색이면 여름 내내 예쁨 유지 가능!",
+  "source_urls": [
+    "https://www.allurekorea.com/2026/07/16/%ec%9d%b4-%eb%a8%b8%eb%a6%ac%ec%83%89%ec%9d%b4%eb%a9%b4-%ec%97%ac%eb%a6%84-%eb%82%b4%eb%82%b4-%ec%98%88%ec%81%a8-%ec%9c%a0%ec%a7%80-%ea%b0%80%eb%8a%a5/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

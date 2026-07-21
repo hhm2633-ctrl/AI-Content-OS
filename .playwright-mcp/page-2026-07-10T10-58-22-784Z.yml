@@ -1,0 +1,115 @@
+- generic [ref=e12]:
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - img "Instagram" [ref=e19]
+      - generic [ref=e20]: 친한 친구의 일상 속 순간들을 확인해보세요.
+    - generic [ref=e34]:
+      - generic [ref=e35]: Instagram으로 로그인
+      - generic [ref=e46]:
+        - generic [ref=e50]:
+          - textbox "휴대폰 번호, 사용자 이름 또는 이메일 주소" [active] [ref=e51]
+          - generic: 휴대폰 번호, 사용자 이름 또는 이메일 주소
+        - generic [ref=e55]:
+          - textbox "비밀번호" [ref=e56]
+          - generic: 비밀번호
+        - button "로그인" [disabled] [ref=e59]
+        - link "비밀번호를 잊으셨나요?" [ref=e65] [cursor=pointer]:
+          - /url: /accounts/password/reset/
+        - button "Facebook으로 로그인" [ref=e71] [cursor=pointer]
+        - link "새 계정 만들기" [ref=e80] [cursor=pointer]:
+          - /url: /accounts/emailsignup/?next=
+        - img "Meta 로고" [ref=e85]
+  - separator [ref=e93]
+  - contentinfo [ref=e95]:
+    - generic [ref=e96]:
+      - generic [ref=e98]:
+        - link "Meta" [ref=e100] [cursor=pointer]:
+          - /url: https://about.meta.com/
+        - link "소개" [ref=e103] [cursor=pointer]:
+          - /url: https://about.instagram.com/
+        - link "블로그" [ref=e106] [cursor=pointer]:
+          - /url: https://about.instagram.com/blog/
+        - link "채용 정보" [ref=e109] [cursor=pointer]:
+          - /url: https://about.instagram.com/about-us/careers
+        - link "도움말" [ref=e112] [cursor=pointer]:
+          - /url: https://help.instagram.com/
+        - link "API" [ref=e115] [cursor=pointer]:
+          - /url: https://developers.facebook.com/docs/instagram
+        - link "개인정보처리방침" [ref=e118] [cursor=pointer]:
+          - /url: /legal/privacy/
+        - link "약관" [ref=e121] [cursor=pointer]:
+          - /url: /legal/terms/
+        - link "위치" [ref=e124] [cursor=pointer]:
+          - /url: /explore/locations/
+        - link "인기" [ref=e127] [cursor=pointer]:
+          - /url: /popular/
+        - link "Instagram Lite" [ref=e130] [cursor=pointer]:
+          - /url: /web/lite/
+        - link "Meta AI" [ref=e133] [cursor=pointer]:
+          - /url: https://www.meta.ai/?utm_source=foa_web_footer
+        - link "Threads" [ref=e136] [cursor=pointer]:
+          - /url: https://www.threads.com/
+        - link "연락처 업로드 & 비사용자" [ref=e139] [cursor=pointer]:
+          - /url: https://www.facebook.com/help/instagram/261704639352628
+        - link "Meta Verified" [ref=e142] [cursor=pointer]:
+          - /url: /accounts/meta_verified/?entrypoint=web_footer
+      - generic [ref=e144]:
+        - generic [ref=e145] [cursor=pointer]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: 한국어
+            - img "아래쪽 V자형 아이콘" [ref=e150]
+          - combobox "표시 언어 변경" [ref=e152]:
+            - option "Afrikaans"
+            - option "العربية"
+            - option "Čeština"
+            - option "Dansk"
+            - option "Deutsch"
+            - option "Ελληνικά"
+            - option "English"
+            - option "English (UK)"
+            - option "Español (España)"
+            - option "Español"
+            - option "فارسی"
+            - option "Suomi"
+            - option "Français"
+            - option "עברית"
+            - option "Bahasa Indonesia"
+            - option "Italiano"
+            - option "日本語"
+            - option "한국어" [selected]
+            - option "Bahasa Melayu"
+            - option "Norsk"
+            - option "Nederlands"
+            - option "Polski"
+            - option "Português (Brasil)"
+            - option "Português (Portugal)"
+            - option "Русский"
+            - option "Svenska"
+            - option "ภาษาไทย"
+            - option "Filipino"
+            - option "Türkçe"
+            - option "中文(简体)"
+            - option "中文(台灣)"
+            - option "বাংলা"
+            - option "ગુજરાતી"
+            - option "हिन्दी"
+            - option "Hrvatski"
+            - option "Magyar"
+            - option "ಕನ್ನಡ"
+            - option "മലയാളം"
+            - option "मराठी"
+            - option "नेपाली"
+            - option "ਪੰਜਾਬੀ"
+            - option "සිංහල"
+            - option "Slovenčina"
+            - option "தமிழ்"
+            - option "తెలుగు"
+            - option "اردو"
+            - option "Tiếng Việt"
+            - option "中文(香港)"
+            - option "Български"
+            - option "Français (Canada)"
+            - option "Română"
+            - option "Српски"
+            - option "Українська"
+        - generic [ref=e153]: © 2026 Instagram from Meta

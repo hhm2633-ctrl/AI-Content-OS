@@ -1,0 +1,76 @@
+{
+  "status_standard": "허용 상태값은 benchmark_observed(evidence 2건 이상 반복) 또는 hypothesis_only(단일 관측 또는 인과 미검증) 두 가지뿐. 해석/caveat는 별도 'note' 필드에 분리 기재하고 status 필드 자체에는 부가 문구를 넣지 않음.",
+  "correction_note": "이전 버전 고반응(상위) 3분위 목록에 'https://www.instagram.com/p/DZrRPtkGJN2_유사/'(likes 2200)로 잘못 인용된 항목이 있었음. DZrRPtkGJN2는 RAW id8(andy__wormhole, likes 28)이며 이 레코드와 무관한 오기였음. RAW_OBSERVATIONS.json에서 likes=2200과 정확히 일치하는 유일한 레코드는 id9(trendpark77, https://www.instagram.com/p/DYUI6eKk80S/)이므로 이를 canonical 출처로 교정함(URL 추정이 아니라 RAW 필드값 대조를 통한 오기 정정).",
+  "methodology_caveat": "팔로워 수가 확인된 계정이 39건 중 2건(zzalqueen, dot0tori)뿐이라 '좋아요/팔로워 비율' 기반 정규화는 사실상 불가능. 대신 (a) 좋아요 절대값 기준 3분위(고/중/저반응) 비교, (b) 팔로워 수 없이도 계산 가능한 '댓글:좋아요 비율'을 CTA 유형별 비교 지표로 사용함.",
+  "like_tercile_split": {
+    "저반응(하위 13건, 좋아요 0~28)": {
+      "urls_and_likes": [
+        ["https://www.instagram.com/p/Dav8rULEl4G/", 0],
+        ["https://www.instagram.com/p/DMZ0ZvZRrWw/", 0],
+        ["https://www.instagram.com/p/DZYmzTSk9xA/", 1],
+        ["https://www.instagram.com/p/DZ9rgG0D_1Y/", 6],
+        ["https://www.instagram.com/p/DOGBPnYkrIU/", 6],
+        ["https://www.instagram.com/p/DX540sxj3kb/", 7],
+        ["https://www.instagram.com/p/DacbwaPmnJk/", 9],
+        ["https://www.instagram.com/p/DaU3AhCAS9Y/", 10],
+        ["https://www.instagram.com/p/DMumn3wvugh/", 11],
+        ["https://www.instagram.com/p/DPDvKDFkRTN/", 11],
+        ["https://www.instagram.com/p/DaCzy3oD-RH/", 15],
+        ["https://www.instagram.com/p/DPn9L_EiZWf/", 20],
+        ["https://www.instagram.com/p/DZrRPtkGJN2/", 28]
+      ],
+      "observation_count": 13,
+      "note": "게시 직후(5시간 경과) 사례 1건 포함, 개인 소규모 계정 다수, 병원/공공기관 정보성 게시물 다수, 브랜드 직접 홍보 다수 — 빈도 관찰이며 원인 해석은 hypothesis_only",
+      "confidence": "benchmark_observed"
+    },
+    "중반응(중위 13건, 좋아요 34~273)": {
+      "observation_count": 13,
+      "range": "34~273"
+    },
+    "고반응(상위 13건, 좋아요 281~20000)": {
+      "urls_and_likes": [
+        ["https://www.instagram.com/p/DY_j-R4kUw1/", 281],
+        ["https://www.instagram.com/p/DZ1m16hEoJS/", 309],
+        ["https://www.instagram.com/p/DZZko8HESg3/", 324],
+        ["https://www.instagram.com/p/DYi2I6WEefP/", 390],
+        ["https://www.instagram.com/p/DYOXQ0eD5M4/", 439],
+        ["https://www.instagram.com/p/DVe4qprE4r_/", 482],
+        ["https://www.instagram.com/p/DZYmTBrgRPA/", 978],
+        ["https://www.instagram.com/p/DSMLi5akyKb/", 1100],
+        ["https://www.instagram.com/p/DaNEjI7ieUa/", 1400],
+        ["https://www.instagram.com/p/DYUDHNrjg0e/", 2000],
+        ["https://www.instagram.com/p/DYUI6eKk80S/", 2200],
+        ["https://www.instagram.com/p/DMR7KeXyMRs/", 2400],
+        ["https://www.instagram.com/p/DaNcegIkmEy/", 20000]
+      ],
+      "observation_count": 13,
+      "note": "화제성 있는 시사/논란 소재, 유명인 인용, 지역 큐레이션 리스트 등이 상위권에 집중됨. 팔로워 수 미확인이라 원래 대형 계정이라 좋아요가 큰 것인지, 콘텐츠 자체가 잘 확산된 것인지는 구분 불가 — 이 인과적 해석은 hypothesis_only",
+      "confidence": "benchmark_observed"
+    }
+  },
+  "comment_to_like_ratio_by_cta_type": {
+    "댓글키워드→DM유도_CTA_있음": {
+      "evidence_urls": [
+        "https://www.instagram.com/p/DaCzy3oD-RH/","https://www.instagram.com/p/DYUI6eKk80S/",
+        "https://www.instagram.com/p/DZnQtl3Eq-_/","https://www.instagram.com/p/DZwFmZvgT-c/",
+        "https://www.instagram.com/p/DZ-P1r_k_ox/","https://www.instagram.com/p/DZaM-F2EhBr/",
+        "https://www.instagram.com/p/DY_j-R4kUw1/","https://www.instagram.com/p/DZsBFesH6EI/",
+        "https://www.instagram.com/p/DaNEjI7ieUa/","https://www.instagram.com/p/DZupSq1ICoT/",
+        "https://www.instagram.com/p/DadGwa9GhH3/"
+      ],
+      "observation_count": 11,
+      "account_count": 11,
+      "category_count": 2,
+      "ratio_range": "24.21%~794.12%(Spark 재계산 확인)",
+      "confidence": "benchmark_observed"
+    },
+    "CTA_없음_또는_소프트질문형": {
+      "observation_count": 28,
+      "ratio_range": "0%~7%(대부분)",
+      "confidence": "benchmark_observed"
+    },
+    "note": "댓글 키워드 유도형 CTA를 쓴 게시물은 evidence_urls 11건 전부에서 댓글:좋아요 비율이 20%를 넘고 대부분 100%를 초과(댓글이 좋아요보다 많음). 이는 표본 내에서 가장 뚜렷하고 재현 가능한 패턴이며 반복 횟수(11/39, 28%)와 URL로 전부 추적 가능함.",
+    "causality_caveat": "'이 CTA가 알고리즘 노출을 늘린다'는 인과적 결론은 검증되지 않음(hypothesis_only에 해당하는 별개의 주장). 위 confidence(benchmark_observed)는 어디까지나 '해당 게시물들에서 이 비율 패턴이 반복 관측되었다'는 사실 자체에만 적용됨."
+  },
+  "views_saves_reach": "전 항목 null — Instagram 웹 UI에서 비공개 지표이며 추정하지 않음(사용자 지시 준수)."
+}

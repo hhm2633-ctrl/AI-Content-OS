@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-07-19",
+  "account": "B",
+  "source_file": "artifacts/cardnews_category_review_2026-07-19/collection.json",
+  "owner_opinion_used": false,
+  "deep_research_used": false,
+  "brand_connect_used": false,
+  "past_selection_used": false,
+  "ranking_method": {
+    "freshness_max": 20,
+    "observed_reaction_and_rank_max": 30,
+    "source_count_max": 10,
+    "visible_media_max": 15,
+    "emotion_story_potential_max": 25,
+    "reaction_bands": ">=1000:20, >=300:18, >=200:16, >=100:14, >=50:10, >=25:6, >0:3, missing:0",
+    "rank_bands": "1:10, 2-3:8, 4-5:6, 6-7:4, 8-10:2, missing:0",
+    "source_count_bands": "1:4, 2:7, >=3:10",
+    "media_rule": "media_count >= 1:15, missing/0:0",
+    "portfolio_balance": "selected 4건에서 연예·도파민, 연애·관계, 현실썰의 강한 후보가 한 카테고리에만 몰리지 않게 적용",
+    "selection_count": 4,
+    "alternate_count": 4
+  },
+  "selected": [
+    {
+      "id": "20260719-B-f7c153fdfe11",
+      "title": "코르티스 콘서트 병크 ㄹㅈㄷ찍음",
+      "category": "연예·도파민",
+      "score_total": 78,
+      "score_breakdown": {
+        "freshness": {"score": 10, "max": 20, "evidence": "게시시각은 비어 있으나 2026-07-19 얕은 수집에서 관측"},
+        "observed_reaction_and_rank": {"score": 26, "max": 30, "evidence": "rank_position 1, reaction_count 249"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 15, "max": 15, "evidence": "media_count 1"},
+        "emotion_story_potential": {"score": 23, "max": 25, "evidence": "제목과 기존 context에 콘서트 불만과 복수 지적점이 직접 드러남"}
+      },
+      "reason": "오늘 B 후보 중 관측 rank가 가장 높고 반응·미디어·감정 갈등 신호가 함께 있어 도파민형 서사 전개가 가장 선명합니다.",
+      "signals": {"published_at": "", "collected_at": "2026-07-19T09:53:04.204232", "rank_position": 1, "reaction_count": 249, "source_count": 1, "media_count": 1, "context_present": true},
+      "urls": ["https://pann.nate.com/talk/375524568"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-76afd18b07cd",
+      "title": "윈터랑 정국이 럽스타그램 했네",
+      "category": "연예·도파민",
+      "score_total": 69,
+      "score_breakdown": {
+        "freshness": {"score": 10, "max": 20, "evidence": "게시시각은 비어 있으나 2026-07-19 얕은 수집에서 관측"},
+        "observed_reaction_and_rank": {"score": 22, "max": 30, "evidence": "rank_position 2, reaction_count 125"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 15, "max": 15, "evidence": "media_count 1"},
+        "emotion_story_potential": {"score": 18, "max": 25, "evidence": "제목과 기존 context에 두 인물의 같은 날 음악 게시라는 비교 구조가 보임"}
+      },
+      "reason": "높은 관측 rank와 반응, 보이는 미디어가 있고 두 게시물의 시간상 대비가 얕은 데이터 안에서 확인되어 연예 도파민 후보로 강합니다. 열애 사실로 단정하지 않습니다.",
+      "signals": {"published_at": "", "collected_at": "2026-07-19T09:53:04.204254", "rank_position": 2, "reaction_count": 125, "source_count": 1, "media_count": 1, "context_present": true},
+      "urls": ["https://pann.nate.com/talk/375523851"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-94dd09be74a6",
+      "title": "신혼인데 남편한테 전우같다는 소리 들었어요",
+      "category": "연애·관계",
+      "score_total": 53,
+      "score_breakdown": {
+        "freshness": {"score": 10, "max": 20, "evidence": "게시시각은 비어 있으나 2026-07-19 얕은 수집에서 관측"},
+        "observed_reaction_and_rank": {"score": 14, "max": 30, "evidence": "rank_position 7, reaction_count 51"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 0, "max": 15, "evidence": "media_count 미관측"},
+        "emotion_story_potential": {"score": 25, "max": 25, "evidence": "신혼·부부관계 변화·'전우'라는 감정적 전환이 제목과 기존 context에 직접 보임"}
+      },
+      "reason": "미디어 신호는 없지만 관계의 시작 상태와 감정 변화가 얕은 context에 함께 있어 연애·관계 카테고리에서 가장 완결된 서사 잠재력을 보입니다.",
+      "signals": {"published_at": "", "collected_at": "2026-07-19T09:53:04.204273", "rank_position": 7, "reaction_count": 51, "source_count": 1, "media_count": null, "context_present": true},
+      "urls": ["https://pann.nate.com/talk/375523957"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-0d825da3befa",
+      "title": "미용실 다녀온 후 예민해진 찹츄",
+      "category": "현실썰",
+      "score_total": 69,
+      "score_breakdown": {
+        "freshness": {"score": 20, "max": 20, "evidence": "published_at '13 분 전'"},
+        "observed_reaction_and_rank": {"score": 20, "max": 30, "evidence": "rank_position 10, reaction_count 357"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 15, "max": 15, "evidence": "media_count 1"},
+        "emotion_story_potential": {"score": 10, "max": 25, "evidence": "제목에서 미용실 전후 감정 변화가 보이나 추가 context는 없음"}
+      },
+      "reason": "매우 최근 관측, 높은 반응, 보이는 미디어가 결합된 현실썰 후보입니다. 제목 밖의 상황은 추정하지 않고 전후 감정 변화 가능성만 평가했습니다.",
+      "signals": {"published_at": "13 분 전", "collected_at": "2026-07-19T09:53:04.578605", "rank_position": 10, "reaction_count": 357, "source_count": 1, "media_count": 1, "context_present": false},
+      "urls": ["https://www.fmkorea.com/best/10102144333"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    }
+  ],
+  "alternates": [
+    {
+      "id": "20260719-B-f28e440f3872",
+      "title": "쇼메이커 3세트 후푸 평점 10.0 ㄷㄷㄷㄷㄷ",
+      "category": "연예·도파민",
+      "score_total": 62,
+      "score_breakdown": {
+        "freshness": {"score": 20, "max": 20, "evidence": "published_at '7 시간 전'"},
+        "observed_reaction_and_rank": {"score": 28, "max": 30, "evidence": "rank_position 3, reaction_count 1913"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 0, "max": 15, "evidence": "media_count 미관측"},
+        "emotion_story_potential": {"score": 10, "max": 25, "evidence": "높은 평점이라는 결과는 보이나 기존 context가 없어 과정 서사는 확인 불가"}
+      },
+      "reason": "반응과 랭크는 매우 강하지만 미디어와 context가 없어 결과 수치 이상의 서사 확장이 제한되어 대체 후보로 남겼습니다.",
+      "signals": {"published_at": "7 시간 전", "collected_at": "2026-07-19T09:53:04.578573", "rank_position": 3, "reaction_count": 1913, "source_count": 1, "media_count": null, "context_present": false},
+      "urls": ["https://www.fmkorea.com/index.php?mid=best2&sort_index=pop&order_type=desc&document_srl=10101808437"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-f3a296ffd751",
+      "title": "월 수입 1,000만 원 찍고 남동생 결혼 선물로 천만 원...",
+      "category": "현실썰",
+      "score_total": 54,
+      "score_breakdown": {
+        "freshness": {"score": 10, "max": 20, "evidence": "게시시각은 비어 있으나 2026-07-19 얕은 수집에서 관측"},
+        "observed_reaction_and_rank": {"score": 16, "max": 30, "evidence": "rank_position 4, reaction_count 69"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 0, "max": 15, "evidence": "media_count 미관측"},
+        "emotion_story_potential": {"score": 24, "max": 25, "evidence": "수입·육아·부업·가족 선물의 현실 갈등 요소가 제목과 기존 context에 보임"}
+      },
+      "reason": "현실 서사 잠재력은 높지만 보이는 미디어가 없고 반응 신호가 선택된 현실썰 후보보다 약해 대체 후보로 배치했습니다.",
+      "signals": {"published_at": "", "collected_at": "2026-07-19T09:53:04.204265", "rank_position": 4, "reaction_count": 69, "source_count": 1, "media_count": null, "context_present": true},
+      "urls": ["https://pann.nate.com/talk/375524090"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-8961962a9530",
+      "title": "남친... 생리 끝나고 보자네요",
+      "category": "연애·관계",
+      "score_total": 52,
+      "score_breakdown": {
+        "freshness": {"score": 10, "max": 20, "evidence": "게시시각은 비어 있으나 2026-07-19 얕은 수집에서 관측"},
+        "observed_reaction_and_rank": {"score": 10, "max": 30, "evidence": "rank_position 6, reaction_count 47"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 15, "max": 15, "evidence": "media_count 1"},
+        "emotion_story_potential": {"score": 13, "max": 25, "evidence": "연인 갈등은 제목에 보이나 기존 context는 '저걸 어케만남' 한 줄뿐"}
+      },
+      "reason": "관계 갈등과 미디어 신호는 있으나 수집 context가 짧아 선택된 관계 후보보다 서사 근거가 약합니다.",
+      "signals": {"published_at": "", "collected_at": "2026-07-19T09:53:04.20427", "rank_position": 6, "reaction_count": 47, "source_count": 1, "media_count": 1, "context_present": true},
+      "urls": ["https://pann.nate.com/talk/375524992"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    },
+    {
+      "id": "20260719-B-f75cf7b12e28",
+      "title": "\"대체 누구지?\" 제니, 의문의 남성과 다정한 투샷",
+      "category": "연예·도파민",
+      "score_total": 49,
+      "score_breakdown": {
+        "freshness": {"score": 20, "max": 20, "evidence": "published_at 2026.07.19 09:42"},
+        "observed_reaction_and_rank": {"score": 0, "max": 30, "evidence": "rank_position과 reaction_count 미관측"},
+        "source_count": {"score": 4, "max": 10, "evidence": "source_count 1"},
+        "visible_media": {"score": 0, "max": 15, "evidence": "media_count 미관측"},
+        "emotion_story_potential": {"score": 25, "max": 25, "evidence": "기존 context에 사진 게시, 얼굴 가림, 누리꾼 추측, 뮤직비디오 가능성이 구분되어 기록됨"}
+      },
+      "reason": "당일 기사와 풍부한 기존 context는 강점이지만 실제 관측 반응·랭크·미디어 수치가 없어 대체 후보로 배치했습니다. 남성의 정체나 관계는 단정하지 않습니다.",
+      "signals": {"published_at": "2026.07.19 09:42", "collected_at": "2026-07-19T09:53:01.515925", "rank_position": null, "reaction_count": null, "source_count": 1, "media_count": null, "context_present": true},
+      "urls": ["https://www.mt.co.kr/entertainment/2026/07/19/2026071909402985358"],
+      "owner_opinion_used": false,
+      "deep_research_used": false
+    }
+  ],
+  "deduplication": {
+    "exact_duplicate_ids_removed": [],
+    "similar_topic_clusters": [
+      {
+        "cluster": "리센느 관련 평가",
+        "ids": ["20260719-B-acbd0f3ef7d7", "20260719-B-5468fa0de18b"],
+        "decision": "동일 그룹을 둘러싼 상반된 평가로 묶었으며 selected·alternates에는 중복 진입시키지 않음"
+      }
+    ],
+    "selected_alternate_overlap_count": 0,
+    "title_duplicate_count": 0
+  }
+}

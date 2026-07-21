@@ -1,0 +1,33 @@
+Implemented and scoped as requested, limited to the allowed paths.
+
+- Added: [modules/source_intake/daily_collection_plan.py](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/modules/source_intake/daily_collection_plan.py)
+  - New deterministic `build_daily_collection_plan(account_profiles, source_capabilities=None, today=None)`.
+  - Supports required lanes:
+    - `news_society_economy`
+    - `entertainment_news`
+    - `dopamine_community`
+    - `beauty_fashion`
+    - `lifestyle_knowledge`
+  - Outputs per-lane:
+    - `lane_id`
+    - `shallow_profiles`
+    - `excluded_sources` with skip reasons
+    - `shallow_only=True`
+    - `deep_dive_enabled=False`
+    - `deep_dive_trigger_policy` with numeric threshold + repeat-source guard
+    - `storage_policy` (shallow index on `storage/source_intake`, raw on `source_data_root()`)
+  - Unknown lane IDs fail closed (non-fatal, empty lane output, `plan_status: lane_unknown`).
+
+- Added tests: [tests/test_daily_source_collection_plan.py](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/tests/test_daily_source_collection_plan.py)
+  - Covers required lanes, fail-closed unknown lane behavior, blocked-source recording, policy defaults, storage policy path roots, and no `commerce_detail` wording.
+  - Verifies `commerce_signal`-safe wording policy by excluding `commerce_detail` from planner output text.
+
+- Added handoff doc: [external_workclaude/source_collection_engine_v0_spark/SOURCE_COLLECTION_ENGINE_V0_SPARK.md](/C:/Users/가산%20솔리드옴므/Documents/GitHub/AI-Content-OS/external_workclaude/source_collection_engine_v0_spark/SOURCE_COLLECTION_ENGINE_V0_SPARK.md)
+
+Validation run:
+- `py -m unittest tests.test_daily_source_collection_plan tests.test_source_intake_schema tests.test_source_intake_metrics tests.test_news_category_profiles -v`  
+  - Result: failed (1 pre-existing failure in `tests.test_source_intake_schema::test_write_shallow_index_writes_only_json_no_ad_dirs`: got `write_failed`)
+- `py -m compileall modules/source_intake`  
+  - Result: passed
+
+Did not run workflow (as requested).

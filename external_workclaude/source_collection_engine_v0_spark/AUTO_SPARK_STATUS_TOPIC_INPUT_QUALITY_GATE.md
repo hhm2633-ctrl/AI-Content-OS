@@ -1,0 +1,21 @@
+# AUTO SPARK STATUS — TOPIC INPUT QUALITY GATE
+
+- objective: add a deterministic dedupe + source agreement gate for validated topic input candidates
+- owned files:
+  - modules/source_intake/topic_input_quality_gate.py (new)
+  - tests/test_topic_input_quality_gate.py (new)
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_TOPIC_INPUT_QUALITY_GATE.md (new)
+- scope:
+  - consume only `{"trends": [...], "source_diagnostics": {...}}`
+  - fail closed on malformed adapter output or malformed trend
+  - deterministic dedupe by canonical URL and normalized title/keyword
+  - canonicalize link by stripping whitespace/case and removing tracking query params only
+  - keep first candidate for each duplicate and merge only distinct source evidence
+  - expose `agreement_count` and `agreement_level` without causal/verified language
+  - preserve input order
+  - output `{"candidates": [...], "quality_diagnostics": {...}}`
+- status: implemented
+- tests added:
+  - `test_url_and_title_duplicates_collapse_deterministically_and_preserve_first`
+  - `test_distinct_source_ids_count_and_do_not_double_count_repeats`
+  - `test_malformed_or_empty_input_fail_closed_without_fabricated_candidates`

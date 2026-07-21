@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-3c8e3b7f7241",
+  "candidate_id": "20260717-2003-C-3c8e3b7f7241",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·향수",
+  "title": "2026 여름 메이크업 시장, 글로벌은 '스키니피케이션', K-뷰티는 '경험'",
+  "source_urls": [
+    "https://www.thebk.co.kr/news/articleView.html?idxno=310471"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

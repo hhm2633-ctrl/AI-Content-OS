@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-d7272c546f69",
+  "candidate_id": "20260717-2003-A-d7272c546f69",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·이슈",
+  "title": "“‘스타벅스 응원’, 역사 몰라 벌어진 일” 지적에…중학교 근현대사...",
+  "source_urls": [
+    "https://www.sedaily.com/article/20068921?ref=naver"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

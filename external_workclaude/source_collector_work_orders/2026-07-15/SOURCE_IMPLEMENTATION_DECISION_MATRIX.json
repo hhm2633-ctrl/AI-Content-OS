@@ -1,0 +1,1203 @@
+{
+  "schema_version": "source_implementation_decision_matrix_v1",
+  "generated_on": "2026-07-15",
+  "evidence_scope": "repository_and_historical_artifacts_no_live_browser",
+  "configured_source_count": 23,
+  "daily_plan_source_count": 19,
+  "actual_supported_sources": [
+    "naver_news",
+    "daum_news",
+    "nate_news_rank",
+    "newsis",
+    "news1",
+    "hankyung_economy",
+    "mk_economy",
+    "moneytoday",
+    "edaily",
+    "nate_pann",
+    "fmkorea",
+    "bobaedream",
+    "theqoo"
+  ],
+  "actual_unsupported_sources": [
+    "google_news_kr",
+    "yonhap",
+    "ap_world",
+    "bbc_world",
+    "dcinside",
+    "ppomppu",
+    "ruliweb",
+    "dogdrip",
+    "reuters_world",
+    "instiz"
+  ],
+  "historical_stale_artifact_paths": [
+    "storage/source_intake/2026-07-14/collection_gap_report.json",
+    "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+    "storage/source_intake/2026-07-14/lane_collection_summary.json",
+    "storage/source_intake/2026-07-14/daily_shallow_collection.json"
+  ],
+  "stale_vs_actual": {
+    "historical_not_implemented_count": 14,
+    "actual_not_callable_count": 10,
+    "actual_callable_count": 13,
+    "explanation": "2026-07-14 artifacts predate current collectors and the Daum/News1 direct-factory seam; they are not current runtime truth"
+  },
+  "decision_counts": {
+    "GO": 14,
+    "DEFER": 3,
+    "FIXTURE_ONLY": 4,
+    "BLOCKED": 2
+  },
+  "selected_next_source": "yonhap",
+  "implementation_decision": "GO",
+  "live_activation_decision": "NO_GO_PENDING_MANUAL_POLICY_CHECK",
+  "reason": "Yonhap is already configured and planned in the weakest news lane, has no authentication/UGC dependency in the approved metadata-only scope, and adds high-value wire-service cross-validation with a small reversible collector plus executor seam.",
+  "implementation_contract": {
+    "source_id": "yonhap",
+    "implementation_decision": "GO",
+    "live_activation_decision": "NO_GO_PENDING_MANUAL_POLICY_CHECK",
+    "objective": "add a low-cost second-source news-wire headline lane for cross-validation without collecting article bodies, images, comments, profiles, or credentials",
+    "allowed_surface": {
+      "configured_origin": "https://www.yna.co.kr/",
+      "scope": "public non-auth Yonhap headline/list metadata only",
+      "activation_gate": "pin the exact approved list endpoint and record robots/terms review before enabling live fetch"
+    },
+    "allowed_fields": [
+      "title",
+      "link",
+      "publisher",
+      "published_at",
+      "category",
+      "rank_position",
+      "source_id",
+      "source_name",
+      "source_type",
+      "tier",
+      "weight",
+      "base_score",
+      "trend_reason",
+      "collection_method",
+      "is_fallback",
+      "collected_at",
+      "service_diagnostic"
+    ],
+    "prohibited_fields": [
+      "article_body",
+      "image_binary",
+      "image_url_republication",
+      "comments",
+      "user_id",
+      "profile",
+      "cookie",
+      "credential",
+      "private_api_payload"
+    ],
+    "rank_semantics": "1-based DOM/list order from one verified public list surface; never infer views, likes, comments, or popularity",
+    "schema": "existing TrendSourceManager item schema and daily_shallow_collection_v1 source result contract",
+    "dedup": "canonical article URL first; normalized title second; deterministic first occurrence wins",
+    "timestamps": "preserve only visible published_at; collected_at is UTC ISO-8601; missing published time stays empty",
+    "attribution": "publisher='연합뉴스' and original canonical link retained on every live item",
+    "retry_cache_fallback": "reuse bounded RetryPolicy without increasing attempts; valid cache at storage/cache/yonhap_cache.json; live -> bounded retry -> valid cache -> empty list with diagnostic; no fabricated headline/settings keyword",
+    "diagnostics": [
+      "attempted",
+      "success",
+      "count",
+      "failed_reason",
+      "fallback_reason",
+      "final_error_type",
+      "collection_method",
+      "used_cache",
+      "cache_path",
+      "retry_enabled",
+      "retry_count",
+      "service_diagnostic"
+    ],
+    "executor_connection_point": {
+      "collector_file": "modules/trend_collector/yonhap_collector.py",
+      "executor_file": "modules/source_intake/daily_collection_executor.py",
+      "changes": [
+        "add yonhap to COLLECTOR_METHODS",
+        "add YonhapCollector direct factory",
+        "manager method remains optional; direct factory is the executable seam"
+      ]
+    },
+    "expected_files": [
+      "modules/trend_collector/yonhap_collector.py",
+      "tests/test_yonhap_collector.py",
+      "modules/source_intake/daily_collection_executor.py",
+      "tests/test_daily_source_collection_executor.py",
+      "external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_YONHAP_COLLECTOR.md"
+    ],
+    "verification_commands": [
+      "py -m unittest tests.test_yonhap_collector tests.test_daily_source_collection_executor -v",
+      "py -m compileall modules/trend_collector/yonhap_collector.py modules/source_intake/daily_collection_executor.py tests/test_yonhap_collector.py tests/test_daily_source_collection_executor.py"
+    ],
+    "production_guards": [
+      "zero live-network tests in the implementation lane",
+      "fixture must contain only synthetic or rights-safe minimal HTML",
+      "no browser, login, cookies, proxy, captcha bypass, comments, or user data",
+      "do not edit WorkflowEngine/config/storage/shared docs/Git",
+      "NO_GO for live activation until manual robots/terms evidence is recorded"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "naver_news",
+      "configured": true,
+      "source_type": "news",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy",
+        "entertainment_news",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "manager",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/naver_news_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 92,
+        "technical_feasibility": 90,
+        "safety": 75
+      },
+      "decision": "GO",
+      "reason": "retain callable collector; preserve cache/fallback",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "daum_news",
+      "configured": true,
+      "source_type": "news",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy",
+        "entertainment_news",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/daum_news_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 94,
+        "technical_feasibility": 88,
+        "safety": 78
+      },
+      "decision": "GO",
+      "reason": "retain callable direct factory and monitor selectors",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "nate_news_rank",
+      "configured": true,
+      "source_type": "news",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy",
+        "entertainment_news"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/nate_news_rank_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 88,
+        "technical_feasibility": 90,
+        "safety": 76
+      },
+      "decision": "GO",
+      "reason": "retain rank-only shallow collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "google_news_kr",
+      "configured": true,
+      "source_type": "news",
+      "in_daily_plan": false,
+      "lane_coverage": [],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 65,
+        "technical_feasibility": 72,
+        "safety": 68
+      },
+      "decision": "DEFER",
+      "reason": "not in daily plan; defer until weak-lane need exceeds duplicate aggregation risk",
+      "next_action": "leave out of current sprint"
+    },
+    {
+      "source_id": "yonhap",
+      "configured": true,
+      "source_type": "news_wire",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy"
+      ],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 96,
+        "technical_feasibility": 82,
+        "safety": 74
+      },
+      "decision": "GO",
+      "reason": "selected next implementation; fixture/code GO, live activation gated",
+      "next_action": "implement fixture-driven collector and executor seam; keep live activation disabled until manual robots/terms check"
+    },
+    {
+      "source_id": "newsis",
+      "configured": true,
+      "source_type": "news_wire",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/newsis_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 92,
+        "technical_feasibility": 86,
+        "safety": 76
+      },
+      "decision": "GO",
+      "reason": "retain callable server-rendered collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "news1",
+      "configured": true,
+      "source_type": "news_wire",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/news1_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 92,
+        "technical_feasibility": 84,
+        "safety": 75
+      },
+      "decision": "GO",
+      "reason": "retain callable NEXT_DATA/HTML collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "hankyung_economy",
+      "configured": true,
+      "source_type": "news_economy",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/hankyung_economy_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 82,
+        "technical_feasibility": 82,
+        "safety": 72
+      },
+      "decision": "GO",
+      "reason": "retain callable economy collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "mk_economy",
+      "configured": true,
+      "source_type": "news_economy",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/mk_pick_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 78,
+        "technical_feasibility": 84,
+        "safety": 72
+      },
+      "decision": "GO",
+      "reason": "retain only approved MK Pick surface; do not generalize to all MK",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "moneytoday",
+      "configured": true,
+      "source_type": "news_economy",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "manager",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/moneytoday_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 80,
+        "technical_feasibility": 85,
+        "safety": 73
+      },
+      "decision": "GO",
+      "reason": "retain manager-integrated collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "edaily",
+      "configured": true,
+      "source_type": "news_economy",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "news_society_economy"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/edaily_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 80,
+        "technical_feasibility": 84,
+        "safety": 72
+      },
+      "decision": "GO",
+      "reason": "retain callable economy collector",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "ap_world",
+      "configured": true,
+      "source_type": "news_world",
+      "in_daily_plan": false,
+      "lane_coverage": [],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 52,
+        "technical_feasibility": 66,
+        "safety": 64
+      },
+      "decision": "DEFER",
+      "reason": "not in daily plan; translation/copyright cost exceeds current CardNews ROI",
+      "next_action": "leave out of current sprint"
+    },
+    {
+      "source_id": "bbc_world",
+      "configured": true,
+      "source_type": "news_world",
+      "in_daily_plan": false,
+      "lane_coverage": [],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 54,
+        "technical_feasibility": 66,
+        "safety": 64
+      },
+      "decision": "DEFER",
+      "reason": "not in daily plan; translation/copyright cost exceeds current CardNews ROI",
+      "next_action": "leave out of current sprint"
+    },
+    {
+      "source_id": "nate_pann",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community",
+        "beauty_fashion",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "manager",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/nate_pann_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 78,
+        "technical_feasibility": 86,
+        "safety": 58
+      },
+      "decision": "GO",
+      "reason": "retain list-metadata collector; second-source required for claims",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "fmkorea",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community",
+        "beauty_fashion"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "manager",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/fmkorea_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 76,
+        "technical_feasibility": 84,
+        "safety": 55
+      },
+      "decision": "GO",
+      "reason": "retain shallow collector; summary/metrics gaps remain quality risks",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "bobaedream",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "manager",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/bobaedream_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 74,
+        "technical_feasibility": 84,
+        "safety": 54
+      },
+      "decision": "GO",
+      "reason": "retain shallow collector; summary evidence required before topic use",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "dcinside",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "entertainment_news",
+        "dopamine_community"
+      ],
+      "collector_state": "parser_only",
+      "callable_executor_state": "not_callable",
+      "executor_path": "parser_only",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/dcinside_parser.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 70,
+        "technical_feasibility": 62,
+        "safety": 38
+      },
+      "decision": "FIXTURE_ONLY",
+      "reason": "parser is not a production collector; UGC/privacy/terms gate unresolved",
+      "next_action": "allow offline fixture/parser study only; no live collector"
+    },
+    {
+      "source_id": "theqoo",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "entertainment_news",
+        "dopamine_community",
+        "beauty_fashion"
+      ],
+      "collector_state": "implemented",
+      "callable_executor_state": "callable",
+      "executor_path": "direct_factory",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical NOT_IMPLEMENTED claim is superseded by current collector/direct-factory truth"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/trend_collector/theqoo_collector.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 76,
+        "technical_feasibility": 78,
+        "safety": 50
+      },
+      "decision": "GO",
+      "reason": "retain callable shallow collector; no user/comment capture",
+      "next_action": "retain and monitor with deterministic fixtures"
+    },
+    {
+      "source_id": "ppomppu",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "entertainment_news"
+      ],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 62,
+        "technical_feasibility": 60,
+        "safety": 40
+      },
+      "decision": "FIXTURE_ONLY",
+      "reason": "UGC and commerce/community attribution risks require fixture-only evaluation",
+      "next_action": "allow offline fixture/parser study only; no live collector"
+    },
+    {
+      "source_id": "ruliweb",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community"
+      ],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 58,
+        "technical_feasibility": 60,
+        "safety": 40
+      },
+      "decision": "FIXTURE_ONLY",
+      "reason": "UGC/privacy/terms gate unresolved",
+      "next_action": "allow offline fixture/parser study only; no live collector"
+    },
+    {
+      "source_id": "dogdrip",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community"
+      ],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "ok",
+        "repository_collector_allowed": true,
+        "external_permission_proven": false,
+        "note": "access_status/HTTP success is not external permission; keep scope metadata-only"
+      },
+      "risks": {
+        "credential": "none_expected",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "manual_live_activation_check_required",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 58,
+        "technical_feasibility": 60,
+        "safety": 38
+      },
+      "decision": "FIXTURE_ONLY",
+      "reason": "UGC/privacy/terms gate unresolved",
+      "next_action": "allow offline fixture/parser study only; no live collector"
+    },
+    {
+      "source_id": "reuters_world",
+      "configured": true,
+      "source_type": "news_world",
+      "in_daily_plan": false,
+      "lane_coverage": [],
+      "collector_state": "not_implemented",
+      "callable_executor_state": "not_callable",
+      "executor_path": "none",
+      "implementation_scope": "public_list_or_rank_metadata_only",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "blocked",
+        "repository_collector_allowed": false,
+        "external_permission_proven": false,
+        "note": "repository records an explicit HTTP access block"
+      },
+      "risks": {
+        "credential": "blocked_or_unknown",
+        "pii": "low_for_headline_metadata",
+        "robots_terms": "blocked",
+        "copyright": "medium; headline/link/attribution only"
+      },
+      "scores": {
+        "cardnews_roi": 50,
+        "technical_feasibility": 20,
+        "safety": 20
+      },
+      "decision": "BLOCKED",
+      "reason": "configured HTTP 401 block; collector_allowed=false",
+      "next_action": "do not implement or bypass access controls"
+    },
+    {
+      "source_id": "instiz",
+      "configured": true,
+      "source_type": "community",
+      "in_daily_plan": true,
+      "lane_coverage": [
+        "dopamine_community",
+        "lifestyle_knowledge"
+      ],
+      "collector_state": "diagnostic_only",
+      "callable_executor_state": "not_callable",
+      "executor_path": "diagnostic_only",
+      "implementation_scope": "public_list_metadata_only_no_user_or_comment_capture",
+      "artifact_staleness": {
+        "stale": true,
+        "artifact_date": "2026-07-14",
+        "reason": "historical artifact is evidence only; repository runtime truth controls"
+      },
+      "evidence_paths": [
+        "config/source_intake_sources.json",
+        "modules/source_intake/daily_collection_plan.py",
+        "modules/source_intake/daily_collection_executor.py",
+        "storage/source_intake/2026-07-14/collection_gap_report.json",
+        "storage/source_intake/2026-07-14/source_intake_status_bundle.json",
+        "modules/source_intake/instiz_diagnostic_contract.py"
+      ],
+      "policy_and_access_evidence": {
+        "repository_access_status": "blocked",
+        "repository_collector_allowed": false,
+        "external_permission_proven": false,
+        "note": "repository records an explicit HTTP access block"
+      },
+      "risks": {
+        "credential": "blocked_or_unknown",
+        "pii": "high_if_user_content_collected; prohibited by scope",
+        "robots_terms": "blocked",
+        "copyright": "high_for_body/images; metadata/link only"
+      },
+      "scores": {
+        "cardnews_roi": 55,
+        "technical_feasibility": 15,
+        "safety": 15
+      },
+      "decision": "BLOCKED",
+      "reason": "configured HTTP 403 block; diagnostic is not a collector",
+      "next_action": "do not implement or bypass access controls"
+    }
+  ]
+}
+

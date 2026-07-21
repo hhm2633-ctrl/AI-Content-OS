@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-d53931f070a6",
+  "candidate_id": "20260717-2003-B-d53931f070a6",
+  "grade": "1",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "주진우가 나올때마다 궁금한거 하나.jpg",
+  "source_urls": [
+    "https://www.bobaedream.co.kr/view?code=best&No=1011023&vdate="
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

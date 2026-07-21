@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-4c3058775bd3",
+  "candidate_id": "20260717-2003-A-4c3058775bd3",
+  "grade": "1",
+  "account": "A",
+  "category": "생활·스포츠",
+  "title": "여자배구 정관장 \"코치 부적절한 행위 죄송…필요한 후속 조치 이행\"",
+  "source_urls": [
+    "https://www.mt.co.kr/sports/2026/07/17/2026071719511120895"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

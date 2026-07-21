@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-3f823ec8a5ea",
+  "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+  "grade": "1",
+  "account": "B",
+  "category": "연애·관계",
+  "title": "친구가 소개팅을 시켜줬는데..",
+  "source_urls": [
+    "https://pann.nate.com/talk/375521355"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

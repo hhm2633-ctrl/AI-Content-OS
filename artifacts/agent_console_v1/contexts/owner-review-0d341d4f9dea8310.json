@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-640584bd3cec",
+  "candidate_id": "20260717-2003-A-640584bd3cec",
+  "grade": "1",
+  "account": "A",
+  "category": "국내외 뉴스",
+  "title": "美, 이란 민간시설로 공습확대… 이란, 걸프전역 미군자산에 맞불",
+  "source_urls": [
+    "https://www.yna.co.kr/view/AKR20260717043600009?section=international/all"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-A-4a4409ce4870",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-A-4a4409ce4870",
+    "account": "A",
+    "category": "사회·사건",
+    "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일"
+  },
+  "evidence": {
+    "sources": [
+      {
+        "url": "https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER",
+        "publisher": "JTBC",
+        "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+        "published_at": "2026-07-17T20:12:00+09:00",
+        "source_status": "search_body_confirmed_origin_page_blocked",
+        "usage_note": "대관령4터널 4중 추돌, SUV 화재, 강릉 방향 한때 통제 확인"
+      },
+      {
+        "url": "https://www.newsis.com/view/NISX20260717_0003713274",
+        "publisher": "뉴시스",
+        "title": "강원 대관령터널 4중 추돌→화재…대피 16명중 1명 부상",
+        "published_at": "2026-07-17T13:51:18+09:00",
+        "source_status": "body_read",
+        "usage_note": "소방 인력·장비와 진화 상황 보조 확인"
+      }
+    ]
+  },
+  "story": {
+    "summary": "연휴 첫날 터널 끝 지점에서 차량들이 속도를 줄인 순간 4중 추돌이 발생하고, 한 차량의 불꽃이 커져 소방대원들이 걸어서 진입할 만큼 현장이 악화된 흐름을 따라간다. 미확보 방송 영상에 의존하지 않고 기사에서 확인된 순서를 자체 도식으로 재구성한다."
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "hook",
+      "headline": "터널 끝에서 차들이 속도를 줄인 순간\n4중 추돌이 났다",
+      "body": "제헌절 연휴 첫날 대관령4터널 강릉 방향에서 벌어진 사고입니다."
+    },
+    {
+      "page": 2,
+      "role": "collision_sequence",
+      "headline": "앞차가 줄이자\n뒤에서 연쇄 추돌",
+      "body": "JTBC 보도에 따르면 승합차가 앞차를 들이받은 뒤 SUV와 승용차까지 부딪혔습니다."
+    },
+    {
+      "page": 3,
+      "role": "access_blocked",
+      "headline": "검은 연기에 소방차 진입도\n바로 되지 않았다",
+      "body": "대원들은 터널 안으로 직접 걸어 들어가 진화 작업을 벌였습니다."
+    },
+    {
+      "page": 4,
+      "role": "response_scale",
+      "headline": "장비 18대·인력 54명\n대응 2단계까지",
+      "body": "소방당국은 대응 단계를 높여 진화와 사고 수습에 나섰습니다."
+    },
+    {
+      "page": 5,
+      "role": "aftermath",
+      "headline": "강릉 가는 길은\n한때 전면 통제",
+      "body": "화재 진압과 사고 수습 동안 대관령IC에서 국도로 우회하도록 안내됐습니다."
+    }
+  ],
+  "feed_caption": "제헌절 연휴 첫날, 영동고속도로 강릉 방향 대관령4터널에서 차량 네 대가 잇따라 부딪혔습니다. JTBC 보도에 따르면 터널 끝 지점에서 앞차들이 속도를 줄이는 과정에서 연쇄 추돌이 났고, 잠시 뒤 SUV 앞부분에서 불꽃이 일며 터널 안이 검은 연기로 가득 찼습니다. 소방차 진입이 어려워 대원들이 터널 안으로 직접 들어갔고, 소방당국은 장비 18대와 인력 54명을 투입했습니다. 사고 수습 동안 강릉 방향 통행은 한때 전면 통제됐습니다.\n\n참고: JTBC 뉴스, 뉴시스",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "hook",
+      "media_type": "editorial",
+      "source_credit": [
+        "JTBC 보도 참고·터널 끝 급감속 지점과 차량 흐름 자체 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 2,
+      "slide_role": "collision_sequence",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "JTBC 보도 순서 참고·차량 4대 연쇄 추돌 도식"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 3,
+      "slide_role": "access_blocked",
+      "media_type": "motion_graphic",
+      "source_credit": [
+        "JTBC·뉴시스 보도 참고·터널 연기층과 소방대원 도보 진입 단면 그래픽"
+      ],
+      "asset_status": "planned_not_rendered"
+    },
+    {
+      "page": 4,
+      "slide_role": "response_scale",
+      "media_type": "editorial",
+      "source_credit": [
+        "뉴시스 보도 참고·장비 18대/인력 54명 숫자 그래픽"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    },
+    {
+      "page": 5,
+      "slide_role": "aftermath",
+      "media_type": "editorial",
+      "source_credit": [
+        "JTBC 보도 참고·대관령IC 우회 자체 지도"
+      ],
+      "asset_status": "ready_for_editorial_production"
+    }
+  ],
+  "commerce": null,
+  "quality_notes": {},
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-A-4a4409ce4870",
+    "account": "A",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-A-4a4409ce4870",
+      "account": "A",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-A-4a4409ce4870",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

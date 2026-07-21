@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-145cd25e7107",
+  "candidate_id": "20260717-2003-C-145cd25e7107",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·헤어",
+  "title": "비 올 때 시든 상추처럼 축 처진 앞머리, 요즘은 이렇게 복구합니다",
+  "source_urls": [
+    "https://www.allurekorea.com/2026/07/15/%eb%b9%84-%ec%98%ac-%eb%95%8c-%ec%8b%9c%eb%93%a0-%ec%83%81%ec%b6%94%ec%b2%98%eb%9f%bc-%ec%b6%95-%ec%b2%98%ec%a7%84-%ec%95%9e%eb%a8%b8%eb%a6%ac-%ec%9a%94%ec%a6%98%ec%9d%80-%ec%9d%b4%eb%a0%87%ea%b2%8c/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

@@ -1,0 +1,21 @@
+{
+  "output_set_id": "visual-qa-sample-20260720",
+  "records": [
+    {
+      "outputs": [
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_01.png",
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_02.png",
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_03.png",
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_04.png",
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_05.png",
+        "artifacts/cardnews_category_review_2026-07-17_v3/account_a_gibraltar/slide_06.png"
+      ],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-A-1257fdf5c746.json",
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "account": "A",
+      "real_comment_count": 0
+    }
+  ],
+  "authorization_id": "visual-qa-sample-20260720",
+  "schema_version": "cardnews_visual_qa_manifest_v1"
+}

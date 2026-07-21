@@ -1,0 +1,144 @@
+{
+  "schema_version": "cardnews_production_package_index_v1",
+  "generated_at": "2026-07-19T08:47:18.316346+09:00",
+  "status": "ready",
+  "package_count": 12,
+  "ready_count": 12,
+  "blocked_count": 0,
+  "packages": [
+    {
+      "package_id": "cardnews-package:20260717-2003-A-1257fdf5c746",
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "account": "A",
+      "category": "경제·생활",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-A-1257fdf5c746.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-A-54b45bfb6a07",
+      "candidate_id": "20260717-2003-A-54b45bfb6a07",
+      "account": "A",
+      "category": "사회·사건",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-A-54b45bfb6a07.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-A-23652dc036e9",
+      "candidate_id": "20260717-2003-A-23652dc036e9",
+      "account": "A",
+      "category": "사회·사건",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-A-23652dc036e9.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-A-4a4409ce4870",
+      "candidate_id": "20260717-2003-A-4a4409ce4870",
+      "account": "A",
+      "category": "사회·사건",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-A-4a4409ce4870.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-B-09d90bf39746",
+      "candidate_id": "20260717-2003-B-09d90bf39746",
+      "account": "B",
+      "category": "연예·도파민",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-B-09d90bf39746.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-B-1306f34dbbf1",
+      "candidate_id": "20260717-2003-B-1306f34dbbf1",
+      "account": "B",
+      "category": "연예·도파민",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-B-1306f34dbbf1.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-B-3f823ec8a5ea",
+      "candidate_id": "20260717-2003-B-3f823ec8a5ea",
+      "account": "B",
+      "category": "연애·관계",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-B-3f823ec8a5ea.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-B-19e90e52b9f1",
+      "candidate_id": "20260717-2003-B-19e90e52b9f1",
+      "account": "B",
+      "category": "연예·도파민",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-B-19e90e52b9f1.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-C-52419867f5a5",
+      "candidate_id": "20260717-2003-C-52419867f5a5",
+      "account": "C",
+      "category": "패션",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-C-52419867f5a5.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-C-145cd25e7107",
+      "candidate_id": "20260717-2003-C-145cd25e7107",
+      "account": "C",
+      "category": "뷰티·헤어",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-C-145cd25e7107.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-C-6c2dc4c716b5",
+      "candidate_id": "20260717-2003-C-6c2dc4c716b5",
+      "account": "C",
+      "category": "패션·신발관리",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-C-6c2dc4c716b5.json"
+    },
+    {
+      "package_id": "cardnews-package:20260717-2003-C-04a43f508b99",
+      "candidate_id": "20260717-2003-C-04a43f508b99",
+      "account": "C",
+      "category": "뷰티",
+      "status": "production_package_ready",
+      "missing_requirements": [],
+      "package_path": "artifacts/cardnews_production_packages/20260717-2003-C-04a43f508b99.json"
+    }
+  ],
+  "approval_scope": "production_package",
+  "render_executed": false,
+  "publish_executed": false,
+  "link_issuance_executed": false,
+  "quality_loop": {
+    "schema_version": "cardnews_package_quality_loop_v1",
+    "max_cycles": 10,
+    "cycles_executed": 2,
+    "editorial_cycles_executed": 6,
+    "receipts": [
+      {
+        "cycle": 1,
+        "checked_count": 12,
+        "passed_count": 12,
+        "failed_count": 0,
+        "failures": []
+      },
+      {
+        "cycle": 2,
+        "checked_count": 12,
+        "passed_count": 12,
+        "failed_count": 0,
+        "failures": []
+      }
+    ]
+  }
+}

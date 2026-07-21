@@ -1,0 +1,257 @@
+{
+  "schema_version": "selected_candidate_production_package_v1",
+  "package_id": "cardnews-package:20260717-2003-C-52419867f5a5",
+  "status": "production_package_ready",
+  "reason_code": "quality_loop_candidate",
+  "candidate": {
+    "candidate_id": "20260717-2003-C-52419867f5a5",
+    "account": "C",
+    "category": "패션",
+    "title": "폭염이 넓힌 냉감 상의… 여성 반팔부터 남성 긴팔 반집업까지"
+  },
+  "evidence": {
+    "sources": [
+      "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+      "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+      "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673"
+    ],
+    "source_details": [
+      {
+        "url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+        "publisher": "시장경제",
+        "published_at": "2026-07-17T11:58:00+09:00",
+        "source_type": "selected_article",
+        "claims_used": [
+          "폭염 대응이 여름 패션 경쟁의 핵심으로 부상",
+          "냉감·흡습속건 등 기능성이 티셔츠·데님·골프웨어·여성복으로 확장",
+          "여성복에서는 반팔 재킷·셔켓·경량 소재의 라이트 포멀 흐름이 등장"
+        ]
+      },
+      {
+        "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+        "publisher": "네이버 브랜드커넥트 상품 데이터",
+        "source_type": "selected_catalog_product",
+        "claims_used": [
+          "아이더 남성 여름 긴팔 아이스 냉감 기능성 반집업 티셔츠 MM25202"
+        ]
+      },
+      {
+        "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673",
+        "publisher": "네이버 브랜드커넥트 상품 데이터",
+        "source_type": "selected_catalog_product",
+        "claims_used": [
+          "아이더 여성 반팔 여름 기능성 냉감 아이스 라운드 티셔츠 WM25225"
+        ]
+      }
+    ],
+    "evidence_status": "sufficient"
+  },
+  "story": {
+    "summary": "7월 17일 폭염 대응 패션 기사를 첫 장에 바로 제시하고, 냉감 상의가 여성 반팔과 남성 긴팔 반집업처럼 성별과 형태별로 넓어진 두 사례를 보여준다.",
+    "angle": "폭염 대응 패션 경쟁에서 냉감·흡습속건 기능과 성별·형태별 제품 확장을 차례로 보여주는 편집형 커머스",
+    "narrative": "7월 17일 기사에서 폭염 대응 경쟁을 짚은 장면으로 시작한다. 냉감 기능이 한 가지 공용 티셔츠에 머물지 않고 여성 반팔과 남성 긴팔 반집업처럼 성별과 소매·넥 형태를 달리한 제품군으로 넓어진 흐름을 두 사례로 보여준다.",
+    "arc": [
+      "폭염 대응 여름 패션 경쟁",
+      "냉감·흡습속건 기능 확장",
+      "성별과 소매·넥 형태별 제품 확장",
+      "여성 반팔 사례 공개",
+      "남성 긴팔 반집업 사례 공개"
+    ],
+    "commerce_mode": "natural_after_editorial_context"
+  },
+  "slide_count": 5,
+  "slides": [
+    {
+      "page": 1,
+      "role": "cover_issue",
+      "headline": "폭염이 바꾼 여름 상의",
+      "body": "7월 17일 기사에는 폭염 대응 패션 경쟁이 담겼다."
+    },
+    {
+      "page": 2,
+      "role": "trend_context",
+      "headline": "냉감에 흡습속건까지",
+      "body": "여름 상의의 기능 경쟁이 냉감과 흡습속건으로 넓어졌다."
+    },
+    {
+      "page": 3,
+      "role": "product_range_context",
+      "headline": "형태도 한 가지가 아니다",
+      "body": "여성 반팔과 남성 긴팔 반집업처럼 성별과 형태별 사례가 등장했다."
+    },
+    {
+      "page": 4,
+      "role": "product_reveal",
+      "headline": "여성 냉감 상의는 반팔까지",
+      "body": "여성용 라운드 반팔처럼 가볍게 입는 형태로 제품군이 넓어졌다."
+    },
+    {
+      "page": 5,
+      "role": "choice_guide",
+      "headline": "남성 냉감 상의는 반집업까지",
+      "body": "남성용 긴팔 반집업처럼 소매와 넥 형태를 달리한 사례도 있다."
+    }
+  ],
+  "feed_caption": "7월 17일 패션 기사에는 폭염 대응 경쟁과 함께 냉감·흡습속건 기능이 여름옷 전반으로 확장된 흐름이 담겼습니다. 이번 카드에는 여성용 라운드 반팔과 남성용 긴팔 반집업을 서로 대체하는 선택지가 아니라, 냉감 상의가 성별과 형태별로 다양해진 두 가지 사례로 담았습니다. 참고: 시장경제 2026년 7월 17일 기사, 네이버 브랜드커넥트 상품 정보.",
+  "media_plan": [
+    {
+      "page": 1,
+      "slide_role": "cover_issue",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+      "source_credit": [
+        "시장경제 2026년 7월 17일 기사 제목을 바탕으로 한 자체 편집 그래픽"
+      ],
+      "rights_note": "기사에 나온 폭염 대응 패션 경쟁만 시각화하고 상품은 노출하지 않음",
+      "production_direction": "폭염을 상징하는 열기 그래픽과 여름 상의 실루엣을 구성하고, 날짜·기사 근거는 하단에 작게 표시"
+    },
+    {
+      "page": 2,
+      "slide_role": "trend_context",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+      "source_credit": [
+        "시장경제 기사 내용을 바탕으로 한 자체 기능성 소재 그래픽"
+      ],
+      "rights_note": "미확보 기사 사진을 사용하지 않고 기사에 나온 냉감·흡습속건 기능 확장만 도식화",
+      "production_direction": "냉감과 흡습속건 키워드를 소재 조직·물방울 아이콘과 함께 간결하게 보여줌"
+    },
+    {
+      "page": 3,
+      "slide_role": "product_range_context",
+      "media_type": "editorial",
+      "asset_status": "original_editorial_graphic",
+      "asset_source_url": "https://www.meconomynews.com/news/articleView.html?idxno=132893",
+      "source_credit": [
+        "시장경제 기사와 상품명 정보를 바탕으로 한 자체 제품군 확장 그래픽"
+      ],
+      "rights_note": "미확보 브랜드 사진 대신 여성 반팔·남성 긴팔 반집업의 형태 차이만 시각화",
+      "production_direction": "여성 반팔과 남성 긴팔 반집업의 실루엣을 나란히 두고 성별·소매·넥 형태를 구분"
+    },
+    {
+      "page": 4,
+      "slide_role": "product_reveal",
+      "media_type": "video",
+      "asset_status": "product_source",
+      "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673",
+      "asset_source_urls": [
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/945088891696673"
+      ],
+      "source_credit": [
+        "네이버 브랜드커넥트 / 아이더 여성 냉감 반팔 상품 상세 이미지"
+      ],
+      "rights_note": "여성 반팔 상품의 실제 상세 이미지만 사용하며 착용 효과는 새로 주장하지 않음",
+      "production_direction": "여성 냉감 반팔의 정면·디테일 이미지만 묶고 성별·제품명을 명확히 표시"
+    },
+    {
+      "page": 5,
+      "slide_role": "choice_guide",
+      "media_type": "editorial",
+      "asset_status": "product_source",
+      "asset_source_url": "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657",
+      "asset_source_urls": [
+        "https://brandconnect.naver.com/972943136654048/affiliate/products/936537841850657"
+      ],
+      "source_credit": [
+        "네이버 브랜드커넥트 / 아이더 남성 냉감 긴팔 반집업 상품 이미지"
+      ],
+      "rights_note": "남성 긴팔 반집업 상품명에서 확인되는 소매와 넥 형태만 설명",
+      "production_direction": "남성 냉감 긴팔 반집업의 정면·디테일 이미지만 묶고 독립 사례로 표시"
+    }
+  ],
+  "commerce": {
+    "status": "natural_match",
+    "placement": "slides_4_to_5_only",
+    "link_issuance": false,
+    "products": [
+      {
+        "product_id": "945088891696673",
+        "name": "아이더 여성 반팔 여름 기능성 냉감 아이스 라운드 티셔츠 WM25225"
+      },
+      {
+        "product_id": "936537841850657",
+        "name": "아이더 남성 여름 긴팔 아이스 냉감 기능성 반집업 티셔츠 MM25202"
+      }
+    ],
+    "fit_reason": "원문이 폭염과 냉감 기능성 의류의 확장을 직접 다루며, 두 상품은 여성 반팔과 남성 긴팔 반집업으로 성별·소매·넥 형태가 넓어진 사례를 보여준다."
+  },
+  "quality_notes": {
+    "first_frame": "상품을 숨기고 폭염 이슈를 먼저 제시",
+    "copy_density": "장당 짧은 문장 1개",
+    "false_association_guard": "기사와 무관한 셀럽 이미지 사용 금지"
+  },
+  "gates": {
+    "package_approval": {
+      "status": "approved",
+      "approved": true,
+      "scope": "production_package",
+      "approved_by": "owner_delegate"
+    },
+    "render": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_render_approval_required"
+    },
+    "publish": {
+      "status": "blocked",
+      "authorized": false,
+      "reason_code": "separate_publish_approval_required"
+    }
+  },
+  "receipts": {
+    "package_only": true,
+    "render_executed": false,
+    "publish_executed": false,
+    "link_issuance_executed": false
+  },
+  "quality_receipt": {
+    "schema_version": "cardnews_package_content_quality_gate_v1",
+    "status": "passed",
+    "quality_passed": true,
+    "candidate_id": "20260717-2003-C-52419867f5a5",
+    "account": "C",
+    "completion_receipt": {
+      "schema_version": "agent_console_package_completion_gate_v1",
+      "status": "complete",
+      "reason_code": "package_completion_requirements_met",
+      "package_complete": true,
+      "candidate_id": "20260717-2003-C-52419867f5a5",
+      "account": "C",
+      "missing_fields": [],
+      "missing_field_receipts": [],
+      "checks": {
+        "candidate_account_identity": true,
+        "source_backed_story": true,
+        "variable_slide_copy": true,
+        "separate_feed_caption": true,
+        "per_slide_media_plan": true
+      },
+      "execution": {
+        "commands_executed": false,
+        "files_written": false,
+        "render_executed": false,
+        "publish_executed": false,
+        "link_issuance_executed": false,
+        "external_calls_executed": false
+      }
+    },
+    "failure_count": 0,
+    "failures": [],
+    "performance_claimed": false,
+    "subjective_perfection_claimed": false,
+    "execution": {
+      "render": false,
+      "publish": false,
+      "link_issuance": false,
+      "external_calls": false
+    },
+    "independent_review": {
+      "candidate_id": "20260717-2003-C-52419867f5a5",
+      "decision": "pass",
+      "issues": [],
+      "minimal_fix": null
+    }
+  }
+}

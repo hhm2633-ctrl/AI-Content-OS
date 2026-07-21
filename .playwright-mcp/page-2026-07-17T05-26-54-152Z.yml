@@ -1,0 +1,1277 @@
+- generic [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - link [ref=f4e4] [cursor=pointer]:
+        - /url: /
+        - img "Higgsfield" [ref=f4e5]
+      - navigation "Main" [ref=f4e9]:
+        - list [ref=f4e12]:
+          - listitem [ref=f4e13]:
+            - link "Explore" [ref=f4e14] [cursor=pointer]:
+              - /url: /
+          - separator [ref=f4e15]
+          - listitem [ref=f4e16]:
+            - link "Image" [ref=f4e17] [cursor=pointer]:
+              - /url: /ai/image?model=nano-banana-pro
+          - listitem [ref=f4e18]:
+            - link "Video" [ref=f4e19] [cursor=pointer]:
+              - /url: /ai/video
+          - listitem [ref=f4e20]:
+            - link "Audio" [ref=f4e21] [cursor=pointer]:
+              - /url: /audio
+          - listitem [ref=f4e22]:
+            - link "Cinema Studio" [ref=f4e23] [cursor=pointer]:
+              - /url: /generate
+          - separator [ref=f4e24]
+          - listitem [ref=f4e25]:
+            - link "MCP & CLI New" [ref=f4e26] [cursor=pointer]:
+              - /url: /mcp
+              - text: MCP & CLI
+              - generic [ref=f4e27]: New
+          - listitem [ref=f4e28]:
+            - link "Academy New" [ref=f4e29] [cursor=pointer]:
+              - /url: /academy
+              - text: Academy
+              - generic [ref=f4e30]: New
+          - listitem [ref=f4e31]:
+            - link "Supercomputer" [ref=f4e32] [cursor=pointer]:
+              - /url: /supercomputer
+          - listitem [ref=f4e40]:
+            - link "Plugins New" [ref=f4e41] [cursor=pointer]:
+              - /url: /plugins/after-effects
+              - text: Plugins
+              - generic [ref=f4e42]: New
+          - listitem [ref=f4e43]:
+            - link "Marketing Studio" [ref=f4e44] [cursor=pointer]:
+              - /url: /marketing-studio/product
+          - listitem [ref=f4e45]:
+            - link "Canvas" [ref=f4e46] [cursor=pointer]:
+              - /url: /canvas
+          - listitem [ref=f4e47]:
+            - link "Originals" [ref=f4e48] [cursor=pointer]:
+              - /url: /original-series
+          - listitem [ref=f4e49]:
+            - link "Shorts Studio" [ref=f4e50] [cursor=pointer]:
+              - /url: /shorts-studio
+          - listitem [ref=f4e51]:
+            - link "Explainer" [ref=f4e52] [cursor=pointer]:
+              - /url: /explainer
+      - generic [ref=f4e53]:
+        - link "Pricing 30% OFF" [ref=f4e55] [cursor=pointer]:
+          - /url: /pricing
+          - text: Pricing
+          - generic: 30% OFF
+        - generic [ref=f4e59]:
+          - button "Login" [ref=f4e60] [cursor=pointer]
+          - button "Sign up" [ref=f4e61] [cursor=pointer]
+  - main [ref=f4e62]:
+    - generic [ref=f4e65]:
+      - button "Extra discount Nano Banana Pro, Nano Banana 2 & Kling 3.0 Unlimited. Sign up and get your additional discount Get Nano Banana 2 & Pro Unlimited on Ultra plan for 7 days with Special 30% discount Sign up and get your discount" [ref=f4e67] [cursor=pointer]:
+        - generic [ref=f4e69]:
+          - paragraph [ref=f4e70]:
+            - generic [ref=f4e71]: Extra discount
+          - generic [ref=f4e74]:
+            - heading "Nano Banana Pro, Nano Banana 2 & Kling 3.0 Unlimited. Sign up and get your additional discount" [level=2] [ref=f4e75]: Nano Banana Pro, Nano Banana 2 & Kling 3.0 Unlimited.Sign up and get your additional discount
+            - paragraph [ref=f4e76]: Get Nano Banana 2 & Pro Unlimited on Ultra plan for 7 days with Special 30% discount
+          - generic [ref=f4e77]: Sign up and get your discount
+      - generic [ref=f4e79]:
+        - generic [ref=f4e81]:
+          - generic [ref=f4e83]:
+            - heading "Upgrade your plan" [level=1] [ref=f4e84]
+            - paragraph [ref=f4e85]: Lock better prices with upgrade or scale your creativity maximizing your current plan
+          - generic [ref=f4e86]:
+            - generic [ref=f4e87]:
+              - tablist "Pricing audience" [ref=f4e88]:
+                - tab "Individual plans" [selected] [ref=f4e89] [cursor=pointer]
+                - tab "Business plans" [ref=f4e90] [cursor=pointer]
+              - generic [ref=f4e91]:
+                - button "Not sure which plan? New" [ref=f4e92] [cursor=pointer]:
+                  - generic [ref=f4e95]: Not sure which plan?
+                  - generic [ref=f4e96]: New
+                - switch "Toggle billing period" [active] [ref=f4e98] [cursor=pointer]:
+                  - generic [ref=f4e99]: Monthly
+                  - generic [ref=f4e102]:
+                    - generic [ref=f4e103]: Annual
+                    - generic [ref=f4e2202]: 30% OFF
+            - generic [ref=f4e108]:
+              - generic [ref=f4e111]:
+                - generic [ref=f4e112]:
+                  - generic [ref=f4e113]:
+                    - generic [ref=f4e114]: Starter
+                    - paragraph [ref=f4e116]: For first-time AI content creators
+                  - generic [ref=f4e117]:
+                    - generic [ref=f4e118]:
+                      - generic [ref=f4e122]:
+                        - generic [ref=f4e126]:
+                          - generic [ref=f4e127]: "2"
+                          - generic [ref=f4e129]: "7"
+                          - generic [ref=f4e131]: "0"
+                        - text: credits/mo.
+                      - generic [ref=f4e133]:
+                        - generic [ref=f4e134]: = 135 Nano Banana Pro Generations
+                        - generic [ref=f4e135]: ~ 15 Seedance 2.0 Fast videos
+                    - generic [ref=f4e136]: Fixed amount of 270 credits/mo
+                  - generic [ref=f4e141]:
+                    - generic [ref=f4e142]: $19
+                    - generic [ref=f4e143]: Billed monthly
+                - generic [ref=f4e144]:
+                  - button "Get Starter" [ref=f4e146] [cursor=pointer]
+                  - generic [ref=f4e149]:
+                    - 'button "Parallel generations: up to 2 Videos, 4 Images" [ref=f4e155]'
+                    - generic [ref=f4e156]: Access to Supercomputer
+                    - generic [ref=f4e161]: Access to Seedance 2.0 Fast & 2.0 Mini
+                    - button "Access to selected models & features" [ref=f4e2208]
+                    - generic [ref=f4e172]: Early access to advanced AI features
+                    - generic [ref=f4e177]: Access to unlimited marketplace
+                    - generic [ref=f4e182]: Lowest cost per credit
+                  - generic [ref=f4e187]:
+                    - generic [ref=f4e188]: SEEDANCE 2.0
+                    - generic [ref=f4e195]:
+                      - generic [ref=f4e196]:
+                        - generic [ref=f4e199]: Seedance 2.0
+                        - generic [ref=f4e200]: No access
+                      - generic [ref=f4e202]:
+                        - generic [ref=f4e205]: Seedance 2.0 Fast
+                        - generic [ref=f4e206]: Full access
+                  - generic [ref=f4e208]:
+                    - generic [ref=f4e209]:
+                      - generic [ref=f4e210]: UNLIMITED & FREE GENS
+                      - button "Learn more" [ref=f4e214]
+                    - generic [ref=f4e218]:
+                      - generic [ref=f4e219]:
+                        - generic [ref=f4e222]: Nano Banana 2
+                        - generic [ref=f4e223]: No unlimited
+                      - generic [ref=f4e225]:
+                        - generic [ref=f4e228]: Nano Banana Pro
+                        - generic [ref=f4e229]: No unlimited
+                      - button "3 unlimited & free generation models" [ref=f4e237] [cursor=pointer]
+              - generic [ref=f4e245]:
+                - generic [ref=f4e246]:
+                  - generic [ref=f4e247]:
+                    - generic [ref=f4e248]: Plus
+                    - paragraph [ref=f4e253]: For consistent and easy AI content creation
+                  - generic [ref=f4e254]:
+                    - generic [ref=f4e255]:
+                      - generic [ref=f4e259]:
+                        - generic [ref=f4e263]:
+                          - generic [ref=f4e264]: "1"
+                          - generic [ref=f4e266]: ","
+                          - generic [ref=f4e268]: "2"
+                          - generic [ref=f4e270]: "0"
+                          - generic [ref=f4e272]: "0"
+                        - text: credits/mo.
+                      - generic [ref=f4e274]:
+                        - generic [ref=f4e275]: = 600 Nano Banana Pro Generations
+                        - generic [ref=f4e276]: ~ 53 Seedance 2.0 videos
+                    - generic [ref=f4e277]: Fixed amount of 1,200 credits/mo
+                  - generic [ref=f4e282]:
+                    - generic [ref=f4e285]: $59
+                    - generic [ref=f4e286]: Billed monthly
+                - generic [ref=f4e287]:
+                  - button "Get Plus" [ref=f4e289] [cursor=pointer]
+                  - generic [ref=f4e292]:
+                    - 'button "Parallel generations: up to 6 Videos, 8 Images" [ref=f4e298]'
+                    - generic [ref=f4e299]: Access to Supercomputer
+                    - generic [ref=f4e304]: Access to all Seedance models
+                    - button "Access to all models & features" [ref=f4e314]
+                    - button "Early access to advanced AI features" [ref=f4e320]
+                    - generic [ref=f4e321]: Access to unlimited marketplace
+                    - generic [ref=f4e326]: Lowest cost per credit
+                  - generic [ref=f4e331]:
+                    - generic [ref=f4e332]: SEEDANCE 2.0
+                    - generic [ref=f4e339]:
+                      - generic [ref=f4e340]:
+                        - generic [ref=f4e343]: Seedance 2.0
+                        - generic [ref=f4e344]: Full access
+                      - generic [ref=f4e346]:
+                        - generic [ref=f4e349]: Seedance 2.0 Fast
+                        - generic [ref=f4e350]: Full access
+                  - generic [ref=f4e352]:
+                    - generic [ref=f4e353]:
+                      - generic [ref=f4e354]: UNLIMITED & FREE GENS
+                      - button "Learn more" [ref=f4e358]
+                    - generic [ref=f4e362]:
+                      - generic [ref=f4e363]:
+                        - generic [ref=f4e366]: Nano Banana Pro
+                        - generic [ref=f4e367]: No unlimited
+                      - generic [ref=f4e369]:
+                        - button "Nano Banana 2" [ref=f4e373]
+                        - generic [ref=f4e374]:
+                          - generic [ref=f4e375]: 2K
+                          - generic [ref=f4e376]: 7 days unlimited
+                      - button "7 unlimited & free generation models" [ref=f4e384] [cursor=pointer]
+              - generic [ref=f4e392]:
+                - generic [ref=f4e393]:
+                  - generic [ref=f4e394]:
+                    - generic [ref=f4e395]:
+                      - generic [ref=f4e396]: Ultra
+                      - generic [ref=f4e397]: Best value
+                    - paragraph [ref=f4e405]: For creators building AI projects
+                  - generic [ref=f4e406]:
+                    - generic [ref=f4e407]:
+                      - generic [ref=f4e411]:
+                        - generic [ref=f4e415]:
+                          - generic [ref=f4e416]: "3"
+                          - generic [ref=f4e418]: ","
+                          - generic [ref=f4e420]: "0"
+                          - generic [ref=f4e422]: "0"
+                          - generic [ref=f4e424]: "0"
+                        - text: credits/mo.
+                      - generic [ref=f4e426]:
+                        - generic [ref=f4e427]: = 1500 Nano Banana Pro Generations
+                        - generic [ref=f4e428]: ~ 133 Seedance 2.0 videos
+                    - generic [ref=f4e435]:
+                      - button "3,000" [ref=f4e436] [cursor=pointer]
+                      - button "6,000" [ref=f4e440] [cursor=pointer]
+                      - button "9,000" [ref=f4e444] [cursor=pointer]
+                  - generic [ref=f4e449]:
+                    - generic [ref=f4e452]: $129
+                    - generic [ref=f4e453]: Billed monthly
+                - generic [ref=f4e454]:
+                  - button "Get Ultra" [ref=f4e456] [cursor=pointer]
+                  - generic [ref=f4e459]:
+                    - 'button "Parallel generations: up to 8 Videos, 8 Images" [ref=f4e465]'
+                    - generic [ref=f4e466]: Access to Supercomputer
+                    - generic [ref=f4e471]: Access to all Seedance models
+                    - button "Access to all models & features" [ref=f4e481]
+                    - button "Early access to advanced AI features" [ref=f4e487]
+                    - generic [ref=f4e488]: Access to unlimited marketplace
+                    - generic [ref=f4e493]:
+                      - generic [ref=f4e494]: Lowest cost per credit
+                      - generic [ref=f4e498]: 50% cheaper
+                  - generic [ref=f4e499]:
+                    - generic [ref=f4e500]: SEEDANCE 2.0
+                    - generic [ref=f4e507]:
+                      - generic [ref=f4e508]:
+                        - generic [ref=f4e511]: Seedance 2.0
+                        - generic [ref=f4e513]: Full access
+                      - generic [ref=f4e515]:
+                        - generic [ref=f4e518]: Seedance 2.0 Fast
+                        - generic [ref=f4e520]: Full access
+                  - generic [ref=f4e522]:
+                    - generic [ref=f4e523]:
+                      - generic [ref=f4e524]: UNLIMITED & FREE GENS
+                      - button "Learn more" [ref=f4e528]
+                    - generic [ref=f4e532]:
+                      - generic [ref=f4e533]:
+                        - button "Nano Banana Pro" [ref=f4e537]
+                        - generic [ref=f4e538]:
+                          - generic [ref=f4e539]: 2K
+                          - generic [ref=f4e540]: 7 days unlimited
+                      - generic [ref=f4e541]:
+                        - button "Nano Banana 2" [ref=f4e545]
+                        - generic [ref=f4e546]:
+                          - generic [ref=f4e547]: 2K
+                          - generic [ref=f4e548]: 7 days unlimited
+                      - button "7 unlimited & free generation models" [ref=f4e556] [cursor=pointer]
+            - generic [ref=f4e562]: "Note: Unlimited models and Free Generations are accessible only via higgsfield.ai and are not accessible on MCP/CLI, Canvas or Supercomputer.Prices exclude VAT and local taxes, calculated at checkout. Unlimited usage may be subject to dynamic speed adjustments during high-traffic periods. Learn moreAccess to new models and advanced features may be done on a rolling basis and not available to all users at launch."
+        - generic [ref=f4e564]:
+          - generic [ref=f4e565]:
+            - heading "Find the best plan for you" [level=2] [ref=f4e566]
+            - paragraph [ref=f4e567]: Choose what you want to create and get what you need
+          - generic [ref=f4e568]:
+            - generic [ref=f4e569]:
+              - generic [ref=f4e570]:
+                - generic [ref=f4e571]: "1"
+                - generic [ref=f4e574]:
+                  - generic [ref=f4e576]:
+                    - heading "What are you here to make?" [level=3] [ref=f4e578]
+                    - paragraph [ref=f4e579]: Multiple options can be selected
+                  - generic [ref=f4e580]:
+                    - button "Social media videos" [pressed] [ref=f4e581] [cursor=pointer]
+                    - button "Talking-avatar videos" [ref=f4e588] [cursor=pointer]
+                    - button "UGC & product video ads" [ref=f4e596] [cursor=pointer]
+                    - button "Marketing product photos" [ref=f4e603] [cursor=pointer]
+                    - button "Cinematic videos" [ref=f4e611] [cursor=pointer]
+                    - button "Personal use" [ref=f4e618] [cursor=pointer]
+              - generic [ref=f4e625]:
+                - generic [ref=f4e626]: "2"
+                - generic [ref=f4e629]:
+                  - generic [ref=f4e631]:
+                    - generic [ref=f4e632]:
+                      - heading "How many content items per month?" [level=3] [ref=f4e633]
+                      - button "How many content items per month? info" [ref=f4e634] [cursor=pointer]
+                    - paragraph [ref=f4e638]:
+                      - generic [ref=f4e639]: ≈ 14 credits each · per Kling 3.0 generation, 8s, 720p
+                      - generic [ref=f4e640]: = 2 credits each · per Nano Banana Pro generation
+                  - generic [ref=f4e641]:
+                    - generic [ref=f4e644]:
+                      - slider "Videos per month" [ref=f4e648] [cursor=pointer]: "50"
+                      - paragraph [ref=f4e649]:
+                        - generic [ref=f4e650]: "# Kling 3.0 videos"
+                        - text: 700 credits
+                      - generic [ref=f4e651]: 200+
+                    - generic [ref=f4e657]:
+                      - slider "Photos per month" [ref=f4e661] [cursor=pointer]: "60"
+                      - paragraph [ref=f4e662]:
+                        - generic [ref=f4e663]: "# Nano Banana Pro images"
+                        - text: 120 credits
+                      - generic [ref=f4e664]: 500+
+              - generic [ref=f4e667]:
+                - generic [ref=f4e668]: "3"
+                - generic [ref=f4e671]:
+                  - generic [ref=f4e672]:
+                    - generic [ref=f4e673]:
+                      - heading "Features & capabilities" [level=3] [ref=f4e675]
+                      - paragraph [ref=f4e676]: Add anything else you'll need
+                    - generic [ref=f4e677]:
+                      - button "Add features" [ref=f4e678] [cursor=pointer]
+                      - generic: "3"
+                  - generic [ref=f4e682]:
+                    - generic [ref=f4e683]:
+                      - generic [ref=f4e684]: AI image generation
+                      - button "Remove AI image generation" [ref=f4e685] [cursor=pointer]
+                    - generic [ref=f4e688]:
+                      - generic [ref=f4e689]: AI video generation
+                      - button "Remove AI video generation" [ref=f4e690] [cursor=pointer]
+                    - generic [ref=f4e693]:
+                      - generic [ref=f4e694]: Starter
+                      - generic [ref=f4e695]: MCP & Supercomputer
+                      - button "Remove MCP & Supercomputer" [ref=f4e696] [cursor=pointer]
+            - generic [ref=f4e700]:
+              - generic [ref=f4e701]:
+                - paragraph [ref=f4e702]: We recommend Plus plan
+                - button "See why" [ref=f4e703] [cursor=pointer]
+              - generic [ref=f4e711]:
+                - generic [ref=f4e712]:
+                  - generic [ref=f4e713]:
+                    - generic [ref=f4e714]:
+                      - generic [ref=f4e715]: Plus
+                      - generic [ref=f4e716]: 20% OFF
+                    - paragraph [ref=f4e718]: For consistent and easy AI content creation
+                  - generic [ref=f4e719]:
+                    - generic [ref=f4e720]: 1,200 credits/mo
+                    - generic [ref=f4e724]: Fixed amount of 1,200 credits/mo
+                  - generic [ref=f4e729]:
+                    - generic [ref=f4e730]: Expected monthly usage
+                    - generic [ref=f4e731]: 820/1,200 credits
+                  - generic [ref=f4e734]:
+                    - generic [ref=f4e735]: Unlimited Kling 3.0 & Nano Banana 2 for 7 days
+                    - generic [ref=f4e739]: 5,000 FREE Soul 2.0 generations
+                    - generic [ref=f4e743]: Access to every model, all features & 4K quality
+                - generic [ref=f4e747]:
+                  - generic [ref=f4e748]:
+                    - generic [ref=f4e749]: $59
+                    - generic [ref=f4e751]:
+                      - generic [ref=f4e752]: $47
+                      - text: /month, billed annually
+                  - generic [ref=f4e753]:
+                    - button "Get Plus" [ref=f4e755] [cursor=pointer]
+                    - generic [ref=f4e758]:
+                      - generic [ref=f4e759]: Save $144
+                      - text: compared to monthly
+              - generic [ref=f4e760]:
+                - switch "Toggle premium quality" [ref=f4e761] [cursor=pointer]:
+                  - generic [ref=f4e764]: Premium quality
+                  - img "Quality details" [ref=f4e765]
+                - switch "Toggle billing period" [checked] [ref=f4e769] [cursor=pointer]:
+                  - generic [ref=f4e770]: Monthly
+                  - generic [ref=f4e773]: Annual
+                  - generic [ref=f4e774]: 20% OFF
+        - generic [ref=f4e779]:
+          - generic [ref=f4e780]:
+            - heading "Compare features" [level=2] [ref=f4e781]
+            - paragraph [ref=f4e782]: See in details what plan suits you best
+          - generic [ref=f4e783]:
+            - generic [ref=f4e786]:
+              - generic [ref=f4e787]:
+                - generic [ref=f4e789]:
+                  - generic [ref=f4e790]: Annual 30% OFF
+                  - switch [ref=f4e791] [cursor=pointer]
+                - generic [ref=f4e793]:
+                  - generic [ref=f4e795]:
+                    - heading "Starter" [level=4] [ref=f4e797]
+                    - generic [ref=f4e798]:
+                      - paragraph [ref=f4e799]: $19/month
+                      - paragraph [ref=f4e800]: Billed monthly
+                    - button "Get Plan" [ref=f4e801] [cursor=pointer]
+                  - generic [ref=f4e803]:
+                    - heading "Plus" [level=4] [ref=f4e805]
+                    - generic [ref=f4e806]:
+                      - paragraph [ref=f4e807]: $59/month
+                      - paragraph [ref=f4e808]: Billed monthly
+                    - button "Get Plan" [ref=f4e809] [cursor=pointer]
+                  - generic [ref=f4e811]:
+                    - generic [ref=f4e812]:
+                      - heading "Ultra" [level=4] [ref=f4e813]
+                      - generic [ref=f4e814]: Best value
+                    - generic [ref=f4e819]:
+                      - paragraph [ref=f4e820]: $129/month
+                      - paragraph [ref=f4e821]: Billed monthly
+                    - button "Get Plan" [ref=f4e822] [cursor=pointer]
+              - generic [ref=f4e823]:
+                - generic [ref=f4e825]:
+                  - generic [ref=f4e826]:
+                    - heading "Video" [level=3] [ref=f4e828]
+                    - generic [ref=f4e829]: Concurrent Jobs
+                    - generic [ref=f4e832]:
+                      - generic [ref=f4e833]: Seedance 2.0 720p
+                      - generic [ref=f4e835]: 22 credits/5s
+                    - generic [ref=f4e836]:
+                      - generic [ref=f4e837]: Seedance 2.0 1080p
+                      - generic [ref=f4e839]: 45 credits/5s
+                    - generic [ref=f4e840]:
+                      - generic [ref=f4e841]: Seedance 2.0 4K
+                      - generic [ref=f4e843]: 110 credits/5s
+                    - generic:
+                      - generic [ref=f4e844]: Seedance 2.0 Fast 720p
+                      - generic [ref=f4e846]: 17 credits/5s
+                    - generic:
+                      - generic [ref=f4e847]: Kling 3.0 720p
+                      - generic [ref=f4e849]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e850]: Kling 3.0 1080p
+                      - generic [ref=f4e852]: 8 credits/5s
+                    - generic:
+                      - generic [ref=f4e853]: Kling 3.0 4K
+                      - generic [ref=f4e855]: 30 credits/5s
+                    - generic:
+                      - generic [ref=f4e856]: Kling Omni 3 Image Reference 720p
+                      - generic [ref=f4e858]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e859]: Kling Omni 3 Image Reference 1080p
+                      - generic [ref=f4e861]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e862]: Kling Omni 3 FLF 720p
+                      - generic [ref=f4e864]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e865]: Kling Omni 3 FLF 1080p
+                      - generic [ref=f4e867]: 6 credits/5s
+                    - generic:
+                      - generic [ref=f4e868]: Grok Video
+                      - generic [ref=f4e870]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e871]: Grok Video Edit
+                      - generic [ref=f4e873]: 10 credits/5s
+                    - generic:
+                      - generic [ref=f4e874]: Kling 2.6 Motion Control 720p
+                      - generic [ref=f4e876]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e877]: Kling 2.6 Motion Control 1080p
+                      - generic [ref=f4e879]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e880]: Kling 3.0 Motion Control 720p
+                      - generic [ref=f4e882]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e883]: Kling 3.0 Motion Control 1080p
+                      - generic [ref=f4e885]: 12 credits/5s
+                    - generic:
+                      - generic [ref=f4e886]: Kling Omni 1 720p
+                      - generic [ref=f4e888]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e889]: Kling Omni 1 1080p
+                      - generic [ref=f4e891]: 10 credits/5s
+                    - generic:
+                      - generic [ref=f4e892]: Kling 2.6 with sound
+                      - generic [ref=f4e894]: 10 credits/5s
+                    - generic:
+                      - generic [ref=f4e895]: Kling 2.6 without sound
+                      - generic [ref=f4e897]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e898]: Wan 2.6 480p
+                      - generic [ref=f4e900]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e901]: Wan 2.6 720p
+                      - generic [ref=f4e903]: 13 credits/5s
+                    - generic:
+                      - generic [ref=f4e904]: Wan 2.6 1080p
+                      - generic [ref=f4e906]: 20 credits/5s
+                    - generic:
+                      - generic [ref=f4e907]: Seedance 1.5 480p
+                      - generic [ref=f4e909]: 1 credits/5s
+                    - generic:
+                      - generic [ref=f4e910]: Seedance 1.5 720p
+                      - generic [ref=f4e912]: 3 credits/5s
+                    - generic:
+                      - generic [ref=f4e913]: Seedance 1.5 1080p
+                      - generic [ref=f4e915]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e916]: Higgsfield DoP Lite 720p
+                      - generic [ref=f4e918]: 3 credits/3s
+                    - generic:
+                      - generic [ref=f4e919]: Higgsfield DoP Standard 720p
+                      - generic [ref=f4e921]: 7 credits/3s
+                    - generic:
+                      - generic [ref=f4e922]: Higgsfield DoP Turbo 720p
+                      - generic [ref=f4e924]: 5 credits/3s
+                    - generic:
+                      - generic [ref=f4e925]: Sora 2 720p
+                      - generic [ref=f4e927]: 10 credits/4s
+                    - generic:
+                      - generic [ref=f4e928]: Sora 2 Pro 720p
+                      - generic [ref=f4e930]: 30 credits/4s
+                    - generic:
+                      - generic [ref=f4e931]: Sora 2 Pro 1080p
+                      - generic [ref=f4e933]: 50 credits/4s
+                    - generic:
+                      - generic [ref=f4e934]: Sora 2 Max 720p
+                      - generic [ref=f4e936]: 14 credits/4s
+                    - generic:
+                      - generic [ref=f4e937]: Sora 2 Max 1080p
+                      - generic [ref=f4e939]: 34 credits/4s
+                    - generic:
+                      - generic [ref=f4e940]: Sora 2 Pro Max 720p
+                      - generic [ref=f4e942]: 34 credits/4s
+                    - generic:
+                      - generic [ref=f4e943]: Sora 2 Pro Max 1080p
+                      - generic [ref=f4e945]: 54 credits/4s
+                    - generic:
+                      - generic [ref=f4e946]: Google Veo 3.1 Fast 720p
+                      - generic [ref=f4e948]: 11 credits/4s
+                    - generic:
+                      - generic [ref=f4e949]: Google Veo 3.1 Fast 1080p
+                      - generic [ref=f4e951]: 11 credits/4s
+                    - generic:
+                      - generic [ref=f4e952]: Google Veo 3.1 720p
+                      - generic [ref=f4e954]: 29 credits/4s
+                    - generic:
+                      - generic [ref=f4e955]: Google Veo 3.1 1080p
+                      - generic [ref=f4e957]: 29 credits/4s
+                    - generic:
+                      - generic [ref=f4e958]: Google Veo 3 Fast 720p
+                      - generic [ref=f4e960]: 22 credits/8s
+                    - generic:
+                      - generic [ref=f4e961]: Google Veo 3 720p
+                      - generic [ref=f4e963]: 58 credits/8s
+                    - generic:
+                      - generic [ref=f4e964]: Kling 2.5 Turbo 720p
+                      - generic [ref=f4e966]: 4 credits/5s
+                    - generic:
+                      - generic [ref=f4e967]: Kling 2.5 Turbo 1080p
+                      - generic [ref=f4e969]: 6 credits/5s
+                    - generic:
+                      - generic [ref=f4e970]: Kling 2.1 720p
+                      - generic [ref=f4e972]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e973]: Kling 2.1 1080p
+                      - generic [ref=f4e975]: 10 credits/5s
+                    - generic:
+                      - generic [ref=f4e976]: Kling 2.1 Master 1080p
+                      - generic [ref=f4e978]: 25 credits/5s
+                    - generic:
+                      - generic [ref=f4e979]: Wan 2.2 Fast 720p
+                      - generic [ref=f4e981]: 5 credits/5s
+                    - generic:
+                      - generic [ref=f4e982]: Wan 2.2 720p
+                      - generic [ref=f4e984]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e985]: Wan 2.5 Fast 720p
+                      - generic [ref=f4e987]: 9 credits/5s
+                    - generic:
+                      - generic [ref=f4e988]: Wan 2.5 Fast 1080p
+                      - generic [ref=f4e990]: 13 credits/5s
+                    - generic:
+                      - generic [ref=f4e991]: Wan 2.5 480p
+                      - generic [ref=f4e993]: 7 credits/5s
+                    - generic:
+                      - generic [ref=f4e994]: Wan 2.5 720p
+                      - generic [ref=f4e996]: 13 credits/5s
+                    - generic:
+                      - generic [ref=f4e997]: Wan 2.5 1080p
+                      - generic [ref=f4e999]: 20 credits/5s
+                    - generic:
+                      - generic [ref=f4e1000]: Minimax Hailuo 2.3 Fast 768p
+                      - generic [ref=f4e1002]: 4 credits/6s
+                    - generic:
+                      - generic [ref=f4e1003]: Minimax Hailuo 2.3 Fast 1080p
+                      - generic [ref=f4e1005]: 7 credits/6s
+                    - generic:
+                      - generic [ref=f4e1006]: Minimax Hailuo 2.3 768p
+                      - generic [ref=f4e1008]: 6 credits/6s
+                    - generic:
+                      - generic [ref=f4e1009]: Minimax Hailuo 2.3 1080p
+                      - generic [ref=f4e1011]: 10 credits/6s
+                    - generic:
+                      - generic [ref=f4e1012]: Minimax Hailuo 02 Fast 512p
+                      - generic [ref=f4e1014]: 3 credits/6s
+                    - generic:
+                      - generic [ref=f4e1015]: Minimax Hailuo 02 768p
+                      - generic [ref=f4e1017]: 6 credits/6s
+                    - generic:
+                      - generic [ref=f4e1018]: Minimax Hailuo 02 1080p
+                      - generic [ref=f4e1020]: 10 credits/6s
+                    - generic:
+                      - generic [ref=f4e1021]: Seedance Pro Fast 720p
+                      - generic [ref=f4e1023]: 4 credits/5s
+                    - generic:
+                      - generic [ref=f4e1024]: Seedance Pro Fast 1080p
+                      - generic [ref=f4e1026]: 9 credits/5s
+                    - generic:
+                      - generic [ref=f4e1027]: Seedance Pro 480p
+                      - generic [ref=f4e1029]: 4 credits/5s
+                    - generic:
+                      - generic [ref=f4e1030]: Seedance Pro 720p
+                      - generic [ref=f4e1032]: 8 credits/5s
+                    - generic:
+                      - generic [ref=f4e1033]: Seedance Pro 1080p
+                      - generic [ref=f4e1035]: 18 credits/5s
+                    - button "View More" [ref=f4e1036] [cursor=pointer]
+                  - generic [ref=f4e1040]:
+                    - heading "Image" [level=3] [ref=f4e1042]
+                    - generic [ref=f4e1043]: Concurrent Jobs
+                    - generic [ref=f4e1046]:
+                      - generic [ref=f4e1047]: Nano Banana Pro
+                      - generic [ref=f4e1049]: 2 credit/image
+                    - generic [ref=f4e1050]:
+                      - generic [ref=f4e1051]: Nano Banana Pro 4K
+                      - generic [ref=f4e1053]: 4 credits/image
+                    - generic [ref=f4e1054]:
+                      - generic [ref=f4e1055]: Nano Banana 2
+                      - generic [ref=f4e1057]: 2 credit/image
+                    - generic:
+                      - generic [ref=f4e1058]: Higgsfield Soul 2.0
+                      - generic [ref=f4e1060]: 0.12 credits/image
+                    - generic:
+                      - generic [ref=f4e1061]: Higgsfield Soul
+                      - generic [ref=f4e1063]: 0.25 credits/image
+                    - generic:
+                      - generic [ref=f4e1064]: Soul Inpaint
+                      - generic [ref=f4e1066]: 0.25 credits/image
+                    - generic:
+                      - generic [ref=f4e1067]: Product Placement
+                      - generic [ref=f4e1069]: 0.25 credits/image
+                    - generic:
+                      - generic [ref=f4e1070]: Higgsfield Popcorn
+                      - generic [ref=f4e1072]: 1.5 credits/image
+                    - generic:
+                      - generic [ref=f4e1073]: Higgsfield Face Swap
+                      - generic [ref=f4e1075]: 2 credits/image
+                    - generic:
+                      - generic [ref=f4e1076]: Higgsfield Character Swap
+                      - generic [ref=f4e1078]: 2 credits/image
+                    - generic:
+                      - generic [ref=f4e1079]: Reve
+                      - generic [ref=f4e1081]: 0.25 credit/image
+                    - generic:
+                      - generic [ref=f4e1082]: Nano Banana
+                      - generic [ref=f4e1084]: 1 credit/image
+                    - generic:
+                      - generic [ref=f4e1085]: Banana Placement
+                      - generic [ref=f4e1087]: 1 credit/image
+                    - generic:
+                      - generic [ref=f4e1088]: Seedream
+                      - generic [ref=f4e1090]: 1 credit/image
+                    - generic:
+                      - generic [ref=f4e1091]: Wan 2.2
+                      - generic [ref=f4e1093]: 0.5 credits/image
+                    - generic:
+                      - generic [ref=f4e1094]: Flux Kontext
+                      - generic [ref=f4e1096]: 1.5 credits/image
+                    - generic:
+                      - generic [ref=f4e1097]: Multi Reference
+                      - generic [ref=f4e1099]: 1.5 credits/image
+                    - generic:
+                      - generic [ref=f4e1100]: GPT Image
+                      - generic [ref=f4e1102]: 1 credit/image
+                    - generic:
+                      - generic [ref=f4e1103]: FLUX.2 Pro
+                      - generic [ref=f4e1105]: 1 credits/image
+                    - generic:
+                      - generic [ref=f4e1106]: FLUX.2 Flex
+                      - generic [ref=f4e1108]: 3 credits/image
+                    - generic:
+                      - generic [ref=f4e1109]: FLUX.2 Max
+                      - generic [ref=f4e1111]: 4 credits/image
+                    - button "View More" [ref=f4e1112] [cursor=pointer]
+                - generic [ref=f4e1117]:
+                  - generic [ref=f4e1118]:
+                    - generic [ref=f4e1120]:
+                      - generic [ref=f4e1121]: 2 concurrent jobs
+                      - generic [ref=f4e1123]: 6 concurrent jobs
+                      - generic [ref=f4e1125]: 8 concurrent jobs
+                    - generic [ref=f4e1127]:
+                      - generic [ref=f4e1128]: Not included
+                      - generic [ref=f4e1132]: 53 videos
+                      - generic [ref=f4e1134]: 133 videos
+                    - generic [ref=f4e1136]:
+                      - generic [ref=f4e1137]: Not included
+                      - generic [ref=f4e1141]: 26 videos
+                      - generic [ref=f4e1143]: 66 videos
+                    - generic [ref=f4e1145]:
+                      - generic [ref=f4e1146]: Not included
+                      - generic [ref=f4e1150]: 10 videos
+                      - generic [ref=f4e1152]: 27 videos
+                    - generic:
+                      - generic [ref=f4e1154]: 15 videos
+                      - generic [ref=f4e1156]: 68 videos
+                      - generic [ref=f4e1158]: 171 videos
+                    - generic:
+                      - generic [ref=f4e1160]: 36 videos
+                      - generic [ref=f4e1162]: 160 videos
+                      - generic [ref=f4e1164]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1166]: Not included
+                      - generic [ref=f4e1170]: 137 videos
+                      - generic [ref=f4e1172]: 342 videos
+                    - generic:
+                      - generic [ref=f4e1174]: Not included
+                      - generic [ref=f4e1178]: 40 videos
+                      - generic [ref=f4e1180]: 100 videos
+                    - generic:
+                      - generic [ref=f4e1182]: 54 videos
+                      - generic [ref=f4e1184]: 240 videos
+                      - generic [ref=f4e1186]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1188]: 36 videos
+                      - generic [ref=f4e1190]: 160 videos
+                      - generic [ref=f4e1192]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1194]: 54 videos
+                      - generic [ref=f4e1196]: 240 videos
+                      - generic [ref=f4e1198]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1200]: 43 videos
+                      - generic [ref=f4e1202]: 192 videos
+                      - generic [ref=f4e1204]: 480 videos
+                    - generic:
+                      - generic [ref=f4e1206]: 36 videos
+                      - generic [ref=f4e1208]: 160 videos
+                      - generic [ref=f4e1210]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1212]: 27 videos
+                      - generic [ref=f4e1214]: 120 videos
+                      - generic [ref=f4e1216]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1218]: 54 videos
+                      - generic [ref=f4e1220]: 240 videos
+                      - generic [ref=f4e1222]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1224]: 36 videos
+                      - generic [ref=f4e1226]: 160 videos
+                      - generic [ref=f4e1228]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1230]: Not included
+                      - generic [ref=f4e1234]: 160 videos
+                      - generic [ref=f4e1236]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1238]: Not included
+                      - generic [ref=f4e1242]: 96 videos
+                      - generic [ref=f4e1244]: 240 videos
+                    - generic:
+                      - generic [ref=f4e1246]: 36 videos
+                      - generic [ref=f4e1248]: 160 videos
+                      - generic [ref=f4e1250]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1252]: 27 videos
+                      - generic [ref=f4e1254]: 120 videos
+                      - generic [ref=f4e1256]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1258]: 27 videos
+                      - generic [ref=f4e1260]: 120 videos
+                      - generic [ref=f4e1262]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1264]: 54 videos
+                      - generic [ref=f4e1266]: 240 videos
+                      - generic [ref=f4e1268]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1270]: 38 videos
+                      - generic [ref=f4e1272]: 171 videos
+                      - generic [ref=f4e1274]: 428 videos
+                    - generic:
+                      - generic [ref=f4e1276]: 20 videos
+                      - generic [ref=f4e1278]: 92 videos
+                      - generic [ref=f4e1280]: 230 videos
+                    - generic:
+                      - generic [ref=f4e1282]: 13 videos
+                      - generic [ref=f4e1284]: 60 videos
+                      - generic [ref=f4e1286]: 150 videos
+                    - generic:
+                      - generic [ref=f4e1288]: 180 videos
+                      - generic [ref=f4e1290]: 800 videos
+                      - generic [ref=f4e1292]: 2000 videos
+                    - generic:
+                      - generic [ref=f4e1294]: 90 videos
+                      - generic [ref=f4e1296]: 400 videos
+                      - generic [ref=f4e1298]: 1000 videos
+                    - generic:
+                      - generic [ref=f4e1300]: 36 videos
+                      - generic [ref=f4e1302]: 160 videos
+                      - generic [ref=f4e1304]: 400 videos
+                    - generic:
+                      - generic [ref=f4e1306]: 90 videos
+                      - generic [ref=f4e1308]: 400 videos
+                      - generic [ref=f4e1310]: 1000 videos
+                    - generic:
+                      - generic [ref=f4e1312]: 38 videos
+                      - generic [ref=f4e1314]: 171 videos
+                      - generic [ref=f4e1316]: 428 videos
+                    - generic:
+                      - generic [ref=f4e1318]: Not included
+                      - generic [ref=f4e1322]: 240 videos
+                      - generic [ref=f4e1324]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1326]: Not included
+                      - generic [ref=f4e1330]: 120 videos
+                      - generic [ref=f4e1332]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1334]: Not included
+                      - generic [ref=f4e1338]: 40 videos
+                      - generic [ref=f4e1340]: 100 videos
+                    - generic:
+                      - generic [ref=f4e1342]: Not included
+                      - generic [ref=f4e1346]: 24 videos
+                      - generic [ref=f4e1348]: 60 videos
+                    - generic:
+                      - generic [ref=f4e1350]: Not included
+                      - generic [ref=f4e1354]: 85 videos
+                      - generic [ref=f4e1356]: 214 videos
+                    - generic:
+                      - generic [ref=f4e1358]: Not included
+                      - generic [ref=f4e1362]: 35 videos
+                      - generic [ref=f4e1364]: 88 videos
+                    - generic:
+                      - generic [ref=f4e1366]: Not included
+                      - generic [ref=f4e1370]: 35 videos
+                      - generic [ref=f4e1372]: 88 videos
+                    - generic:
+                      - generic [ref=f4e1374]: Not included
+                      - generic [ref=f4e1378]: 22 videos
+                      - generic [ref=f4e1380]: 55 videos
+                    - generic:
+                      - generic [ref=f4e1382]: Not included
+                      - generic [ref=f4e1386]: 109 videos
+                      - generic [ref=f4e1388]: 272 videos
+                    - generic:
+                      - generic [ref=f4e1390]: Not included
+                      - generic [ref=f4e1394]: 109 videos
+                      - generic [ref=f4e1396]: 272 videos
+                    - generic:
+                      - generic [ref=f4e1398]: Not included
+                      - generic [ref=f4e1402]: 41 videos
+                      - generic [ref=f4e1404]: 103 videos
+                    - generic:
+                      - generic [ref=f4e1406]: Not included
+                      - generic [ref=f4e1410]: 41 videos
+                      - generic [ref=f4e1412]: 103 videos
+                    - generic:
+                      - generic [ref=f4e1414]: Not included
+                      - generic [ref=f4e1418]: 54 videos
+                      - generic [ref=f4e1420]: 136 videos
+                    - generic:
+                      - generic [ref=f4e1422]: Not included
+                      - generic [ref=f4e1426]: 20 videos
+                      - generic [ref=f4e1428]: 51 videos
+                    - generic:
+                      - generic [ref=f4e1430]: 67 videos
+                      - generic [ref=f4e1432]: 300 videos
+                      - generic [ref=f4e1434]: 750 videos
+                    - generic:
+                      - generic [ref=f4e1436]: 45 videos
+                      - generic [ref=f4e1438]: 200 videos
+                      - generic [ref=f4e1440]: 500 videos
+                    - generic:
+                      - generic [ref=f4e1442]: 54 videos
+                      - generic [ref=f4e1444]: 240 videos
+                      - generic [ref=f4e1446]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1448]: 27 videos
+                      - generic [ref=f4e1450]: 120 videos
+                      - generic [ref=f4e1452]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1454]: 10 videos
+                      - generic [ref=f4e1456]: 48 videos
+                      - generic [ref=f4e1458]: 120 videos
+                    - generic:
+                      - generic [ref=f4e1460]: 54 videos
+                      - generic [ref=f4e1462]: 240 videos
+                      - generic [ref=f4e1464]: 600 videos
+                    - generic:
+                      - generic [ref=f4e1466]: 38 videos
+                      - generic [ref=f4e1468]: 171 videos
+                      - generic [ref=f4e1470]: 428 videos
+                    - generic:
+                      - generic [ref=f4e1472]: 30 videos
+                      - generic [ref=f4e1474]: 133 videos
+                      - generic [ref=f4e1476]: 333 videos
+                    - generic:
+                      - generic [ref=f4e1478]: 20 videos
+                      - generic [ref=f4e1480]: 92 videos
+                      - generic [ref=f4e1482]: 230 videos
+                    - generic:
+                      - generic [ref=f4e1484]: 38 videos
+                      - generic [ref=f4e1486]: 171 videos
+                      - generic [ref=f4e1488]: 428 videos
+                    - generic:
+                      - generic [ref=f4e1490]: 20 videos
+                      - generic [ref=f4e1492]: 92 videos
+                      - generic [ref=f4e1494]: 230 videos
+                    - generic:
+                      - generic [ref=f4e1496]: 13 videos
+                      - generic [ref=f4e1498]: 60 videos
+                      - generic [ref=f4e1500]: 150 videos
+                    - generic:
+                      - generic [ref=f4e1502]: 67 videos
+                      - generic [ref=f4e1504]: 300 videos
+                      - generic [ref=f4e1506]: 750 videos
+                    - generic:
+                      - generic [ref=f4e1508]: 38 videos
+                      - generic [ref=f4e1510]: 171 videos
+                      - generic [ref=f4e1512]: 428 videos
+                    - generic:
+                      - generic [ref=f4e1514]: 45 videos
+                      - generic [ref=f4e1516]: 200 videos
+                      - generic [ref=f4e1518]: 500 videos
+                    - generic:
+                      - generic [ref=f4e1520]: 27 videos
+                      - generic [ref=f4e1522]: 120 videos
+                      - generic [ref=f4e1524]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1526]: 90 videos
+                      - generic [ref=f4e1528]: 400 videos
+                      - generic [ref=f4e1530]: 1000 videos
+                    - generic:
+                      - generic [ref=f4e1532]: 45 videos
+                      - generic [ref=f4e1534]: 200 videos
+                      - generic [ref=f4e1536]: 500 videos
+                    - generic:
+                      - generic [ref=f4e1538]: 27 videos
+                      - generic [ref=f4e1540]: 120 videos
+                      - generic [ref=f4e1542]: 300 videos
+                    - generic:
+                      - generic [ref=f4e1544]: 67 videos
+                      - generic [ref=f4e1546]: 300 videos
+                      - generic [ref=f4e1548]: 750 videos
+                    - generic:
+                      - generic [ref=f4e1550]: 30 videos
+                      - generic [ref=f4e1552]: 133 videos
+                      - generic [ref=f4e1554]: 333 videos
+                    - generic:
+                      - generic [ref=f4e1556]: 67 videos
+                      - generic [ref=f4e1558]: 300 videos
+                      - generic [ref=f4e1560]: 750 videos
+                    - generic:
+                      - generic [ref=f4e1562]: 33 videos
+                      - generic [ref=f4e1564]: 150 videos
+                      - generic [ref=f4e1566]: 375 videos
+                    - generic:
+                      - generic [ref=f4e1568]: 15 videos
+                      - generic [ref=f4e1570]: 66 videos
+                      - generic [ref=f4e1572]: 166 videos
+                  - generic [ref=f4e1578]:
+                    - generic [ref=f4e1580]:
+                      - generic [ref=f4e1581]: 4 concurrent jobs
+                      - generic [ref=f4e1583]: 8 concurrent jobs
+                      - generic [ref=f4e1585]: 8 concurrent jobs
+                    - generic [ref=f4e1587]:
+                      - generic [ref=f4e1588]: 135 images
+                      - generic [ref=f4e1590]: 600 images
+                      - generic [ref=f4e1592]: 1500 images
+                    - generic [ref=f4e1594]:
+                      - generic [ref=f4e1595]: Not included
+                      - generic [ref=f4e1599]: 300 images
+                      - generic [ref=f4e1601]: 750 images
+                    - generic [ref=f4e1603]:
+                      - generic [ref=f4e1604]: 135 images
+                      - generic [ref=f4e1606]: 600 images
+                      - generic [ref=f4e1608]: 1500 images
+                    - generic:
+                      - generic [ref=f4e1610]: 2250 images
+                      - generic [ref=f4e1612]: 10000 images
+                      - generic [ref=f4e1614]: 25000 images
+                    - generic:
+                      - generic [ref=f4e1616]: 1080 images
+                      - generic [ref=f4e1618]: 4800 images
+                      - generic [ref=f4e1620]: 12000 images
+                    - generic:
+                      - generic [ref=f4e1622]: Not included
+                      - generic [ref=f4e1626]: 4800 images
+                      - generic [ref=f4e1628]: 12000 images
+                    - generic:
+                      - generic [ref=f4e1630]: Not included
+                      - generic [ref=f4e1634]: 4800 images
+                      - generic [ref=f4e1636]: 12000 images
+                    - generic:
+                      - generic [ref=f4e1638]: 180 images
+                      - generic [ref=f4e1640]: 800 images
+                      - generic [ref=f4e1642]: 2000 images
+                    - generic:
+                      - generic [ref=f4e1644]: 135 images
+                      - generic [ref=f4e1646]: 600 images
+                      - generic [ref=f4e1648]: 1500 images
+                    - generic:
+                      - generic [ref=f4e1650]: 135 images
+                      - generic [ref=f4e1652]: 600 images
+                      - generic [ref=f4e1654]: 1500 images
+                    - generic:
+                      - generic [ref=f4e1656]: 1080 images
+                      - generic [ref=f4e1658]: 4800 images
+                      - generic [ref=f4e1660]: 12000 images
+                    - generic:
+                      - generic [ref=f4e1662]: 270 images
+                      - generic [ref=f4e1664]: 1200 images
+                      - generic [ref=f4e1666]: 3000 images
+                    - generic:
+                      - generic [ref=f4e1668]: 270 images
+                      - generic [ref=f4e1670]: 1200 images
+                      - generic [ref=f4e1672]: 3000 images
+                    - generic:
+                      - generic [ref=f4e1674]: 270 images
+                      - generic [ref=f4e1676]: 1200 images
+                      - generic [ref=f4e1678]: 3000 images
+                    - generic:
+                      - generic [ref=f4e1680]: 540 images
+                      - generic [ref=f4e1682]: 2400 images
+                      - generic [ref=f4e1684]: 6000 images
+                    - generic:
+                      - generic [ref=f4e1686]: 180 images
+                      - generic [ref=f4e1688]: 800 images
+                      - generic [ref=f4e1690]: 2000 images
+                    - generic:
+                      - generic [ref=f4e1692]: 180 images
+                      - generic [ref=f4e1694]: 800 images
+                      - generic [ref=f4e1696]: 2000 images
+                    - generic:
+                      - generic [ref=f4e1698]: 270 images
+                      - generic [ref=f4e1700]: 1200 images
+                      - generic [ref=f4e1702]: 3000 images
+                    - generic:
+                      - generic [ref=f4e1704]: 270 images
+                      - generic [ref=f4e1706]: 1200 images
+                      - generic [ref=f4e1708]: 3000 images
+                    - generic:
+                      - generic [ref=f4e1710]: 90 images
+                      - generic [ref=f4e1712]: 400 images
+                      - generic [ref=f4e1714]: 1000 images
+                    - generic:
+                      - generic [ref=f4e1716]: Not included
+                      - generic [ref=f4e1720]: 300 images
+                      - generic [ref=f4e1722]: 750 images
+              - generic [ref=f4e1728]:
+                - generic [ref=f4e1729]:
+                  - button "Lipsync Studio" [ref=f4e1730] [cursor=pointer]
+                  - generic [ref=f4e1742]:
+                    - generic [ref=f4e1743]:
+                      - generic [ref=f4e1744]: Concurrent Jobs
+                      - generic [ref=f4e1747]:
+                        - generic [ref=f4e1748]: Higgsfield Speak 2.0 720p
+                        - generic [ref=f4e1750]: 14 credits/5s
+                      - generic [ref=f4e1751]:
+                        - generic [ref=f4e1752]: Google Veo 3 Fast w/audio 720p
+                        - generic [ref=f4e1754]: 22 credits/8s
+                      - generic [ref=f4e1755]:
+                        - generic [ref=f4e1756]: Google Veo 3 w/audio 720p
+                        - generic [ref=f4e1758]: 58 credits/8s
+                      - generic:
+                        - generic [ref=f4e1759]: Wan 2.5 Speak Fast 720p
+                        - generic [ref=f4e1761]: 9 credits/5s
+                      - generic:
+                        - generic [ref=f4e1762]: Wan 2.5 Speak Fast 1080p
+                        - generic [ref=f4e1764]: 12 credits/5s
+                      - generic:
+                        - generic [ref=f4e1765]: Wan 2.5 Speak 480p
+                        - generic [ref=f4e1767]: 6 credits/5s
+                      - generic:
+                        - generic [ref=f4e1768]: Wan 2.5 Speak 720p
+                        - generic [ref=f4e1770]: 12 credits/5s
+                      - generic:
+                        - generic [ref=f4e1771]: Wan 2.5 Speak 1080p
+                        - generic [ref=f4e1773]: 20 credits/5s
+                      - generic:
+                        - generic [ref=f4e1774]: Kling Speak 720p
+                        - generic [ref=f4e1776]: 2 credits/2s
+                      - generic:
+                        - generic [ref=f4e1777]: Kling Speak 1080p
+                        - generic [ref=f4e1779]: 4 credits/2s
+                      - generic:
+                        - generic [ref=f4e1780]: Kling Lipsync 720p
+                        - generic [ref=f4e1782]: 2 credits/5s
+                      - generic:
+                        - generic [ref=f4e1783]: Infinite Talk 480p
+                        - generic [ref=f4e1785]: 18 credits/5s
+                      - generic:
+                        - generic [ref=f4e1786]: Infinite Talk 720p
+                        - generic [ref=f4e1788]: 12 credits/2s
+                      - generic:
+                        - generic [ref=f4e1789]: Sync Lipsync 3 4K 30FPS
+                        - generic [ref=f4e1791]: 18 credits/2s
+                      - button "View More" [ref=f4e1792] [cursor=pointer]
+                    - generic [ref=f4e1796]:
+                      - generic [ref=f4e1797]:
+                        - generic [ref=f4e1798]: 2 concurrent jobs
+                        - generic [ref=f4e1800]: 6 concurrent jobs
+                        - generic [ref=f4e1802]: 8 concurrent jobs
+                      - generic [ref=f4e1804]:
+                        - generic [ref=f4e1805]: Not included
+                        - generic [ref=f4e1809]: 85 videos
+                        - generic [ref=f4e1811]: 214 videos
+                      - generic [ref=f4e1813]:
+                        - generic [ref=f4e1814]: Not included
+                        - generic [ref=f4e1818]: 54 videos
+                        - generic [ref=f4e1820]: 136 videos
+                      - generic [ref=f4e1822]:
+                        - generic [ref=f4e1823]: Not included
+                        - generic [ref=f4e1827]: 20 videos
+                        - generic [ref=f4e1829]: 51 videos
+                      - generic:
+                        - generic [ref=f4e1831]: 30 videos
+                        - generic [ref=f4e1833]: 133 videos
+                        - generic [ref=f4e1835]: 333 videos
+                      - generic:
+                        - generic [ref=f4e1837]: 21 videos
+                        - generic [ref=f4e1839]: 96 videos
+                        - generic [ref=f4e1841]: 240 videos
+                      - generic:
+                        - generic [ref=f4e1843]: 43 videos
+                        - generic [ref=f4e1845]: 192 videos
+                        - generic [ref=f4e1847]: 480 videos
+                      - generic:
+                        - generic [ref=f4e1849]: 21 videos
+                        - generic [ref=f4e1851]: 96 videos
+                        - generic [ref=f4e1853]: 240 videos
+                      - generic:
+                        - generic [ref=f4e1855]: 13 videos
+                        - generic [ref=f4e1857]: 60 videos
+                        - generic [ref=f4e1859]: 150 videos
+                      - generic:
+                        - generic [ref=f4e1861]: Not included
+                        - generic [ref=f4e1865]: 600 videos
+                        - generic [ref=f4e1867]: 1500 videos
+                      - generic:
+                        - generic [ref=f4e1869]: Not included
+                        - generic [ref=f4e1873]: 300 videos
+                        - generic [ref=f4e1875]: 750 videos
+                      - generic:
+                        - generic [ref=f4e1877]: Not included
+                        - generic [ref=f4e1881]: 480 videos
+                        - generic [ref=f4e1883]: 1200 videos
+                      - generic:
+                        - generic [ref=f4e1885]: Not included
+                        - generic [ref=f4e1889]: 80 videos
+                        - generic [ref=f4e1891]: 200 videos
+                      - generic:
+                        - generic [ref=f4e1893]: Not included
+                        - generic [ref=f4e1897]: 100 videos
+                        - generic [ref=f4e1899]: 250 videos
+                      - generic:
+                        - generic [ref=f4e1901]: Not included
+                        - generic [ref=f4e1905]: 66 videos
+                        - generic [ref=f4e1907]: 166 videos
+                - generic [ref=f4e1913]:
+                  - button "Character" [ref=f4e1914] [cursor=pointer]
+                  - generic [ref=f4e1924]:
+                    - generic [ref=f4e1925]:
+                      - generic [ref=f4e1926]: Concurrent Jobs
+                      - generic [ref=f4e1929]: Max Generations Amount
+                    - generic [ref=f4e1932]:
+                      - generic [ref=f4e1933]:
+                        - generic [ref=f4e1934]: 1 concurrent jobs
+                        - generic [ref=f4e1936]: 3 concurrent jobs
+                        - generic [ref=f4e1938]: 3 concurrent jobs
+                      - generic [ref=f4e1940]:
+                        - generic [ref=f4e1941]: Up to 9 generations
+                        - generic [ref=f4e1943]: Up to 40 generations
+                        - generic [ref=f4e1945]: Up to 100 generations
+                - generic [ref=f4e1947]:
+                  - button "Credits & Usage" [ref=f4e1948] [cursor=pointer]
+                  - generic [ref=f4e1957]:
+                    - generic [ref=f4e1958]:
+                      - generic [ref=f4e1959]: Credits
+                      - generic [ref=f4e1962]: Credit discount
+                    - generic [ref=f4e1965]:
+                      - generic [ref=f4e1966]:
+                        - generic [ref=f4e1967]: "270"
+                        - generic [ref=f4e1969]: "1200"
+                        - generic [ref=f4e1971]: "3000"
+                      - generic [ref=f4e1973]:
+                        - generic [ref=f4e1974]: Not included
+                        - generic [ref=f4e1978]: Not included
+                        - generic [ref=f4e1982]: Not included
+                - generic [ref=f4e1986]:
+                  - button "Access & Features" [ref=f4e1987] [cursor=pointer]
+                  - generic [ref=f4e1995]:
+                    - generic [ref=f4e1996]:
+                      - generic [ref=f4e1997]: Commercial use
+                      - generic [ref=f4e2000]: Fast-track generation
+                      - generic [ref=f4e2003]: Access to characters
+                      - generic [ref=f4e2006]: Start & End Frame control
+                      - generic: Higgsfield ads
+                      - generic: Higgsfield speak
+                      - generic: UGC builder
+                      - generic: Priority access to new models
+                      - generic: Priority access to new features
+                      - button "View More" [ref=f4e2019] [cursor=pointer]
+                    - generic [ref=f4e2023]:
+                      - generic [ref=f4e2024]:
+                        - generic [ref=f4e2025]: Included
+                        - generic [ref=f4e2029]: Included
+                        - generic [ref=f4e2033]: Included
+                      - generic [ref=f4e2037]:
+                        - generic [ref=f4e2038]: Included
+                        - generic [ref=f4e2042]: Included
+                        - generic [ref=f4e2046]: Included
+                      - generic [ref=f4e2050]:
+                        - generic [ref=f4e2051]: Included
+                        - generic [ref=f4e2055]: Included
+                        - generic [ref=f4e2059]: Included
+                      - generic [ref=f4e2063]:
+                        - generic [ref=f4e2064]: Not included
+                        - generic [ref=f4e2068]: Included
+                        - generic [ref=f4e2072]: Included
+                      - generic:
+                        - generic [ref=f4e2076]: Included
+                        - generic [ref=f4e2080]: Included
+                        - generic [ref=f4e2084]: Included
+                      - generic:
+                        - generic [ref=f4e2088]: Not included
+                        - generic [ref=f4e2092]: Included
+                        - generic [ref=f4e2096]: Included
+                      - generic:
+                        - generic [ref=f4e2100]: Not included
+                        - generic [ref=f4e2104]: Included
+                        - generic [ref=f4e2108]: Included
+                      - generic:
+                        - generic [ref=f4e2112]: Not included
+                        - generic [ref=f4e2116]: Included
+                        - generic [ref=f4e2120]: Included
+                      - generic:
+                        - generic [ref=f4e2124]: Not included
+                        - generic [ref=f4e2128]: Included
+                        - generic [ref=f4e2132]: Included
+            - button "Compare Features" [ref=f4e2141] [cursor=pointer]
+        - generic [ref=f4e2143]:
+          - heading "Frequently Asked Questions" [level=4] [ref=f4e2144]
+          - generic [ref=f4e2145]:
+            - group [ref=f4e2146]:
+              - generic "How do credits work?" [ref=f4e2147] [cursor=pointer]
+            - group [ref=f4e2151]:
+              - generic "Is my subscription automatically renewed?" [ref=f4e2152] [cursor=pointer]
+            - group [ref=f4e2156]:
+              - generic "How many images or videos can I generate?" [ref=f4e2157] [cursor=pointer]
+            - group [ref=f4e2161]:
+              - generic "How can I purchase extra credits?" [ref=f4e2162] [cursor=pointer]
+            - group [ref=f4e2166]:
+              - generic "How does Unlimited work?" [ref=f4e2167] [cursor=pointer]
+            - group [ref=f4e2171]:
+              - generic "How does 365 Unlimited promo work?" [ref=f4e2172] [cursor=pointer]
+            - group [ref=f4e2176]:
+              - generic "Can I change my subscription after purchase?" [ref=f4e2177] [cursor=pointer]
+            - group [ref=f4e2181]:
+              - generic "How much does it cost to use Higgsfield Supercomputer?" [ref=f4e2182] [cursor=pointer]
+        - generic [ref=f4e2186]:
+          - paragraph [ref=f4e2187]: Are you ready?
+          - button "Choose your plan" [ref=f4e2188] [cursor=pointer]
+  - contentinfo [ref=f4e2189]:
+    - navigation [ref=f4e2190]:
+      - paragraph [ref=f4e2191]:
+        - generic [ref=f4e2192]: © 2026 Higgsfield, Inc.
+        - generic [ref=f4e2193]: All rights reserved.
+      - list [ref=f4e2194]:
+        - listitem
+        - listitem [ref=f4e2195]:
+          - link "Cookie Notice" [ref=f4e2196] [cursor=pointer]:
+            - /url: /cookie-notice
+        - listitem [ref=f4e2197]:
+          - link "Terms" [ref=f4e2198] [cursor=pointer]:
+            - /url: /terms-of-use-agreement
+        - listitem [ref=f4e2199]:
+          - link "Privacy" [ref=f4e2200] [cursor=pointer]:
+            - /url: /privacy-policy
+  - region "Notifications Alt+T"
+  - alert
+  - alert
+  - alert
+  - alert
+  - alert
+  - alert
+  - region "Notifications alt+T"
+  - alert [ref=f4e2201]

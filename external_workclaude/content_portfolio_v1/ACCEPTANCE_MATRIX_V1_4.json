@@ -1,0 +1,721 @@
+{
+  "version": "content_portfolio_v1.4",
+  "content_ids": [
+    "CN-013",
+    "CN-014",
+    "CN-016",
+    "CN-017",
+    "IG-007",
+    "IG-009",
+    "IG-013",
+    "KN-007",
+    "KN-008",
+    "SH-006",
+    "SH-017",
+    "SH-018"
+  ],
+  "acceptance_by_work_order": {
+    "CN-013-WO-01": {
+      "content_id": "CN-013",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "ellipsis 없음 확인",
+        "number_consistency_check.match == true 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장 완결성(말줄임표 없음), 숫자 약속-실제 항목 수 일치, CTA 단일 여부를 재확인하고 서명 완료",
+      "blocker_codes": []
+    },
+    "CN-013-WO-02": {
+      "content_id": "CN-013",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드의 모든 필드가 null 또는 허용된 placeholder 토큰인지 확인",
+        "attribution_required 판단이 evidence_status와 일치하는지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 자체 촬영/CardNewsModule fallback/라이선스 확보 중 하나로 확정되고, 미확정 항목은 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "CN-013-WO-03": {
+      "content_id": "CN-013",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "4장 모두 레이아웃 유형이 지정되었는지 확인",
+        "안전 여백 기준 명시 확인"
+      ],
+      "definition_of_done": "각 슬라이드에 대해 레이아웃 유형, 텍스트 위계, 이미지 배치, 안전 여백 계획이 문서화됨 -- 실제 렌더링은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "CN-013-WO-04": {
+      "content_id": "CN-013",
+      "stage": "RENDER_OUTPUT",
+      "acceptance_checks": [
+        "07/08 receipt 이슈 해결 여부를 Common Engine/CardNews 담당 팀에 확인"
+      ],
+      "definition_of_done": "N/A -- 이 작업지시는 상위 블로커 해소 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-013-WO-05": {
+      "content_id": "CN-013",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "렌더된 PNG 4장 존재 확인 후 시각 검수"
+      ],
+      "definition_of_done": "N/A -- 렌더링 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-013-WO-06": {
+      "content_id": "CN-013",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "N/A -- 상위 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-014-WO-01": {
+      "content_id": "CN-014",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "ellipsis 없음 확인",
+        "number_consistency_check.match == true 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장 완결성(말줄임표 없음), 숫자 약속-실제 항목 수 일치, CTA 단일 여부를 재확인하고 서명 완료",
+      "blocker_codes": []
+    },
+    "CN-014-WO-02": {
+      "content_id": "CN-014",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드의 모든 필드가 null 또는 허용된 placeholder 토큰인지 확인",
+        "attribution_required 판단이 evidence_status와 일치하는지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 자체 촬영/CardNewsModule fallback/라이선스 확보 중 하나로 확정되고, 미확정 항목은 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "CN-014-WO-03": {
+      "content_id": "CN-014",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "4장 모두 레이아웃 유형이 지정되었는지 확인",
+        "안전 여백 기준 명시 확인"
+      ],
+      "definition_of_done": "각 슬라이드에 대해 레이아웃 유형, 텍스트 위계, 이미지 배치, 안전 여백 계획이 문서화됨 -- 실제 렌더링은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "CN-014-WO-04": {
+      "content_id": "CN-014",
+      "stage": "RENDER_OUTPUT",
+      "acceptance_checks": [
+        "07/08 receipt 이슈 해결 여부를 Common Engine/CardNews 담당 팀에 확인"
+      ],
+      "definition_of_done": "N/A -- 이 작업지시는 상위 블로커 해소 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-014-WO-05": {
+      "content_id": "CN-014",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "렌더된 PNG 4장 존재 확인 후 시각 검수"
+      ],
+      "definition_of_done": "N/A -- 렌더링 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-014-WO-06": {
+      "content_id": "CN-014",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "N/A -- 상위 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-016-WO-01": {
+      "content_id": "CN-016",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "ellipsis 없음 확인",
+        "number_consistency_check.match == true 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장 완결성(말줄임표 없음), 숫자 약속-실제 항목 수 일치, CTA 단일 여부를 재확인하고 서명 완료",
+      "blocker_codes": []
+    },
+    "CN-016-WO-02": {
+      "content_id": "CN-016",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드의 모든 필드가 null 또는 허용된 placeholder 토큰인지 확인",
+        "attribution_required 판단이 evidence_status와 일치하는지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 자체 촬영/CardNewsModule fallback/라이선스 확보 중 하나로 확정되고, 미확정 항목은 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "CN-016-WO-03": {
+      "content_id": "CN-016",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "4장 모두 레이아웃 유형이 지정되었는지 확인",
+        "안전 여백 기준 명시 확인"
+      ],
+      "definition_of_done": "각 슬라이드에 대해 레이아웃 유형, 텍스트 위계, 이미지 배치, 안전 여백 계획이 문서화됨 -- 실제 렌더링은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "CN-016-WO-04": {
+      "content_id": "CN-016",
+      "stage": "RENDER_OUTPUT",
+      "acceptance_checks": [
+        "07/08 receipt 이슈 해결 여부를 Common Engine/CardNews 담당 팀에 확인"
+      ],
+      "definition_of_done": "N/A -- 이 작업지시는 상위 블로커 해소 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-016-WO-05": {
+      "content_id": "CN-016",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "렌더된 PNG 4장 존재 확인 후 시각 검수"
+      ],
+      "definition_of_done": "N/A -- 렌더링 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-016-WO-06": {
+      "content_id": "CN-016",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "N/A -- 상위 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-017-WO-01": {
+      "content_id": "CN-017",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "ellipsis 없음 확인",
+        "number_consistency_check.match == true 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장 완결성(말줄임표 없음), 숫자 약속-실제 항목 수 일치, CTA 단일 여부를 재확인하고 서명 완료",
+      "blocker_codes": []
+    },
+    "CN-017-WO-02": {
+      "content_id": "CN-017",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드의 모든 필드가 null 또는 허용된 placeholder 토큰인지 확인",
+        "attribution_required 판단이 evidence_status와 일치하는지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 자체 촬영/CardNewsModule fallback/라이선스 확보 중 하나로 확정되고, 미확정 항목은 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "CN-017-WO-03": {
+      "content_id": "CN-017",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "4장 모두 레이아웃 유형이 지정되었는지 확인",
+        "안전 여백 기준 명시 확인"
+      ],
+      "definition_of_done": "각 슬라이드에 대해 레이아웃 유형, 텍스트 위계, 이미지 배치, 안전 여백 계획이 문서화됨 -- 실제 렌더링은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "CN-017-WO-04": {
+      "content_id": "CN-017",
+      "stage": "RENDER_OUTPUT",
+      "acceptance_checks": [
+        "07/08 receipt 이슈 해결 여부를 Common Engine/CardNews 담당 팀에 확인"
+      ],
+      "definition_of_done": "N/A -- 이 작업지시는 상위 블로커 해소 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-017-WO-05": {
+      "content_id": "CN-017",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "렌더된 PNG 4장 존재 확인 후 시각 검수"
+      ],
+      "definition_of_done": "N/A -- 렌더링 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "CN-017-WO-06": {
+      "content_id": "CN-017",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "N/A -- 상위 작업지시가 완료되기 전까지 시작하지 않음",
+      "blocker_codes": [
+        "CARDNEWS_RECEIPT_FALSE_READY_UNRESOLVED"
+      ]
+    },
+    "SH-017-WO-01": {
+      "content_id": "SH-017",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장면 존재 확인",
+        "narration/subtitle/shot_composition 필드 존재 확인"
+      ],
+      "definition_of_done": "4장면의 내레이션/자막/촬영 구도가 재확인되고 서명 완료",
+      "blocker_codes": []
+    },
+    "SH-017-WO-02": {
+      "content_id": "SH-017",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "manual_assets_needed 각 항목에 대한 소유권 확인 상태 기록 여부"
+      ],
+      "definition_of_done": "촬영 소재 소유권/동의 상태가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "SH-017-WO-03": {
+      "content_id": "SH-017",
+      "stage": "SHORTS_PRODUCTION",
+      "acceptance_checks": [
+        "실제 촬영 여부 확인 (스톡 영상 대체 금지)",
+        "제3자 동의 필요 여부 재확인"
+      ],
+      "definition_of_done": "실제 촬영/편집이 완료되고 원본 스크립트와 일치함",
+      "blocker_codes": []
+    },
+    "SH-017-WO-04": {
+      "content_id": "SH-017",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "자막에 실제 성과/수치가 삽입되지 않았는지 확인"
+      ],
+      "definition_of_done": "스크립트 일치 및 자막 내 미검증 수치 부재를 확인",
+      "blocker_codes": []
+    },
+    "SH-017-WO-05": {
+      "content_id": "SH-017",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "SH-006-WO-01": {
+      "content_id": "SH-006",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장면 존재 확인",
+        "narration/subtitle/shot_composition 필드 존재 확인"
+      ],
+      "definition_of_done": "4장면의 내레이션/자막/촬영 구도가 재확인되고 서명 완료",
+      "blocker_codes": []
+    },
+    "SH-006-WO-02": {
+      "content_id": "SH-006",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "manual_assets_needed 각 항목에 대한 소유권 확인 상태 기록 여부"
+      ],
+      "definition_of_done": "촬영 소재 소유권/동의 상태가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "SH-006-WO-03": {
+      "content_id": "SH-006",
+      "stage": "SHORTS_PRODUCTION",
+      "acceptance_checks": [
+        "실제 촬영 여부 확인 (스톡 영상 대체 금지)",
+        "제3자 동의 필요 여부 재확인"
+      ],
+      "definition_of_done": "실제 촬영/편집이 완료되고 원본 스크립트와 일치함",
+      "blocker_codes": []
+    },
+    "SH-006-WO-04": {
+      "content_id": "SH-006",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "자막에 실제 성과/수치가 삽입되지 않았는지 확인"
+      ],
+      "definition_of_done": "스크립트 일치 및 자막 내 미검증 수치 부재를 확인",
+      "blocker_codes": []
+    },
+    "SH-006-WO-05": {
+      "content_id": "SH-006",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "SH-018-WO-01": {
+      "content_id": "SH-018",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장면 존재 확인",
+        "narration/subtitle/shot_composition 필드 존재 확인"
+      ],
+      "definition_of_done": "4장면의 내레이션/자막/촬영 구도가 재확인되고 서명 완료",
+      "blocker_codes": []
+    },
+    "SH-018-WO-02": {
+      "content_id": "SH-018",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "manual_assets_needed 각 항목에 대한 소유권 확인 상태 기록 여부"
+      ],
+      "definition_of_done": "촬영 소재 소유권/동의 상태가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "SH-018-WO-03": {
+      "content_id": "SH-018",
+      "stage": "SHORTS_PRODUCTION",
+      "acceptance_checks": [
+        "실제 촬영 여부 확인 (스톡 영상 대체 금지)",
+        "제3자 동의 필요 여부 재확인"
+      ],
+      "definition_of_done": "실제 촬영/편집이 완료되고 원본 스크립트와 일치함",
+      "blocker_codes": []
+    },
+    "SH-018-WO-04": {
+      "content_id": "SH-018",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "자막에 실제 성과/수치가 삽입되지 않았는지 확인"
+      ],
+      "definition_of_done": "스크립트 일치 및 자막 내 미검증 수치 부재를 확인",
+      "blocker_codes": []
+    },
+    "SH-018-WO-05": {
+      "content_id": "SH-018",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "IG-007-WO-01": {
+      "content_id": "IG-007",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "hook/body 존재 확인",
+        "해시태그 미포함 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "hook/본문/CTA가 완결된 문장이며 해시태그 정책(무해시태그) 준수를 재확인",
+      "blocker_codes": []
+    },
+    "IG-007-WO-02": {
+      "content_id": "IG-007",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드 필드가 null 또는 허용된 placeholder인지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "IG-007-WO-03": {
+      "content_id": "IG-007",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "텍스트 삽입 여백 명시 확인"
+      ],
+      "definition_of_done": "텍스트 삽입 여백을 포함한 카드 레이아웃 계획이 문서화됨",
+      "blocker_codes": []
+    },
+    "IG-007-WO-04": {
+      "content_id": "IG-007",
+      "stage": "INSTAGRAM_INTELLIGENCE_PREP",
+      "acceptance_checks": [
+        "실제 성과 데이터 미사용 확인"
+      ],
+      "definition_of_done": "내부 proxy 기준으로만 검토되고 실제 성과 데이터가 없다는 점이 명시됨",
+      "blocker_codes": []
+    },
+    "IG-007-WO-05": {
+      "content_id": "IG-007",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "해시태그 정책 준수 재확인",
+        "hook/body 완결성 재확인"
+      ],
+      "definition_of_done": "근거 없는 해시태그/성과 주장이 없음을 확인",
+      "blocker_codes": []
+    },
+    "IG-007-WO-06": {
+      "content_id": "IG-007",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "IG-009-WO-01": {
+      "content_id": "IG-009",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "hook/body 존재 확인",
+        "해시태그 미포함 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "hook/본문/CTA가 완결된 문장이며 해시태그 정책(무해시태그) 준수를 재확인",
+      "blocker_codes": []
+    },
+    "IG-009-WO-02": {
+      "content_id": "IG-009",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드 필드가 null 또는 허용된 placeholder인지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "IG-009-WO-03": {
+      "content_id": "IG-009",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "텍스트 삽입 여백 명시 확인"
+      ],
+      "definition_of_done": "텍스트 삽입 여백을 포함한 카드 레이아웃 계획이 문서화됨",
+      "blocker_codes": []
+    },
+    "IG-009-WO-04": {
+      "content_id": "IG-009",
+      "stage": "INSTAGRAM_INTELLIGENCE_PREP",
+      "acceptance_checks": [
+        "실제 성과 데이터 미사용 확인"
+      ],
+      "definition_of_done": "내부 proxy 기준으로만 검토되고 실제 성과 데이터가 없다는 점이 명시됨",
+      "blocker_codes": []
+    },
+    "IG-009-WO-05": {
+      "content_id": "IG-009",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "해시태그 정책 준수 재확인",
+        "hook/body 완결성 재확인"
+      ],
+      "definition_of_done": "근거 없는 해시태그/성과 주장이 없음을 확인",
+      "blocker_codes": []
+    },
+    "IG-009-WO-06": {
+      "content_id": "IG-009",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "IG-013-WO-01": {
+      "content_id": "IG-013",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "hook/body 존재 확인",
+        "해시태그 미포함 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "hook/본문/CTA가 완결된 문장이며 해시태그 정책(무해시태그) 준수를 재확인",
+      "blocker_codes": []
+    },
+    "IG-013-WO-02": {
+      "content_id": "IG-013",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드 필드가 null 또는 허용된 placeholder인지 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 확정되거나 명시적 placeholder로 남음",
+      "blocker_codes": []
+    },
+    "IG-013-WO-03": {
+      "content_id": "IG-013",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "텍스트 삽입 여백 명시 확인"
+      ],
+      "definition_of_done": "텍스트 삽입 여백을 포함한 카드 레이아웃 계획이 문서화됨",
+      "blocker_codes": []
+    },
+    "IG-013-WO-04": {
+      "content_id": "IG-013",
+      "stage": "INSTAGRAM_INTELLIGENCE_PREP",
+      "acceptance_checks": [
+        "실제 성과 데이터 미사용 확인"
+      ],
+      "definition_of_done": "내부 proxy 기준으로만 검토되고 실제 성과 데이터가 없다는 점이 명시됨",
+      "blocker_codes": []
+    },
+    "IG-013-WO-05": {
+      "content_id": "IG-013",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "해시태그 정책 준수 재확인",
+        "hook/body 완결성 재확인"
+      ],
+      "definition_of_done": "근거 없는 해시태그/성과 주장이 없음을 확인",
+      "blocker_codes": []
+    },
+    "IG-013-WO-06": {
+      "content_id": "IG-013",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "KN-008-WO-01": {
+      "content_id": "KN-008",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "역사적 인물 귀속 문구 부재 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장이 완결되고 특정 인물/연구 귀속 주장이 없음을 재확인",
+      "blocker_codes": []
+    },
+    "KN-008-WO-02": {
+      "content_id": "KN-008",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드 필드 확인",
+        "evidence_not_required_reason null 항목에 대한 추가 검토 플래그 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 확정되거나 명시적 placeholder로 남음; evidence_not_required_reason이 null인 항목은 CTO/리뷰어 확인 대기로 명시",
+      "blocker_codes": [
+        "EVIDENCE_REVIEW_PENDING"
+      ]
+    },
+    "KN-008-WO-03": {
+      "content_id": "KN-008",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "텍스트 위계 명시 확인"
+      ],
+      "definition_of_done": "인포그래픽 레이아웃 계획이 문서화됨",
+      "blocker_codes": []
+    },
+    "KN-008-WO-04": {
+      "content_id": "KN-008",
+      "stage": "KNOWLEDGE_LEARNING_INTEGRATION",
+      "acceptance_checks": [
+        "승격(promote) 미수행 확인"
+      ],
+      "definition_of_done": "CANDIDATE 상태 등록 여부만 검토 기록, 승격은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "KN-008-WO-05": {
+      "content_id": "KN-008",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "역사적 귀속 문구 부재 재확인",
+        "효과 단정 문구 부재 재확인"
+      ],
+      "definition_of_done": "역사적 인물 귀속·효과 단정 문장이 없음을 확인",
+      "blocker_codes": []
+    },
+    "KN-008-WO-06": {
+      "content_id": "KN-008",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    },
+    "KN-007-WO-01": {
+      "content_id": "KN-007",
+      "stage": "COPY_STORY_FINALIZE",
+      "acceptance_checks": [
+        "4장 존재 확인",
+        "역사적 인물 귀속 문구 부재 확인",
+        "CTA 1개 확인"
+      ],
+      "definition_of_done": "4장 문장이 완결되고 특정 인물/연구 귀속 주장이 없음을 재확인",
+      "blocker_codes": []
+    },
+    "KN-007-WO-02": {
+      "content_id": "KN-007",
+      "stage": "EVIDENCE_RIGHTS_CONFIRM",
+      "acceptance_checks": [
+        "rights_intake 레코드 필드 확인",
+        "evidence_not_required_reason null 항목에 대한 추가 검토 플래그 확인"
+      ],
+      "definition_of_done": "이미지 사용 경로가 확정되거나 명시적 placeholder로 남음; evidence_not_required_reason이 null인 항목은 CTO/리뷰어 확인 대기로 명시",
+      "blocker_codes": []
+    },
+    "KN-007-WO-03": {
+      "content_id": "KN-007",
+      "stage": "LAYOUT_TYPOGRAPHY_PREP",
+      "acceptance_checks": [
+        "텍스트 위계 명시 확인"
+      ],
+      "definition_of_done": "인포그래픽 레이아웃 계획이 문서화됨",
+      "blocker_codes": []
+    },
+    "KN-007-WO-04": {
+      "content_id": "KN-007",
+      "stage": "KNOWLEDGE_LEARNING_INTEGRATION",
+      "acceptance_checks": [
+        "승격(promote) 미수행 확인"
+      ],
+      "definition_of_done": "CANDIDATE 상태 등록 여부만 검토 기록, 승격은 수행하지 않음",
+      "blocker_codes": []
+    },
+    "KN-007-WO-05": {
+      "content_id": "KN-007",
+      "stage": "INDEPENDENT_QA_FINAL",
+      "acceptance_checks": [
+        "역사적 귀속 문구 부재 재확인",
+        "효과 단정 문구 부재 재확인"
+      ],
+      "definition_of_done": "역사적 인물 귀속·효과 단정 문장이 없음을 확인",
+      "blocker_codes": []
+    },
+    "KN-007-WO-06": {
+      "content_id": "KN-007",
+      "stage": "PACKAGING_PUBLISH_HANDOFF",
+      "acceptance_checks": [
+        "publish_ready == false 확인",
+        "actual_publish == false 확인"
+      ],
+      "definition_of_done": "게시 준비 메타데이터가 구성되고 publish_ready/actual_publish가 false로 유지됨",
+      "blocker_codes": []
+    }
+  }
+}

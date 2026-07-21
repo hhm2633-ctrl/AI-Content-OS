@@ -1,0 +1,20 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-23652dc036e9",
+  "candidate_id": "20260717-2003-A-23652dc036e9",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "경기 최대 300㎜ 이상 비 예보…'비상 2단계' 가동",
+  "source_urls": [
+    "https://www.yna.co.kr/view/AKR20260717052500061?section=society/all"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false
+}

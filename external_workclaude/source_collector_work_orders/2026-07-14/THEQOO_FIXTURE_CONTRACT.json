@@ -1,0 +1,86 @@
+{
+  "contract_name": "theqoo_hot_list_fixture",
+  "contract_version": "1.0.0",
+  "recon_date": "2026-07-15",
+  "source": {
+    "site": "theqoo",
+    "surface": "hot_list",
+    "base_url": "https://theqoo.net/hot",
+    "pagination_url_template": "https://theqoo.net/hot?page={page}",
+    "category_url_template": "https://theqoo.net/hot/category/{category_srl}",
+    "post_url_template": "https://theqoo.net/hot/{document_srl}",
+    "rendering": "server_rendered_html",
+    "engine": "rhymix",
+    "robots_txt": "http_404_absent",
+    "auth_required": false,
+    "captcha_observed": false
+  },
+  "selectors": {
+    "list_table": "table.theqoo_board_table",
+    "rows": "tbody.hide_notice > tr:not(.notice)",
+    "post_no": "td.no",
+    "category": "td.cate > span",
+    "title_link": "td.title > a[href^='/hot/']",
+    "comment_count": "td.title > a.replyNum",
+    "has_images_marker": "td.title i.fa-images",
+    "time_text": "td.time",
+    "views": "td.m_no",
+    "pagination_links": "form.theqoo_pagination ul li a",
+    "detail_header": "div.rd_hd div.theqoo_document_header",
+    "detail_timestamp": ".btm_area .side.fr > span",
+    "detail_canonical_link": ".btm_area .side a.link",
+    "detail_body": "article[itemprop='articleBody'] .rhymix_content"
+  },
+  "item_schema": {
+    "document_srl": {"type": "string", "required": true, "description": "Global post id parsed from title link href /hot/{srl}; query string stripped"},
+    "board_post_no": {"type": "integer", "required": true, "description": "Board-local number from td.no; descending, tiebreaker only"},
+    "title": {"type": "string", "required": true, "sanitization": "replace real titles with synthetic placeholders in fixtures"},
+    "url": {"type": "string", "required": true, "format": "https://theqoo.net/hot/{document_srl}"},
+    "board": {"type": "string", "required": true, "const": "hot", "description": "Collection surface; origin board (e.g. square) only visible on detail page"},
+    "category": {"type": "string", "required": true, "enum": ["이슈", "유머", "정보", "기사/뉴스", "팁/유용/추천", "정치", "뷰티", "영화/드라마/방송", "도서", "먹거리", "그외/광고"]},
+    "rank": {"type": "integer", "required": true, "description": "1-based position among normal rows: page_index*20 + row_index+1; no explicit rank field on site"},
+    "time_text": {"type": "string", "required": true, "description": "Raw td.time text: 'HH:MM' for same-day, 'MM.DD' for older; year absent"},
+    "published_at": {"type": "string|null", "required": false, "format": "ISO 8601", "description": "Resolved from time_text against collected_at; null when ambiguous"},
+    "views": {"type": "integer", "required": true, "description": "Parsed from td.m_no, commas stripped"},
+    "comment_count": {"type": "integer", "required": true, "description": "Parsed from a.replyNum; 0 when the anchor is absent"},
+    "recommend_count": {"type": "integer|null", "required": false, "description": "NOT exposed on public list surfaces; always null in list fixtures"},
+    "has_images": {"type": "boolean", "required": false, "description": "Presence of fa-images icon in title cell"}
+  },
+  "envelope_schema": {
+    "source": "theqoo",
+    "surface": "hot_list",
+    "page": "integer, 1-based",
+    "category_srl": "string|null, e.g. '24788' for 이슈",
+    "collected_at": "ISO 8601 with timezone (Asia/Seoul)",
+    "items": "array of item_schema, max 20 per page",
+    "notices_skipped": "integer, count of tr.notice rows excluded"
+  },
+  "sanitization_rules": [
+    "Fixture titles must be synthetic (no real post titles, usernames, or quoted content)",
+    "document_srl and board_post_no in fixtures must be synthetic but format-realistic (10-digit srl, 6-digit post no)",
+    "No comment text, author identifiers, or post body content in fixtures",
+    "View/comment counts realistic but invented"
+  ],
+  "parsing_notes": [
+    "Skip tr.notice rows (event/permanent notices) before ranking",
+    "Strip '?page=N' query from title link href before extracting document_srl",
+    "Pagination anchors contain leftover Rhymix template attributes (||cond=...); parse href attribute only",
+    "td.m_no is also the header class for the 조회 column; scope selectors to tbody rows",
+    "Recommend count unavailable in list; detail page header exposes only views and comments"
+  ],
+  "sample_fixture_item": {
+    "document_srl": "4200000001",
+    "board_post_no": 150001,
+    "title": "[샘플] 더쿠 핫게시판 목록 파싱 픽스처 제목",
+    "url": "https://theqoo.net/hot/4200000001",
+    "board": "hot",
+    "category": "이슈",
+    "rank": 1,
+    "time_text": "09:52",
+    "published_at": "2026-07-15T09:52:00+09:00",
+    "views": 4745,
+    "comment_count": 66,
+    "recommend_count": null,
+    "has_images": true
+  }
+}

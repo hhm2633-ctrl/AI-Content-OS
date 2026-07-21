@@ -1,0 +1,19 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 21:12:00
+- task: DAUM category-page collector low-cost implementation
+- changed_files:
+  - modules/trend_collector/daum_news_collector.py
+  - modules/source_intake/daily_collection_executor.py
+  - tests/test_daum_news_collector.py
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_20260715_211200.md
+- checks:
+  - py -m compileall modules/trend_collector modules/source_intake
+  - py -m unittest tests.test_daum_news_collector tests.test_daily_source_collection_executor
+- check_results:
+  - compileall: passed
+  - unittest: passed (8 tests)
+- notes:
+  - Implemented Daum category collector from contract selectors and fixtures.
+  - Added category URL validation for stale routes and homepage redirects.
+  - Kept network/parser failures non-fatal with diagnostic recording in collector status.
+  - Executor now wires `daum_news` to `_collect_daum_news` when available.

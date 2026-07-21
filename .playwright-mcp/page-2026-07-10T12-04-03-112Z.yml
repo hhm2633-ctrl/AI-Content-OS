@@ -1,0 +1,144 @@
+- generic [ref=f57e4]:
+  - generic [ref=f57e9]:
+    - generic [ref=f57e12]:
+      - link [ref=f57e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f57e22]
+      - generic [ref=f57e25]:
+        - link [ref=f57e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f57e35]
+        - link [ref=f57e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f57e45]
+        - link [ref=f57e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f57e55]:
+            - img "메시지" [ref=f57e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f57e60]: "1"
+        - link [ref=f57e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f57e71]
+        - link [ref=f57e78] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f57e83]
+        - link [ref=f57e89] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f57e94]
+        - link [ref=f57e100] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f57e105]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f57e106]
+      - generic [ref=f57e107]:
+        - link [ref=f57e110] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f57e115]
+        - link [ref=f57e118] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f57e123]
+    - generic [ref=f57e126]:
+      - main [ref=f57e127]:
+        - progressbar [ref=f57e129]:
+          - img "읽어들이는 중..." [ref=f57e130]
+      - contentinfo [ref=f57e143]:
+        - generic [ref=f57e144]:
+          - generic [ref=f57e146]:
+            - link "Meta" [ref=f57e148] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f57e151] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f57e154] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f57e157] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f57e160] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f57e163] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f57e166] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f57e169] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f57e172] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f57e175] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f57e178] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f57e181] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f57e184] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f57e187] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f57e190] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f57e192]:
+            - generic [ref=f57e193] [cursor=pointer]:
+              - generic [ref=f57e194]:
+                - generic [ref=f57e195]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f57e198]
+              - combobox "표시 언어 변경" [ref=f57e200]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f57e201]: © 2026 Instagram from Meta
+  - button [ref=f57e204] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f57e205]:
+      - generic [ref=f57e206]:
+        - generic [ref=f57e208]:
+          - img "메시지" [ref=f57e209]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f57e212]: "1"
+        - generic [ref=f57e215]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f57e218]:
+        - img "사용자 아바타" [ref=f57e221]

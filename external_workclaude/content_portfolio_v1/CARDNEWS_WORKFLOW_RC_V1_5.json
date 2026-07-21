@@ -1,0 +1,96 @@
+{
+  "version": "cardnews_workflow_rc_v1.5",
+  "final_verdict": "DEV_SAFE_GO",
+  "publish_verdict": "PUBLISH_NO_GO",
+  "publish_go_blocked_reason": "No rights-approved real image or rights record exists for this run's cards -- per instruction, PUBLISH_GO cannot be issued without one.",
+  "run": {
+    "command": "py -m src.main",
+    "executed_once": true,
+    "exit_code": 0,
+    "final_status": "workflow_completed",
+    "output_set_id": "f2281e14df8d4ab68a46152e93e9029b"
+  },
+  "checkpoints": {
+    "1_final_status_workflow_completed": true,
+    "2_active_output_set_id_confirmed": "f2281e14df8d4ab68a46152e93e9029b",
+    "3_ids_all_match": {
+      "07_card_news": "f2281e14df8d4ab68a46152e93e9029b",
+      "08_card_news": "f2281e14df8d4ab68a46152e93e9029b",
+      "08_publishing": "f2281e14df8d4ab68a46152e93e9029b",
+      "09_publishing": "f2281e14df8d4ab68a46152e93e9029b",
+      "quality": "f2281e14df8d4ab68a46152e93e9029b",
+      "99_final": "f2281e14df8d4ab68a46152e93e9029b",
+      "active_pointer": "f2281e14df8d4ab68a46152e93e9029b",
+      "all_match": true
+    },
+    "4_exactly_four_pngs": true,
+    "5_all_decode_ok": true,
+    "6_all_1080x1080": true,
+    "7_immutable_committed_paths": true,
+    "8_loose_or_runs_or_staging_exposure_count": 0,
+    "9_global_publish_queue_exists": false,
+    "10_publishing_08_09_agree": {
+      "status_match": true,
+      "publishing_ready_match": true,
+      "package_ready_match": true,
+      "actual_publish_match": true
+    },
+    "11_no_rights_image_all_false": {
+      "release_ready": false,
+      "package_ready": false,
+      "publishing_ready": false,
+      "actual_publish": false
+    },
+    "12_legacy_final_result_receipt": {
+      "status": "legacy_receipt_blocked",
+      "selectable": false,
+      "publishing_ready": false,
+      "actual_publish": false,
+      "output_set_id": "f2281e14df8d4ab68a46152e93e9029b"
+    },
+    "13_changed_files_before_after": {
+      "git_tracked_status_diff": "none -- git status --short byte-identical before and after (storage/ is gitignored so the run's file writes do not appear here)",
+      "storage_files_touched_within_run_window": 87,
+      "leftover_runs_or_staging_dirs": 0
+    },
+    "14_external_service_failures_and_fallback_recorded": {
+      "naver_news": {
+        "success": false,
+        "failed_reason": "parse_failed",
+        "fallback_reason": "parse_failed",
+        "collection_method": "settings_keyword_fallback",
+        "recorded_in": "storage/trends/trend_result.json, storage/workflow_results/01_trend_result.json"
+      },
+      "nate_pann": {
+        "success": false,
+        "error_type": "network_error",
+        "recorded_in": "console log + trend_result.json collection_summary"
+      },
+      "overall_fallback_used": true
+    }
+  },
+  "publishing_blocker_codes": [
+    "PUBLISH_MANIFEST_PATH_MISMATCH",
+    "PUBLISH_RIGHTS_BLOCKED",
+    "PUBLISH_EVIDENCE_BLOCKED",
+    "PUBLISH_COMPLIANCE_BLOCKED",
+    "PUBLISH_MANUAL_IMAGE_REQUIRED",
+    "PUBLISH_COMMITTED_ATTESTATION_INVALID"
+  ],
+  "focused_tests": {
+    "command": "py -m unittest tests.test_workflow_card_news_output_receipts tests.test_common_card_news_output_set tests.test_card_news_output_set_integrity -v",
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "result": "OK"
+  },
+  "compile": {
+    "command": "py -m compileall src modules scripts",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "no_code_changes_this_task": true,
+  "no_git_operations_performed": true,
+  "no_credentials_printed_or_added": true,
+  "no_real_publish_login_upload": true
+}

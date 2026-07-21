@@ -1,0 +1,430 @@
+{
+  "schema_version": "account_package_repair_inputs_v1",
+  "account": "A",
+  "records": [
+    {
+      "candidate_id": "20260717-2003-A-1257fdf5c746",
+      "account": "A",
+      "category": "경제·생활",
+      "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?",
+      "evidence": {
+        "sources": [
+          {
+            "url": "https://www.hankyung.com/article/202607170841i",
+            "publisher": "한국경제",
+            "title": "사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?",
+            "published_at": "2026-07-17T20:00:00+09:00",
+            "source_status": "body_read",
+            "usage_note": "기사 문장·이미지 캡처를 전재하지 않고 핵심 구분만 새 편집 그래픽으로 재구성"
+          }
+        ]
+      },
+      "story": {
+        "summary": "상속포기를 했다고 모든 돈을 받으면 안 되는 것은 아니다. 기사에서 설명한 사망퇴직금·보험금·해지환급금의 차이를 '누구에게 직접 생긴 권리인가'라는 한 줄 기준으로 풀어낸다."
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "hook",
+          "headline": "상속 포기했는데\n보험금은 받아도 될까?",
+          "body": "빚을 피하려다 받은 돈 때문에 다시 문제가 생길까, 가장 헷갈리는 지점입니다."
+        },
+        {
+          "page": 2,
+          "role": "core_distinction",
+          "headline": "먼저 볼 건\n'누구의 재산인가'",
+          "body": "고인이 남긴 상속재산인지, 유족에게 직접 생긴 고유재산인지에 따라 달라집니다."
+        },
+        {
+          "page": 3,
+          "role": "death_benefit",
+          "headline": "사망퇴직금은\n유족의 몫일 수 있다",
+          "body": "법률이나 취업규칙이 수령자를 따로 정했다면 유족에게 직접 귀속되는 고유재산으로 본다는 설명입니다."
+        },
+        {
+          "page": 4,
+          "role": "insurance_split",
+          "headline": "보험금은\n수익자부터 확인",
+          "body": "수익자가 '상속인'이면 청구권이 직접 생기지만, 피보험자 자신이 수익자라면 상속재산이 될 수 있습니다."
+        },
+        {
+          "page": 5,
+          "role": "exception",
+          "headline": "해지환급금은\n같이 보면 안 됩니다",
+          "body": "기사는 해지환급금은 원칙적으로 상속재산이라며 함부로 인출하거나 쓰지 말라고 짚었습니다."
+        },
+        {
+          "page": 6,
+          "role": "takeaway",
+          "headline": "이름은 '보험금'이어도\n결론은 다릅니다",
+          "body": "상속포기 여부만 보지 말고 지급 근거와 보험수익자를 먼저 확인해야 한다는 이야기입니다."
+        }
+      ],
+      "feed_caption": "상속을 포기했으면 고인과 관련된 돈은 전부 받으면 안 된다고 생각하기 쉽습니다. 하지만 기사에 따르면 사망퇴직금처럼 유족에게 직접 귀속되는 돈과, 보험계약에서 수익자가 상속인으로 지정된 생명보험금은 상속재산이 아닐 수 있습니다. 반대로 피보험자 자신이 수익자인 보험금이나 해지환급금은 상속재산이 될 수 있어 같은 '보험금'이라는 이름만 보고 판단하면 안 됩니다. 핵심은 상속포기 자체보다 지급 근거와 보험수익자가 누구인지입니다.\n\n보험수익자, 지금 바로 확인할 수 있나요?\n\n참고: 한국경제 「사망퇴직금과 생명보험금, 상속포기 후 수령해도 괜찮을까?」",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "hook",
+          "media_type": "editorial",
+          "source_credit": "한국경제 기사 내용 참고·자체 편집 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 2,
+          "slide_role": "core_distinction",
+          "media_type": "motion_graphic",
+          "source_credit": "한국경제 기사 내용 참고·상속재산/고유재산 분기 그래픽",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 3,
+          "slide_role": "death_benefit",
+          "media_type": "editorial",
+          "source_credit": "한국경제 기사 내용 참고·급여명세서 형태의 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 4,
+          "slide_role": "insurance_split",
+          "media_type": "editorial",
+          "source_credit": "한국경제 기사 내용 참고·보험수익자 항목 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 5,
+          "slide_role": "exception",
+          "media_type": "motion_graphic",
+          "source_credit": "한국경제 기사 내용 참고·해지환급금 경고 그래픽",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 6,
+          "slide_role": "takeaway",
+          "media_type": "editorial",
+          "source_credit": "한국경제 기사 내용 참고·확인 순서 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        }
+      ],
+      "quality_notes": [
+        "원문이 법률 칼럼이므로 기사에서 설명한 범위를 넘어 개별 사건의 결론을 단정하지 않음",
+        "원문 페이지의 무단 캡처·전재 금지 고지를 반영해 기사 이미지와 본문 캡처를 미디어 계획에서 제외",
+        "6장 구성은 예외와 핵심 구분을 한 화면에 과밀하게 넣지 않기 위한 가변 구성"
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-A-54b45bfb6a07",
+      "account": "A",
+      "category": "사회·사건",
+      "title": "불교가 맺어준 인연, 금지옥엽으로…'나는 절로' 1호 부모 나왔다",
+      "evidence": {
+        "sources": [
+          {
+            "url": "https://www.newsis.com/view/NISX20260717_0003713416",
+            "publisher": "뉴시스",
+            "title": "불교가 맺어준 인연, 금지옥엽으로…'나는 절로' 1호 부모 나왔다",
+            "published_at": "2026-07-17T20:33:32+09:00",
+            "source_status": "body_read",
+            "usage_note": "2024년 8월 낙산사 참가, 최종 커플, 2025년 10월 결혼, 2026년 7월 16일 출산의 흐름 확인"
+          }
+        ]
+      },
+      "story": {
+        "summary": "낙산사 템플스테이에서 최종 커플이 된 두 사람이 결혼을 거쳐 '나는 절로' 첫 부모가 된 실제 시간의 흐름을 따라간다. 행사 소개보다 만남이 가족으로 이어진 변화에 초점을 둔다."
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "hook",
+          "headline": "절에서 만난 두 사람\n첫 아이가 태어났다",
+          "body": "'나는 절로'에서 이어진 인연이 프로그램 첫 부모가 됐습니다."
+        },
+        {
+          "page": 2,
+          "role": "first_meeting",
+          "headline": "시작은 2024년 8월\n낙산사였습니다",
+          "body": "30대 남녀 참가자는 견우 5호와 직녀 8호로 만나 최종 커플이 됐습니다."
+        },
+        {
+          "page": 3,
+          "role": "marriage",
+          "headline": "1년 뒤인 지난해 10월\n부부가 됐고",
+          "body": "템플스테이에서 시작된 만남은 실제 결혼으로 이어졌습니다."
+        },
+        {
+          "page": 4,
+          "role": "birth",
+          "headline": "그리고 7월 16일\n아들이 태어났습니다",
+          "body": "재단이 전한 '나는 절로'의 첫 출산 소식입니다."
+        },
+        {
+          "page": 5,
+          "role": "program_outcome",
+          "headline": "지금까지 결혼 3쌍\n다음 결혼도 10월",
+          "body": "재단에 따르면 프로그램을 통해 세 커플이 결혼했고 한 커플이 추가 결혼을 앞두고 있습니다."
+        }
+      ],
+      "feed_caption": "강원 양양 낙산사에서 열린 미혼남녀 템플스테이 '나는 절로'에서 만난 두 사람이 프로그램의 첫 부모가 됐습니다. 두 사람은 2024년 8월 견우 5호와 직녀 8호로 참가해 최종 커플이 됐고, 지난해 10월 결혼했습니다. 그리고 7월 16일 아들이 태어났습니다. 재단에 따르면 '나는 절로'를 통해 지금까지 세 커플이 결혼했고, 오는 10월에도 한 커플이 결혼을 앞두고 있습니다.\n\n절에서 시작된 인연이 진짜 가족까지 이어졌네요.\n\n참고: 뉴시스",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "hook",
+          "media_type": "editorial",
+          "source_credit": "뉴시스 보도 참고·사찰 지붕과 아기 발도장 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 2,
+          "slide_role": "first_meeting",
+          "media_type": "motion_graphic",
+          "source_credit": "뉴시스 보도 참고·낙산사/견우5호/직녀8호 연결 그래픽",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 3,
+          "slide_role": "marriage",
+          "media_type": "editorial",
+          "source_credit": "뉴시스 보도 참고·2025년 10월 달력과 반지 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 4,
+          "slide_role": "birth",
+          "media_type": "editorial",
+          "source_credit": "뉴시스 보도 참고·2026년 7월 16일 날짜와 출생 상징 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 5,
+          "slide_role": "program_outcome",
+          "media_type": "motion_graphic",
+          "source_credit": "뉴시스 보도 참고·결혼 3쌍과 추가 1쌍 집계 그래픽",
+          "asset_status": "planned_not_rendered"
+        }
+      ],
+      "quality_notes": [
+        "로컬 collection context에 만남·결혼·출산의 핵심 흐름이 있었고 뉴시스 원문 본문으로 세부 날짜를 확인",
+        "기사 제공 사진을 확보했다고 가정하지 않고 사람을 특정하지 않는 자체 editorial graphic으로 완결",
+        "저출생 정책 홍보보다 한 커플의 실제 변화와 프로그램 누적 결과에 집중"
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-A-23652dc036e9",
+      "account": "A",
+      "category": "사회·사건",
+      "title": "파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해",
+      "evidence": {
+        "sources": [
+          {
+            "url": "https://www.yna.co.kr/view/AKR20260717052500061?section=society/all",
+            "publisher": "연합뉴스",
+            "title": "경기 최대 300㎜ 이상 비 예보…'비상 2단계' 가동",
+            "published_at": "2026-07-17T18:50:00+09:00",
+            "source_status": "search_body_confirmed_origin_page_blocked",
+            "usage_note": "17일 당시 18~19일 호우 예보와 경기도 비상 2단계 격상 내용"
+          },
+          {
+            "url": "https://www.hankyung.com/article/202607171300Y",
+            "publisher": "한국경제(연합뉴스 전재)",
+            "title": "경기 최대 300㎜ 이상 비 예보…비상 2단계 가동",
+            "published_at": "2026-07-17T20:46:00+09:00",
+            "source_status": "body_read",
+            "usage_note": "원문 접근 실패 시 동일 연합뉴스 본문 확인용"
+          },
+          {
+            "url": "https://www.yna.co.kr/amp/view/AKR20260718029500530",
+            "publisher": "연합뉴스",
+            "title": "파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해",
+            "published_at": "2026-07-18T00:00:00+09:00",
+            "source_status": "followup_body_read",
+            "usage_note": "17일 예보 뒤 18일 실제 누적 강수량·피해·통제 규모 확인"
+          }
+        ]
+      },
+      "story": {
+        "summary": "17일의 최대 300㎜ 예보를 되풀이하지 않고, 다음 날 파주·동두천에 실제로 약 200㎜가 내리며 540건의 피해가 집계된 후속 상황으로 전환한다. 예보 숫자가 도로 침수·수목 전도·대규모 통제로 이어진 현실 변화를 보여준다."
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "hook",
+          "headline": "도로가 잠기고\n95명이 집을 나왔다",
+          "body": "17~18일 집중호우는 경기 북부의 실제 대피와 통제로 이어졌습니다."
+        },
+        {
+          "page": 2,
+          "role": "actual_rainfall",
+          "headline": "파주 192.5㎜\n동두천 189.5㎜",
+          "body": "17일부터 18일 오전 10시까지 경기 북부를 중심으로 비가 집중됐습니다."
+        },
+        {
+          "page": 3,
+          "role": "damage",
+          "headline": "침수 148건\n토사·낙석·전도 392건",
+          "body": "중대본이 집계한 피해 540건은 두 갈래로 나뉘었습니다."
+        },
+        {
+          "page": 4,
+          "role": "evacuation",
+          "headline": "44세대 95명은\n비를 피해 대피",
+          "body": "인명피해는 없었지만 6개 시도 13개 시·군에서 임시대피가 이뤄졌습니다."
+        },
+        {
+          "page": 5,
+          "role": "controls",
+          "headline": "하천길·주차장 등\n6,554곳 통제",
+          "body": "산책로 5,910곳과 하천변 341곳, 둔치주차장 105곳 등이 닫혔습니다."
+        }
+      ],
+      "feed_caption": "17~18일 집중호우로 경기 북부를 비롯한 수도권과 강원에서 실제 피해가 이어졌습니다. 18일 오전 10시까지 파주 192.5㎜, 동두천 189.5㎜의 누적 강수량을 기록했습니다. 중대본 집계 피해는 주택·도로 침수 148건, 토사·낙석 유출과 수목 전도 392건으로 모두 540건입니다. 인명피해는 없었지만 44세대 95명이 임시대피했고, 하천 산책로와 둔치주차장 등 6,554곳이 통제됐습니다.\n\n참고: 연합뉴스 「파주·동두천 200㎜ 호우…도로 침수·수목 전도 등 540건 피해」",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "hook",
+          "media_type": "editorial",
+          "source_credit": "연합뉴스 중대본 집계 참고·침수 도로 단면과 대피 화살표 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 2,
+          "slide_role": "actual_rainfall",
+          "media_type": "motion_graphic",
+          "source_credit": "연합뉴스 집계 참고·파주/동두천 누적 강수량 막대 그래픽",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 3,
+          "slide_role": "damage",
+          "media_type": "editorial",
+          "source_credit": "연합뉴스 피해 집계 참고·148건/392건 분할 패널 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 4,
+          "slide_role": "evacuation",
+          "media_type": "editorial",
+          "source_credit": "연합뉴스 대피 집계 참고·44세대/95명 이동 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 5,
+          "slide_role": "controls",
+          "media_type": "editorial",
+          "source_credit": "연합뉴스 통제 집계 참고·산책로/하천변/둔치주차장 분류 지도",
+          "asset_status": "ready_for_editorial_production"
+        }
+      ],
+      "quality_notes": [
+        "첫 장을 추상적 예보 문구에서 도로 침수와 95명 대피라는 생활 현장 변화로 교체",
+        "피해 수치와 지역은 연합뉴스가 전한 18일 오전 10시 중대본 집계 시점으로 한정",
+        "강수 지도·피해 유형·대피·시설 통제를 서로 다른 시각 문법으로 분리해 장별 정보 중복 제거",
+        "미확보 보도사진에 의존하지 않고 확인된 수치와 범주만 자체 편집 그래픽으로 계획"
+      ]
+    },
+    {
+      "candidate_id": "20260717-2003-A-4a4409ce4870",
+      "account": "A",
+      "category": "사회·사건",
+      "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+      "evidence": {
+        "sources": [
+          {
+            "url": "https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER",
+            "publisher": "JTBC",
+            "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+            "published_at": "2026-07-17T20:12:00+09:00",
+            "source_status": "search_body_confirmed_origin_page_blocked",
+            "usage_note": "대관령4터널 4중 추돌, SUV 화재, 강릉 방향 한때 통제 확인"
+          },
+          {
+            "url": "https://www.newsis.com/view/NISX20260717_0003713274",
+            "publisher": "뉴시스",
+            "title": "강원 대관령터널 4중 추돌→화재…대피 16명중 1명 부상",
+            "published_at": "2026-07-17T13:51:18+09:00",
+            "source_status": "body_read",
+            "usage_note": "소방 인력·장비와 진화 상황 보조 확인"
+          }
+        ]
+      },
+      "story": {
+        "summary": "연휴 첫날 터널 끝 지점에서 차량들이 속도를 줄인 순간 4중 추돌이 발생하고, 한 차량의 불꽃이 커져 소방대원들이 걸어서 진입할 만큼 현장이 악화된 흐름을 따라간다. 미확보 방송 영상에 의존하지 않고 기사에서 확인된 순서를 자체 도식으로 재구성한다."
+      },
+      "slides": [
+        {
+          "page": 1,
+          "role": "hook",
+          "headline": "터널 끝에서 차들이 속도를 줄인 순간\n4중 추돌이 났다",
+          "body": "제헌절 연휴 첫날 대관령4터널 강릉 방향에서 벌어진 사고입니다."
+        },
+        {
+          "page": 2,
+          "role": "collision_sequence",
+          "headline": "앞차가 줄이자\n뒤에서 연쇄 추돌",
+          "body": "JTBC 보도에 따르면 승합차가 앞차를 들이받은 뒤 SUV와 승용차까지 부딪혔습니다."
+        },
+        {
+          "page": 3,
+          "role": "access_blocked",
+          "headline": "검은 연기에 소방차 진입도\n바로 되지 않았다",
+          "body": "대원들은 터널 안으로 직접 걸어 들어가 진화 작업을 벌였습니다."
+        },
+        {
+          "page": 4,
+          "role": "response_scale",
+          "headline": "장비 18대·인력 54명\n대응 2단계까지",
+          "body": "소방당국은 대응 단계를 높여 진화와 사고 수습에 나섰습니다."
+        },
+        {
+          "page": 5,
+          "role": "aftermath",
+          "headline": "강릉 가는 길은\n한때 전면 통제",
+          "body": "화재 진압과 사고 수습 동안 대관령IC에서 국도로 우회하도록 안내됐습니다."
+        }
+      ],
+      "feed_caption": "제헌절 연휴 첫날, 영동고속도로 강릉 방향 대관령4터널에서 차량 네 대가 잇따라 부딪혔습니다. JTBC 보도에 따르면 터널 끝 지점에서 앞차들이 속도를 줄이는 과정에서 연쇄 추돌이 났고, 잠시 뒤 SUV 앞부분에서 불꽃이 일며 터널 안이 검은 연기로 가득 찼습니다. 소방차 진입이 어려워 대원들이 터널 안으로 직접 들어갔고, 소방당국은 장비 18대와 인력 54명을 투입했습니다. 사고 수습 동안 강릉 방향 통행은 한때 전면 통제됐습니다.\n\n참고: JTBC 뉴스, 뉴시스",
+      "media_plan": [
+        {
+          "page": 1,
+          "slide_role": "hook",
+          "media_type": "editorial",
+          "source_credit": "JTBC 보도 참고·터널 끝 급감속 지점과 차량 흐름 자체 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 2,
+          "slide_role": "collision_sequence",
+          "media_type": "motion_graphic",
+          "source_credit": "JTBC 보도 순서 참고·차량 4대 연쇄 추돌 도식",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 3,
+          "slide_role": "access_blocked",
+          "media_type": "motion_graphic",
+          "source_credit": "JTBC·뉴시스 보도 참고·터널 연기층과 소방대원 도보 진입 단면 그래픽",
+          "asset_status": "planned_not_rendered"
+        },
+        {
+          "page": 4,
+          "slide_role": "response_scale",
+          "media_type": "editorial",
+          "source_credit": "뉴시스 보도 참고·장비 18대/인력 54명 숫자 그래픽",
+          "asset_status": "ready_for_editorial_production"
+        },
+        {
+          "page": 5,
+          "slide_role": "aftermath",
+          "media_type": "editorial",
+          "source_credit": "JTBC 보도 참고·대관령IC 우회 자체 지도",
+          "asset_status": "ready_for_editorial_production"
+        }
+      ],
+      "quality_notes": [
+        "JTBC 원문 페이지는 직접 열리지 않았으나 검색 결과에 노출된 원문 보도 내용으로 사고 흐름 확인",
+        "초기 보도 사이 인명피해 집계가 달라 본문은 충돌·화재·통제처럼 공통 확인된 사실만 사용",
+        "미확보 JTBC 영상과 소방 사진 의존을 제거하고 기사로 확인된 사건 순서·대응 규모만 자체 편집 그래픽으로 전환",
+        "급감속 지점·4대 충돌 순서·소방 진입 장애·대응 규모·우회 경로를 서로 다른 시각 문법으로 분리",
+        "공식 근거가 없던 일반 대피 조언과 포괄적 질문을 삭제"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-9c094c732377",
+  "candidate_id": "20260717-2003-A-9c094c732377",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "토요일 중부지방 300㎜ 이상 폭우…돌풍·천둥번개까지 '장마 절정'",
+  "source_urls": [
+    "https://www.yna.co.kr/view/AKR20260717048300004?section=society/all"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

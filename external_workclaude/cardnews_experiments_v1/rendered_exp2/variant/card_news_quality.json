@@ -1,0 +1,52 @@
+{
+  "qa_score": 0.96,
+  "passed": true,
+  "checks": {
+    "png_exists": true,
+    "card_count_ok": true,
+    "file_size_ok": true,
+    "resolution_ok": true,
+    "layout_result_exists": true,
+    "rendering_result_exists": true,
+    "layout_applied": true,
+    "layout_fallback_used": false,
+    "rendering_fallback_used": false,
+    "fallback_used": false,
+    "highlight_exists": true,
+    "cta_slide_exists": true,
+    "design_quality_exists": true,
+    "story_flow_applied": true,
+    "evidence_available": false,
+    "evidence_applied": false,
+    "social_proof_available": false,
+    "social_proof_applied": false,
+    "debate_should_apply": false,
+    "debate_required": false,
+    "debate_applied": false,
+    "attribution_needed": false,
+    "attribution_present": false,
+    "slide_continuity_ok": true,
+    "readability_ok": true,
+    "typography_result_exists": true,
+    "typography_hierarchy_ok": true,
+    "cover_readability_ok": false,
+    "mobile_readability_result_exists": true,
+    "mobile_readability_ok": true,
+    "visual_rhythm_result_exists": true,
+    "visual_rhythm_ok": true,
+    "text_overflow_free": true,
+    "contrast_ok": true,
+    "source_legibility_relevant": false,
+    "source_legible": true,
+    "cta_focus_relevant": true,
+    "cta_focus_ok": true,
+    "prohibited_fake_screenshot_absent": true,
+    "unlicensed_asset_not_rendered": true
+  },
+  "warnings": [
+    "커버(1장) 슬라이드가 Cover Optimization 기준(문장 수/가독성)을 충족하지 않습니다."
+  ],
+  "recommendations": [
+    "커버 슬라이드를 제목 1개 + 보조 문장 1개 이내로 정리하세요."
+  ]
+}

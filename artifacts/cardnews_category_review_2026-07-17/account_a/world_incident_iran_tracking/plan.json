@@ -1,0 +1,129 @@
+{
+  "schema_version": "owner_review_carousel_plan_v1",
+  "account": "A",
+  "category": "world_incident",
+  "topic": "이란전 중 미군 휴대전화 위치 추적 시도와 로밍·광고기술 악용 정황",
+  "slide_count": 9,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "media_type": "image",
+      "headline": "전화기를 해킹하지 않고\n미군 위치를 쫓았다?",
+      "body": "",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "publisher_image_unverified_internal_review_only"
+    },
+    {
+      "slide": 2,
+      "role": "claim",
+      "media_type": "editorial",
+      "headline": "보도된 핵심 정황",
+      "body": "이란전 전후 미군을 겨냥한 위치 추적 시도가 포착됐으며, 로밍망과 상업용 광고 데이터가 경로로 지목됐다.",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 3,
+      "role": "flow",
+      "media_type": "editorial",
+      "headline": "위치는 이렇게 새어 나갈 수 있다",
+      "body": "휴대전화·앱\n식별자 생성|로밍망·광고망\n위치 신호 축적|데이터 분석\n이동 패턴 추정",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 4,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "핵심은 ‘전화기 해킹’만이 아니다",
+      "body": "스마트폰은 위치·광고 식별자·접속 흔적 같은 이른바 디지털 배기를 남긴다. 상업 데이터만으로도 부대 이동 패턴을 추정할 위험이 있다는 설명이다.",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 5,
+      "role": "claim",
+      "media_type": "editorial",
+      "headline": "미 의회 공개자료가\n확인한 더 넓은 문제",
+      "body": "미 중부사령부는 적대 세력이 상업용 위치 데이터를 이용해 전장 내 미군을 감시하거나 겨냥하려 했다는 복수 위협 보고를 받았다고 의회에 알렸다.",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 6,
+      "role": "separate",
+      "media_type": "editorial",
+      "headline": "여기서 선을 그어야 한다",
+      "body": "위치 데이터 악용 위협과 추적 시도 정황|그 데이터가 실제 미사일·드론 공격 좌표로 직접 이어졌다는 인과",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 7,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "왜 광고기술이\n군사 보안 문제가 됐나",
+      "body": "광고를 맞춤 노출하려 모은 데이터가 개인의 반복 이동·체류 지점을 보여줄 수 있기 때문이다. 전장에서는 그 반복이 기지와 부대 움직임이 된다.",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 8,
+      "role": "list",
+      "media_type": "editorial",
+      "headline": "공개자료가 제시한\n방어 방향",
+      "body": "광고 식별자·위치공유 차단|정부 지급 기기의 추적 기능 축소|상업 위치데이터 구매·판매 통제",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    },
+    {
+      "slide": 9,
+      "role": "body",
+      "media_type": "editorial",
+      "headline": "이 사건의 한 줄 결론",
+      "body": "전쟁터의 스마트폰은 통신수단이면서 위치 센서다. 다만 ‘추적 시도’와 ‘공격 성공’을 같은 사실처럼 말하면 안 된다.",
+      "source_credit": [
+        "한국경제",
+        "U.S. Senator Ron Wyden / congressional disclosure"
+      ],
+      "rights_status": "original_editorial_layout"
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "한국경제",
+      "url": "https://www.hankyung.com/article/202607160517i"
+    },
+    {
+      "publisher": "U.S. Senator Ron Wyden / congressional disclosure",
+      "url": "https://www.wyden.senate.gov/news/press-releases/foreign-adversaries-are-using-commercial-location-data-to-target-us-servicemembers-in-the-middle-east-wyden-harrigan-and-12-other-bipartisan-members-of-congress-reveal-members-call-on-department-to-adopt-commonsense-safeguards-to-protect-us-troops"
+    }
+  ]
+}

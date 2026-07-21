@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Intelligence"
+  short_description: "근거 기반 패턴의 검증·승격·폐기를 안전하게 관리"
+  default_prompt: "Use $ai-content-os-knowledge-intelligence to validate and promote an evidence-backed learning pattern."

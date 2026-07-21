@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-6016824db5d8",
+  "candidate_id": "20260717-2003-B-6016824db5d8",
+  "grade": "3",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "르네상스 시절 찍힌 사진 한장.jpg",
+  "source_urls": [
+    "https://www.bobaedream.co.kr/view?code=best&No=1011024&vdate="
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

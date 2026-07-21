@@ -1,0 +1,53 @@
+{
+  "sample_size": 39,
+  "unique_accounts": 37,
+  "unique_accounts_correction_note": "이전 산출물에 기재된 35는 계산 오류였음. RAW_OBSERVATIONS.json의 observations[].account 39건을 직접 집합 연산으로 재계산한 결과 37이 정확한 값. mart_eting과 sellwell_labbs만 각 2회씩 등장하고 나머지 35개 계정은 1회씩 등장 = 35 + 2 = 37.",
+  "account_concentration_check": {
+    "cap_rule": "단일 계정 10% 이하 (39건 기준 최대 3.9건 → 3건까지 허용)",
+    "accounts_with_2_posts": ["mart_eting", "sellwell_labbs"],
+    "max_share_pct": 5.1,
+    "pass": true
+  },
+  "category_distribution": {
+    "뉴스·시사": 3,
+    "경제·재테크": 3,
+    "교육·지식": 13,
+    "생활정보": 6,
+    "건강": 2,
+    "여행·지역": 3,
+    "브랜드·제품": 1,
+    "문화·책": 1,
+    "패션·뷰티": 6,
+    "유머·이슈": 2,
+    "note": "패션·뷰티/브랜드·제품 중복 1건(madebylab_rx, id 36)은 두 분야 합계에 각각 반영"
+  },
+  "category_coverage_check": {
+    "required_minimum_categories": 8,
+    "achieved": 10,
+    "thin_categories": ["브랜드·제품(1건)", "문화·책(1건)", "건강(2건)", "유머·이슈(2건)"],
+    "caveat": "1년 이내 필터 적용 후 해당 4개 분야는 표본이 매우 얇아 패턴 일반화 근거로 쓰기 부적합. LEARNING_CANDIDATES.json에서 confidence를 hypothesis_only로 표기함."
+  },
+  "date_range": {
+    "earliest": "2025-07-19 (seoul.toctoc)",
+    "latest": "2026-07-14 (stock_manager_365, 관찰 당일)",
+    "days_elapsed_min": 0,
+    "days_elapsed_max": 360
+  },
+  "account_size_data_availability": {
+    "accounts_with_known_follower_count": 2,
+    "accounts": {"zzalqueen": 34000, "dot0tori": 8900},
+    "accounts_with_unknown_follower_count": 35,
+    "caveat": "세션 규모 제약으로 대부분 계정의 프로필 방문(팔로워 수 확인)을 생략함. '계정 규모가 비슷한 표본끼리 비교'는 이 2건 외에는 수행 불가 — ENGAGEMENT_BENCHMARKS.json에서 댓글:좋아요 비율 등 팔로워 수에 의존하지 않는 지표로 대체 분석함."
+  },
+  "accounts_list": [
+    "zzalqueen","incheontoday","solumnote","ingsss_","macro_floww","stock_manager_365",
+    "sellwell_labbs(x2)","andy__wormhole","trendpark77","3dragon_pd","reels_veler",
+    "ukwaehan_0sajang","beucheo.ai","mini_ai_","nookitokki","mart_eting(x2)",
+    "forcletter_official","slidetoticket","coun_t_on","dot0tori","ssolog.zip",
+    "seoul.toctoc","seirnn__","edge__mom","cm_hospital","low._.drinking",
+    "eumseonggun","sigol_playground","travellala.kr","hands.mag","onya.mag",
+    "dealmakers_official","vividream_vd","madebylab_rx","branchivist","jibondo_2025",
+    "all_skin_best"
+  ],
+  "accounts_list_count_check": "위 목록의 고유 항목 수 = 37 (mart_eting, sellwell_labbs 표기에 '(x2)' 포함하되 각 1개 항목으로 카운트)"
+}

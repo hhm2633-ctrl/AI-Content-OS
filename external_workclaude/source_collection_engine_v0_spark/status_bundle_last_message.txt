@@ -1,0 +1,31 @@
+Implemented in the three allowed files.
+
+### Changed
+- Added module:  
+  [modules/source_intake/source_intake_status_bundle.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\source_intake_status_bundle.py)  
+  - Added `build_source_intake_status_bundle(today=None, root=None)`  
+  - Added `run_source_intake_status_bundle(today=None, root=None)`  
+  - Returns compact bundle with:
+    - `artifacts_present`
+    - `item_count`
+    - `status_counts`
+    - `weak_lanes`
+    - `top_queue_sources` (first 5 by rank/source id)
+    - `blockers` with `missing_artifacts`, `blocked_lanes`, `fallback_only_sources`, `not_implemented_count`
+  - Missing artifacts and malformed/missing data are tolerated.
+
+- Added tests:  
+  [tests/test_source_intake_status_bundle.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_source_intake_status_bundle.py)  
+  - all-present fake dir
+  - missing files
+  - smoke test on current 2026-07-14 artifacts (when present)
+  - no `commerce_detail` checks
+  - run writer test (`run_source_intake_status_bundle`)
+
+- Added handoff:  
+  [external_workclaude/source_collection_engine_v0_spark/STATUS_BUNDLE_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\STATUS_BUNDLE_HANDOFF.md)
+
+### Validation
+- `py -m unittest tests.test_source_intake_status_bundle -v` ✅  
+  - 5 tests passed
+- `py -m compileall modules/source_intake` ✅

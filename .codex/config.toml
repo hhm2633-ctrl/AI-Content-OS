@@ -1,0 +1,8 @@
+sandbox_mode = "danger-full-access"
+[mcp_servers.codex]
+command = 'C:\Users\가산 솔리드옴므\AppData\Roaming\npm\codex.cmd'
+args = ["mcp-server"]
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]

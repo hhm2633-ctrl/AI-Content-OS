@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-b220caa2019b",
+  "candidate_id": "20260717-2003-C-b220caa2019b",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "[패션엔 포토] 아일릿 원희, 공항에 뜬 여친? 레이스 크롭 톱에 집업 재킷 툭 여친 출국룩",
+  "source_urls": [
+    "https://www.fashionn.com/board/read_new.php?table=1023&number=61757&sel_cat="
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

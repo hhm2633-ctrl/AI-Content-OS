@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-a1d8f7a82f87",
+  "candidate_id": "20260717-2003-A-a1d8f7a82f87",
+  "grade": "1",
+  "account": "A",
+  "category": "생활·스포츠",
+  "title": "슈퍼컴퓨터도 찍었다…2026 월드컵 우승 예측 결과 봤더니",
+  "source_urls": [
+    "https://www.hankyung.com/article/2026071708327"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

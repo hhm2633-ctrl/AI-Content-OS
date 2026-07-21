@@ -1,0 +1,91 @@
+{
+  "schema_version": "full_collection_owner_review_v3",
+  "generated_by": "Codex CTO integration lane",
+  "generated_at": "2026-07-17",
+  "account": "C",
+  "category": "fashion",
+  "topic": "DIOR MEN 2027 S/S · 이미지 중심 축약본",
+  "slide_count": 7,
+  "review_only": true,
+  "publishing_ready": false,
+  "slides": [
+    {
+      "slide": 1,
+      "role": "season_preview",
+      "media_type": "image",
+      "headline": "DIOR MEN",
+      "asset": "runway_13.png",
+      "copy_density": "minimal",
+      "lower_third_body": "디올 맨 2027 S/S는 익숙한 남성복의 비율과 표면을 다시 조립한다. 사진을 넘기며 이번 시즌의 거리감부터 확인한다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 2,
+      "role": "the_idea",
+      "media_type": "image",
+      "headline": "친숙함을\n다시 조립하다",
+      "asset": "runway_01.png",
+      "copy_density": "minimal",
+      "lower_third_body": "정장과 스포츠웨어의 익숙한 요소를 그대로 반복하지 않았다. 크기와 질감의 균형을 바꿔 낯선 인상을 만들었다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 3,
+      "role": "silhouette",
+      "media_type": "image",
+      "headline": "커진 턱시도",
+      "asset": "runway_18.png",
+      "copy_density": "minimal",
+      "lower_third_body": "턱시도 재킷은 몸에 붙기보다 크게 떠 있는 실루엣으로 등장했다. 옷과 몸 사이의 여백이 이번 시즌을 읽는 첫 단서다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 4,
+      "role": "material",
+      "media_type": "image",
+      "headline": "프린트된\n하운즈투스",
+      "asset": "runway_14.png",
+      "copy_density": "minimal",
+      "lower_third_body": "하운즈투스는 직조 무늬가 아니라 프린트처럼 다뤄졌다. 클래식한 패턴이 더 평평하고 그래픽한 표면으로 바뀐다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 5,
+      "role": "texture",
+      "media_type": "image",
+      "headline": "정교함 위\n거친 표면",
+      "asset": "runway_10.png",
+      "copy_density": "minimal",
+      "lower_third_body": "정교한 테일러링 위에는 일부러 거칠게 보이는 질감이 겹친다. 한 벌 안에서 완성과 미완성의 감각이 동시에 보인다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 6,
+      "role": "palette",
+      "media_type": "image",
+      "headline": "낮은 색,\n큰 질감",
+      "asset": "runway_20.png",
+      "copy_density": "minimal",
+      "lower_third_body": "색은 낮게 눌렀지만 소재의 굴곡과 부피는 크게 남겼다. 강한 색보다 표면과 실루엣이 먼저 시선을 잡는다.",
+      "body_sentence_count": 2
+    },
+    {
+      "slide": 7,
+      "role": "the_look",
+      "media_type": "image",
+      "headline": "27 S/S를\n미리 본 장면",
+      "asset": "runway_23.png",
+      "copy_density": "minimal",
+      "lower_third_body": "이 룩은 커진 비율과 거친 표면, 낮은 색조를 한 장면에 모은다. 2027 S/S의 핵심을 가장 빠르게 보여주는 장면이다.",
+      "body_sentence_count": 2
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "DIOR",
+      "url": "https://www.dior.com/ko_kr/fashion/mens-fashion/shows/summer-2027-show",
+      "role": "official season reference"
+    }
+  ],
+  "feed_caption": "DIOR MEN 2027 S/S는 익숙한 남성복을 완전히 버리기보다 비율과 표면을 다시 조립합니다. 몸에서 크게 떨어지는 턱시도, 프린트처럼 처리한 하운즈투스, 정교함 위에 얹힌 거친 질감이 이번 시즌의 분위기를 만듭니다.\n\n시즌 콘셉트를 가장 잘 보여주는 장면만 짧게 골랐습니다. 사진이 먼저 보이고 설명은 이해에 필요한 만큼만 붙였습니다.\n\n자료: DIOR 공식 2027 S/S 쇼\n※ 실제 런웨이 이미지의 게시 권리는 별도 확인이 필요합니다."
+}

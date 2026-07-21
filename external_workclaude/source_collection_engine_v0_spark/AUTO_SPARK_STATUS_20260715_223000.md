@@ -1,0 +1,18 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 22:30:00
+- task: Newsis low-cost collector implementation and daily shallow executor wiring
+- changed_files:
+  - modules/trend_collector/newsis_collector.py
+  - modules/source_intake/daily_collection_executor.py
+  - tests/test_newsis_collector.py
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_20260715_223000.md
+- checks:
+  - py -m compileall modules/trend_collector modules/source_intake
+  - py -m unittest tests.test_newsis_collector tests.test_daily_source_collection_executor
+- notes:
+  - Added NewsisCollector with server-rendered list+rankBox parsing and no fabricated metrics.
+  - Added lenient rankBox parser for malformed list markup.
+  - Wired newsis into daily shallow executor via direct collector fallback path.
+- check_results:
+  - compileall: passed
+  - unittest: passed

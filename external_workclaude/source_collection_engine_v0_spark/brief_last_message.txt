@@ -1,0 +1,27 @@
+Implemented.
+
+### Changes
+- Added tiny brief generator and runner: [modules/source_intake/source_intake_brief.py](/C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/modules/source_intake/source_intake_brief.py)
+  - `build_source_intake_brief(bundle_or_path) -> str`
+  - `run_source_intake_brief(today=None, root=None) -> dict`
+  - Generates markdown with only:
+    - `Not implemented collectors`
+    - `Fallback only sources`
+    - `Blocked/weak lanes`
+    - `Next queue top 5`
+  - Writes `storage/source_intake/<today>/source_intake_brief.md` (via `run_source_intake_brief`) when input exists.
+  - Missing bundle returns `status='input_missing'` and writes nothing.
+
+- Added tests: [tests/test_source_intake_brief.py](/C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/tests/test_source_intake_brief.py)
+  - fake bundle test
+  - current smoke test (if present)
+  - missing input test
+  - no `commerce_detail` in output
+  - markdown headings are exactly the 4 required sections
+
+- Added handoff notes: [external_workclaude/source_collection_engine_v0_spark/BRIEF_HANDOFF.md](/C:/Users/가산 솔리드옴므/Documents/GitHub/AI-Content-OS/external_workclaude/source_collection_engine_v0_spark/BRIEF_HANDOFF.md)
+  - only not implemented / tests / next light Spark tasks sections.
+
+### Validation run
+- `py -m compileall modules/source_intake` ✅
+- `py -m unittest tests.test_source_intake_brief -v` ✅

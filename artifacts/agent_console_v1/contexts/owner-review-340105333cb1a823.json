@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-bdfb88a094bf",
+  "candidate_id": "20260717-2003-A-bdfb88a094bf",
+  "grade": "1",
+  "account": "A",
+  "category": "경제·생활",
+  "title": "“시트까지 찐 보라색”…해태제과, ‘오예스 우베라떼’ 30만 개 한정 출시",
+  "source_urls": [
+    "https://www.mk.co.kr/news/pick/12097081"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

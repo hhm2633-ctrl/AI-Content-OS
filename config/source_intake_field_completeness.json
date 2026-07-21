@@ -1,0 +1,81 @@
+{
+  "schema_version": "source_field_completeness_config_v1",
+  "generated_for": "daily_shallow_collection_v1",
+  "tracked_fields": [
+    "title",
+    "link",
+    "summary",
+    "publisher",
+    "published_at",
+    "rank_position"
+  ],
+  "tracked_engagement_metrics": [
+    "views",
+    "comments",
+    "likes",
+    "dislikes",
+    "scraps",
+    "shares"
+  ],
+  "field_aliases": {
+    "title": ["title", "keyword"],
+    "link": ["link", "url"],
+    "summary": ["summary"],
+    "publisher": ["publisher", "source_name", "source"],
+    "published_at": ["published_at", "published_date", "published_at_iso"],
+    "rank_position": ["rank_position", "rank"]
+  },
+  "metric_aliases": {
+    "views": ["views", "view_count", "view"],
+    "comments": ["comments", "comment_count", "comment"],
+    "likes": ["likes", "like_count", "recommend_count", "recommend"],
+    "dislikes": ["dislikes", "dislike_count", "dislike"],
+    "scraps": ["scraps", "scrap_count"],
+    "shares": ["shares", "share_count", "retweet_count"]
+  },
+  "source_supported_engagement_metrics": {
+    "naver_news": ["rank_position", "comments"],
+    "daum_news": ["rank_position", "comments"],
+    "nate_news_rank": ["rank_position", "comments"],
+    "yonhap": ["rank_position"],
+    "newsis": ["rank_position"],
+    "news1": ["rank_position"],
+    "hankyung_economy": ["rank_position"],
+    "mk_economy": ["rank_position"],
+    "moneytoday": ["rank_position"],
+    "edaily": ["rank_position"],
+    "nate_pann": ["rank_position", "views", "comments", "likes"],
+    "fmkorea": ["rank_position", "comments", "likes"],
+    "bobaedream": ["rank_position", "views", "comments", "likes"],
+    "dcinside": ["rank_position", "views", "comments", "likes"],
+    "theqoo": ["rank_position", "views", "comments"],
+    "ppomppu": ["rank_position", "views", "comments", "likes", "dislikes"],
+    "ruliweb": ["rank_position", "views", "comments", "likes"],
+    "dogdrip": ["rank_position", "views", "comments", "likes"]
+  },
+  "remediation_scoring": {
+    "field_weights": {
+      "title": 1.9,
+      "link": 1.8,
+      "summary": 1.5,
+      "publisher": 1.2,
+      "published_at": 1.5,
+      "rank_position": 1.3
+    },
+    "field_malformed_multiplier": 1.4,
+    "engagement_supported_metric": {
+      "missing": 0.9,
+      "malformed": 1.2
+    },
+    "fallback_penalty": 0.7,
+    "cache_penalty": 0.4,
+    "no_data_penalty": 6.0
+  },
+  "remediation_thresholds": {
+    "critical": 72.0,
+    "high": 44.0,
+    "medium": 18.0,
+    "low": 4.0
+  },
+  "schema_version_output": "source_field_completeness_audit_v1"
+}

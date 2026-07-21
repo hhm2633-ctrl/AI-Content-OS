@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-9b7a45f7a88e",
+  "candidate_id": "20260717-2003-C-9b7a45f7a88e",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "‘마리떼 x 레스포색’ F/W 체크 디테일 살린 협업 컬렉션 출시",
+  "source_urls": [
+    "https://fashionbiz.co.kr/article/227969"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-B-89553bcd9c7c",
+  "candidate_id": "20260717-2003-B-89553bcd9c7c",
+  "grade": "1",
+  "account": "B",
+  "category": "연예·도파민",
+  "title": "[EWC 8강: T1 vs HLE] 페이즈, 구마유시 2연 솔킬ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+  "source_urls": [
+    "https://www.fmkorea.com/best/10096006275"
+  ],
+  "requested_media": [
+    "원문 캡처",
+    "실제 댓글 분석",
+    "감정 흐름",
+    "2D 재연 장면 목록"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

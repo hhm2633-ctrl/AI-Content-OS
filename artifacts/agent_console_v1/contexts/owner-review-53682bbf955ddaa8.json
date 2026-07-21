@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-52419867f5a5",
+  "candidate_id": "20260717-2003-C-52419867f5a5",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "폭염이 바꾼 여름 패션 공식… \"냉감·티셔츠·라이트 포멀 경쟁\" [최기...",
+  "source_urls": [
+    "https://www.meconomynews.com/news/articleView.html?idxno=132893"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

@@ -1,0 +1,17 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 19:08:53
+- task: instiz rank-1 diagnostic_contract for source intake
+- changed_files:
+  - modules/source_intake/instiz_diagnostic_contract.py
+  - tests/test_source_intake_instiz_diagnostic_contract.py
+- artifacts:
+  - storage/source_intake/2026-07-14/instiz_diagnostic.json
+- checks:
+  - py -m compileall modules/source_intake
+  - py -m unittest tests.test_source_intake_instiz_diagnostic_contract
+- check_results:
+  - compileall: passed
+  - unittest: passed (3 tests)
+- notes:
+  - Refined lane_impact extraction to preserve queue-provided lanes.
+  - Kept diagnostics read-only with no web/browser access.

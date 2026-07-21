@@ -1,0 +1,29 @@
+Implemented in the allowed files only.
+
+### Changes
+- Added runner:
+  - `[modules/source_intake/lane_collection_summary_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\modules\source_intake\lane_collection_summary_runner.py)`
+
+  - Implemented `run_lane_collection_summary(gap_report_path=None, today=None, output_root=None)` with:
+    - default input: `storage/source_intake/<today>/collection_gap_report.json`
+    - default output: `storage/source_intake/<today>/lane_collection_summary.json`
+    - missing input → `status: input_missing` and no write
+    - returns structured dict with paths/status
+    - writes JSON summary using existing `build_lane_collection_summary`
+
+- Added tests:
+  - `[tests/test_lane_collection_summary_runner.py](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\tests\test_lane_collection_summary_runner.py)`
+
+  - Covers:
+    - missing input
+    - successful write
+    - valid JSON output
+    - `weak_lanes` present
+    - no `commerce_detail` in lane summaries
+
+- Added handoff note:
+  - `[external_workclaude/source_collection_engine_v0_spark/LANE_SUMMARY_RUNNER_HANDOFF.md](C:\Users\가산 솔리드옴므\Documents\GitHub\AI-Content-OS\external_workclaude\source_collection_engine_v0_spark\LANE_SUMMARY_RUNNER_HANDOFF.md)`
+
+### Validation run
+- `py -m unittest tests.test_lane_collection_summary_runner tests.test_lane_collection_summary -v` passed (8/8).
+- `py -m compileall modules/source_intake` succeeded (compilation completed).

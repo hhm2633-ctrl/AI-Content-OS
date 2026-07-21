@@ -1,0 +1,31 @@
+{
+  "schema_version": "external_prompt_source_v1",
+  "tool_id": "agency_agents",
+  "status": "source_pinned_selected_prompts_adapted",
+  "upstream": {
+    "repository": "https://github.com/msitarzewski/agency-agents",
+    "commit": "459dce837db3bdfdc4763d3fefd1fd854e73c8f1",
+    "license": "MIT",
+    "local_root": "F:/AI-Content-OS-Data/external_tools/upstreams/agency-agents"
+  },
+  "selected_sources": [
+    "design/design-visual-storyteller.md",
+    "product/product-trend-researcher.md",
+    "marketing/marketing-content-creator.md",
+    "marketing/marketing-instagram-curator.md",
+    "design/design-brand-guardian.md",
+    "design/design-image-prompt-engineer.md",
+    "marketing/marketing-short-video-editing-coach.md",
+    "marketing/marketing-video-optimization-specialist.md",
+    "marketing/marketing-carousel-growth-engine.md"
+  ],
+  "adaptation": "knowledge/agent_training/agency_agents_cardnews_education.md",
+  "not_adopted": [
+    "fixed_slide_count",
+    "auto_publish",
+    "zero_confirmation_execution",
+    "forced_product_cta",
+    "fabricated_metrics",
+    "provider_specific_lock_in"
+  ]
+}

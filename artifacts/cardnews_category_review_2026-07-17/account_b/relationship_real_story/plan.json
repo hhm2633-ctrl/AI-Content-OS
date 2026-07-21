@@ -1,0 +1,49 @@
+{
+  "account": "B",
+  "category": "relationship_real_story",
+  "topic": "시어머니 밀키트 잔소리",
+  "slide_count": 8,
+  "review_only": true,
+  "slides": [
+    {
+      "slide": 1,
+      "media_type": "illustration",
+      "role": "hook"
+    },
+    {
+      "slide": 2,
+      "media_type": "illustration",
+      "role": "setup"
+    },
+    {
+      "slide": 3,
+      "media_type": "illustration",
+      "role": "boundary"
+    },
+    {
+      "slide": 4,
+      "media_type": "illustration",
+      "role": "escalation"
+    },
+    {
+      "slide": 5,
+      "media_type": "illustration",
+      "role": "emotional_cost"
+    },
+    {
+      "slide": 6,
+      "media_type": "editorial",
+      "role": "partner_response"
+    },
+    {
+      "slide": 7,
+      "media_type": "screenshot",
+      "role": "actual_reactions"
+    },
+    {
+      "slide": 8,
+      "media_type": "editorial",
+      "role": "human_cta"
+    }
+  ]
+}

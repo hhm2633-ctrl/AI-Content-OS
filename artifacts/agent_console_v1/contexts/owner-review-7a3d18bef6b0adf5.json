@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-ef8242117fd6",
+  "candidate_id": "20260717-2003-C-ef8242117fd6",
+  "grade": "1",
+  "account": "C",
+  "category": "패션",
+  "title": "'G쇼크'는 옛말…여성들 사로잡은 '싸구려 시계'의 반란",
+  "source_urls": [
+    "https://www.hankyung.com/article/202607096130i"
+  ],
+  "requested_media": [
+    "브랜드 공식 쇼",
+    "룩북",
+    "캠페인",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

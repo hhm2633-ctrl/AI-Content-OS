@@ -1,0 +1,86 @@
+:root {
+  --bg: #0f1419;
+  --card: #1a2129;
+  --line: #2a333d;
+  --txt: #e6edf3;
+  --muted: #8b97a3;
+  --accent: #3b82f6;
+  --green: #22c55e;
+  --red: #ef4444;
+  --amber: #f59e0b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+}
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+.center-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+}
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 28px; width: 100%;
+}
+.card.narrow { max-width: 400px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 17px; margin: 24px 0 12px; }
+p.sub { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+label { display: block; font-size: 13px; color: var(--muted); margin: 14px 0 6px; }
+input[type=text], input[type=password] {
+  width: 100%; padding: 11px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: #0c1117; color: var(--txt); font-size: 14px;
+}
+button, .btn {
+  cursor: pointer; border: none; border-radius: 8px; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: #fff; background: var(--accent);
+}
+button.full { width: 100%; margin-top: 18px; padding: 12px; }
+.btn-sm { padding: 6px 12px; font-size: 13px; }
+.btn-green { background: var(--green); }
+.btn-red { background: var(--red); }
+.btn-gray { background: #374151; }
+.error { color: var(--red); font-size: 13px; margin-top: 12px; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; }
+.badge { padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge.ok { background: rgba(34,197,94,.15); color: var(--green); }
+.badge.wait { background: rgba(245,158,11,.15); color: var(--amber); }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.mono { font-family: ui-monospace, monospace; color: var(--muted); font-size: 12px; }
+.row-inline { display: flex; gap: 8px; align-items: center; }
+.muted { color: var(--muted); font-size: 13px; }
+.tag-me { background: rgba(59,130,246,.18); color: var(--accent); padding: 2px 8px; border-radius: 6px; font-size: 11px; }
+
+/* ---- 추가 스타일 (상품/설정/작업) ---- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+.stat { background: #0c1117; border: 1px solid var(--line); border-radius: 10px; padding: 16px; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 700; color: var(--txt); }
+.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.chk { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--txt); margin: 0; }
+.chk input { width: auto; }
+
+.progress { background: #0c1117; border: 1px solid var(--line); border-radius: 999px; height: 14px; overflow: hidden; }
+.progress-bar { height: 100%; background: var(--green); transition: width .3s; }
+.job-panel { margin-top: 16px; }
+.job-log { background: #0c1117; border: 1px solid var(--line); border-radius: 8px; padding: 12px;
+  font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); max-height: 220px; overflow: auto;
+  white-space: pre-wrap; margin-top: 10px; }
+
+.thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+
+.settings-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.settings-row:last-child { border-bottom: none; }
+.settings-label { width: 130px; font-weight: 600; font-size: 14px; }
+.settings-row input[type=text], .settings-row input[type=password] { width: auto; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 4px 18px; }
+.form-grid label { margin-top: 8px; }
+.form-grid input { width: 100%; }
+input[type=number] { width: 100%; padding: 11px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: #0c1117; color: var(--txt); font-size: 14px; }
+select { border-radius: 8px; border: 1px solid var(--line); background: #0c1117; color: var(--txt); }

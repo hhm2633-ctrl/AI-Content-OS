@@ -1,0 +1,666 @@
+- generic [active] [ref=f18e1]:
+  - generic:
+    - link "본문 바로가기" [ref=f18e2] [cursor=pointer]:
+      - /url: "#mainContent"
+    - link "메뉴 바로가기" [ref=f18e3] [cursor=pointer]:
+      - /url: "#gnbContent"
+  - generic [ref=f18e5]:
+    - banner [ref=f18e6]:
+      - generic [ref=f18e8]:
+        - heading [level=1] [ref=f18e9]:
+          - link "Daum" [ref=f18e10] [cursor=pointer]:
+            - /url: https://daum.net
+          - link "뉴스" [ref=f18e21] [cursor=pointer]:
+            - /url: https://news.daum.net
+        - generic [ref=f18e25]:
+          - strong: 관련 서비스
+          - list [ref=f18e26]:
+            - listitem [ref=f18e27]:
+              - link "연예" [ref=f18e28] [cursor=pointer]:
+                - /url: https://entertain.daum.net
+            - listitem [ref=f18e29]:
+              - link "스포츠" [ref=f18e30] [cursor=pointer]:
+                - /url: https://sports.daum.net
+            - listitem [ref=f18e31]:
+              - link "날씨" [ref=f18e32] [cursor=pointer]:
+                - /url: https://weather.daum.net
+        - button "공유하기" [ref=f18e35] [cursor=pointer]
+      - generic [ref=f18e37]:
+        - navigation [ref=f18e38]:
+          - generic [ref=f18e39]:
+            - heading "메인메뉴" [level=2]
+            - menu [ref=f18e43]:
+              - menuitem "홈" [ref=f18e45] [cursor=pointer]
+              - menuitem "기후/환경" [ref=f18e48] [cursor=pointer]
+              - menuitem "사회" [ref=f18e51] [cursor=pointer]
+              - menuitem "경제" [ref=f18e54] [cursor=pointer]
+              - menuitem "정치" [ref=f18e57] [cursor=pointer]
+              - menuitem "국제" [ref=f18e60] [cursor=pointer]
+              - menuitem "문화" [ref=f18e63] [cursor=pointer]
+              - menuitem "생활" [ref=f18e66] [cursor=pointer]
+              - menuitem "IT/과학" [ref=f18e69] [cursor=pointer]
+              - menuitem "인물" [ref=f18e72] [cursor=pointer]
+              - menuitem "지식/칼럼" [ref=f18e75] [cursor=pointer]
+              - menuitem "연재" [ref=f18e78] [cursor=pointer]
+        - generic [ref=f18e81]:
+          - strong: 정치홈 하위메뉴
+          - menu [ref=f18e84]:
+            - menuitem "청와대" [ref=f18e86] [cursor=pointer]
+            - menuitem "외교/국방" [ref=f18e89] [cursor=pointer]
+            - menuitem "국회/정당" [ref=f18e92] [cursor=pointer]
+            - menuitem "행정/지자체" [ref=f18e95] [cursor=pointer]
+            - menuitem "북한" [ref=f18e98] [cursor=pointer]
+    - generic [ref=f18e100]:
+      - article [ref=f18e101]:
+        - generic [ref=f18e102]:
+          - generic [ref=f18e103]:
+            - strong [ref=f18e105]:
+              - generic [ref=f18e106]: 정치 주요뉴스
+            - list [ref=f18e107]:
+              - listitem [ref=f18e108]:
+                - link "친청 못넘은 청년최고위… 與, 경선룰 놓고 계파갈등 재점화 8·17 더불어민주당 전국당원대회 경선룰(규칙)을 둘러싸고 계파간 갈등이 재차 격화했다. 선호투표제는 당 최고위원회의와 당무위원회를 거쳐 의결됐지만 청년최고위원제 도입은 친청(친정청래)계 지도부의 반발을 넘지 못했다. 민주당은 14일 당무위를 열어 선호투표제 도입을 골자로 한 당규 개정안을 의결했다. 선호투표는 유권자가 출마한 후보들을 1~3순위로 나눠 머니투데이 13분 전" [ref=f18e109] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715041153498
+                  - generic [ref=f18e111]:
+                    - strong [ref=f18e112]: 친청 못넘은 청년최고위… 與, 경선룰 놓고 계파갈등 재점화
+                    - paragraph [ref=f18e113]: 8·17 더불어민주당 전국당원대회 경선룰(규칙)을 둘러싸고 계파간 갈등이 재차 격화했다. 선호투표제는 당 최고위원회의와 당무위원회를 거쳐 의결됐지만 청년최고위원제 도입은 친청(친정청래)계 지도부의 반발을 넘지 못했다. 민주당은 14일 당무위를 열어 선호투표제 도입을 골자로 한 당규 개정안을 의결했다. 선호투표는 유권자가 출마한 후보들을 1~3순위로 나눠
+                    - generic [ref=f18e114]: 머니투데이 13분 전
+              - listitem [ref=f18e116]:
+                - link "김민석 \"지난 1년간 당정관계 잘 안 돼, 당대표 자기 정치 때문\" 프레시안 34분 전" [ref=f18e117] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715035049333
+                  - generic [ref=f18e120]:
+                    - strong [ref=f18e121]: 김민석 "지난 1년간 당정관계 잘 안 돼, 당대표 자기 정치 때문"
+                    - generic [ref=f18e122]: 프레시안 34분 전
+              - listitem [ref=f18e124]:
+                - link "민주 전대, 진통 끝 '선호투표제' 도입…최대 수혜자는 더팩트 4시간 전" [ref=f18e125] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000150386
+                  - generic [ref=f18e128]:
+                    - strong [ref=f18e129]: 민주 전대, 진통 끝 '선호투표제' 도입…최대 수혜자는
+                    - generic [ref=f18e130]: 더팩트 4시간 전
+              - listitem [ref=f18e132]:
+                - link "'정이한 자작극'이 소환한 딜레마…공개하면 선거개입, 숨기면 투표권 침해 더팩트 4시간 전" [ref=f18e133] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000146382
+                  - generic [ref=f18e136]:
+                    - strong [ref=f18e137]: "'정이한 자작극'이 소환한 딜레마…공개하면 선거개입, 숨기면 투표권 침해"
+                    - generic [ref=f18e138]: 더팩트 4시간 전
+              - listitem [ref=f18e140]:
+                - link "[단독] 법사위 '보완수사' 기관의견 청취...\"검찰 출석도 검토 중\" 아이뉴스24 5시간 전" [ref=f18e141] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714233907024
+                  - generic [ref=f18e144]:
+                    - strong [ref=f18e145]: "[단독] 법사위 '보완수사' 기관의견 청취...\"검찰 출석도 검토 중\""
+                    - generic [ref=f18e146]: 아이뉴스24 5시간 전
+              - listitem [ref=f18e148]:
+                - link "與 \"투표포기 인원도 파악못해\"…국힘 \"선피아 카르텔 드러나\"(종합2보) 연합뉴스 6시간 전" [ref=f18e149] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714223953382
+                  - generic [ref=f18e152]:
+                    - strong [ref=f18e153]: 與 "투표포기 인원도 파악못해"…국힘 "선피아 카르텔 드러나"(종합2보)
+                    - generic [ref=f18e154]: 연합뉴스 6시간 전
+              - listitem [ref=f18e156]:
+                - link "여야, 선관위 한목소리 질타…\"투표 관리부터 전관 특혜까지 총체적 부실\"(종합) 데일리안 6시간 전" [ref=f18e157] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714220151970
+                  - generic [ref=f18e160]:
+                    - strong [ref=f18e161]: 여야, 선관위 한목소리 질타…"투표 관리부터 전관 특혜까지 총체적 부실"(종합)
+                    - generic [ref=f18e162]: 데일리안 6시간 전
+              - listitem [ref=f18e164]:
+                - link "동영상 영국통합②]\"정부를 설득하라\"..통합의 성패, 협상에 달려 목포MBC 6시간 전" [ref=f18e165] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215718909
+                  - generic [ref=f18e166]: 동영상
+                  - generic [ref=f18e169]:
+                    - strong [ref=f18e170]: 영국통합②]"정부를 설득하라"..통합의 성패, 협상에 달려
+                    - generic [ref=f18e171]: 목포MBC 6시간 전
+              - listitem [ref=f18e173]:
+                - link "재검표 두고 與 “국힘, 정치적 이익 위해 혼란 즐겨” 野 “민주당은 세월호 사태 즐겼냐” 조선일보 7시간 전" [ref=f18e174] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215037792
+                  - generic [ref=f18e177]:
+                    - strong [ref=f18e178]: 재검표 두고 與 “국힘, 정치적 이익 위해 혼란 즐겨” 野 “민주당은 세월호 사태 즐겼냐”
+                    - generic [ref=f18e179]: 조선일보 7시간 전
+            - link "새로운 뉴스" [ref=f18e182] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e184]: 뉴스
+          - generic [ref=f18e186]:
+            - insertion
+          - generic [ref=f18e187]:
+            - strong [ref=f18e189]:
+              - link [ref=f18e190] [cursor=pointer]:
+                - /url: https://news.daum.net/president
+            - list [ref=f18e193]:
+              - listitem [ref=f18e194]:
+                - link "동영상 [현장연결] 이 대통령, 칼둔 아부다비 행정청장 접견…'K-방위산업 세일즈' 연합뉴스TV 181일 전" [ref=f18e195] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260115124607235
+                  - generic [ref=f18e196]: 동영상
+                  - generic [ref=f18e198]:
+                    - strong [ref=f18e199]: "[현장연결] 이 대통령, 칼둔 아부다비 행정청장 접견…'K-방위산업 세일즈'"
+                    - generic [ref=f18e200]: 연합뉴스TV 181일 전
+              - listitem [ref=f18e202]:
+                - link "美대사관, 대통령경호처 초청 리셉션…경주 APEC 경호협력에 감사 뜻 아시아경제 181일 전" [ref=f18e203] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260115122603837
+                  - generic [ref=f18e205]:
+                    - strong [ref=f18e206]: 美대사관, 대통령경호처 초청 리셉션…경주 APEC 경호협력에 감사 뜻
+                    - generic [ref=f18e207]: 아시아경제 181일 전
+              - listitem [ref=f18e209]:
+                - link "셔틀외교 마친 이 대통령… 51조원 방산·A I ‘세일즈 외교’ 문화일보 181일 전" [ref=f18e210] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260115120806425
+                  - generic [ref=f18e212]:
+                    - strong [ref=f18e213]: 셔틀외교 마친 이 대통령… 51조원 방산·A I ‘세일즈 외교’
+                    - generic [ref=f18e214]: 문화일보 181일 전
+              - listitem [ref=f18e216]:
+                - link "靑 “檢 탄압 받은 李, 개혁의지 분명…리스크 없는 방식 찾는 중\" 조선비즈 181일 전" [ref=f18e217] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260115113925106
+                  - generic [ref=f18e219]:
+                    - strong [ref=f18e220]: 靑 “檢 탄압 받은 李, 개혁의지 분명…리스크 없는 방식 찾는 중"
+                    - generic [ref=f18e221]: 조선비즈 181일 전
+            - link "새로운 뉴스" [ref=f18e224] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e226]: 뉴스
+          - generic [ref=f18e227]:
+            - strong [ref=f18e229]:
+              - link [ref=f18e230] [cursor=pointer]:
+                - /url: https://news.daum.net/dipdefen
+            - list [ref=f18e233]:
+              - listitem [ref=f18e234]:
+                - link "군의관 임관 1년 새 반토막…군·농어촌 의료공백 커진다 경북일보 8시간 전" [ref=f18e235] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714202042311
+                  - generic [ref=f18e237]:
+                    - strong [ref=f18e238]: 군의관 임관 1년 새 반토막…군·농어촌 의료공백 커진다
+                    - generic [ref=f18e239]: 경북일보 8시간 전
+              - listitem [ref=f18e241]:
+                - link "한미 현안 안 풀리나…\"강경화 대사 들어와라\" 이례적 지시 배경 뉴스1 10시간 전" [ref=f18e242] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714183327968
+                  - generic [ref=f18e244]:
+                    - strong [ref=f18e245]: 한미 현안 안 풀리나…"강경화 대사 들어와라" 이례적 지시 배경
+                    - generic [ref=f18e246]: 뉴스1 10시간 전
+              - listitem [ref=f18e248]:
+                - link "사관학교 통합 ‘숨 고르기’… 발표 연기 속 ‘안규백 리스크’ 변수 국민일보 10시간 전" [ref=f18e249] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714183237945
+                  - generic [ref=f18e251]:
+                    - strong [ref=f18e252]: 사관학교 통합 ‘숨 고르기’… 발표 연기 속 ‘안규백 리스크’ 변수
+                    - generic [ref=f18e253]: 국민일보 10시간 전
+              - listitem [ref=f18e255]:
+                - link "동맹만으론 안전보장 어려워... \"자강·연대·포용 중심의 위험 회피 전략 필요\" 한국일보 11시간 전" [ref=f18e256] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714173307632
+                  - generic [ref=f18e258]:
+                    - strong [ref=f18e259]: 동맹만으론 안전보장 어려워... "자강·연대·포용 중심의 위험 회피 전략 필요"
+                    - generic [ref=f18e260]: 한국일보 11시간 전
+            - link "새로운 뉴스" [ref=f18e263] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e265]: 뉴스
+          - generic [ref=f18e266]:
+            - strong [ref=f18e268]:
+              - link [ref=f18e269] [cursor=pointer]:
+                - /url: https://news.daum.net/assembly
+            - list [ref=f18e272]:
+              - listitem [ref=f18e273]:
+                - link "국힘 소속 특위 위원장 “재검표를”… 국힘 특위 위원들은 “특검이 먼저” 조선일보 3시간 전" [ref=f18e274] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005648220
+                  - generic [ref=f18e276]:
+                    - strong [ref=f18e277]: 국힘 소속 특위 위원장 “재검표를”… 국힘 특위 위원들은 “특검이 먼저”
+                    - generic [ref=f18e278]: 조선일보 3시간 전
+              - listitem [ref=f18e280]:
+                - link "버티던 정청래, 선호투표 수용… 친명 “동정표 노리고 선회” 조선일보 3시간 전" [ref=f18e281] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005644218
+                  - generic [ref=f18e283]:
+                    - strong [ref=f18e284]: 버티던 정청래, 선호투표 수용… 친명 “동정표 노리고 선회”
+                    - generic [ref=f18e285]: 조선일보 3시간 전
+              - listitem [ref=f18e287]:
+                - link "오세훈 “서울 주택 행정은…” 李대통령 “그 얘기는 나중에 하시죠” 조선일보 3시간 전" [ref=f18e288] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005642217
+                  - generic [ref=f18e290]:
+                    - strong [ref=f18e291]: 오세훈 “서울 주택 행정은…” 李대통령 “그 얘기는 나중에 하시죠”
+                    - generic [ref=f18e292]: 조선일보 3시간 전
+              - listitem [ref=f18e294]:
+                - link "국회 파행 속 울산현안 추진 차질 우려 경상일보 4시간 전" [ref=f18e295] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003359011
+                  - generic [ref=f18e297]:
+                    - strong [ref=f18e298]: 국회 파행 속 울산현안 추진 차질 우려
+                    - generic [ref=f18e299]: 경상일보 4시간 전
+            - link "새로운 뉴스" [ref=f18e302] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e304]: 뉴스
+          - generic [ref=f18e305]:
+            - strong [ref=f18e307]:
+              - link [ref=f18e308] [cursor=pointer]:
+                - /url: https://news.daum.net/administration
+            - list [ref=f18e311]:
+              - listitem [ref=f18e312]:
+                - link "[인터뷰]손근호 제9대 울산시의회 전반기 제2부의장, “소통·설득으로 정파적 대립과 다수당 독주 막겠다” 경상일보 4시간 전" [ref=f18e313] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715003155927
+                  - generic [ref=f18e315]:
+                    - strong [ref=f18e316]: "[인터뷰]손근호 제9대 울산시의회 전반기 제2부의장, “소통·설득으로 정파적 대립과 다수당 독주 막겠다”"
+                    - generic [ref=f18e317]: 경상일보 4시간 전
+              - listitem [ref=f18e319]:
+                - link "이 대통령 “주택 조세 많이 왜곡됐다” 세제 개편 못 박아 중앙일보 4시간 전" [ref=f18e320] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001617809
+                  - generic [ref=f18e322]:
+                    - strong [ref=f18e323]: 이 대통령 “주택 조세 많이 왜곡됐다” 세제 개편 못 박아
+                    - generic [ref=f18e324]: 중앙일보 4시간 전
+              - listitem [ref=f18e326]:
+                - link "본지·G1방송 공동주최 ‘2026 강원자치발전전략 대토론회’ 3. 원주시 강원도민일보 4시간 전" [ref=f18e327] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000612543
+                  - generic [ref=f18e329]:
+                    - strong [ref=f18e330]: 본지·G1방송 공동주최 ‘2026 강원자치발전전략 대토론회’ 3. 원주시
+                    - generic [ref=f18e331]: 강원도민일보 4시간 전
+              - listitem [ref=f18e333]:
+                - link "예산 없이 넘겨받은 국가사무… 인천시 ‘노동감독관’ 9명만 뽑는다 경인일보 9시간 전" [ref=f18e334] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714195212716
+                  - generic [ref=f18e336]:
+                    - strong [ref=f18e337]: 예산 없이 넘겨받은 국가사무… 인천시 ‘노동감독관’ 9명만 뽑는다
+                    - generic [ref=f18e338]: 경인일보 9시간 전
+            - link "새로운 뉴스" [ref=f18e341] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e343]: 뉴스
+          - generic [ref=f18e344]:
+            - strong [ref=f18e346]:
+              - link [ref=f18e347] [cursor=pointer]:
+                - /url: https://news.daum.net/north
+            - list [ref=f18e350]:
+              - listitem [ref=f18e351]:
+                - link "[동포의 창] 7월 '이달의 재외동포' 한국전쟁 영웅 김영옥 대령 연합뉴스 4시간 전" [ref=f18e352] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715000154397
+                  - generic [ref=f18e354]:
+                    - strong [ref=f18e355]: "[동포의 창] 7월 '이달의 재외동포' 한국전쟁 영웅 김영옥 대령"
+                    - generic [ref=f18e356]: 연합뉴스 4시간 전
+              - listitem [ref=f18e358]:
+                - link "“출발선 다른 北배경학생… 자존감 회복·가족 중심 교육 시급” [심층기획-경계에 선 아이들, 북한배경학생] 세계일보 7시간 전" [ref=f18e359] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210321024
+                  - generic [ref=f18e361]:
+                    - strong [ref=f18e362]: “출발선 다른 北배경학생… 자존감 회복·가족 중심 교육 시급” [심층기획-경계에 선 아이들, 북한배경학생]
+                    - generic [ref=f18e363]: 세계일보 7시간 전
+              - listitem [ref=f18e365]:
+                - link "李대통령 “북향민, 남북 미래 자산… 정부가 세심히 살필 것” [심층기획-경계에 선 아이들, 북한배경학생] 세계일보 7시간 전" [ref=f18e366] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714210310022
+                  - generic [ref=f18e368]:
+                    - strong [ref=f18e369]: 李대통령 “북향민, 남북 미래 자산… 정부가 세심히 살필 것” [심층기획-경계에 선 아이들, 북한배경학생]
+                    - generic [ref=f18e370]: 세계일보 7시간 전
+              - listitem [ref=f18e372]:
+                - link "\"천지개벽\" 中 보란 듯 국경에 건설한 최첨단 농장 선전[포토 北] 뉴스1 12시간 전" [ref=f18e373] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714161041860
+                  - generic [ref=f18e375]:
+                    - strong [ref=f18e376]: "\"천지개벽\" 中 보란 듯 국경에 건설한 최첨단 농장 선전[포토 北]"
+                    - generic [ref=f18e377]: 뉴스1 12시간 전
+            - link "새로운 뉴스" [ref=f18e380] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e382]: 뉴스
+          - generic [ref=f18e384]:
+            - insertion
+      - complementary [ref=f18e385]:
+        - generic [ref=f18e386]:
+          - generic [ref=f18e387]:
+            - strong [ref=f18e389]:
+              - generic [ref=f18e390]: 내란특검 현황
+            - list [ref=f18e391]:
+              - listitem [ref=f18e392]:
+                - link "尹, 항소심서 \"위헌이어도 내란은 아냐\"…노상원 \"수첩은 사후 메모\" 뉴시스 12일 전" [ref=f18e393] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260702165708257
+                  - generic [ref=f18e395]:
+                    - strong [ref=f18e396]: 尹, 항소심서 "위헌이어도 내란은 아냐"…노상원 "수첩은 사후 메모"
+                    - generic [ref=f18e397]: 뉴시스 12일 전
+              - listitem [ref=f18e399]:
+                - link "재판부 기피신청에 멈췄던 尹 내란 항소심, 한 달만에 재개 세계일보 19일 전" [ref=f18e400] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260625200017232
+                  - generic [ref=f18e403]:
+                    - strong [ref=f18e404]: 재판부 기피신청에 멈췄던 尹 내란 항소심, 한 달만에 재개
+                    - generic [ref=f18e405]: 세계일보 19일 전
+              - listitem [ref=f18e407]:
+                - link "내란 특검, 尹 항소심서도 사형 요청… 尹 측 “메시지성 계엄” 주장 조선비즈 19일 전" [ref=f18e408] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260625175016130
+                  - generic [ref=f18e411]:
+                    - strong [ref=f18e412]: 내란 특검, 尹 항소심서도 사형 요청… 尹 측 “메시지성 계엄” 주장
+                    - generic [ref=f18e413]: 조선비즈 19일 전
+              - listitem [ref=f18e415]:
+                - link "‘내란 가담’ 박성재 1심 징역 25년…법원 “윤석열 반대 세력 제압에 도움” 경향신문 22일 전" [ref=f18e416] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260622173118828
+                  - generic [ref=f18e419]:
+                    - strong [ref=f18e420]: ‘내란 가담’ 박성재 1심 징역 25년…법원 “윤석열 반대 세력 제압에 도움”
+                    - generic [ref=f18e421]: 경향신문 22일 전
+              - listitem [ref=f18e423]:
+                - link "[내란재판기록] 징역 30년 윤석열 웃음, 집유 5년 드론사령관 괴로운 얼굴 뉴스하다 32일 전" [ref=f18e424] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260612175921448
+                  - generic [ref=f18e427]:
+                    - strong [ref=f18e428]: "[내란재판기록] 징역 30년 윤석열 웃음, 집유 5년 드론사령관 괴로운 얼굴"
+                    - generic [ref=f18e429]: 뉴스하다 32일 전
+            - link "새로운 뉴스" [ref=f18e432] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e434]: 뉴스
+          - generic [ref=f18e435]:
+            - generic [ref=f18e436]:
+              - strong [ref=f18e437]:
+                - generic [ref=f18e438]: 인터랙티브 페이지 모음
+              - button "도움말" [ref=f18e440] [cursor=pointer]
+            - list [ref=f18e442]:
+              - listitem [ref=f18e443]:
+                - link "AI, 세상을 뒤바꾸다 지난해 전쟁과 기후 위기, 정치·경제 불안 등 글로벌 불확실성 속에서도 일관된 흐름으로 세계를 움직인 것은 인공지능(AI)이었다. AI는 기존에 학습한 엄청난 양의 데이터를 바탕으로 사용자가 원하는 답을 내놨다. 이제는 스스로 데이터를 만들어 학습하고, 인간처럼 논리적으로 추론하는 수준까지 발전하고 있다. 이전과는 완전히 다른 방식으로 기술·산업뿐 아니라 과학·예술·일상의 영역까지 파고들어 세상을 뒤바꾸고 있다. 조선일보 (새창열림)" [ref=f18e444] [cursor=pointer]:
+                  - /url: https://designlab.chosun.com/2025/ai/user/html/index.html
+                  - generic [ref=f18e446]:
+                    - strong [ref=f18e447]: AI, 세상을 뒤바꾸다
+                    - paragraph [ref=f18e448]: 지난해 전쟁과 기후 위기, 정치·경제 불안 등 글로벌 불확실성 속에서도 일관된 흐름으로 세계를 움직인 것은 인공지능(AI)이었다. AI는 기존에 학습한 엄청난 양의 데이터를 바탕으로 사용자가 원하는 답을 내놨다. 이제는 스스로 데이터를 만들어 학습하고, 인간처럼 논리적으로 추론하는 수준까지 발전하고 있다. 이전과는 완전히 다른 방식으로 기술·산업뿐 아니라 과학·예술·일상의 영역까지 파고들어 세상을 뒤바꾸고 있다.
+                    - generic [ref=f18e449]: 조선일보
+                  - generic: (새창열림)
+              - listitem [ref=f18e453]:
+                - link "독자시점주의 From You 당신의 시선이 30만가지로 모습을 달리하는 하나의 기사에 닿길 바라면서 인천일보 (새창열림)" [ref=f18e454] [cursor=pointer]:
+                  - /url: https://from-you.incheonilbo-interactive.com/
+                  - generic [ref=f18e456]:
+                    - strong [ref=f18e457]: 독자시점주의 From You
+                    - paragraph [ref=f18e458]: 당신의 시선이 30만가지로 모습을 달리하는 하나의 기사에 닿길 바라면서
+                    - generic [ref=f18e459]: 인천일보
+                  - generic: (새창열림)
+            - button "더보기" [ref=f18e464] [cursor=pointer]
+          - generic [ref=f18e466]:
+            - generic [ref=f18e467]:
+              - strong [ref=f18e468]:
+                - generic [ref=f18e469]: 정치 최신 뉴스
+              - button "도움말" [ref=f18e471] [cursor=pointer]
+            - list [ref=f18e473]:
+              - listitem [ref=f18e474]:
+                - link "동영상 국무회의 참석 오세훈 \"한 말씀 드리겠다\"...한 총리 \"서류로 받겠다\" YTN 3분 전" [ref=f18e475] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715042208578
+                  - generic [ref=f18e476]: 동영상
+                  - generic [ref=f18e479]:
+                    - strong [ref=f18e480]: 국무회의 참석 오세훈 "한 말씀 드리겠다"...한 총리 "서류로 받겠다"
+                    - generic [ref=f18e481]: YTN 3분 전
+              - listitem [ref=f18e483]:
+                - link "\"집값 잡으러 세금 부과, 사실 아니다\" 머니투데이 6분 전" [ref=f18e484] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715041907554
+                  - generic [ref=f18e487]:
+                    - strong [ref=f18e488]: "\"집값 잡으러 세금 부과, 사실 아니다\""
+                    - generic [ref=f18e489]: 머니투데이 6분 전
+              - listitem [ref=f18e491]:
+                - link "친청 못넘은 청년최고위… 與, 경선룰 놓고 계파갈등 재점화 머니투데이 13분 전" [ref=f18e492] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715041153498
+                  - generic [ref=f18e495]:
+                    - strong [ref=f18e496]: 친청 못넘은 청년최고위… 與, 경선룰 놓고 계파갈등 재점화
+                    - generic [ref=f18e497]: 머니투데이 13분 전
+              - listitem [ref=f18e499]:
+                - link "野 \"보완수사권 사수\"… 與 \"당내 다른 의견 수렴\" 머니투데이 13분 전" [ref=f18e500] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715041151496
+                  - generic [ref=f18e503]:
+                    - strong [ref=f18e504]: 野 "보완수사권 사수"… 與 "당내 다른 의견 수렴"
+                    - generic [ref=f18e505]: 머니투데이 13분 전
+              - listitem [ref=f18e507]:
+                - link "김민석 \"지난 1년간 당정관계 잘 안 돼, 당대표 자기 정치 때문\" 프레시안 34분 전" [ref=f18e508] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715035049333
+                  - generic [ref=f18e511]:
+                    - strong [ref=f18e512]: 김민석 "지난 1년간 당정관계 잘 안 돼, 당대표 자기 정치 때문"
+                    - generic [ref=f18e513]: 프레시안 34분 전
+              - listitem [ref=f18e515]:
+                - link "동영상 민주 \"국힘, 헌정사상 최악 민생태업...반드시 심판\" YTN 2시간 전" [ref=f18e516] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715022818710
+                  - generic [ref=f18e517]: 동영상
+                  - generic [ref=f18e520]:
+                    - strong [ref=f18e521]: 민주 "국힘, 헌정사상 최악 민생태업...반드시 심판"
+                    - generic [ref=f18e522]: YTN 2시간 전
+              - listitem [ref=f18e524]:
+                - link "동영상 정점식 \"민주당, 상임위 독식 협박...법 개정해 다 가져가라\" YTN 2시간 전" [ref=f18e525] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715022808709
+                  - generic [ref=f18e526]: 동영상
+                  - generic [ref=f18e529]:
+                    - strong [ref=f18e530]: 정점식 "민주당, 상임위 독식 협박...법 개정해 다 가져가라"
+                    - generic [ref=f18e531]: YTN 2시간 전
+              - listitem [ref=f18e533]:
+                - link "金 “청년 정당화” 鄭 “민주당 뿌리” 宋 “鄭은 스토커” 국민일보 2시간 전" [ref=f18e534] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715021348688
+                  - generic [ref=f18e537]:
+                    - strong [ref=f18e538]: 金 “청년 정당화” 鄭 “민주당 뿌리” 宋 “鄭은 스토커”
+                    - generic [ref=f18e539]: 국민일보 2시간 전
+              - listitem [ref=f18e541]:
+                - link "여당 의총 “보완수사권 예외 인정” 목소리가 더 컸다 국민일보 2시간 전" [ref=f18e542] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715020238671
+                  - generic [ref=f18e545]:
+                    - strong [ref=f18e546]: 여당 의총 “보완수사권 예외 인정” 목소리가 더 컸다
+                    - generic [ref=f18e547]: 국민일보 2시간 전
+              - listitem [ref=f18e549]:
+                - link "동영상 \"성공한 개혁 맞나\" 민주 자중지란...국힘은 세몰이 YTN 3시간 전" [ref=f18e550] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715011008353
+                  - generic [ref=f18e551]: 동영상
+                  - generic [ref=f18e554]:
+                    - strong [ref=f18e555]: "\"성공한 개혁 맞나\" 민주 자중지란...국힘은 세몰이"
+                    - generic [ref=f18e556]: YTN 3시간 전
+            - link "새로운 뉴스" [ref=f18e559] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e561]: 뉴스
+          - generic [ref=f18e563]:
+            - insertion
+          - generic [ref=f18e564]:
+            - generic [ref=f18e565]:
+              - strong [ref=f18e566]:
+                - generic [ref=f18e567]: 실시간 트렌드
+              - generic [ref=f18e568]: 오늘 01:02
+              - button "도움말" [ref=f18e570] [cursor=pointer]
+            - list [ref=f18e572]:
+              - listitem [ref=f18e573]:
+                - link "1 위, 민경욱 의식불명 , 동일" [ref=f18e574] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AF%BC%EA%B2%BD%EC%9A%B1%20%EC%9D%98%EC%8B%9D%EB%B6%88%EB%AA%85
+                  - emphasis [ref=f18e575]:
+                    - text: "1"
+                    - generic: 위,
+                  - strong [ref=f18e576]: 민경욱 의식불명
+                  - generic [ref=f18e577]: ", 동일"
+              - listitem [ref=f18e578]:
+                - link "2 위, 트럼프 통행료 , 하락" [ref=f18e579] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%8A%B8%EB%9F%BC%ED%94%84%20%ED%86%B5%ED%96%89%EB%A3%8C
+                  - emphasis [ref=f18e580]:
+                    - text: "2"
+                    - generic: 위,
+                  - strong [ref=f18e581]: 트럼프 통행료
+                  - generic [ref=f18e582]: ", 하락"
+              - listitem [ref=f18e583]:
+                - link "3 위, 하트 시그널 5 정규리 , 신규" [ref=f18e584] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%98%ED%8A%B8%20%EC%8B%9C%EA%B7%B8%EB%84%90%205%20%EC%A0%95%EA%B7%9C%EB%A6%AC
+                  - emphasis [ref=f18e585]:
+                    - text: "3"
+                    - generic: 위,
+                  - strong [ref=f18e586]: 하트 시그널 5 정규리
+                  - generic [ref=f18e587]: ", 신규"
+              - listitem [ref=f18e588]:
+                - link "4 위, 시간추적자 설록 , 신규" [ref=f18e589] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EC%8B%9C%EA%B0%84%EC%B6%94%EC%A0%81%EC%9E%90%20%EC%84%A4%EB%A1%9D
+                  - emphasis [ref=f18e590]:
+                    - text: "4"
+                    - generic: 위,
+                  - strong [ref=f18e591]: 시간추적자 설록
+                  - generic [ref=f18e592]: ", 신규"
+              - listitem [ref=f18e593]:
+                - link "5 위, 모태솔로지만 연애는 하고 싶어 시즌2 , 신규" [ref=f18e594] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%AA%A8%ED%83%9C%EC%86%94%EB%A1%9C%EC%A7%80%EB%A7%8C%20%EC%97%B0%EC%95%A0%EB%8A%94%20%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%20%EC%8B%9C%EC%A6%8C2
+                  - emphasis [ref=f18e595]:
+                    - text: "5"
+                    - generic: 위,
+                  - strong [ref=f18e596]: 모태솔로지만 연애는 하고 싶어 시즌2
+                  - generic [ref=f18e597]: ", 신규"
+              - listitem [ref=f18e598]:
+                - link "6 위, 한민수 국회의원 , 신규" [ref=f18e599] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%95%9C%EB%AF%BC%EC%88%98%20%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90
+                  - emphasis [ref=f18e600]:
+                    - text: "6"
+                    - generic: 위,
+                  - strong [ref=f18e601]: 한민수 국회의원
+                  - generic [ref=f18e602]: ", 신규"
+              - listitem [ref=f18e603]:
+                - link "7 위, 백룸 , 신규" [ref=f18e604] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%EB%B0%B1%EB%A3%B8
+                  - emphasis [ref=f18e605]:
+                    - text: "7"
+                    - generic: 위,
+                  - strong [ref=f18e606]: 백룸
+                  - generic [ref=f18e607]: ", 신규"
+              - listitem [ref=f18e608]:
+                - link "8 위, 클릭비 김상혁 , 신규" [ref=f18e609] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=%ED%81%B4%EB%A6%AD%EB%B9%84%20%EA%B9%80%EC%83%81%ED%98%81
+                  - emphasis [ref=f18e610]:
+                    - text: "8"
+                    - generic: 위,
+                  - strong [ref=f18e611]: 클릭비 김상혁
+                  - generic [ref=f18e612]: ", 신규"
+              - listitem [ref=f18e613]:
+                - link "9 위, 26년 초복 , 신규" [ref=f18e614] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=26%EB%85%84%20%EC%B4%88%EB%B3%B5
+                  - emphasis [ref=f18e615]:
+                    - text: "9"
+                    - generic: 위,
+                  - strong [ref=f18e616]: 26년 초복
+                  - generic [ref=f18e617]: ", 신규"
+              - listitem [ref=f18e618]:
+                - link "10 위, 100분 토론 , 신규" [ref=f18e619] [cursor=pointer]:
+                  - /url: https://search.daum.net/search?w=tot&DA=TRW&rtmaxcoll=AIO,NNS,DNS&q=100%EB%B6%84%20%ED%86%A0%EB%A1%A0
+                  - emphasis [ref=f18e620]:
+                    - text: "10"
+                    - generic: 위,
+                  - strong [ref=f18e621]: 100분 토론
+                  - generic [ref=f18e622]: ", 신규"
+          - generic [ref=f18e623]:
+            - strong [ref=f18e625]:
+              - generic [ref=f18e626]: 이 시각 주요뉴스
+            - list [ref=f18e627]:
+              - listitem [ref=f18e628]:
+                - link "동영상 [날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입 YTN 27분 전" [ref=f18e629] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715035818381
+                  - generic [ref=f18e630]: 동영상
+                  - generic [ref=f18e633]:
+                    - strong [ref=f18e634]: "[날씨] 강한 비구름 동해상으로...서해에서 새 비구름 유입"
+                    - generic [ref=f18e635]: YTN 27분 전
+              - listitem [ref=f18e637]:
+                - link "105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합) 뉴시스 1시간 전" [ref=f18e638] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715025954753
+                  - generic [ref=f18e641]:
+                    - strong [ref=f18e642]: 105일 걸린 최저임금 심의…1만700원으로 최종 결정(종합)
+                    - generic [ref=f18e643]: 뉴시스 1시간 전
+              - listitem [ref=f18e645]:
+                - link "최임위 공익위원 \"도급제 적용 등 최저임금 제도 개선 권고\"(종합) 뉴시스 3시간 전" [ref=f18e646] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715012350437
+                  - generic [ref=f18e649]:
+                    - strong [ref=f18e650]: 최임위 공익위원 "도급제 적용 등 최저임금 제도 개선 권고"(종합)
+                    - generic [ref=f18e651]: 뉴시스 3시간 전
+              - listitem [ref=f18e653]:
+                - link "최저임금위원장 \"30원 차이였는데…표결 아쉬워\"(종합2보) 뉴시스 3시간 전" [ref=f18e654] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715005651222
+                  - generic [ref=f18e657]:
+                    - strong [ref=f18e658]: 최저임금위원장 "30원 차이였는데…표결 아쉬워"(종합2보)
+                    - generic [ref=f18e659]: 뉴시스 3시간 전
+              - listitem [ref=f18e661]:
+                - link "이 대통령 \"英, 韓 성장 도운 고마운 나라\"…앤 공주 \"韓 조선 경이로운 수준\"(종합) 뉴시스 4시간 전" [ref=f18e662] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001148764
+                  - generic [ref=f18e665]:
+                    - strong [ref=f18e666]: 이 대통령 "英, 韓 성장 도운 고마운 나라"…앤 공주 "韓 조선 경이로운 수준"(종합)
+                    - generic [ref=f18e667]: 뉴시스 4시간 전
+            - link "새로운 뉴스" [ref=f18e670] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e672]: 뉴스
+          - generic [ref=f18e673]:
+            - generic [ref=f18e674]:
+              - strong [ref=f18e675]:
+                - link [ref=f18e676] [cursor=pointer]:
+                  - /url: https://issue.daum.net/news/reportage
+              - button "도움말" [ref=f18e680] [cursor=pointer]
+            - list [ref=f18e682]:
+              - listitem [ref=f18e683]:
+                - link "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’ 여성경제신문 4시간 전" [ref=f18e684] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260715001224771
+                  - generic [ref=f18e686]:
+                    - strong [ref=f18e687]: "[현장] 희귀유전질환 대물림 예방 PGT-M···검사까지 404일, 출산까지 ‘긴 여정’"
+                    - generic [ref=f18e688]: 여성경제신문 4시간 전
+              - listitem [ref=f18e690]:
+                - link "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁 동아일보 5시간 전" [ref=f18e691] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714230750705
+                  - generic [ref=f18e693]:
+                    - strong [ref=f18e694]: "[글로벌 현장을 가다/신진우]“태어난 곳이냐, 부모 신분이냐”… 끝나지 않는 美 시민권 전쟁"
+                    - generic [ref=f18e695]: 동아일보 5시간 전
+              - listitem [ref=f18e697]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 7시간 전" [ref=f18e698] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714215156817
+                  - generic [ref=f18e699]: 동영상
+                  - generic [ref=f18e701]:
+                    - strong [ref=f18e702]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f18e703]: KBS 7시간 전
+              - listitem [ref=f18e705]:
+                - link "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤 인천일보 8시간 전" [ref=f18e706] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714202504399
+                  - generic [ref=f18e708]:
+                    - strong [ref=f18e709]: "[르포] 광명 뚝방촌 가보니…찜통더위 나날·물바다 일쑤"
+                    - generic [ref=f18e710]: 인천일보 8시간 전
+              - listitem [ref=f18e712]:
+                - link "동영상 [현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’ KBS 8시간 전" [ref=f18e713] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714201241189
+                  - generic [ref=f18e714]: 동영상
+                  - generic [ref=f18e716]:
+                    - strong [ref=f18e717]: "[현장속으로] 세상과 화음을 맞추다!…창원 청년 ‘쾌유 프로젝트’"
+                    - generic [ref=f18e718]: KBS 8시간 전
+              - listitem [ref=f18e720]:
+                - link "동영상 [현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막” 채널A 9시간 전" [ref=f18e721] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714193612404
+                  - generic [ref=f18e722]: 동영상
+                  - generic [ref=f18e724]:
+                    - strong [ref=f18e725]: "[현장 카메라]사망 경고에도 포구 다이빙…“올해가 마지막”"
+                    - generic [ref=f18e726]: 채널A 9시간 전
+              - listitem [ref=f18e728]:
+                - link "동영상 [현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’ KBS 9시간 전" [ref=f18e729] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714191413949
+                  - generic [ref=f18e730]: 동영상
+                  - generic [ref=f18e732]:
+                    - strong [ref=f18e733]: "[현장K] “컨테이너까지 사용”…교도소 과밀 ‘심각’"
+                    - generic [ref=f18e734]: KBS 9시간 전
+              - listitem [ref=f18e736]:
+                - link "동영상 [현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살” 중부일보 9시간 전" [ref=f18e737] [cursor=pointer]:
+                  - /url: https://v.daum.net/v/20260714185659556
+                  - generic [ref=f18e738]: 동영상
+                  - generic [ref=f18e740]:
+                    - strong [ref=f18e741]: "[현장카메라] 광명시흥 일반산업단지 예정 부지 “쓰레기 무단 투기로 몸살”"
+                    - generic [ref=f18e742]: 중부일보 9시간 전
+            - link "새로운 뉴스" [ref=f18e745] [cursor=pointer]:
+              - /url: "#none"
+              - text: 새로운
+              - generic [ref=f18e747]: 뉴스
+          - generic [ref=f18e748]:
+            - strong [ref=f18e750]:
+              - generic [ref=f18e751]: 🧭 다음뉴스 안내서
+            - list [ref=f18e752]:
+              - listitem [ref=f18e753]:
+                - link "고침, 정정・반론 보도 모음 다음뉴스" [ref=f18e754] [cursor=pointer]:
+                  - /url: https://news.daum.net/correct
+                  - generic [ref=f18e757]:
+                    - strong [ref=f18e758]: 고침, 정정・반론 보도 모음
+                    - generic [ref=f18e759]: 다음뉴스
+              - listitem [ref=f18e761]:
+                - link "다음채널 제휴 안내 다음뉴스" [ref=f18e762] [cursor=pointer]:
+                  - /url: https://channel.daum.net/studio
+                  - generic [ref=f18e765]:
+                    - strong [ref=f18e766]: 다음채널 제휴 안내
+                    - generic [ref=f18e767]: 다음뉴스
+              - listitem [ref=f18e769]:
+                - link "다음뉴스 고객센터 다음뉴스" [ref=f18e770] [cursor=pointer]:
+                  - /url: https://cs.daum.net/faq/63.html
+                  - generic [ref=f18e773]:
+                    - strong [ref=f18e774]: 다음뉴스 고객센터
+                    - generic [ref=f18e775]: 다음뉴스
+              - listitem [ref=f18e777]:
+                - link "다음뉴스 제휴 언론사 다음뉴스" [ref=f18e778] [cursor=pointer]:
+                  - /url: https://news.daum.net/cplist
+                  - generic [ref=f18e781]:
+                    - strong [ref=f18e782]: 다음뉴스 제휴 언론사
+                    - generic [ref=f18e783]: 다음뉴스
+    - contentinfo [ref=f18e785]:
+      - generic [ref=f18e787]:
+        - list [ref=f18e788]:
+          - listitem [ref=f18e789]:
+            - link "다음뉴스 서비스안내" [ref=f18e790] [cursor=pointer]:
+              - /url: /news/edit
+          - listitem [ref=f18e791]:
+            - link "24시간 뉴스센터" [ref=f18e792] [cursor=pointer]:
+              - /url: /news/newscenter24
+          - listitem [ref=f18e793]:
+            - link "공지사항" [ref=f18e794] [cursor=pointer]:
+              - /url: https://brunch.co.kr/@daumnews
+          - listitem [ref=f18e795]:
+            - link "서비스 약관/정책" [ref=f18e796] [cursor=pointer]:
+              - /url: https://policy.daum.net/policy/info
+        - generic [ref=f18e797]: "기사배열책임자: 임광욱청소년보호책임자: 이호원"
+        - generic [ref=f18e799]: 뉴스 기사에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며, axz의 입장과 다를 수 있습니다.
+        - link "© AXZ Corp." [ref=f18e801] [cursor=pointer]:
+          - /url: https://axzcorp.com/
+    - button "홈 화면 설정" [ref=f18e803] [cursor=pointer]

@@ -1,0 +1,7 @@
+Asset classification: technical_fixture_not_publish_approved
+Owner: AI-Content-OS test suite
+Scope: offline validator integration tests only
+Source: deterministic bitmap generated from technical_fixture_spec.json
+Publish permission: NOT GRANTED
+External source material: none
+

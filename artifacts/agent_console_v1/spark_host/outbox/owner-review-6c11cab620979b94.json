@@ -1,0 +1,60 @@
+{
+  "schema_version": "agent_console_spark_host_bridge_v1",
+  "envelope_id": "owner-review-6c11cab620979b94:f33d158b33d0f73d",
+  "created_at": "2026-07-18T21:38:33.452472Z",
+  "model_reasoning_summary": "none",
+  "backend": "spark",
+  "status": "queued",
+  "job": {
+    "job_id": "owner-review-6c11cab620979b94",
+    "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+    "category": "news"
+  },
+  "context": {
+    "source": "owner_review",
+    "request_id": "owner_review:20260717-2003-A-4a4409ce4870",
+    "candidate_id": "20260717-2003-A-4a4409ce4870",
+    "grade": "1",
+    "account": "A",
+    "category": "사회·사건",
+    "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+    "source_urls": [
+      "https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER"
+    ],
+    "requested_media": [
+      "원문 기사",
+      "기사 이미지·갤러리",
+      "삽입 영상",
+      "방송사·유튜브 영상"
+    ],
+    "execution_enabled": true,
+    "network_executed": false,
+    "selection_stage": "final_selected"
+  },
+  "prompt": "{\"objective\": \"execute exactly one Agent Console queued job\", \"job_id\": \"owner-review-6c11cab620979b94\", \"title\": \"터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일\", \"category\": \"news\", \"execution_prompt_pack\": {\"schema_version\": \"agent_execution_prompt_pack_v1\", \"common_absolute_rules\": [\"게시·링크 발급·Git·자동화 재개 금지\", \"현재 후보와 제공 출처만 사용하고 사실·성과·사용 경험을 만들지 않기\", \"가변 슬라이드와 별도 피드 본문을 전제로 하며 생성·재연 매체는 표시하기\", \"결과는 짧은 JSON 인계로 반환하고 공용 상태문서·코드를 수정하지 않기\"], \"category_education\": \"[카테고리 실행 교육 | news | 뉴스(계정 A)] 규칙: 훅은 헤드라인 추론이 아니라 기사 본문에서 확인한 결과나 새로 공개된 사실로 쓴다 / 흐름은 출처 맥락, 사건 이해에 필요한 최소 사실, 무엇이 달라졌는가 순서로 하고 필요할 때만 중립적 마무리나 질문을 붙인다 / 미디어는 원문 기사 자산·공식 자료·방송/유튜브 탐색·설명 그래픽을 주제에 맞게 고른다 / 모션은 크롭·하이라이트·순서·타이포그래피로 이해를 도울 때만 쓴다 금지: 가짜 현장 영상 생성 금지 / 기사에 없는 수치·평가·인용 창작 금지 / 모든 주제에 지도·수치·타임라인을 하우스 스타일로 강제 금지 공통: 선정된 후보·제공된 출처·계정 앵글에서 시작하고 제품이나 고정 슬라이드 템플릿에서 시작하지 않는다 / 슬라이드 수는 가변이며 슬라이드마다 시각적 목적을 하나만 부여한다 / 생성·재연 비주얼은 반드시 라벨을 붙이고 사실 증거를 대체하지 않는다 공통 금지: 4슬라이드 강제 금지 / 라이브 인기도·성과·증거·API 결과 조작 금지 / 근거 없는 게시·성과·개인 사용 주장 금지 우선순위: AGENTS.md와 docs/CARDNEWS_MULTI_ACCOUNT_DIRECTIVE.md가 항상 우선한다\", \"current_candidate\": {\"source\": \"owner_review\", \"request_id\": \"owner_review:20260717-2003-A-4a4409ce4870\", \"candidate_id\": \"20260717-2003-A-4a4409ce4870\", \"grade\": \"1\", \"account\": \"A\", \"category\": \"사회·사건\", \"title\": \"터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일\", \"source_urls\": [\"https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER\"], \"requested_media\": [\"원문 기사\", \"기사 이미지·갤러리\", \"삽입 영상\", \"방송사·유튜브 영상\"], \"execution_enabled\": true, \"network_executed\": false}, \"past_owner_learning\": [{\"claim_id\": \"OD-CARD-010\", \"title\": \"뉴스 전달 계정에 독립 취재·수사식 재검증 절차 추가 금지\", \"rule\": \"정해진 시간에 수집된 최신 뉴스를 후보로 제시하고, 소유자가 제작 대상을 선택하면 그때 원문 본문을 읽어 카드와 피드 글로 재구성한다. 원문 내용을 쓰기 위해 읽는 것을 별도의 팩트체크, 당사자 취재, 사건 수사, 법률 효력 검토, 후속 보도 추적 게이트로 확장하지 않는다. 계정의 구어체 의견·감상·비판·질문은 콘텐츠 톤에 맞게 사용할 수 있다.\"}, {\"claim_id\": \"OD-CARD-011\", \"title\": \"공식 브랜드·보도 자료를 실용적 편집 자산으로 우선 사용\", \"rule\": \"패션·뷰티는 브랜드 공식 홈페이지, 공식 SNS, 공식 보도자료의 실제 이미지·영상을 우선 사용한다. 공식 공개 자료를 카드뉴스 시안과 편집 콘텐츠에 쓰는 것을 매번 개별 허가가 필요한 제작 차단 사유로 두지 않는다. 실제 출처는 내부 제작 기록에 남기고, 워터마크 제거·사실 왜곡·공식 광고 위장은 하지 않는다. AP 기사·사진은 해외 이슈 발견과 교차확인에만 쓰고 그 자산을 직접 게시용으로 가져오지 않는다. 해당 이슈가 국내에서 보도됐다면 네이버·다음에 노출된 국내 보도를 찾아 최종 원문·본문·이미지 후보로 사용한다. 국내 보도가 없거나 사진이 부족하면 공식 자료·직접 제작 그래픽·CC 자산으로 바꾸는 경로를 우선한다.\"}, {\"learning_id\": \"owner-feedback-20260717-news-no-fixed-map-number-timeline-grammar\", \"title\": \"뉴스 계정에 지도·숫자·타임라인 중심 문법을 고정하지 않음\", \"rule\": \"뉴스 계정은 국내외 사건·사고·사회 이슈라는 소재 범위로 정의한다. 지도, 숫자, 타임라인은 주제에 실제로 도움이 될 때만 선택적으로 쓰는 표현 수단이며 뉴스 계정의 핵심이나 고정 제작 문법이 아니다. 주제와 확보된 실제 기사 이미지·영상·화면에 맞춰 매번 표현 방식을 선택한다.\", \"feedback_type\": \"news_visual_grammar_correction\", \"stage\": \"ACTIVE_OWNER_RULE\"}, {\"learning_id\": \"owner-feedback-20260717-rank-before-deep-media-discovery\", \"title\": \"매일 전체 후보를 등급화한 뒤 선택 아이템만 심층 미디어 수집\", \"rule\": \"주제는 소유자가 매일 직접 정하는 것이 아니라 시스템이 카테고리별 최신 후보를 먼저 수집해야 함. 현재 1~3등급·제외 입력은 선별 기준과 이슈 순위를 학습시키는 장치이며 영구 승인 절차가 아님. 데이터와 시간을 아끼기 위해 등급을 매긴 뒤 우선 아이템에만 기사·유튜브·댓글·공식 브랜드 자료·재연 장면 분석을 수행해야 함\", \"feedback_type\": \"workflow_order_correction\", \"stage\": \"ACTIVE_OWNER_RULE\"}, {\"learning_id\": \"owner-feedback-20260717-ap-discovery-only\", \"title\": \"AP는 해외 이슈 발견·참고용, 게시 자산은 국내 보도로 재수집\", \"rule\": \"AP 기사와 AP 보도사진은 해외 이슈를 발견하고 체크하는 참고용으로만 사용. 이슈가 주요하면 네이버·다음에 노출된 국내 보도를 찾아 실제 카드뉴스 원문·본문·이미지 후보로 쓸 것. AP 자산을 국내 게시물에 직접 사용하지 않음\", \"feedback_type\": \"source_routing_correction\", \"stage\": \"ACTIVE_OWNER_RULE\"}], \"deferred_tool_assignment\": {\"assigned_tools\": [\"filesystem\", \"project_cli\"], \"assignment_receipt\": {\"schema_version\": \"agent_console_tool_assignment_v1\", \"status\": \"assigned\", \"reason_code\": \"category_read_only_research\", \"assignment_mode\": \"policy_default_intersection\", \"assigned_tools\": [\"filesystem\", \"project_cli\"], \"policy_tools\": [\"filesystem\", \"project_cli\"], \"allowed_tools\": [\"filesystem\", \"project_cli\", \"graphify\", \"hyperframes\"], \"requested_tools\": [], \"denied\": [], \"execution_started\": false}, \"tools_are_not_evidence_until_used\": true, \"publishing_tools_allowed\": false}, \"source_policy\": {\"agency_agents_upstream_reloaded\": false, \"adapted_category_asset_used\": true, \"full_feedback_log_reloaded\": false, \"compact_owner_learning_index_used\": true}, \"education_receipt\": {\"category\": \"news\", \"owner_learning_ids\": [\"OD-CARD-010\", \"OD-CARD-011\", \"owner-feedback-20260717-news-no-fixed-map-number-timeline-grammar\", \"owner-feedback-20260717-rank-before-deep-media-discovery\", \"owner-feedback-20260717-ap-discovery-only\"], \"owner_learning_count\": 5, \"owner_feedback_event_count\": 66, \"active_owner_rule_count\": 42, \"owner_learning_source_sha256\": \"2f424b6b3ad40b9021138a93dee38ec5becf1420710ffee1026584bf9d9dcaf2\", \"prompt_pack_sha256\": \"16d39d64e72ae9963e85ab4691c9385e3a0ef48e931c066be52225e5220c9ae0\", \"assigned_tool_ids\": [\"filesystem\", \"project_cli\"]}}}",
+  "education_receipt": {
+    "category": "news",
+    "owner_learning_ids": [
+      "OD-CARD-010",
+      "OD-CARD-011",
+      "owner-feedback-20260717-news-no-fixed-map-number-timeline-grammar",
+      "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "owner-feedback-20260717-ap-discovery-only"
+    ],
+    "owner_learning_count": 5,
+    "owner_feedback_event_count": 66,
+    "active_owner_rule_count": 42,
+    "owner_learning_source_sha256": "2f424b6b3ad40b9021138a93dee38ec5becf1420710ffee1026584bf9d9dcaf2",
+    "prompt_pack_sha256": "16d39d64e72ae9963e85ab4691c9385e3a0ef48e931c066be52225e5220c9ae0",
+    "assigned_tool_ids": [
+      "filesystem",
+      "project_cli"
+    ]
+  },
+  "prompt_sha256": "c839b28e2ad72cae",
+  "instructions": {
+    "queue_id": "agent_console",
+    "requires_receipt_to_complete": true,
+    "max_local_dispatch": 1
+  }
+}

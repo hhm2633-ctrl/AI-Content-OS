@@ -1,0 +1,20 @@
+{
+  "review_only": true,
+  "publishing_ready": false,
+  "factual_basis": "local live collection plus linked publisher articles",
+  "comments_used": false,
+  "generated_evidence_used": false,
+  "publisher_asset_rights": "unverified; cover images are internal review references only",
+  "required_before_publish": [
+    "re-open every source and recheck claims/timestamps",
+    "replace or license publisher images",
+    "legal/editorial review for allegation wording",
+    "verify current implementation date for market rules"
+  ],
+  "sources": [
+    {
+      "publisher": "머니투데이(뉴시스 인용)",
+      "url": "https://www.mt.co.kr/society/2026/07/16/2026071620130254093"
+    }
+  ]
+}

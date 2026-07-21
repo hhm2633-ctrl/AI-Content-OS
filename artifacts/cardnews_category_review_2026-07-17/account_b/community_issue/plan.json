@@ -1,0 +1,44 @@
+{
+  "account": "B",
+  "category": "community_issue",
+  "topic": "병원 앱 생년월일 예시 논란",
+  "slide_count": 7,
+  "review_only": true,
+  "slides": [
+    {
+      "slide": 1,
+      "media_type": "screenshot",
+      "role": "hook"
+    },
+    {
+      "slide": 2,
+      "media_type": "screenshot",
+      "role": "evidence"
+    },
+    {
+      "slide": 3,
+      "media_type": "editorial",
+      "role": "why_attention"
+    },
+    {
+      "slide": 4,
+      "media_type": "editorial",
+      "role": "fact_inference_split"
+    },
+    {
+      "slide": 5,
+      "media_type": "editorial",
+      "role": "actual_reactions"
+    },
+    {
+      "slide": 6,
+      "media_type": "editorial",
+      "role": "verification_gap"
+    },
+    {
+      "slide": 7,
+      "media_type": "editorial",
+      "role": "editorial_close"
+    }
+  ]
+}

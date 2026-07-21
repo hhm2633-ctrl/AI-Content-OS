@@ -1,0 +1,121 @@
+{
+  "schema_version": "independent_selection_v1",
+  "account": "A",
+  "input_file": "artifacts/cardnews_category_review_2026-07-19/collection.json",
+  "owner_opinion_used": false,
+  "deep_research_executed": false,
+  "selection_count": 4,
+  "alternate_count": 4,
+  "criteria": {
+    "score_weights": {
+      "published_freshness": 30,
+      "source_count": 20,
+      "observed_rank": 15,
+      "observed_reaction": 10,
+      "observed_media": 5,
+      "shallow_news_value": 20
+    },
+    "missing_signal_policy": "Missing rank, reaction, media, or publish time receives the midpoint of that component and is never treated as zero or fabricated.",
+    "freshness_bands": "<=30m:30, <=2h:27, same-day:24, previous-day:18, 2-3d:12, older:5, missing:15",
+    "rank_bands": "1-3:15, 4-5:12, 6-10:9, 11-20:6, 21+:3, missing:7.5",
+    "source_count_rule": "2 or more distinct sources:20, one source:10",
+    "news_value_rule": "0-20 from public impact, consequence, scope, and immediacy visible only in the shallow title/context.",
+    "portfolio_rule": "After near-topic clustering, choose one strong item from each of 국내뉴스, 사건·사회, 세계뉴스, 경제·생활 when each category has a viable item; do not fill four places with near-identical politics/economy items."
+  },
+  "selected": [
+    {
+      "rank": 1,
+      "id": "20260719-A-73D4029C9A06",
+      "title": "반년만에 되살아난 '주52시간' 예외 논의...첨단기업 '생존의 조건'",
+      "category": "경제·생활",
+      "score": 90.5,
+      "reason": "23분 내 게시된 당일 정책·산업 쟁점이며 두 출처가 같은 의제를 포착했고 관측 순위도 1위다. 노동시간과 첨단산업 경쟁력의 직접 충돌이 제목과 요약에 드러난다.",
+      "signals": {"published_freshness": "within_30m", "source_count": 2, "rank_position": 1, "news_value": "national labor and advanced-industry policy"},
+      "missing_signals": ["reaction_count", "media_count"]
+    },
+    {
+      "rank": 2,
+      "id": "20260719-A-1E7B1AB345FD",
+      "title": "미프진, 법 개정 전 허용될까…'낙태약' 논의 관심",
+      "category": "국내뉴스",
+      "score": 84.5,
+      "reason": "두 출처가 동시에 다뤘고 관측 순위 5위다. 법 개정 전 허용 여부와 관계부처 논의라는 명확한 국내 정책 쟁점이 얕은 문맥에 포함돼 있다.",
+      "signals": {"published_freshness": "within_2h", "source_count": 2, "rank_position": 5, "news_value": "national health and legal-policy debate"},
+      "missing_signals": ["reaction_count", "media_count"]
+    },
+    {
+      "rank": 3,
+      "id": "20260719-A-A53291D9F931",
+      "title": "호우에 주택 침수 등 793건 피해…294명 대피",
+      "category": "사건·사회",
+      "score": 82.5,
+      "reason": "수집 직전 게시된 관측 순위 1위 재난 현황이다. 피해 793건과 대피 294명이라는 현재 규모가 제목에 직접 보여 동일 호우 묶음의 대표성이 가장 높다.",
+      "signals": {"published_freshness": "within_30m", "source_count": 1, "rank_position": 1, "news_value": "current nationwide disaster impact with quantified damage"},
+      "missing_signals": ["reaction_count", "media_count"]
+    },
+    {
+      "rank": 4,
+      "id": "20260719-A-7F147C7E7AB7",
+      "title": "中 충칭 산사태 민가 덮쳐 사망8명·실종34명…시진핑 구조 명령",
+      "category": "세계뉴스",
+      "score": 75.0,
+      "reason": "13분 내 게시된 별도 국제 재난이며 사망·실종·대피 규모와 구조 명령이 얕은 문맥에 명확하다. 이란 충돌 기사로 세계뉴스가 한 사건에 편중되는 것을 막는다.",
+      "signals": {"published_freshness": "within_30m", "source_count": 1, "news_value": "major international disaster with casualties and evacuation"},
+      "missing_signals": ["rank_position", "reaction_count", "media_count"]
+    }
+  ],
+  "alternates": [
+    {
+      "rank": 5,
+      "id": "20260719-A-760CEAC30EED",
+      "title": "오세훈–전성수·김현기 ‘재건축 원팀’ 결실 보나?",
+      "category": "국내뉴스",
+      "score": 79.5,
+      "reason": "13분 내 게시·관측 순위 1위로 매우 신선하고 서울 주택공급 정책의 파급성이 보인다. 다만 두 출처가 겹친 미프진 정책 논의보다 교차출처 신호가 약해 예비로 둔다.",
+      "signals": {"published_freshness": "within_30m", "source_count": 1, "rank_position": 1, "news_value": "Seoul housing supply and redevelopment policy"},
+      "missing_signals": ["reaction_count", "media_count"]
+    },
+    {
+      "rank": 6,
+      "id": "20260719-A-279832C1D408",
+      "title": "美 \"미군 2명 전사·1명 실종\"… 이란 직접 공격에 첫 사망",
+      "category": "세계뉴스",
+      "score": 67.5,
+      "reason": "관측 순위 2위이고 미·이란 충돌의 첫 미군 사망이라는 결과가 분명하다. 게시시각과 문맥이 비어 있어 충칭 산사태보다 예비 우선순위로 둔다.",
+      "signals": {"source_count": 1, "rank_position": 2, "news_value": "first reported US military deaths in direct Iran attack"},
+      "missing_signals": ["published_at", "context", "reaction_count", "media_count"]
+    },
+    {
+      "rank": 7,
+      "id": "20260719-A-E7C6A8A87E04",
+      "title": "인천 쿠팡물류센터 현장서 소방관 탈진…24시간 넘게 진화중",
+      "category": "국내뉴스",
+      "score": 60.5,
+      "reason": "장기 진화와 소방관 탈진이라는 현장 결과가 명확하고 쿠팡 화재 묶음의 대표 기사로 사용할 수 있다. 게시시각 누락과 단일 출처라 사건·사회 본선 대표보다 뒤에 둔다.",
+      "signals": {"source_count": 1, "rank_position": 10, "news_value": "ongoing major fire and responder exhaustion"},
+      "missing_signals": ["published_at", "reaction_count", "media_count"]
+    },
+    {
+      "rank": 8,
+      "id": "20260719-A-8D85742C4BB7",
+      "title": "올해 1인당 GDP 3만9천달러 추산…5년만에 최대폭 증가",
+      "category": "경제·생활",
+      "score": 58.5,
+      "reason": "국가 단위 경제지표와 5년 만의 최대 증가라는 비교가 제목에 명확하고 관측 순위 8위다. 게시시각·문맥·교차출처가 없어 경제 본선보다 예비로 둔다.",
+      "signals": {"source_count": 1, "rank_position": 8, "news_value": "national GDP per-capita estimate with multi-year comparison"},
+      "missing_signals": ["published_at", "context", "reaction_count", "media_count"]
+    }
+  ],
+  "excluded_duplicate_groups": [
+    {"group_id": "A-G01-heavy-rain", "topic": "집중호우·경북 피해", "representative_id": "20260719-A-A53291D9F931", "member_ids": ["20260719-A-A53291D9F931", "20260719-A-C9E318D3B184", "20260719-A-E66AA552371A", "20260719-A-09D0C6E92A81", "20260719-A-19EACF02F1B4", "20260719-A-881F0D611011"], "rule": "same weather event; keep the freshest quantified national impact as representative"},
+    {"group_id": "A-G02-coupang-fire", "topic": "인천 쿠팡 물류센터 화재", "representative_id": "20260719-A-E7C6A8A87E04", "member_ids": ["20260719-A-E7C6A8A87E04", "20260719-A-9E01877E1A94", "20260719-A-8B11E6B82938", "20260719-A-D05B9171A444", "20260719-A-B5CF1AD05BC9", "20260719-A-A0A2A71B2200", "20260719-A-249AFF00402C"], "rule": "same fire; keep the title with operational duration and responder consequence"},
+    {"group_id": "A-G03-police-prosecution", "topic": "검찰의 경찰 보완수사 요구 6만건", "representative_id": "20260719-A-E04EB309C43E", "member_ids": ["20260719-A-E04EB309C43E", "20260719-A-1D25B1764248"], "rule": "near-identical statistic and event"},
+    {"group_id": "A-G04-iran-conflict", "topic": "미국·이란 직접 충돌", "representative_id": "20260719-A-279832C1D408", "member_ids": ["20260719-A-279832C1D408", "20260719-A-3D15A4BD53D1", "20260719-A-2689A3563D7A", "20260719-A-AD7442DABA90", "20260719-A-3180BB2416C0", "20260719-A-B4C002EDA074"], "rule": "same conflict cycle; keep one consequence-led headline"},
+    {"group_id": "A-G05-solar-school", "topic": "학교 태양광·생태교육", "representative_id": "20260719-A-7B24DE950CB8", "member_ids": ["20260719-A-37A576F9BFA1", "20260719-A-7B24DE950CB8", "20260719-A-3F677CE926FE", "20260719-A-03DBEAE40E34"], "rule": "same school initiative described by multiple outlets"},
+    {"group_id": "A-G06-money-move", "topic": "1인 가구 예금에서 주식·ETF 이동", "representative_id": "20260719-A-C9C38F87938B", "member_ids": ["20260719-A-C9C38F87938B", "20260719-A-751337B7D219", "20260719-A-040DE7A48FC6"], "rule": "same report finding"},
+    {"group_id": "A-G07-land-dispute", "topic": "부부 토지 증여·반환 대법 판결", "representative_id": "20260719-A-B3DB82A6CBA2", "member_ids": ["20260719-A-790F2F22BFB4", "20260719-A-B3DB82A6CBA2"], "rule": "same court case"},
+    {"group_id": "A-G08-airport-queue", "topic": "인천공항 집단 새치기", "representative_id": "20260719-A-D8359A996C73", "member_ids": ["20260719-A-D8359A996C73", "20260719-A-3FD41E83358C"], "rule": "same airport incident"},
+    {"group_id": "A-G09-appeal-cases", "topic": "김건희 의혹·최태원 재산분할 상고심", "representative_id": "20260719-A-FAB1A02EC337", "member_ids": ["20260719-A-FAB1A02EC337", "20260719-A-4AA8CD75A8C0"], "rule": "same court schedule"},
+    {"group_id": "A-G10-ai-hackathon", "topic": "TECH4GOOD AI 해커톤", "representative_id": "20260719-A-19D5ACC1466C", "member_ids": ["20260719-A-46362B990593", "20260719-A-19D5ACC1466C"], "rule": "same event release"}
+  ]
+}

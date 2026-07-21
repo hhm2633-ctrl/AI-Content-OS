@@ -1,0 +1,147 @@
+{
+  "schema_version": "commerce_story_package_v1",
+  "topic": "지지 하디드가 증명한 갸름한 얼굴의 비결! '하트 레이어스 커트'",
+  "source_selection_id": "20260719-C-0b54b86fb5d9",
+  "account": "C",
+  "category": "뷰티·헤어",
+  "why_selected_for_commerce": "하트 레이어스 커트 자체가 먼저 읽히는 최신 헤어 정보이고, 커트 후 집에서 층의 결을 정돈하는 과정에 트리트먼트·오일·픽서를 서로 다른 역할로 자연스럽게 붙일 수 있다. 커트를 제품 효과로 설명하지 않고, 제품은 유지 루틴의 보조 도구로만 배치한다.",
+  "editorial_focus": "지지 하디드의 실제 Vogue 주제 이미지를 통해 하트 레이어스 커트의 얼굴 주변 실루엣을 먼저 보여주고, 독자가 미용실에서 확인할 포인트와 집에서 모양을 정돈하는 순서를 분리한다. 셀럽 사진과 상품 사진을 한 화면에 합쳐 사용 제품처럼 보이게 하지 않는다.",
+  "story_arc": [
+    "지지 하디드의 실제 커트 실루엣으로 트렌드 훅 제시",
+    "커트의 핵심은 제품이 아니라 얼굴 주변 층의 시작점과 흐름이라는 편집 해설",
+    "미용실에서 원하는 실루엣을 전달하는 짧은 체크 포인트",
+    "커트 후 모발 컨디션·끝선 정돈·고정으로 이어지는 세 단계 보조 루틴",
+    "커트가 먼저이고 제품은 유지용이라는 결론과 자연스러운 저장 CTA"
+  ],
+  "products": [
+    {
+      "product_id": "808730266482264",
+      "name": "아로마티카 퀴노아 프로틴 트리트먼트 마스크 160ML 손상모 단백질 헤어 영양 헤어팩",
+      "brand": "AROMATICA",
+      "category": "화장품/미용",
+      "rating": 4.78,
+      "review_count": 982,
+      "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266482264",
+      "function_role": "레이어가 많은 모발의 샤워 후 트리트먼트 단계",
+      "fit_reason": "상품명에 트리트먼트 마스크와 손상모 헤어팩 용도가 명시돼 있어, 커트 설명이 끝난 뒤 모발 컨디션을 다루는 첫 보조 단계로 연결된다. 커트 효과나 얼굴형 변화 효능은 주장하지 않는다."
+    },
+    {
+      "product_id": "808730266486357",
+      "name": "아로마티카 리츄얼 헤어오일 라벤더 & 패츌리 50ML 헤어에센스 컬링",
+      "brand": "AROMATICA",
+      "category": "화장품/미용",
+      "rating": 4.75,
+      "review_count": 1636,
+      "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/808730266486357",
+      "function_role": "말린 뒤 얼굴 주변 레이어 끝선 정돈 단계",
+      "fit_reason": "상품명에 헤어오일·헤어에센스·컬링 용도가 명시돼 있어, 층의 끝선을 정돈하는 스타일링 보조 단계와 직접 연결된다. 특정 결과를 보장하거나 지지 하디드가 사용했다고 암시하지 않는다."
+    },
+    {
+      "product_id": "833447744789601",
+      "name": "달리프 글램 스타일링 헤어픽서 앞머리 잔머리고정 뿌리볼륨 헤어스프레이 200ml, 1개",
+      "brand": "달리프",
+      "category": "화장품/미용",
+      "rating": 4.57,
+      "review_count": 6132,
+      "url": "https://brandconnect.naver.com/972943136654048/affiliate/products/833447744789601",
+      "function_role": "마지막 앞머리·잔머리·뿌리볼륨 고정 단계",
+      "fit_reason": "상품명에 앞머리, 잔머리 고정, 뿌리볼륨, 헤어스프레이 기능이 명시돼 있어 얼굴 주변 레이어를 마무리하는 마지막 단계로 역할이 분명하다."
+    }
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "slide_role": "hook",
+      "media_type": "editorial_image",
+      "media_source": "실제 Vogue 주제의 지지 하디드 참조 이미지",
+      "source_credit": "Vogue Korea",
+      "rights_status": "source_bound_reference_only",
+      "headline": "얼굴이 갸름해 보인 이유, 길이보다 '층'이었다",
+      "body": "지지 하디드가 보여준 하트 레이어스 커트, 포인트는 얼굴 옆 실루엣.",
+      "product_ids": []
+    },
+    {
+      "slide": 2,
+      "slide_role": "trend_explainer",
+      "media_type": "editorial",
+      "media_source": "실제 Vogue 주제 이미지의 얼굴 주변 헤어 부분 크롭",
+      "source_credit": "Vogue Korea",
+      "rights_status": "source_bound_reference_only",
+      "headline": "하트 레이어스, 제품보다 커트선이 먼저",
+      "body": "얼굴 주변에서 층이 시작되고 이어지는 흐름을 먼저 보세요.",
+      "product_ids": []
+    },
+    {
+      "slide": 3,
+      "slide_role": "salon_checklist",
+      "media_type": "editorial",
+      "media_source": "타이포그래피와 단순 선 도식",
+      "source_credit": "편집 제작",
+      "rights_status": "original_editorial",
+      "headline": "미용실에서는 이 두 가지만 보여주기",
+      "body": "원하는 전체 길이, 그리고 얼굴 옆 층이 시작될 위치. 사진과 함께 말하면 짧고 정확해요.",
+      "product_ids": []
+    },
+    {
+      "slide": 4,
+      "slide_role": "routine_condition",
+      "media_type": "product_editorial",
+      "media_source": "Brand Connect 카탈로그의 실제 제품 이미지",
+      "source_credit": "AROMATICA / Naver Brand Connect",
+      "rights_status": "catalog_product_asset",
+      "headline": "샤워할 땐, 층보다 모발 컨디션부터",
+      "body": "트리트먼트 마스크는 커트 효과가 아니라 모발 관리 단계로만 연결합니다.",
+      "product_ids": ["808730266482264"]
+    },
+    {
+      "slide": 5,
+      "slide_role": "routine_shape",
+      "media_type": "product_editorial",
+      "media_source": "Brand Connect 카탈로그의 실제 제품 이미지",
+      "source_credit": "AROMATICA / Naver Brand Connect",
+      "rights_status": "catalog_product_asset",
+      "headline": "말린 뒤에는 끝선만 가볍게 정돈",
+      "body": "헤어오일은 얼굴 주변 레이어의 끝을 정리하는 보조 단계로 둡니다.",
+      "product_ids": ["808730266486357"]
+    },
+    {
+      "slide": 6,
+      "slide_role": "routine_hold",
+      "media_type": "product_editorial",
+      "media_source": "Brand Connect 카탈로그의 실제 제품 이미지",
+      "source_credit": "달리프 / Naver Brand Connect",
+      "rights_status": "catalog_product_asset",
+      "headline": "마지막은 앞머리·잔머리만 고정",
+      "body": "픽서는 뿌리와 얼굴 주변 모양을 마무리하는 역할로만 짧게.",
+      "product_ids": ["833447744789601"]
+    },
+    {
+      "slide": 7,
+      "slide_role": "editorial_outro",
+      "media_type": "editorial",
+      "media_source": "타이포그래피 중심 자체 제작",
+      "source_credit": "편집 제작",
+      "rights_status": "original_editorial",
+      "headline": "커트가 먼저, 제품은 유지용",
+      "body": "다음 커트 전에 보여주게 저장해둘까?",
+      "product_ids": []
+    }
+  ],
+  "feed_caption": "요즘 눈에 들어오는 하트 레이어스 커트. 지지 하디드의 실제 룩처럼 핵심은 제품보다 얼굴 주변에서 시작되는 층과 실루엣이에요. 미용실에서는 원하는 길이와 층의 시작점을 사진으로 먼저 보여주고, 집에서는 트리트먼트 → 끝선 오일 → 앞머리·잔머리 픽서 순으로 필요한 단계만 더하면 됩니다. 커트가 먼저, 제품은 모양을 유지하는 보조 도구로만 골랐어요. 다음 커트 전에 다시 보게 저장해둘까?\n\n참고 이미지: Vogue Korea\n상품 정보: Naver Brand Connect 카탈로그",
+  "disclosure_note": "이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.",
+  "rejection_risks": [
+    "지지 하디드가 세 상품을 사용하거나 추천한 것처럼 보이는 배치",
+    "셀럽 사진과 상품을 같은 광고 합성 화면에 배치해 모델 계약 관계를 암시하는 구성",
+    "트리트먼트·오일·픽서가 얼굴형을 바꾸거나 커트 효과를 만든다는 표현",
+    "가격·할인·재고·배송 상태를 현재 사실처럼 쓰는 문구",
+    "직접 써봤다는 경험담이나 사용 결과를 만들기",
+    "Vogue 출처가 아닌 임의 셀럽 사진 또는 AI 대체 인물 사용",
+    "첫 장부터 상품을 노출해 헤어 트렌드보다 광고가 먼저 읽히는 구성",
+    "평점과 리뷰 수를 효능 근거 또는 추천 보증처럼 사용하는 구성"
+  ],
+  "owner_opinion_used_for_selection": false,
+  "brandconnect_used": true,
+  "render_executed": false,
+  "publish_executed": false,
+  "link_issuance_executed": false
+}

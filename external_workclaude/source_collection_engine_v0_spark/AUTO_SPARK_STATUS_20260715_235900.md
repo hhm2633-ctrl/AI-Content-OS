@@ -1,0 +1,18 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 23:59:00
+- task: TheQoo HOT board shallow parser + executor wiring (Spark low-cost implementation)
+- changed_files:
+  - modules/source_intake/daily_collection_executor.py
+  - modules/trend_collector/theqoo_collector.py
+  - tests/test_theqoo_collector.py
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_20260715_235900.md
+- checks:
+  - py -m compileall src modules scripts
+  - py -m unittest tests/test_theqoo_collector.py tests/test_daily_source_collection_executor.py
+- notes:
+  - Implemented TheQoo collector on list parser only: non-notice rows, title/url/category/rank/time/views/comments; recommend_count set to null.
+  - Added low-cost live fetch gate, cache-first fallback, and non-fatal diagnostics.
+  - Wired TheQoo into daily shallow executor while preserving existing collectors.
+- check_results:
+  - compileall: passed
+  - unittest: passed

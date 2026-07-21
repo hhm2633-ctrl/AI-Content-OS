@@ -1,0 +1,28 @@
+{
+  "schema_version": "source_intake_watch_review_config_v1",
+  "routing_config_path": "config/source_intake_account_routing.json",
+  "eligible_stage2_status": "ok",
+  "eligible_stage2_decision": "WATCH",
+  "system_default_review_state": "pending",
+  "human_review_states": ["approved", "hold", "excluded"],
+  "review_state_to_stage2_label": {
+    "approved": "GO",
+    "hold": "WATCH",
+    "excluded": "REJECT"
+  },
+  "require_cluster_id": true,
+  "global_cluster_exclusivity": true,
+  "require_human_reviewer": true,
+  "require_timezone_aware_reviewed_at": true,
+  "sort_fields": [
+    "category_fit",
+    "category_value_score",
+    "confidence",
+    "candidate_id"
+  ],
+  "notes": [
+    "WATCH review assignment is provisional and never changes Stage-2 decision to GO.",
+    "Approved means a human review label only; promotion remains a separate downstream action.",
+    "Account portfolios come from the existing account routing configuration."
+  ]
+}

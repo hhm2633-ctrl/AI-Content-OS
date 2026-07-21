@@ -1,0 +1,41 @@
+{
+  "schema_version": "brandconnect_relation_learning_report_v1",
+  "generated_at": "2026-07-18T00:00:00+09:00",
+  "source": "storage/owner_review/brandconnect_catalog_snapshot.json",
+  "owned_category": "화장품/미용",
+  "proposal_status": "LEARNED_PROPOSALS_NOT_OWNER_RULES",
+  "product_count": 1544,
+  "relation_count": 4632.0,
+  "minimum_relations_per_product": 3.0,
+  "maximum_relations_per_product": 3.0,
+  "fallback_count": 132,
+  "weak_count": 132,
+  "duplicate_topic_row_count": 0,
+  "short_relation_row_count": 0,
+  "missing_required_field_row_count": 0,
+  "product_id_coverage_valid": true,
+  "valid": true,
+  "family_counts": {
+    "base_makeup": 112,
+    "beauty_general": 132,
+    "beauty_tool": 59,
+    "body_hand_foot": 157,
+    "cheek_color": 18,
+    "cleansing": 86,
+    "eye_brow_makeup": 40,
+    "fragrance": 104,
+    "grooming": 24,
+    "hair_color": 3,
+    "hair_styling": 19,
+    "lip_makeup": 40,
+    "mask_patch": 82,
+    "scalp_hair_care": 251,
+    "skin_care": 278,
+    "sun_care": 139
+  },
+  "constraints": [
+    "No price, stock, rating, review, or affiliate-link claims were generated.",
+    "Relations are editorial proposals and are not promoted to fixed owner rules.",
+    "No network, API, publishing, or source snapshot writes were performed."
+  ]
+}

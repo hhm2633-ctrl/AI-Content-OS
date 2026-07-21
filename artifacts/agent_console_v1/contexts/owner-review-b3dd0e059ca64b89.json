@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-aa4ece03164a",
+  "candidate_id": "20260717-2003-C-aa4ece03164a",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티·메이크업",
+  "title": "\"뉴욕에 띄운 K뷰티 카드\"…마녀공장, 글루타치온 시장 정조준",
+  "source_urls": [
+    "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065599239937892"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

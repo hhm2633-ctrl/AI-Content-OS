@@ -1,0 +1,153 @@
+{
+  "status_standard": "허용 상태값은 benchmark_observed(evidence_urls 2건 이상, 즉 동일 패턴이 서로 다른 게시물에서 반복 관측됨) 또는 hypothesis_only(evidence_urls 1건, 단일 관측) 두 가지뿐. candidate/validated/proven 등 승격 표현 사용 안 함.",
+  "patterns": [
+    {
+      "pattern": "인용·반전형 서술 헤드라인",
+      "description": "인물의 발언을 인용하고 그 반대 결과를 제시해 궁금증 유발",
+      "evidence_urls": ["https://www.instagram.com/p/DaNcegIkmEy/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only",
+      "note": "표본 내 최고 좋아요(20,000) 사례에서 관찰되었으나 단일 관측(n=1)이라 반복 패턴으로 단정 불가"
+    },
+    {
+      "pattern": "타임리밋(D-day/시즌)형",
+      "description": "'D-14', '올여름', '7월에 뭐 올리지' 등 시한을 명시해 긴급성 부여",
+      "evidence_urls": ["https://www.instagram.com/p/DYi2I6WEefP/", "https://www.instagram.com/p/DacbwaPmnJk/", "https://www.instagram.com/p/DaU3AhCAS9Y/"],
+      "observation_count": 3,
+      "account_count": 3,
+      "category_count": 3,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "신조어/개념 정의형",
+      "description": "'OO의 등장'처럼 새로운 용어를 제목에 걸고 정의를 풀어주는 구조",
+      "evidence_urls": ["https://www.instagram.com/p/DZYmzTSk9xA/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only",
+      "note": "표본 내 최저반응(좋아요 1) 사례 — 훅 유형과 반응의 인과관계는 표본 부족으로 판단 불가"
+    },
+    {
+      "pattern": "권위·유명인 인용형",
+      "description": "유명인(젠슨 황, 한소희 등)의 이름/이미지를 표지에 노출해 신뢰·관심 차용",
+      "evidence_urls": ["https://www.instagram.com/p/DZYmTBrgRPA/", "https://www.instagram.com/p/DSKUlHQD9mN/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 2,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "직설 질문·도발형",
+      "description": "'OO 샀어? 안 샀어?' 식으로 독자를 직접 겨냥한 도발적 질문",
+      "evidence_urls": ["https://www.instagram.com/p/DYOXQ0eD5M4/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "pattern": "숫자·공식형",
+      "description": "'3가지 공식', 'top3' 등 숫자를 헤드라인에 포함해 구조적 기대감 형성",
+      "evidence_urls": ["https://www.instagram.com/p/DaCzy3oD-RH/", "https://www.instagram.com/p/DZ9rgG0D_1Y/"],
+      "observation_count": 2,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "benchmark_observed",
+      "note": "2건 모두 동일 계정(sellwell_labbs)에서 관찰 — 계정 수(1)가 반복 횟수(2)보다 적어 '패턴이 여러 창작자에게 공통'이라는 근거로는 약함"
+    },
+    {
+      "pattern": "무료자료 제공형",
+      "description": "'~프롬프트 받아가세요', '무료 배포' 등 실질적 보상을 전면에 명시",
+      "evidence_urls": ["https://www.instagram.com/p/DZnQtl3Eq-_/", "https://www.instagram.com/p/DaNEjI7ieUa/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "문제 원인 지목형",
+      "description": "'~가 안 되는 이유', '~한 실수' 등 문제의 원인을 먼저 지목해 해결책 기대를 형성",
+      "evidence_urls": ["https://www.instagram.com/p/DZ-P1r_k_ox/", "https://www.instagram.com/p/DZwFmZvgT-c/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "성과 인증형",
+      "description": "'대학생이 팔로워 9천 만든 방법' 등 구체적 성과 수치를 표지에 제시",
+      "evidence_urls": ["https://www.instagram.com/p/DadGwa9GhH3/", "https://www.instagram.com/p/DZupSq1ICoT/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 1,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "은유·의인화형",
+      "description": "의학/전문 정보를 캐릭터·비유로 풀어 친근하게 전달(예: 디스크를 '젤리'로 의인화)",
+      "evidence_urls": ["https://www.instagram.com/p/DX540sxj3kb/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "pattern": "가정형 질문",
+      "description": "'~하고 계셨나요?'처럼 독자의 현재 습관을 가정하고 되묻는 헤드라인",
+      "evidence_urls": ["https://www.instagram.com/p/DZaM-F2EhBr/", "https://www.instagram.com/p/DacbwaPmnJk/"],
+      "observation_count": 2,
+      "account_count": 2,
+      "category_count": 2,
+      "confidence": "benchmark_observed"
+    },
+    {
+      "pattern": "비교 트렌드형",
+      "description": "'A보다 B가 낫다'는 비교 구도로 최신성을 강조",
+      "evidence_urls": ["https://www.instagram.com/p/DY_j-R4kUw1/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "pattern": "서사시적/문학적 헤드라인",
+      "description": "일반 정보전달과 달리 문학적 수사로 브랜드/인물 스토리를 감성적으로 서술",
+      "evidence_urls": ["https://www.instagram.com/p/DSMLi5akyKb/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only",
+      "note": "패션·뷰티 카테고리 내 최고 좋아요(1,100) 기록 — 단일 관측이라 하이엔드 브랜드 콘텐츠 특유의 패턴이라는 결론은 유보"
+    },
+    {
+      "pattern": "인용구형(도서/철학)",
+      "description": "책 속 문장을 그대로 표지 훅으로 사용",
+      "evidence_urls": ["https://www.instagram.com/p/DPn9L_EiZWf/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    },
+    {
+      "pattern": "사건 요약형(논란/이슈)",
+      "description": "실제 사건을 한 문장으로 요약해 표지에 제시하고 토론을 유도",
+      "evidence_urls": ["https://www.instagram.com/p/DVe4qprE4r_/"],
+      "observation_count": 1,
+      "account_count": 1,
+      "category_count": 1,
+      "confidence": "hypothesis_only"
+    }
+  ],
+  "cross_pattern_note": {
+    "observation": "무료자료 제공형 + 숫자·공식형 조합은 교육·지식(AI/콘텐츠 제작 팁 계정) 카테고리 내부에서만 반복 관찰됨(둘 다 category_count=1)",
+    "evidence_urls": ["https://www.instagram.com/p/DaCzy3oD-RH/", "https://www.instagram.com/p/DZ9rgG0D_1Y/", "https://www.instagram.com/p/DZnQtl3Eq-_/", "https://www.instagram.com/p/DaNEjI7ieUa/"],
+    "observation_count": 4,
+    "account_count": 3,
+    "category_count": 1,
+    "confidence": "benchmark_observed",
+    "note": "분야를 초월하는 패턴이 아니라 특정 산업(콘텐츠 제작/마케팅 교육) 내 지배적 패턴에 가까움 — '분야 초월' 표현은 사용하지 않음"
+  }
+}

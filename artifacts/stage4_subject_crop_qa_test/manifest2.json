@@ -1,0 +1,19 @@
+{
+  "output_set_id": "stage4-near-fail-set-2",
+  "records": [
+    {
+      "candidate_id": "qa-c1",
+      "account": "A",
+      "package_path": "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\artifacts\\stage4_subject_crop_qa_test\\package2.json",
+      "outputs": [
+        "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\artifacts\\stage3_subject_crop_guard\\dior_runway_01_original.png"
+      ],
+      "template_crop_window": {
+        "x": 201,
+        "y": 0,
+        "width": 479,
+        "height": 1020
+      }
+    }
+  ]
+}

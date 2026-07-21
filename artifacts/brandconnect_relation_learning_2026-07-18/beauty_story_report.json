@@ -1,0 +1,23 @@
+{
+  "schema_version": "brandconnect_seasonal_story_report_v1",
+  "generated_at": "2026-07-18T10:15:52.0248473+09:00",
+  "source": "artifacts/brandconnect_relation_learning_2026-07-18/beauty_relations.jsonl",
+  "proposal_status": "FUTURE_BLOG_SEEDS_NOT_PUBLISH_DRAFTS",
+  "product_count": 1544,
+  "story_count": 1544,
+  "practical_topic_count": 1544,
+  "under_30_violation_count": 0,
+  "duplicate_story_count": 0,
+  "empty_practical_topic_count": 0,
+  "missing_required_field_count": 0,
+  "personal_use_claim_count": 0,
+  "fallback_count": 132,
+  "story_family_resolution_count": 269,
+  "product_id_coverage_valid": true,
+  "valid": true,
+  "constraints": [
+    "Exactly one seasonal context, practical topic, short story, product role, and blog seed per product.",
+    "No price, stock, rating, review, personal-use, purchase-experience, or affiliate-link claims generated.",
+    "Outputs are learned proposals for future blog seeds, not fixed owner rules or publish drafts."
+  ]
+}

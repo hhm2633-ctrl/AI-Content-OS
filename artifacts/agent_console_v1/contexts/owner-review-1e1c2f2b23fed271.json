@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-C-cd4ff82a40b4",
+  "candidate_id": "20260717-2003-C-cd4ff82a40b4",
+  "grade": "1",
+  "account": "C",
+  "category": "뷰티",
+  "title": "여름엔 성가시니까 눈 화장은 과감히 패스할게요",
+  "source_urls": [
+    "https://www.wkorea.com/2026/07/17/%ec%97%ac%eb%a6%84%ec%97%94-%ec%84%b1%ea%b0%80%ec%8b%9c%eb%8b%88%ea%b9%8c-%eb%88%88-%ed%99%94%ec%9e%a5%ec%9d%80-%ea%b3%bc%ea%b0%90%ed%9e%88-%ed%8c%a8%ec%8a%a4%ed%95%a0%ea%b2%8c%ec%9a%94/"
+  ],
+  "requested_media": [
+    "공식 제품 사진",
+    "사용 장면",
+    "성분·향 노트",
+    "공식·유튜브 영상"
+  ],
+  "execution_enabled": false,
+  "network_executed": false,
+  "selection_stage": "awaiting_second_stage"
+}

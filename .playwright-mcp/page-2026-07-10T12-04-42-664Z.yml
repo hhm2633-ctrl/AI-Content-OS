@@ -1,0 +1,137 @@
+- generic [ref=f65e4]:
+  - generic [ref=f65e9]:
+    - generic [ref=f65e12]:
+      - link [ref=f65e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f65e22]
+      - generic [ref=f65e25]:
+        - link [ref=f65e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f65e35]
+        - link [ref=f65e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f65e45]
+        - link [ref=f65e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - img "메시지" [ref=f65e57]
+        - link [ref=f65e63] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f65e68]
+        - link [ref=f65e75] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f65e80]
+        - link [ref=f65e86] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f65e91]
+        - link [ref=f65e97] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f65e102]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f65e103]
+      - generic [ref=f65e104]:
+        - link [ref=f65e107] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f65e112]
+        - link [ref=f65e115] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f65e120]
+    - generic [ref=f65e123]:
+      - main [ref=f65e124]:
+        - progressbar [ref=f65e126]:
+          - img "읽어들이는 중..." [ref=f65e127]
+      - contentinfo [ref=f65e140]:
+        - generic [ref=f65e141]:
+          - generic [ref=f65e143]:
+            - link "Meta" [ref=f65e145] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f65e148] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f65e151] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f65e154] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f65e157] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f65e160] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f65e163] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f65e166] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f65e169] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f65e172] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f65e175] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f65e178] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f65e181] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f65e184] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f65e187] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f65e189]:
+            - generic [ref=f65e190] [cursor=pointer]:
+              - generic [ref=f65e191]:
+                - generic [ref=f65e192]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f65e195]
+              - combobox "표시 언어 변경" [ref=f65e197]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f65e198]: © 2026 Instagram from Meta
+  - button "메시지 메시지" [ref=f65e201] [cursor=pointer]:
+    - generic [ref=f65e203]:
+      - img "메시지" [ref=f65e205]
+      - generic [ref=f65e208]: 메시지

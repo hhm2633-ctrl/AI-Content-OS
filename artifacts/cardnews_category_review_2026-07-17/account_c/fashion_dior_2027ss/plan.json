@@ -1,0 +1,90 @@
+{
+  "schema_version": "cardnews_review_plan_v1",
+  "account": "C_fashion_beauty",
+  "category": "fashion",
+  "topic": "DIOR MEN 2027 S/S — 친숙함의 재창조",
+  "slide_count": 10,
+  "editorial_mode": "official_concept_to_representative_looks",
+  "forced_cta": false,
+  "slides": [
+    {
+      "role": "cover",
+      "media_type": "image",
+      "headline": "익숙한 디올을\n다시 조립했다",
+      "asset": "runway_13.png"
+    },
+    {
+      "role": "concept",
+      "media_type": "editorial",
+      "headline": "이번 시즌의 문장\n친숙함의 재창조",
+      "assets": [
+        "runway_01.png",
+        "runway_02.png"
+      ]
+    },
+    {
+      "role": "silhouette",
+      "media_type": "image",
+      "headline": "먼저, 턱시도의\n크기가 달라졌다",
+      "asset": "runway_18.png"
+    },
+    {
+      "role": "material",
+      "media_type": "comparison",
+      "headline": "하운즈투스는\n짜지 않고 프린트했다",
+      "assets": [
+        "runway_13.png",
+        "runway_14.png"
+      ]
+    },
+    {
+      "role": "surface",
+      "media_type": "image",
+      "headline": "정장은 단정하게만\n끝나지 않는다",
+      "asset": "runway_10.png"
+    },
+    {
+      "role": "archive",
+      "media_type": "editorial",
+      "headline": "시대가 섞이는 방식",
+      "assets": [
+        "runway_07.png",
+        "runway_09.png"
+      ]
+    },
+    {
+      "role": "accessory",
+      "media_type": "image",
+      "headline": "가방까지\n같은 문법",
+      "asset": "runway_06.png"
+    },
+    {
+      "role": "palette",
+      "media_type": "comparison",
+      "headline": "색은 낮게,\n질감은 크게",
+      "assets": [
+        "runway_20.png",
+        "runway_23.png"
+      ]
+    },
+    {
+      "role": "sound",
+      "media_type": "editorial",
+      "headline": "음악도\n리믹스였다",
+      "asset": "runway_24.png"
+    },
+    {
+      "role": "editorial_close",
+      "media_type": "image",
+      "headline": "이 장면이 27 S/S를\n가장 잘 보여준다",
+      "asset": "runway_10.png"
+    }
+  ],
+  "review_only": true,
+  "publishing_ready": false,
+  "rights_status": "UNKNOWN_EDITORIAL_REUSE_NOT_CLEARED",
+  "rights_note": "기사 페이지의 실제 이미지를 내부 데스크톱 검토 시안에만 사용. 게시·배포 전 이미지별 권리 확인 또는 사용권 확보 필요.",
+  "generated_media_used": false,
+  "fake_comments_used": false,
+  "owner_review_target": "desktop"
+}

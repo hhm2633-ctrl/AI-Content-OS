@@ -1,0 +1,21 @@
+{
+  "source": "owner_review",
+  "request_id": "owner_review:20260717-2003-A-4a4409ce4870",
+  "candidate_id": "20260717-2003-A-4a4409ce4870",
+  "grade": "1",
+  "account": "A",
+  "category": "사회·사건",
+  "title": "터널 들어가니 순간 '활활'…4중 추돌 뒤 벌어진 일",
+  "source_urls": [
+    "https://news.jtbc.co.kr/article/NB12308818?influxDiv=NAVER"
+  ],
+  "requested_media": [
+    "원문 기사",
+    "기사 이미지·갤러리",
+    "삽입 영상",
+    "방송사·유튜브 영상"
+  ],
+  "execution_enabled": true,
+  "network_executed": false,
+  "selection_stage": "final_selected"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "cardnews_no_source_video_samples_v1",
+  "outputs": [
+    {
+      "topic_id": "A-IC-05",
+      "file": "news/gwangsan_police_motion.mp4",
+      "method": "actual_news_stills_plus_self_authored_motion_graphics",
+      "sources": [
+        "https://www.ytn.co.kr/_ln/0115_202607162241017867",
+        "https://mobile.newsis.com/view/NISX20260715_0003710186"
+      ]
+    },
+    {
+      "topic_id": "C-P15",
+      "file": "dior/dior_paradise_motion.mp4",
+      "method": "official_dior_stills_plus_generated_auxiliary_mood_plate",
+      "sources": [
+        "https://www.dior.com/en_us/beauty/page/summer-animation-lcp.html"
+      ],
+      "generated_auxiliary_asset": "dior/assets/generated_almond_orchard_mood.png"
+    }
+  ]
+}

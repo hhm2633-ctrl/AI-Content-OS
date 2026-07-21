@@ -1,0 +1,17 @@
+# AUTO SPARK STATUS
+- timestamp: 2026-07-15 22:40:12
+- task: Naver News parser-only V2 offline fixture repairs (Spark)
+- changed_files:
+  - modules/trend_collector/naver_news_parser_v2.py
+  - tests/test_naver_news_parser_v2.py
+  - external_workclaude/source_collection_engine_v0_spark/AUTO_SPARK_STATUS_20260715_224012.md
+- checks:
+  - py -m compileall modules/trend_collector
+  - py -m unittest tests.test_naver_news_parser_v2
+- notes:
+  - Added v2 parser helpers for Naver RSS->HTML detection, SDS search markup, ranking markup, section markup.
+  - Added EUC-KR decode path helper for ranking fixtures.
+  - Added regression tests for all four fixture categories without live network calls.
+- check_results:
+  - compileall: passed
+  - unittest: passed

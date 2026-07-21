@@ -1,0 +1,14 @@
+{
+  "candidate": {
+    "id": "C1",
+    "category": "fashion",
+    "title": "subject crop fail test"
+  },
+  "slides": [
+    {
+      "id": 1,
+      "role": "cover",
+      "media": "image"
+    }
+  ]
+}

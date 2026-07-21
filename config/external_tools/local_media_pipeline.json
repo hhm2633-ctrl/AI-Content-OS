@@ -1,0 +1,51 @@
+{
+  "schema_version": "local_media_pipeline_config_v1",
+  "status": "installed_local_tools_owner_gated",
+  "output_root": "F:/AI-Content-OS-Data/external_tools/outputs/local_media_pipeline",
+  "default_mode": "validate_only",
+  "execution_requires_explicit_flag": true,
+  "package_only": true,
+  "tools": {
+    "realesrgan_ncnn_vulkan": {
+      "installed": true,
+      "role": "explicit_derivative_upscale",
+      "boundary": "never_replace_or_overwrite_original_evidence"
+    },
+    "rembg": {
+      "installed": true,
+      "role": "explicit_auxiliary_or_product_background_removal",
+      "boundary": "source_evidence_cutout_blocked"
+    },
+    "paddleocr": {
+      "installed": true,
+      "role": "bounded_offline_korean_text_extraction",
+      "boundary": "local_image_input_only"
+    },
+    "openclip": {
+      "installed": true,
+      "role": "bounded_offline_image_topic_scoring",
+      "boundary": "ranking_signal_not_factual_evidence"
+    },
+    "pyscenedetect": {
+      "installed": true,
+      "role": "bounded_offline_video_scene_detection",
+      "boundary": "analysis_receipt_only_no_render"
+    }
+  },
+  "disabled": {
+    "network_downloads": true,
+    "runtime_or_model_weight_installation": true,
+    "background_services": true,
+    "cloud_calls": true,
+    "rendering": true,
+    "publishing": true,
+    "uploading": true,
+    "automation_resume": true
+  },
+  "safety": {
+    "source_overwrite": "blocked",
+    "output_outside_root": "blocked",
+    "generated_or_derivative_as_factual_evidence": "blocked",
+    "blocked_or_failed_receipt_exit_code": 1
+  }
+}

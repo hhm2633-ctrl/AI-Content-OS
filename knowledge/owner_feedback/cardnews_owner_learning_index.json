@@ -1,0 +1,1982 @@
+{
+  "schema_version": "cardnews_owner_learning_index_v3",
+  "generated_at": "2026-07-19T06:22:47.096267+00:00",
+  "learning_boundary": {
+    "owner_rules_are_performance_evidence": false,
+    "automatic_performance_promotion_allowed": false,
+    "explicit_owner_directions_may_activate": true
+  },
+  "stats": {
+    "feedback_event_count": 71,
+    "active_owner_rule_count": 44,
+    "stage_counts": {
+      "CLASSIFIED_EXAMPLE": 19,
+      "ACTIVE_OWNER_RULE": 44,
+      "CLASSIFIED_PENDING": 4,
+      "LEARNING_CANDIDATE": 3,
+      "SUPERSEDED": 1
+    }
+  },
+  "categories": {
+    "news": [
+      "owner-feedback-20260716-incident-comments",
+      "owner-feedback-20260716-cta-direct",
+      "owner-feedback-20260716-choice-worthy-output",
+      "owner-feedback-20260717-account-a-asset-density",
+      "owner-feedback-20260717-sewol-hard-exclusion",
+      "owner-feedback-20260717-text-heavy-old-style-reject",
+      "owner-feedback-20260717-lower-third-body-copy",
+      "owner-feedback-20260717-feed-caption-required",
+      "owner-feedback-20260717-owner-selection-before-production",
+      "owner-feedback-20260717-three-tier-issue-ranking",
+      "owner-feedback-20260717-no-investigative-reverification",
+      "owner-feedback-20260717-practical-official-media-use",
+      "owner-feedback-20260717-public-source-placement",
+      "owner-feedback-20260717-ap-discovery-only",
+      "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "owner-feedback-20260717-product-gallery-to-motion-slide",
+      "owner-feedback-20260717-news-no-fixed-map-number-timeline-grammar",
+      "owner-feedback-20260719-image-first-short-copy-feed-body",
+      "owner-feedback-20260719-representative-first-visual-qa"
+    ],
+    "story": [
+      "owner-feedback-20260716-story-2d-comments",
+      "owner-feedback-20260716-cta-direct",
+      "owner-feedback-20260716-choice-worthy-output",
+      "owner-feedback-20260716-b1-cta-reject-static",
+      "owner-feedback-20260716-b2-hook-human-intent",
+      "owner-feedback-20260716-b3-hook-shock-first",
+      "owner-feedback-20260717-account-b-generic-ai-reject",
+      "owner-feedback-20260717-sewol-hard-exclusion",
+      "owner-feedback-20260717-account-b-ai-direction-correction",
+      "owner-feedback-20260717-text-heavy-old-style-reject",
+      "owner-feedback-20260717-lower-third-body-copy",
+      "owner-feedback-20260717-feed-caption-required",
+      "owner-feedback-20260717-owner-selection-before-production",
+      "owner-feedback-20260717-three-tier-issue-ranking",
+      "owner-feedback-20260717-no-investigative-reverification",
+      "owner-feedback-20260717-practical-official-media-use",
+      "owner-feedback-20260717-public-source-placement",
+      "owner-feedback-20260717-final-public-render-clean",
+      "owner-feedback-20260717-account-b-emotion-with-brighter-tone",
+      "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "owner-feedback-20260717-cardnews-commerce-story-linkage",
+      "owner-feedback-20260717-light-commerce-match-before-second-ranking",
+      "owner-feedback-20260717-entertainment-shared-across-account-b-c",
+      "owner-feedback-20260719-image-first-short-copy-feed-body",
+      "owner-feedback-20260719-comment-evidence-readable-crop",
+      "owner-feedback-20260719-representative-first-visual-qa"
+    ],
+    "fashion": [
+      "owner-feedback-20260716-beauty-seasonal",
+      "owner-feedback-20260716-cta-direct",
+      "owner-feedback-20260716-real-fashion-reference",
+      "owner-feedback-20260716-fashion-authority",
+      "owner-feedback-20260716-choice-worthy-output",
+      "owner-feedback-20260716-c3-season-explainer",
+      "owner-feedback-20260716-c4-editorial-statement-not-poll",
+      "owner-feedback-20260717-account-b-generic-ai-reject",
+      "owner-feedback-20260717-account-c-motion-reuse",
+      "owner-feedback-20260717-account-b-ai-direction-correction",
+      "owner-feedback-20260717-text-heavy-old-style-reject",
+      "owner-feedback-20260717-dior-good-reason-correction",
+      "owner-feedback-20260717-beauty-keep-and-amplify",
+      "owner-feedback-20260717-lower-third-body-copy",
+      "owner-feedback-20260717-feed-caption-required",
+      "owner-feedback-20260717-owner-selection-before-production",
+      "owner-feedback-20260717-three-tier-issue-ranking",
+      "owner-feedback-20260717-no-investigative-reverification",
+      "owner-feedback-20260717-practical-official-media-use",
+      "owner-feedback-20260717-public-source-placement",
+      "owner-feedback-20260717-account-b-emotion-with-brighter-tone",
+      "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "owner-feedback-20260717-cardnews-commerce-story-linkage",
+      "owner-feedback-20260717-light-commerce-match-before-second-ranking",
+      "owner-feedback-20260717-product-gallery-to-motion-slide",
+      "owner-feedback-20260717-entertainment-shared-across-account-b-c",
+      "owner-feedback-20260718-commerce-story-first-reject-v1",
+      "owner-feedback-20260718-unrelated-celebrity-image-hard-reject",
+      "owner-feedback-20260718-reusable-ai-model-identity-consistency",
+      "owner-feedback-20260718-account-c-single-ai-model-hard-lock",
+      "owner-feedback-20260719-image-first-short-copy-feed-body",
+      "owner-feedback-20260719-focus-aware-image-placement",
+      "owner-feedback-20260719-representative-first-visual-qa"
+    ],
+    "beauty": [
+      "owner-feedback-20260716-beauty-seasonal",
+      "owner-feedback-20260716-cta-direct",
+      "owner-feedback-20260716-real-fashion-reference",
+      "owner-feedback-20260716-fashion-authority",
+      "owner-feedback-20260716-choice-worthy-output",
+      "owner-feedback-20260716-c3-season-explainer",
+      "owner-feedback-20260716-c4-editorial-statement-not-poll",
+      "owner-feedback-20260717-account-c-motion-reuse",
+      "owner-feedback-20260717-text-heavy-old-style-reject",
+      "owner-feedback-20260717-dior-good-reason-correction",
+      "owner-feedback-20260717-beauty-keep-and-amplify",
+      "owner-feedback-20260717-lower-third-body-copy",
+      "owner-feedback-20260717-feed-caption-required",
+      "owner-feedback-20260717-owner-selection-before-production",
+      "owner-feedback-20260717-three-tier-issue-ranking",
+      "owner-feedback-20260717-no-investigative-reverification",
+      "owner-feedback-20260717-practical-official-media-use",
+      "owner-feedback-20260717-public-source-placement",
+      "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "owner-feedback-20260717-cardnews-commerce-story-linkage",
+      "owner-feedback-20260717-light-commerce-match-before-second-ranking",
+      "owner-feedback-20260717-product-gallery-to-motion-slide",
+      "owner-feedback-20260717-entertainment-shared-across-account-b-c",
+      "owner-feedback-20260718-account-c-single-ai-model-hard-lock",
+      "owner-feedback-20260719-image-first-short-copy-feed-body",
+      "owner-feedback-20260719-focus-aware-image-placement",
+      "owner-feedback-20260719-representative-first-visual-qa"
+    ]
+  },
+  "records": [
+    {
+      "learning_id": "owner-feedback-20260716-p1-reject",
+      "sequence": 1,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "REJECT",
+      "title": "정원의 향을 맡고, 흙의 중심을 잡는 도예가 이경환",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "의미가 없고 소비자 관심점이 잡히지 않음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f2e59a3cc0874ab9e0667b2548a5b8850105a0e27e26a46f9765c4c6003a1fb7"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-p5-reject",
+      "sequence": 2,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "REJECT",
+      "title": "향수 뿌리면 기관지 상한다고 하는데, 진짜일까? 전문가 의견",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "editorial_angle"
+      ],
+      "rule": "문제 제기 중심이라 소비자 뷰티 콘셉트에 맞지 않음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "399e2d20fca9ff51f4ae5f354e242fc49c4dff7473f4f4e816899322a86f76b7"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-beauty-seasonal",
+      "sequence": 3,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "category_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "계절성 소비자 뷰티 방향",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "seasonality"
+      ],
+      "rule": "여성·남성 모두 관심 가질 계절성 피부·메이크업·헤어·그루밍 주제를 우선",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "65e8b2a8ecf399ce7310489ac56f75ef414a57541054d86152af650384eba925"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-n6-reject",
+      "sequence": 4,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "REJECT",
+      "title": "기업 MOU·단순 보도자료",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "아무도 관심이 없을 가능성이 높음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7a50b5d490f8ff0aca09d03d9357661562a796ffea7f98a3ccf4735ad7da5873"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-s1-reject",
+      "sequence": 5,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "REJECT",
+      "title": "최고 200㎜ 집중호우 예보와 지역 비상 대응",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "Instagram에서 보고 싶은 소재가 아님",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "2f00ef0fe51c35962b715cd3b69d3f0ab2d315934a087d07a49a4ba572c8648e"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-s2-approve",
+      "sequence": 6,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "왜 경찰도 못 잡나 했더니, 동네 폭군 50대 여성의 정체",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "incident_storytelling"
+      ],
+      "rule": "현실 사건이고 자극적인 소재가 좋음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "a84fe7bc06254d90b0b41cdd9054922a7947fd9d8619f59a5e5c945e026bdbcf"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-s3-approve",
+      "sequence": 7,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "개표소를 2시간 막은 인물 구속영장 청구",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "현실 갈등과 자극성이 있어 소재로 좋음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "fbf9d700eb730d6dc2d1f3557504225fbfdb2a862aec76e1d589418f19cd6b67"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-s4-approve",
+      "sequence": 8,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "북한 청년들이 한국 드라마를 보다가 체포됐다는 보도",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "현실 사건이고 자극적인 소재가 좋음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "a84fe7bc06254d90b0b41cdd9054922a7947fd9d8619f59a5e5c945e026bdbcf"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-e1-approve",
+      "sequence": 9,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "단일종목 레버리지 신규상장 중단·예탁금 3천만 원",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "시사성과 생활 체감이 있어 편집 가능",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "4a11de08649d907450589af1a25dfd8d4d88c6a1bb8f2091b32a93940e75142c"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-e2-approve",
+      "sequence": 10,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "전월세 문제의 핵심은 공급 부족이라는 국토부 장관 발언",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "생활 체감과 시사적 편집 가능성이 있음",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "ed4d3cbf8c462eca7ecbe255ce55f65cf3540c247b749116f8e0ec9ef67cca0e"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-e3-e7-reject",
+      "sequence": 11,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_group_decision",
+      "owner_decision": "REJECT",
+      "title": "LEI 확인서·탄소 감축·최대주주 변경·교환사채·개별 기업 공시",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "Instagram에서 볼 이유가 없고 자극적 또는 시사적으로 편집하기 어려움",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "d7fb94774bf26ddd027d93475a708b72f407c2098c919ff7520238024ab92c2b"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-r3-r5-reject",
+      "sequence": 12,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_group_decision",
+      "owner_decision": "REJECT",
+      "title": "드라마 속 상속·가족 갈등·예능 출연 기사",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "editorial_angle"
+      ],
+      "rule": "드라마 속 갈등은 관심이 없고 현실이 더 강함",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "4dc6c207797db0dbf222a04b656bc0ae58b9c6dc2411cfa2500385e04310f097"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-d1-approve",
+      "sequence": 13,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "결혼을 앞두고 가족과 연을 끊은 동생",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "storytelling"
+      ],
+      "rule": "실화 관계 썰로 궁금증이 강함",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "4b9291a9e54c843d1b3533eebe78178d3b9ad2a540085d80afb8b10dd49548c5"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-d2-approve",
+      "sequence": 14,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "40살 간호조무사가 병원을 떠날 수밖에 없었던 이유",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "storytelling"
+      ],
+      "rule": "현실 사연과 이유형 훅이 당김",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "420a709e281236ac1f71230c290ec47173250b005408d3aa236fc72dedd13cfd"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-d3-approve",
+      "sequence": 15,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "고려대병원 앱 논란",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "무슨 일인지 궁금하게 만드는 현실 이슈",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3a361e892a48596592686c31c1b64e4b4f95fd3ab5f8ad6d303f513ed7724338"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-d4-approve",
+      "sequence": 16,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "공항 민폐 때문에 팬들에게 한마디 한 12년 차 아이돌",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "현실 갈등과 반응을 붙일 수 있어 당김",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1d66e3f6686836d9c6fa9f63b8b1bceb65cc7e0514c5c29403965c00163ab793"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-d5-approve",
+      "sequence": 17,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "candidate_decision",
+      "owner_decision": "APPROVE_FOR_REVIEW",
+      "title": "2년째 소식이 끊긴 470만 유튜버",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection"
+      ],
+      "rule": "제목만으로 다음 내용이 당김",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "ec8bdab8e47c1a66efce3d5a1e7fac660468f0151130cbabd04808e9f9f31a7c"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-incident-comments",
+      "sequence": 18,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "사건 댓글 감정 증폭",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "storytelling",
+        "social_proof"
+      ],
+      "rule": "실제 댓글을 첨부해 더 열받고 몰입되게 구성",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "cbcc4c850352c1c927f9489f018bde857d96555d4a6cf43adc0f8e0e6f113de7"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-story-2d-comments",
+      "sequence": 19,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "실화 썰 2D 컷과 실제 댓글",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "storytelling",
+        "media_selection",
+        "social_proof"
+      ],
+      "rule": "실화 썰은 컷마다 2D 그림으로 표현하고 실제 댓글을 포함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "26f22cf3c7f28948cf59147971c94ff23d7994762073886095156170c897ab4a"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-cta-direct",
+      "sequence": 20,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "cta_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "쉽게 답하는 직접 CTA",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "cta"
+      ],
+      "rule": "AI 냄새 나는 포괄 질문 대신 결혼 전이면 이 선택 맞아 같은 쉬운 질문 사용",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "9c7371b7663543a8abcef45d79d17bb8b661755d901070781bd78fdde32f069f"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-real-fashion-reference",
+      "sequence": 21,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "media_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "실제 시즌 컬렉션 이미지 우선",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "media_selection",
+        "evidence",
+        "rights"
+      ],
+      "rule": "27 S/S 정보 콘텐츠는 AI 임의 착장이 아니라 디올 등 해당 시즌의 실제 컬렉션을 보여줘야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7adf4bab76833e516830784e62a92222fdf6f96b74cb5bc154fa7ace96e9cc2b"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-fashion-authority",
+      "sequence": 22,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "editorial_authority_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "명품 평가 권위 기준",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "editorial_angle",
+        "cta",
+        "research_depth"
+      ],
+      "rule": "신생 계정이 세계 명품을 호불호로 심판하지 말고, 전 시즌과 하우스 맥락을 학습한 뒤에만 비평",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "06874d41bed67a8aab71b8d7a5cb6718964a1c01db3d2b7c639de4f6c5fec54f"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-choice-worthy-output",
+      "sequence": 23,
+      "recorded_at": "2026-07-16T23:27:44+09:00",
+      "feedback_type": "production_quality_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "선택 가치가 있는 결과만 제시",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "production_review",
+        "visual_quality"
+      ],
+      "rule": "내부 와이어프레임과 도형 목업을 사용자 선택지로 제시하지 말고 실제로 고를 가치가 있는 결과만 보여줄 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "b0d7491b66391e519f376910755e287af510d3db228c7d3b2512f5f050c861a5"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-b1-cta-reject-static",
+      "sequence": 24,
+      "recorded_at": "2026-07-16T23:50:00+09:00",
+      "feedback_type": "cta_correction",
+      "owner_decision": "REJECT_COPY",
+      "title": "시어머니 밀키트 잔소리",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "cta",
+        "voice"
+      ],
+      "rule": "배우자가 침묵하면 참을 수 있음은 찬반론 문장처럼 정적이고 답답함. 썰 CTA는 인물에게 바로 반응하는 살아 있는 구어체여야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "8b4d514399599463652f74c025aac82867517ee239814282ff18f091eb39e215"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-b2-hook-human-intent",
+      "sequence": 25,
+      "recorded_at": "2026-07-16T23:50:00+09:00",
+      "feedback_type": "hook_correction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "병원 앱 날짜 예시 논란",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "hook",
+        "voice",
+        "curiosity"
+      ],
+      "rule": "수많은 날짜 중 굳이는 설명문이라 약함. 사람은 우연인지 계획적인지 의심하며 감정을 먼저 드러냄",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "18bddd1883398f8aea68d8279d5f74248a8dd17430ccd48290d931bd8e9c4067"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-b3-hook-shock-first",
+      "sequence": 26,
+      "recorded_at": "2026-07-16T23:50:00+09:00",
+      "feedback_type": "hook_correction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "앱에서 알게 된 남자 경험담",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "hook",
+        "voice",
+        "curiosity"
+      ],
+      "rule": "직접 만나지도 않았는데 뒤늦게 알게 된 행동은 제목 설명에 불과해 궁금증이 없음. 얼굴도 못 봤는데 헉처럼 놀람과 빈칸을 먼저 만들어야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "b03233a998b72e1cc525b28ca2b7009663a615a0a6ef6c00a3f730b6458f888a"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-c3-season-explainer",
+      "sequence": 27,
+      "recorded_at": "2026-07-16T23:50:00+09:00",
+      "feedback_type": "editorial_correction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "디올 2027 S/S 남성복",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "editorial_angle",
+        "storytelling",
+        "research_depth",
+        "media_selection"
+      ],
+      "rule": "시즌 컬렉션은 단순 룩 나열이 아니라 시즌 컨셉과 그것을 보여주는 실루엣·소재·연출을 실제 사진으로 설명하는 정보 콘텐츠여야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f0f9946edf03bbc287474d57e5456948c26266104cf7a6199f407ee181eb9633"
+    },
+    {
+      "learning_id": "owner-feedback-20260716-c4-editorial-statement-not-poll",
+      "sequence": 28,
+      "recorded_at": "2026-07-16T23:50:00+09:00",
+      "feedback_type": "editorial_correction",
+      "owner_decision": "REJECT_COPY",
+      "title": "프라다 2027 S/S 남성복",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "editorial_angle",
+        "cta",
+        "voice"
+      ],
+      "rule": "몇 번 룩이 눈에 들어오냐는 질문은 썰형 반응 유도에 가까움. 시즌 정보물은 편집자가 컨셉을 가장 잘 보여주는 장면을 선택하고 왜 그런지 설명해야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "74ed9df29b25f4cb338c00a99b3acf2e060439a0bb4100b7c4c4df46b3dbea38"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-a-asset-density",
+      "sequence": 29,
+      "recorded_at": "2026-07-17T09:00:00+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "Account A 실제 시각자료 밀도 보강",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "media_collection",
+        "evidence",
+        "asset_density",
+        "storytelling"
+      ],
+      "rule": "가독성·컬러·정돈은 좋지만 사진이 첫 장 한 장뿐이라 본문 시각 밀도가 부족함. 동일 사건의 복수 보도, 공식 자료, 현장 사진, 지도, 문서, 수치 그래픽 등 실제 참조 자산을 더 찾아 슬라이드별로 배치할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "c85640d4ee8998c2f1718952525750368422dfa82dab9ff79595ee414f7d6121"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-b-generic-ai-reject",
+      "sequence": 30,
+      "recorded_at": "2026-07-17T09:00:00+09:00",
+      "feedback_type": "visual_style_rejection",
+      "owner_decision": "REJECT_VISUAL_DIRECTION",
+      "title": "구식 범용 AI 웹툰 비주얼 제외",
+      "categories": [
+        "story",
+        "fashion"
+      ],
+      "applies_to": [
+        "visual_style",
+        "media_selection",
+        "emotion_direction",
+        "production_quality"
+      ],
+      "rule": "현재 생성 이미지는 2024년 수준의 범용 AI 제작물처럼 보이고 감정·소름·짜증·몰입이 전달되지 않아 보고 싶지 않음. 실제 증거·현대적 영상 프레임·감정 연출이 강한 고품질 재구성 중 주제에 맞는 방식을 선택할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "94b6e26f759464d931c69eecc20df9b0f712cb99849544c776cf529ceb08f2ed"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-sewol-hard-exclusion",
+      "sequence": 31,
+      "recorded_at": "2026-07-17T09:00:00+09:00",
+      "feedback_type": "topic_hard_exclusion",
+      "owner_decision": "REJECT_AND_EXCLUDE",
+      "title": "세월호 참사 연계 소재",
+      "categories": [
+        "news",
+        "story"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "risk_policy",
+        "production_review"
+      ],
+      "rule": "온 국민이 매우 민감하고 슬퍼하는 사건이라 콘텐츠 소재화 자체가 역효과와 상처를 낳을 수 있음. 현재 검토 갤러리와 향후 후보에서 전면 제외",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7ae2911447724c0f3535f43f600ebde1c25b855ffea1a931098e55ee8254fdde"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-c-motion-reuse",
+      "sequence": 32,
+      "recorded_at": "2026-07-17T09:00:00+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_DIRECTION",
+      "title": "패션·뷰티 모션 우선과 릴스 재사용",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "media_selection",
+        "motion_direction",
+        "carousel_storytelling",
+        "reels_reuse"
+      ],
+      "rule": "실제 참조 자료가 풍부한 방향은 좋음. 향수는 제품·질감·사용 장면을 빠른 영상 컷으로, 디올 쇼는 실제 런웨이 흐름과 디테일을 모션으로 구성하면 임팩트가 커지고 같은 자산을 릴스로 재사용할 수 있음",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "bc48c9c1df2c8410d24bf8d648aab921935f67bc66fe5a33a17245c6c83e2858"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-b-ai-direction-correction",
+      "sequence": 33,
+      "recorded_at": "2026-07-17T09:10:00+09:00",
+      "feedback_type": "feedback_interpretation_correction",
+      "owner_decision": "CORRECT_PREVIOUS_INTERPRETATION",
+      "title": "AI 웹툰·실사 재구성 유지와 품질 고도화",
+      "categories": [
+        "story",
+        "fashion"
+      ],
+      "applies_to": [
+        "visual_style",
+        "style_diversity",
+        "korean_context",
+        "emotion_direction",
+        "photorealism",
+        "production_quality"
+      ],
+      "rule": "AI 웹툰 스타일을 폐기하라는 뜻이 아니라 현재 결과의 수준이 낮다는 피드백임. 웹툰·실사·그래픽·영상 재구성 등 방향을 다양하게 열어두고, 웹툰이면 한국적 생활감과 감정을 강화하며 실사면 더 진짜같은 인물·공간·조명·연속성을 구현할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "26b8ebe4ef8bb23cf84c9949c6803fc5ddaf54f4ab4165fa61a5c32cb7f4790e"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-text-heavy-old-style-reject",
+      "sequence": 34,
+      "recorded_at": "2026-07-17T09:18:27+09:00",
+      "feedback_type": "production_quality_correction",
+      "owner_decision": "REJECT_VISUAL_DIRECTION",
+      "title": "텍스트 과다·구식 카드뉴스 스타일 제외",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "copy_density",
+        "visual_style",
+        "media_selection",
+        "carousel_storytelling",
+        "production_review"
+      ],
+      "rule": "기존 카드뉴스는 많은 내용을 텍스트화해 이미지가 장식처럼 밀리고 옛날 카드뉴스처럼 보임. 핵심만 짧게 쓰고 실제 이미지·장면·제품·근거가 내용을 전달하도록 구성할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "a641add7038985dbb70f32d91dc8dba1f66df9ddcb0cae17de1bde6cddf97dfd"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-dior-good-reason-correction",
+      "sequence": 35,
+      "recorded_at": "2026-07-17T09:18:27+09:00",
+      "feedback_type": "feedback_interpretation_correction",
+      "owner_decision": "CORRECT_PREVIOUS_INTERPRETATION",
+      "title": "디올 2027 S/S 시안 승인 이유 교정",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "editorial_angle",
+        "copy_density",
+        "media_selection",
+        "fashion_preview",
+        "production_review"
+      ],
+      "rule": "디올 시안이 좋은 이유는 편집자 장문 해설이 아니라 실제 디올 사진을 크게 사용하고 27 S/S 시즌 콘셉트를 짧게 설명해 시즌을 미리 보여주기 때문임. 사진이 주인공이고 글은 이해를 돕는 최소 설명이어야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "d4688cb11e9959fbdfa6b363c801d4647b8258b75174016086ffcc704e917a89"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-beauty-keep-and-amplify",
+      "sequence": 36,
+      "recorded_at": "2026-07-17T09:18:27+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_WITH_IMPROVEMENT",
+      "title": "현재 뷰티 방향 유지와 시선 집중 강화",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "visual_style",
+        "hook",
+        "media_selection",
+        "motion_direction",
+        "production_quality"
+      ],
+      "rule": "현재 뷰티 방향은 좋으므로 구조를 갈아엎지 않는다. 제품·발색·질감·사용 장면의 강점을 유지하면서 첫 장과 장면 전환의 시선 정지력, 클로즈업, 움직임, 대비를 더 강화할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "d07da7c49f2efbbca9de638e765d4d459d6cafd3b6842b399b9e786d0a60a339"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-lower-third-body-copy",
+      "sequence": 37,
+      "recorded_at": "2026-07-17T11:09:56+09:00",
+      "feedback_type": "production_direction",
+      "owner_decision": "APPROVE_WITH_CORRECTION",
+      "title": "이미지 중심 카드 하단 본문 결합",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "copy_density",
+        "lower_third",
+        "carousel_storytelling",
+        "mobile_readability",
+        "production_review"
+      ],
+      "rule": "이미지 중심 방향은 좋아졌지만 다른 학습 자료처럼 필요한 설명 본문을 이미지 하단에 붙여야 함. 과거처럼 화면을 텍스트로 채우지 말고, 장면을 이해하고 다음 장으로 넘기는 데 필요한 짧은 본문을 하단에 배치할 것",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "31f28bb4d7192b0754a3b353add477e1be7d476886c1efe7d558831b984c507d"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-feed-caption-required",
+      "sequence": 38,
+      "recorded_at": "2026-07-17T11:13:07+09:00",
+      "feedback_type": "publishing_copy_direction",
+      "owner_decision": "APPROVE_WITH_CORRECTION",
+      "title": "카드 이미지와 별도의 Instagram 피드 본문 필수",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "caption",
+        "publishing_copy",
+        "context_summary",
+        "source_credit",
+        "cta"
+      ],
+      "rule": "카드 안에는 하단 본문을 1~2문장으로 넣고, 이와 별개로 Instagram 피드 게시글 영역에도 주제의 배경·핵심 내용·맥락을 글로 작성해야 함. 첨부 캡처는 이미지 디자인 참고가 아니라 피드 캡션 작성 방식의 참고 자료임",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "09ce35d012c209d14db560ac3f891a3330a21f21cdf4e08ed188234eddf22c28"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-owner-selection-before-production",
+      "sequence": 39,
+      "recorded_at": "2026-07-17T11:16:27+09:00",
+      "feedback_type": "workflow_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "최신 수집 전체 분류 공개 후 소유자 선별·피드백",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "collection_review",
+        "account_portfolio",
+        "candidate_selection",
+        "owner_approval_gate",
+        "feedback_learning",
+        "production_order"
+      ],
+      "rule": "최신 자료를 받은 뒤 AI가 임의로 카테고리나 후보를 빼지 말고, 어떤 계정·카테고리로 나뉘었는지와 전체 후보를 먼저 보여줘야 함. 소유자가 제외·유지·재분류·제작 대상을 답해야 그 피드백을 학습하고 다음 수집·선정·제작에 반영할 수 있음 필수 순서: latest_collection → account_category_distribution_review → full_candidate_review → owner_keep_reject_reclassify_labels → feedback_persistence → selected_production → result_review → next_iteration_learning",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "6e5fbce7d7ce40126f1dc1f64770343654569089b1bc23f9423e0054cdf3b367"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-three-tier-issue-ranking",
+      "sequence": 40,
+      "recorded_at": "2026-07-17T11:56:45+09:00",
+      "feedback_type": "review_interface_and_learning_direction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "후보별 1~3등급 이슈 순위 병행 입력",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "collection_review",
+        "issue_ranking",
+        "owner_feedback",
+        "candidate_selection",
+        "feedback_learning"
+      ],
+      "rule": "KEEP·REJECT·RECLASSIFY·MAKE 같은 처리 결정과 별도로 각 후보의 이슈 우선순위를 1~3등급으로 체크하게 해야 소유자의 중요도 판단까지 학습할 수 있음",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "5389fdf784b3727956fded37de6ac52ef8a7ac2f96f55ec26d26e4d6dfba5723"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-full-collection-decisions-import",
+      "sequence": 41,
+      "recorded_at": "2026-07-17T12:05:46+09:00",
+      "feedback_type": "candidate_batch_decision",
+      "owner_decision": "IMPORT_EXACT_EXPORT",
+      "title": "2026-07-17 전체 후보 소유자 처리 결정",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "candidate_selection",
+        "owner_feedback",
+        "production_queue_input",
+        "feedback_learning"
+      ],
+      "rule": "2026-07-17 전체 후보 소유자 처리 결정",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "0c16611e733169404ddd148ad7e1005510fdf290f666ad1a10895ea3abd27b81"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-no-investigative-reverification",
+      "sequence": 42,
+      "recorded_at": "2026-07-17T13:20:00+09:00",
+      "feedback_type": "workflow_and_editorial_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "뉴스 전달 계정에 취재·수사식 재검증 게이트 금지",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "latest_collection",
+        "owner_selection",
+        "source_reading",
+        "caption",
+        "editorial_voice",
+        "production_order"
+      ],
+      "rule": "정해진 시간에 최신 뉴스를 받아 전체 후보를 보여주고 선택된 원문 내용을 읽어 재구성하면 됨. 당사자 취재, 사건 수사, 법률 효력 판정, 시점 재조사, 후속 보도 추적을 제작 관문으로 두지 말 것. 공개 사건에 계정의 개인적 감상·의견·비판·질문을 달 수 있음",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "b527799ee2db76768a668ff8f9f20ffd30e0fc29a8f00fc1dff85dc3afc73dac"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-practical-official-media-use",
+      "sequence": 43,
+      "recorded_at": "2026-07-17T13:20:00+09:00",
+      "feedback_type": "media_operation_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "공식 브랜드·보도 자료 우선 사용과 개별 허가 게이트 금지",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "media_selection",
+        "official_assets",
+        "source_lineage",
+        "production_gate"
+      ],
+      "rule": "패션·뷰티는 브랜드 공식 홈페이지·SNS·보도자료의 실제 자산을 사용하고, 매 인스타그램 편집물마다 개별 허가를 받아야만 제작 가능하다는 비현실적 게이트를 두지 말 것. 명백한 유료 보도사진은 대체 자산을 우선하고 출처 계보는 솔직하게 기록",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "eb17fd85eeddc219b120d0f09f113231f6da0d1e216f67a7e27b394680f242c9"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-public-source-placement",
+      "sequence": 44,
+      "recorded_at": "2026-07-17T13:20:00+09:00",
+      "feedback_type": "publishing_copy_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "뉴스·브랜드 출처는 피드 본문, 설 출처는 공개 강제 금지",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "caption",
+        "source_credit",
+        "community_story",
+        "internal_traceability"
+      ],
+      "rule": "뉴스와 브랜드 자료 출처는 이미지 마다 길게 박지 말고 Instagram 피드 본문에 짧게 적음. 네이트판·커뮤니티 설은 공개 본문에 불필요한 출처를 강제하지 않되 원문 URL은 내부에 보관",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "4cb540f119472fd0407ca88f9b08c775f1fd818b9d80f3cc0c6c6f7599eae885"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-final-public-render-clean",
+      "sequence": 45,
+      "recorded_at": "2026-07-17T13:20:00+09:00",
+      "feedback_type": "final_render_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "최종 게시본에서 내부 검토·게시 불가·제작 메모 제거",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "final_render",
+        "account_branding",
+        "lower_third",
+        "caption",
+        "production_metadata"
+      ],
+      "rule": "최종 게시본은 실제 계정명·로고·정렬된 슬라이드·카드 하단 1~2문장·별도 피드 본문으로 구성. 내부 검토, 게시 불가, 권리·팩트 재확인, 후속 모션 확장 같은 운영 메모는 공개 결과물에 노출하지 않음",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1f0c689d1cb2d5cb6a5c136e7d66c4ab6a3644d8137098e07d2d62409173f6d3"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-ap-discovery-only",
+      "sequence": 46,
+      "recorded_at": "2026-07-17T13:30:00+09:00",
+      "feedback_type": "source_routing_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "AP는 해외 이슈 발견·참고용, 게시 자산은 국내 보도로 재수집",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "trend_collection",
+        "world_news",
+        "source_routing",
+        "media_selection",
+        "production_assets"
+      ],
+      "rule": "AP 기사와 AP 보도사진은 해외 이슈를 발견하고 체크하는 참고용으로만 사용. 이슈가 주요하면 네이버·다음에 노출된 국내 보도를 찾아 실제 카드뉴스 원문·본문·이미지 후보로 쓸 것. AP 자산을 국내 게시물에 직접 사용하지 않음",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "9bf866aee4fca893d371823cf6f040d9213d9934b09a19649a43eb07a29cd0b0"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-no-video-motion-sample-selection",
+      "sequence": 47,
+      "recorded_at": "2026-07-17T13:50:00+09:00",
+      "feedback_type": "sample_production_selection",
+      "owner_decision": "MAKE_SAMPLE",
+      "title": "제공 영상 없는 주제의 모션 샘플 제작",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "media_selection",
+        "motion_graphic",
+        "news_motion",
+        "beauty_motion",
+        "production_review"
+      ],
+      "rule": "광산서 전 형사과장 구속영장·강력팀장 유족 사과는 실제 보도 정지화면·지도·타임라인 모션으로, Dior Paradise는 공식 제품·원료 이미지와 생성 보조 장면을 결합한 모션으로 제작해 결과물을 보고 판단",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "e35cd36522da01f4b2d822e2b4e51d0da7f36beec118c5ed7679c6e1662f99e6"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-b-emotion-with-brighter-tone",
+      "sequence": 48,
+      "recorded_at": "2026-07-17T15:05:00+09:00",
+      "feedback_type": "visual_style_correction",
+      "owner_decision": "REVISE_VISUAL_DIRECTION",
+      "title": "썰 재연은 감정선을 강화하되 전체 화면을 과도하게 어둡게 만들지 않음",
+      "categories": [
+        "story",
+        "fashion"
+      ],
+      "applies_to": [
+        "account_b",
+        "relationship_story",
+        "community_story",
+        "illustration_style",
+        "lighting",
+        "character_emotion",
+        "parallel_generation"
+      ],
+      "rule": "현재 결과는 원하는 수준에 미치지 못함. 캐릭터 표정·시선·자세에서 감정선이 조금 더 읽혀야 하지만, 주제가 어둡다는 이유로 배경과 전반적인 톤까지 지나치게 어둡게 만들면 안 됨. 장시간 단일 시안에 매달리지 말고 별도 생성 작업으로 보내며 본 대화는 계속 진행",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "5a5433122fbf8130bcb1f38b829767ef30cf08aba9084386cca5ec928bfb9627"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-claude-token-waste-correction",
+      "sequence": 49,
+      "recorded_at": "2026-07-17T15:12:00+09:00",
+      "feedback_type": "agent_cost_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "Fable 5에 기계적 전체 구현을 몰아 토큰 낭비 금지",
+      "categories": [],
+      "applies_to": [
+        "claude_fable5",
+        "spark",
+        "codex",
+        "delegation",
+        "token_budget",
+        "required_reading",
+        "handoff_size"
+      ],
+      "rule": "전날부터 Claude 토큰을 낭비하지 말라고 명시했는데도 단순 포장 작업에 대형 문서 읽기, 구현, 테스트, 장문 인계까지 모두 Fable 5에 배정해 사용량을 크게 소모함. Fable은 꼭 필요한 고난도 판단에만 좁게 쓰고 기계적 실행은 Spark/Codex로 분리해야 함",
+      "stage": "CLASSIFIED_PENDING",
+      "active": false,
+      "stage_reason": "not_eligible_for_automatic_owner_rule_activation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "0702f7a04e06bf21957fde7b3a1bcd892c6ad9ca4369b91635bfee5ecafb2aaf"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-account-b-v2-tone-approved-emotion-arc-rejected",
+      "sequence": 50,
+      "recorded_at": "2026-07-17T15:18:00+09:00",
+      "feedback_type": "visual_style_partial_acceptance",
+      "owner_decision": "ACCEPT_TONE_REVISE_EMOTION_ARC",
+      "title": "V2 밝은 분위기는 개선됐지만 장면별 감정선 변화가 필요",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "account_b",
+        "relationship_story",
+        "community_story",
+        "character_consistency",
+        "scene_sequence",
+        "emotion_arc",
+        "lighting"
+      ],
+      "rule": "V2는 전체 분위기와 밝기가 훨씬 좋아졌으나 캐릭터의 감정선 변화가 보이지 않음. 한 장에서 표정을 조금 강화하는 것으로 끝내지 말고 캐러셀 장면이 넘어갈수록 불편함, 억눌림, 대립, 충격, 결심처럼 감정이 단계적으로 변해야 함",
+      "stage": "CLASSIFIED_PENDING",
+      "active": false,
+      "stage_reason": "not_eligible_for_automatic_owner_rule_activation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7eeb94e2e50d11a6643b0cc8921d04fe293ed552d47529b0c521e54bf529d763"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-rank-before-deep-media-discovery",
+      "sequence": 51,
+      "recorded_at": "2026-07-17T15:25:00+09:00",
+      "feedback_type": "workflow_order_correction",
+      "owner_decision": "REQUIRE_PROCESS_CHANGE",
+      "title": "매일 전체 후보를 등급화한 뒤 선택 아이템만 심층 미디어 수집",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "daily_collection",
+        "owner_review",
+        "ranking_learning",
+        "selective_deep_dive",
+        "media_discovery",
+        "comment_analysis",
+        "youtube_search"
+      ],
+      "rule": "주제는 소유자가 매일 직접 정하는 것이 아니라 시스템이 카테고리별 최신 후보를 먼저 수집해야 함. 현재 1~3등급·제외 입력은 선별 기준과 이슈 순위를 학습시키는 장치이며 영구 승인 절차가 아님. 데이터와 시간을 아끼기 위해 등급을 매긴 뒤 우선 아이템에만 기사·유튜브·댓글·공식 브랜드 자료·재연 장면 분석을 수행해야 함",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "c44058f358e1c94c905ae5667884b5a3c1ad7ed980987d6c976ea22a3e29c7b5"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-staggered-account-daily-four-hypothesis",
+      "sequence": 52,
+      "recorded_at": "2026-07-17T16:31:00+09:00",
+      "feedback_type": "operating_hypothesis",
+      "owner_decision": "TEST_AS_HYPOTHESIS_NOT_FIXED_RULE",
+      "title": "계정별 시차 수집과 하루 4개 후보 선정 가설",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_schedule",
+        "daily_quota",
+        "prior_publish_deduplication",
+        "category_specific_ranking",
+        "news",
+        "relationship_story",
+        "fashion",
+        "beauty",
+        "load_distribution"
+      ],
+      "rule": "여러 계정을 같은 시간에 한꺼번에 수집하지 말고 8시·9시·10시·11시처럼 계정별 시간을 분리해 부하를 낮추는 가설. 계정마다 매일 4개를 고르되 이전에 그 계정에서 발행한 동일·중복 주제는 이번 회차에서 제외한다. 같은 사건·제품 묶기, 최신성, 다출처 동시 노출, 공개 반응, 이전 발행 중복, 사진·영상 확보 가능성, 계정·카테고리 편중 방지를 사용하되 뉴스·연애/썰·패션·뷰티에 동일 가중치를 강제하지 않는다. 특히 패션과 뷰티는 뉴스형 최신성·다출처 점수만으로 평가하면 안 된다.",
+      "stage": "LEARNING_CANDIDATE",
+      "active": false,
+      "stage_reason": "owner_marked_hypothesis_requires_later_confirmation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "b744623715a21f794357fb4d721ef8c42b51afff0f01895d9ef8b6dd841731a1"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-beauty-product-family-ranking-hypothesis",
+      "sequence": 53,
+      "recorded_at": "2026-07-17T16:36:00+09:00",
+      "feedback_type": "category_ranking_hypothesis",
+      "owner_decision": "TEST_AS_HYPOTHESIS_NOT_FIXED_RULE",
+      "title": "뷰티 후보를 제품군과 대상 고객으로 나눠 2차 축소",
+      "categories": [
+        "beauty"
+      ],
+      "applies_to": [
+        "beauty",
+        "product_family",
+        "audience_segment",
+        "candidate_deduplication",
+        "daily_top_selection"
+      ],
+      "rule": "뷰티는 전체 신제품을 한 묶음으로 경쟁시키지 말고 메이크업, 헤어 등 제품군과 남성용·여성용 등 대상 고객을 구분해 비교하면 후보를 더 효율적으로 줄일 수 있음. 같은 기사나 라운드업에 실렸다는 이유로 서로 다른 제품을 중복 처리하지 않음.",
+      "stage": "LEARNING_CANDIDATE",
+      "active": false,
+      "stage_reason": "owner_marked_hypothesis_requires_later_confirmation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1cbb780f8691e03d6c410a16354c1565c655cab71261147833e57c7f3b835930"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-cardnews-commerce-story-linkage",
+      "sequence": 54,
+      "recorded_at": "2026-07-17T16:42:00+09:00",
+      "feedback_type": "monetization_direction",
+      "owner_decision": "REQUIRE_MONETIZATION_FIT_IN_SELECTION_AND_STORY",
+      "title": "연예·뷰티·패션·생활 콘텐츠를 쿠팡·네이버 브랜드스토어 상품 링크와 스토리로 연결",
+      "categories": [
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "commerce_fit",
+        "storytelling",
+        "affiliate_link",
+        "coupang",
+        "naver_brand_store",
+        "entertainment",
+        "beauty",
+        "fashion",
+        "lifestyle"
+      ],
+      "rule": "카드뉴스의 주목적 중 하나는 수익화다. 연예, 뷰티, 패션, 생활 후보는 관심도만 보지 말고 쿠팡 또는 네이버 브랜드스토어의 실제 관련 상품 링크로 자연스럽게 이어지는지 평가하고, 콘텐츠의 이야기 흐름 안에서 상품을 억지스럽지 않게 연결해야 한다.",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3fb679453ec869436456534907ebfb51ccddf383211d29fb0bfe22ed3f8a6138"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-four-hour-publishing-cadence-hypothesis",
+      "sequence": 55,
+      "recorded_at": "2026-07-17T16:48:00+09:00",
+      "feedback_type": "publishing_schedule_hypothesis",
+      "owner_decision": "TEST_FOUR_HOUR_INTERVAL",
+      "title": "계정별 하루 4회·4시간 간격 게시 가설",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "publishing_schedule",
+        "account_staggering",
+        "daily_four",
+        "four_hour_interval",
+        "news",
+        "beauty_fashion",
+        "relationship_story",
+        "entertainment"
+      ],
+      "rule": "3시간 간격은 하루 게시가 너무 빨리 끝나므로 4시간 간격으로 수정. 뉴스는 08:00·12:00·16:00·20:00, 뷰티·패션은 08:30·12:30·16:30·20:30, 연애·썰은 09:00·13:00·17:00·21:00, 연예·가십은 09:30·13:30·17:30·21:30 게시 가설로 운영하며 성과 데이터 전에는 영구 고정하지 않음.",
+      "stage": "LEARNING_CANDIDATE",
+      "active": false,
+      "stage_reason": "owner_marked_hypothesis_requires_later_confirmation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f1f0c7d010f1e4b18d1bcd9094419743c66a10ffd07658acb0b35642ae459463"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-light-commerce-match-before-second-ranking",
+      "sequence": 56,
+      "recorded_at": "2026-07-17T16:55:00+09:00",
+      "feedback_type": "commerce_workflow_correction",
+      "owner_decision": "REQUIRE_LIGHTWEIGHT_COMMERCE_MATCH",
+      "title": "쿠팡 대기·네이버 판매 아이템 가벼운 매칭 후 2차 축소",
+      "categories": [
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "coupang_hold",
+        "naver_commerce",
+        "first_pass_product_match",
+        "second_stage_ranking",
+        "fashion",
+        "beauty",
+        "entertainment",
+        "lifestyle",
+        "contextual_product_story"
+      ],
+      "rule": "쿠팡파트너스는 실제 수령·사용 경험담과 후기 콘텐츠가 준비될 때까지 대기한다. 현재 카드뉴스 선별에서는 판매처·재고·배송을 깊게 조사하거나 연예인의 실제 사용 제품을 억지로 확인하지 않는다. 뷰티·패션·연예·생활의 많은 1차 후보에 대해 네이버 쪽 링크 가능한 판매 아이템이 있는지 먼저 가볍게 확인하고, 동일·유사 상품군을 묶은 뒤 2차 후보로 내린다. 정확히 같은 상품이 아니어도 얇은 셔츠의 비슷한 색·무늬, 비의 우산, 더위의 양산·쿨링 아이템, 습도의 쿨링·제습 관련 아이템, 여행의 모자·선크림처럼 상황과 자연스럽게 연결하면 된다.",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "34250e4bfd1ef01f79fbd31f07dd00f9822003e00e76d129be627eb17bff972a"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-product-gallery-to-motion-slide",
+      "sequence": 57,
+      "recorded_at": "2026-07-17T17:04:00+09:00",
+      "feedback_type": "media_production_direction",
+      "owner_decision": "USE_SOURCE_IMAGE_MOTION_MONTAGE",
+      "title": "상세페이지 다중 이미지를 한 개의 짧은 모션 슬라이드로 압축",
+      "categories": [
+        "news",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "naver_brandconnect",
+        "product_gallery",
+        "motion_slide",
+        "commerce_storytelling",
+        "fashion",
+        "beauty",
+        "lifestyle",
+        "media_efficiency"
+      ],
+      "rule": "상품 상세페이지의 많은 이미지를 각각 카드로 나열하지 말고, 여러 실제 제품 사진을 확대·이동·전환해 한 개의 짧은 영상에서 색상·형태·사용 장면을 한꺼번에 보여준다. 생성형 영상이 필요한 작업이 아니라 실제 상품 이미지 기반 편집이며 최종 선정 상품에만 적용한다.",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "5ea163855a006b8f739a3731b38eae6507d85590e30312547bb59c8917dca32a"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-instagram-blog-commerce-reuse",
+      "sequence": 58,
+      "recorded_at": "2026-07-17T17:10:00+09:00",
+      "feedback_type": "channel_expansion_direction",
+      "owner_decision": "REUSE_CONTENT_PACKAGE_FOR_BLOG",
+      "title": "같은 상품·스토리 자산을 인스타 카드뉴스와 네이버 블로그에 재사용",
+      "categories": [],
+      "applies_to": [
+        "naver_brandconnect",
+        "instagram",
+        "naver_blog",
+        "multichannel_reuse",
+        "affiliate_content",
+        "campaign_affiliate",
+        "content_roi"
+      ],
+      "rule": "네이버 브랜드 커넥트의 쇼핑 링크와 캠페인 제휴 상품은 인스타그램 카드뉴스뿐 아니라 네이버 블로그 콘텐츠로도 전개할 수 있다. 한 번 선정한 주제·상품·이미지·모션·본문을 채널 형식에 맞게 바꿔 인스타와 블로그에서 함께 활용한다.",
+      "stage": "CLASSIFIED_PENDING",
+      "active": false,
+      "stage_reason": "not_eligible_for_automatic_owner_rule_activation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "7c8ced7562ff677ece7f325662d9d6fb039defd6269a523bbf81066946d9391a"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-editorial-content-no-forced-commerce-link",
+      "sequence": 59,
+      "recorded_at": "2026-07-17T17:18:00+09:00",
+      "feedback_type": "commerce_fit_boundary",
+      "owner_decision": "DO_NOT_FORCE_COMMERCE_LINK",
+      "title": "디올·프라다 런웨이 등 정보성 콘텐츠에 상품 링크 강제 금지",
+      "categories": [
+        "news",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "topic_selection",
+        "commerce_fit",
+        "fashion",
+        "runway",
+        "luxury",
+        "editorial",
+        "account_authority",
+        "link_policy"
+      ],
+      "rule": "수익화 연결은 자연스럽게 맞는 콘텐츠에만 선택적으로 적용한다. 디올·프라다 런웨이와 시즌 콘셉트처럼 정보성과 계정의 취향·권위를 쌓는 콘텐츠는 상품 링크 없이 독립적으로 다루며, 링크가 없다는 이유로 순위에서 불이익을 주거나 무관한 유사 상품을 억지로 붙이지 않는다.",
+      "stage": "CLASSIFIED_PENDING",
+      "active": false,
+      "stage_reason": "not_eligible_for_automatic_owner_rule_activation",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "bba18538ec6e1287829a2ccb89f381c39f500c07af3b9e956d28dff51fe8b31c"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-three-account-portfolio-correction",
+      "sequence": 60,
+      "recorded_at": "2026-07-17T17:24:00+09:00",
+      "feedback_type": "account_portfolio_correction",
+      "owner_decision": "FIX_THREE_ACCOUNT_PORTFOLIOS",
+      "title": "카드뉴스를 5계정이 아닌 3계정으로 운영",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "multi_account",
+        "account_a",
+        "account_b",
+        "account_c",
+        "news",
+        "relationship_story",
+        "dopamine",
+        "entertainment",
+        "fashion",
+        "beauty",
+        "account_risk"
+      ],
+      "rule": "계정을 세분화해 5개로 동시에 운영하면 정지 위험과 운영 부담이 커진다. 계정 A는 국내외 뉴스·사건·사고·사회 이슈, 계정 B는 썰·연애·도파민과 연예인·방송·작품·가십·공개 논란, 계정 C는 패션과 뷰티를 함께 담당한다. 연예는 별도 계정으로 분리하지 않는다.",
+      "stage": "SUPERSEDED",
+      "active": false,
+      "stage_reason": "superseded_by:owner-feedback-20260717-entertainment-shared-across-account-b-c",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "17773e0eae007c32c7954a5a65d0e72b3b6ff97260af8fccea28359c2979be18"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-entertainment-shared-across-account-b-c",
+      "sequence": 61,
+      "recorded_at": "2026-07-17T17:27:00+09:00",
+      "feedback_type": "account_portfolio_correction",
+      "owner_decision": "ALLOW_ENTERTAINMENT_IN_ACCOUNT_B_AND_C",
+      "title": "연예 소재를 2번 썰 계정과 3번 패션·뷰티 계정에 중복 허용",
+      "categories": [
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_b",
+        "account_c",
+        "entertainment",
+        "celebrity",
+        "gossip",
+        "relationship_story",
+        "fashion",
+        "beauty",
+        "editorial_angle",
+        "shared_category_routing"
+      ],
+      "rule": "연예는 한 계정에만 독점 배정하지 않는다. 가십·방송·작품·공개 논란·관계처럼 도파민과 서사가 중심이면 2번 썰·연애·도파민 계정에, 셀럽 착장·메이크업·헤어·향수·브랜드처럼 스타일과 제품이 중심이면 3번 패션·뷰티 계정에 포함한다. 동일 연예 소재가 두 포트폴리오에 후보로 들어가는 것은 허용하되 각 계정의 관점과 내용이 달라야 한다.",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": "owner-feedback-20260717-three-account-portfolio-correction",
+      "fingerprint": "3174a20f17cb0c00b6c49c0789fe269eb7fc98acae704ee164f73002c7fb1aac"
+    },
+    {
+      "learning_id": "owner-feedback-20260717-news-no-fixed-map-number-timeline-grammar",
+      "sequence": 62,
+      "recorded_at": "2026-07-17T17:30:00+09:00",
+      "feedback_type": "news_visual_grammar_correction",
+      "owner_decision": "DO_NOT_FIX_NEWS_TO_MAP_NUMBER_TIMELINE",
+      "title": "뉴스 계정에 지도·숫자·타임라인 중심 문법을 고정하지 않음",
+      "categories": [
+        "news"
+      ],
+      "applies_to": [
+        "account_a",
+        "news",
+        "visual_grammar",
+        "map",
+        "numbers",
+        "timeline",
+        "media_selection",
+        "topic_specific_production"
+      ],
+      "rule": "뉴스 계정은 국내외 사건·사고·사회 이슈라는 소재 범위로 정의한다. 지도, 숫자, 타임라인은 주제에 실제로 도움이 될 때만 선택적으로 쓰는 표현 수단이며 뉴스 계정의 핵심이나 고정 제작 문법이 아니다. 주제와 확보된 실제 기사 이미지·영상·화면에 맞춰 매번 표현 방식을 선택한다.",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "82f05c5c4385fc0b60ef2d1296dbaeb6eacbacab17de874c5f97496178bc6a74"
+    },
+    {
+      "learning_id": "owner-feedback-20260718-commerce-story-first-reject-v1",
+      "sequence": 63,
+      "recorded_at": "2026-07-18T10:40:00+09:00",
+      "feedback_type": "commerce_cardnews_production_rejection",
+      "owner_decision": "REJECT_REBUILD_STORY_FIRST",
+      "title": "폭염 냉감 상의 상품 카드뉴스 V1",
+      "categories": [
+        "fashion"
+      ],
+      "applies_to": [
+        "account_c",
+        "commerce_storytelling",
+        "cover_hook",
+        "human_copy",
+        "motion_graphic",
+        "product_reveal",
+        "agent_training",
+        "production_review"
+      ],
+      "rule": "상품 사진을 이어 붙인 광고처럼 보이고 첫 화면에 당일 폭염 뉴스·이슈·생활 장면이 없어 상품과의 연관성이 약함. '세탁 회전' 같은 내부 기획 용어는 사람이 쓰는 말이 아니며 단순 확대·전환은 영상 수준이 아님. 이슈→생활 장면→필요성→상품 공개 순서와 의미 있는 정보 변화가 있는 모션으로 재구성할 것. 필수 순서: same_day_issue_or_news → real_life_scene → reader_need → product_reveal → fit_and_choice 금지/고정: no_product_first_cover, no_internal_planning_jargon_in_public_copy, no_slideshow_counted_as_video",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "30c6538b629271c29aceedf3d2e559fcf2bc6ffa445952b61eb024575548b30b"
+    },
+    {
+      "learning_id": "owner-feedback-20260718-unrelated-celebrity-image-hard-reject",
+      "sequence": 64,
+      "recorded_at": "2026-07-18T14:20:00+09:00",
+      "feedback_type": "media_rights_and_false_association_correction",
+      "owner_decision": "REJECT_REMOVE_AND_REPLACE",
+      "title": "무관한 수지 사진을 폭염 상품 카드 표지에 사용",
+      "categories": [
+        "fashion"
+      ],
+      "applies_to": [
+        "account_c",
+        "celebrity_media",
+        "commerce_storytelling",
+        "media_selection",
+        "rights",
+        "false_association",
+        "ai_auxiliary_image",
+        "production_review"
+      ],
+      "rule": "기사 대표 이미지라는 이유만으로 해당 상품과 전혀 관계없는 유명인 사진을 쓰면 그 인물이 상품을 착용하거나 추천한 것처럼 연결될 수 있고 무단 사용 문제가 생길 수 있음. 브랜드의 실제 메인 모델로 확인된 경우가 아니라면 사용하지 말고, 생활 맥락용 인물이 필요하면 특정 실존 인물과 닮지 않은 자체 AI 모델을 제작해 명확히 연출 이미지로 사용해야 함. 금지/고정: no_unrelated_celebrity_image, verify_celebrity_brand_product_relationship_before_use, use_original_noncelebrity_ai_model_for_auxiliary_lifestyle_scene, label_ai_scene_as_generated_not_evidence",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "f788cb946ecf95645087fa1d760738fff54d2c4d21b76902fec2edf73f6aa27a"
+    },
+    {
+      "learning_id": "owner-feedback-20260718-reusable-ai-model-identity-consistency",
+      "sequence": 65,
+      "recorded_at": "2026-07-18T14:30:00+09:00",
+      "feedback_type": "ai_character_consistency_direction",
+      "owner_decision": "REQUIRE_REUSABLE_IDENTITY_LIBRARY",
+      "title": "AI 생활 모델은 동일 인물의 다각도 기준 자산을 먼저 만들고 재사용",
+      "categories": [
+        "fashion"
+      ],
+      "applies_to": [
+        "account_c",
+        "ai_auxiliary_image",
+        "character_consistency",
+        "scene_continuity",
+        "asset_reuse",
+        "production_efficiency"
+      ],
+      "rule": "카드마다 다른 AI 인물을 새로 만들면 계정의 일관성과 장면 연속성이 무너짐. 최초 생성 시 정면·좌·우·뒤·하이앵글·로우앵글 기준 시트를 만들고 이후 장면은 같은 모델을 참조해 표정·포즈·배경만 확장해야 함. 금지/고정: no_new_random_ai_face_per_scene, identity_reference_required_for_scene_generation, same_model_across_story_sequence, ai_scene_label_required",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "bdfff6a3642e48799c8cd513b00286b35a8f9670e68c7a0322598ba9856b8b39"
+    },
+    {
+      "learning_id": "owner-feedback-20260718-account-c-single-ai-model-hard-lock",
+      "sequence": 66,
+      "recorded_at": "2026-07-18T15:10:00+09:00",
+      "feedback_type": "account_level_ai_identity_hard_lock",
+      "owner_decision": "LOCK_SINGLE_AI_MODEL_IDENTITY",
+      "title": "계정 C의 보조 생활 장면은 단일 AI 모델만 재사용하고 얼굴·체형 드리프트를 거절",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_c",
+        "fashion",
+        "beauty",
+        "commerce_storytelling",
+        "ai_auxiliary_image",
+        "character_consistency",
+        "scene_continuity",
+        "asset_reuse"
+      ],
+      "rule": "장면마다 새 인물을 만들지 말고 동일 AI 모델의 정면·좌·우·뒤·하이·로우 기준 자산을 먼저 고정한 뒤 상황에 맞게 표정·포즈·복장·배경만 바꿔야 계정 일관성과 제작 효율이 생김. 금지/고정: account_c_auxiliary_human_scene_requires_account_c_fixed_model_01, no_new_random_ai_face_per_scene, face_and_body_reference_required_for_every_scene_generation, reject_face_or_body_drift, ai_scene_label_required, never_use_ai_model_as_news_or_product_evidence",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "1d72c0187dc9cf856f2e61aeeb0517c21bdaaad51fa6e99374f1a43618dfa375"
+    },
+    {
+      "learning_id": "owner-feedback-20260719-preupload-batch-v1-full-reject",
+      "sequence": 67,
+      "recorded_at": "2026-07-19T00:00:00+09:00",
+      "feedback_type": "candidate_batch_decision",
+      "owner_decision": "REJECT_AND_DISCARD_ALL_RENDERED_OUTPUTS",
+      "title": "2026-07-19 12건 81장 사전 업로드 배치 전량 폐기",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_a",
+        "account_b",
+        "account_c",
+        "news",
+        "story",
+        "fashion",
+        "beauty",
+        "production_review",
+        "batch_render"
+      ],
+      "rule": "이미지 중심 캐러셀, 짧은 카드 문안, 별도 피드 본문이라는 학습 방향을 지키지 않았고 댓글은 전체 페이지 축소로 읽히지 않았으며 패션·뷰티는 주제인 머리·의상·제품을 강제 크롭했다. 렌더 이미지는 재작업 자산이 아니라 전량 폐기 대상이며 수집 원문과 실제 댓글 데이터만 보존한다.",
+      "stage": "CLASSIFIED_EXAMPLE",
+      "active": false,
+      "stage_reason": "candidate_specific_feedback_is_not_generalized",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "3332c7e6049b764778ba29f139129f29e49e5b30a3f20e9ce0a06f040d4b92e7"
+    },
+    {
+      "learning_id": "owner-feedback-20260719-image-first-short-copy-feed-body",
+      "sequence": 68,
+      "recorded_at": "2026-07-19T00:01:00+09:00",
+      "feedback_type": "carousel_production_correction",
+      "owner_decision": "REQUIRE_IMAGE_FIRST_CAROUSEL",
+      "title": "이미지 중심 캐러셀과 짧은 카드 문안",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_a",
+        "account_b",
+        "account_c",
+        "news",
+        "story",
+        "fashion",
+        "beauty",
+        "carousel_storytelling",
+        "copy",
+        "feed_caption",
+        "production_review"
+      ],
+      "rule": "카드뉴스는 이미지가 주인공이고 카드 문안은 이미지 이해를 돕는 짧은 1~2문장만 둔다. 상세 설명은 별도 피드 본문으로 분리하며, 비슷한 사진·빈 도형·공백으로 장수를 채우지 않고 각 슬라이드가 새로운 장면이나 정보를 전달해야 한다. 금지/고정: image_is_primary, short_slide_copy_only, separate_feed_caption_required, no_repeated_similar_images_as_filler, no_empty_wireframe_shapes",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "74d16bac7d53580bf7049a082fb4eb04fd81005886f210a63f4e0c38efa31aad"
+    },
+    {
+      "learning_id": "owner-feedback-20260719-comment-evidence-readable-crop",
+      "sequence": 69,
+      "recorded_at": "2026-07-19T00:02:00+09:00",
+      "feedback_type": "comment_media_hard_correction",
+      "owner_decision": "REQUIRE_READABLE_ISSUE_SPECIFIC_COMMENT_CROPS",
+      "title": "이슈 핵심 댓글만 개별 크롭·확대",
+      "categories": [
+        "story"
+      ],
+      "applies_to": [
+        "account_b",
+        "story",
+        "relationship",
+        "dopamine",
+        "entertainment",
+        "comments",
+        "social_proof",
+        "media_selection",
+        "production_review"
+      ],
+      "rule": "댓글은 해당 이슈의 감정과 반응을 보여주는 실제 댓글만 개별로 잘라 사용한다. 커뮤니티 페이지 전체를 통째로 축소하거나 광고·사이드바를 포함하지 말고, 신원과 개인정보를 가린 뒤 휴대폰에서 바로 읽히는 크기로 확대한다. 금지/고정: no_full_page_comment_screenshot, issue_specific_comments_only, individual_comment_crop_required, mobile_readability_required, mask_identity_and_pii",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "caacf49683b1258cb6131df1052463bf29cc2c647cb08774c6d3e67c4cc322a3"
+    },
+    {
+      "learning_id": "owner-feedback-20260719-focus-aware-image-placement",
+      "sequence": 70,
+      "recorded_at": "2026-07-19T00:03:00+09:00",
+      "feedback_type": "fashion_beauty_framing_hard_correction",
+      "owner_decision": "REQUIRE_SUBJECT_AWARE_CONTAIN_LAYOUT",
+      "title": "헤어·의상·제품 초점을 보존하고 강제 cover 크롭 금지",
+      "categories": [
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_c",
+        "fashion",
+        "beauty",
+        "hair",
+        "outfit",
+        "product",
+        "image_layout",
+        "instagram_4x5",
+        "production_review"
+      ],
+      "rule": "원본 사진은 충분히 맞았고 실패 원인은 렌더러가 4:5 프레임을 채우려고 cover 확대·중앙 크롭한 데 있다. 헤어는 정수리부터 머리끝까지, 패션은 설명 대상 착장이나 부위 전체, 제품은 형태와 라벨 전체를 보존한다. 남는 공간은 배경 확장·블러·분할 레이아웃으로 처리하고 주제 대상을 잘라 채우지 않는다. 금지/고정: no_forced_cover_crop, preserve_original_aspect_ratio, hair_full_subject_required, fashion_focus_region_required, product_shape_and_label_required, use_contain_or_subject_aware_layout",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "88bc1dea8f0b49a84cc933a7285d7fa1cc65dbdfdc1b115be6264dfaa26acf98"
+    },
+    {
+      "learning_id": "owner-feedback-20260719-representative-first-visual-qa",
+      "sequence": 71,
+      "recorded_at": "2026-07-19T00:04:00+09:00",
+      "feedback_type": "batch_render_efficiency_hard_correction",
+      "owner_decision": "REQUIRE_REPRESENTATIVE_FIRST_FAIL_CLOSED_BATCH",
+      "title": "계정별 대표본 시각 검수 전 일괄 렌더 금지",
+      "categories": [
+        "news",
+        "story",
+        "fashion",
+        "beauty"
+      ],
+      "applies_to": [
+        "account_a",
+        "account_b",
+        "account_c",
+        "news",
+        "story",
+        "fashion",
+        "beauty",
+        "batch_render",
+        "production_efficiency",
+        "visual_qa",
+        "upload_readiness"
+      ],
+      "rule": "12건 81장을 중간 검수 없이 여러 번 렌더해 45분을 낭비했다. 앞으로 새 문법은 계정별 대표 1건만 먼저 만들고 모바일 가독성·주제 초점·이미지 다양성·댓글 크롭·스토리 진행을 시각 검수한 뒤 확대한다. 전체 페이지 캡처 대기, 캐시 없는 반복 다운로드, 실패한 전체 재렌더를 금지하며 시간 제한이나 대표본 QA 실패 시 배치를 중단한다. 금지/고정: one_representative_per_account_before_batch, visual_qa_before_scale, asset_cache_required, stop_batch_on_timeout_or_visual_failure, no_upload_ready_status_before_human_visual_pass",
+      "stage": "ACTIVE_OWNER_RULE",
+      "active": true,
+      "stage_reason": "explicit_owner_direction_active_without_performance_claim",
+      "is_performance_evidence": false,
+      "supersedes_event_id": null,
+      "fingerprint": "10e24afcd708b6d3837a2800cd1c59f0e023be63802a187873733d6f484d8a49"
+    }
+  ],
+  "source": "C:\\Users\\가산 솔리드옴므\\Documents\\GitHub\\AI-Content-OS\\knowledge\\owner_feedback\\cardnews_owner_feedback.jsonl",
+  "source_sha256": "017a7a94452c59a2d7a656fd8203e5ab9986dfcec9b32c5808b6edd15f2f636b",
+  "errors": [],
+  "feedback_log_reloaded": true
+}

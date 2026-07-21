@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CardNews No-Source-Video Samples</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Malgun Gothic", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #08090c; color: #f7f7f7; }
+    main { width: min(94vw, 1220px); margin: 42px auto 70px; }
+    h1 { margin: 0 0 10px; font-size: clamp(28px, 5vw, 50px); }
+    .intro { color: #aeb5c1; line-height: 1.7; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 32px; }
+    article { padding: 22px; border: 1px solid #2a2f38; border-radius: 20px; background: #12151b; }
+    h2 { margin: 0 0 7px; font-size: 25px; }
+    article p { min-height: 48px; color: #aeb5c1; line-height: 1.6; }
+    video { display: block; width: min(100%, 432px); aspect-ratio: 4 / 5; margin: 18px auto 0; object-fit: cover; background: #000; }
+    @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>영상 원본 없이 만든 모션 샘플</h1>
+    <p class="intro">실제 정지 이미지에 카메라 이동, 전환, 타임라인, 지도 그래픽과 빛 효과를 더해 MP4로 만든 비교본입니다.</p>
+    <section class="grid">
+      <article>
+        <h2>광산서 수사 확대</h2>
+        <p>YTN·뉴시스 실제 보도 정지화면 + 자체 지도·타임라인·조직선 모션</p>
+        <video controls autoplay muted loop playsinline poster="news/preview.jpg">
+          <source src="news/gwangsan_police_motion.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article>
+        <h2>Dior Paradise</h2>
+        <p>Dior 공식 제품·원료 이미지 + 생성형 아몬드 과수원 보조 배경 + 빛·입자 모션</p>
+        <video controls autoplay muted loop playsinline poster="dior/preview.jpg">
+          <source src="dior/dior_paradise_motion.mp4" type="video/mp4">
+        </video>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

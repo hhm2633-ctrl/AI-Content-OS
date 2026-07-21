@@ -1,0 +1,370 @@
+- generic [ref=f25e4]:
+  - generic [ref=f25e9]:
+    - generic [ref=f25e12]:
+      - link [ref=f25e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f25e22]
+      - generic [ref=f25e25]:
+        - link [ref=f25e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f25e35]
+        - link [ref=f25e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f25e45]
+        - link [ref=f25e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f25e55]:
+            - img "메시지" [ref=f25e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f25e60]: "1"
+        - link [ref=f25e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f25e71]
+        - link [ref=f25e79] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f25e84]
+        - link [ref=f25e92] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f25e97]
+        - link [ref=f25e103] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f25e108]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f25e109]
+      - generic [ref=f25e110]:
+        - link [ref=f25e113] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f25e118]
+        - link [ref=f25e121] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f25e126]
+    - generic [ref=f25e129]:
+      - main [ref=f25e130]:
+        - generic [ref=f25e131]:
+          - generic [ref=f25e133]:
+            - generic [ref=f25e145]:
+              - list [ref=f25e147]:
+                - listitem [ref=f25e148]
+                - listitem [ref=f25e149]
+                - listitem [ref=f25e158]
+              - button "다음" [ref=f25e167] [cursor=pointer]
+            - generic [ref=f25e170]:
+              - generic [ref=f25e172]:
+                - button [ref=f25e177] [cursor=pointer]:
+                  - link [ref=f25e179]:
+                    - img "woojooboss_님의 프로필 사진" [ref=f25e180]
+                - generic [ref=f25e183]:
+                  - generic [ref=f25e184]:
+                    - link "woojooboss_" [ref=f25e192] [cursor=pointer]:
+                      - /url: /woojooboss_/
+                    - link "대한민국" [ref=f25e199] [cursor=pointer]:
+                      - /url: /explore/locations/215622513/
+                  - button "팔로잉" [ref=f25e201] [cursor=pointer]
+                - button [ref=f25e204] [cursor=pointer]:
+                  - img "옵션 더 보기" [ref=f25e207]
+              - separator [ref=f25e211]
+              - generic [ref=f25e213]:
+                - generic [ref=f25e215]:
+                  - link [ref=f25e220] [cursor=pointer]:
+                    - /url: /woojooboss_/
+                    - img "woojooboss_님의 프로필 사진" [ref=f25e221]
+                  - generic [ref=f25e225]:
+                    - generic [ref=f25e226]:
+                      - link "woojooboss_" [ref=f25e230] [cursor=pointer]:
+                        - /url: /woojooboss_/
+                      - time [ref=f25e235]: 2시간
+                    - generic [ref=f25e236]:
+                      - text: 클로드 코드 쓰면서 느꼈던 불편함,무료 도구 5가지면 거의 다 사라집니다.댓글에 "5" 남겨주세요.5개 무료 도구 저장소 링크와꼼꼼한 설치 안내 웹문서가자동 DM으로 전송됩니다👍🏻영상은 못 보고,자료조사 한 번에 대화 용량이 바닥나고,새 대화를 열 때마다 처음부터 다시 시작하고.클로드 코드를 써본 분이라면누구나 겪는 답답함입니다.오늘 소개하는 5가지는전부 무료 오픈소스입니다.1. claude-video클로드가 유튜브 영상을 직접 보고 답합니다2. notebooklm-py자료조사를 구글 NotebookLM에 통째로 맡깁니다3. graphify내 프로젝트를 기억하는 지식 지도를 만듭니다4. impeccable'AI가 만든 티' 나는 디자인을 벗어납니다5. ponytail군더더기 코드를 절반으로 줄입니다하나만 적용해도내일 작업 속도가 달라집니다.저장해두고 하나씩 설치해 보세요.댓글에 '5' 라고 남겨주세요.저장소 링크와 왕초보용 설치 방법까지 담은정리본을 DM으로 보내드립니다.
+                      - link "#클로드코드" [ref=f25e237] [cursor=pointer]:
+                        - /url: /explore/tags/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C/
+                      - link "#AI도구" [ref=f25e238] [cursor=pointer]:
+                        - /url: /explore/tags/ai%EB%8F%84%EA%B5%AC/
+                      - link "#AI활용" [ref=f25e239] [cursor=pointer]:
+                        - /url: /explore/tags/ai%ED%99%9C%EC%9A%A9/
+                      - link "#1인기업" [ref=f25e240] [cursor=pointer]:
+                        - /url: /explore/tags/1%EC%9D%B8%EA%B8%B0%EC%97%85/
+                      - link "#디지털노마드" [ref=f25e241] [cursor=pointer]:
+                        - /url: /explore/tags/%EB%94%94%EC%A7%80%ED%84%B8%EB%85%B8%EB%A7%88%EB%93%9C/
+                - generic [ref=f25e242]:
+                  - generic [ref=f25e245]:
+                    - link [ref=f25e251] [cursor=pointer]:
+                      - /url: /woojooboss_/
+                      - img "woojooboss_님의 프로필 사진" [ref=f25e252]
+                    - generic [ref=f25e253]:
+                      - generic [ref=f25e254]:
+                        - generic [ref=f25e256]:
+                          - generic [ref=f25e257]:
+                            - link "woojooboss_" [ref=f25e262] [cursor=pointer]:
+                              - /url: /woojooboss_/
+                            - link [ref=f25e267] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/17961460116131380/
+                              - time [ref=f25e268]: 2시간
+                          - generic [ref=f25e269]: 이런건 무조건 챙겨놓으셔야 합니다.😉 댓글에 "5" 남겨주시고 설치 가이드 받아가세요👍🏻
+                        - generic [ref=f25e271]:
+                          - button "좋아요 1개" [ref=f25e272] [cursor=pointer]
+                          - button "답글 달기" [ref=f25e275] [cursor=pointer]
+                      - button [ref=f25e282] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e285]
+                  - generic [ref=f25e289]:
+                    - link [ref=f25e295] [cursor=pointer]:
+                      - /url: /anyone0975/
+                      - img "anyone0975님의 프로필 사진" [ref=f25e296]
+                    - generic [ref=f25e297]:
+                      - generic [ref=f25e298]:
+                        - generic [ref=f25e300]:
+                          - generic [ref=f25e301]:
+                            - link "anyone0975" [ref=f25e306] [cursor=pointer]:
+                              - /url: /anyone0975/
+                            - link [ref=f25e311] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/18011764634918886/
+                              - time [ref=f25e312]: 27분
+                          - generic [ref=f25e313]: "5"
+                        - button "답글 달기" [ref=f25e316] [cursor=pointer]
+                      - button [ref=f25e323] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e326]
+                  - generic [ref=f25e330]:
+                    - link [ref=f25e336] [cursor=pointer]:
+                      - /url: /minkyoungism/
+                      - img "minkyoungism님의 프로필 사진" [ref=f25e337]
+                    - generic [ref=f25e338]:
+                      - generic [ref=f25e339]:
+                        - generic [ref=f25e341]:
+                          - generic [ref=f25e342]:
+                            - link "minkyoungism" [ref=f25e347] [cursor=pointer]:
+                              - /url: /minkyoungism/
+                            - link [ref=f25e352] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/18380564947164230/
+                              - time [ref=f25e353]: 1시간
+                          - generic [ref=f25e354]: "5"
+                        - button "답글 달기" [ref=f25e357] [cursor=pointer]
+                      - button [ref=f25e364] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e367]
+                  - generic [ref=f25e371]:
+                    - link [ref=f25e377] [cursor=pointer]:
+                      - /url: /aurora.withyou/
+                      - img "aurora.withyou님의 프로필 사진" [ref=f25e378]
+                    - generic [ref=f25e379]:
+                      - generic [ref=f25e380]:
+                        - generic [ref=f25e382]:
+                          - generic [ref=f25e383]:
+                            - link "aurora.withyou" [ref=f25e388] [cursor=pointer]:
+                              - /url: /aurora.withyou/
+                            - link [ref=f25e393] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/18099021164231375/
+                              - time [ref=f25e394]: 1시간
+                          - generic [ref=f25e395]: "5"
+                        - button "답글 달기" [ref=f25e398] [cursor=pointer]
+                      - button [ref=f25e405] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e408]
+                  - generic [ref=f25e412]:
+                    - link [ref=f25e418] [cursor=pointer]:
+                      - /url: /ywowyou/
+                      - img "ywowyou님의 프로필 사진" [ref=f25e419]
+                    - generic [ref=f25e420]:
+                      - generic [ref=f25e421]:
+                        - generic [ref=f25e423]:
+                          - generic [ref=f25e424]:
+                            - link "ywowyou" [ref=f25e429] [cursor=pointer]:
+                              - /url: /ywowyou/
+                            - link [ref=f25e434] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/18081900668661376/
+                              - time [ref=f25e435]: 1시간
+                          - generic [ref=f25e436]: "5"
+                        - button "답글 달기" [ref=f25e439] [cursor=pointer]
+                      - button [ref=f25e446] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e449]
+                  - generic [ref=f25e453]:
+                    - link [ref=f25e459] [cursor=pointer]:
+                      - /url: /keyword.mom/
+                      - img "keyword.mom님의 프로필 사진" [ref=f25e460]
+                    - generic [ref=f25e461]:
+                      - generic [ref=f25e462]:
+                        - generic [ref=f25e464]:
+                          - generic [ref=f25e465]:
+                            - link "keyword.mom" [ref=f25e470] [cursor=pointer]:
+                              - /url: /keyword.mom/
+                            - link [ref=f25e475] [cursor=pointer]:
+                              - /url: /p/Dam0N3SEh8j/c/18085939859557305/
+                              - time [ref=f25e476]: 6분
+                          - generic [ref=f25e477]: "5"
+                        - button "답글 달기" [ref=f25e480] [cursor=pointer]
+                      - button [ref=f25e487] [cursor=pointer]:
+                        - img "좋아요" [ref=f25e490]
+                  - progressbar [ref=f25e494]:
+                    - img "읽어들이는 중..." [ref=f25e495]
+              - generic [ref=f25e508]:
+                - generic [ref=f25e509]:
+                  - generic [ref=f25e510]:
+                    - button [ref=f25e513] [cursor=pointer]:
+                      - img "좋아요" [ref=f25e516]
+                    - button "57" [ref=f25e518] [cursor=pointer]
+                    - button [ref=f25e520] [cursor=pointer]:
+                      - img "댓글 달기" [ref=f25e522]
+                    - button "173" [ref=f25e524] [cursor=pointer]
+                    - button [ref=f25e525] [cursor=pointer]:
+                      - img "리포스트" [ref=f25e526]
+                    - button "8" [ref=f25e528] [cursor=pointer]
+                    - button [ref=f25e529] [cursor=pointer]:
+                      - img "공유하기" [ref=f25e530]
+                  - button [ref=f25e535] [cursor=pointer]:
+                    - button [ref=f25e536]:
+                      - img "저장" [ref=f25e538]
+                - link [ref=f25e542] [cursor=pointer]:
+                  - /url: /woojooboss_/p/Dam0N3SEh8j/
+                  - time [ref=f25e544]: 2시간 전
+              - generic [ref=f25e547]:
+                - link [ref=f25e548]
+                - generic [ref=f25e550]:
+                  - button [ref=f25e552] [cursor=pointer]:
+                    - img "이모티콘" [ref=f25e554]
+                  - textbox "댓글 달기..." [ref=f25e556]
+          - separator [ref=f25e558]
+          - generic [ref=f25e559]:
+            - generic [ref=f25e561]:
+              - link "woojooboss_" [ref=f25e562] [cursor=pointer]:
+                - /url: /woojooboss_/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f25e565]:
+              - generic [ref=f25e566]:
+                - link [ref=f25e568] [cursor=pointer]:
+                  - /url: /woojooboss_/p/DafVzC5koHK/
+                  - 'img "댓글에 이모티콘 아무거나 하나만 남겨주세요😉 클릭 한번으로 복사 가능한 12종 스티커 제작 프롬프트를 DM으로 바로 보내드리겠습니다📩 내 사진 한 장이, 귀여운 캐릭터 스티커 12종이 된다면? 이제는 프롬프트 하나면 웃고, 울고, 화내고, 하트 날리는 내 캐릭터가 뚝딱 나옵니다. 방법은 딱 3단계예요. 1️⃣ 내 사진(또는 원하는 사진) 한 장 준비 2️⃣ 공유해드리는 프롬프트 그대로 붙여넣기 3️⃣ 표정 12종 스티커 완성 캐릭터가 귀여우면 반응이 옵니다. 반응이 오면 팔로우 늘겠죠😆 재미있게 만들어 보시고 다양한 곳에 활용해 보세요 💬댓글에 ''아무 이모티콘 하나만'' 남겨주세요. 바로 복사해서 만들어 보실 수 있도록 12종 스티커 제작 프롬프트 보내드릴게요🎉 #AI이모티콘 #프롬프트 #이미지프롬프트 #스티커 더 많은 다양한 프롬프트 원하세요?" [ref=f25e571]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f25e574] [cursor=pointer]:
+                  - /url: /woojooboss_/reel/DaVON27y_We/
+                  - 'img "아무 댓글 하나만 남겨주세요.💬 이 영상 만들면서 사용했던 프롬프트와 활용 가이드 노션 문서를 DM으로 보내드리겠습니다.📩 이 영상, 편집자 없이 만들어졌습니다. 믿기 힘드시겠지만 영상 속 모션 그래픽 전부... 제가 만든 게 아니라 AI가 직접 만들었어요. \"저런 건 영상 편집 몇 년은 배워야 하는 거 아니야?\" 아니었어요. 프롬프트 붙여넣기만으로 끝났습니다. 마무리 편집만 제가 했구요. 비밀은 구글 Omni. 텍스트로 명령하면 영상을 ''생성''해주는 구글의 AI인데, 내 원본 영상에 모션 그래픽을 입히는 것까지 가능합니다. 포인트는 단 하나. 어떤 프롬프트를 넣느냐입니다. 이 영상 만들면서 사용했던 프롬프트와 꼼꼼한 활용 가이드 보내드리겠습니다. 저를 팔로우 해주시고 아무 댓글 하나만 남겨주세요. 자동 DM 바로 전송됩니다. #AI영상편집 #모션그래픽 #구글Omni #영상편집 #googleomni 구글 Omni 사용해 보신 적 있으세요?" [ref=f25e577]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f25e580] [cursor=pointer]:
+                  - /url: /woojooboss_/p/DaSTdHgkvk-/
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+              - generic [ref=f25e585]:
+                - link [ref=f25e587] [cursor=pointer]:
+                  - /url: /woojooboss_/p/DaPKjyrErhe/
+                  - 'img "아무 댓글이나 하나만 달아주시고 무료 활용 가이드 DM으로 받아가세요😉👍🏻 엔비디아가 AI 모델 100개를 무료로 풀었다길래 직접 확인해 봤습니다. 엔비디아(Nvidia)가 직접 운영하는 ''AI 모델 체험관''이 있습니다. 챗GPT처럼 채팅만 하는 곳이 아니라 DeepSeek, Qwen, Llama, Mistral, Gemma 같은 100개가 넘는 AI 모델을 한자리에서 구경하고 써볼 수 있는 ''모델 카탈로그''예요. 직접 써보고 느낀 장점은 세 가지였습니다. ☑️ 신용카드 없이 이메일만으로 가입 (결제 정보 등록 X) ☑️ 같은 질문을 여러 모델에 던져보며 비교 체험 ☑️ 웹에서 바로 결과 확인 후 활용 다른 콘텐츠에서 말하는 것처럼 ''무제한 공짜''는 아니였습니다. 가입하면 일정 무료 크레딧이 주어지고, 너무 많이 쓰면 조금씩 제한이 걸려요. 그래서 무언가를 대량으로 돌리기보다, AI 모델 체험·실험용으로 딱 좋은 사이트라는 판단이 들었습니다. 최신 AI 모델들을 무료로 사용해보며 어떤 것이 자신에게 맞는지 확인해 보고 싶으신 분들께 적극 추천드립니다. 시작은 2분이면 충분합니다. 접속 → 이메일 가입 → 모델 선택 → 바로 체험. 이게 전부예요. 아무 댓글 하나만 남겨주시면 사이트와 활용 가이드 문서를 DM으로 바로 보내드리겠습니다. @woojooboss_ 팔로우하시고 유익한 정보 꾸준하게 받아보세요🙌 📤 ''공유'' 하시면 지인들에게 칭찬 받습니다. 🔖 ''저장'' 해두시면 나중에 찾기 편합니다. 💬 ''댓글'' 남겨주시면 보내드리겠습니다. ❤️ ''좋아요'' 는 저에게 큰 힘이 됩니다. #AI도구 #무료AI #엔비디아 #AI모델 #디지털노마드" [ref=f25e590]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f25e593] [cursor=pointer]:
+                  - /url: /woojooboss_/p/DZ7Bc10kn6X/
+                  - 'img "클로드(Claude)로 콘텐츠 글을 써봤는데 어딘가 밋밋했다면, 이 글이 답입니다. 초강력 글쓰기 스킬 5개 공유합니다👍🏻 실제로 통하는 방법만 골라 5가지 스킬로 정리했습니다. 각각이 다른 문제를 해결합니다. → /DUMBIFY : 모든 문장을 중학생도 이해할 쉬운 말로 → /STORYTELLING : 끝까지 보게 만드는 이야기 구조로 → /VIRAL-HOOKS : 첫 2초를 잡는 후킹으로 다시 쓰기 → /ANTI-AI : 어색한 AI 말투를 싹 걷어내기 → /VOICE-DNA : 내 문체를 그대로 복제하는 보이스 파일 특히 마지막 보이스-DNA 스킬은 원고 20개만 학습시키면 ''좋은 글''이 아니라 ''내 글''을 써주는 게 핵심입니다. 당신 것도 2분이면 만들 수 있습니다. 콘텐츠 만드는 1인기업·프리랜서라면 저장해두고 그대로 써보세요. 댓글에 ''스킬'' 이라고 남겨주세요. 5가지 스킬 전체를 바로 쓸 수 있게 DM으로 링크 보내드리겠습니다. @woojooboss_ 팔로우하시고 유익한 정보 꾸준하게 받아보세요🙌 📤 ''공유'' 하시면 지인들에게 칭찬 받습니다. 🔖 ''저장'' 해두시면 나중에 찾기 편합니다. 💬 ''댓글'' 남겨주시면 보내드리겠습니다. ❤️ ''좋아요'' 는 저에게 큰 힘이 됩니다. #AI #클로드 #콘텐츠마케팅 #AI글쓰기 #1인기업 글쓰기에 주로 활용하시는 AI는 어떤건가요?" [ref=f25e596]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f25e599] [cursor=pointer]:
+                  - /url: /woojooboss_/p/DZ18z2Wku3d/
+                  - 'img "댓글에 ''레고'' 라고 남겨주시면 바로 복붙해서 만들어 보실 수 있는 영문 원본, 한글 번역본 프롬프트를 DM으로 보내드리겠습니다👍 내 얼굴이 진짜 레고가 된다면? 🧱요즘 해외 피드에서 정말 유행하고 있는 레고 미니 피규어 사진들 사진 딱 한 장이면 됩니다. 얼굴, 헤어스타일, 입은 옷, 색깔, 안경까지! 똑같은 컨셉의 레고로 변신시켜 주는 프롬프트를 통째로 전해드립니다😎 ✅ 영문 버전 (가장 잘 나오는 버전) ✅ 한글 버전 (그대로 복붙용) 두 가지 다 정리해 놨으니, 도구에 붙여넣기만 하면 끝이에요. 내 레고 미니 피규어, 직접 만들어 보고 싶다면 👇 👉 댓글에 ''레고'' 라고 남겨주세요! 영문·한글 프롬프트 전체를 DM으로 바로 보내드릴게요. 📩 사진을 레고로, 딱 쉽게. @woojooboss_ 팔로우하시고 AI 꿀팁 계속 받아보세요🙌 📤 ''공유'' 하시면 지인들에게 칭찬 받습니다. 🔖 ''저장'' 해두시면 나중에 찾기 편합니다. 💬 ''댓글'' 남겨주시면 보내드리겠습니다. ❤️ ''좋아요'' 는 저에게 큰 힘이 됩니다. #AI프롬프트 #레고프롬프트#나노바나나 #이미지프롬프트" [ref=f25e602]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+      - contentinfo [ref=f25e604]:
+        - generic [ref=f25e605]:
+          - generic [ref=f25e607]:
+            - link "Meta" [ref=f25e609] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f25e612] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f25e615] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f25e618] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f25e621] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f25e624] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f25e627] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f25e630] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f25e633] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f25e636] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f25e639] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f25e642] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f25e645] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f25e648] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f25e651] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f25e653]:
+            - generic [ref=f25e654] [cursor=pointer]:
+              - generic [ref=f25e655]:
+                - generic [ref=f25e656]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f25e659]
+              - combobox "표시 언어 변경" [ref=f25e661]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f25e662]: © 2026 Instagram from Meta
+  - button [ref=f25e665] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f25e666]:
+      - generic [ref=f25e667]:
+        - generic [ref=f25e669]:
+          - img "메시지" [ref=f25e670]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f25e673]: "1"
+        - generic [ref=f25e676]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f25e679]:
+        - img "사용자 아바타" [ref=f25e682]

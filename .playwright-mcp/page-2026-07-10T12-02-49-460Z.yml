@@ -1,0 +1,593 @@
+- generic [ref=f49e4]:
+  - generic [ref=f49e9]:
+    - generic [ref=f49e12]:
+      - link [ref=f49e17] [cursor=pointer]:
+        - /url: /
+        - img "Instagram" [ref=f49e22]
+      - generic [ref=f49e25]:
+        - link [ref=f49e30] [cursor=pointer]:
+          - /url: /
+          - img "홈" [ref=f49e35]
+        - link [ref=f49e40] [cursor=pointer]:
+          - /url: /reels/
+          - img "릴스" [ref=f49e45]
+        - link [ref=f49e52] [cursor=pointer]:
+          - /url: /direct/inbox/
+          - generic [ref=f49e55]:
+            - img "메시지" [ref=f49e57]
+            - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f49e60]: "1"
+        - link [ref=f49e66] [cursor=pointer]:
+          - /url: /explore/
+          - img "검색" [ref=f49e71]
+        - link [ref=f49e78] [cursor=pointer]:
+          - /url: "#"
+          - img "알림" [ref=f49e83]
+        - link [ref=f49e89] [cursor=pointer]:
+          - /url: "#"
+          - img "새로운 게시물" [ref=f49e94]
+        - link [ref=f49e100] [cursor=pointer]:
+          - /url: /ho_hong_hongs/
+          - link [ref=f49e105]:
+            - img "ho_hong_hongs님의 프로필 사진" [ref=f49e106]
+      - generic [ref=f49e107]:
+        - link [ref=f49e110] [cursor=pointer]:
+          - /url: "#"
+          - img "설정" [ref=f49e115]
+        - link [ref=f49e118] [cursor=pointer]:
+          - /url: "#"
+          - img "Meta의 다른 앱" [ref=f49e123]
+    - generic [ref=f49e126]:
+      - main [ref=f49e127]:
+        - generic [ref=f49e128]:
+          - generic [ref=f49e130]:
+            - group "Video player" [ref=f49e149]:
+              - generic:
+                - generic "재생"
+              - slider "볼륨 조정" [ref=f49e151]:
+                - button [ref=f49e155] [cursor=pointer]:
+                  - img "오디오 소리 꺼짐" [ref=f49e156]
+            - generic [ref=f49e159]:
+              - generic [ref=f49e161]:
+                - button [ref=f49e166] [cursor=pointer]:
+                  - link [ref=f49e168]:
+                    - img "ppt_studiooo님의 프로필 사진" [ref=f49e169]
+                - generic [ref=f49e172]:
+                  - generic [ref=f49e173]:
+                    - generic [ref=f49e176]:
+                      - link "ppt_studiooo" [ref=f49e181] [cursor=pointer]:
+                        - /url: /ppt_studiooo/
+                      - img "인증됨" [ref=f49e186]
+                    - link "grgr_playlist • Messy Plans" [ref=f49e191] [cursor=pointer]:
+                      - /url: /reels/audio/756023794169012/
+                      - generic [ref=f49e194]:
+                        - text: grgr_playlist
+                        - generic [ref=f49e195]: •
+                        - text: Messy Plans
+                  - button "팔로잉" [ref=f49e197] [cursor=pointer]
+                - button [ref=f49e200] [cursor=pointer]:
+                  - img "옵션 더 보기" [ref=f49e203]
+              - separator [ref=f49e207]
+              - generic [ref=f49e209]:
+                - generic [ref=f49e211]:
+                  - link [ref=f49e216] [cursor=pointer]:
+                    - /url: /ppt_studiooo/
+                    - img "ppt_studiooo님의 프로필 사진" [ref=f49e217]
+                  - generic [ref=f49e221]:
+                    - generic [ref=f49e222]:
+                      - link "ppt_studiooo 인증됨" [ref=f49e226] [cursor=pointer]:
+                        - /url: /ppt_studiooo/
+                        - generic [ref=f49e228]:
+                          - generic [ref=f49e229]: ppt_studiooo
+                          - img "인증됨" [ref=f49e231]
+                      - generic [ref=f49e233]: 수정됨
+                      - generic [ref=f49e234]: •
+                      - time [ref=f49e236]: 26주
+                    - generic [ref=f49e237]:
+                      - text: 댓글에 [강의] 남겨주시면 최저가 강의 링크 보내드릴게요🔥📍이런 PPT 슬라이드 만들기강의 한번만 듣고 템플릿 활용하면 아주 쉽게 가능 😎
+                      - link "#ppt" [ref=f49e238] [cursor=pointer]:
+                        - /url: /explore/tags/ppt/
+                      - link "#powerpoint" [ref=f49e239] [cursor=pointer]:
+                        - /url: /explore/tags/powerpoint/
+                      - link "#피피티" [ref=f49e240] [cursor=pointer]:
+                        - /url: /explore/tags/%ED%94%BC%ED%94%BC%ED%8B%B0/
+                - generic [ref=f49e241]:
+                  - generic [ref=f49e244]:
+                    - link [ref=f49e250] [cursor=pointer]:
+                      - /url: /ppt_studiooo/
+                      - img "ppt_studiooo님의 프로필 사진" [ref=f49e251]
+                    - generic [ref=f49e252]:
+                      - generic [ref=f49e253]:
+                        - generic [ref=f49e255]:
+                          - generic [ref=f49e256]:
+                            - link "ppt_studiooo 인증됨" [ref=f49e261] [cursor=pointer]:
+                              - /url: /ppt_studiooo/
+                              - generic [ref=f49e263]:
+                                - generic [ref=f49e264]: ppt_studiooo
+                                - img "인증됨" [ref=f49e266]
+                            - link [ref=f49e269] [cursor=pointer]:
+                              - /url: /p/DTKfTVXiQan/c/18115754701520442/
+                              - time [ref=f49e270]: 26주
+                          - generic [ref=f49e271]: 댓글에 [강의] 남기면, 최저가 강의 신청 링크 보내드려요🔥
+                        - button "답글 달기" [ref=f49e274] [cursor=pointer]
+                      - button [ref=f49e281] [cursor=pointer]:
+                        - img "좋아요" [ref=f49e284]
+                  - generic [ref=f49e286]:
+                    - generic [ref=f49e288]:
+                      - link [ref=f49e294] [cursor=pointer]:
+                        - /url: /plztagme_/
+                        - img "plztagme_님의 프로필 사진" [ref=f49e295]
+                      - generic [ref=f49e296]:
+                        - generic [ref=f49e297]:
+                          - generic [ref=f49e299]:
+                            - generic [ref=f49e300]:
+                              - link "plztagme_" [ref=f49e305] [cursor=pointer]:
+                                - /url: /plztagme_/
+                              - link [ref=f49e310] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18091637140785633/
+                                - time [ref=f49e311]: 26주
+                            - generic [ref=f49e312]: 강의👏🙌😀👍😲
+                          - generic [ref=f49e314]:
+                            - button "좋아요 1개" [ref=f49e315] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e318] [cursor=pointer]
+                        - button [ref=f49e325] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e328]
+                    - button "답글 1개 모두 보기" [ref=f49e331] [cursor=pointer]
+                  - generic [ref=f49e335]:
+                    - generic [ref=f49e337]:
+                      - link [ref=f49e343] [cursor=pointer]:
+                        - /url: /money_daramg/
+                        - img "money_daramg님의 프로필 사진" [ref=f49e344]
+                      - generic [ref=f49e345]:
+                        - generic [ref=f49e346]:
+                          - generic [ref=f49e348]:
+                            - generic [ref=f49e349]:
+                              - link "money_daramg" [ref=f49e354] [cursor=pointer]:
+                                - /url: /money_daramg/
+                              - link [ref=f49e359] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/17925231312055700/
+                                - time [ref=f49e360]: 26주
+                            - generic [ref=f49e361]: 새해엔 이거다! 강의❤️
+                          - generic [ref=f49e363]:
+                            - button "좋아요 1개" [ref=f49e364] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e367] [cursor=pointer]
+                        - button [ref=f49e374] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e377]
+                    - button "답글 1개 모두 보기" [ref=f49e380] [cursor=pointer]
+                  - generic [ref=f49e384]:
+                    - generic [ref=f49e386]:
+                      - link [ref=f49e392] [cursor=pointer]:
+                        - /url: /ssu_inni_/
+                        - img "ssu_inni_님의 프로필 사진" [ref=f49e393]
+                      - generic [ref=f49e394]:
+                        - generic [ref=f49e395]:
+                          - generic [ref=f49e397]:
+                            - generic [ref=f49e398]:
+                              - link "ssu_inni_" [ref=f49e403] [cursor=pointer]:
+                                - /url: /ssu_inni_/
+                              - link [ref=f49e408] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18134411941493010/
+                                - time [ref=f49e409]: 26주
+                            - generic [ref=f49e410]: 강의🙌
+                          - generic [ref=f49e412]:
+                            - button "좋아요 1개" [ref=f49e413] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e416] [cursor=pointer]
+                        - button [ref=f49e423] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e426]
+                    - button "답글 1개 모두 보기" [ref=f49e429] [cursor=pointer]
+                  - generic [ref=f49e433]:
+                    - generic [ref=f49e435]:
+                      - link [ref=f49e441] [cursor=pointer]:
+                        - /url: /fhmw__/
+                        - img "fhmw__님의 프로필 사진" [ref=f49e442]
+                      - generic [ref=f49e443]:
+                        - generic [ref=f49e444]:
+                          - generic [ref=f49e446]:
+                            - generic [ref=f49e447]:
+                              - link "fhmw__" [ref=f49e452] [cursor=pointer]:
+                                - /url: /fhmw__/
+                              - link [ref=f49e457] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/17912273388126284/
+                                - time [ref=f49e458]: 26주
+                            - generic [ref=f49e459]: 강의❤️
+                          - generic [ref=f49e461]:
+                            - button "좋아요 1개" [ref=f49e462] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e465] [cursor=pointer]
+                        - button [ref=f49e472] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e475]
+                    - button "답글 1개 모두 보기" [ref=f49e478] [cursor=pointer]
+                  - generic [ref=f49e482]:
+                    - generic [ref=f49e484]:
+                      - link [ref=f49e490] [cursor=pointer]:
+                        - /url: /k__jeanne/
+                        - img "k__jeanne님의 프로필 사진" [ref=f49e491]
+                      - generic [ref=f49e492]:
+                        - generic [ref=f49e493]:
+                          - generic [ref=f49e495]:
+                            - generic [ref=f49e496]:
+                              - link "k__jeanne" [ref=f49e501] [cursor=pointer]:
+                                - /url: /k__jeanne/
+                              - link [ref=f49e506] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18049737014698848/
+                                - time [ref=f49e507]: 22주
+                            - generic [ref=f49e508]: 강의
+                          - button "답글 달기" [ref=f49e511] [cursor=pointer]
+                        - button [ref=f49e518] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e521]
+                    - button "답글 1개 모두 보기" [ref=f49e524] [cursor=pointer]
+                  - generic [ref=f49e528]:
+                    - generic [ref=f49e530]:
+                      - link [ref=f49e536] [cursor=pointer]:
+                        - /url: /minsu_rnc/
+                        - img "minsu_rnc님의 프로필 사진" [ref=f49e537]
+                      - generic [ref=f49e538]:
+                        - generic [ref=f49e539]:
+                          - generic [ref=f49e541]:
+                            - generic [ref=f49e542]:
+                              - link "minsu_rnc" [ref=f49e547] [cursor=pointer]:
+                                - /url: /minsu_rnc/
+                              - link [ref=f49e552] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/17947869261085824/
+                                - time [ref=f49e553]: 26주
+                            - generic [ref=f49e554]: 강의
+                          - button "답글 달기" [ref=f49e557] [cursor=pointer]
+                        - button [ref=f49e564] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e567]
+                    - button "답글 1개 모두 보기" [ref=f49e570] [cursor=pointer]
+                  - generic [ref=f49e574]:
+                    - generic [ref=f49e576]:
+                      - link [ref=f49e582] [cursor=pointer]:
+                        - /url: /0starrrr/
+                        - img "0starrrr님의 프로필 사진" [ref=f49e583]
+                      - generic [ref=f49e584]:
+                        - generic [ref=f49e585]:
+                          - generic [ref=f49e587]:
+                            - generic [ref=f49e588]:
+                              - link "0starrrr 인증됨" [ref=f49e593] [cursor=pointer]:
+                                - /url: /0starrrr/
+                                - generic [ref=f49e595]:
+                                  - generic [ref=f49e596]: 0starrrr
+                                  - img "인증됨" [ref=f49e598]
+                              - link [ref=f49e601] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18033153905767263/
+                                - time [ref=f49e602]: 26주
+                            - generic [ref=f49e603]: 강의
+                          - generic [ref=f49e605]:
+                            - button "좋아요 1개" [ref=f49e606] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e609] [cursor=pointer]
+                        - button [ref=f49e616] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e619]
+                    - button "답글 1개 모두 보기" [ref=f49e622] [cursor=pointer]
+                  - generic [ref=f49e626]:
+                    - generic [ref=f49e628]:
+                      - link [ref=f49e634] [cursor=pointer]:
+                        - /url: /kong_jiiiii_/
+                        - img "kong_jiiiii_님의 프로필 사진" [ref=f49e635]
+                      - generic [ref=f49e636]:
+                        - generic [ref=f49e637]:
+                          - generic [ref=f49e639]:
+                            - generic [ref=f49e640]:
+                              - link "kong_jiiiii_" [ref=f49e645] [cursor=pointer]:
+                                - /url: /kong_jiiiii_/
+                              - link [ref=f49e650] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/17884436181429641/
+                                - time [ref=f49e651]: 24주
+                            - generic [ref=f49e652]: 강의
+                          - button "답글 달기" [ref=f49e655] [cursor=pointer]
+                        - button [ref=f49e662] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e665]
+                    - button "답글 1개 모두 보기" [ref=f49e668] [cursor=pointer]
+                  - generic [ref=f49e672]:
+                    - generic [ref=f49e674]:
+                      - link [ref=f49e680] [cursor=pointer]:
+                        - /url: /hellobitna/
+                        - img "hellobitna님의 프로필 사진" [ref=f49e681]
+                      - generic [ref=f49e682]:
+                        - generic [ref=f49e683]:
+                          - generic [ref=f49e685]:
+                            - generic [ref=f49e686]:
+                              - link "hellobitna" [ref=f49e691] [cursor=pointer]:
+                                - /url: /hellobitna/
+                              - link [ref=f49e696] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18389998975178291/
+                                - time [ref=f49e697]: 26주
+                            - generic [ref=f49e698]: 강의
+                          - generic [ref=f49e700]:
+                            - button "좋아요 1개" [ref=f49e701] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e704] [cursor=pointer]
+                        - button [ref=f49e711] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e714]
+                    - button "답글 1개 모두 보기" [ref=f49e717] [cursor=pointer]
+                  - generic [ref=f49e721]:
+                    - generic [ref=f49e723]:
+                      - link [ref=f49e729] [cursor=pointer]:
+                        - /url: /batatadecobatata/
+                        - img "batatadecobatata님의 프로필 사진" [ref=f49e730]
+                      - generic [ref=f49e731]:
+                        - generic [ref=f49e732]:
+                          - generic [ref=f49e734]:
+                            - generic [ref=f49e735]:
+                              - link "batatadecobatata" [ref=f49e740] [cursor=pointer]:
+                                - /url: /batatadecobatata/
+                              - link [ref=f49e745] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18115035916659748/
+                                - time [ref=f49e746]: 14주
+                            - generic [ref=f49e747]: 강의
+                          - button "답글 달기" [ref=f49e750] [cursor=pointer]
+                        - button [ref=f49e757] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e760]
+                    - button "답글 1개 모두 보기" [ref=f49e763] [cursor=pointer]
+                  - generic [ref=f49e767]:
+                    - generic [ref=f49e769]:
+                      - link [ref=f49e775] [cursor=pointer]:
+                        - /url: /happy30eok/
+                        - img "happy30eok님의 프로필 사진" [ref=f49e776]
+                      - generic [ref=f49e777]:
+                        - generic [ref=f49e778]:
+                          - generic [ref=f49e780]:
+                            - generic [ref=f49e781]:
+                              - link "happy30eok" [ref=f49e786] [cursor=pointer]:
+                                - /url: /happy30eok/
+                              - link [ref=f49e791] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18340149328224532/
+                                - time [ref=f49e792]: 26주
+                            - generic [ref=f49e793]: 강의
+                          - generic [ref=f49e795]:
+                            - button "좋아요 1개" [ref=f49e796] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e799] [cursor=pointer]
+                        - button [ref=f49e806] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e809]
+                    - button "답글 1개 모두 보기" [ref=f49e812] [cursor=pointer]
+                  - generic [ref=f49e816]:
+                    - generic [ref=f49e818]:
+                      - link [ref=f49e824] [cursor=pointer]:
+                        - /url: /yunmi_jo_/
+                        - img "yunmi_jo_님의 프로필 사진" [ref=f49e825]
+                      - generic [ref=f49e826]:
+                        - generic [ref=f49e827]:
+                          - generic [ref=f49e829]:
+                            - generic [ref=f49e830]:
+                              - link "yunmi_jo_" [ref=f49e835] [cursor=pointer]:
+                                - /url: /yunmi_jo_/
+                              - link [ref=f49e840] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18168812893385436/
+                                - time [ref=f49e841]: 26주
+                            - generic [ref=f49e842]: 강의
+                          - generic [ref=f49e844]:
+                            - button "좋아요 1개" [ref=f49e845] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e848] [cursor=pointer]
+                        - button [ref=f49e855] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e858]
+                    - button "답글 1개 모두 보기" [ref=f49e861] [cursor=pointer]
+                  - generic [ref=f49e865]:
+                    - generic [ref=f49e867]:
+                      - link [ref=f49e873] [cursor=pointer]:
+                        - /url: /shell.d_/
+                        - img "shell.d_님의 프로필 사진" [ref=f49e874]
+                      - generic [ref=f49e875]:
+                        - generic [ref=f49e876]:
+                          - generic [ref=f49e878]:
+                            - generic [ref=f49e879]:
+                              - link "shell.d_" [ref=f49e884] [cursor=pointer]:
+                                - /url: /shell.d_/
+                              - link [ref=f49e889] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/17849120805622715/
+                                - time [ref=f49e890]: 25주
+                            - generic [ref=f49e891]: 강의
+                          - button "답글 달기" [ref=f49e894] [cursor=pointer]
+                        - button [ref=f49e901] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e904]
+                    - button "답글 1개 모두 보기" [ref=f49e907] [cursor=pointer]
+                  - generic [ref=f49e911]:
+                    - generic [ref=f49e913]:
+                      - link [ref=f49e919] [cursor=pointer]:
+                        - /url: /sensesene/
+                        - img "sensesene님의 프로필 사진" [ref=f49e920]
+                      - generic [ref=f49e921]:
+                        - generic [ref=f49e922]:
+                          - generic [ref=f49e924]:
+                            - generic [ref=f49e925]:
+                              - link "sensesene" [ref=f49e930] [cursor=pointer]:
+                                - /url: /sensesene/
+                              - link [ref=f49e935] [cursor=pointer]:
+                                - /url: /p/DTKfTVXiQan/c/18332208058243991/
+                                - time [ref=f49e936]: 26주
+                            - generic [ref=f49e937]: 강의
+                          - generic [ref=f49e939]:
+                            - button "좋아요 1개" [ref=f49e940] [cursor=pointer]
+                            - button "답글 달기" [ref=f49e943] [cursor=pointer]
+                        - button [ref=f49e950] [cursor=pointer]:
+                          - img "좋아요" [ref=f49e953]
+                    - button "답글 1개 모두 보기" [ref=f49e956] [cursor=pointer]
+                  - progressbar [ref=f49e962]:
+                    - img "읽어들이는 중..." [ref=f49e963]
+              - generic [ref=f49e976]:
+                - generic [ref=f49e977]:
+                  - generic [ref=f49e978]:
+                    - button [ref=f49e981] [cursor=pointer]:
+                      - img "좋아요" [ref=f49e984]
+                    - button "76" [ref=f49e986] [cursor=pointer]
+                    - button [ref=f49e988] [cursor=pointer]:
+                      - img "댓글 달기" [ref=f49e990]
+                    - button "65" [ref=f49e992] [cursor=pointer]
+                    - button [ref=f49e993] [cursor=pointer]:
+                      - img "리포스트" [ref=f49e994]
+                    - button "2" [ref=f49e996] [cursor=pointer]
+                    - button [ref=f49e997] [cursor=pointer]:
+                      - img "공유하기" [ref=f49e998]
+                  - button [ref=f49e1003] [cursor=pointer]:
+                    - button [ref=f49e1004]:
+                      - img "저장" [ref=f49e1006]
+                - generic [ref=f49e1009]:
+                  - link [ref=f49e1011] [cursor=pointer]:
+                    - /url: /p/DTKfTVXiQan/liked_by/
+                    - button [ref=f49e1014]:
+                      - link [ref=f49e1015]
+                  - generic [ref=f49e1017]:
+                    - link "oliver_travel_" [ref=f49e1018] [cursor=pointer]:
+                      - /url: /oliver_travel_/
+                    - text: 님
+                    - link "외 75명" [ref=f49e1019] [cursor=pointer]:
+                      - /url: /p/DTKfTVXiQan/liked_by/
+                    - text: 이 좋아합니다
+                - link [ref=f49e1023] [cursor=pointer]:
+                  - /url: /ppt_studiooo/reel/DTKfTVXiQan/
+                  - time [ref=f49e1025]: 1월 6일
+              - generic [ref=f49e1028]:
+                - link [ref=f49e1029]
+                - generic [ref=f49e1031]:
+                  - button [ref=f49e1033] [cursor=pointer]:
+                    - img "이모티콘" [ref=f49e1035]
+                  - textbox "댓글 달기..." [ref=f49e1037]
+          - separator [ref=f49e1039]
+          - generic [ref=f49e1040]:
+            - generic [ref=f49e1042]:
+              - link "ppt_studiooo" [ref=f49e1043] [cursor=pointer]:
+                - /url: /ppt_studiooo/
+              - text: 님의 게시물 더 보기
+            - generic [ref=f49e1046]:
+              - generic [ref=f49e1047]:
+                - link [ref=f49e1049] [cursor=pointer]:
+                  - /url: /ppt_studiooo/p/DKrhXLvpbIt/
+                  - img "사실 tmi 엄청 많은 PPT 계정이지만😚, 그래도 PPT로 쭉- 잘 성장하고 있습니다! 1. 한국강사교육진흥원 수석위원 교육인 2. 피튜디오 인터뷰 기사 3. 원했던 기업 강의들을 진행하고, 4. 언제 어디서든 간편히 들을 수 있는 PPT 강의 5. 촬영은 언제나 떨려요😖 6. 열심히 일했지만 몸은 엉망진창, 만성 두드러기 7. 강사의 가방 속 준비물들은 이러합니다 +앞으로의 성장도 🌈🦄 🔗PPT 강의는 프로필 링크에서 신청" [ref=f49e1052]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f49e1055] [cursor=pointer]:
+                  - /url: /ppt_studiooo/p/DNmwaIEJPop/
+                  - 'img "CJ 인재원에서 신입사원 교육 +새벽부터 비가 엄청 쏟아진 날☔️ 커리큘럼 중 특별 코너로 조별 과제를 넣어봤는데 아주 인기 폭발이었던,,, (내용은 비밀) 무도키즈도 있고 에반반게리온부터 베르톨트까지 등장했던 강렬했던 수업ㅋㅋㅋ 신입사원 교육 맞냐며,,, #ppt #powerpoint #강의 #강사" [ref=f49e1058]'
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+                - link [ref=f49e1061] [cursor=pointer]:
+                  - /url: /ppt_studiooo/p/DGUg7bXpNlG/
+                  - img "📍2025 1-2월 피튜디오 보고서 + 뒤에는 그냥 찐 일상사진 1. 더현대에 저 있어요!! IFC몰-더현대 사이에 있는 디지털갤러리들마다 나옴 더현대 가시는 분들 저 찾아주세요🫶🏻 2. Apple 워크샵 PPT 강의 조금 애플스럽게 입고 싶어서👩🏻‍💻(매우 주관적ㅋㅋ) 청청 패션으로 강의한 날👖 3. 삼성강남 PPT 강의 아주 캐주얼하게 진행된 강의! 사실 2번 Apple 워크샵과 같은 날이었는데 옷만👔 바꿔 입고 강의했어요ㅎㅎ 비하인드 4. CJ 신입사원 교육 신입사원 교육은 언제나 즐거워💗 리액션도 잘해주시고 반응도 최상ㅋㅋㅋ 리액션을 너무 잘해주셔서 처음에 몰카인 줄 알고 ’잠깐 타임!! 여러분 저 놀리는 거 아니시죠?‘ 물어보면서 강의했어요ㅋㅋ 이틀 연속으로 7시간씩 강의했지만 오히려 제가 더 많은 열정과 에너지를 얻고 온 거 같아요! 🙌🏻 5. LG 연구원 대상 강의 서초R&D캠퍼스 대회의실에서 진행한 PPT 강의! 모두 적극 참여해 주셔서 즐거웠던 시간이었습니다✨ 6. 2월 PPT 캠프 4기!! 3주간 자기개발러들 모두 개근한...! 그 유명한 강의!! (자칭ㅎㅎ) 열정을 가지고 참여해 주셔서 즐거운 분위기로 끝까지 함께 달렸습니다요🏃🏻‍♀️ + 강의를 다니다 보니 좋은 분도 많이 만나고, 이전에 저에게 악플 단 분도 만나고ㅋㅋ (사과 받아냄ㅎㅎ) 앞으로도 열심히 해보겠습니다! 저의 성장을 지켜봐 주세요😍" [ref=f49e1064]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+              - generic [ref=f49e1066]:
+                - link [ref=f49e1068] [cursor=pointer]:
+                  - /url: /ppt_studiooo/reel/DaZ-qVbzj7S/
+                  - img "AI 공부하는 요즘 내 상태 어깨가 너무 무거워🥺 다들 어찌 그리 빠르게 공부하나요 나야말로 꿀팁 좀...🫨" [ref=f49e1071]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f49e1074] [cursor=pointer]:
+                  - /url: /ppt_studiooo/reel/DZwyhCJz-WZ/
+                  - img "노트북 들고 서촌가서 일하기👩🏻‍💻" [ref=f49e1077]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "클립"
+                - link [ref=f49e1080] [cursor=pointer]:
+                  - /url: /ppt_studiooo/p/DYy-hWwIDJq/
+                  - img "맥 PPT 헷갈릴 때 많자나요! (헤매는..! 오타수정이 안돼잉🥹)" [ref=f49e1083]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "슬라이드"
+      - contentinfo [ref=f49e1085]:
+        - generic [ref=f49e1086]:
+          - generic [ref=f49e1088]:
+            - link "Meta" [ref=f49e1090] [cursor=pointer]:
+              - /url: https://about.meta.com/
+            - link "소개" [ref=f49e1093] [cursor=pointer]:
+              - /url: https://about.instagram.com/
+            - link "블로그" [ref=f49e1096] [cursor=pointer]:
+              - /url: https://about.instagram.com/blog/
+            - link "채용 정보" [ref=f49e1099] [cursor=pointer]:
+              - /url: https://about.instagram.com/about-us/careers
+            - link "도움말" [ref=f49e1102] [cursor=pointer]:
+              - /url: https://help.instagram.com/
+            - link "API" [ref=f49e1105] [cursor=pointer]:
+              - /url: https://developers.facebook.com/docs/instagram
+            - link "개인정보처리방침" [ref=f49e1108] [cursor=pointer]:
+              - /url: /legal/privacy/
+            - link "약관" [ref=f49e1111] [cursor=pointer]:
+              - /url: /legal/terms/
+            - link "위치" [ref=f49e1114] [cursor=pointer]:
+              - /url: /explore/locations/
+            - link "인기" [ref=f49e1117] [cursor=pointer]:
+              - /url: /popular/
+            - link "Instagram Lite" [ref=f49e1120] [cursor=pointer]:
+              - /url: /web/lite/
+            - link "Meta AI" [ref=f49e1123] [cursor=pointer]:
+              - /url: https://www.meta.ai/?utm_source=foa_web_footer
+            - link "Threads" [ref=f49e1126] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - link "연락처 업로드 & 비사용자" [ref=f49e1129] [cursor=pointer]:
+              - /url: https://www.facebook.com/help/instagram/261704639352628
+            - link "Meta Verified" [ref=f49e1132] [cursor=pointer]:
+              - /url: /accounts/meta_verified/?entrypoint=web_footer
+          - generic [ref=f49e1134]:
+            - generic [ref=f49e1135] [cursor=pointer]:
+              - generic [ref=f49e1136]:
+                - generic [ref=f49e1137]: 한국어
+                - img "아래쪽 V자형 아이콘" [ref=f49e1140]
+              - combobox "표시 언어 변경" [ref=f49e1142]:
+                - option "Afrikaans"
+                - option "العربية"
+                - option "Čeština"
+                - option "Dansk"
+                - option "Deutsch"
+                - option "Ελληνικά"
+                - option "English"
+                - option "English (UK)"
+                - option "Español (España)"
+                - option "Español"
+                - option "فارسی"
+                - option "Suomi"
+                - option "Français"
+                - option "עברית"
+                - option "Bahasa Indonesia"
+                - option "Italiano"
+                - option "日本語"
+                - option "한국어" [selected]
+                - option "Bahasa Melayu"
+                - option "Norsk"
+                - option "Nederlands"
+                - option "Polski"
+                - option "Português (Brasil)"
+                - option "Português (Portugal)"
+                - option "Русский"
+                - option "Svenska"
+                - option "ภาษาไทย"
+                - option "Filipino"
+                - option "Türkçe"
+                - option "中文(简体)"
+                - option "中文(台灣)"
+                - option "বাংলা"
+                - option "ગુજરાતી"
+                - option "हिन्दी"
+                - option "Hrvatski"
+                - option "Magyar"
+                - option "ಕನ್ನಡ"
+                - option "മലയാളം"
+                - option "मराठी"
+                - option "नेपाली"
+                - option "ਪੰਜਾਬੀ"
+                - option "සිංහල"
+                - option "Slovenčina"
+                - option "தமிழ்"
+                - option "తెలుగు"
+                - option "اردو"
+                - option "Tiếng Việt"
+                - option "中文(香港)"
+                - option "Български"
+                - option "Français (Canada)"
+                - option "Română"
+                - option "Српски"
+                - option "Українська"
+            - generic [ref=f49e1143]: © 2026 Instagram from Meta
+  - button [ref=f49e1146] [cursor=pointer]:
+    - generic "메시지 - 새 알림 1개" [ref=f49e1147]:
+      - generic [ref=f49e1148]:
+        - generic [ref=f49e1150]:
+          - img "메시지" [ref=f49e1151]
+          - generic "Direct 메시지 - 새로운 알림 링크 1개" [ref=f49e1154]: "1"
+        - generic [ref=f49e1157]: 메시지
+      - button "사용자 아바타 릴트리거 | 영상편집 꿀팁 • 릴스기획님" [ref=f49e1160]:
+        - img "사용자 아바타" [ref=f49e1163]

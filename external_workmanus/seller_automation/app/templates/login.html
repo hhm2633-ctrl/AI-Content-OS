@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로그인 · 셀러 자동화</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="center-wrap">
+    <div class="card narrow">
+      <h1>셀러 자동화 시스템</h1>
+      <p class="sub">승인된 기기에서만 접속할 수 있습니다.</p>
+      <form method="post" action="/login">
+        <label for="password">관리자 비밀번호</label>
+        <input type="password" id="password" name="password" autofocus required>
+        <button type="submit" class="full">로그인</button>
+      </form>
+      {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    </div>
+  </div>
+</body>
+</html>

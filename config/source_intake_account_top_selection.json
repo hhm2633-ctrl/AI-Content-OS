@@ -1,0 +1,57 @@
+{
+  "schema_version": "source_intake_account_top_selection_config_v1",
+  "calibration_status": "initial_unvalidated",
+  "calibration_note": "Initial owner-directed weights and limits. Recalibrate only after reviewed operating samples; do not claim performance optimization.",
+  "recurrence_saturation_repeat_count": 4,
+  "minimum_signal_coverage": 0.65,
+  "accounts": {
+    "account_a_news_incident": {
+      "top_limit": 5,
+      "backup_limit": 5,
+      "top_min_score": 0.55,
+      "backup_min_score": 0.4,
+      "max_per_category": 2,
+      "max_per_primary_source": 2,
+      "weights": {
+        "category_fit": 0.15,
+        "category_value": 0.25,
+        "attention": 0.1,
+        "confidence": 0.25,
+        "freshness": 0.2,
+        "recurrence": 0.05
+      }
+    },
+    "account_b_issue_story": {
+      "top_limit": 5,
+      "backup_limit": 5,
+      "top_min_score": 0.55,
+      "backup_min_score": 0.4,
+      "max_per_category": 3,
+      "max_per_primary_source": 2,
+      "weights": {
+        "category_fit": 0.1,
+        "category_value": 0.15,
+        "attention": 0.3,
+        "confidence": 0.1,
+        "freshness": 0.15,
+        "recurrence": 0.2
+      }
+    },
+    "account_c_beauty_fashion": {
+      "top_limit": 5,
+      "backup_limit": 5,
+      "top_min_score": 0.5,
+      "backup_min_score": 0.35,
+      "max_per_category": 5,
+      "max_per_primary_source": 2,
+      "weights": {
+        "category_fit": 0.2,
+        "category_value": 0.25,
+        "attention": 0.15,
+        "confidence": 0.15,
+        "freshness": 0.1,
+        "recurrence": 0.15
+      }
+    }
+  }
+}
