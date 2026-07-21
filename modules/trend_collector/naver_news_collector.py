@@ -9,13 +9,40 @@ from typing import Any, Dict, List, Optional
 from urllib.error import HTTPError, URLError
 
 from modules.common.service_diagnostic import ServiceDiagnostic
+from modules.trend_collector.naver_api_hub_client import NaverApiHubClient
 
 
 class NaverNewsCollector:
-    def __init__(self, timeout: int = 8, max_items_per_query: int = 5):
+    # Anchor/attribute scanning must not depend on attribute order, quote
+    # style, or extra attributes injected by markup changes.
+    _ANCHOR_PATTERN = re.compile(
+        r"<a\b([^>]*)>(.*?)</a\s*>",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    _ATTRIBUTE_PATTERN = re.compile(
+        r"""([\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')"""
+    )
+    # Lenient RSS recovery for payloads ET refuses (unbound prefixes,
+    # stray entities) while <item> blocks are still intact.
+    _LENIENT_ITEM_PATTERN = re.compile(
+        r"<(?:[\w.-]+:)?item(?=[\s>])[^>]*>(.*?)</(?:[\w.-]+:)?item\s*>",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    def __init__(
+        self,
+        timeout: int = 8,
+        max_items_per_query: int = 5,
+        api_hub_client: Optional[NaverApiHubClient] = None,
+    ):
         self.timeout = timeout
         self.max_items_per_query = max_items_per_query
         self.service_diagnostic = ServiceDiagnostic()
+        self.api_hub_client = (
+            api_hub_client
+            if api_hub_client is not None
+            else NaverApiHubClient(timeout=timeout)
+        )
         self.last_status = self._empty_status()
 
     def _empty_status(self) -> Dict[str, Any]:
@@ -31,6 +58,13 @@ class NaverNewsCollector:
             "collection_method": "",
             "used_cache": False,
             "cache_path": "",
+            "api_hub": {
+                "attempted": False,
+                "used": False,
+                "credentials_present": None,
+                "error_type": "",
+                "safe_message": "",
+            },
             "service_diagnostic": {
                 "service": "naver_news",
                 "status": "ok",
@@ -114,12 +148,111 @@ class NaverNewsCollector:
         query: str,
         source: Dict[str, Any],
     ) -> List[Dict[str, Any]]:
-        rss_items = self._collect_from_rss(query=query, source=source)
+        """API Hub -> RSS -> HTML search chain for a single query.
+
+        An RSS payload that cannot be parsed no longer aborts the query: the
+        HTML search path is still attempted, and the original ParseError is
+        re-raised only if HTML also yields nothing, so the parse_failed
+        reason code is preserved for the outer fallback chain.
+        """
+        api_hub_items = self._collect_from_api_hub(query=query, source=source)
+
+        if api_hub_items:
+            return api_hub_items
+
+        rss_parse_error: Optional[ET.ParseError] = None
+
+        try:
+            rss_items = self._collect_from_rss(query=query, source=source)
+        except ET.ParseError as error:
+            rss_items = []
+            rss_parse_error = error
 
         if rss_items:
             return rss_items
 
-        return self._collect_from_search_result(query=query, source=source)
+        html_items = self._collect_from_search_result(query=query, source=source)
+
+        if html_items:
+            return html_items
+
+        if rss_parse_error is not None:
+            raise rss_parse_error
+
+        return []
+
+    def _collect_from_api_hub(
+        self,
+        query: str,
+        source: Dict[str, Any],
+    ) -> List[Dict[str, Any]]:
+        """Optional NAVER API HUB path ahead of the bounded RSS/HTML chain.
+
+        Any API failure is recorded as a diagnostic in last_status["api_hub"]
+        and returns [] so the existing RSS -> HTML -> cache -> settings ->
+        placeholder fallback chain stays intact. This method never raises.
+        """
+        api_status = self.last_status.get("api_hub")
+
+        if self.api_hub_client is None or not isinstance(api_status, dict):
+            return []
+
+        try:
+            result = self.api_hub_client.search_news(
+                query=query,
+                display=self.max_items_per_query,
+            )
+            credentials_present = bool(result.get("credentials_present"))
+            api_status["credentials_present"] = credentials_present
+
+            if result.get("status") == "ok":
+                api_status["attempted"] = True
+                api_status["used"] = True
+                api_status["error_type"] = ""
+                api_status["safe_message"] = ""
+                trends = []
+
+                for index, item in enumerate(
+                    result.get("items", [])[: self.max_items_per_query],
+                    start=1,
+                ):
+                    title = str(item.get("title", "")).strip()
+
+                    if not title:
+                        continue
+
+                    trends.append(
+                        self._build_trend_item(
+                            query=query,
+                            title=title,
+                            link=str(item.get("link", "")),
+                            summary=str(item.get("description", "")),
+                            published_at=str(item.get("pubDate", "")),
+                            index=index,
+                            source=source,
+                            collection_method="naver_news_api_hub",
+                        )
+                    )
+
+                return trends
+
+            api_status["attempted"] = bool(api_status.get("attempted")) or credentials_present
+
+            if not api_status.get("used"):
+                api_status["error_type"] = result.get("error_type", "")
+                api_status["safe_message"] = result.get("safe_message", "")
+
+            return []
+        except Exception:
+            api_status["attempted"] = True
+
+            if not api_status.get("used"):
+                api_status["error_type"] = "unknown_error"
+                api_status["safe_message"] = (
+                    "NAVER API HUB call failed unexpectedly; using RSS fallback."
+                )
+
+            return []
 
     def _collect_from_rss(
         self,
@@ -130,8 +263,38 @@ class NaverNewsCollector:
         url = f"https://search.naver.com/search.naver?where=rss&query={encoded_query}"
         raw_xml = self._fetch_url(url)
 
-        root = ET.fromstring(raw_xml)
-        items = root.findall(".//item")
+        return self._parse_rss_payload(query=query, source=source, raw_xml=raw_xml)
+
+    def _parse_rss_payload(
+        self,
+        query: str,
+        source: Dict[str, Any],
+        raw_xml: str,
+    ) -> List[Dict[str, Any]]:
+        """Parse an RSS payload, tolerating namespaces and case variance.
+
+        HTML payloads (the RSS endpoint serving a search page) and
+        unrecoverably malformed XML raise ET.ParseError so the caller can
+        try the HTML search path while keeping the parse_failed reason.
+        """
+        if self._looks_like_html(raw_xml):
+            raise ET.ParseError("rss payload is an html document")
+
+        try:
+            root = ET.fromstring(raw_xml)
+        except ET.ParseError as parse_error:
+            lenient_items = self._parse_rss_items_lenient(
+                query=query,
+                source=source,
+                raw_xml=raw_xml,
+            )
+
+            if lenient_items:
+                return lenient_items
+
+            raise parse_error
+
+        items = self._find_rss_items(root)
         trends = []
 
         for index, item in enumerate(items[:self.max_items_per_query], start=1):
@@ -160,6 +323,87 @@ class NaverNewsCollector:
             )
 
         return trends
+
+    def _find_rss_items(self, root: ET.Element) -> List[ET.Element]:
+        items = []
+
+        for element in root.iter():
+            if self._xml_local_name(element.tag) == "item":
+                items.append(element)
+
+        return items
+
+    def _xml_local_name(self, tag: Any) -> str:
+        # Comments/processing instructions surface non-string tags in ET.
+        if not isinstance(tag, str):
+            return ""
+
+        return tag.rsplit("}", 1)[-1].strip().lower()
+
+    def _parse_rss_items_lenient(
+        self,
+        query: str,
+        source: Dict[str, Any],
+        raw_xml: str,
+    ) -> List[Dict[str, Any]]:
+        trends = []
+
+        for match in self._LENIENT_ITEM_PATTERN.finditer(raw_xml):
+            if len(trends) >= self.max_items_per_query:
+                break
+
+            block = match.group(1)
+            title = self._clean_text(self._extract_tag_text(block, "title"))
+
+            if not title:
+                continue
+
+            link = self._clean_text(
+                self._extract_tag_text(block, "originallink")
+                or self._extract_tag_text(block, "link")
+            )
+            summary = self._clean_text(self._extract_tag_text(block, "description"))
+            published_at = self._clean_text(self._extract_tag_text(block, "pubDate"))
+
+            trends.append(
+                self._build_trend_item(
+                    query=query,
+                    title=title,
+                    link=link,
+                    summary=summary,
+                    published_at=published_at,
+                    index=len(trends) + 1,
+                    source=source,
+                    collection_method="naver_news_rss",
+                )
+            )
+
+        return trends
+
+    def _extract_tag_text(self, block: str, tag_name: str) -> str:
+        escaped = re.escape(tag_name)
+        pattern = re.compile(
+            rf"<(?:[\w.-]+:)?{escaped}(?=[\s>/])[^>]*>(.*?)</(?:[\w.-]+:)?{escaped}\s*>",
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        match = pattern.search(block)
+
+        if not match:
+            return ""
+
+        return self._strip_cdata(match.group(1))
+
+    def _strip_cdata(self, text: str) -> str:
+        return re.sub(
+            r"<!\[CDATA\[(.*?)\]\]>",
+            r"\1",
+            text,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+
+    def _looks_like_html(self, text: str) -> bool:
+        stripped = (text or "").lstrip().lower()
+        return stripped.startswith("<!doctype html") or stripped.startswith("<html")
 
     def _collect_from_search_result(
         self,
@@ -273,46 +517,102 @@ class NaverNewsCollector:
         return reasons[0] if reasons else "unknown_error"
 
     def _parse_search_result_articles(self, raw_html: str) -> List[Dict[str, str]]:
-        articles = []
-        pattern = (
-            r'<a[^>]*class="[^"]*news_tit[^"]*"[^>]*'
-            r'href="([^"]+)"[^>]*title="([^"]+)"[^>]*>'
-        )
-        matches = re.findall(pattern, raw_html, flags=re.IGNORECASE | re.DOTALL)
+        """Extract visible title/link/summary from search-result markup.
 
-        for link, title in matches:
-            clean_title = self._clean_text(title)
-
-            if clean_title:
-                articles.append(
-                    {
-                        "title": clean_title,
-                        "link": html.unescape(link),
-                        "summary": "",
-                    }
-                )
+        Anchors are matched by parsed attributes instead of positional
+        regexes, so attribute reordering or new attributes cannot break
+        extraction. Supports the legacy news_tit layout and the newer
+        data-heatmap-target layout. Missing fields stay empty strings —
+        nothing is fabricated.
+        """
+        anchors = self._extract_anchor_tags(raw_html)
+        articles = self._extract_news_tit_articles(anchors)
 
         if articles:
             return articles
 
-        fallback_pattern = r'<a[^>]*class="[^"]*news_tit[^"]*"[^>]*>(.*?)</a>'
-        fallback_matches = re.findall(
-            fallback_pattern,
-            raw_html,
-            flags=re.IGNORECASE | re.DOTALL,
-        )
+        return self._extract_heatmap_articles(anchors)
 
-        for title in fallback_matches:
-            clean_title = self._clean_text(title)
+    def _extract_anchor_tags(self, raw_html: str) -> List[Dict[str, Any]]:
+        anchors = []
 
-            if clean_title:
-                articles.append(
-                    {
-                        "title": clean_title,
-                        "link": "",
-                        "summary": "",
-                    }
-                )
+        for match in self._ANCHOR_PATTERN.finditer(raw_html):
+            attributes = {}
+
+            for attr in self._ATTRIBUTE_PATTERN.finditer(match.group(1)):
+                name = attr.group(1).lower()
+                value = attr.group(2) if attr.group(2) is not None else attr.group(3)
+                attributes[name] = value or ""
+
+            anchors.append(
+                {
+                    "attributes": attributes,
+                    "inner_html": match.group(2),
+                }
+            )
+
+        return anchors
+
+    def _extract_news_tit_articles(
+        self,
+        anchors: List[Dict[str, Any]],
+    ) -> List[Dict[str, str]]:
+        articles = []
+
+        for anchor in anchors:
+            attributes = anchor["attributes"]
+
+            if "news_tit" not in attributes.get("class", ""):
+                continue
+
+            title = (
+                self._clean_text(attributes.get("title", ""))
+                or self._clean_text(anchor["inner_html"])
+            )
+
+            if not title:
+                continue
+
+            articles.append(
+                {
+                    "title": title,
+                    "link": html.unescape(attributes.get("href", "")),
+                    "summary": "",
+                }
+            )
+
+        return articles
+
+    def _extract_heatmap_articles(
+        self,
+        anchors: List[Dict[str, Any]],
+    ) -> List[Dict[str, str]]:
+        articles = []
+        current: Optional[Dict[str, str]] = None
+
+        for anchor in anchors:
+            target = anchor["attributes"].get("data-heatmap-target", "")
+
+            if target == ".tit":
+                if current is not None:
+                    articles.append(current)
+                    current = None
+
+                title = self._clean_text(anchor["inner_html"])
+
+                if not title:
+                    continue
+
+                current = {
+                    "title": title,
+                    "link": html.unescape(anchor["attributes"].get("href", "")),
+                    "summary": "",
+                }
+            elif target == ".body" and current is not None and not current["summary"]:
+                current["summary"] = self._clean_text(anchor["inner_html"])
+
+        if current is not None:
+            articles.append(current)
 
         return articles
 
@@ -358,12 +658,20 @@ class NaverNewsCollector:
         return domain
 
     def _find_text(self, item: ET.Element, tag_name: str) -> str:
-        found = item.find(tag_name)
+        target = tag_name.strip().lower()
 
-        if found is None or found.text is None:
-            return ""
+        for child in list(item):
+            if self._xml_local_name(child.tag) == target:
+                return self._element_text(child)
 
-        return found.text
+        for descendant in item.iter():
+            if descendant is not item and self._xml_local_name(descendant.tag) == target:
+                return self._element_text(descendant)
+
+        return ""
+
+    def _element_text(self, element: ET.Element) -> str:
+        return "".join(element.itertext())
 
     def _clean_text(self, text: Optional[str]) -> str:
         if not text:
