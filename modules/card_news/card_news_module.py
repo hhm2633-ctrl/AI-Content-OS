@@ -2232,7 +2232,9 @@ class CardNewsModule(BaseModule):
 
         rule = self.layout_rule_engine.get_rule(layout_type)
         slide_designs = self.slide_designer.design(slides, rule)
-        highlight_result = self.highlight_engine.highlight(content_result, topic_intelligence)
+        highlight_content = dict(content_result)
+        highlight_content["slides"] = slides
+        highlight_result = self.highlight_engine.highlight(highlight_content, topic_intelligence)
 
         return {
             "layout_type": layout_type,

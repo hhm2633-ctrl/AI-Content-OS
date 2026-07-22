@@ -232,6 +232,21 @@ class TestDebateQuestionSelectionGuards(unittest.TestCase):
         result = self.selector.select("story", "save")
         self.assertTrue(result["should_apply"])
 
+    def test_explicit_cta_text_reports_detected_intent(self):
+        result = self.selector.select("story", "follow", cta_text="근거가 확보되면 저장하세요.")
+        self.assertEqual(result["detected_cta_intents"], ["save"])
+
+    def test_module_normalizes_source_cta_type_to_explicit_text(self):
+        module = CardNewsModule({})
+        result = module._select_debate_question(
+            "tutorial",
+            "follow",
+            "확인 전에는 발행하지 마세요 근거가 확보되면 저장하세요.",
+        )
+        self.assertEqual(result["source_cta_type"], "follow")
+        self.assertEqual(result["effective_cta_type"], "save")
+        self.assertTrue(result["cta_type_normalized"])
+
 
 class TestDebateApplyGuards(unittest.TestCase):
     def test_over_budget_debate_not_applied_and_cta_preserved(self):
@@ -251,6 +266,38 @@ class TestDebateApplyGuards(unittest.TestCase):
         self.assertTrue(final_debate["applied"])
         self.assertIn("저장하세요", updated_slides[0]["body"])
         self.assertIn("여러분 생각은?", updated_slides[0]["body"])
+
+
+class TestCtaAlignmentGuards(unittest.TestCase):
+    def test_save_badge_with_comment_action_normalizes_to_save_only(self):
+        slides = [{
+            "page": 4,
+            "role": "cta",
+            "headline": "지금 저장",
+            "body": "저장하고 댓글로 의견을 알려주세요.",
+        }]
+
+        aligned, diagnostics = CardNewsModule._align_cta_slide_to_save(slides)
+
+        self.assertEqual(diagnostics["status"], "normalized")
+        self.assertEqual(diagnostics["primary_intent"], "save")
+        self.assertIn("save", diagnostics["detected_intents"])
+        self.assertIn("comment", diagnostics["detected_intents"])
+        self.assertEqual(aligned[0]["body"], "나중에 다시 볼 수 있도록 저장해 두세요.")
+
+    def test_save_only_action_is_preserved(self):
+        slides = [{
+            "page": 4,
+            "role": "cta",
+            "headline": "나중을 위해 저장",
+            "body": "필요할 때 다시 확인하세요.",
+        }]
+
+        aligned, diagnostics = CardNewsModule._align_cta_slide_to_save(slides)
+
+        self.assertEqual(diagnostics["status"], "unchanged")
+        self.assertEqual(diagnostics["primary_intent"], "save")
+        self.assertEqual(aligned[0]["body"], "필요할 때 다시 확인하세요.")
 
 
 # ---- D. Typography / Renderer ---------------------------------------------
@@ -326,6 +373,38 @@ class TestVisualRhythmApplicationGuards(unittest.TestCase):
         )
         self.assertEqual(resolved[4]["applied_style"], "quote_card")
         self.assertFalse(resolved[4]["fallback_used"])
+
+
+class TestLayoutHighlightInputGuards(unittest.TestCase):
+    def test_layout_highlights_use_guarded_slides_instead_of_stale_content(self):
+        module = CardNewsModule({})
+        module._load_topic_intelligence = lambda: {}
+        module._load_brand_profile = lambda: {}
+        module.layout_selector.select = lambda **kwargs: {"layout_type": "notebook"}
+        module.layout_rule_engine.get_rule = lambda layout_type: {}
+        module.slide_designer.design = lambda slides, rule: []
+
+        captured = {}
+
+        def capture_highlight(content_result, topic_intelligence):
+            captured["slides"] = content_result["slides"]
+            return {
+                "highlight_keywords": ["저장"],
+                "slide_highlights": [],
+                "highlight_score": 1.0,
+            }
+
+        module.highlight_engine.highlight = capture_highlight
+        guarded_slides = [{"page": 4, "role": "cta", "body": "근거가 확보되면 저장하세요."}]
+        stale_content = {
+            "slides": [{"page": 4, "role": "cta", "body": "팔로우해 주세요."}],
+            "content_intelligence": {},
+            "pattern_prompt_meta": {},
+        }
+
+        module._compute_layout_result(stale_content, guarded_slides)
+
+        self.assertEqual(captured["slides"], guarded_slides)
 
 
 class TestRendererSafeFallbackGuard(unittest.TestCase):

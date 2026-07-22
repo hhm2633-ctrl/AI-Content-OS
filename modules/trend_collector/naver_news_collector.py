@@ -141,18 +141,13 @@ class NaverNewsCollector:
         query: str,
         source: Dict[str, Any],
     ) -> List[Dict[str, Any]]:
-        """API Hub -> RSS -> HTML search chain for a single query.
+        """RSS -> HTML search -> API Hub chain for a single query.
 
         An RSS payload that cannot be parsed no longer aborts the query: the
         HTML search path is still attempted, and the original ParseError is
-        re-raised only if HTML also yields nothing, so the parse_failed
-        reason code is preserved for the outer fallback chain.
+        re-raised only if HTML and API Hub also yield nothing, so the
+        parse_failed reason code is preserved for the outer fallback chain.
         """
-        api_hub_items = self._collect_from_api_hub(query=query, source=source)
-
-        if api_hub_items:
-            return api_hub_items
-
         rss_parse_error: Optional[ET.ParseError] = None
 
         try:
@@ -169,6 +164,11 @@ class NaverNewsCollector:
         if html_items:
             return html_items
 
+        api_hub_items = self._collect_from_api_hub(query=query, source=source)
+
+        if api_hub_items:
+            return api_hub_items
+
         if rss_parse_error is not None:
             raise rss_parse_error
 
@@ -179,11 +179,11 @@ class NaverNewsCollector:
         query: str,
         source: Dict[str, Any],
     ) -> List[Dict[str, Any]]:
-        """Optional NAVER API HUB path ahead of the bounded RSS/HTML chain.
+        """Optional NAVER API HUB path after the bounded RSS/HTML chain.
 
         Any API failure is recorded as a diagnostic in last_status["api_hub"]
-        and returns [] so the existing RSS -> HTML -> cache -> settings ->
-        placeholder fallback chain stays intact. This method never raises.
+        and returns [] so the existing cache -> settings -> placeholder
+        fallback chain stays intact. This method never raises.
         """
         api_status = self.last_status.get("api_hub")
 

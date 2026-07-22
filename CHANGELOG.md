@@ -951,3 +951,30 @@
 - Change: Project snapshot updated.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-22 11:44:47
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-22 11:52:36
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-22 12:24:12
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+## 2026-07-22 - Local renderer and toolchain verification
+
+- Restored direct execution of `scripts/run_cardnews_production.py` by adding the repository root to `sys.path`.
+- Forced UTF-8 subprocess I/O for the Satori/resvg runtime, fixing Windows code-page corruption of Korean controller state and the resulting hash rejection.
+- Preserved renderer failure stderr in the one-time controller consumption diagnostic.
+- Completed one controller-authorized, non-publish technical Satori/resvg render on `F:`; the result remains pending independent visual QA and Pillow remains the default renderer.
+- Re-ran the Intel XPU probe: device execution and Diffusers pipeline imports passed; model loading and generation remain unverified.
+- Confirmed SeaweedFS license provenance and Mixpost/TryPost source-version provenance are still incomplete; all remain non-operational/reference-only.
+- QA: 25 renderer/controller tests passed, compile passed, and `py -m src.main` finished with `workflow_completed`.

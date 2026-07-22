@@ -427,6 +427,7 @@ class CardNewsRendererRuntimeTests(unittest.TestCase):
         _, kwargs = runner.call_args
         self.assertEqual(kwargs["input"], contract["stdin_json"])
         self.assertEqual(kwargs["timeout"], 7.0)
+        self.assertEqual(kwargs["encoding"], "utf-8")
         self.assertFalse(kwargs["shell"])
 
         forged = dict(receipt)

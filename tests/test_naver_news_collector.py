@@ -228,9 +228,9 @@ class OfflineNaverNewsCollector(NaverNewsCollector):
 
 
 class TestNaverNewsCollectorApiHubChain(unittest.TestCase):
-    def test_api_hub_success_short_circuits_rss_and_html(self):
+    def test_api_hub_success_runs_only_after_free_paths_are_empty(self):
         collector = OfflineNaverNewsCollector(
-            payloads={},
+            payloads={"rss": RSS_EMPTY_CHANNEL, "html": HTML_EMPTY},
             api_hub_client=StubApiHubClient(API_HUB_OK_RESULT),
         )
         items = collector.collect(["전기차"], SOURCE)
@@ -238,21 +238,19 @@ class TestNaverNewsCollectorApiHubChain(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["collection_method"], "naver_news_api_hub")
         self.assertEqual(items[0]["keyword"], "API 허브 기사 제목")
-        self.assertEqual(collector.fetched_urls, [])
+        self.assertEqual(len(collector.fetched_urls), 2)
         self.assertTrue(collector.last_status["api_hub"]["used"])
         self.assertTrue(collector.last_status["success"])
 
-    def test_api_hub_failure_falls_back_to_rss(self):
+    def test_free_rss_success_skips_api_hub(self):
         collector = OfflineNaverNewsCollector(payloads={"rss": RSS_PLAIN})
         items = collector.collect(["전기차"], SOURCE)
 
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["collection_method"], "naver_news_rss")
         self.assertFalse(collector.last_status["api_hub"]["used"])
-        self.assertEqual(
-            collector.last_status["api_hub"]["error_type"],
-            "missing_credentials",
-        )
+        self.assertFalse(collector.last_status["api_hub"]["attempted"])
+        self.assertEqual(collector.last_status["api_hub"]["error_type"], "")
 
 
 class TestNaverNewsCollectorRssParsing(unittest.TestCase):

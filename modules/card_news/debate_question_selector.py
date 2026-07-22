@@ -1,3 +1,4 @@
+import re
 from typing import Any, Dict, Optional
 
 
@@ -23,6 +24,16 @@ class DebateQuestionSelector:
 
     REDUNDANT_CTA_TYPES = ("comment",)
 
+    CTA_INTENT_PATTERNS = {
+        "save": re.compile(r"(?:저장|북마크|\bsave\b)", re.IGNORECASE),
+        "comment": re.compile(r"(?:댓글|의견|생각|\bcomment\b)", re.IGNORECASE),
+        "share": re.compile(r"(?:공유|보내\s*주세요|\bshare\b)", re.IGNORECASE),
+        "follow": re.compile(r"(?:팔로우|구독|\bfollow\b)", re.IGNORECASE),
+        "profile": re.compile(r"(?:프로필|\bprofile\b)", re.IGNORECASE),
+        "dm": re.compile(r"(?:디엠|메시지|\bdm\b|\bmessage\b)", re.IGNORECASE),
+        "link_click": re.compile(r"(?:링크|클릭|바이오|\bclick\b)", re.IGNORECASE),
+    }
+
     QUESTION_BY_PATTERN: Dict[str, str] = {
         "warning": "이 조치가 적절했다고 보시나요?",
         "tutorial": "여러분 생각은 어떠세요?",
@@ -43,9 +54,18 @@ class DebateQuestionSelector:
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
 
-    def select(self, pattern_type: Optional[str] = None, cta_type: Optional[str] = None) -> Dict[str, Any]:
+    def select(
+        self,
+        pattern_type: Optional[str] = None,
+        cta_type: Optional[str] = None,
+        cta_text: Optional[str] = None,
+    ) -> Dict[str, Any]:
         try:
-            return self._select(str(pattern_type or ""), str(cta_type or ""))
+            return self._select(
+                str(pattern_type or ""),
+                str(cta_type or ""),
+                str(cta_text or ""),
+            )
         except Exception as error:
             return {
                 "question": "",
@@ -55,14 +75,20 @@ class DebateQuestionSelector:
                 "skip_reason": f"debate question 선택 실패: {error}",
             }
 
-    def _select(self, pattern_type: str, cta_type: str) -> Dict[str, Any]:
+    def _select(self, pattern_type: str, cta_type: str, cta_text: str = "") -> Dict[str, Any]:
         question = self.QUESTION_BY_PATTERN.get(pattern_type, self.DEFAULT_QUESTION)
+        detected_cta_intents = [
+            intent
+            for intent, pattern in self.CTA_INTENT_PATTERNS.items()
+            if pattern.search(cta_text)
+        ]
 
         if not self._is_safe_question(question):
             return {
                 "question": "",
                 "pattern_type": pattern_type,
                 "cta_type": cta_type,
+                "detected_cta_intents": detected_cta_intents,
                 "should_apply": False,
                 "skip_reason": "질문이 안전 필터를 통과하지 못해 적용하지 않음.",
             }
@@ -72,6 +98,7 @@ class DebateQuestionSelector:
                 "question": question,
                 "pattern_type": pattern_type,
                 "cta_type": cta_type,
+                "detected_cta_intents": detected_cta_intents,
                 "should_apply": False,
                 "skip_reason": f"cta_type '{cta_type}'가 이미 댓글/토론 유도 목적이라 중복 방지를 위해 적용하지 않음.",
             }
@@ -82,6 +109,7 @@ class DebateQuestionSelector:
             "question": question,
             "pattern_type": pattern_type,
             "cta_type": cta_type,
+            "detected_cta_intents": detected_cta_intents,
             "should_apply": True,
             "skip_reason": "",
             "reason": (

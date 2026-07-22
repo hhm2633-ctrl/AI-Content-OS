@@ -112,7 +112,10 @@ function validate(request) {
   const stateBody = {...state};
   delete stateBody.state_hash;
   if (state.schema_version !== "cardnews_production_controller_state_v1") fail("controller_schema_invalid");
-  if (sha256(Buffer.from(canonical(stateBody), "utf8")) !== state.state_hash) fail("controller_state_hash_invalid");
+  const computedStateHash = sha256(Buffer.from(canonical(stateBody), "utf8"));
+  if (computedStateHash !== state.state_hash) {
+    fail(`controller_state_hash_invalid:${computedStateHash}:${state.state_hash}`);
+  }
   if (state.hard_rule_hash !== sha256(Buffer.from(canonical(state.hard_rule_evidence), "utf8"))) {
     fail("controller_hard_rule_hash_invalid");
   }

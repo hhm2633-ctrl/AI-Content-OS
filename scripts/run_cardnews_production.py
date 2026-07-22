@@ -12,10 +12,15 @@ import argparse
 import hashlib
 import json
 import os
+import sys
 import tempfile
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from modules.agent_console.package_completion_gate import assess_package_completion
 from modules.card_news.production_controller import (
@@ -1035,7 +1040,24 @@ def command_execute_render_adapter(args: argparse.Namespace) -> Dict[str, Any]:
             )
             if not isinstance(result, Mapping) or result.get("passed") is not True:
                 reason = _text(result.get("reason")) if isinstance(result, Mapping) else "invalid renderer result"
-                raise ProductionControllerError("renderer_adapter_execution_failed", reason)
+                stderr_tail = _text(result.get("stderr_tail")) if isinstance(result, Mapping) else ""
+                contract = result.get("contract") if isinstance(result, Mapping) else None
+                stdin_json = contract.get("stdin_json") if isinstance(contract, Mapping) else None
+                stdin_state_hash = ""
+                if isinstance(stdin_json, str):
+                    try:
+                        stdin_payload = json.loads(stdin_json)
+                        stdin_state = stdin_payload.get("controller_state")
+                        if isinstance(stdin_state, Mapping):
+                            stdin_state_body = dict(stdin_state)
+                            stdin_state_body.pop("state_hash", None)
+                            stdin_state_hash = canonical_hash(stdin_state_body)
+                    except (TypeError, ValueError, json.JSONDecodeError):
+                        stdin_state_hash = "invalid"
+                detail = f"{reason}: {stderr_tail}" if stderr_tail else reason
+                if stdin_state_hash:
+                    detail = f"{detail}: python_stdin_state_hash={stdin_state_hash}"
+                raise ProductionControllerError("renderer_adapter_execution_failed", detail)
             results.append(dict(result))
         records = [
             _validated_adapter_record(state, request, result)

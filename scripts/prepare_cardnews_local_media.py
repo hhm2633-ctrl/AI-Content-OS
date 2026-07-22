@@ -11,10 +11,13 @@ import argparse
 import importlib
 import json
 from pathlib import Path
+import sys
 from typing import Any, Dict, Mapping, Sequence
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 DEFAULT_CONFIG = REPO_ROOT / "config" / "external_tools" / "local_media_pipeline.json"
 TERMINAL_FAILURE_STATUSES = frozenset({"blocked", "failed"})
 
