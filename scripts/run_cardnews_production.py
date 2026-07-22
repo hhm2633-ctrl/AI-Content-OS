@@ -1075,6 +1075,11 @@ def command_execute_render_adapter(args: argparse.Namespace) -> Dict[str, Any]:
             "local_media_binding_hash": token["local_media_binding_hash"],
             "records": records,
         }
+        manifest["automatic_visual_qa"] = _run_post_render_local_qa(
+            manifest,
+            results,
+            args,
+        )
         manifest["adapter_execution_hash"] = canonical_hash(manifest)
         _atomic_write(args.manifest, manifest)
         completed = {
@@ -1096,6 +1101,103 @@ def command_execute_render_adapter(args: argparse.Namespace) -> Dict[str, Any]:
         }
         _atomic_write(consumption_path, failed)
         raise
+
+
+def _run_post_render_local_qa(
+    manifest: Mapping[str, Any],
+    renderer_results: Sequence[Mapping[str, Any]],
+    args: argparse.Namespace,
+) -> Dict[str, Any]:
+    """Collect local OCR/OpenCLIP evidence without granting visual approval."""
+
+    base: Dict[str, Any] = {
+        "schema_version": "cardnews_automatic_visual_qa_evidence_v1",
+        "automatic_evidence_only": True,
+        "owner_visual_approval": False,
+        "manual_upload_ready": False,
+        "publishing_ready": False,
+    }
+    if getattr(args, "post_render_local_qa", False) is not True:
+        return {
+            **base,
+            "status": "not_requested",
+            "reason_code": "POST_RENDER_LOCAL_QA_NOT_REQUESTED",
+            "blocking_reasons": ["owner_visual_approval_required"],
+        }
+
+    for result in renderer_results:
+        receipt = result.get("receipt") if isinstance(result, Mapping) else None
+        invoked = receipt.get("invoked_engines") if isinstance(receipt, Mapping) else None
+        if invoked != ["satori", "resvg"]:
+            return {
+                **base,
+                "status": "blocked",
+                "reason_code": "POST_RENDER_QA_REQUIRES_SATORI_RESVG",
+                "blocking_reasons": [
+                    "authorized_satori_resvg_render_required",
+                    "owner_visual_approval_required",
+                ],
+            }
+
+    builder = getattr(args, "visual_qa_builder", None)
+    if builder is None:
+        # Lazy import avoids the generator's compatibility import of this module
+        # becoming a module-level cycle.
+        from scripts.generate_visual_qa_receipt_from_media import build_receipt_payload
+
+        builder = build_receipt_payload
+
+    try:
+        receipt, assessed, metrics = builder(
+            manifest,
+            candidate_filter=None,
+            maker_id="cardnews_renderer_runtime",
+            reviewer_id="local-ocr-openclip-auto",
+            openclip_timeout=float(getattr(args, "post_render_openclip_timeout", 30.0)),
+            ocr_timeout=float(getattr(args, "post_render_ocr_timeout", 30.0)),
+        )
+    except Exception as exc:
+        return {
+            **base,
+            "status": "blocked",
+            "reason_code": "POST_RENDER_LOCAL_QA_FAILED",
+            "diagnostic": f"{type(exc).__name__}:{exc}"[:1000],
+            "blocking_reasons": [
+                "automatic_visual_qa_unavailable",
+                "owner_visual_approval_required",
+            ],
+        }
+
+    evidence = dict(receipt) if isinstance(receipt, Mapping) else {}
+    evidence.pop("receipt_id", None)
+    evidence["schema_version"] = "cardnews_automatic_visual_qa_evidence_v1"
+    evidence["decision"] = "evidence_only"
+    evidence["automatic_evidence_only"] = True
+    evidence["owner_visual_approval"] = False
+    automatic_passed = bool(
+        isinstance(assessed, Mapping) and assessed.get("visual_qa_passed") is True
+    )
+    blocking_reasons = ["owner_visual_approval_required"]
+    if not automatic_passed:
+        blocking_reasons.insert(0, "automatic_visual_qa_not_passed")
+    return {
+        **base,
+        "status": (
+            "completed_pending_owner_visual_approval"
+            if automatic_passed
+            else "blocked"
+        ),
+        "reason_code": (
+            "OWNER_VISUAL_APPROVAL_REQUIRED"
+            if automatic_passed
+            else "POST_RENDER_LOCAL_QA_NOT_PASSED"
+        ),
+        "automatic_qa_passed": automatic_passed,
+        "blocking_reasons": blocking_reasons,
+        "evidence": evidence,
+        "assessment": dict(assessed) if isinstance(assessed, Mapping) else {},
+        "metrics": dict(metrics) if isinstance(metrics, Mapping) else {},
+    }
 
 
 def command_record_render(args: argparse.Namespace) -> Dict[str, Any]:
@@ -1246,6 +1348,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--timeout-seconds",
         type=float,
         default=DEFAULT_RENDER_TIMEOUT_SECONDS,
+    )
+    adapter.add_argument(
+        "--post-render-local-qa",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="collect OCR/OpenCLIP evidence after an authorized Satori/resvg render",
     )
     adapter.set_defaults(handler=command_execute_render_adapter)
 

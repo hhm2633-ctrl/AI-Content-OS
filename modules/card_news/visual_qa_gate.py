@@ -80,6 +80,7 @@ def assess_visual_qa_receipt(
     *,
     expected_output_set_id: str | None = None,
     expected_representative_receipt_ids: Mapping[str, str] | None = None,
+    require_owner_approval: bool = True,
 ) -> Dict[str, Any]:
     """Validate independent visual approval for an exact rendered slide set.
 
@@ -131,6 +132,32 @@ def assess_visual_qa_receipt(
                 "independent reviewer attestation must be explicit",
             )
         )
+
+    evidence_only = value.get("evidence_only") is True or value.get("automatic_evidence_only") is True
+    owner_visual_approval = value.get("owner_visual_approval") is True
+    approval_kind = _text(value.get("approval_kind"))
+    owner_approved_by = _text(value.get("owner_approved_by")) or reviewer_id
+    if require_owner_approval:
+        if evidence_only:
+            failures.append(
+                _failure("evidence_only", "automatic_visual_evidence_not_approval", "automatic QA evidence cannot approve output")
+            )
+        if approval_kind != "owner_visual_approval":
+            failures.append(
+                _failure("approval_kind", "owner_visual_approval_kind_required", "owner_visual_approval is required")
+            )
+        if not owner_visual_approval:
+            failures.append(
+                _failure("owner_visual_approval", "owner_visual_approval_required", "explicit owner visual approval is required")
+            )
+        if _text(reviewer.get("role")) != "owner" or reviewer.get("owner_authorized") is not True:
+            failures.append(
+                _failure("reviewer", "owner_visual_reviewer_required", "reviewer must explicitly attest owner authority")
+            )
+        if not owner_approved_by:
+            failures.append(
+                _failure("owner_approved_by", "owner_visual_identity_required", "owner approver identity is required")
+            )
 
     expected_by_key: Dict[Tuple[str, int], Mapping[str, Any]] = {}
     expected_accounts: set[str] = set()
@@ -332,9 +359,10 @@ def assess_visual_qa_receipt(
         )
 
     decision = _text(value.get("decision"))
-    if decision != "approve":
+    expected_decision = "approve" if require_owner_approval else "evidence_only"
+    if decision != expected_decision:
         failures.append(
-            _failure("decision", "visual_qa_not_approved", "only an explicit approve decision can pass")
+            _failure("decision", "visual_qa_not_approved", f"decision must be {expected_decision}")
         )
 
     unique: List[Dict[str, str]] = []
@@ -359,6 +387,10 @@ def assess_visual_qa_receipt(
         "reviewer_independent": bool(
             reviewer_id and maker_id and reviewer_id != maker_id and reviewer.get("independent_from_maker") is True
         ),
+        "approval_kind": approval_kind or None,
+        "owner_visual_approval": owner_visual_approval if require_owner_approval else False,
+        "owner_approved_by": owner_approved_by if require_owner_approval else None,
+        "evidence_only": evidence_only,
         "failure_count": len(unique),
         "failures": unique,
         "dimensions_are_visual_approval": False,

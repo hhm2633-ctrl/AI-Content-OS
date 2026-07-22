@@ -199,7 +199,7 @@ def build_selected_candidate_render_inputs(
     if not is_allowed_card_slide_count(len(slides)):
         result = _blocked(
             "current_renderer_slide_count",
-            "current CardNewsModule supports 2-20 slides; full variable plan was preserved",
+            "current CardNewsModule supports 1-20 slides; full variable plan was preserved",
             production_plan,
         )
         result["planned_slide_count"] = len(slides)

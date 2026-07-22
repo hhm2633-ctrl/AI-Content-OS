@@ -26,6 +26,7 @@ from modules.card_news.production_controller import ProductionControllerError, c
 def _package(account: str) -> dict:
     candidate_id = f"candidate-{account.lower()}"
     return {
+        "status": "production_package_ready",
         "candidate": {"candidate_id": candidate_id, "account": account},
         "slide_count": 1,
         "story": {"summary": "source-bound story"},
@@ -33,6 +34,13 @@ def _package(account: str) -> dict:
         "slides": [{"page": 1, "role": "hook", "headline": "Short", "body": "One sentence"}],
         "feed_caption": "Separate natural feed caption",
         "media_plan": [{"page": 1, "slide_role": "hook", "media_type": "editorial"}],
+        "gates": {"package_approval": {
+            "status": "approved",
+            "approved": True,
+            "scope": "production_package",
+            "approved_by": "owner",
+            "receipt_id": f"package-approval-{candidate_id}",
+        }},
     }
 
 
@@ -81,7 +89,16 @@ class RunCardnewsProductionTests(unittest.TestCase):
             "output_set_id": output_set_id,
             "reviewed_at": "2026-07-19T18:00:00+09:00",
             "maker": {"id": "renderer"},
-            "reviewer": {"id": "independent-visual-qa", "independent_from_maker": True},
+            "reviewer": {
+                "id": "owner-reviewer",
+                "role": "owner",
+                "owner_authorized": True,
+                "independent_from_maker": True,
+            },
+            "approval_kind": "owner_visual_approval",
+            "owner_visual_approval": True,
+            "owner_approved_by": "owner-reviewer",
+            "evidence_only": False,
             "scope": {"kind": "representative", "accounts": [account], "candidate_ids": [candidate]},
             "feed_caption": "Separate natural feed caption",
             "slides": [{
@@ -272,6 +289,87 @@ class RunCardnewsProductionTests(unittest.TestCase):
             ))
             self.assertEqual(state["state"], "representative_render_recorded")
             self.assertEqual(state["used_render_authorization_ids"], [authorization["authorization_id"]])
+
+    def test_execute_render_adapter_collects_automatic_qa_as_evidence_only(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            state_path, authorization_path, authorization, _ = self._authorized_single_candidate(root)
+            package_path = self._write(root / "package-a.json", _package("A"))
+            request_path = self._write(
+                root / "render-request.json",
+                self._adapter_request(root, authorization, package_path),
+            )
+            calls = []
+
+            def build_evidence(manifest, **kwargs):
+                calls.append((manifest, kwargs))
+                return (
+                    {
+                        "schema_version": "cardnews_visual_qa_receipt_v1",
+                        "receipt_id": "automatic-receipt-must-not-survive",
+                        "decision": "approve",
+                        "slides": [{"candidate_id": "candidate-a", "page": 1}],
+                    },
+                    {"visual_qa_passed": True, "failures": []},
+                    {"candidate_count": 1, "slide_count": 1},
+                )
+
+            manifest = command_execute_render_adapter(SimpleNamespace(
+                state=state_path,
+                authorization=authorization_path,
+                render_request=request_path,
+                manifest=root / "manifest.json",
+                timeout_seconds=7.0,
+                renderer_runtime=self._PassingRendererRuntime(),
+                post_render_local_qa=True,
+                visual_qa_builder=build_evidence,
+            ))
+
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(calls[0][0]["records"][0]["candidate_id"], "candidate-a")
+            automatic = manifest["automatic_visual_qa"]
+            self.assertEqual(automatic["status"], "completed_pending_owner_visual_approval")
+            self.assertTrue(automatic["automatic_qa_passed"])
+            self.assertFalse(automatic["owner_visual_approval"])
+            self.assertFalse(automatic["manual_upload_ready"])
+            self.assertFalse(automatic["publishing_ready"])
+            self.assertEqual(automatic["evidence"]["decision"], "evidence_only")
+            self.assertNotIn("receipt_id", automatic["evidence"])
+
+    def test_execute_render_adapter_blocks_automatic_qa_failure_without_unlocking_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            state_path, authorization_path, authorization, output_root = self._authorized_single_candidate(root)
+            package_path = self._write(root / "package-a.json", _package("A"))
+            request_path = self._write(
+                root / "render-request.json",
+                self._adapter_request(root, authorization, package_path),
+            )
+
+            def fail_evidence(*args, **kwargs):
+                raise RuntimeError("local OCR unavailable")
+
+            manifest = command_execute_render_adapter(SimpleNamespace(
+                state=state_path,
+                authorization=authorization_path,
+                render_request=request_path,
+                manifest=root / "manifest.json",
+                timeout_seconds=7.0,
+                renderer_runtime=self._PassingRendererRuntime(),
+                post_render_local_qa=True,
+                visual_qa_builder=fail_evidence,
+            ))
+
+            automatic = manifest["automatic_visual_qa"]
+            self.assertEqual(automatic["status"], "blocked")
+            self.assertEqual(automatic["reason_code"], "POST_RENDER_LOCAL_QA_FAILED")
+            self.assertIn("RuntimeError:local OCR unavailable", automatic["diagnostic"])
+            self.assertFalse(automatic["manual_upload_ready"])
+            self.assertFalse(automatic["publishing_ready"])
+            marker = output_root.parent / ".controller_authorizations" / (
+                authorization["authorization_id"] + ".consumed.json"
+            )
+            self.assertEqual(json.loads(marker.read_text(encoding="utf-8"))["status"], "completed")
 
     def test_execute_render_adapter_fails_when_comment_crop_ineligible(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -672,7 +770,16 @@ class RunCardnewsProductionTests(unittest.TestCase):
                 "output_set_id": batch_authorization["authorization_id"],
                 "reviewed_at": "2026-07-19T18:30:00+09:00",
                 "maker": {"id": "renderer"},
-                "reviewer": {"id": "independent-visual-qa", "independent_from_maker": True},
+                "reviewer": {
+                    "id": "owner-reviewer",
+                    "role": "owner",
+                    "owner_authorized": True,
+                    "independent_from_maker": True,
+                },
+                "approval_kind": "owner_visual_approval",
+                "owner_visual_approval": True,
+                "owner_approved_by": "owner-reviewer",
+                "evidence_only": False,
                 "scope": {
                     "kind": "batch",
                     "accounts": ["A", "B", "C"],

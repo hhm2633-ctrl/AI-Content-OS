@@ -2,7 +2,7 @@
 
 This module never decides whether a card is publishable and never renders or
 edits anything. It only checks that an operator-supplied "approved copy"
-record is structurally genuine (2..20 slides, contiguous indexes, non-placeholder
+record is structurally genuine (1..20 slides, contiguous indexes, non-placeholder
 title/headline/body, a well-formed SHA-256 per slide, and role-based CTA
 consistency) before `WorkflowEngine.create_release_revision` is allowed to use
 it as the sole source of slide text/CTA for a brand-new, clean CardNews result.
@@ -30,9 +30,9 @@ Expected file schema::
           "cta_label": ""
         },
         { "slide_index": 2, "role": "...", ... },
-        { "slide_index": 3, "role": "...", ... },
+        ...
         {
-          "slide_index": 4,
+          "slide_index": "<last>",
           "role": "cta",
           "headline": "...", "body": "...", "image_sha256": "...",
           "cta_type": "<non-empty>",

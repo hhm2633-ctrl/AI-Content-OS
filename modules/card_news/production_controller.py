@@ -137,6 +137,38 @@ def _package_identity(receipt: Mapping[str, Any]) -> tuple[str, str]:
     return candidate_id, account
 
 
+def _validated_package_approval(package: Mapping[str, Any], candidate_id: str) -> Dict[str, str]:
+    candidate = package.get("candidate") if isinstance(package.get("candidate"), Mapping) else {}
+    gates = package.get("gates") if isinstance(package.get("gates"), Mapping) else {}
+    approval = gates.get("package_approval") if isinstance(gates.get("package_approval"), Mapping) else {}
+    if _text(package.get("status")) != "production_package_ready":
+        raise ProductionControllerError(
+            "production_package_not_ready",
+            f"{candidate_id} requires production_package_ready before controller initialization",
+        )
+    if _text(candidate.get("candidate_id")) != candidate_id:
+        raise ProductionControllerError(
+            "package_approval_candidate_mismatch",
+            f"{candidate_id} package candidate identity does not match completion receipt",
+        )
+    if (
+        approval.get("approved") is not True
+        or _text(approval.get("status")) != "approved"
+        or _text(approval.get("scope")) != "production_package"
+        or not _text(approval.get("approved_by"))
+        or not _text(approval.get("receipt_id"))
+    ):
+        raise ProductionControllerError(
+            "package_approval_invalid",
+            f"{candidate_id} requires an explicit owner-bound production package approval receipt",
+        )
+    return {
+        "approved_by": _text(approval.get("approved_by")),
+        "receipt_id": _text(approval.get("receipt_id")),
+        "approval_hash": canonical_hash(approval),
+    }
+
+
 def initialize_controller(
     controller_id: str,
     packages: Sequence[Mapping[str, Any]],
@@ -172,6 +204,7 @@ def initialize_controller(
                 "completion_receipt_stale", "completion receipt does not match the current package"
             )
         candidate_id, account = _package_identity(fresh)
+        package_approval = _validated_package_approval(package, candidate_id)
         if candidate_id in seen:
             raise ProductionControllerError("duplicate_package", f"duplicate candidate {candidate_id}")
         seen.add(candidate_id)
@@ -181,6 +214,9 @@ def initialize_controller(
                 "account": account,
                 "package_hash": canonical_hash(package),
                 "completion_receipt_hash": canonical_hash(fresh),
+                "package_approval_receipt_id": package_approval["receipt_id"],
+                "package_approved_by": package_approval["approved_by"],
+                "package_approval_hash": package_approval["approval_hash"],
             }
         )
 
@@ -207,6 +243,7 @@ def initialize_controller(
         "batch_render_receipt_hashes": {},
         "batch_output_set_ids": {},
         "batch_qa_receipt_hashes": {},
+        "batch_qa_receipt_ids": {},
         "used_render_authorization_ids": [],
         "manual_upload_ready": False,
         "used_receipt_ids": [],
@@ -599,6 +636,16 @@ def _validated_visual_qa_receipts(
             raise ProductionControllerError(
                 "visual_qa_reviewer_not_independent", f"{candidate_id} maker and reviewer must be separate"
             )
+        if (
+            receipt.get("owner_visual_approval") is not True
+            or receipt.get("evidence_only") is True
+            or _text(receipt.get("approval_kind")) != "owner_visual_approval"
+            or not _text(receipt.get("owner_approved_by"))
+        ):
+            raise ProductionControllerError(
+                "owner_visual_approval_required",
+                f"{candidate_id} requires an explicit owner visual approval receipt; automatic evidence is not approval",
+            )
         if not _text(receipt.get("receipt_id")):
             raise ProductionControllerError(
                 "visual_qa_receipt_id_missing", f"{candidate_id} visual QA needs its source receipt id"
@@ -793,6 +840,10 @@ def apply_transition(state: Mapping[str, Any], receipt: Mapping[str, Any]) -> Di
         )
     elif transition == ACCEPT_BATCH_QA:
         updated["batch_qa_receipt_hashes"] = copy.deepcopy(payload["visual_qa_receipt_hashes"])
+        updated["batch_qa_receipt_ids"] = {
+            candidate_id: _text(receipt.get("receipt_id"))
+            for candidate_id, receipt in payload["visual_qa_receipts"].items()
+        }
         updated["manual_upload_ready"] = True
 
     updated["state"] = next_state
@@ -826,6 +877,7 @@ def _blocked_state(state: Mapping[str, Any], error: ProductionControllerError) -
     blocked["batch_render_receipt_hashes"] = {}
     blocked["batch_output_set_ids"] = {}
     blocked["batch_qa_receipt_hashes"] = {}
+    blocked["batch_qa_receipt_ids"] = {}
     blocked["blocked_reason"] = {"reason_code": error.reason_code, "detail": error.detail}
     blocked["state_hash"] = _state_hash(blocked)
     return blocked

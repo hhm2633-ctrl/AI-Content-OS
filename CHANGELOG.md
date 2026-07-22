@@ -992,3 +992,41 @@
 - Change: Workflow completed and project snapshot refreshed.
 - Execution command: `py -m src.main`
 - Workflow result: `workflow_completed`
+
+## 2026-07-22 13:53:15
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-22 - Fail-closed variable CardNews production integration
+
+- Removed the unapproved legacy render transaction from standard `WorkflowEngine.run()` while preserving blocked result artifacts and `workflow_completed` semantics.
+- Added strict, expiring controller authorization validation and lazy OpenAI client creation; unapproved execution makes no image API call.
+- Removed the fixed four-prompt truncation from image generation.
+- Corrected selected-candidate package and build/quality/verification scripts so they cannot fabricate approval or promote pending packages.
+- Connected automatic local OCR/OpenCLIP evidence QA after controller-authorized Satori/resvg rendering without creating owner approval or publish readiness.
+- Updated the CardNews skill contract to variable slides and explicit owner selection/authorization.
+- Normalized all 174 collected news candidate categories and generated the complete owner review report.
+- QA: `py -m compileall src modules scripts` passed; 67 focused tests passed.
+- Full `py -m src.main` was intentionally not run after the change because it may invoke external LLM APIs. No post-change real render, publish, automation resume, or Git operation was performed.
+
+## 2026-07-22 - Correct CardNews slide-count contract to 1-20
+
+- Removed the canvas minimum of two slides and the account/global 4-7 planning caps.
+- Changed configured patterns from count caps into role-sequence seeds that can contract to one slide or expand to twenty.
+- Preserved slide-planning inputs through account TOP selection and recorded the count basis in planner output.
+- Kept final selected-candidate planning content/media-driven: image count never fixes news length, source-backed key points can expand a one-image story, completed plans up to twenty are preserved, and plans above twenty are blocked without truncation.
+- Updated renderer adapter messaging and focused regression coverage.
+- QA: compile passed and 62 focused tests passed. No real render, external API call, publish, automation, or Git operation was performed.
+
+## 2026-07-22 - Five-stage CardNews local pipeline connection
+
+- Added a fail-closed local entrypoint from explicit daily collection JSON into the existing multi-account discovery pipeline with a complete candidate disposition ledger.
+- Connected discovery output to the owner report without silently hiding excluded or held candidates.
+- Preserved owner-selected account/title/grade/source fields into the existing deep-discovery and selected-candidate production flow.
+- Added a local bridge from selected flow/story output to explicit approval-gated 1-20 slide production packages.
+- Hardened Controller initialization to reject pending or invalid package approvals.
+- Separated automatic OCR/OpenCLIP evidence from owner visual approval and required owner identity/authority for representative and batch QA transitions.
+- Stored final batch owner visual receipt IDs alongside receipt hashes before manual-upload readiness.
+- QA: compile passed and 71 focused tests passed. No real network deep fetch, render, external API write, publish, automation, or Git operation was performed.

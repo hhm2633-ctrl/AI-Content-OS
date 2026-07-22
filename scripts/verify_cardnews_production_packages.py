@@ -19,7 +19,8 @@ DEFAULT_INDEX = REPO_ROOT / "artifacts" / "cardnews_production_packages" / "late
 INDEX_SCHEMA = "cardnews_production_package_index_v1"
 PACKAGE_SCHEMA = "selected_candidate_production_package_v1"
 READY_STATUS = "production_package_ready"
-ALLOWED_STATUSES = {READY_STATUS, "blocked"}
+PENDING_STATUS = "production_package_pending_approval"
+ALLOWED_STATUSES = {READY_STATUS, PENDING_STATUS, "blocked"}
 
 
 def _nonempty(value: Any) -> bool:
@@ -90,6 +91,21 @@ def _ready_errors(package: Mapping[str, Any]) -> List[str]:
         errors.append("ready_quality_receipt_missing")
     elif quality.get("quality_passed") is not True:
         errors.append("ready_content_quality_not_passed")
+    gates = package.get("gates")
+    gates = gates if isinstance(gates, Mapping) else {}
+    approval = gates.get("package_approval")
+    approval = approval if isinstance(approval, Mapping) else {}
+    candidate = package.get("candidate")
+    candidate = candidate if isinstance(candidate, Mapping) else {}
+    if (
+        approval.get("status") != "approved"
+        or approval.get("approved") is not True
+        or str(approval.get("scope") or "").strip() != "production_package"
+        or str(approval.get("candidate_id") or "").strip() != str(candidate.get("candidate_id") or "").strip()
+        or not str(approval.get("approved_by") or "").strip()
+        or not str(approval.get("receipt_id") or "").strip()
+    ):
+        errors.append("ready_package_approval_invalid")
     return errors
 
 
@@ -99,6 +115,7 @@ def verify_package_index(index_path: Path = DEFAULT_INDEX) -> Dict[str, Any]:
     errors: List[str] = []
     checked = 0
     ready = 0
+    pending = 0
     blocked = 0
 
     try:
@@ -154,6 +171,10 @@ def verify_package_index(index_path: Path = DEFAULT_INDEX) -> Dict[str, Any]:
         elif status == READY_STATUS:
             ready += 1
             errors.extend(f"{candidate_id}:{item}" for item in _ready_errors(package))
+        elif status == PENDING_STATUS:
+            pending += 1
+            if not _nonempty(package.get("reason_code")):
+                errors.append(f"pending_reason_missing:{candidate_id}")
         else:
             blocked += 1
             if not _nonempty(package.get("reason_code")):
@@ -163,7 +184,11 @@ def verify_package_index(index_path: Path = DEFAULT_INDEX) -> Dict[str, Any]:
     expected = manifest.get("package_count")
     if expected != len(entries) or checked != len(entries):
         errors.append("package_count_mismatch")
-    if manifest.get("ready_count") != ready or manifest.get("blocked_count") != blocked:
+    if (
+        manifest.get("ready_count") != ready
+        or manifest.get("pending_count", 0) != pending
+        or manifest.get("blocked_count") != blocked
+    ):
         errors.append("status_count_mismatch")
 
     return {
@@ -172,6 +197,7 @@ def verify_package_index(index_path: Path = DEFAULT_INDEX) -> Dict[str, Any]:
         "index_path": str(index_path),
         "checked_count": checked,
         "ready_count": ready,
+        "pending_count": pending,
         "blocked_count": blocked,
         "errors": errors,
         "execution": {

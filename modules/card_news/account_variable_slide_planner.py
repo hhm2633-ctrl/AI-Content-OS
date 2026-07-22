@@ -6,6 +6,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
+from modules.card_news.canvas_contract import (
+    MAX_ALLOWED_CARD_SLIDE_COUNT,
+    MIN_ALLOWED_CARD_SLIDE_COUNT,
+)
+
 
 ACCOUNT_VARIABLE_SLIDE_PLANNER_VERSION = "card_news_account_variable_slide_planner_v1"
 DEFAULT_CONFIG_PATH = Path(__file__).resolve().parents[2] / "config" / "card_news_account_variable_slides.json"
@@ -361,6 +366,51 @@ def _pattern_count_options(pattern: Mapping[str, Any]) -> List[int]:
     return sorted(counts)
 
 
+def _sequence_length(value: Any) -> int:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
+        return 0
+    return len(value)
+
+
+def _derive_requested_count(
+    payload: Mapping[str, Any],
+    binding: Mapping[str, Any],
+    signature: str,
+    fallback_target: Optional[int],
+) -> Tuple[Optional[int], str]:
+    for source, value in (
+        ("candidate_requested_slide_count", payload.get("requested_slide_count")),
+        ("candidate_planned_slide_count", payload.get("planned_slide_count")),
+        ("binding_requested_slide_count", binding.get("requested_slide_count")),
+    ):
+        parsed = _safe_int(value)
+        if parsed is not None:
+            return parsed, source
+
+    planned_count = _sequence_length(payload.get("planned_slides"))
+    if planned_count:
+        return planned_count, "completed_planned_slides"
+
+    media_count = max(
+        _sequence_length(payload.get("assets")),
+        _sequence_length(payload.get("media")),
+        _sequence_length(payload.get("images")),
+    )
+    scene_count = _sequence_length(payload.get("reconstruction_scenes"))
+    comment_count = _sequence_length(payload.get("comments"))
+    key_point_count = _sequence_length(payload.get("key_points"))
+    supported_counts = [
+        media_count,
+        1 + scene_count + comment_count if scene_count or comment_count else 0,
+        1 + key_point_count if key_point_count else 0,
+    ]
+    evidence_driven_count = max(supported_counts)
+    if evidence_driven_count:
+        return evidence_driven_count, "available_content_and_media"
+
+    return None, "deferred_until_deep_content"
+
+
 def _pick_count(
     pattern: Mapping[str, Any],
     requested_count: Optional[int],
@@ -374,15 +424,13 @@ def _pick_count(
         return None, ["pattern_count_options_empty"]
     notes: List[str] = []
 
-    if requested_count in available:
-        return requested_count, notes
-
     if requested_count is not None:
-        filtered = [x for x in available if min_bound <= x <= max_bound]
-        if filtered:
-            nearest = min(filtered, key=lambda x: abs(x - requested_count))
-            notes.append(f"pattern_count_requested_{requested_count}_not_available; 사용 가능 카운트 중 {nearest}선택")
-            return nearest, notes
+        if not min_bound <= requested_count <= max_bound:
+            notes.append(f"requested_slide_count_{requested_count}_out_of_bounds")
+            return None, notes
+        if requested_count not in available:
+            notes.append(f"dynamic_slide_count_{requested_count}_derived_from_content")
+        return requested_count, notes
 
     if profile_target_count and profile_target_count in available and min_bound <= profile_target_count <= max_bound:
         return profile_target_count, notes
@@ -508,8 +556,14 @@ def _plan_slides(
     if raw_roles is None:
         raw_roles = slides_by_count.get(chosen_count)
     if not isinstance(raw_roles, Sequence) or isinstance(raw_roles, (str, bytes, bytearray)):
-        # Fail-safe: recover with configured fallback count.
-        return _fallback_slides(account_profile, bounds, pattern_config)
+        available = _pattern_count_options(pattern)
+        if not available:
+            return _fallback_slides(account_profile, bounds, pattern_config)
+        nearest = min(available, key=lambda count: abs(count - chosen_count))
+        raw_roles = slides_by_count.get(str(nearest))
+        if raw_roles is None:
+            raw_roles = slides_by_count.get(nearest)
+        notes.append(f"dynamic_role_sequence_seeded_from_{nearest}_slide_pattern")
 
     for role in raw_roles:
         if not isinstance(role, Mapping):
@@ -536,6 +590,33 @@ def _plan_slides(
     if not selected:
         return _fallback_slides(account_profile, bounds, pattern_config)
 
+    if chosen_count == 1:
+        selected = [selected[0]]
+    elif chosen_count < len(selected):
+        selected = [selected[0], *selected[1:-1][: max(0, chosen_count - 2)], selected[-1]]
+    elif chosen_count > len(selected):
+        closing = selected.pop() if len(selected) > 1 else None
+        expansion_roles = ("evidence", "solution", "counterpoint")
+        while len(selected) + (1 if closing is not None else 0) < chosen_count:
+            role_type = expansion_roles[len(selected) % len(expansion_roles)]
+            extra = _build_default_slide(
+                role_type,
+                pattern_config,
+                pattern_config.get("mobile_density", {}),
+            )
+            if extra is None:
+                return _fallback_slides(account_profile, bounds, pattern_config)
+            extra["metadata"] = {
+                **(extra.get("metadata") or {}),
+                "source": "content_driven_dynamic_expansion",
+            }
+            selected.append(extra)
+        if closing is not None:
+            selected.append(closing)
+
+    for index, item in enumerate(selected, start=1):
+        item["slide_order"] = index
+
     min_bound, max_bound = bounds
     if len(selected) < min_bound or len(selected) > max_bound:
         notes.append("selected_pattern_count_out_of_bounds")
@@ -556,7 +637,7 @@ def _plan_slides(
             selected[0]["canonical_role"] = "hook"
             selected[0]["semantic_role"] = "cover"
 
-    if selected and selected[-1].get("canonical_role") != "cta":
+    if len(selected) > 1 and selected[-1].get("canonical_role") != "cta":
         notes.append("last_slide_not_cta; closing 보정 적용")
         if len(selected) < max_bound and default_closing is not None:
             default_closing["slide_order"] = len(selected) + 1
@@ -585,7 +666,7 @@ def _fallback_slides(
     pattern_config: Mapping[str, Any],
 ) -> Tuple[List[Dict[str, Any]], List[str], List[str]]:
     min_bound, max_bound = bounds
-    target_count = min(max_bound, max(min_bound, 4))
+    target_count = min(max_bound, max(min_bound, 1))
     fallback_pattern = account_profile.get("fallback_pattern")
     fallback = []
     if isinstance(fallback_pattern, Sequence) and not isinstance(fallback_pattern, (str, bytes, bytearray)):
@@ -593,9 +674,6 @@ def _fallback_slides(
     if len(fallback) < target_count:
         fallback = [item for item in (
             _build_default_slide("opening", pattern_config, pattern_config.get("mobile_density", {})),
-            _build_default_slide("problem", pattern_config, pattern_config.get("mobile_density", {})),
-            _build_default_slide("solution", pattern_config, pattern_config.get("mobile_density", {})),
-            _build_default_slide("closing", pattern_config, pattern_config.get("mobile_density", {})),
         ) if isinstance(item, Mapping)]
 
     selected = []
@@ -650,10 +728,10 @@ def run_account_variable_slide_planner(
 
         now = _now_utc()
         supported_layouts = _load_supported_layouts(config)
-        min_bound = _safe_int(account_profile.get("min_slides")) or _safe_int(config.get("global_min_max", {}).get("min")) or 4
-        max_bound = _safe_int(account_profile.get("max_slides")) or _safe_int(config.get("global_min_max", {}).get("max")) or 7
+        min_bound = _safe_int(account_profile.get("min_slides")) or _safe_int(config.get("global_min_max", {}).get("min")) or MIN_ALLOWED_CARD_SLIDE_COUNT
+        max_bound = _safe_int(account_profile.get("max_slides")) or _safe_int(config.get("global_min_max", {}).get("max")) or MAX_ALLOWED_CARD_SLIDE_COUNT
         if min_bound is None or max_bound is None or min_bound > max_bound:
-            min_bound, max_bound = 4, 7
+            min_bound, max_bound = MIN_ALLOWED_CARD_SLIDE_COUNT, MAX_ALLOWED_CARD_SLIDE_COUNT
         bounds = (min_bound, max_bound)
 
         topic_signature = _build_topic_signature(payload, account_id, config)
@@ -742,8 +820,49 @@ def run_account_variable_slide_planner(
                 config=config,
             )
 
-        requested_count = _safe_int(binding.get("requested_slide_count") if isinstance(binding, Mapping) else None)
         target_count = _safe_int(signature_profile.get("target_count")) or _safe_int(selected_pattern.get("default_slide_count"))
+        requested_count, count_basis = _derive_requested_count(
+            payload,
+            binding,
+            topic_signature,
+            target_count,
+        )
+        if requested_count is None:
+            return {
+                "schema_version": ACCOUNT_VARIABLE_SLIDE_PLANNER_VERSION,
+                "config_schema_version": config.get("schema_version"),
+                "status": "planning_deferred",
+                "fallback_used": fallback_used,
+                "reason_code": "deep_content_required_for_slide_count",
+                "reason": "final slide count requires source-backed content and usable media",
+                "account_id": account_id,
+                "candidate_id": candidate_id,
+                "cluster_id": cluster_id,
+                "primary_category": target_category,
+                "topic_signature": topic_signature,
+                "slide_count": 0,
+                "slide_count_bounds": {"min": min_bound, "max": max_bound},
+                "selected_pattern": {
+                    "pattern_id": pattern_id,
+                    "name": _text(selected_pattern.get("name")),
+                    "signature": _text(selected_pattern.get("signature")),
+                    "source": pattern_provenance.get("source"),
+                    "provenance": pattern_provenance,
+                    "chosen_count": None,
+                    "requested_count": None,
+                    "count_basis": count_basis,
+                },
+                "slides": [],
+                "reasons": [*reasons, "slide_count_not_guessed_from_topic_type_or_image_count"],
+                "missing_requirements": ["deep_content_and_media_inventory"],
+                "renderer_compatibility": {
+                    "layout_type": _text(selected_pattern.get("layout_type") or selected_pattern.get("layout")),
+                    "layout_fallback_used": False,
+                    "unsupported_semantic_roles": [],
+                    "unsupported_canonical_roles": [],
+                    "renderer_notes": ["rendering_not_authorized_without_final_content_driven_count"],
+                },
+            }
         chosen_count, count_notes = _pick_count(selected_pattern, requested_count, topic_signature, bounds, target_count)
         reasons.extend(count_notes)
         if chosen_count is None:
@@ -774,12 +893,14 @@ def run_account_variable_slide_planner(
         reasons.extend(coherence_notes)
 
         required_roles = list(signature_profile.get("required_roles") or [])
-        if required_roles:
+        if required_roles and len(slides) > 1:
             required_set = set(required_roles)
             for required in required_set:
                 if required not in {item.get("semantic_role") for item in slides}:
                     missing_required.append(required)
                     reasons.append(f"required_semantic_role_missing:{required}")
+        elif required_roles and len(slides) == 1:
+            reasons.append("single_slide_compacts_supporting_roles_into_copy_and_caption")
 
         status = "planned_with_fallback" if fallback_used else "planned"
 
@@ -854,6 +975,7 @@ def run_account_variable_slide_planner(
                 "provenance": pattern_provenance,
                 "chosen_count": chosen_count,
                 "requested_count": requested_count,
+                "count_basis": count_basis,
             },
             "slides": [
                 {

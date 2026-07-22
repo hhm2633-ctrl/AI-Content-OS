@@ -97,11 +97,31 @@ def _package(record: Mapping[str, Any]) -> Dict[str, Any]:
     title = str(record.get("title") or "").strip()
     evidence = record.get("evidence") if isinstance(record.get("evidence"), Mapping) else {}
     story = record.get("story") if isinstance(record.get("story"), Mapping) else {}
+    source_gates = record.get("gates") if isinstance(record.get("gates"), Mapping) else {}
+    source_approval = source_gates.get("package_approval") if isinstance(source_gates.get("package_approval"), Mapping) else {}
+    approval_valid = (
+        source_approval.get("status") == "approved"
+        and source_approval.get("approved") is True
+        and str(source_approval.get("scope") or "").strip() == "production_package"
+        and str(source_approval.get("candidate_id") or "").strip() == candidate_id
+        and bool(str(source_approval.get("approved_by") or "").strip())
+        and bool(str(source_approval.get("receipt_id") or "").strip())
+    )
+    source_status = str(record.get("status") or "").strip()
+    if source_status == "blocked":
+        package_status = "blocked"
+    elif source_status == "production_package_ready" and approval_valid:
+        package_status = "production_package_ready"
+    else:
+        package_status = "production_package_pending_approval"
+    package_reason = str(record.get("reason_code") or "").strip()
+    if package_status == "production_package_pending_approval":
+        package_reason = "package_approval_required"
     return {
         "schema_version": "selected_candidate_production_package_v1",
         "package_id": f"cardnews-package:{candidate_id}",
-        "status": "production_package_ready",
-        "reason_code": "quality_loop_candidate",
+        "status": package_status,
+        "reason_code": package_reason or "quality_loop_candidate",
         "candidate": {"candidate_id": candidate_id, "account": account, "category": category, "title": title},
         "evidence": copy.deepcopy(dict(evidence)),
         "story": copy.deepcopy(dict(story)),
@@ -112,7 +132,16 @@ def _package(record: Mapping[str, Any]) -> Dict[str, Any]:
         "commerce": copy.deepcopy(record.get("commerce")) if isinstance(record.get("commerce"), Mapping) else None,
         "quality_notes": copy.deepcopy(record.get("quality_notes")) if isinstance(record.get("quality_notes"), Mapping) else {},
         "gates": {
-            "package_approval": {"status": "approved", "approved": True, "scope": "production_package", "approved_by": "owner_delegate"},
+            "package_approval": (
+                copy.deepcopy(dict(source_approval))
+                if approval_valid
+                else {
+                    "status": "pending",
+                    "approved": False,
+                    "scope": "production_package",
+                    "reason_code": "package_approval_required",
+                }
+            ),
             "render": {"status": "blocked", "authorized": False, "reason_code": "separate_render_approval_required"},
             "publish": {"status": "blocked", "authorized": False, "reason_code": "separate_publish_approval_required"},
         },
@@ -164,8 +193,9 @@ def run_quality_loop(
                     quality["failure_count"] = len(quality["failures"])
             package["quality_receipt"] = quality
             if not quality["quality_passed"]:
-                package["status"] = "blocked"
-                package["reason_code"] = "content_quality_repair_required"
+                if package["status"] == "production_package_ready":
+                    package["status"] = "blocked"
+                    package["reason_code"] = "content_quality_repair_required"
                 package["missing_requirements"] = [item["reason_code"] for item in quality["failures"]]
                 failures.append({"candidate_id": package["candidate"]["candidate_id"], "failures": quality["failures"]})
             packages[package["candidate"]["candidate_id"]] = package
@@ -198,11 +228,13 @@ def run_quality_loop(
         }
     entries = list(entry_index.values())
     ready = sum(item.get("status") == "production_package_ready" for item in entries)
+    pending = sum(item.get("status") == "production_package_pending_approval" for item in entries)
+    blocked = sum(item.get("status") == "blocked" for item in entries)
     manifest = {
         "schema_version": "cardnews_production_package_index_v1",
         "generated_at": datetime.now().astimezone().isoformat(),
-        "status": "ready" if entries and ready == len(entries) else ("partial" if ready else "blocked"),
-        "package_count": len(entries), "ready_count": ready, "blocked_count": len(entries) - ready,
+        "status": "ready" if entries and ready == len(entries) else ("partial" if ready else ("pending" if pending else "blocked")),
+        "package_count": len(entries), "ready_count": ready, "pending_count": pending, "blocked_count": blocked,
         "packages": entries, "approval_scope": "production_package",
         "render_executed": False, "publish_executed": False, "link_issuance_executed": False,
         "quality_loop": {
@@ -226,8 +258,8 @@ def main() -> int:
     parser.add_argument("--review-root", type=Path, default=DEFAULT_REVIEW_ROOT)
     args = parser.parse_args()
     result = run_quality_loop(args.repair_root, args.package_root, args.max_cycles, args.review_root)
-    print(json.dumps({"status": result["status"], "ready_count": result["ready_count"], "blocked_count": result["blocked_count"], "quality_loop": result["quality_loop"]}, ensure_ascii=False, indent=2))
-    return 0 if result["blocked_count"] == 0 else 2
+    print(json.dumps({"status": result["status"], "ready_count": result["ready_count"], "pending_count": result["pending_count"], "blocked_count": result["blocked_count"], "quality_loop": result["quality_loop"]}, ensure_ascii=False, indent=2))
+    return 0 if result["package_count"] > 0 and result["ready_count"] == result["package_count"] else 2
 
 
 if __name__ == "__main__":

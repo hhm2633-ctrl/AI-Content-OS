@@ -34,6 +34,7 @@ from modules.card_news.production_controller import (
 def _package(account: str) -> dict:
     candidate_id = f"candidate-{account.lower()}"
     return {
+        "status": "production_package_ready",
         "candidate": {"candidate_id": candidate_id, "account": account},
         "slide_count": 1,
         "story": {"summary": f"source-backed story for {account}"},
@@ -45,6 +46,13 @@ def _package(account: str) -> dict:
         "media_plan": [
             {"page": 1, "slide_role": "hook", "media_type": "editorial"}
         ],
+        "gates": {"package_approval": {
+            "status": "approved",
+            "approved": True,
+            "scope": "production_package",
+            "approved_by": "owner",
+            "receipt_id": f"package-approval-{candidate_id}",
+        }},
     }
 
 
@@ -144,6 +152,10 @@ def _qa_receipts(
             "visual_qa_passed": True,
             "failure_count": 0,
             "reviewer_independent": True,
+            "approval_kind": "owner_visual_approval",
+            "owner_visual_approval": True,
+            "owner_approved_by": "owner",
+            "evidence_only": False,
             "expected_slide_count": 1,
             "reviewed_slide_count": 1,
             "output_set_id": output_set_ids[candidate_id],
@@ -211,6 +223,14 @@ class ProductionControllerTests(unittest.TestCase):
         with self.assertRaises(ProductionControllerError) as caught:
             initialize_controller("daily", self.packages, stale)
         self.assertEqual(caught.exception.reason_code, "completion_receipt_stale")
+
+    def test_initialization_rejects_unapproved_package(self) -> None:
+        pending = copy.deepcopy(self.packages)
+        pending[0]["status"] = "production_package_pending_approval"
+        completion = [assess_package_completion(package) for package in pending]
+        with self.assertRaises(ProductionControllerError) as caught:
+            initialize_controller("daily", pending, completion)
+        self.assertEqual(caught.exception.reason_code, "production_package_not_ready")
 
     def test_illegal_transition_is_rejected(self) -> None:
         receipt = build_transition_receipt(

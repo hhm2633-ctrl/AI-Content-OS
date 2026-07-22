@@ -147,25 +147,68 @@ def _default_production_plans(
             continue
         candidate.setdefault("account", str(row.get("account") or "").upper())
 
-        media_rows = [
+        all_source_rows = [
             item
             for item in row.get("media_source_inputs", [])
-            if isinstance(item, Mapping) and item.get("render_allowed") is True
+            if isinstance(item, Mapping)
+        ]
+        media_rows = [
+            item for item in all_source_rows if item.get("render_allowed") is True
         ]
         assets: List[Dict[str, Any]] = []
         source_refs: List[str] = []
         summaries: List[str] = []
+        article_bodies: List[str] = []
+        evidence_points: List[str] = []
         comments: List[Dict[str, Any]] = []
+        for media in all_source_rows:
+            raw = media.get("raw_source_asset")
+            raw = raw if isinstance(raw, Mapping) else {}
+            source_url = str(media.get("source_url") or "").strip()
+            if source_url and source_url not in source_refs:
+                source_refs.append(source_url)
+            summary = str(raw.get("summary") or raw.get("description") or "").strip()
+            if summary and summary not in summaries:
+                summaries.append(summary)
+            if str(media.get("operation_artifact_role") or "") == "article_body":
+                body = str(
+                    raw.get("article_body")
+                    or raw.get("body")
+                    or raw.get("content")
+                    or raw.get("text")
+                    or ""
+                ).strip()
+                if body and body not in article_bodies:
+                    article_bodies.append(body)
+                raw_points = raw.get("key_points") or raw.get("facts") or raw.get("claims")
+                if isinstance(raw_points, list):
+                    for point in raw_points:
+                        point_text = str(point or "").strip()
+                        if point_text and point_text not in evidence_points:
+                            evidence_points.append(point_text)
+            provenance = media.get("real_comment_provenance")
+            if isinstance(provenance, Mapping) and provenance.get("is_real_comment") is True:
+                comments.append(
+                    {
+                        "comment_id": provenance.get("comment_id"),
+                        "text": provenance.get("text"),
+                        "identity_masked": provenance.get("identity_masked") is True,
+                        "is_real_comment": True,
+                        "source_url": source_url,
+                    }
+                )
+
+        for body in article_bodies:
+            for paragraph in body.splitlines():
+                paragraph = paragraph.strip()
+                if paragraph and paragraph not in evidence_points:
+                    evidence_points.append(paragraph)
+
         for position, media in enumerate(media_rows, start=1):
             raw = media.get("raw_source_asset")
             raw = raw if isinstance(raw, Mapping) else {}
             source_url = str(media.get("source_url") or "").strip()
             media_url = str(media.get("media_url") or "").strip()
-            if source_url and source_url not in source_refs:
-                source_refs.append(source_url)
-            summary = str(raw.get("description") or "").strip()
-            if summary and summary not in summaries:
-                summaries.append(summary)
             raw_type = str(media.get("media_type") or "").lower()
             media_type = {
                 "youtube_video": "video",
@@ -184,24 +227,14 @@ def _default_production_plans(
                     "reference_only": bool(media.get("reference_only")),
                 }
             )
-            provenance = media.get("real_comment_provenance")
-            if isinstance(provenance, Mapping) and provenance.get("is_real_comment") is True:
-                comments.append(
-                    {
-                        "comment_id": provenance.get("comment_id"),
-                        "text": provenance.get("text"),
-                        "identity_masked": provenance.get("identity_masked") is True,
-                        "is_real_comment": True,
-                        "source_url": source_url,
-                    }
-                )
-
+        source_summary = summaries[0] if summaries else (evidence_points[0] if evidence_points else "")
         deep_bundle = {
             "status": "ready",
             "title": str(row.get("candidate_title") or candidate.get("title") or ""),
-            "summary": summaries[0] if summaries else "",
-            "feed_body": summaries[0] if summaries else "",
-            "key_points": summaries[:3],
+            "summary": source_summary,
+            "feed_body": source_summary,
+            "key_points": evidence_points[:20] or summaries[:20],
+            "article_bodies": article_bodies,
             "source_refs": source_refs,
             "assets": assets,
             "comments": comments,

@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-22T12:49:26
+Updated at: 2026-07-22 (fail-closed production integration)
 
 ## Execution Command
 
@@ -9,6 +9,25 @@ py -m src.main
 ```
 
 Do not use `python -m src.main` for this project.
+
+## 2026-07-22 Production Safety Status
+
+- Staged local entrypoints now connect existing daily collection data to multi-account discovery and owner review, then connect an explicit owner-selected queue to deep discovery, final 1-20 slide planning, approval-gated packaging, Controller rendering, automatic evidence QA, and explicit owner visual approval.
+- Controller initialization rejects pending/unapproved production packages. Automatic OCR/OpenCLIP evidence cannot be accepted as owner visual approval, and final batch readiness retains owner visual receipt IDs and hashes.
+- This is current code/test evidence only: compile and 71 focused tests passed. No real candidate deep fetch, render, publish, external write, automation resume, or Git operation was performed.
+
+- Standard Workflow remains available for planning/learning and can finish `workflow_completed`, but now emits blocked CardNews and publishing results unless controller authorization is supplied through the controlled production path.
+- Unapproved standard execution performs zero image API calls and zero CardNews renders.
+- Image generation authorization requires a future timezone-aware expiry, authorization ID, candidate ID, approver, controller-state hash, and `image_generation` scope.
+- Production packages cannot become ready from synthesized/default approval data. Explicit owner-bound approval receipts are mandatory.
+- Variable-slide production contract is 1-20 slides. Shallow planning preserves explicit/content signals, and selected-candidate production derives the final count from completed copy and usable media without silent truncation.
+- Variable-slide production path: approved package -> controller -> Satori/resvg -> automatic local OCR/OpenCLIP evidence QA -> owner visual approval pending.
+- Automatic visual QA is evidence only and cannot set owner approval, manual-upload readiness, publishing readiness, or actual publish state.
+- Sentence Transformers is operationally connected to same-event clustering. Intel XPU is probe-only; SeaweedFS, Mixpost, and TryPost remain outside the critical path/reference-only.
+- Safe final QA: `py -m compileall src modules scripts` passed; 67 focused tests passed.
+- Full `py -m src.main` was intentionally not re-run after this gate change because other modules may call external LLM APIs. No real authorized post-change render or publish was performed.
+
+The stored workflow result below predates this final gate integration and is historical evidence, not proof of the current authorized production path.
 
 ## Workflow Result
 
@@ -1562,6 +1581,7 @@ AI-Content-OS/
 |-- scripts/
 |   |-- build_cardnews_production_packages.py
 |   |-- build_category_publish_packages.py
+|   |-- build_owner_candidate_report.py
 |   |-- build_owner_review_collection.py
 |   |-- build_source_health_dashboard.py
 |   |-- capture_selected_community_comments.py
@@ -1915,7 +1935,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (656 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (659 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- manual_image_intake/
@@ -1980,7 +2000,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (124 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (125 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -2110,6 +2130,7 @@ AI-Content-OS/
 |   |-- test_copy_intake_release_revision.py
 |   |-- test_cosin_collector.py
 |   |-- test_create_release_revision.py
+|   |-- test_daily_collection_category_normalization.py
 |   |-- test_daily_source_collection_executor.py
 |   |-- test_daily_source_collection_plan.py
 |   |-- test_daily_source_collection_runner.py

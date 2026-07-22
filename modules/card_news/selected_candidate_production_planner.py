@@ -11,6 +11,11 @@ from __future__ import annotations
 import copy
 from typing import Any, Dict, List, Mapping, Sequence
 
+from modules.card_news.canvas_contract import (
+    allowed_card_slide_count_label,
+    is_allowed_card_slide_count,
+)
+
 
 SCHEMA_VERSION = "selected_candidate_production_plan_v1"
 SUPPORTED_ACCOUNTS = {"A", "B", "C"}
@@ -149,9 +154,26 @@ def _cover(title: str, assets: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
     }
 
 
-def _news_slides(title: str, assets: Sequence[Mapping[str, Any]]) -> List[Dict[str, Any]]:
+def _news_slides(
+    title: str,
+    assets: Sequence[Mapping[str, Any]],
+    key_points: Sequence[str],
+) -> List[Dict[str, Any]]:
     slides = [_cover(title, assets)]
-    for asset in assets[1:]:
+    remaining_assets = list(assets[1:])
+    for position, key_point in enumerate(key_points, start=1):
+        asset = remaining_assets.pop(0) if remaining_assets else None
+        slides.append(
+            {
+                "slide_role": "source_context",
+                "media_type": asset["media_type"] if asset else "editorial",
+                "asset_refs": [asset["asset_id"]] if asset else [],
+                "copy_source": "deep_discovery_bundle.key_points",
+                "body": key_point,
+                "content_unit": position,
+            }
+        )
+    for asset in remaining_assets:
         slides.append(
             {
                 "slide_role": asset["role_hint"] or "source_context",
@@ -338,7 +360,8 @@ def build_selected_candidate_production_plan(
     completed_slides = _planned_slides(deep_dive_bundle)
     scenes = _objects(deep_dive_bundle.get("reconstruction_scenes"))
     comments = _real_comments(deep_dive_bundle)
-    if not assets and not completed_slides and not (account == "B" and scenes):
+    key_points = _strings(deep_dive_bundle.get("key_points"))
+    if not assets and not completed_slides and not key_points and not (account == "B" and scenes):
         result = _blocked(
             "usable_media_missing",
             "no usable discovered asset or verified story scene is available",
@@ -356,7 +379,7 @@ def build_selected_candidate_production_plan(
             "C": "fashion_beauty_entertainment",
         }[account]
     elif account == "A":
-        slide_plan = _news_slides(title, assets)
+        slide_plan = _news_slides(title, assets, key_points)
         content_kind = "news"
     elif account == "B":
         slide_plan = _story_slides(title, assets, scenes, comments)
@@ -364,6 +387,16 @@ def build_selected_candidate_production_plan(
     else:
         slide_plan, motion_plan = _style_slides(title, assets)
         content_kind = "fashion_beauty_entertainment"
+
+    if not is_allowed_card_slide_count(len(slide_plan)):
+        result = _blocked(
+            "slide_count_out_of_bounds",
+            f"production plan must contain {allowed_card_slide_count_label()} slides without truncation",
+            candidate_id,
+        )
+        result["planned_slide_count"] = len(slide_plan)
+        result["warnings"] = warnings
+        return result
 
     content_type = _text(deep_dive_bundle.get("content_type")).lower()
     editorial_only = content_type in EDITORIAL_CONTENT_TYPES
@@ -406,6 +439,7 @@ def build_selected_candidate_production_plan(
         "render_executed": False,
         "publish_executed": False,
         "slide_count": len(slide_plan),
+        "slide_count_bounds": {"min": 1, "max": 20},
         "slide_plan": slide_plan,
         "motion_plan": motion_plan,
         "copy_plan": copy_plan,

@@ -12,7 +12,7 @@ from modules.card_news import render_constants as RC
 
 
 FIXTURE_ROOT = Path("tests/fixtures/card_news_ux")
-CANONICAL_ROLES = ["hook", "problem", "solution", "cta"]
+FIXTURE_ROLES = ["hook", "problem", "solution", "cta"]
 
 
 class TestCardNewsProductionUX(unittest.TestCase):
@@ -72,11 +72,11 @@ class TestCardNewsProductionUX(unittest.TestCase):
             },
         )
 
-    def test_long_multilingual_input_produces_canonical_four_decodable_cards(self):
+    def test_long_multilingual_input_preserves_requested_variable_slide_sequence(self):
         result = self._run()
         self.assertEqual(result["status"], "card_news_completed")
-        self.assertEqual([item["role"] for item in result["story_flow_result"]["applied_roles"]], CANONICAL_ROLES)
-        self.assertEqual(len(result["cards"]), 4)
+        self.assertEqual([item["role"] for item in result["story_flow_result"]["applied_roles"]], FIXTURE_ROLES)
+        self.assertEqual(len(result["cards"]), len(self._slides()))
 
         for card in result["cards"]:
             with Image.open(card["card_path"]) as image:
@@ -222,7 +222,7 @@ class TestCardNewsProductionUX(unittest.TestCase):
         self.assertTrue(sourcing["manual_image_required"])
         self.assertEqual(sourcing["real_image_used_count"], 0)
         required_user_input = (
-            "승인 이미지 파일 4개와 각 파일의 원문 URL·출처명·timezone 포함 captured_at/"
+            f"승인 이미지 파일 {len(self._slides())}개와 각 파일의 원문 URL·출처명·timezone 포함 captured_at/"
             "reviewed_at·copyright_status·구조화 permission_evidence·주제 관련성 확인·"
             "attribution 문구를 하나의 evidence manifest로 제공"
         )

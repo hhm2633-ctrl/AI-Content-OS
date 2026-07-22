@@ -332,9 +332,43 @@ class TestVariableSlidePlannerConfig(unittest.TestCase):
             }
         )
 
+        self.assertEqual(result["status"], "planning_deferred")
+        self.assertEqual(result["reason_code"], "deep_content_required_for_slide_count")
+        self.assertEqual(result["slide_count"], 0)
+
+    def test_single_source_breaking_news_does_not_force_one_slide(self):
+        result = run_account_variable_slide_planner(
+            {
+                "account_id": "account_a_news_incident",
+                "candidate_id": "candidate-news-1",
+                "cluster_id": "cluster-news-1",
+                "primary_category": "major_news_policy",
+                "topic_signature": "breaking_news",
+                "title": "한 장이면 충분한 단신",
+                "source_refs": ["https://news.example/1"],
+            }
+        )
+
+        self.assertEqual(result["status"], "planning_deferred")
+        self.assertEqual(result["slide_count"], 0)
+        self.assertEqual(result["selected_pattern"]["count_basis"], "deferred_until_deep_content")
+
+    def test_content_supported_twenty_slide_request_is_preserved(self):
+        result = run_account_variable_slide_planner(
+            {
+                "account_id": "account_c_beauty_fashion",
+                "candidate_id": "candidate-fashion-20",
+                "cluster_id": "cluster-fashion-20",
+                "primary_category": "fashion",
+                "topic_signature": "beauty_guide",
+                "title": "공식 이미지가 풍부한 시즌 컬렉션",
+                "requested_slide_count": 20,
+            }
+        )
+
         self.assertIn(result["status"], {"planned", "planned_with_fallback"})
-        self.assertGreaterEqual(result["slide_count"], 4)
-        self.assertEqual(result["slide_count"], len(result["slides"]))
+        self.assertEqual(result["slide_count"], 20)
+        self.assertEqual(len(result["slides"]), 20)
 
 
 if __name__ == "__main__":

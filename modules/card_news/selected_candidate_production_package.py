@@ -10,6 +10,11 @@ from __future__ import annotations
 import copy
 from typing import Any, Dict, List, Mapping
 
+from modules.card_news.canvas_contract import (
+    allowed_card_slide_count_label,
+    is_allowed_card_slide_count,
+)
+
 
 SCHEMA_VERSION = "selected_candidate_production_package_v1"
 EXPECTED_PLAN_SCHEMA = "selected_candidate_production_plan_v1"
@@ -95,13 +100,22 @@ def _copy_index(slides: List[Mapping[str, Any]]) -> Dict[int, Mapping[str, Any]]
 
 def _approval_gate(approval_receipt: Any, candidate_id: str) -> Dict[str, Any]:
     if not isinstance(approval_receipt, Mapping):
-        return {"status": "pending", "approved": False, "scope": "production_package"}
+        return {
+            "status": "pending",
+            "approved": False,
+            "scope": "production_package",
+            "reason_code": "package_approval_required",
+        }
     receipt_candidate = _text(approval_receipt.get("candidate_id"))
     scope = _text(approval_receipt.get("scope"))
+    approved_by = _text(approval_receipt.get("approved_by"))
+    receipt_id = _text(approval_receipt.get("receipt_id"))
     approved = (
         _text(approval_receipt.get("status")).lower() == "approved"
         and receipt_candidate == candidate_id
         and scope == "production_package"
+        and bool(approved_by)
+        and bool(receipt_id)
     )
     if not approved:
         return {
@@ -114,8 +128,8 @@ def _approval_gate(approval_receipt: Any, candidate_id: str) -> Dict[str, Any]:
         "status": "approved",
         "approved": True,
         "scope": scope,
-        "approved_by": _text(approval_receipt.get("approved_by")),
-        "receipt_id": _text(approval_receipt.get("receipt_id")),
+        "approved_by": approved_by,
+        "receipt_id": receipt_id,
     }
 
 
@@ -225,6 +239,12 @@ def build_selected_candidate_production_package(
     slide_plan = _objects(production_plan.get("slide_plan"))
     if not slide_plan or production_plan.get("slide_count") != len(slide_plan):
         return _blocked("slide_plan_malformed", "variable slide plan and slide_count must agree", candidate_id)
+    if not is_allowed_card_slide_count(len(slide_plan)):
+        return _blocked(
+            "slide_count_out_of_bounds",
+            f"production package requires {allowed_card_slide_count_label()} slides",
+            candidate_id,
+        )
     supplied_by_page = _copy_index(supplied_slides)
     if len(supplied_by_page) != len(slide_plan):
         return _blocked("slide_copy_incomplete", "every planned slide needs one copy result", candidate_id)
@@ -253,6 +273,17 @@ def build_selected_candidate_production_package(
         )
 
     approval_gate = _approval_gate(approval_receipt, candidate_id)
+    package_approved = approval_gate["approved"] is True
+    package_status = (
+        "production_package_ready"
+        if package_approved
+        else "production_package_pending_approval"
+    )
+    package_reason_code = (
+        "strict_package_composed"
+        if package_approved
+        else _text(approval_gate.get("reason_code")) or "package_approval_required"
+    )
     renderer_ready = render_input_receipt.get("renderer_ready") is True
     render_gate_status = (
         "ready"
@@ -273,8 +304,8 @@ def build_selected_candidate_production_package(
 
     return {
         "schema_version": SCHEMA_VERSION,
-        "status": "production_package_ready",
-        "reason_code": "strict_package_composed",
+        "status": package_status,
+        "reason_code": package_reason_code,
         "candidate": {
             "candidate_id": candidate_id,
             "account": account,

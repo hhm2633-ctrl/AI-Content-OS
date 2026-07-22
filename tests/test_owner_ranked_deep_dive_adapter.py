@@ -46,6 +46,12 @@ class TestOwnerRankedDeepDiveAdapter(unittest.TestCase):
         self.assertEqual(request["selection_refs"][0]["route_score"], 1.0)
         self.assertEqual(request["required_artifacts"], ["article_body", "source_evidence", "image_rights"])
         self.assertEqual(request["evidence_status"], "owner_reviewed_queue")
+        self.assertEqual(request["account"], "A")
+        self.assertEqual(request["title"], "Title A")
+        self.assertEqual(request["grade"], "1")
+        self.assertEqual(request["category"], "정치")
+        self.assertEqual(request["source_urls"], ["https://example.com/a"])
+        self.assertEqual(request["requested_media"], ["원문 기사", "기사 이미지"])
         source_refs = request["source_refs"]
         kinds = {ref.get("kind") for ref in source_refs}
         values = {ref.get("value") for ref in source_refs}

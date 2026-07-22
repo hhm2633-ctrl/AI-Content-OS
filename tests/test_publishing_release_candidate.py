@@ -280,7 +280,7 @@ class PublishingReleaseCandidateTests(unittest.TestCase):
                 self.assertEqual(item["blocker_codes"], result["blocker_codes"])
 
         failed = self.module.rebind_committed_paths(
-            publishing_result, committed_paths[:1], "card-news-set-001"
+            publishing_result, [], "card-news-set-001"
         )
         self.assertFalse(failed["package_ready"])
         self.assertFalse(failed["publishing_ready"])
@@ -522,7 +522,7 @@ class PublishingReleaseCandidateTests(unittest.TestCase):
 
     def test_truth_table_fail_closed_for_every_release_blocker(self):
         cases = {
-            "card_count": ("PUBLISH_CARD_COUNT_INVALID", lambda data: data.update(cards=data["cards"][:1])),
+            "card_count": ("PUBLISH_CARD_COUNT_INVALID", lambda data: data.update(cards=[])),
             "file_missing": (
                 "PUBLISH_CARD_FILE_MISSING",
                 lambda data: (

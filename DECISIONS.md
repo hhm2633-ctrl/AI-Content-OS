@@ -396,3 +396,12 @@ QA 진단에서 레이아웃 선택 단계의 안전한 대체(`layout_fallback_
 실제 댓글·증거 이미지·Instagram 성과 데이터가 없거나 외부 LLM이 fallback한 상태는 CardNews
 Renderer의 미완료 사유가 아니다. 해당 능력은 Research, Instagram, 외부 API Roadmap에서 별도
 추적한다. 이후 Shorts 작업은 CardNews 경로를 수정하지 않는 독립 Phase 0 설계부터 시작한다.
+# 2026-07-22 - CardNews production is controller-authorized and fail-closed
+
+- The standard Workflow is a planning/learning path, not an implicit production authorization path.
+- Image API calls, CardNews rendering, and publishing preparation require explicit owner-bound authorization through the controlled production path.
+- Approval receipts must be explicit and scoped; scripts may not synthesize approvers, receipt IDs, or ready states.
+- CardNews slide count is fully variable from 1 through 20 and comes from the approved content/media plan. There is no fixed minimum or default production count; fixed-four truncation is prohibited.
+- OCR/OpenCLIP post-render checks are machine evidence only. They cannot create owner approval or publish readiness.
+- `workflow_completed` means orchestration completed; it does not mean production, visual acceptance, or publishing completed.
+- Intel XPU, SeaweedFS, Mixpost, and TryPost remain non-critical/reference-only until separately approved and operationally proven.

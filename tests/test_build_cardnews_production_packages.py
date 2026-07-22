@@ -7,7 +7,7 @@ from scripts.build_cardnews_production_packages import build_packages
 
 
 class BuildCardNewsProductionPackagesTests(unittest.TestCase):
-    def test_writes_one_ready_and_one_missing_receipt_without_execution(self):
+    def test_missing_approval_stays_pending_and_explicit_receipt_allows_ready(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             selection = root / "selection.json"
@@ -67,14 +67,43 @@ class BuildCardNewsProductionPackagesTests(unittest.TestCase):
             manifest = build_packages(selection, state, output)
 
             self.assertEqual(manifest["package_count"], 2)
-            self.assertEqual(manifest["ready_count"], 1)
+            self.assertEqual(manifest["ready_count"], 0)
+            self.assertEqual(manifest["pending_count"], 1)
             self.assertEqual(manifest["blocked_count"], 1)
             self.assertEqual(manifest["batch_bridge"]["ready_count"], 1)
             self.assertFalse(manifest["render_executed"])
             ready = json.loads((output / "A-1.json").read_text(encoding="utf-8"))
             blocked = json.loads((output / "A-2.json").read_text(encoding="utf-8"))
-            self.assertEqual(ready["status"], "production_package_ready")
+            self.assertEqual(ready["status"], "production_package_pending_approval")
             self.assertEqual(blocked["reason_code"], "missing_agent_console_result")
+
+            approvals = root / "approvals.json"
+            approvals.write_text(
+                json.dumps(
+                    {
+                        "receipts": [
+                            {
+                                "status": "approved",
+                                "scope": "production_package",
+                                "candidate_id": "A-1",
+                                "approved_by": "project_owner",
+                                "receipt_id": "explicit-approval-1",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            approved_output = root / "approved-packages"
+            approved_manifest = build_packages(
+                selection, state, approved_output, approvals
+            )
+            approved = json.loads(
+                (approved_output / "A-1.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(approved_manifest["ready_count"], 1)
+            self.assertEqual(approved_manifest["pending_count"], 0)
+            self.assertEqual(approved["status"], "production_package_ready")
 
 
 if __name__ == "__main__":

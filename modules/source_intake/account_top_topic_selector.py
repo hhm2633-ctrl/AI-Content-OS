@@ -30,6 +30,20 @@ SIGNALS = (
     "recurrence",
 )
 
+SLIDE_PLANNING_FIELDS = (
+    "summary",
+    "source_refs",
+    "evidence_bundle",
+    "assets",
+    "media",
+    "images",
+    "key_points",
+    "comments",
+    "reconstruction_scenes",
+    "planned_slides",
+    "requested_slide_count",
+)
+
 
 def _text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
@@ -195,7 +209,7 @@ def _ranking_key(item: Mapping[str, Any]) -> tuple[Any, ...]:
 
 
 def _selection_entry(candidate: Mapping[str, Any], selection: Mapping[str, Any], rank: int) -> Dict[str, Any]:
-    return {
+    entry = {
         "rank": rank,
         "account_id": copy.deepcopy(candidate.get("account_id")),
         "candidate_id": copy.deepcopy(candidate.get("candidate_id")),
@@ -216,6 +230,10 @@ def _selection_entry(candidate: Mapping[str, Any], selection: Mapping[str, Any],
         ],
         "instagram_pattern_binding": "deferred_to_next_stage",
     }
+    for field in SLIDE_PLANNING_FIELDS:
+        if field in candidate:
+            entry[field] = copy.deepcopy(candidate.get(field))
+    return entry
 
 
 def run_account_top_topic_selector(

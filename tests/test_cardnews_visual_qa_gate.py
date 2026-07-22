@@ -51,7 +51,16 @@ def complete_receipt():
         "feed_caption": "별도 피드 본문으로 카드뉴스를 이어읽을 수 있어야 한다.",
         "reviewed_at": "2026-07-19T12:00:00+09:00",
         "maker": {"id": "renderer-worker"},
-        "reviewer": {"id": "owner-reviewer", "independent_from_maker": True},
+        "reviewer": {
+            "id": "owner-reviewer",
+            "role": "owner",
+            "owner_authorized": True,
+            "independent_from_maker": True,
+        },
+        "approval_kind": "owner_visual_approval",
+        "owner_visual_approval": True,
+        "owner_approved_by": "owner-reviewer",
+        "evidence_only": False,
         "scope": {
             "kind": "representative",
             "accounts": ["B"],
@@ -82,6 +91,25 @@ def complete_receipt():
 
 
 class CardnewsVisualQaGateTests(unittest.TestCase):
+    def test_automatic_evidence_cannot_be_owner_approval(self):
+        receipt = complete_receipt()
+        receipt["approval_kind"] = "automatic_visual_evidence"
+        receipt["owner_visual_approval"] = False
+        receipt["evidence_only"] = True
+        receipt["reviewer"] = {
+            "id": "local-ocr-openclip-auto",
+            "role": "automated_qa",
+            "independent_from_maker": True,
+        }
+
+        result = assess_visual_qa_receipt(receipt, expected_slides())
+
+        self.assertFalse(result["visual_qa_passed"])
+        self.assertIn(
+            "automatic_visual_evidence_not_approval",
+            {item["reason_code"] for item in result["failures"]},
+        )
+
     def test_dimensions_alone_do_not_count_as_visual_approval(self):
         receipt = complete_receipt()
         for slide in receipt["slides"]:

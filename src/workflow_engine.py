@@ -130,12 +130,10 @@ class WorkflowEngine:
             self._save_workflow_result("07_image_generation_result.json", image_generation_result)
 
             card_news_result, publishing_result, output_set_manifest = (
-                self._run_card_news_output_transaction(
-                    content_result=content_result,
-                    image_generation_result=image_generation_result,
-                    image_strategy_result=image_strategy_result,
-                )
+                self._build_blocked_standard_production_results(image_generation_result)
             )
+            self._save_workflow_result("08_card_news_result.json", card_news_result)
+            self._save_workflow_result("09_publishing_result.json", publishing_result)
 
             knowledge_result = self._run_knowledge_engine(
                 trend_result=trend_result,
@@ -269,6 +267,48 @@ class WorkflowEngine:
             print("=" * 50)
 
             return error_result
+
+    @staticmethod
+    def _build_blocked_standard_production_results(image_generation_result):
+        """Keep the legacy Workflow side-effect free.
+
+        Real CardNews production is owned by the selected-candidate production
+        controller. The standard Workflow still completes planning and learning,
+        but it must never create or promote an output set on its own.
+        """
+        reason_code = "selected_candidate_controller_authorization_required"
+        card_news_result = {
+            "module": "CardNewsModule",
+            "status": "card_news_production_blocked",
+            "slides": [],
+            "cards": [],
+            "card_paths": [],
+            "production_ready": False,
+            "publishing_ready": False,
+            "reason_code": reason_code,
+            "image_generation_status": image_generation_result.get("status"),
+            "card_news_quality": {
+                "passed": False,
+                "status": "not_run",
+                "reason_code": reason_code,
+            },
+        }
+        publishing_result = {
+            "module": "PublishingModule",
+            "status": "publishing_blocked",
+            "publishing_ready": False,
+            "package_ready": False,
+            "actual_publish": False,
+            "publish_queue": [],
+            "reason_code": reason_code,
+        }
+        output_set_manifest = {
+            "status": "output_set_not_created",
+            "output_set_id": None,
+            "promoted": False,
+            "reason_code": reason_code,
+        }
+        return card_news_result, publishing_result, output_set_manifest
 
     def _run_card_news_output_transaction(
         self,

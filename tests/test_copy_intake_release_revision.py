@@ -321,7 +321,7 @@ class CopyIntakeReleaseRevisionTests(unittest.TestCase):
             engine, source_id, lambda: engine.create_release_revision(content_id=CONTENT_ID)
         )
 
-    def test_attack_wrong_role_order(self):
+    def test_approved_variable_middle_role_order_is_preserved(self):
         engine, source_id, card_paths = self._prepare_verified_source()
 
         def mutate(payload):
@@ -331,8 +331,15 @@ class CopyIntakeReleaseRevisionTests(unittest.TestCase):
             )
 
         self._write_copy_intake(card_paths, mutate=mutate)
-        self._assert_refused_and_no_new_set(
-            engine, source_id, lambda: engine.create_release_revision(content_id=CONTENT_ID)
+        with patch("modules.compliance.card_news_publish_gate._REPOSITORY_ROOT", self.root.resolve()):
+            result = engine.create_release_revision(content_id=CONTENT_ID)
+
+        self.assertTrue(result["publishing_ready"])
+        new_dir = Path("storage/output_sets/card_news/sets") / result["new_output_set_id"]
+        card_news = json.loads((new_dir / "08_card_news_result.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            [card["role"] for card in card_news["cards"]],
+            ["hook", "solution", "problem", "cta"],
         )
 
     def test_attack_content_id_mismatch_with_source(self):

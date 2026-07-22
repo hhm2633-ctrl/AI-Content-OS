@@ -307,9 +307,16 @@ def run_multi_account_card_news_discovery_pipeline(
             for plan in plans
             if plan.get("status") in {"planned", "planned_with_fallback"}
         )
+        deferred_count = sum(
+            1
+            for plans in slide_plans.values()
+            for plan in plans
+            if plan.get("status") == "planning_deferred"
+        )
         stages["variable_slide_planning"] = {
-            "status": "planned" if planned_count else "closed",
+            "status": "planned" if planned_count else ("deferred" if deferred_count else "closed"),
             "planned_count": planned_count,
+            "deferred_count": deferred_count,
             "plans": slide_plans,
         }
 
@@ -321,6 +328,9 @@ def run_multi_account_card_news_discovery_pipeline(
                 if int(instagram_binding.get("production_approved_binding_count") or 0) > 0
                 else "ok_with_configured_slide_fallback"
             )
+        elif deferred_count:
+            status = "top_topics_ready"
+            reason_code = "deep_content_required_for_final_slide_count"
         elif top_count:
             status = "top_topics_ready"
             reason_code = "slide_planning_not_ready"

@@ -74,6 +74,11 @@ class SelectedCandidateRenderInputAdapterTests(unittest.TestCase):
         self.assertFalse(result["current_renderer_input"]["image_strategy_result"]["need_ai_image"])
         self.assertFalse(result["render_executed"])
 
+    def test_one_slide_news_is_preserved(self):
+        result = build_selected_candidate_render_inputs(plan(1), resolved_copy(1))
+        self.assertEqual(result["status"], "renderer_input_ready")
+        self.assertEqual(len(result["current_renderer_input"]["content_result"]["slides"]), 1)
+
     def test_slide_count_over_limit_is_blocked(self):
         value = plan(21)
         result = build_selected_candidate_render_inputs(value, resolved_copy(21))

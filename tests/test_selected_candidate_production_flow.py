@@ -129,6 +129,39 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         self.assertEqual(len(result["render_inputs"]), 1)
         self.assertFalse(result["render_inputs"][0]["publish_executed"])
 
+    def test_reference_only_article_body_reaches_source_backed_plan(self):
+        class ArticleBodyProvider:
+            name = "article_body_provider"
+
+            def discover(self, account, operation, request):
+                if operation != "fetch_article_body":
+                    return {"status": "ok", "network_used": False, "assets": []}
+                return {
+                    "status": "ok",
+                    "network_used": False,
+                    "assets": [
+                        {
+                            "type": "article_body",
+                            "url": "https://news.example/body",
+                            "body": "첫 번째 확인된 사실\n두 번째 확인된 사실",
+                            "reference_only": True,
+                            "usable_in_production": False,
+                        }
+                    ],
+                }
+
+        result = run_default_selected_candidate_production_flow(
+            _selection(), ArticleBodyProvider()
+        )
+
+        self.assertEqual("render_inputs_ready", result["status"])
+        plan = result["production_plans"][0]
+        self.assertEqual(
+            ["첫 번째 확인된 사실", "두 번째 확인된 사실"],
+            plan["copy_plan"]["key_points"],
+        )
+        self.assertEqual(["https://news.example/body"], plan["copy_plan"]["source_credit"])
+
     def test_default_flow_attaches_story_copy_feed_and_blog_inputs(self):
         selection = {
             "accounts": {

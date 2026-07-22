@@ -21,6 +21,14 @@ def _package(candidate_id, status="production_package_ready"):
             "quality_passed": status != "blocked",
         },
         "gates": {
+            "package_approval": {
+                "status": "approved",
+                "approved": True,
+                "scope": "production_package",
+                "candidate_id": candidate_id,
+                "approved_by": "project_owner",
+                "receipt_id": f"explicit-{candidate_id}",
+            },
             "render": {"status": "blocked", "authorized": False},
             "publish": {"status": "blocked", "authorized": False},
         },
@@ -38,6 +46,8 @@ class VerifyCardNewsProductionPackagesTests(unittest.TestCase):
     def _write_index(self, root, packages):
         entries = []
         ready = 0
+        pending = 0
+        blocked = 0
         for package in packages:
             candidate_id = package["candidate"]["candidate_id"]
             (root / f"{candidate_id}.json").write_text(
@@ -45,11 +55,14 @@ class VerifyCardNewsProductionPackagesTests(unittest.TestCase):
             )
             entries.append({"candidate_id": candidate_id, "status": package["status"]})
             ready += package["status"] == "production_package_ready"
+            pending += package["status"] == "production_package_pending_approval"
+            blocked += package["status"] == "blocked"
         index = {
             "schema_version": "cardnews_production_package_index_v1",
             "package_count": len(entries),
             "ready_count": ready,
-            "blocked_count": len(entries) - ready,
+            "pending_count": pending,
+            "blocked_count": blocked,
             "packages": entries,
             "render_executed": False,
             "publish_executed": False,
@@ -94,6 +107,36 @@ class VerifyCardNewsProductionPackagesTests(unittest.TestCase):
 
             self.assertEqual(receipt["status"], "failed")
             self.assertIn("A-1:ready_feed_caption_missing", receipt["errors"])
+
+    def test_pending_package_is_recognized_but_never_counted_ready(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = _package("A-1", "production_package_pending_approval")
+            package["reason_code"] = "package_approval_required"
+            package["gates"]["package_approval"] = {
+                "status": "pending",
+                "approved": False,
+                "scope": "production_package",
+            }
+            index = self._write_index(root, [package])
+
+            receipt = verify_package_index(index)
+
+            self.assertEqual(receipt["status"], "passed")
+            self.assertEqual(receipt["ready_count"], 0)
+            self.assertEqual(receipt["pending_count"], 1)
+
+    def test_ready_package_requires_explicit_candidate_bound_approval(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = _package("A-1")
+            package["gates"]["package_approval"].pop("receipt_id")
+            index = self._write_index(root, [package])
+
+            receipt = verify_package_index(index)
+
+            self.assertEqual(receipt["status"], "failed")
+            self.assertIn("A-1:ready_package_approval_invalid", receipt["errors"])
 
 
 if __name__ == "__main__":

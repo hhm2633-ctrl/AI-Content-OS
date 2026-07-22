@@ -876,7 +876,7 @@ class CardNewsPublishGateAttackTests(unittest.TestCase):
         self.assertIs(canonical["release_guard"]["ready"], True)
 
     def test_final_cards_use_allowed_slide_count_and_are_repo_relative_output_set_bound(self):
-        self.assertFalse(self.gate.check(card_news_intake(final_cards=card_news_intake()["final_cards"][:1]))["publish_ready"])
+        self.assertTrue(self.gate.check(card_news_intake(final_cards=card_news_intake()["final_cards"][:1]))["publish_ready"])
         cases = {
             "missing": [],
             "absolute": [

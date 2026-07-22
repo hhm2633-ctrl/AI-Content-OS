@@ -188,6 +188,60 @@ ENGAGEMENT_METRIC_ALIASES = {
     "dislikes": (),
 }
 
+CATEGORY_VALUE_ALIASES = {
+    "\uacbd\uc81c": "economy",
+}
+
+UNUSABLE_CATEGORY_VALUES = {
+    "uncategorized",
+    "unknown",
+    "\ubbf8\ubd84\ub958",
+}
+
+GENERIC_NEWS_SOURCE_IDS = {
+    "naver_news",
+    "daum_news",
+    "nate_news_rank",
+    "news1",
+    "newsis",
+    "yonhap",
+}
+
+ECONOMY_SOURCE_IDS = {
+    "edaily",
+    "hankyung_economy",
+    "mk_economy",
+    "moneytoday",
+}
+
+
+def _category_text(value: Any) -> Optional[str]:
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    if isinstance(value, list):
+        values = [entry.strip() for entry in value if isinstance(entry, str) and entry.strip()]
+        return values[-1] if values else None
+    return None
+
+
+def _normalize_category(item: Dict[str, Any]) -> None:
+    original = _category_text(item.get("board_or_category"))
+    category = original if original and original.casefold() not in UNUSABLE_CATEGORY_VALUES else None
+    if not category:
+        category = _category_text(item.get("category_slug"))
+    if not category:
+        category = _category_text(item.get("category_path"))
+    if not category and item.get("source_type") == "news_economy":
+        category = "economy"
+    if not category and item.get("source_id") in ECONOMY_SOURCE_IDS:
+        category = "economy"
+    if not category and item.get("source_id") in GENERIC_NEWS_SOURCE_IDS:
+        category = "news"
+    normalized = CATEGORY_VALUE_ALIASES.get(category, category)
+    if original and normalized != original:
+        item.setdefault("board_or_category_raw", original)
+    item["board_or_category"] = normalized
+
 
 def _normalize_shallow_item(
     item: Dict[str, Any],
@@ -205,6 +259,8 @@ def _normalize_shallow_item(
                 break
         else:
             item[canonical] = None
+
+    _normalize_category(item)
 
     nested = item.get("visible_metrics")
     nested = nested if isinstance(nested, dict) else None

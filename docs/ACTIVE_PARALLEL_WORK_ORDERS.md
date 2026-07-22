@@ -1,6 +1,6 @@
 # Active Parallel Work Orders
 
-Updated: 2026-07-11
+Updated: 2026-07-22
 
 ## Operating Contract
 
@@ -11,13 +11,13 @@ Updated: 2026-07-11
 
 ## Current Objective
 
-Make completed CardNews outputs easy to inspect in the Codex app now, then prepare a safe result-gallery
-integration without modifying the user's untracked `site/` work.
+Connect the already implemented CardNews planning, authorization, rendering, media-QA, and fallback
+components into one fail-closed production path. New feature expansion is out of scope.
 
-## Lane A: Work CTO / Integration
+## Lane A: CTO / Integration
 
-Objective: confirm current CardNews completion state, protect existing user work, review handoffs, and
-decide whether the result gallery should later be integrated into `site/`.
+Objective: disable the unapproved legacy Workflow render path, integrate worker handoffs, run final QA,
+and own shared status documents and Git approval gates.
 
 Owned files:
 
@@ -27,24 +27,25 @@ Owned files:
 
 Prohibited actions:
 
-- Do not modify untracked `site/` until its ownership and intended product role are confirmed.
-- Do not regenerate CardNews merely to build a viewer.
+- Do not render, call image APIs, publish, or resume automation without owner-bound authorization.
+- Preserve WorkflowEngine order and `workflow_completed` while production side effects fail closed.
 
 Completion checks:
 
-- Four PNG paths and `card_news_quality.json` are verified.
-- Worker outputs are reviewed for repository accuracy and scope compliance.
-- Final integration decision is recorded before code is merged.
+- Unapproved `py -m src.main` performs zero image API calls and zero CardNews renders.
+- Variable-slide production remains available only through the controller-authorized path.
+- Worker outputs are integrated without overlapping file ownership.
 
 Handoff: report current user-visible state, accepted/rejected worker outputs, tests, and next integration gate.
 
-## Lane B: Claude Specialist
+## Lane B: Euclid - Approval Truth
 
-Objective: produce a non-code UX and information-architecture specification for a CardNews result gallery.
+Objective: correct production-package status so unapproved packages cannot appear ready.
 
-Owned file:
+Owned files:
 
-- `docs/CARD_NEWS_RESULT_GALLERY_SPEC.md`
+- `modules/card_news/selected_candidate_production_package.py`
+- its focused package test file
 
 Required reading:
 
@@ -65,15 +66,13 @@ Prohibited files/actions:
 
 Handoff: changed file, confirmed fields used, proposed UI states, unresolved CTO gates, and confirmation that no other file changed.
 
-## Lane C: Codex Worker - Result Manifest
+## Lane C: Heisenberg - CardNews Skill Contract
 
-Objective: design and implement a small, tested CardNews result-manifest builder outside `site/` that
-normalizes the four PNG paths, QA status, warnings, and publishing readiness for a future UI.
+Objective: replace the stale fixed-four-slide skill instruction with the approved variable-slide contract.
 
-Owned files:
+Owned file:
 
-- proposed new `modules/card_news/card_news_result_manifest.py`
-- proposed new `tests/test_card_news_result_manifest.py`
+- `.codex/skills/ai-content-os-card-news/SKILL.md`
 
 Protected files:
 
@@ -87,9 +86,9 @@ Completion checks:
 
 Handoff: changed files, manifest schema, test results, fallback behavior, and out-of-scope findings.
 
-## Lane D: Codex Worker - Output QA
+## Lane D: Completed Read-only Toolchain Audit
 
-Objective: independently inspect the four current PNGs and result JSON for app-view readiness.
+Objective: classify installed tools by real caller and production status.
 
 Owned files: none; read-only review.
 
@@ -103,7 +102,17 @@ Handoff: findings ordered by severity, exact file paths, and a go/no-go recommen
 
 ## Current Integration Finding
 
-- App individual-file viewing: GO.
-- Polished gallery and publish-ready labeling: NO-GO.
-- Current outputs are 1080x1080 and visually readable, but semantic copy defects remain.
-- `publishing_ready` must be gated off while `manual_image_required=true`.
+- Sentence Transformers: connected to same-event clustering with deterministic fallback.
+- Satori/resvg and OCR/OpenCLIP: safe adapters exist but the production chain is not yet unified.
+- Intel XPU, SeaweedFS, Mixpost, and TryPost remain outside the CardNews critical path.
+- The legacy Workflow image-generation/render path is the immediate blocker.
+
+## Integration Completion - 2026-07-22
+
+- Lane A complete: the standard Workflow production side effects are fail-closed and `workflow_completed` is preserved in mocked integration coverage.
+- Lane B accepted: explicit approval receipts are required; unapproved packages remain pending/blocked.
+- Lane C accepted: the project CardNews skill now defines variable slides and owner authorization gates.
+- Local QA integration accepted: controlled Satori/resvg output automatically feeds OCR/OpenCLIP evidence QA without creating owner approval.
+- Toolchain classification complete: Sentence Transformers connected; XPU probe-only; SeaweedFS/Mixpost/TryPost outside the critical path.
+- Final checks: compile passed and 67 focused tests passed.
+- Remaining owner gate: select a candidate from the 174-item report, then separately authorize one representative controlled render.

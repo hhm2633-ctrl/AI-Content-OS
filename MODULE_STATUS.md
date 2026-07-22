@@ -1422,3 +1422,42 @@ review — all layered onto the existing renderer. No new top-level Engine, no n
 - Knowledge Engine failure must still guarantee an existing (even empty) `storage/knowledge/knowledge.json` — never leave the DB file missing. The same guarantee now applies to `storage/performance_score/`, `storage/audit/`, `storage/learning/`, `storage/analytics/`, `storage/brand_dna/`, `storage/trend_memory/`, and `storage/competitor/`.
 - None of the Sprint 12/13 bonus Engines call external network/LLM APIs, so none implement literal retry logic — their Fallback strategy (safe default result, never raise) is the reliability contract instead, consistent with `image_strategy`/`pattern_engine`.
 - Per Sprint 13's explicit "Offline-First" constraint: do not implement Instagram API, Meta Graph API, access-token-based auth, or real SNS login/crawling without explicit future approval — check ROADMAP.md's "Requires External API" section first.
+# 2026-07-22 CardNews Production Integration Status
+
+## Five-stage local pipeline integration
+
+- Stage 1: explicit daily collection file -> `run_multi_account_card_news_discovery_pipeline()` local CLI; every input is ledgered as included/excluded/held.
+- Stage 2: all candidates remain visible in the owner review report with routing/disposition reasons.
+- Stage 3: owner-ranked queue preserves account/title/grade/source fields into deep discovery; network execution requires an explicit flag.
+- Stage 4: deep results feed final 1-20 production plans and approval-gated packages; 21+ slides fail closed without truncation.
+- Stage 5: Controller requires a ready owner-approved package; automatic OCR/OpenCLIP is evidence-only; explicit owner visual approval is required before manual-upload readiness.
+- Verification: compile passed and 71 focused tests passed. No current real-data end-to-end execution was performed.
+
+- Slide-count contract corrected to 1-20. One-slide news is valid; richer fashion/story/news material may expand to the supported maximum according to completed content and usable media.
+- Account-level 4-6 and global 4-7 caps were removed. Configured patterns are role seeds rather than slide-count caps.
+- Plans above 20 are blocked without silent truncation.
+
+## Operationally connected
+
+- Multi-account discovery and variable-slide planning remain available before production authorization.
+- Explicit approved production package -> controller-authorized Satori/resvg render -> local OCR/OpenCLIP evidence QA is connected in the controlled production CLI.
+- Sentence Transformers is connected to same-event clustering with deterministic fallback.
+
+## Fail-closed boundaries
+
+- Standard `WorkflowEngine.run()` no longer invokes the legacy CardNews output transaction. It records blocked image-generation, CardNews, and publishing states while preserving `workflow_completed`.
+- Production-package builders do not fabricate owner/delegate approvals. Pending or blocked packages cannot be promoted by the quality loop.
+- Local OCR/OpenCLIP results are evidence only and never create owner visual approval or publish readiness.
+
+## Not operationally complete
+
+- A real owner-authorized representative candidate has not been rendered through the updated full controlled chain.
+- Candidate selection from the 174-item 2026-07-22 owner report is pending.
+- Intel XPU is probe-only. SeaweedFS, Mixpost, and TryPost are not in the critical production path.
+- No actual posting, automation resume, or external publishing write is authorized.
+
+## Verification
+
+- Compile passed: `py -m compileall src modules scripts`.
+- 67 focused integration/recovery tests passed.
+- Full external-capable Workflow was intentionally not run after the change.

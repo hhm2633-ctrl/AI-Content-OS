@@ -1,13 +1,27 @@
 # CURRENT_TASK.md
 
 # AI-Content-OS
-Current Version: CardNews Renderer Complete; Output Acceptance Remediation Active (2026-07-11)
-Current Phase: CardNews app-view and publish-readiness correction
-Status: Four PNGs are app-viewable; polished gallery and publish-ready approval are NO-GO until semantic copy and manual-image gates are fixed
+Current Version: Fail-Closed Variable CardNews Production Integration (2026-07-22)
+Current Phase: Owner candidate selection and explicit production authorization pending
+Status: Standard Workflow is planning/learning only; image API, CardNews render, and publishing stay blocked without controller authorization
 
 ---
 
-# Current Objective
+# Current Objective (2026-07-22 override)
+
+오늘 수집한 174개 후보를 owner가 검토하고 선택한 뒤에만 가변 슬라이드 제작을 시작한다.
+CardNews 장수 계약은 고정 최소 없이 콘텐츠·근거·사용 가능한 미디어가 결정하는 1~20장이다.
+로컬 운영 진입점은 일일 수집 결과 -> 다계정 discovery -> owner 후보 보고 -> owner 선택 queue -> deep discovery -> 1~20장 final plan -> approval-gated package -> Controller -> render -> automatic evidence QA -> owner visual approval 순서로 연결됐다. 현재 연결은 71개 focused test로 검증했으며 실제 owner 선택 후보에 대한 network/render 실행은 아직 하지 않았다.
+기본 `py -m src.main` 경로는 외부 이미지 생성, CardNews 렌더, 게시 준비를 수행하지 않는다.
+실제 제작 경로는 명시적 approval receipt -> production controller -> Satori/resvg 렌더 ->
+OCR/OpenCLIP 자동 증거 QA -> owner 시각 승인 순서로 fail-closed 동작한다. 자동 QA는 owner
+승인이나 publish-ready 상태를 만들 수 없다. 현재 구현은 focused test로 검증했으며, 변경 후 실제
+승인된 대표 후보 end-to-end 렌더는 아직 실행하지 않았다.
+
+다음 owner gate는 `F:\AI-Content-OS-Data\source_intake\2026-07-22\owner_review_all_news_candidates.md`
+검토 및 후보 선택이다. 실제 렌더, 외부 API write, 게시, 자동화, Git은 별도 승인 전 실행하지 않는다.
+
+# Historical Objective (superseded by the 2026-07-22 override)
 
 카드뉴스 MVP 파이프라인(Protected Core)과 그 위의 Intelligence Layer(Knowledge/Trend Memory/
 Performance Score/Audit/Learning/Analytics/Brand DNA/Competitor Engine, Sprint 11-13에서 구축)가

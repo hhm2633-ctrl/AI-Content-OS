@@ -1,4 +1,4 @@
-"""Build approved CardNews planning packages from completed local handoffs.
+"""Build CardNews planning packages from completed local handoffs.
 
 This command writes JSON planning artifacts only.  It never renders, publishes,
 issues affiliate links, resumes automation, or calls an external service.
@@ -77,6 +77,20 @@ def _completed_jobs(state: Any) -> Dict[str, Mapping[str, Any]]:
     return indexed
 
 
+def _approval_receipts(value: Any) -> Dict[str, Mapping[str, Any]]:
+    rows = value.get("receipts") if isinstance(value, Mapping) else value
+    if isinstance(rows, Mapping):
+        rows = list(rows.values())
+    indexed: Dict[str, Mapping[str, Any]] = {}
+    for receipt in rows if isinstance(rows, list) else []:
+        if not isinstance(receipt, Mapping):
+            continue
+        candidate_id = str(receipt.get("candidate_id") or "").strip()
+        if candidate_id and candidate_id not in indexed:
+            indexed[candidate_id] = receipt
+    return indexed
+
+
 def _blocked_package(candidate: Mapping[str, Any], reason: str) -> Dict[str, Any]:
     return {
         "schema_version": "selected_candidate_production_package_v1",
@@ -94,7 +108,12 @@ def _blocked_package(candidate: Mapping[str, Any], reason: str) -> Dict[str, Any
         "feed_caption": "",
         "media_plan": [],
         "gates": {
-            "package_approval": {"status": "approved", "approved": True},
+            "package_approval": {
+                "status": "pending",
+                "approved": False,
+                "scope": "production_package",
+                "reason_code": "package_approval_required",
+            },
             "render": {"status": "blocked", "authorized": False},
             "publish": {"status": "blocked", "authorized": False},
         },
@@ -118,11 +137,17 @@ def build_packages(
     selection_path: Path = DEFAULT_SELECTION,
     state_path: Path = DEFAULT_STATE,
     output_root: Path = DEFAULT_OUTPUT,
+    approval_receipts_path: Path | None = None,
 ) -> Dict[str, Any]:
     final_selection = _selection(_load(selection_path))
     state = _load(state_path)
     candidates = _selected(final_selection)
     handoffs = _completed_jobs(state)
+    approval_receipts = (
+        _approval_receipts(_load(approval_receipts_path))
+        if approval_receipts_path is not None
+        else {}
+    )
     candidate_index = {
         str(candidate.get("candidate_id") or ""): candidate for candidate in candidates
     }
@@ -155,13 +180,7 @@ def build_packages(
                 str(bridge_record.get("reason_code") or "completed_agent_handoff_missing"),
             )
         else:
-            receipt = {
-                "status": "approved",
-                "scope": "production_package",
-                "candidate_id": candidate_id,
-                "approved_by": "owner_delegate",
-                "receipt_id": f"owner-package-approval:{candidate_id}",
-            }
+            receipt = approval_receipts.get(candidate_id)
             result = build_package_from_completed_handoff(candidate, handoff, receipt)
             package = result["package"]
             if package.get("status") != "production_package_ready":
@@ -172,7 +191,8 @@ def build_packages(
         completion = assess_package_completion(package)
         package["completion_receipt"] = completion
         if not completion["package_complete"]:
-            package["status"] = "blocked"
+            if package.get("status") != "production_package_pending_approval":
+                package["status"] = "blocked"
             existing = package.get("missing_requirements")
             existing = existing if isinstance(existing, list) else []
             package["missing_requirements"] = list(
@@ -205,13 +225,16 @@ def build_packages(
         )
 
     ready = sum(item["status"] == "production_package_ready" for item in entries)
+    pending = sum(item["status"] == "production_package_pending_approval" for item in entries)
+    blocked = sum(item["status"] == "blocked" for item in entries)
     manifest = {
         "schema_version": INDEX_SCHEMA,
         "generated_at": datetime.now().astimezone().isoformat(),
-        "status": "ready" if ready == len(entries) and entries else ("partial" if ready else "blocked"),
+        "status": "ready" if ready == len(entries) and entries else ("partial" if ready else ("pending" if pending else "blocked")),
         "package_count": len(entries),
         "ready_count": ready,
-        "blocked_count": len(entries) - ready,
+        "pending_count": pending,
+        "blocked_count": blocked,
         "packages": entries,
         "approval_scope": "production_package",
         "completion_gate_schema": "agent_console_package_completion_gate_v1",
@@ -238,8 +261,9 @@ def main() -> int:
     parser.add_argument("--selection", type=Path, default=DEFAULT_SELECTION)
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--approval-receipts", type=Path)
     args = parser.parse_args()
-    manifest = build_packages(args.selection, args.state, args.output)
+    manifest = build_packages(args.selection, args.state, args.output, args.approval_receipts)
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
     return 0
 

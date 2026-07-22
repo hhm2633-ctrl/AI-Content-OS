@@ -122,9 +122,17 @@ class CopyIntakeLoaderTests(unittest.TestCase):
         self._write("CN-TEST", payload)
         self.assertIsNone(load_verified_copy_intake("CN-TEST"))
 
-    def test_wrong_slide_count_returns_none(self):
+    def test_single_slide_count_is_accepted(self):
         payload = _valid_payload()
         payload["slides"] = _valid_slides()[:1]
+        self._write("CN-TEST", payload)
+        result = load_verified_copy_intake("CN-TEST")
+        self.assertIsNotNone(result)
+        self.assertEqual(set(result["slides"]), {1})
+
+    def test_zero_slide_count_returns_none(self):
+        payload = _valid_payload()
+        payload["slides"] = []
         self._write("CN-TEST", payload)
         self.assertIsNone(load_verified_copy_intake("CN-TEST"))
 

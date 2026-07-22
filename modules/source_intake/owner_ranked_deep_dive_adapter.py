@@ -144,6 +144,23 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
     }
 
     result = build_selective_deep_dive_queue(portfolio_contract)
+    owner_by_candidate = {
+        entry["candidate_id"]: entry["owner_payload"]
+        for entry in selected
+    }
+    for request in result.get("requests", []):
+        if not isinstance(request, dict):
+            continue
+        owner_payload = owner_by_candidate.get(_text(request.get("candidate_id")))
+        if not isinstance(owner_payload, Mapping):
+            continue
+        request["account"] = _text(owner_payload.get("account"))
+        request["title"] = _text(owner_payload.get("title"))
+        request["grade"] = _text(owner_payload.get("grade"))
+        request["category"] = _text(owner_payload.get("category"))
+        request["source_urls"] = _list(owner_payload.get("source_urls"))
+        request["requested_media"] = _list(owner_payload.get("requested_media"))
+        request["owner_payload"] = copy.deepcopy(dict(owner_payload))
     return result
 
 

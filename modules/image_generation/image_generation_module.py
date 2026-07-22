@@ -1,6 +1,7 @@
 import os
 import base64
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -14,7 +15,9 @@ class ImageGenerationModule(BaseModule):
     def __init__(self, config=None):
         super().__init__(config)
 
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        # Construct the external client only after controller authorization has
+        # passed and an actual generation call is about to start.
+        self.client = None
 
         self.image_dir = Path("storage/generated_images")
         self.image_dir.mkdir(parents=True, exist_ok=True)
@@ -63,7 +66,32 @@ class ImageGenerationModule(BaseModule):
                 "Instagram card news background, modern minimal design, content creator style, square format",
             ]
 
-        return clean_prompts[:4]
+        return clean_prompts
+
+    @staticmethod
+    def _has_controller_authorization(image_prompt_result: Dict[str, Any]) -> bool:
+        authorization = image_prompt_result.get("production_authorization")
+        if not isinstance(authorization, dict) or authorization.get("authorized") is not True:
+            return False
+        required_text = (
+            "authorization_id",
+            "candidate_id",
+            "approved_by",
+            "controller_state_hash",
+            "expires_at",
+        )
+        if any(not isinstance(authorization.get(field), str) or not authorization[field].strip() for field in required_text):
+            return False
+        scope = authorization.get("scope")
+        if not isinstance(scope, list) or "image_generation" not in scope:
+            return False
+        try:
+            expires_at = datetime.fromisoformat(authorization["expires_at"].replace("Z", "+00:00"))
+            if expires_at.tzinfo is None:
+                return False
+            return expires_at.astimezone(timezone.utc) > datetime.now(timezone.utc)
+        except (TypeError, ValueError):
+            return False
 
     def _generate_image(self, prompt: str, index: int) -> Dict[str, Any]:
         print(f"OpenAI Image API Generating: ai_image_{index}.png")
@@ -74,7 +102,7 @@ class ImageGenerationModule(BaseModule):
 
         for attempt in range(1, max_attempts + 1):
             try:
-                response = self.client.images.generate(
+                response = self._client().images.generate(
                     model="gpt-image-1",
                     prompt=prompt,
                     size="1024x1024",
@@ -130,6 +158,11 @@ class ImageGenerationModule(BaseModule):
             original_error=last_error,
         )
 
+    def _client(self) -> OpenAI:
+        if self.client is None:
+            self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        return self.client
+
     def _is_retryable_error_type(self, error_type: str) -> bool:
         return error_type in {"connection_refused", "timeout", "unknown_error"}
 
@@ -145,6 +178,19 @@ class ImageGenerationModule(BaseModule):
         if isinstance(image_prompt_result, dict) and image_prompt_result.get("ai_image_skipped"):
             print("Image Generation Module Skipped: Image Strategy selected a real image source")
             return self._build_skipped_result(image_prompt_result)
+
+        if not isinstance(image_prompt_result, dict) or not self._has_controller_authorization(image_prompt_result):
+            print("Image Generation Module Blocked: production controller authorization required")
+            return {
+                "module": "ImageGenerationModule",
+                "status": "image_generation_blocked",
+                "images": [],
+                "fallback_used": False,
+                "fallback_reason": "",
+                "production_ready": False,
+                "reason_code": "production_controller_authorization_required",
+                "external_api_called": False,
+            }
 
         prompts = self._extract_prompts(image_prompt_result)
         images = []

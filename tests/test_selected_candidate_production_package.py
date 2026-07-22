@@ -75,7 +75,8 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
             plan, _render_receipt(plan), _story()
         )
 
-        self.assertEqual(result["status"], "production_package_ready")
+        self.assertEqual(result["status"], "production_package_pending_approval")
+        self.assertEqual(result["reason_code"], "package_approval_required")
         self.assertEqual(result["candidate"]["account"], "A")
         self.assertEqual(len(result["slides"]), 5)
         self.assertEqual(result["media_plan"][2]["media_type"], "video")
@@ -105,6 +106,8 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         )
 
         self.assertTrue(result["gates"]["package_approval"]["approved"])
+        self.assertEqual(result["status"], "production_package_ready")
+        self.assertEqual(result["reason_code"], "strict_package_composed")
         self.assertEqual(result["gates"]["render"]["status"], "ready")
         self.assertFalse(result["gates"]["render"]["authorized"])
         self.assertEqual(result["gates"]["publish"]["status"], "blocked")
@@ -124,7 +127,7 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         result = build_selected_candidate_production_package(
             plan, _render_receipt(plan), _story()
         )
-        self.assertEqual(result["status"], "production_package_ready")
+        self.assertEqual(result["status"], "production_package_pending_approval")
         self.assertEqual(result["evidence"]["rights_status"], "reference_only_present")
         self.assertEqual(result["evidence"]["non_renderable_asset_ids"], ["asset-1"])
         self.assertEqual(
@@ -132,6 +135,38 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
             "reference_assets_require_replacement_or_reuse_confirmation",
         )
         self.assertFalse(result["receipts"]["render_executed"])
+
+    def test_approval_requires_identity_candidate_scope_and_receipt_fields(self):
+        plan = _plan(4)
+        render = _render_receipt(plan)
+        render.update({"status": "renderer_input_ready", "renderer_ready": True})
+        valid_receipt = {
+            "status": "approved",
+            "scope": "production_package",
+            "candidate_id": "A-1",
+            "approved_by": "owner_delegate",
+            "receipt_id": "approval-1",
+        }
+
+        invalid_receipts = {
+            "missing_receipt_id": {**valid_receipt, "receipt_id": ""},
+            "missing_approved_by": {**valid_receipt, "approved_by": ""},
+            "candidate_mismatch": {**valid_receipt, "candidate_id": "B-OTHER"},
+            "scope_mismatch": {**valid_receipt, "scope": "render"},
+        }
+        for case, receipt in invalid_receipts.items():
+            with self.subTest(case=case):
+                result = build_selected_candidate_production_package(
+                    plan, render, _story(4), receipt
+                )
+                self.assertEqual(
+                    result["status"], "production_package_pending_approval"
+                )
+                self.assertEqual(
+                    result["reason_code"], "invalid_package_approval_receipt"
+                )
+                self.assertFalse(result["gates"]["package_approval"]["approved"])
+                self.assertEqual(result["gates"]["render"]["status"], "blocked")
 
     def test_mismatched_outputs_and_incomplete_slide_copy_are_blocked(self):
         plan = _plan()
@@ -166,6 +201,21 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         )
         self.assertEqual(result["commerce"]["mode"], "optional_match")
         self.assertFalse(result["receipts"]["link_issuance_executed"])
+
+    def test_package_accepts_twenty_slides_and_rejects_twenty_one(self):
+        accepted_plan = _plan(20)
+        accepted = build_selected_candidate_production_package(
+            accepted_plan, _render_receipt(accepted_plan), _story(20)
+        )
+        rejected_plan = _plan(21)
+        rejected = build_selected_candidate_production_package(
+            rejected_plan, _render_receipt(rejected_plan), _story(21)
+        )
+
+        self.assertEqual("production_package_pending_approval", accepted["status"])
+        self.assertEqual(20, len(accepted["slides"]))
+        self.assertEqual("blocked", rejected["status"])
+        self.assertEqual("slide_count_out_of_bounds", rejected["reason_code"])
 
 
 if __name__ == "__main__":

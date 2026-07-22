@@ -46,6 +46,55 @@ class SelectedCandidateProductionPlannerTests(unittest.TestCase):
         )
         self.assertFalse(result["render_executed"])
 
+    def test_single_image_news_stays_one_slide(self):
+        result = build_selected_candidate_production_plan(
+            {"id": "a-single", "account": "A", "category": "국내뉴스", "title": "단신"},
+            {
+                "status": "completed",
+                "summary": "한 장으로 충분한 기사 요약이다.",
+                "source_refs": ["https://news.example/single"],
+                "assets": [image("single")],
+            },
+        )
+        self.assertEqual(result["status"], "production_plan_ready")
+        self.assertEqual(result["slide_count"], 1)
+
+    def test_news_with_one_image_and_multiple_content_units_expands(self):
+        result = build_selected_candidate_production_plan(
+            {"id": "a-rich", "account": "A", "category": "국내뉴스", "title": "설명이 필요한 뉴스"},
+            {
+                "status": "completed",
+                "summary": "이미지는 한 장이지만 설명할 사실은 여러 개다.",
+                "source_refs": ["https://news.example/rich"],
+                "assets": [image("single-rich")],
+                "key_points": ["첫 번째 핵심", "두 번째 핵심", "세 번째 핵심"],
+            },
+        )
+        self.assertEqual(result["status"], "production_plan_ready")
+        self.assertEqual(result["slide_count"], 4)
+        self.assertEqual(len(result["slide_plan"]), 4)
+
+    def test_twenty_completed_slides_are_preserved_and_twenty_one_are_blocked(self):
+        def bundle(count):
+            return {
+                "status": "completed",
+                "summary": "공식 시즌 자료를 기반으로 구성했다.",
+                "source_refs": ["https://brand.example/show"],
+                "planned_slides": [
+                    {"headline": f"룩 {page}", "body": f"공식 설명 {page}"}
+                    for page in range(1, count + 1)
+                ],
+            }
+
+        candidate = {"id": "c-variable", "account": "C", "category": "패션", "title": "시즌 룩"}
+        accepted = build_selected_candidate_production_plan(candidate, bundle(20))
+        blocked = build_selected_candidate_production_plan(candidate, bundle(21))
+
+        self.assertEqual(accepted["status"], "production_plan_ready")
+        self.assertEqual(accepted["slide_count"], 20)
+        self.assertEqual(blocked["reason_code"], "slide_count_out_of_bounds")
+        self.assertEqual(blocked["planned_slide_count"], 21)
+
     def test_story_uses_emotion_arc_and_real_comments_only(self):
         result = build_selected_candidate_production_plan(
             {"id": "b1", "account": "B", "title": "연애 갈등"},

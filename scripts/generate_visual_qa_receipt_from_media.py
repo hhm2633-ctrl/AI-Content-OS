@@ -581,12 +581,17 @@ def build_receipt_payload(
     receipt = {
         "schema_version": "cardnews_visual_qa_receipt_v1",
         "receipt_id": f"visual-qa-{output_set_id}-representative",
+        "approval_kind": "automatic_visual_evidence",
+        "owner_visual_approval": False,
+        "owner_approved_by": None,
+        "evidence_only": True,
+        "automatic_evidence_only": True,
         "output_set_id": output_set_id,
         "reviewed_at": reviewed_at,
         "maker": {"id": maker_id},
-        "reviewer": {"id": reviewer_id, "independent_from_maker": True},
+        "reviewer": {"id": reviewer_id, "role": "automated_qa", "independent_from_maker": True},
         "scope": scope,
-        "decision": "approve",
+        "decision": "evidence_only",
         "slides": slides_payload,
         "analysis_contract": {
             "openclip_ready": openclip_ready,
@@ -597,7 +602,12 @@ def build_receipt_payload(
         },
     }
 
-    assessed = assess_visual_qa_receipt(receipt, expected, expected_output_set_id=output_set_id)
+    assessed = assess_visual_qa_receipt(
+        receipt,
+        expected,
+        expected_output_set_id=output_set_id,
+        require_owner_approval=False,
+    )
     metrics = {
         "candidate_count": len(candidates),
         "slide_count": len(slides_payload),
@@ -632,7 +642,7 @@ def main() -> int:
         ocr_timeout=args.ocr_timeout,
     )
     receipt_passed = bool(assessed.get("visual_qa_passed"))
-    receipt["decision"] = "approve" if receipt_passed else "blocked"
+    receipt["decision"] = "evidence_only" if receipt_passed else "blocked"
 
     output = {
         "qa_receipt": receipt,

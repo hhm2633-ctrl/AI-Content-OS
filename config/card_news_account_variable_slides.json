@@ -1,10 +1,10 @@
 {
-  "schema_version": "card_news_account_variable_slides_config_v1",
-  "default_config_version_note": "Instagram pattern binding 기반 variable slide planning foundation",
+  "schema_version": "card_news_account_variable_slides_config_v2",
+  "default_config_version_note": "Content- and media-driven 1-20 slide planning; configured patterns are role seeds, not count caps",
   "pattern_binding_ttl_days": 14,
   "global_min_max": {
-    "min": 4,
-    "max": 7
+    "min": 1,
+    "max": 20
   },
   "supported_layouts": [
     "notebook",
@@ -169,8 +169,8 @@
   },
   "accounts": {
     "account_a_news_incident": {
-      "min_slides": 4,
-      "max_slides": 6,
+      "min_slides": 1,
+      "max_slides": 20,
       "fallback_pattern": "news_fallback",
       "signature_profiles": {
         "breaking_news": {
@@ -212,8 +212,8 @@
       }
     },
     "account_b_issue_story": {
-      "min_slides": 4,
-      "max_slides": 6,
+      "min_slides": 1,
+      "max_slides": 20,
       "fallback_pattern": "issue_fallback",
       "signature_profiles": {
         "issue_story": {
@@ -247,8 +247,8 @@
       }
     },
     "account_c_beauty_fashion": {
-      "min_slides": 4,
-      "max_slides": 6,
+      "min_slides": 1,
+      "max_slides": 20,
       "fallback_pattern": "beauty_fallback",
       "signature_profiles": {
         "beauty_guide": {
