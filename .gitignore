@@ -38,3 +38,6 @@ logs/
 tools/cardnews-renderer/node_modules/
 graphify-out/
 
+# External Manus runtime database; maintained outside AI-Content-OS Git.
+external_workmanus/seller_automation/data/seller.db
+
