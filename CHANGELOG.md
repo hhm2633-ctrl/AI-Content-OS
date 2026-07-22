@@ -978,3 +978,17 @@
 - Re-ran the Intel XPU probe: device execution and Diffusers pipeline imports passed; model loading and generation remain unverified.
 - Confirmed SeaweedFS license provenance and Mixpost/TryPost source-version provenance are still incomplete; all remain non-operational/reference-only.
 - QA: 25 renderer/controller tests passed, compile passed, and `py -m src.main` finished with `workflow_completed`.
+## 2026-07-22 - External tool provenance and read-only browser smoke
+
+- Added fail-closed `SOURCE_PROVENANCE.json` support to the publishing reference adapter.
+- Pinned the local Mixpost reference to commit `df57648b866310446703f5294350552b62735df5` with one disclosed lockfile exception.
+- Pinned the local TryPost reference to commit `5f0346951dfc03ed46e958ed820146b8e1dc76ef` with two missing documentation files and two locally modified lockfiles disclosed.
+- Verified the local SeaweedFS 4.39 binary against the official release archive SHA256 and stored the official Apache-2.0 license beside the binary; no service was started.
+- Ran Playwright read-only public-page smoke against Naver and Instagram: both returned HTTP 200 and loaded DOM; non-read Instagram POST telemetry was blocked.
+- Publishing references remain reference-only with application execution, workers, external API writes, and publishing disabled.
+
+## 2026-07-22 12:49:27
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

@@ -53,6 +53,9 @@ _EXCLUDED_MEASUREMENT_DIRS = {
     "storage",
 }
 _VERSION_PATTERN = re.compile(r"^[vV]?\d+\.\d+(?:\.\d+)?(?:[-+][0-9A-Za-z.-]+)?$")
+_COMMIT_PATTERN = re.compile(r"^[0-9a-f]{40}$")
+_SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
+_SOURCE_PROVENANCE_SCHEMA = "publishing_reference_source_provenance_v1"
 _COMPOSER_PRETTY_VERSION = re.compile(r"'pretty_version'\s*=>\s*'([^']+)'", re.IGNORECASE)
 _PHP_ENUM_CASE = re.compile(r"\bcase\s+[A-Za-z_][A-Za-z0-9_]*\s*=\s*['\"]([^'\"]+)['\"]\s*;")
 
@@ -91,7 +94,11 @@ def _source_url(composer: Mapping[str, Any]) -> Optional[str]:
     return homepage.strip() if isinstance(homepage, str) and homepage.strip() else None
 
 
-def _version_evidence(root: Path, composer: Mapping[str, Any]) -> Dict[str, Any]:
+def _version_evidence(
+    root: Path,
+    composer: Mapping[str, Any],
+    profile: Mapping[str, Any],
+) -> Dict[str, Any]:
     manifest_version = composer.get("version")
     if isinstance(manifest_version, str) and _VERSION_PATTERN.fullmatch(manifest_version.strip()):
         return {"ready": True, "value": manifest_version.strip(), "source": "composer.json"}
@@ -110,6 +117,42 @@ def _version_evidence(root: Path, composer: Mapping[str, Any]) -> Dict[str, Any]
             ref_value = _read_text(ref_path, max_bytes=200)
             if ref_value and re.fullmatch(r"[0-9a-fA-F]{40}", ref_value.strip()):
                 return {"ready": True, "value": ref_value.strip().lower(), "source": str(ref_path.relative_to(root))}
+
+    provenance_path = root / "SOURCE_PROVENANCE.json"
+    if provenance_path.exists():
+        provenance, provenance_error = _read_json(provenance_path)
+        archive = provenance.get("archive") if isinstance(provenance, Mapping) else None
+        verification = provenance.get("verification") if isinstance(provenance, Mapping) else None
+        commit = str(provenance.get("pinned_commit", "")).strip().lower() if provenance else ""
+        archive_sha256 = str(archive.get("sha256", "")).strip().lower() if isinstance(archive, Mapping) else ""
+        valid = (
+            provenance_error is None
+            and provenance is not None
+            and provenance.get("schema_version") == _SOURCE_PROVENANCE_SCHEMA
+            and provenance.get("source_slug") == profile["source_slug"]
+            and provenance.get("reference_only") is True
+            and _COMMIT_PATTERN.fullmatch(commit) is not None
+            and _SHA256_PATTERN.fullmatch(archive_sha256) is not None
+            and isinstance(verification, Mapping)
+            and verification.get("source_files_match") is True
+            and isinstance(verification.get("tracked_file_count"), int)
+            and verification.get("tracked_file_count") > 0
+            and isinstance(verification.get("allowed_local_exceptions"), list)
+        )
+        if valid:
+            return {
+                "ready": True,
+                "value": commit,
+                "source": "SOURCE_PROVENANCE.json",
+                "archive_sha256": archive_sha256,
+                "allowed_local_exceptions": list(verification["allowed_local_exceptions"]),
+            }
+        return {
+            "ready": False,
+            "value": commit or None,
+            "source": "SOURCE_PROVENANCE.json",
+            "reason": "source_provenance_invalid",
+        }
 
     installed = _read_text(root / "vendor" / "composer" / "installed.php")
     installed_version = None
@@ -235,7 +278,7 @@ class PublishingReferenceRuntime:
         source_ready = bool(source_url and str(profile["source_slug"]).casefold() in source_url.casefold())
         php_requirement = composer.get("require", {}).get("php") if isinstance(composer.get("require"), Mapping) else None
         runtime_platform_ready = isinstance(php_requirement, str) and bool(php_requirement.strip())
-        version = _version_evidence(root, composer)
+        version = _version_evidence(root, composer, profile)
         license_evidence = _license_evidence(root, composer.get("license"), str(profile["license"]))
         autoload = _autoload_evidence(root, composer, profile)
         platforms = _platform_evidence(root, profile)
@@ -300,4 +343,3 @@ def probe_publishing_references(
     roots: Optional[Mapping[str, str | Path]] = None,
 ) -> Dict[str, Any]:
     return PublishingReferenceRuntime(roots).probe()
-

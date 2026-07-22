@@ -118,3 +118,11 @@
 - Intel XPU recheck passed: FP32/FP16/BF16 execution and Qwen/FLUX pipeline class imports succeeded. Model weights, model load, and generation were not attempted.
 - SeaweedFS remains executable-only with no adjacent license file. Mixpost and TryPost remain source-version-unpinned and reference-only.
 - Final focused QA passed 25 tests; compile passed; the full workflow promoted output set `6023ee0d327a439eacea6cce17072f03` and ended with `workflow_completed`.
+## 10. Approved provenance and browser verification
+
+- SeaweedFS `4.39` reported commit `db42bb49757b459551607939807017d7a9d5a94a`. The official `windows_amd64.zip` SHA256 `55d0fcddcea510f6e02575211931f76a20e2adf8d933c336bc679d26b8cf158a` matched the download, and the extracted and installed `weed.exe` SHA256 both matched `751975fa1c5f26cc7ba529fbfc1b7e7b471caabdb80225e1747a6b199ed1bd18`.
+- The official SeaweedFS Apache-2.0 `LICENSE` and a local install provenance manifest were stored next to the F: executable. No SeaweedFS service or volume was started.
+- Mixpost source was pinned to commit `df57648b866310446703f5294350552b62735df5`; all official archive files matched except the locally changed `package-lock.json`.
+- TryPost source was pinned to commit `5f0346951dfc03ed46e958ed820146b8e1dc76ef`; source code matched with disclosed exceptions for two missing README files and locally changed Composer/NPM lockfiles.
+- The repository adapter now accepts a source commit only when the provenance schema, source slug, 40-character commit, archive SHA256, tracked-file verification, exception list, and reference-only boundary all validate.
+- Playwright GET/HEAD-only smoke loaded `https://www.naver.com/` and `https://www.instagram.com/` with HTTP 200. No login, click, form submission, posting, or data write was attempted; an Instagram background POST was blocked.

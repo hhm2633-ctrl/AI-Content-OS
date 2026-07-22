@@ -83,6 +83,45 @@ class PublishingReferenceRuntimeTests(unittest.TestCase):
         self.assertEqual(result["version"]["reason"], "source_version_unpinned")
         self.assertIn("version_evidence_missing", result["errors"])
 
+    def test_verified_source_provenance_pins_commit_without_composer_version(self):
+        composer = json.loads((self.mixpost / "composer.json").read_text(encoding="utf-8"))
+        composer.pop("version")
+        (self.mixpost / "composer.json").write_text(json.dumps(composer), encoding="utf-8")
+        provenance = {
+            "schema_version": "publishing_reference_source_provenance_v1",
+            "source_slug": "inovector/mixpost",
+            "pinned_commit": "a" * 40,
+            "archive": {"sha256": "b" * 64},
+            "verification": {
+                "tracked_file_count": 10,
+                "source_files_match": True,
+                "allowed_local_exceptions": [],
+            },
+            "reference_only": True,
+        }
+        (self.mixpost / "SOURCE_PROVENANCE.json").write_text(
+            json.dumps(provenance), encoding="utf-8"
+        )
+
+        result = PublishingReferenceRuntime(self.roots).probe_project("mixpost")
+
+        self.assertTrue(result["version"]["ready"])
+        self.assertEqual(result["version"]["value"], "a" * 40)
+        self.assertEqual(result["version"]["source"], "SOURCE_PROVENANCE.json")
+
+    def test_invalid_source_provenance_fails_closed(self):
+        composer = json.loads((self.mixpost / "composer.json").read_text(encoding="utf-8"))
+        composer.pop("version")
+        (self.mixpost / "composer.json").write_text(json.dumps(composer), encoding="utf-8")
+        (self.mixpost / "SOURCE_PROVENANCE.json").write_text(
+            json.dumps({"pinned_commit": "not-a-commit"}), encoding="utf-8"
+        )
+
+        result = PublishingReferenceRuntime(self.roots).probe_project("mixpost")
+
+        self.assertFalse(result["version"]["ready"])
+        self.assertEqual(result["version"]["reason"], "source_provenance_invalid")
+
     def test_license_requires_matching_declaration_and_root_text(self):
         (self.trypost / "LICENSE.md").write_text("MIT License", encoding="utf-8")
         result = PublishingReferenceRuntime(self.roots).probe_project("trypost")
