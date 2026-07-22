@@ -685,8 +685,8 @@ class TestDailySourceCollectionExecutor(unittest.TestCase):
         by_source = {item["source_id"]: item for item in result["items"]}
         self.assertEqual(by_source["fashionbiz"]["account_c_vertical"], "fashion")
         self.assertEqual(by_source["apparelnews"]["topic_selection_role"], "primary_editorial")
-        self.assertFalse(by_source["cosin"]["editorial_topic_eligible"])
-        self.assertEqual(by_source["cosin"]["topic_selection_role"], "supporting_industry")
+        self.assertTrue(by_source["cosin"]["editorial_topic_eligible"])
+        self.assertEqual(by_source["cosin"]["topic_selection_role"], "primary_editorial")
 
     def test_collects_account_c_consumer_beauty_editorials_with_audience_roles(self):
         calls = []

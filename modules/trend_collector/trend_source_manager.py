@@ -5,6 +5,7 @@ from typing import Any, Dict, List
 
 from modules.trend_collector.bobaedream_collector import BobaedreamCollector
 from modules.trend_collector.fmkorea_collector import FMKoreaCollector
+from modules.trend_collector.moneytoday_collector import MoneyTodayCollector
 from modules.trend_collector.nate_pann_collector import NatePannCollector
 from modules.trend_collector.naver_news_collector import NaverNewsCollector
 from modules.trend_collector.retry_policy import RetryPolicy
@@ -18,6 +19,7 @@ class TrendSourceManager:
         self.naver_news_collector = NaverNewsCollector()
         self.fmkorea_collector = FMKoreaCollector()
         self.bobaedream_collector = BobaedreamCollector()
+        self.moneytoday_collector = MoneyTodayCollector()
         trend_config = self.config.get("trend_collector", {})
         self.cache_ttl_seconds = int(trend_config.get("cache_ttl_seconds", 24 * 60 * 60))
         self.retry_policy = RetryPolicy(
@@ -131,6 +133,29 @@ class TrendSourceManager:
                     "api_key_present": None,
                 },
             },
+            "moneytoday": {
+                "source": "moneytoday",
+                "attempted": False,
+                "success": False,
+                "count": 0,
+                "error_message": "",
+                "failed_reason": "",
+                "fallback_reason": "",
+                "collection_method": "",
+                "used_cache": False,
+                "cache_path": "storage/cache/moneytoday_cache.json",
+                "retry_enabled": self.retry_policy.enabled,
+                "retry_count": 0,
+                "cache_age_seconds": None,
+                "cache_expired": False,
+                "service_diagnostic": {
+                    "service": "moneytoday",
+                    "status": "ok",
+                    "error_type": "",
+                    "safe_message": "",
+                    "api_key_present": None,
+                },
+            },
             "fallback_used": False,
             "fallback_sources": [],
         }
@@ -210,6 +235,10 @@ class TrendSourceManager:
                 collected.extend(self._collect_bobaedream(source))
                 continue
 
+            if source_id == "moneytoday":
+                collected.extend(self._collect_moneytoday(source))
+                continue
+
             if source_id == "manual":
                 if not collected:
                     collected.extend(self.build_manual_trends())
@@ -221,6 +250,16 @@ class TrendSourceManager:
             collected = self.build_manual_trends()
 
         return collected
+
+    def _collect_moneytoday(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        print("MoneyToday Collect Started")
+        results, collector_status = self.retry_policy.run_collect(
+            collect_fn=lambda: self.moneytoday_collector.collect(source=source),
+            status_fn=lambda: self.moneytoday_collector.last_status,
+        )
+        self._update_moneytoday_summary(collector_status)
+        print("MoneyToday Collect Finished")
+        return results
 
     def _collect_naver_news(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
         print("Naver News Collect Started")
@@ -1276,6 +1315,28 @@ class TrendSourceManager:
                 "collection_method": status.get("collection_method", summary.get("collection_method", "")),
                 "used_cache": bool(status.get("used_cache", summary.get("used_cache", False))),
                 "cache_path": str(self.bobaedream_cache_path).replace("\\", "/"),
+                "retry_enabled": bool(status.get("retry_enabled", summary.get("retry_enabled", self.retry_policy.enabled))),
+                "retry_count": int(status.get("retry_count", summary.get("retry_count", 0)) or 0),
+                "cache_age_seconds": status.get("cache_age_seconds", summary.get("cache_age_seconds")),
+                "cache_expired": bool(status.get("cache_expired", summary.get("cache_expired", False))),
+                "service_diagnostic": status.get("service_diagnostic", summary.get("service_diagnostic")),
+            }
+        )
+
+    def _update_moneytoday_summary(self, status: Dict[str, Any]) -> None:
+        summary = self.last_collection_summary["moneytoday"]
+        summary.update(
+            {
+                "source": "moneytoday",
+                "attempted": bool(status.get("attempted", summary.get("attempted"))),
+                "success": bool(status.get("success", summary.get("success"))),
+                "count": int(status.get("count", summary.get("count", 0))),
+                "error_message": status.get("error_message", summary.get("error_message", "")),
+                "failed_reason": status.get("failed_reason", summary.get("failed_reason", "")),
+                "fallback_reason": status.get("fallback_reason", summary.get("fallback_reason", "")),
+                "collection_method": status.get("collection_method", summary.get("collection_method", "")),
+                "used_cache": bool(status.get("used_cache", summary.get("used_cache", False))),
+                "cache_path": status.get("cache_path", summary.get("cache_path")),
                 "retry_enabled": bool(status.get("retry_enabled", summary.get("retry_enabled", self.retry_policy.enabled))),
                 "retry_count": int(status.get("retry_count", summary.get("retry_count", 0)) or 0),
                 "cache_age_seconds": status.get("cache_age_seconds", summary.get("cache_age_seconds")),

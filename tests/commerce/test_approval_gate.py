@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 
 from modules.commerce.approval_gate import CAPABILITIES, ApprovalGate
@@ -35,15 +36,29 @@ class ApprovalGateTests(unittest.TestCase):
             path.write_text(json.dumps({
                 "phase_2_cto_gate_satisfied": True,
                 "approved_capabilities": {"listing_creation": True, "order_actions": False},
+                "approval_identity": {
+                    "platform": "smartstore",
+                    "product_id": "P-1",
+                    "payload_hash": "a" * 64,
+                    "approval_id": "AP-1",
+                    "issued_at": "2026-07-22T00:00:00+00:00",
+                    "expires_at": "2026-07-23T00:00:00+00:00",
+                },
             }), encoding="utf-8")
             gate = ApprovalGate(approval_path=path)
-            self.assertTrue(gate.is_capability_approved("listing_creation"))
-            self.assertFalse(gate.is_capability_approved("order_actions"))
+            target = {
+                "platform": "smartstore",
+                "product_id": "P-1",
+                "payload_hash": "a" * 64,
+                "approval_id": "AP-1",
+                "now": datetime(2026, 7, 22, 12, tzinfo=timezone.utc),
+            }
+            self.assertTrue(gate.is_capability_approved("listing_creation", **target))
+            self.assertFalse(gate.is_capability_approved("order_actions", **target))
 
-    def test_unknown_capability_raises(self):
+    def test_unknown_capability_fails_closed_without_raising(self):
         gate = ApprovalGate(approval_path=Path("this/path/does/not/exist.json"))
-        with self.assertRaises(ValueError):
-            gate.is_capability_approved("delete_everything")
+        self.assertFalse(gate.is_capability_approved("delete_everything"))
 
     def test_check_returns_explainable_reason_never_bare_bool(self):
         gate = ApprovalGate(approval_path=Path("this/path/does/not/exist.json"))

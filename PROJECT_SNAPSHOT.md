@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-22 (fail-closed production integration)
+Updated at: 2026-07-22 (full regression closure)
 
 ## Execution Command
 
@@ -14,7 +14,7 @@ Do not use `python -m src.main` for this project.
 
 - Staged local entrypoints now connect existing daily collection data to multi-account discovery and owner review, then connect an explicit owner-selected queue to deep discovery, final 1-20 slide planning, approval-gated packaging, Controller rendering, automatic evidence QA, and explicit owner visual approval.
 - Controller initialization rejects pending/unapproved production packages. Automatic OCR/OpenCLIP evidence cannot be accepted as owner visual approval, and final batch readiness retains owner visual receipt IDs and hashes.
-- This is current code/test evidence only: compile and 71 focused tests passed. No real candidate deep fetch, render, publish, external write, automation resume, or Git operation was performed.
+- This is current code/test evidence only: compile and all 2,601 unit/regression tests passed. No real candidate deep fetch, authorized production render, publish, external write, or automation resume was performed.
 
 - Standard Workflow remains available for planning/learning and can finish `workflow_completed`, but now emits blocked CardNews and publishing results unless controller authorization is supplied through the controlled production path.
 - Unapproved standard execution performs zero image API calls and zero CardNews renders.
@@ -24,7 +24,9 @@ Do not use `python -m src.main` for this project.
 - Variable-slide production path: approved package -> controller -> Satori/resvg -> automatic local OCR/OpenCLIP evidence QA -> owner visual approval pending.
 - Automatic visual QA is evidence only and cannot set owner approval, manual-upload readiness, publishing readiness, or actual publish state.
 - Sentence Transformers is operationally connected to same-event clustering. Intel XPU is probe-only; SeaweedFS, Mixpost, and TryPost remain outside the critical path/reference-only.
-- Safe final QA: `py -m compileall src modules scripts` passed; 67 focused tests passed.
+- Safe final QA: `py -m compileall src modules scripts` passed; `py -m unittest discover -s tests -v` passed all 2,601 tests in 527.437 seconds.
+- Research claims now require an exact non-fallback source/topic/item-URL match. MoneyToday manager routing, news profiles, and Account C editorial capability metadata are synchronized.
+- Commerce approval remains fail-closed and target-bound. Brand Connect local catalog matching removes pack/size slot duplication without issuing links or performing external writes.
 - Full `py -m src.main` was intentionally not re-run after this gate change because other modules may call external LLM APIs. No real authorized post-change render or publish was performed.
 
 The stored workflow result below predates this final gate integration and is historical evidence, not proof of the current authorized production path.

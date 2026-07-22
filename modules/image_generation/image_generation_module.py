@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 from openai import OpenAI
 
 from modules.base_module import BaseModule
+from modules.common.external_storage import resolve_external_path
 from modules.common.service_diagnostic import ServiceDiagnostic
 
 
@@ -19,14 +20,29 @@ class ImageGenerationModule(BaseModule):
         # passed and an actual generation call is about to start.
         self.client = None
 
-        self.image_dir = Path("storage/generated_images")
-        self.image_dir.mkdir(parents=True, exist_ok=True)
+        explicit_image_dir = self.config.get("image_generation_output_dir")
+        self._default_image_dir = (
+            Path(explicit_image_dir)
+            if explicit_image_dir
+            else resolve_external_path("card_news", "generated_images")
+        )
+        self.image_dir = self._default_image_dir
 
         self.service_diagnostic = ServiceDiagnostic(self.config)
         self.retry_backoff_seconds = self.config.get("image_retry_backoff_seconds", [2, 5, 10])
         if not isinstance(self.retry_backoff_seconds, list):
             self.retry_backoff_seconds = [2, 5, 10]
         self.retry_count = int(self.config.get("image_retry_count", len(self.retry_backoff_seconds)))
+
+    def _ensure_image_dir(self) -> None:
+        if self.image_dir == self._default_image_dir and not self.config.get(
+            "image_generation_output_dir"
+        ):
+            self.image_dir = resolve_external_path(
+                "card_news", "generated_images", create=True
+            )
+        else:
+            self.image_dir.mkdir(parents=True, exist_ok=True)
 
     def _extract_prompts(self, image_prompt_result: Dict[str, Any]) -> List[str]:
         prompts = []
@@ -95,6 +111,7 @@ class ImageGenerationModule(BaseModule):
 
     def _generate_image(self, prompt: str, index: int) -> Dict[str, Any]:
         print(f"OpenAI Image API Generating: ai_image_{index}.png")
+        self._ensure_image_dir()
 
         retry_count_used = 0
         max_attempts = 1 + max(0, self.retry_count)

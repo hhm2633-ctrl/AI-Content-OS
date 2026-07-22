@@ -65,7 +65,15 @@ class ResearchContextBuilder:
         if not isinstance(topic_intelligence, dict):
             topic_intelligence = {}
 
-        source_signals, fallback_sources = self._build_source_signals(collection_summary)
+        trends = trend_result.get("trends", [])
+        if not isinstance(trends, list):
+            trends = []
+
+        source_signals, fallback_sources = self._build_source_signals(
+            collection_summary,
+            selected_topic,
+            trends,
+        )
 
         return {
             "keyword": str(selected_topic.get("title") or selected_topic.get("keyword") or ""),
@@ -84,9 +92,15 @@ class ResearchContextBuilder:
     def _build_source_signals(
         self,
         collection_summary: Dict[str, Any],
+        selected_topic: Dict[str, Any],
+        trends: List[Dict[str, Any]],
     ) -> "tuple[Dict[str, Dict[str, Any]], List[str]]":
         source_signals: Dict[str, Dict[str, Any]] = {}
         fallback_sources: List[str] = []
+        selected_title = self._normalize_topic(
+            selected_topic.get("title") or selected_topic.get("keyword")
+        )
+        selected_source = str(selected_topic.get("source") or "").strip()
 
         for source_id in self.TRACKED_SOURCES:
             status = collection_summary.get(source_id, {})
@@ -105,6 +119,19 @@ class ResearchContextBuilder:
             if is_fallback:
                 fallback_sources.append(source_id)
 
+            matched_topic = ""
+            matched_item_url = ""
+            if selected_title and selected_source == source_id and bool(status.get("success", False)) and not is_fallback:
+                for trend in trends:
+                    if not isinstance(trend, dict) or str(trend.get("source") or "").strip() != source_id:
+                        continue
+                    raw_topic = str(trend.get("keyword") or trend.get("title") or "").strip()
+                    item_url = str(trend.get("link") or trend.get("url") or "").strip()
+                    if self._normalize_topic(raw_topic) == selected_title and item_url:
+                        matched_topic = raw_topic
+                        matched_item_url = item_url
+                        break
+
             source_signals[source_id] = {
                 "attempted": bool(status.get("attempted", False)),
                 "success": bool(status.get("success", False)),
@@ -112,9 +139,16 @@ class ResearchContextBuilder:
                 "collection_method": collection_method,
                 "used_cache": used_cache,
                 "is_fallback": is_fallback,
+                "topic_match_confirmed": bool(matched_topic and matched_item_url),
+                "matched_topic": matched_topic,
+                "matched_item_url": matched_item_url,
             }
 
         return source_signals, fallback_sources
+
+    @staticmethod
+    def _normalize_topic(value: Any) -> str:
+        return " ".join(str(value or "").split()).casefold()
 
     @staticmethod
     def _safe_int(value: Any, default: int = 0) -> int:

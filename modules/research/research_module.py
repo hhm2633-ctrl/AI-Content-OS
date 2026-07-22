@@ -126,12 +126,10 @@ class ResearchModule:
             "message": "research_completed",
             "keyword": keyword,
             "title": title,
-            "summary": f"{keyword} is a useful topic for card news, blog, and shorts content automation.",
+            "summary": f"{keyword} 관련 게시 전 원문과 최신성을 확인해야 하며, 현재 상태만으로 사실을 확정하지 않습니다.",
             "key_points": [
-                f"{keyword} can attract beginners interested in practical automation.",
-                "It is suitable for a short and clear card news format.",
-                "It can connect naturally to Instagram content operations.",
-                "It can later expand into blog, shorts, and product-linked content.",
+                "현재 결과는 주제의 직접 근거로 사용할 수 없습니다.",
+                "원문과 주제의 직접 연결을 확인한 뒤 콘텐츠 근거로 사용합니다.",
             ],
             "topic_angle": "",
             "target": "",
@@ -157,8 +155,8 @@ class ResearchModule:
                 "fallback_used": True,
             },
             "research_insight": {
-                "issue_background": f"{keyword} 관련 논의가 여러 채널에서 꾸준히 이어지고 있습니다.",
-                "why_trending_now": f"{keyword}에 대한 관심이 최근 트렌드 수집 신호에서 반복적으로 확인되고 있습니다.",
+                "issue_background": "이 주제와 직접 연결된 실시간 출처 근거는 없습니다.",
+                "why_trending_now": "현재 수집 신호만으로 이 주제가 유행한다고 단정할 수 없습니다.",
                 "audience_interest_points": [
                     f"{keyword}를 처음 시작하는 방법",
                     f"{keyword}로 시간을 아끼는 방법",

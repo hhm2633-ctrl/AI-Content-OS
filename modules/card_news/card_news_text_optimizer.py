@@ -241,14 +241,15 @@ class CardNewsTextOptimizer:
         if len(text) <= max_length:
             return text
 
-        truncated = text[:max_length]
+        content_limit = max(1, max_length - 1)
+        truncated = text[:content_limit]
         last_space = truncated.rfind(" ")
 
         # 단어 경계에서 자르되, 너무 많이 잘려나가지 않도록(최소 60% 이상 유지) 보정한다.
-        if last_space >= int(max_length * 0.6):
+        if last_space >= int(content_limit * 0.6):
             truncated = truncated[:last_space]
 
-        return truncated.strip()
+        return f"{truncated.strip()}…"
 
     def _optimize_body(self, body: str, max_sentences: int) -> Tuple[str, Dict[str, Any]]:
         body = body.strip()
@@ -311,7 +312,7 @@ class CardNewsTextOptimizer:
                 # 단위로 자연스럽게 자른다 - 이때도 잘렸다는 사실 자체를
                 # 숨기지 않기 위해 말줄임표(…)를 붙인다(Codex 리뷰 지적 반영,
                 # "조용히" 잘리지 않게 하는 최소한의 표시).
-                optimized_body = self._trim_naturally(optimized_body, total_budget).rstrip() + "…"
+                optimized_body = self._trim_naturally(optimized_body, total_budget)
                 trimmed = True
 
         if not optimized_body:

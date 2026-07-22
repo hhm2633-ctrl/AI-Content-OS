@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-22 Full regression closure
+
+- Migrated remaining CardNews contracts to the approved variable 1-20 slide range while preserving fail-closed zero/overflow checks.
+- Bound Research evidence claims to exact source, normalized topic, non-fallback success, and an actual matched item URL; unsupported LLM/fallback trend claims are replaced with explicit unavailable-evidence language.
+- Connected MoneyToday to TrendSourceManager, aligned news category profiles, and synchronized Account C editorial capability metadata.
+- Updated Commerce approval tests for target-bound expiring approval evidence and made unknown capabilities fail closed without raising.
+- Deduplicated Brand Connect pack/size variants by product concept while preserving the original local catalog representative order.
+- Restored lazy external storage routing for generated images, safe ImagePrompt LLM exception fallback, and visible bounded text truncation.
+- Verification: `py -m compileall src modules scripts` passed; `py -m unittest discover -s tests -v` passed all 2,601 tests in 527.437 seconds.
+- No real SNS post, affiliate-link issuance, public deployment, automation resume, or external API write was performed.
+
 ## 2026-07-08 15:53:19
 
 - Change: Added project snapshot and changelog updater.

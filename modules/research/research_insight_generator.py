@@ -42,7 +42,11 @@ class ResearchInsightGenerator:
             return self._generate(str(keyword or ""), str(title or ""), research_context or {})
         except Exception as error:
             print(f"Research Insight Generation Failed: {error}")
-            return self._fallback_insight(keyword, reason=f"insight_generation_exception: {error}")
+            return self._fallback_insight(
+                keyword,
+                reason=f"insight_generation_exception: {error}",
+                research_context=research_context or {},
+            )
 
     def _generate(
         self,
@@ -51,7 +55,11 @@ class ResearchInsightGenerator:
         research_context: Dict[str, Any],
     ) -> Dict[str, Any]:
         if self.llm_client is None:
-            return self._fallback_insight(keyword, reason="llm_client_not_configured")
+            return self._fallback_insight(
+                keyword,
+                reason="llm_client_not_configured",
+                research_context=research_context,
+            )
 
         system_prompt = self._build_system_prompt()
         user_prompt = self._build_user_prompt(keyword, title, research_context)
@@ -64,22 +72,42 @@ class ResearchInsightGenerator:
         parsed = self._safe_json_parse(raw_response)
 
         if parsed is None:
-            return self._fallback_insight(keyword, reason="llm_response_not_json")
+            return self._fallback_insight(
+                keyword,
+                reason="llm_response_not_json",
+                research_context=research_context,
+            )
 
         if parsed.get("status") == "llm_failed":
             return self._fallback_insight(
                 keyword,
                 reason=f"llm_call_failed: {parsed.get('error', 'unknown_error')}",
+                research_context=research_context,
             )
 
         if not self._has_required_shape(parsed):
-            return self._fallback_insight(keyword, reason="llm_response_missing_required_keys")
+            return self._fallback_insight(
+                keyword,
+                reason="llm_response_missing_required_keys",
+                research_context=research_context,
+            )
+
+        direct_sources = self._direct_evidence_sources(keyword, title, research_context)
+        evidence_copy = self._evidence_copy(keyword, direct_sources)
 
         return {
-            "summary": str(parsed.get("summary", "")).strip() or self._fallback_summary(keyword),
-            "key_points": self._normalize_list(parsed.get("key_points"), self._fallback_key_points(keyword)),
-            "issue_background": str(parsed.get("issue_background", "")).strip(),
-            "why_trending_now": str(parsed.get("why_trending_now", "")).strip(),
+            "summary": (
+                str(parsed.get("summary", "")).strip()
+                if direct_sources
+                else evidence_copy["summary"]
+            ),
+            "key_points": (
+                self._normalize_list(parsed.get("key_points"), evidence_copy["key_points"])
+                if direct_sources
+                else evidence_copy["key_points"]
+            ),
+            "issue_background": evidence_copy["issue_background"],
+            "why_trending_now": evidence_copy["why_trending_now"],
             "audience_interest_points": self._normalize_list(parsed.get("audience_interest_points"), []),
             "caution_expressions": self._normalize_list(
                 parsed.get("caution_expressions"),
@@ -176,14 +204,25 @@ fallback을 사용한 소스: {fallback_sources}
 
         return fallback
 
-    def _fallback_insight(self, keyword: str, reason: str) -> Dict[str, Any]:
+    def _fallback_insight(
+        self,
+        keyword: str,
+        reason: str,
+        research_context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         keyword = keyword or "AI content automation"
+        direct_sources = self._direct_evidence_sources(
+            keyword,
+            keyword,
+            research_context or {},
+        )
+        evidence_copy = self._evidence_copy(keyword, direct_sources)
 
         return {
-            "summary": self._fallback_summary(keyword),
-            "key_points": self._fallback_key_points(keyword),
-            "issue_background": f"{keyword} 관련 논의가 여러 채널에서 꾸준히 이어지고 있습니다.",
-            "why_trending_now": f"{keyword}에 대한 관심이 최근 트렌드 수집 신호에서 반복적으로 확인되고 있습니다.",
+            "summary": evidence_copy["summary"],
+            "key_points": evidence_copy["key_points"],
+            "issue_background": evidence_copy["issue_background"],
+            "why_trending_now": evidence_copy["why_trending_now"],
             "audience_interest_points": [
                 f"{keyword}를 처음 시작하는 방법",
                 f"{keyword}로 시간을 아끼는 방법",
@@ -192,6 +231,62 @@ fallback을 사용한 소스: {fallback_sources}
             "insight_source": "fallback",
             "fallback_used": True,
             "reason": f"LLM 리서치 근거 생성 실패로 fallback 사용: {reason}",
+        }
+
+    def _direct_evidence_sources(
+        self,
+        keyword: str,
+        title: str,
+        research_context: Dict[str, Any],
+    ) -> List[str]:
+        expected_topics = {
+            self._normalize_topic(keyword),
+            self._normalize_topic(title),
+        }
+        expected_topics.discard("")
+        source_signals = research_context.get("source_signals", {})
+        if not isinstance(source_signals, dict):
+            return []
+
+        matched = []
+        for source_id, signal in source_signals.items():
+            if not isinstance(signal, dict):
+                continue
+            matched_topic = self._normalize_topic(signal.get("matched_topic"))
+            if (
+                signal.get("success") is True
+                and signal.get("is_fallback") is not True
+                and signal.get("topic_match_confirmed") is True
+                and matched_topic in expected_topics
+                and str(signal.get("matched_item_url") or "").strip()
+            ):
+                matched.append(str(source_id))
+        return matched
+
+    @staticmethod
+    def _normalize_topic(value: Any) -> str:
+        return " ".join(str(value or "").split()).casefold()
+
+    def _evidence_copy(self, keyword: str, direct_sources: List[str]) -> Dict[str, Any]:
+        if direct_sources:
+            source_text = ", ".join(direct_sources)
+            return {
+                "summary": f"{keyword} 관련 직접 연결 자료를 확인했으며 게시 전 원문과 최신성을 다시 확인해야 합니다.",
+                "key_points": [
+                    f"{source_text}의 직접 연결 자료를 사용할 수 있습니다.",
+                    "자료에 포함된 사실과 표현은 게시 전 원문 기준으로 검증합니다.",
+                ],
+                "issue_background": f"{source_text}에서 이 주제와 직접 연결된 source item을 확인했습니다.",
+                "why_trending_now": "직접 연결 자료는 확인됐지만 유행 배경과 추가 사실 검증이 필요합니다.",
+            }
+        return {
+            "summary": f"{keyword} 관련 게시 전 원문과 최신성을 확인해야 하며, 현재 수집 신호만으로 사실을 확정하지 않습니다.",
+            "key_points": [
+                "현재 수집 결과는 이 주제의 직접 근거로 사용할 수 없습니다.",
+                "원문과 주제의 직접 연결을 확인한 뒤 콘텐츠 근거로 사용합니다.",
+            ],
+            "issue_background": "이 주제와 직접 연결된 실시간 출처 근거는 없습니다.",
+            "why_trending_now": "현재 수집 신호만으로 이 주제가 유행한다고 단정할 수 없습니다.",
         }
 
     def _fallback_summary(self, keyword: str) -> str:

@@ -107,10 +107,26 @@ class ImagePromptModule(BaseModule):
 }}
 """
 
-        llm_response = self.llm_client.generate_text(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-        )
+        try:
+            llm_response = self.llm_client.generate_text(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+            )
+        except Exception as error:
+            error_code = "llm_timeout" if isinstance(error, TimeoutError) else "llm_call_error"
+            print(f"Image Prompt LLM Fallback Used: {error_code}")
+            return {
+                "title": title,
+                "image_prompts": self._fallback_prompts(title, slides),
+                "status": "image_prompts_created",
+                "fallback_used": True,
+                "fallback_reason": "llm_generate_text_exception",
+                "service_diagnostic": {
+                    "status": "fallback_used",
+                    "error_code": error_code,
+                    "safe_message": "Image prompt generation used a local fallback.",
+                },
+            }
 
         image_prompt_result = self._safe_json_parse(
             text=llm_response,

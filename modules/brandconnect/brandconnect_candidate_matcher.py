@@ -157,20 +157,36 @@ def _brand_matches(text: str, brand: str) -> bool:
 def select_diverse_product_matches(matches: List[Dict[str, Any]], max_matches: int) -> List[Dict[str, Any]]:
     """Keep one pack/size/color-SKU variant per product concept."""
 
+    limit = max(0, int(max_matches))
+    if limit == 0:
+        return []
     selected: List[Dict[str, Any]] = []
-    seen = set()
+    selected_indexes: Dict[tuple, int] = {}
     for match in matches:
         name = _TRAILING_SKU_PATTERN.sub("", _text(match.get("name")).lower())
         name = _VARIANT_QUANTITY_PATTERN.sub("", name)
         name = re.sub(r"\s+", " ", name).strip(" ,+_-")
         key = (_text(match.get("brand")).lower(), name)
-        if key in seen:
+        if key in selected_indexes:
+            index = selected_indexes[key]
+            current = selected[index]
+            match_catalog_index = match.get("_catalog_index")
+            current_catalog_index = current.get("_catalog_index")
+            if (
+                isinstance(match_catalog_index, int)
+                and isinstance(current_catalog_index, int)
+                and match_catalog_index < current_catalog_index
+            ):
+                selected[index] = match
             continue
-        seen.add(key)
+        if len(selected) >= limit:
+            continue
+        selected_indexes[key] = len(selected)
         selected.append(match)
-        if len(selected) >= max(0, int(max_matches)):
-            break
-    return selected
+    return [
+        {key: value for key, value in match.items() if key != "_catalog_index"}
+        for match in selected
+    ]
 
 
 def _category_family_hints(candidate: Mapping[str, Any]) -> set:
@@ -396,7 +412,7 @@ def match_candidate_to_products(
     )
     semantic_scores = _semantic_scores_for_products(text, semantic_products)
     scored = []
-    for product in products if isinstance(products, list) else []:
+    for catalog_index, product in enumerate(products if isinstance(products, list) else []):
         if not isinstance(product, Mapping):
             continue
         product_id = _text(str(product.get("product_id", "")))
@@ -421,6 +437,7 @@ def match_candidate_to_products(
                     "score": outcome["score"],
                     "match_basis": outcome["basis"],
                     "link_issued": False,
+                    "_catalog_index": catalog_index,
                 }
             )
     scored.sort(key=lambda item: (-item["score"], item["product_id"]))

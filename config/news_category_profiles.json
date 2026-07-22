@@ -6,7 +6,7 @@
     {
       "profile_id": "domestic_news",
       "purpose": "한국 오늘 주요뉴스/포털 반복 확인",
-      "sources": ["naver_news", "daum_news", "nate_news_rank", "google_news_kr"],
+      "sources": ["naver_news", "daum_news", "nate_news_rank"],
       "channels": ["issue_daily"],
       "risk_flags": [],
       "scan_depth": "shallow",
@@ -36,12 +36,12 @@
     {
       "profile_id": "world_news",
       "purpose": "국제/전쟁/외교/재난/글로벌 이슈",
-      "sources": ["google_news_kr", "ap_world", "bbc_world", "naver_news", "daum_news"],
+      "sources": ["naver_news", "daum_news", "nate_news_rank", "yonhap", "newsis", "news1"],
       "channels": ["issue_daily"],
       "risk_flags": ["war", "death", "graphic_incident", "geopolitical_claim"],
       "scan_depth": "shallow",
       "deep_dive_auto": false,
-      "notes": "reuters_world is blocked_401 and intentionally NOT listed in V1"
+      "notes": "Korean portal and wire sources provide international-news coverage"
     },
     {
       "profile_id": "economy_news",
