@@ -37,6 +37,12 @@ GIT_WRITE_RE = re.compile(
     r"(?:-[^\s]+\s+)*(?:push|pull|merge|rebase|reset|checkout|"
     r"switch|restore|clean|rm|mv|tag)(?:\s|$)"
 )
+OWNER_APPROVED_PUSH_MARKER_RE = re.compile(
+    r"(?i)AI_CONTENT_OS_OWNER_APPROVED_PUSH\s*=\s*['\"]1['\"]"
+)
+SAFE_OWNER_APPROVED_PUSH_RE = re.compile(
+    r"(?i)(?:^|[;&|])\s*(?:[^\s;&|]*[\\/])?git(?:\.exe)?\s+push\s+origin\s+main\s*$"
+)
 BAD_MAIN_RE = re.compile(r"(?i)(?:^|\s)python(?:\.exe)?\s+-m\s+src\.main(?:\s|$)")
 DESTRUCTIVE_RE = re.compile(
     r"(?i)(?:remove-item\b[^\r\n]*\s-(?:recurse|r)\b|\brm\s+-[^\s]*r[^\s]*f|"
@@ -121,6 +127,16 @@ def _deny(reason: str) -> dict[str, Any]:
     }
 
 
+def _is_owner_approved_main_push(command: str) -> bool:
+    writes = list(GIT_WRITE_RE.finditer(command))
+    return (
+        len(writes) == 1
+        and "push" in writes[0].group(0).casefold()
+        and OWNER_APPROVED_PUSH_MARKER_RE.search(command) is not None
+        and SAFE_OWNER_APPROVED_PUSH_RE.search(command) is not None
+    )
+
+
 def _count_active_agents(agents: list[Any]) -> int:
     count = 0
     for entry in agents:
@@ -174,7 +190,7 @@ def evaluate(payload: dict[str, Any], *, claude_session_count: int | None = None
     if tool_name.lower() in {"bash", "unified_exec", "exec_command"}:
         if BAD_MAIN_RE.search(command):
             return _deny("AI-Content-OS는 `python -m src.main`을 금지합니다. `py -m src.main`을 사용하세요.")
-        if GIT_WRITE_RE.search(command):
+        if GIT_WRITE_RE.search(command) and not _is_owner_approved_main_push(command):
             return _deny("Git 히스토리/원격/파일 상태를 바꾸는 명령(push/pull/merge/rebase/reset/checkout/switch/restore/clean/rm/mv/tag)은 CTO 최종 승인 전 금지됩니다. `git add`와 `git commit`은 자유롭게 사용 가능합니다.")
         if DESTRUCTIVE_RE.search(command):
             return _deny("재귀 삭제 또는 파괴적 복구 명령은 이 프로젝트 Hook이 차단합니다.")
@@ -240,6 +256,9 @@ def _self_test() -> int:
         ({"tool_name": "Bash", "tool_input": {"command": "git commit -m x"}}, False, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git add -A"}}, False, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git push origin main"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "$env:AI_CONTENT_OS_OWNER_APPROVED_PUSH='1'; git push origin main"}}, False, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "$env:AI_CONTENT_OS_OWNER_APPROVED_PUSH='1'; git push --force origin main"}}, True, 0),
+        ({"tool_name": "Bash", "tool_input": {"command": "$env:AI_CONTENT_OS_OWNER_APPROVED_PUSH='1'; git push origin other"}}, True, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git push --force origin main"}}, True, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git reset --hard HEAD~1"}}, True, 0),
         ({"tool_name": "Bash", "tool_input": {"command": "git clean -fd"}}, True, 0),
