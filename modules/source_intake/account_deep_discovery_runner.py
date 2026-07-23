@@ -13,7 +13,7 @@ from collections import OrderedDict
 from typing import Any, Dict, List, Mapping
 
 SCHEMA_VERSION = "account_deep_discovery_result_v1"
-MAX_REQUESTS_PER_ACCOUNT = 4
+MAX_REQUESTS_PER_ACCOUNT = 5
 SUPPORTED_ACCOUNTS = ("A", "B", "C")
 
 # Account-specific discovery operations and artifact roles. A: news evidence;

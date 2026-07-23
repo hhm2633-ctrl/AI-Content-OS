@@ -36,6 +36,13 @@ from modules.trend_collector.trend_source_manager import TrendSourceManager
 RC_STATUS_GO = "GO"
 RC_STATUS_NO_GO = "NO_GO"
 
+SOURCE_STATUS_TO_READINESS = {
+    "OK": READINESS_READY,
+    "FALLBACK_ONLY": READINESS_PARTIAL,
+    "FAILED": READINESS_BLOCKED,
+    "NOT_IMPLEMENTED": READINESS_EXTERNAL_BLOCKED,
+}
+
 
 def _coerce_today(today: Optional[Any]) -> str:
     if not today:
@@ -77,6 +84,10 @@ def _dedupe_ordered(values: Sequence[str]) -> List[str]:
 def _extract_readiness_status_by_source(gap_payload: Dict[str, Any]) -> Dict[str, str]:
     sources: Dict[str, str] = {}
 
+    def normalize_status(value: Any) -> str:
+        raw = str(value or "").strip()
+        return SOURCE_STATUS_TO_READINESS.get(raw.upper(), raw.lower())
+
     by_readiness = gap_payload.get("source_status_by_readiness")
     if isinstance(by_readiness, dict):
         for readiness_status, entries in by_readiness.items():
@@ -87,7 +98,7 @@ def _extract_readiness_status_by_source(gap_payload: Dict[str, Any]) -> Dict[str
                     continue
                 source_id = entry.get("source_id")
                 if isinstance(source_id, str) and source_id:
-                    sources[source_id] = str(readiness_status)
+                    sources[source_id] = normalize_status(readiness_status)
         if sources:
             return sources
 
@@ -105,8 +116,8 @@ def _extract_readiness_status_by_source(gap_payload: Dict[str, Any]) -> Dict[str
             if not isinstance(source_id, str) or not source_id:
                 continue
             source_status = entry.get("readiness_status")
-            status = source_status if isinstance(source_status, str) else str(readiness_status)
-            sources[source_id] = status
+            status = source_status if isinstance(source_status, str) else readiness_status
+            sources[source_id] = normalize_status(status)
 
     return sources
 
@@ -287,7 +298,7 @@ def run_source_intake_release_candidate(
 
     # Confirm explicit artifacts are present in the same readiness scope.
     # (read artifacts as data-only checks; no runtime execution here.)
-    _, shallow_error = _read_json(shallow_path)
+    shallow_payload, shallow_error = _read_json(shallow_path)
     preflight["daily_shallow_collection_error"] = shallow_error
     if shallow_error is not None:
         return _fail_closed("daily_shallow_collection_load_failed", preflight)
@@ -312,10 +323,26 @@ def run_source_intake_release_candidate(
         preflight["status"] = "empty_gap_source_set"
         return _fail_closed("gap_source_set_empty", preflight)
 
-    # Keep partial/blocked/external_blocked fail-closed.
-    if readiness_counts[READINESS_PARTIAL] > 0 or readiness_counts[READINESS_BLOCKED] > 0 or readiness_counts[READINESS_EXTERNAL_BLOCKED] > 0:
-        preflight["status"] = "non_ready_readiness"
-        return _fail_closed("non_ready_sources_blocked", preflight, source_ids)
+    ready_source_ids = [
+        source_id
+        for source_id, readiness in readiness_by_source.items()
+        if readiness == READINESS_READY
+    ]
+    isolated_source_ids = [
+        source_id
+        for source_id, readiness in readiness_by_source.items()
+        if readiness in {
+            READINESS_PARTIAL,
+            READINESS_BLOCKED,
+            READINESS_EXTERNAL_BLOCKED,
+        }
+    ]
+    preflight["ready_source_ids"] = ready_source_ids
+    preflight["isolated_source_ids"] = isolated_source_ids
+    preflight["source_isolation_applied"] = bool(isolated_source_ids)
+    if not ready_source_ids:
+        preflight["status"] = "no_ready_sources"
+        return _fail_closed("no_ready_sources", preflight, source_ids)
 
     callability = _build_callability_matrices(source_ids, runtime_manager)
     preflight["callability_matrix_before"] = callability["before"]
@@ -328,25 +355,42 @@ def run_source_intake_release_candidate(
 
     # Reject if claimed readiness does not agree with runtime callability.
     mismatches: List[str] = []
-    for source_id in source_ids:
+    for source_id in ready_source_ids:
         claimed = readiness_by_source.get(source_id)
         callable_after = bool(callability["after"].get(source_id, {}).get("callable"))
         if claimed == READINESS_READY and not callable_after:
             mismatches.append(f"ready_source_not_callable:{source_id}")
-        elif claimed in {READINESS_PARTIAL, READINESS_BLOCKED, READINESS_EXTERNAL_BLOCKED} and callable_after:
-            mismatches.append(f"callable_source_not_ready:{source_id}:{claimed}")
 
     if mismatches:
         preflight["readiness_callability_mismatches"] = mismatches
         return _fail_closed("readiness_callability_mismatch", preflight, source_ids)
 
-    if callability["mapped_unreachable"]:
+    ready_mapped_unreachable = [
+        source_id
+        for source_id in callability["mapped_unreachable"]
+        if source_id in ready_source_ids
+    ]
+    if ready_mapped_unreachable:
         preflight["status"] = "mapped_unreachable"
-        return _fail_closed("mapped_unreachable", preflight, callability["mapped_unreachable"])
+        return _fail_closed("mapped_unreachable", preflight, ready_mapped_unreachable)
+
+    eligible_collection = dict(shallow_payload or {})
+    eligible_collection["source_results"] = [
+        dict(item)
+        for item in eligible_collection.get("source_results", [])
+        if isinstance(item, dict) and item.get("source_id") in ready_source_ids
+    ]
+    eligible_collection["items"] = [
+        dict(item)
+        for item in eligible_collection.get("items", [])
+        if isinstance(item, dict) and item.get("source_id") in ready_source_ids
+    ]
+    eligible_collection["item_count"] = len(eligible_collection["items"])
+    eligible_collection["isolated_source_ids"] = isolated_source_ids
 
     try:
         pipeline_result = run_validated_topic_candidate_pipeline(
-            daily_shallow_collection=shallow_path,
+            daily_shallow_collection=eligible_collection,
             source_intake_status_bundle_path=status_bundle_path,
             collection_gap_report_path=gap_path,
         )
@@ -368,6 +412,9 @@ def run_source_intake_release_candidate(
         "reason_code": "ready",
         "candidates": candidates,
         "candidate_count": len(candidates),
+        "eligible_collection": eligible_collection,
+        "ready_source_ids": ready_source_ids,
+        "isolated_source_ids": isolated_source_ids,
         "preflight": preflight,
         "pipeline": pipeline_result,
     }

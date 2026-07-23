@@ -140,6 +140,34 @@ class SourceMediaQualityGate:
             complete = receipt.get("passed") is True and status == "passed"
         return None if complete else f"{tool}_failed"
 
+    @staticmethod
+    def _ocr_required(candidate: Mapping[str, Any]) -> bool:
+        media_type = str(
+            candidate.get("media_type")
+            or candidate.get("type")
+            or candidate.get("asset_class")
+            or ""
+        ).casefold()
+        role = str(
+            candidate.get("role_hint")
+            or candidate.get("narrative_role")
+            or ""
+        ).casefold()
+        return any(
+            token in f"{media_type} {role}"
+            for token in (
+                "comment",
+                "document",
+                "letter",
+                "screenshot",
+                "text_capture",
+                "댓글",
+                "문서",
+                "편지",
+                "캡처",
+            )
+        )
+
     def _evaluate_candidate(
         self,
         candidate: Mapping[str, Any],
@@ -184,13 +212,15 @@ class SourceMediaQualityGate:
                 "success": False,
                 "reason": f"dependency_exception:{type(exc).__name__}",
             }
+        ocr_required = self._ocr_required(record)
         ocr_failure = self._tool_failure("ocr", ocr)
-        if ocr_failure:
+        if ocr_failure and ocr_required:
             return {
                 **record,
                 "quality_gate": {
                     "passed": False,
                     "reason_code": ocr_failure,
+                    "ocr_required": True,
                     "ocr": ocr,
                     "proxy_boundary": dict(PROXY_BOUNDARY),
                 },
@@ -251,7 +281,12 @@ class SourceMediaQualityGate:
         ocr_text = str(ocr.get("text") or " ".join(ocr.get("lines") or ())).strip()
         ocr_tokens = _tokens(ocr_text)
         ocr_overlap = sorted(context_tokens & ocr_tokens)
-        if not reason and len("".join(ocr_tokens)) >= 4 and not ocr_overlap:
+        if (
+            not reason
+            and ocr_required
+            and len("".join(ocr_tokens)) >= 4
+            and not ocr_overlap
+        ):
             reason = "ocr_context_mismatch"
 
         return {
@@ -259,6 +294,9 @@ class SourceMediaQualityGate:
             "quality_gate": {
                 "passed": not reason,
                 "reason_code": reason or None,
+                "ocr_required": ocr_required,
+                "ocr_diagnostic_only": not ocr_required,
+                "ocr_failure_ignored": bool(ocr_failure and not ocr_required),
                 "perceptual_hash": f"{perceptual_hash:016x}",
                 "ocr_context_overlap": ocr_overlap,
                 "relevant_score": relevant_score,

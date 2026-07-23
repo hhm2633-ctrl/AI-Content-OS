@@ -1,8 +1,10 @@
 import copy
 import unittest
+from unittest.mock import patch
 
 from modules.source_intake.discovery_result_render_bridge import (
     run_discovery_result_render_bridge,
+    run_discovery_result_render_bridge_with_supplements,
 )
 
 
@@ -144,6 +146,68 @@ class DiscoveryResultRenderBridgeTests(unittest.TestCase):
         self.assertEqual(result["reason_code"], "invalid_discovery_result")
         self.assertEqual(result["candidate_count"], 0)
         self.assertEqual(result["candidates"], [])
+
+    def test_shortage_supplement_is_added_but_provider_denial_is_preserved(self):
+        payload = {
+            "accounts": {
+                "B": {
+                    "results": [
+                        {
+                            "candidate_id": "B-1",
+                            "title": "당황한 연애 이야기",
+                            "operations": [],
+                        }
+                    ]
+                }
+            }
+        }
+        discovery = {
+            "status": "completed",
+            "reason_code": "",
+            "asset_count": 2,
+            "render_asset_count": 1,
+            "render_assets": [
+                {
+                    "local_path": "F:/reaction/approved.png",
+                    "source_url": "https://example.com/approved",
+                    "rights_status": "owner_approved",
+                    "usable_in_production": True,
+                    "render_allowed": True,
+                }
+            ],
+            "assets": [
+                {
+                    "local_path": "F:/reaction/approved.png",
+                    "source_url": "https://example.com/approved",
+                    "rights_status": "owner_approved",
+                    "usable_in_production": True,
+                    "render_allowed": True,
+                },
+                {
+                    "remote_url": "https://media.giphy.com/reference.gif",
+                    "source_url": "https://giphy.com/reference",
+                    "rights_status": "platform_reference_only",
+                    "usable_in_production": False,
+                    "render_allowed": False,
+                    "reference_only": True,
+                },
+            ],
+            "diagnostics": [],
+        }
+
+        with patch(
+            "modules.source_intake.discovery_result_render_bridge.run_workflow_media_discovery",
+            return_value=discovery,
+        ):
+            result = run_discovery_result_render_bridge_with_supplements(payload)
+
+        media = result["candidates"][0]["media_source_inputs"]
+        self.assertEqual(1, len(media))
+        self.assertTrue(media[0]["render_allowed"])
+        self.assertEqual(
+            1,
+            result["supplemental_media"]["diagnostics"][0]["render_asset_count"],
+        )
 
 
 if __name__ == "__main__":

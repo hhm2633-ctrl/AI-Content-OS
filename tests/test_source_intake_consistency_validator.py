@@ -136,6 +136,27 @@ class TestSourceIntakeConsistencyValidator(unittest.TestCase):
         self.assertEqual(report["counts"]["status_bundle_status_count_sum"], 4)
         self.assertEqual(report["mismatches"], [])
 
+    def test_excluded_plan_sources_may_be_absent_from_shallow_results(self):
+        payloads = self._base_payloads()
+        payloads["daily_shallow_collection.json"]["source_results"] = [
+            item
+            for item in payloads["daily_shallow_collection.json"]["source_results"]
+            if item["source_id"] != "src_z"
+        ]
+        payloads["daily_shallow_collection.json"]["items"] = [
+            item
+            for item in payloads["daily_shallow_collection.json"]["items"]
+            if item["source_id"] != "src_z"
+        ]
+        for name, payload in payloads.items():
+            self._write_json(name, payload)
+
+        report = build_source_intake_consistency_report(today=self.today, root=self.root)
+        self.assertEqual(report["status"], "ok", report["mismatches"])
+        self.assertEqual(report["source_ids"]["plan_excluded"], ["src_z"])
+        self.assertEqual(report["counts"]["plan_active_source_count"], 3)
+        self.assertEqual(report["counts"]["shallow_source_count"], 3)
+
     def test_report_fails_on_date_mismatch(self):
         payloads = self._base_payloads()
         payloads["daily_shallow_collection.json"]["date"] = "2099-01-03"

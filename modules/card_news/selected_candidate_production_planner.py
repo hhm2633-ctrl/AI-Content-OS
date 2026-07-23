@@ -83,8 +83,24 @@ def _normalize_assets(bundle: Mapping[str, Any]) -> tuple[List[Dict[str, Any]], 
             warnings.append(f"asset {position} excluded: AP reference only")
             continue
 
+        raw_source_asset = (
+            raw.get("raw_source_asset")
+            if isinstance(raw.get("raw_source_asset"), Mapping)
+            else {}
+        )
+        production_source_locator = ""
+        if (
+            raw_source_asset.get("usable_in_production") is True
+            and raw_source_asset.get("reference_only") is not True
+        ):
+            production_source_locator = (
+                _text(raw_source_asset.get("screenshot_path"))
+                or _text(raw_source_asset.get("local_path"))
+                or _text(raw_source_asset.get("path"))
+            )
         locator = (
-            _text(raw.get("local_path"))
+            production_source_locator
+            or _text(raw.get("local_path"))
             or _text(raw.get("remote_url"))
             or _text(raw.get("source_url"))
         )
@@ -108,8 +124,17 @@ def _normalize_assets(bundle: Mapping[str, Any]) -> tuple[List[Dict[str, Any]], 
                 "origin": origin,
                 "asset_class": asset_class,
                 "locator": locator,
-                "source_url": _text(raw.get("source_url")),
-                "rights_status": _text(raw.get("rights_status")) or "unrecorded",
+                "source_url": (
+                    _text(raw.get("source_url"))
+                    or _text(raw_source_asset.get("source_url"))
+                ),
+                "rights_status": (
+                    "source_editorial_usable"
+                    if production_source_locator
+                    else _text(raw_source_asset.get("rights_status"))
+                    or _text(raw.get("rights_status"))
+                    or "unrecorded"
+                ),
                 "role_hint": _text(raw.get("role_hint")) or _text(raw.get("slide_role")),
                 "product_gallery": raw.get("product_gallery") is True
                 or _text(raw.get("group")).lower() == "product_gallery",
@@ -133,6 +158,21 @@ def _real_comments(bundle: Mapping[str, Any]) -> List[Dict[str, Any]]:
             }
         )
     return comments
+
+
+def _comment_display_excerpt(text: str, limit: int = 170) -> str:
+    """Keep comment cards readable while retaining the full source separately."""
+
+    normalized = " ".join(_text(text).split())
+    if len(normalized) <= limit:
+        return normalized
+    boundary = max(
+        normalized.rfind(marker, 0, limit + 1)
+        for marker in (". ", "? ", "! ", "… ", "요. ", "다. ")
+    )
+    if boundary >= max(60, limit // 2):
+        return normalized[: boundary + 1].rstrip()
+    return normalized[:limit].rstrip() + "…"
 
 
 def _emotion_for(position: int, total: int) -> str:
@@ -161,7 +201,7 @@ def _news_slides(
 ) -> List[Dict[str, Any]]:
     slides = [_cover(title, assets)]
     remaining_assets = list(assets[1:])
-    for position, key_point in enumerate(key_points, start=1):
+    for position, key_point in enumerate(key_points[:19], start=1):
         asset = remaining_assets.pop(0) if remaining_assets else None
         slides.append(
             {
@@ -173,7 +213,7 @@ def _news_slides(
                 "content_unit": position,
             }
         )
-    for asset in remaining_assets:
+    for asset in remaining_assets[: max(0, 20 - len(slides))]:
         slides.append(
             {
                 "slide_role": asset["role_hint"] or "source_context",
@@ -193,7 +233,7 @@ def _story_slides(
 ) -> List[Dict[str, Any]]:
     slides = [_cover(title, assets)]
     scene_total = len(scenes)
-    for position, scene in enumerate(scenes):
+    for position, scene in enumerate(scenes[:19]):
         slides.append(
             {
                 "slide_role": "story_scene",
@@ -205,7 +245,7 @@ def _story_slides(
             }
         )
     if not scenes:
-        for asset in assets[1:]:
+        for asset in assets[1:20]:
             slides.append(
                 {
                     "slide_role": asset["role_hint"] or "story_context",
@@ -214,7 +254,12 @@ def _story_slides(
                     "copy_source": "deep_discovery_bundle",
                 }
             )
-    for comment in comments:
+    for comment in comments[: max(0, 20 - len(slides))]:
+        comment_text = _text(comment.get("text"))
+        display_text = _comment_display_excerpt(comment_text)
+        comment_headline = comment_text
+        if len(comment_headline) > 34:
+            comment_headline = comment_headline[:34].rstrip() + "…"
         slides.append(
             {
                 "slide_role": "real_comment",
@@ -222,6 +267,9 @@ def _story_slides(
                 "comment_ref": comment["comment_id"],
                 "identity_masked": comment["identity_masked"],
                 "copy_source": "real_comment_only",
+                "headline": comment_headline or "실제 댓글 반응",
+                "body": display_text,
+                "source_comment_text": comment_text,
             }
         )
     return slides

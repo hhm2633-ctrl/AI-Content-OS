@@ -127,10 +127,35 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
                     "account": _text(request.get("account")),
                     "category": _text(request.get("category")),
                     "title": _text(request.get("title")),
+                    "summary": _text(request.get("summary")),
                     "source_urls": _list(request.get("source_urls")),
                     "requested_media": _list(request.get("requested_media")),
                     "source": _text(request.get("source")),
                     "status": _text(request.get("status")),
+                    "collected_at": _text(request.get("collected_at")),
+                    "published_at": _text(request.get("published_at")),
+                    "fresh_collection_run": _text(
+                        request.get("fresh_collection_run")
+                    ),
+                    "historical_data_allowed": (
+                        request.get("historical_data_allowed") is True
+                    ),
+                    "editorial_target_slide_count": request.get(
+                        "editorial_target_slide_count"
+                    ),
+                    "reference_specimens": copy.deepcopy(
+                        _list(request.get("reference_specimens"))
+                    ),
+                    "reference_blueprints": copy.deepcopy(
+                        request.get("reference_blueprints")
+                        if isinstance(request.get("reference_blueprints"), Mapping)
+                        else {}
+                    ),
+                    "reference_v2_media": copy.deepcopy(
+                        request.get("reference_v2_media")
+                        if isinstance(request.get("reference_v2_media"), Mapping)
+                        else {}
+                    ),
                 },
             }
         )
@@ -156,10 +181,35 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
             continue
         request["account"] = _text(owner_payload.get("account"))
         request["title"] = _text(owner_payload.get("title"))
+        request["summary"] = _text(owner_payload.get("summary"))
         request["grade"] = _text(owner_payload.get("grade"))
         request["category"] = _text(owner_payload.get("category"))
         request["source_urls"] = _list(owner_payload.get("source_urls"))
         request["requested_media"] = _list(owner_payload.get("requested_media"))
+        request["collected_at"] = _text(owner_payload.get("collected_at"))
+        request["published_at"] = _text(owner_payload.get("published_at"))
+        request["fresh_collection_run"] = _text(
+            owner_payload.get("fresh_collection_run")
+        )
+        request["historical_data_allowed"] = (
+            owner_payload.get("historical_data_allowed") is True
+        )
+        request["editorial_target_slide_count"] = owner_payload.get(
+            "editorial_target_slide_count"
+        )
+        request["reference_specimens"] = copy.deepcopy(
+            _list(owner_payload.get("reference_specimens"))
+        )
+        request["reference_blueprints"] = copy.deepcopy(
+            owner_payload.get("reference_blueprints")
+            if isinstance(owner_payload.get("reference_blueprints"), Mapping)
+            else {}
+        )
+        request["reference_v2_media"] = copy.deepcopy(
+            owner_payload.get("reference_v2_media")
+            if isinstance(owner_payload.get("reference_v2_media"), Mapping)
+            else {}
+        )
         request["owner_payload"] = copy.deepcopy(dict(owner_payload))
     return result
 

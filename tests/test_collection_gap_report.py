@@ -96,6 +96,14 @@ class TestCollectionGapReport(unittest.TestCase):
         status_lookup = {entry["source_id"]: entry["status"] for group in report["source_status_by_status"].values() for entry in group}
         self.assertEqual(status_lookup["news_a"], STATUS_FALLBACK_ONLY)
         self.assertEqual(status_lookup["news_b"], STATUS_FAILED)
+        self.assertEqual(
+            {entry["source_id"] for entry in report["source_status_by_readiness"]["partial"]},
+            {"news_a"},
+        )
+        self.assertIn(
+            "blocked_news",
+            {entry["source_id"] for entry in report["source_status_by_readiness"]["blocked"]},
+        )
         self.assertEqual(next(entry["lane_impact"] for entry in report["status_summary"][STATUS_NOT_IMPLEMENTED] if entry["source_id"] == "news_c"), ["news_society_economy"])
         order = [entry["source_id"] for entry in report["recommended_implementation_order"]]
         self.assertEqual(order[0], "news_a")

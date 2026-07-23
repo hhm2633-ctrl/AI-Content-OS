@@ -1070,3 +1070,62 @@
 - Made approved package building always use the F: source-media localization and quality-gate path, even when no media-root CLI option is supplied.
 - A failed or incomplete media gate now changes the package and render gate to `blocked`; tool scores remain internal quality proxies and never establish facts, rights, approval, or publish readiness.
 - Added focused regression coverage, but no tests, compile, workflow, render, external write, publish, automation, or Git operation was run for this change.
+
+## 2026-07-23 - Connect existing owner learning to actual render styles
+
+- Added a deterministic production-profile compiler that reads the existing owner taxonomy, learning index, and structured feedback files without reanalyzing the original screenshots.
+- Connected the compiler directly to multi-account slide planning and the learning-driven blueprint.
+- Preserved field-level source IDs for account, topic, season, emotion, issue intensity, first screen, layout, palette, typography, image grammar, copy density, cross-format use, commerce, and AI-presenter guidance.
+- Added deterministic Korean guidance normalization for supported layout, typography, text-density, emotional-tone, source-editorial image treatment, and nested palette fields.
+- Changed learned render consumption so supported fields alter actual Satori tree colors, panel placement, image/text ratio, alignment, type sizes, line spacing, and media fit.
+- Added consumed/ignored field receipts and kept unsupported guidance from being falsely reported as applied.
+- Verified the current 605-record taxonomy against a bounded real news-topic profile without source reanalysis.
+- QA: compile passed and 25 focused profile/planner/blueprint/render-request tests passed. No real render, publish, automation, external write, or Git operation was performed.
+
+## 2026-07-23 22:23:40
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-23 22:46:49
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-23 22:47:58
+
+- Change: Connect owner reference candidates, workflow media discovery, Reference V2 fit/adapter, production package gating, and geometry-driven Satori render requests; 2713 tests and workflow_completed verified, while real owner-approved geometry remains required.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-24 06:59:20
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-24 07:10:55
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-24 07:40:37
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-24 08:05:20
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-24 08:19:05
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`

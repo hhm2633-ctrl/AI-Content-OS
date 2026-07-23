@@ -8,6 +8,7 @@ publishes or replaces source evidence.
 
 from __future__ import annotations
 
+import copy
 import json
 import hashlib
 import os
@@ -373,9 +374,21 @@ class CardNewsRendererRuntime:
                 )
                 if not self._contained(focus_bounds, crop_window):
                     return None, f"center_cover_would_crop_focus:{field}"
+            subject_tokens = " ".join(
+                str(raw.get(key) or "").strip().lower()
+                for key in ("asset_type", "subject_kind", "media_role", "classification")
+            )
             subjects = raw.get("protected_subjects")
+            person_or_portrait = any(
+                token in subject_tokens
+                for token in ("person", "portrait", "human", "face", "model", "celebrity", "인물")
+            ) or (isinstance(subjects, list) and bool(subjects))
+            if subjects is None and not person_or_portrait:
+                subjects = []
             if not isinstance(subjects, list):
                 return None, f"protected_subjects_missing:{field}"
+            if person_or_portrait and not subjects:
+                return None, f"protected_subjects_missing_for_person:{field}"
             normalized_subjects = []
             for subject_position, subject in enumerate(subjects, start=1):
                 subject_field = f"{field}.protected_subjects[{subject_position}]"
@@ -407,6 +420,7 @@ class CardNewsRendererRuntime:
                     "focus_bounds": dict(focus_bounds),
                     "crop_strategy": crop_strategy,
                     "protected_subjects": normalized_subjects,
+                    "subject_crop_guard_required": person_or_portrait,
                     "preservation_check": "metadata_contract_only_pending_visual_qa",
                 }
             )
@@ -623,6 +637,13 @@ class CardNewsRendererRuntime:
         if not probe.get("ready") or self.node_executable is None:
             return self._blocked_render("renderer_probe_not_ready", ",".join(probe.get("errors") or []))
 
+        attribution_receipt = request.get("attribution_receipt")
+        attribution_receipt = (
+            [copy.deepcopy(dict(item)) for item in attribution_receipt if isinstance(item, Mapping)]
+            if isinstance(attribution_receipt, list)
+            else []
+        )
+        attribution_receipt_hash = self._canonical_hash({"items": attribution_receipt})
         payload = {
             "schema_version": RENDER_REQUEST_SCHEMA,
             "render_request_id": render_request_id,
@@ -644,6 +665,8 @@ class CardNewsRendererRuntime:
             "canvas_profile": dict(canvas_profile),
             "canvas_profile_hash": canvas_profile_hash,
             "slides": normalized_slides,
+            "attribution_receipt": attribution_receipt,
+            "attribution_receipt_hash": attribution_receipt_hash,
         }
         stdin_json = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
         if len(stdin_json.encode("utf-8")) > MAX_RENDER_REQUEST_BYTES:
@@ -662,6 +685,8 @@ class CardNewsRendererRuntime:
             "writes_media_files": True,
             "output_root": output_root,
             "canvas_profile_hash": canvas_profile_hash,
+            "attribution_receipt": copy.deepcopy(attribution_receipt),
+            "attribution_receipt_hash": attribution_receipt_hash,
             "invoked_engines": ["satori", "resvg"],
             "capability_only_engines": ["fabric", "motion_canvas"],
         }
@@ -804,6 +829,14 @@ class CardNewsRendererRuntime:
         else:
             reason = None
         passed = completed.returncode == 0 and valid
+        preserved_receipt = dict(payload) if isinstance(payload, Mapping) else payload
+        if isinstance(preserved_receipt, dict):
+            preserved_receipt["attribution_receipt"] = copy.deepcopy(
+                expected.get("attribution_receipt", [])
+            )
+            preserved_receipt["attribution_receipt_hash"] = expected.get(
+                "attribution_receipt_hash"
+            )
         return {
             **base,
             "schema_version": RENDER_RECEIPT_SCHEMA,
@@ -811,7 +844,9 @@ class CardNewsRendererRuntime:
             "passed": passed,
             "reason": reason,
             "returncode": completed.returncode,
-            "receipt": payload,
+            "receipt": preserved_receipt,
+            "attribution_receipt": copy.deepcopy(expected.get("attribution_receipt", [])),
+            "attribution_receipt_hash": expected.get("attribution_receipt_hash"),
             "authorization_id": expected["authorization"]["authorization_id"],
             "outputs": [
                 str(Path(expected["output_root"]) / item["output_filename"])

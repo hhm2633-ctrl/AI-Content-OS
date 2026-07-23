@@ -9,14 +9,25 @@ instead of fabricating production plans or evidence.
 from __future__ import annotations
 
 import copy
+from pathlib import Path
 import re
 from typing import Any, Callable, Dict, List, Mapping
+from urllib.parse import urlparse
 
 from modules.card_news.selected_candidate_render_input_adapter import (
     build_selected_candidate_render_inputs,
 )
 from modules.card_news.selected_candidate_production_planner import (
     build_selected_candidate_production_plan,
+)
+from modules.card_news.reference_driven_production import (
+    produce_reference_driven_slide,
+)
+from modules.card_news.story_comment_spotlight import (
+    build_story_comment_spotlight,
+)
+from modules.design_learning.production_profile_compiler import (
+    ProductionProfileCompiler,
 )
 from modules.content.commerce_story_content_adapter import (
     build_commerce_story_content_inputs,
@@ -29,7 +40,7 @@ from modules.source_intake.candidate_selection_signal_normalizer import (
     normalize_candidate_selection_signals,
 )
 from modules.source_intake.discovery_result_render_bridge import (
-    run_discovery_result_render_bridge,
+    run_discovery_result_render_bridge_with_supplements,
 )
 
 
@@ -106,6 +117,22 @@ def _plans(value: Any) -> List[Mapping[str, Any]]:
     return []
 
 
+def _display_source_label(copy_plan: Any) -> str:
+    if not isinstance(copy_plan, Mapping):
+        return "출처 · 원문"
+    sources = copy_plan.get("source_credit")
+    first = (
+        str(sources[0]).strip()
+        if isinstance(sources, list) and sources
+        else ""
+    )
+    if not first:
+        return "출처 · 원문"
+    parsed = urlparse(first)
+    host = parsed.netloc.lower().removeprefix("www.")
+    return f"출처 · {host or '원문'}"
+
+
 def _source_backed_resolved_copy(plan: Mapping[str, Any]) -> List[Dict[str, str]]:
     """Fill renderer copy gaps using only text already approved by the plan."""
 
@@ -123,12 +150,28 @@ def _source_backed_resolved_copy(plan: Mapping[str, Any]) -> List[Dict[str, str]
 
     resolved: List[Dict[str, str]] = []
     for index, slide in enumerate(slides):
-        headline = str(slide.get("headline") or "").strip() or title
         body = str(slide.get("body") or "").strip()
         if not body and key_points:
             body = key_points[min(index, len(key_points) - 1)]
         if not body:
             body = feed_body
+        body = re.sub(r"https?://\S+\s*", "", body).strip()
+        headline = str(slide.get("headline") or "").strip()
+        if not headline or (index > 0 and headline == title):
+            headline_source = re.sub(
+                r"^\[[^\]:]{1,24}\]\s*",
+                "",
+                body,
+            ).strip()
+            headline = re.split(
+                r"(?<=[.!?。！？])\s+",
+                headline_source,
+                maxsplit=1,
+            )[0].strip()
+            if len(headline) > 34:
+                headline = headline[:34].rstrip() + "…"
+        if not headline:
+            headline = title
         resolved.append({"headline": headline, "body": body})
     return resolved
 
@@ -243,14 +286,45 @@ def _default_production_plans(
                         if point_text and point_text not in evidence_points:
                             evidence_points.append(point_text)
             provenance = media.get("real_comment_provenance")
-            if isinstance(provenance, Mapping) and provenance.get("is_real_comment") is True:
+            comment_source = (
+                provenance
+                if isinstance(provenance, Mapping)
+                else raw
+                if raw.get("is_real_comment") is True
+                else {}
+            )
+            if (
+                isinstance(comment_source, Mapping)
+                and comment_source.get("is_real_comment") is True
+            ):
+                comment_text = str(
+                    comment_source.get("text")
+                    or raw.get("text")
+                    or ""
+                ).strip()
+                if not comment_text:
+                    continue
                 comments.append(
                     {
-                        "comment_id": provenance.get("comment_id"),
-                        "text": provenance.get("text"),
-                        "identity_masked": provenance.get("identity_masked") is True,
+                        "comment_id": (
+                            comment_source.get("comment_id")
+                            or f"comment-{len(comments) + 1}"
+                        ),
+                        "text": comment_text,
+                        "identity_masked": (
+                            comment_source.get("identity_masked") is True
+                        ),
                         "is_real_comment": True,
                         "source_url": source_url,
+                        "screenshot_path": str(
+                            raw.get("screenshot_path") or ""
+                        ).strip(),
+                        "original_screenshot_path": str(
+                            raw.get("original_screenshot_path") or ""
+                        ).strip(),
+                        "comment_slide_eligible": (
+                            raw.get("comment_slide_eligible") is True
+                        ),
                     }
                 )
 
@@ -258,6 +332,17 @@ def _default_production_plans(
             for unit in _split_evidence_units(body):
                 if unit not in evidence_points:
                     evidence_points.append(unit)
+        evidence_points = [
+            point
+            for point in evidence_points
+            if not (
+                re.fullmatch(r"\[[^\]:]{1,24}\]", point)
+                or re.fullmatch(
+                    r"먼저 .{1,24} 기자의 .*보도입니다[.]?",
+                    point,
+                )
+            )
+        ]
 
         for position, media in enumerate(media_rows, start=1):
             raw = media.get("raw_source_asset")
@@ -266,6 +351,11 @@ def _default_production_plans(
             media_url = str(media.get("media_url") or "").strip()
             raw_type = str(media.get("media_type") or "").lower()
             artifact_role = str(media.get("operation_artifact_role") or "")
+            if (
+                raw.get("is_real_comment") is True
+                or artifact_role == "real_comment"
+            ):
+                continue
             has_static_thumbnail = bool(
                 str(raw.get("thumbnail_url") or raw.get("remote_url") or "").strip()
             )
@@ -292,11 +382,42 @@ def _default_production_plans(
                     "remote_url": media_url,
                     "source_url": source_url,
                     "rights_status": str(media.get("rights_status") or "unrecorded"),
+                    "license": str(
+                        media.get("license") or raw.get("license") or ""
+                    ).strip(),
+                    "license_name": str(
+                        media.get("license_name")
+                        or raw.get("license_name")
+                        or media.get("license")
+                        or raw.get("license")
+                        or ""
+                    ).strip(),
+                    "attribution": str(
+                        media.get("attribution") or raw.get("attribution") or ""
+                    ).strip(),
+                    "attribution_text": str(
+                        media.get("attribution_text")
+                        or raw.get("attribution_text")
+                        or media.get("attribution")
+                        or raw.get("attribution")
+                        or ""
+                    ).strip(),
+                    "attribution_required": bool(
+                        media.get("attribution_required")
+                        if media.get("attribution_required") is not None
+                        else raw.get("attribution_required")
+                    ),
                     "role_hint": artifact_role or "source_context",
                     "reference_only": bool(media.get("reference_only")),
                 }
             )
-        source_summary = summaries[0] if summaries else (evidence_points[0] if evidence_points else "")
+        source_summary = (
+            summaries[0]
+            if summaries
+            else evidence_points[0]
+            if evidence_points
+            else str(candidate.get("summary") or "").strip()
+        )
         deep_bundle = {
             "status": "ready",
             "title": str(row.get("candidate_title") or candidate.get("title") or ""),
@@ -311,6 +432,219 @@ def _default_production_plans(
             "content_type": str(candidate.get("category") or ""),
         }
         plan = build_selected_candidate_production_plan(candidate, deep_bundle)
+        story_spotlight: Dict[str, Any] = {}
+        if str(candidate.get("account") or "").upper() == "B":
+            eligible_paths = [
+                Path(str(comment.get("screenshot_path") or "")).expanduser()
+                for comment in comments
+                if comment.get("comment_slide_eligible") is True
+            ]
+            output_path = (
+                eligible_paths[0].parent / "story_comment_spotlight_cover.png"
+                if eligible_paths
+                else Path()
+            )
+            if eligible_paths and output_path.is_absolute():
+                story_spotlight = build_story_comment_spotlight(
+                    comments,
+                    output_path,
+                )
+            if (
+                story_spotlight.get("status") == "ready"
+                and isinstance(plan.get("slide_plan"), list)
+                and plan["slide_plan"]
+            ):
+                spotlight_comments = story_spotlight.get("spotlight_selected")
+                spotlight_comments = (
+                    spotlight_comments
+                    if isinstance(spotlight_comments, list)
+                    else []
+                )
+                quote_candidates = [
+                    str(item.get("text") or "").strip()
+                    for item in spotlight_comments
+                    if isinstance(item, Mapping)
+                    and str(item.get("text") or "").strip()
+                ]
+                quote_text = min(quote_candidates, key=len) if quote_candidates else ""
+                excerpt = quote_text[:58].rstrip()
+                if len(quote_text) > len(excerpt):
+                    excerpt += "…"
+                cover = plan["slide_plan"][0]
+                cover["media_type"] = "image"
+                cover["asset_refs"] = ["story-comment-spotlight-cover"]
+                if excerpt:
+                    cover["body"] = f"“{excerpt}”"
+                plan["real_comment_evidence"] = copy.deepcopy(story_spotlight)
+                plan["story_comment_spotlight"] = copy.deepcopy(story_spotlight)
+        if (
+            str(candidate.get("account") or "").upper() == "B"
+            and isinstance(plan.get("slide_plan"), list)
+            and plan["slide_plan"]
+        ):
+            plan["slide_plan"] = [
+                plan["slide_plan"][0],
+                *[
+                    slide
+                    for slide in plan["slide_plan"][1:]
+                    if isinstance(slide, Mapping)
+                    and (
+                        str(slide.get("headline") or "").strip()
+                        or str(slide.get("body") or "").strip()
+                    )
+                ],
+            ]
+            plan["slide_count"] = len(plan["slide_plan"])
+        if (
+            isinstance(plan.get("slide_plan"), list)
+            and len(plan["slide_plan"]) > 1
+            and str(plan["slide_plan"][1].get("body") or "").strip()
+            == source_summary
+        ):
+            plan["slide_plan"].pop(1)
+            plan["slide_count"] = len(plan["slide_plan"])
+        editorial_target = candidate.get("editorial_target_slide_count")
+        if (
+            isinstance(editorial_target, int)
+            and not isinstance(editorial_target, bool)
+            and 1 <= editorial_target <= 20
+            and isinstance(plan.get("slide_plan"), list)
+            and editorial_target < len(plan["slide_plan"])
+        ):
+            plan["slide_plan"] = plan["slide_plan"][:editorial_target]
+            if isinstance(plan.get("motion_plan"), list):
+                plan["motion_plan"] = plan["motion_plan"][:editorial_target]
+            plan["slide_count"] = editorial_target
+            plan["editorial_target_slide_count"] = editorial_target
+        profile_account = {
+            "A": "news",
+            "B": "story",
+            "C": "beauty" if "beauty" in str(candidate.get("category") or "").lower() else "fashion",
+        }.get(str(candidate.get("account") or "").upper(), "news")
+        plan["production_learning_profile"] = ProductionProfileCompiler().compile(
+            {
+                "account": profile_account,
+                "topic": str(candidate.get("title") or ""),
+                "formats": ["card_news"],
+                "keywords": copy.deepcopy(candidate.get("keywords", [])),
+                "season": str(candidate.get("season") or ""),
+                "emotion": str(candidate.get("emotion") or ""),
+            }
+        )
+        plan["reference_v2_required"] = True
+        plan["reference_specimens"] = copy.deepcopy(
+            candidate.get("reference_specimens", [])
+        )
+        plan["reference_blueprints"] = copy.deepcopy(
+            candidate.get("reference_blueprints", {})
+        )
+        plan["reference_v2_media"] = copy.deepcopy(
+            candidate.get("reference_v2_media", {})
+        )
+        if (
+            story_spotlight.get("status") == "ready"
+            and isinstance(plan["reference_v2_media"], Mapping)
+        ):
+            slides = plan["reference_v2_media"].get("slides")
+            if isinstance(slides, list) and slides:
+                slides[0] = {
+                    "primary_media": [
+                        copy.deepcopy(story_spotlight["media_asset"])
+                    ]
+                }
+        if (
+            isinstance(plan["reference_v2_media"], Mapping)
+            and isinstance(plan["reference_v2_media"].get("slides"), list)
+        ):
+            plan["reference_v2_media"]["slides"] = plan[
+                "reference_v2_media"
+            ]["slides"][: int(plan.get("slide_count") or 0)]
+        reference_media = plan["reference_v2_media"]
+        reference_media_slides = (
+            reference_media.get("slides")
+            if isinstance(reference_media, Mapping)
+            else []
+        )
+        reference_assets: List[Dict[str, Any]] = []
+        seen_reference_asset_ids = set()
+        for media_slide in (
+            reference_media_slides
+            if isinstance(reference_media_slides, list)
+            else []
+        ):
+            if not isinstance(media_slide, Mapping):
+                continue
+            for media_role, media_rows in media_slide.items():
+                if not isinstance(media_rows, list):
+                    continue
+                for media_row in media_rows:
+                    if not isinstance(media_row, Mapping):
+                        continue
+                    asset_id = str(media_row.get("asset_id") or "").strip()
+                    locator = str(
+                        media_row.get("local_path")
+                        or media_row.get("path")
+                        or ""
+                    ).strip()
+                    source_url = str(media_row.get("source_url") or "").strip()
+                    if (
+                        not asset_id
+                        or not locator
+                        or not source_url
+                        or asset_id in seen_reference_asset_ids
+                    ):
+                        continue
+                    seen_reference_asset_ids.add(asset_id)
+                    reference_assets.append(
+                        {
+                            "asset_id": asset_id,
+                            "media_type": "image",
+                            "origin": "source",
+                            "asset_class": "source_evidence",
+                            "locator": locator,
+                            "source_url": source_url,
+                            "rights_status": str(
+                                media_row.get("rights_status")
+                                or "unrecorded"
+                            ),
+                            "license": str(
+                                media_row.get("license") or ""
+                            ).strip(),
+                            "license_name": str(
+                                media_row.get("license_name")
+                                or media_row.get("license")
+                                or ""
+                            ).strip(),
+                            "attribution": str(
+                                media_row.get("attribution") or ""
+                            ).strip(),
+                            "attribution_text": str(
+                                media_row.get("attribution_text")
+                                or media_row.get("attribution")
+                                or ""
+                            ).strip(),
+                            "attribution_required": bool(
+                                media_row.get("attribution_required")
+                            ),
+                            "role_hint": str(media_role),
+                            "product_gallery": False,
+                        }
+                    )
+        if reference_assets:
+            plan["asset_inventory"] = reference_assets
+        asset_inventory = plan.get("asset_inventory")
+        if isinstance(asset_inventory, list):
+            for asset in asset_inventory:
+                if not isinstance(asset, dict):
+                    continue
+                asset.setdefault("license", "")
+                asset.setdefault("license_name", asset.get("license") or "")
+                asset.setdefault("attribution", "")
+                asset.setdefault(
+                    "attribution_text",
+                    asset.get("attribution") or "",
+                )
+                asset.setdefault("attribution_required", False)
         story_payload = {
             "schema_version": "candidate_commerce_story_briefs.v1",
             "candidates": [
@@ -429,7 +763,93 @@ def run_selected_candidate_production_flow(
     render_inputs: List[Dict[str, Any]] = []
     for plan in plans:
         try:
-            rendered = render_input_builder(plan, _source_backed_resolved_copy(plan))
+            resolved_copy = _source_backed_resolved_copy(plan)
+            rendered = render_input_builder(plan, resolved_copy)
+            if isinstance(rendered, Mapping):
+                rendered = copy.deepcopy(dict(rendered))
+                specimens = plan.get("reference_specimens")
+                blueprints = plan.get("reference_blueprints")
+                media = plan.get("reference_v2_media")
+                reference_slides: List[Dict[str, Any]] = []
+                if isinstance(specimens, list) and specimens and isinstance(blueprints, Mapping) and blueprints:
+                    slide_plan = _plans({"plans": [plan]})[0].get("slide_plan", [])
+                    for index, slide_copy in enumerate(resolved_copy):
+                        raw_slide = (
+                            slide_plan[index]
+                            if isinstance(slide_plan, list)
+                            and index < len(slide_plan)
+                            and isinstance(slide_plan[index], Mapping)
+                            else {}
+                        )
+                        slide_media: Mapping[str, Any] = {}
+                        if isinstance(media, Mapping):
+                            per_slide_media = media.get("slides")
+                            if (
+                                isinstance(per_slide_media, list)
+                                and index < len(per_slide_media)
+                                and isinstance(per_slide_media[index], Mapping)
+                            ):
+                                slide_media = per_slide_media[index]
+                            else:
+                                slide_media = {
+                                    key: value
+                                    for key, value in media.items()
+                                    if key != "slides"
+                                }
+                        media_count = sum(
+                            len(value)
+                            for value in slide_media.values()
+                            if isinstance(value, list)
+                        )
+                        result = produce_reference_driven_slide(
+                            specimens=specimens,
+                            blueprints=blueprints,
+                            context={
+                                "account": str(plan.get("account") or "").upper(),
+                                "slide_role": str(
+                                    raw_slide.get("canonical_role")
+                                    or raw_slide.get("slide_role")
+                                    or "card"
+                                ),
+                                "media_count": media_count,
+                                "copy_char_count": len(slide_copy.get("headline", "")),
+                            },
+                            content={
+                                "headline": slide_copy.get("headline", ""),
+                                "body": slide_copy.get("body", ""),
+                                "source_label": _display_source_label(
+                                    plan.get("copy_plan")
+                                ),
+                            },
+                            media=slide_media,
+                        )
+                        reference_slides.append(
+                            {"page": index + 1, **copy.deepcopy(result)}
+                        )
+                    reference_status = (
+                        "ready"
+                        if reference_slides
+                        and all(item.get("status") == "ready" for item in reference_slides)
+                        else "blocked"
+                    )
+                    reference_reason = (
+                        "all_reference_v2_slides_ready"
+                        if reference_status == "ready"
+                        else "one_or_more_reference_v2_slides_blocked"
+                    )
+                else:
+                    reference_status = "blocked"
+                    reference_reason = "owner_approved_reference_geometry_required"
+                rendered["reference_v2_required"] = True
+                rendered["reference_v2"] = {
+                    "status": reference_status,
+                    "reason_code": reference_reason,
+                    "legacy_renderer_fallback_allowed": False,
+                    "slides": reference_slides,
+                }
+                rendered["production_learning_profile"] = copy.deepcopy(
+                    plan.get("production_learning_profile", {})
+                )
             render_inputs.append(copy.deepcopy(dict(rendered)))
         except Exception as error:
             failures.append(
@@ -483,7 +903,7 @@ def run_default_selected_candidate_production_flow(
     return run_selected_candidate_production_flow(
         selection=selection,
         provider=provider,
-        discovery_bridge=run_discovery_result_render_bridge,
+        discovery_bridge=run_discovery_result_render_bridge_with_supplements,
         production_plan_builder=_default_production_plans,
         render_input_builder=build_selected_candidate_render_inputs,
         max_per_account=max_per_account,

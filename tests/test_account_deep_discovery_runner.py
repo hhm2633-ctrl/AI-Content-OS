@@ -52,15 +52,15 @@ class FakeProvider:
 
 
 class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
-    def test_selected_only_bounded_to_four_per_account(self):
+    def test_selected_only_bounded_to_five_per_account(self):
         provider = FakeProvider()
         result = run_account_deep_discovery(_selection("A", 6), provider)
         bucket = result["accounts"]["A"]
         self.assertEqual(bucket["requested"], 6)
         self.assertEqual(bucket["executed"], MAX_REQUESTS_PER_ACCOUNT)
-        self.assertEqual(bucket["skipped_over_limit"], ["A-4", "A-5"])
+        self.assertEqual(bucket["skipped_over_limit"], ["A-5"])
         executed_ids = {call[2] for call in provider.calls}
-        self.assertEqual(executed_ids, {"A-0", "A-1", "A-2", "A-3"})
+        self.assertEqual(executed_ids, {"A-0", "A-1", "A-2", "A-3", "A-4"})
         self.assertEqual(result["accounts"]["B"]["executed"], 0)
 
     def test_deduplicates_provider_work_before_account_limit(self):
@@ -100,7 +100,7 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
         self.assertEqual(bucket["requested"], 6)
         self.assertEqual(bucket["unique_requested"], 5)
         self.assertEqual(bucket["executed"], MAX_REQUESTS_PER_ACCOUNT)
-        self.assertEqual(bucket["skipped_over_limit"], ["A-unique-3"])
+        self.assertEqual(bucket["skipped_over_limit"], [])
         self.assertEqual(
             bucket["deduplicated_requests"],
             [
@@ -112,10 +112,10 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
             ],
         )
         self.assertEqual(bucket["duplicate_operations_eliminated"], 5)
-        self.assertEqual(bucket["provider_calls_without_dedupe"], 20)
-        self.assertEqual(bucket["provider_calls_planned"], 20)
+        self.assertEqual(bucket["provider_calls_without_dedupe"], 25)
+        self.assertEqual(bucket["provider_calls_planned"], 25)
         self.assertEqual(bucket["provider_call_reduction"], 0)
-        self.assertEqual(len(provider.calls), 4 * len(ACCOUNT_DISCOVERY_PLANS["A"]))
+        self.assertEqual(len(provider.calls), 5 * len(ACCOUNT_DISCOVERY_PLANS["A"]))
         duplicate_calls = [call for call in provider.calls if call[2] == "A-duplicate"]
         self.assertEqual(len(duplicate_calls), len(ACCOUNT_DISCOVERY_PLANS["A"]))
         self.assertEqual(bucket["results"][0]["title"], "최초 제목")

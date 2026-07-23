@@ -405,11 +405,33 @@ class PublishingModule(BaseModule):
         output_set_present = bool(output_set_id) and bool(attestation_output_set_id)
         output_set_match = output_set_present and output_set_id == attestation_output_set_id
         approved_assets = manifest.get("assets", []) if is_gate_attestation and isinstance(manifest.get("assets"), list) else []
+        rendered_scope_declared = "rendered_asset_ids" in manifest if manifest else False
+        rendered_asset_ids = {
+            str(value).strip()
+            for value in manifest.get("rendered_asset_ids", manifest.get("asset_ids", []))
+            if str(value).strip()
+        } if manifest else set()
+        render_allowed_asset_ids = {
+            str(value).strip()
+            for value in manifest.get("render_allowed_asset_ids", [])
+            if str(value).strip()
+        } if manifest else set()
+        rendered_asset_rights_match = (
+            not rendered_scope_declared
+            or (
+                bool(rendered_asset_ids)
+                and rendered_asset_ids.issubset(render_allowed_asset_ids)
+            )
+        )
         rights = manifest.get("rights", {}) if manifest else {}
         rights_passed = (
             bool(approved_assets)
             and all(item.get("render_allowed") is True and item.get("rights_status") not in ("", "blocked") for item in approved_assets)
-        ) if is_gate_attestation else (rights.get("ready") is True and rights.get("status") == "pass")
+        ) if is_gate_attestation else (
+            rights.get("ready") is True
+            and rights.get("status") == "pass"
+            and rendered_asset_rights_match
+        )
         evidence_status = manifest.get("evidence", {}).get("status") if manifest else None
         evidence_passed = (
             bool(approved_assets) and all(item.get("evidence_status") == "valid" for item in approved_assets)
@@ -432,10 +454,7 @@ class PublishingModule(BaseModule):
             or compliance.get("publish_ready") is not True
             or bool(compliance.get("blocking_reasons"))
             or release_guard.get("ready") is not True
-            or (
-                "render_allowed_asset_ids" in manifest
-                and not manifest.get("render_allowed_asset_ids")
-            )
+            or not rendered_asset_rights_match
         )
         if canonical_compliance_blocked:
             # The canonical compliance decision is authoritative.  Optimistic
@@ -472,6 +491,7 @@ class PublishingModule(BaseModule):
             "manifest_paths_match": manifest_paths_match,
             "output_set_match": output_set_match,
             "rights_passed": rights_passed,
+            "rendered_asset_rights_match": rendered_asset_rights_match,
             "evidence_passed": evidence_passed,
             "compliance_passed": compliance_passed,
             "qa_passed": qa_passed,

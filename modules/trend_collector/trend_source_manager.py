@@ -39,6 +39,12 @@ class TrendSourceManager:
         self._ensure_bobaedream_cache_file()
         self.last_collection_summary = self._empty_collection_summary()
 
+    @staticmethod
+    def _attach_retry_owner(items: List[Dict[str, Any]]) -> None:
+        for item in items:
+            if isinstance(item, dict):
+                item.setdefault("retry_owner", "manager")
+
     def _empty_collection_summary(self) -> Dict[str, Any]:
         return {
             "naver_news": {
@@ -257,6 +263,8 @@ class TrendSourceManager:
             collect_fn=lambda: self.moneytoday_collector.collect(source=source),
             status_fn=lambda: self.moneytoday_collector.last_status,
         )
+        collector_status["retry_owner"] = "manager"
+        self._attach_retry_owner(results)
         self._update_moneytoday_summary(collector_status)
         print("MoneyToday Collect Finished")
         return results
@@ -281,6 +289,8 @@ class TrendSourceManager:
             ),
             status_fn=lambda: self.naver_news_collector.last_status,
         )
+        collector_status["retry_owner"] = "manager"
+        self._attach_retry_owner(results)
         self._update_naver_news_summary(collector_status)
 
         if results:
@@ -288,7 +298,17 @@ class TrendSourceManager:
             print("Naver News Collect Finished")
             return results
 
-        cache_results = self._load_naver_news_cache(source)
+        cache_meta = self._cache_meta(self.naver_news_cache_path)
+        if cache_meta["cache_expired"]:
+            collector_status = {
+                **collector_status,
+                **cache_meta,
+                "fallback_reason": "expired_cache_excluded",
+            }
+            self._update_naver_news_summary(collector_status)
+        cache_results = (
+            [] if cache_meta["cache_expired"] else self._load_naver_news_cache(source)
+        )
 
         if cache_results:
             cache_meta = self._cache_meta(self.naver_news_cache_path)
@@ -357,6 +377,8 @@ class TrendSourceManager:
             collect_fn=lambda: self.nate_pann_collector.collect(source=source),
             status_fn=lambda: self.nate_pann_collector.last_status,
         )
+        collector_status["retry_owner"] = "manager"
+        self._attach_retry_owner(results)
         self._update_nate_pann_summary(collector_status)
 
         if results:
@@ -364,7 +386,17 @@ class TrendSourceManager:
             print("Nate Pann Collect Finished")
             return results
 
-        cache_results = self._load_nate_pann_cache(source)
+        cache_meta = self._cache_meta(self.nate_pann_cache_path)
+        if cache_meta["cache_expired"]:
+            collector_status = {
+                **collector_status,
+                **cache_meta,
+                "fallback_reason": "expired_cache_excluded",
+            }
+            self._update_nate_pann_summary(collector_status)
+        cache_results = (
+            [] if cache_meta["cache_expired"] else self._load_nate_pann_cache(source)
+        )
 
         if cache_results:
             cache_meta = self._cache_meta(self.nate_pann_cache_path)
@@ -432,6 +464,8 @@ class TrendSourceManager:
             collect_fn=lambda: self.fmkorea_collector.collect(source=source),
             status_fn=lambda: self.fmkorea_collector.last_status,
         )
+        collector_status["retry_owner"] = "manager"
+        self._attach_retry_owner(results)
         self._update_fmkorea_summary(collector_status)
 
         if results:
@@ -439,7 +473,17 @@ class TrendSourceManager:
             print("FM Korea Collect Finished")
             return results
 
-        cache_results = self._load_fmkorea_cache(source)
+        cache_meta = self._cache_meta(self.fmkorea_cache_path)
+        if cache_meta["cache_expired"]:
+            collector_status = {
+                **collector_status,
+                **cache_meta,
+                "fallback_reason": "expired_cache_excluded",
+            }
+            self._update_fmkorea_summary(collector_status)
+        cache_results = (
+            [] if cache_meta["cache_expired"] else self._load_fmkorea_cache(source)
+        )
 
         if cache_results:
             cache_meta = self._cache_meta(self.fmkorea_cache_path)
@@ -507,6 +551,8 @@ class TrendSourceManager:
             collect_fn=lambda: self.bobaedream_collector.collect(source=source),
             status_fn=lambda: self.bobaedream_collector.last_status,
         )
+        collector_status["retry_owner"] = "manager"
+        self._attach_retry_owner(results)
         self._update_bobaedream_summary(collector_status)
 
         if results:
@@ -514,7 +560,17 @@ class TrendSourceManager:
             print("Bobaedream Collect Finished")
             return results
 
-        cache_results = self._load_bobaedream_cache(source)
+        cache_meta = self._cache_meta(self.bobaedream_cache_path)
+        if cache_meta["cache_expired"]:
+            collector_status = {
+                **collector_status,
+                **cache_meta,
+                "fallback_reason": "expired_cache_excluded",
+            }
+            self._update_bobaedream_summary(collector_status)
+        cache_results = (
+            [] if cache_meta["cache_expired"] else self._load_bobaedream_cache(source)
+        )
 
         if cache_results:
             cache_meta = self._cache_meta(self.bobaedream_cache_path)
@@ -769,6 +825,8 @@ class TrendSourceManager:
         )
 
     def _load_naver_news_cache(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if self._cache_meta(self.naver_news_cache_path)["cache_expired"]:
+            return []
         data = self._read_json(self.naver_news_cache_path)
         items = data.get("items", [])
 
@@ -790,6 +848,7 @@ class TrendSourceManager:
             cache_item["base_score"] = int(cache_item.get("base_score", 110 - index))
             cache_item["collection_method"] = "naver_news_cache"
             cache_item["is_fallback"] = True
+            cache_item["retry_owner"] = "manager"
             cache_item["trend_reason"] = "Naver News cache fallback"
             cache_item["collected_at"] = self._now()
             cache_results.append(cache_item)
@@ -816,6 +875,8 @@ class TrendSourceManager:
         )
 
     def _load_nate_pann_cache(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if self._cache_meta(self.nate_pann_cache_path)["cache_expired"]:
+            return []
         data = self._read_json(self.nate_pann_cache_path)
         items = data.get("items", [])
 
@@ -845,6 +906,7 @@ class TrendSourceManager:
             cache_item["base_score"] = int(cache_item.get("base_score", 110 - index))
             cache_item["collection_method"] = "nate_pann_cache"
             cache_item["is_fallback"] = True
+            cache_item["retry_owner"] = "manager"
             cache_item["trend_reason"] = "Nate Pann cache fallback"
             cache_item["collected_at"] = self._now()
             cache_results.append(cache_item)
@@ -871,6 +933,8 @@ class TrendSourceManager:
         )
 
     def _load_fmkorea_cache(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if self._cache_meta(self.fmkorea_cache_path)["cache_expired"]:
+            return []
         data = self._read_json(self.fmkorea_cache_path)
         items = data.get("items", [])
 
@@ -892,6 +956,7 @@ class TrendSourceManager:
             cache_item["base_score"] = int(cache_item.get("base_score", 105 - index))
             cache_item["collection_method"] = "fmkorea_cache"
             cache_item["is_fallback"] = True
+            cache_item["retry_owner"] = "manager"
             cache_item["trend_reason"] = "FM코리아 cache fallback"
             cache_item["collected_at"] = self._now()
             cache_results.append(cache_item)
@@ -918,6 +983,8 @@ class TrendSourceManager:
         )
 
     def _load_bobaedream_cache(self, source: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if self._cache_meta(self.bobaedream_cache_path)["cache_expired"]:
+            return []
         data = self._read_json(self.bobaedream_cache_path)
         items = data.get("items", [])
 
@@ -939,6 +1006,7 @@ class TrendSourceManager:
             cache_item["base_score"] = int(cache_item.get("base_score", 107 - index))
             cache_item["collection_method"] = "bobaedream_cache"
             cache_item["is_fallback"] = True
+            cache_item["retry_owner"] = "manager"
             cache_item["trend_reason"] = "보배드림 cache fallback"
             cache_item["collected_at"] = self._now()
             cache_results.append(cache_item)
@@ -1353,7 +1421,10 @@ class TrendSourceManager:
         return {
             "cache_age_seconds": age_seconds,
             "cache_expired": (
-                bool(age_seconds is not None and age_seconds > self.cache_ttl_seconds)
+                bool(
+                    age_seconds is not None
+                    and age_seconds > getattr(self, "cache_ttl_seconds", 24 * 60 * 60)
+                )
             ),
         }
 

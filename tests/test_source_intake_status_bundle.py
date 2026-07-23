@@ -88,6 +88,13 @@ class TestSourceIntakeStatusBundle(unittest.TestCase):
             STATUS_FAILED: 1,
             STATUS_OK: 6,
         })
+        self.assertEqual(bundle["readiness_status_counts"], {
+            "ready": 6,
+            "partial": 1,
+            "blocked": 1,
+            "external_blocked": 2,
+        })
+        self.assertEqual(bundle["classification_source_count"], 10)
         self.assertEqual(bundle["weak_lanes"], ["news_society_economy", "entertainment_news"])
         self.assertEqual(bundle["top_queue_sources"], ["alpha", "beta", "delta", "gamma", "epsilon"])
         self.assertEqual(bundle["blockers"]["missing_artifacts"], [])
@@ -169,6 +176,8 @@ class TestSourceIntakeStatusBundle(unittest.TestCase):
             "artifacts_present",
             "item_count",
             "status_counts",
+            "readiness_status_counts",
+            "classification_source_count",
             "weak_lanes",
             "top_queue_sources",
             "blockers",

@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import json
 import os
@@ -26,6 +27,9 @@ from modules.image_prompt.image_prompt_module import ImagePromptModule
 from modules.image_generation.image_generation_module import ImageGenerationModule
 from modules.card_news.canvas_contract import is_allowed_card_slide_count
 from modules.card_news.card_news_module import CardNewsModule
+from modules.card_news.workflow_production_preparation import (
+    WorkflowProductionPreparation,
+)
 from modules.publishing.publishing_module import PublishingModule
 from modules.knowledge_engine.knowledge_module import KnowledgeModule
 from modules.performance_score.performance_score_module import PerformanceScoreModule
@@ -82,6 +86,7 @@ class WorkflowEngine:
         self.image_prompt_module = ImagePromptModule(self.config)
         self.image_generation_module = ImageGenerationModule(self.config)
         self.card_news_module = CardNewsModule(self.config)
+        self.card_news_production_preparation = WorkflowProductionPreparation()
         self.publishing_module = PublishingModule(self.config)
         self.knowledge_module = KnowledgeModule(self.config)
         self.performance_score_module = PerformanceScoreModule(self.config)
@@ -129,8 +134,15 @@ class WorkflowEngine:
             image_generation_result = self.image_generation_module.run(image_prompt_result)
             self._save_workflow_result("07_image_generation_result.json", image_generation_result)
 
+            production_preparation = self._prepare_standard_card_news_production(
+                topic_result,
+                content_result,
+            )
             card_news_result, publishing_result, output_set_manifest = (
-                self._build_blocked_standard_production_results(image_generation_result)
+                self._build_blocked_standard_production_results(
+                    image_generation_result,
+                    production_preparation,
+                )
             )
             self._save_workflow_result("08_card_news_result.json", card_news_result)
             self._save_workflow_result("09_publishing_result.json", publishing_result)
@@ -269,7 +281,10 @@ class WorkflowEngine:
             return error_result
 
     @staticmethod
-    def _build_blocked_standard_production_results(image_generation_result):
+    def _build_blocked_standard_production_results(
+        image_generation_result,
+        production_preparation=None,
+    ):
         """Keep the legacy Workflow side-effect free.
 
         Real CardNews production is owned by the selected-candidate production
@@ -286,6 +301,11 @@ class WorkflowEngine:
             "production_ready": False,
             "publishing_ready": False,
             "reason_code": reason_code,
+            "production_preparation": copy.deepcopy(
+                production_preparation
+                if isinstance(production_preparation, dict)
+                else {}
+            ),
             "image_generation_status": image_generation_result.get("status"),
             "card_news_quality": {
                 "passed": False,
@@ -309,6 +329,24 @@ class WorkflowEngine:
             "reason_code": reason_code,
         }
         return card_news_result, publishing_result, output_set_manifest
+
+    def _prepare_standard_card_news_production(self, topic_result, content_result):
+        preparation = getattr(self, "card_news_production_preparation", None)
+        if preparation is None:
+            return {
+                "status": "fallback",
+                "reason_code": "production_preparation_not_configured",
+                "production_ready": False,
+            }
+        try:
+            return preparation.prepare(topic_result, content_result)
+        except Exception as error:
+            return {
+                "status": "fallback",
+                "reason_code": "production_preparation_failed",
+                "error": str(error),
+                "production_ready": False,
+            }
 
     def _run_card_news_output_transaction(
         self,

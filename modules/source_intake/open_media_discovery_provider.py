@@ -9,13 +9,32 @@ import re
 import socket
 import urllib.parse
 import urllib.request
-from typing import Any, Callable, Dict, List, Mapping, Optional
+from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional
 from urllib.error import HTTPError, URLError
 
 
 GOOGLE_CSE_ENDPOINT = "https://customsearch.googleapis.com/customsearch/v1"
 COMMONS_API_ENDPOINT = "https://commons.wikimedia.org/w/api.php"
 GOOGLE_RIGHTS_FILTER = "cc_publicdomain|cc_attribute|cc_sharealike"
+COMMONS_MAX_QUERIES = 3
+COMMONS_DOCUMENT_EXTENSIONS = {
+    ".djvu",
+    ".djv",
+    ".pdf",
+    ".svg",
+}
+COMMONS_DOCUMENT_MIME_TYPES = {
+    "application/pdf",
+    "image/svg+xml",
+    "image/vnd.djvu",
+}
+COMMONS_RASTER_MIME_TYPES = {
+    "image/gif",
+    "image/jpeg",
+    "image/png",
+    "image/tiff",
+    "image/webp",
+}
 Transport = Callable[[str, Mapping[str, str], float], str]
 
 
@@ -32,6 +51,26 @@ def _text(value: Any) -> str:
 
 def _metadata_value(value: Any) -> str:
     return _text(value.get("value")) if isinstance(value, Mapping) else ""
+
+
+def _positive_int(value: Any) -> Optional[int]:
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return None
+    return parsed if parsed > 0 else None
+
+
+def _iter_search_terms(value: Any) -> Iterable[str]:
+    if isinstance(value, str):
+        for item in re.split(r"[,;\n|]+", value):
+            if _text(item):
+                yield _text(item)
+    elif isinstance(value, (list, tuple, set)):
+        for item in value:
+            cleaned = _text(item)
+            if cleaned:
+                yield cleaned
 
 
 class OpenMediaDiscoveryProvider:
@@ -88,9 +127,10 @@ class OpenMediaDiscoveryProvider:
     ) -> Dict[str, Any]:
         if operation != "search_open_images":
             return self._error("unsupported_operation")
-        query = _text(request.get("title") or request.get("category"))
-        if not query:
+        queries = self._expanded_queries(request)
+        if not queries:
             return self._error("missing_query")
+        query = queries[0]
         requested_source = _text(request.get("open_media_source")).casefold()
         google = (
             self._google(query)
@@ -98,7 +138,7 @@ class OpenMediaDiscoveryProvider:
             else {"status": "not_requested", "network_used": False, "assets": []}
         )
         commons = (
-            self._commons(query)
+            self._commons(queries)
             if requested_source in ("", "wikimedia_commons")
             else {"status": "not_requested", "network_used": False, "assets": []}
         )
@@ -110,12 +150,39 @@ class OpenMediaDiscoveryProvider:
             "status": "ok" if assets else "empty",
             "network_used": bool(google.get("network_used") or commons.get("network_used")),
             "query": query,
+            "queries": queries,
             "assets": assets,
             "diagnostics": {
                 "google": google.get("error_type") or google.get("status"),
                 "commons": commons.get("error_type") or commons.get("status"),
             },
         }
+
+    @staticmethod
+    def _expanded_queries(request: Mapping[str, Any]) -> List[str]:
+        candidates: List[str] = []
+        candidates.extend(_iter_search_terms(request.get("search_terms")))
+        candidates.extend(_iter_search_terms(request.get("search_query")))
+        candidates.extend(_iter_search_terms(request.get("keywords")))
+        candidates.extend(
+            value
+            for value in (
+                _text(request.get("title")),
+                _text(request.get("category")),
+            )
+            if value
+        )
+        queries: List[str] = []
+        seen = set()
+        for candidate in candidates:
+            normalized = candidate.casefold()
+            if normalized in seen:
+                continue
+            seen.add(normalized)
+            queries.append(candidate)
+            if len(queries) >= COMMONS_MAX_QUERIES:
+                break
+        return queries
 
     def _google(self, query: str) -> Dict[str, Any]:
         if not self.google_api_key or not self.google_cx:
@@ -167,74 +234,134 @@ class OpenMediaDiscoveryProvider:
             )
         return {"status": "ok", "network_used": True, "assets": assets}
 
-    def _commons(self, query: str) -> Dict[str, Any]:
-        params = urllib.parse.urlencode(
-            {
-                "action": "query",
-                "format": "json",
-                "formatversion": 2,
-                "generator": "search",
-                "gsrsearch": f"file:{query}",
-                "gsrnamespace": 6,
-                "gsrlimit": self.max_results,
-                "prop": "imageinfo",
-                "iiprop": "url|extmetadata",
-                "iiurlwidth": 1600,
-            }
+    @staticmethod
+    def _commons_media_is_usable(page: Mapping[str, Any], info: Mapping[str, Any]) -> bool:
+        title = _text(page.get("title"))
+        extension = os.path.splitext(title.casefold())[1]
+        mime = _text(info.get("mime")).casefold()
+        media_type = _text(info.get("mediatype")).casefold()
+        if extension in COMMONS_DOCUMENT_EXTENSIONS or mime in COMMONS_DOCUMENT_MIME_TYPES:
+            return False
+        if media_type and media_type != "bitmap":
+            return False
+        return mime in COMMONS_RASTER_MIME_TYPES
+
+    @staticmethod
+    def _commons_photo_priority(asset: Mapping[str, Any]) -> tuple:
+        mime = _text(asset.get("mime_type")).casefold()
+        return (
+            0 if mime == "image/jpeg" else 1,
+            -int(asset.get("pixel_area") or 0),
+            _text(asset.get("title")).casefold(),
         )
-        result = self._fetch(f"{COMMONS_API_ENDPOINT}?{params}")
-        if "error_type" in result:
-            return self._error(result["error_type"], network_used=True)
-        pages = result["parsed"].get("query", {}).get("pages", [])
-        if isinstance(pages, Mapping):
-            pages = list(pages.values())
+
+    def _commons(self, queries: List[str]) -> Dict[str, Any]:
         assets: List[Dict[str, Any]] = []
-        for page in pages if isinstance(pages, list) else []:
-            if not isinstance(page, Mapping):
-                continue
-            infos = page.get("imageinfo")
-            info = infos[0] if isinstance(infos, list) and infos and isinstance(infos[0], Mapping) else {}
-            metadata = info.get("extmetadata") if isinstance(info.get("extmetadata"), Mapping) else {}
-            remote_url = _text(info.get("thumburl") or info.get("url"))
-            source_url = _text(info.get("descriptionurl"))
-            license_name = _metadata_value(metadata.get("LicenseShortName"))
-            attribution = _metadata_value(metadata.get("Artist")) or _metadata_value(metadata.get("Credit"))
-            if not remote_url or not source_url or not license_name:
-                continue
-            lowered = license_name.casefold()
-            rights_status = "public_domain" if (
-                "public domain" in lowered or "cc0" in lowered
-            ) else "open_license"
-            assets.append(
+        seen_urls = set()
+        first_error = ""
+        for query in queries[:COMMONS_MAX_QUERIES]:
+            params = urllib.parse.urlencode(
                 {
-                    "type": "open_image",
-                    "url": remote_url,
-                    "remote_url": remote_url,
-                    "source_url": source_url,
-                    "title": _text(page.get("title")),
-                    "source_provider": "wikimedia_commons",
-                    "source_api": "wikimedia_commons",
-                    "rights_status": rights_status,
-                    "license": license_name,
-                    "license_name": license_name,
-                    "attribution": attribution,
-                    "attribution_text": attribution,
-                    "metadata_only": False,
-                    "downloaded": False,
-                    "reference_only": False,
-                    "usable_in_production": True,
-                    "topic_relevant": True,
-                    "attribution_required": True,
-                    "manual_visual_review_required": True,
-                    "publish_authorized": False,
-                    "usage_scope": "open_license_editorial_candidate",
+                    "action": "query",
+                    "format": "json",
+                    "formatversion": 2,
+                    "generator": "search",
+                    "gsrsearch": f"file:{query}",
+                    "gsrnamespace": 6,
+                    "gsrlimit": self.max_results,
+                    "prop": "imageinfo",
+                    "iiprop": "url|extmetadata|mime|mediatype|size",
+                    "iiurlwidth": 1600,
                 }
             )
+            result = self._fetch(f"{COMMONS_API_ENDPOINT}?{params}")
+            if "error_type" in result:
+                first_error = first_error or result["error_type"]
+                continue
+            pages = result["parsed"].get("query", {}).get("pages", [])
+            if isinstance(pages, Mapping):
+                pages = list(pages.values())
+            for page in pages if isinstance(pages, list) else []:
+                if not isinstance(page, Mapping):
+                    continue
+                infos = page.get("imageinfo")
+                info = (
+                    infos[0]
+                    if isinstance(infos, list) and infos and isinstance(infos[0], Mapping)
+                    else {}
+                )
+                if not self._commons_media_is_usable(page, info):
+                    continue
+                metadata = (
+                    info.get("extmetadata")
+                    if isinstance(info.get("extmetadata"), Mapping)
+                    else {}
+                )
+                remote_url = _text(info.get("thumburl") or info.get("url"))
+                original_url = _text(info.get("url"))
+                source_url = _text(info.get("descriptionurl"))
+                license_name = _metadata_value(metadata.get("LicenseShortName"))
+                attribution = _metadata_value(metadata.get("Artist")) or _metadata_value(
+                    metadata.get("Credit")
+                )
+                if (
+                    not remote_url
+                    or remote_url in seen_urls
+                    or not source_url
+                    or not license_name
+                ):
+                    continue
+                seen_urls.add(remote_url)
+                lowered = license_name.casefold()
+                rights_status = (
+                    "public_domain"
+                    if "public domain" in lowered or "cc0" in lowered
+                    else "open_license"
+                )
+                width = _positive_int(info.get("width"))
+                height = _positive_int(info.get("height"))
+                assets.append(
+                    {
+                        "type": "open_image",
+                        "url": remote_url,
+                        "remote_url": remote_url,
+                        "original_url": original_url,
+                        "source_url": source_url,
+                        "title": _text(page.get("title")),
+                        "matched_query": query,
+                        "source_provider": "wikimedia_commons",
+                        "source_api": "wikimedia_commons",
+                        "rights_status": rights_status,
+                        "license": license_name,
+                        "license_name": license_name,
+                        "attribution": attribution,
+                        "attribution_text": attribution,
+                        "mime_type": _text(info.get("mime")),
+                        "media_type": _text(info.get("mediatype")),
+                        "width": width,
+                        "height": height,
+                        "pixel_area": (width * height) if width and height else None,
+                        "metadata_only": False,
+                        "downloaded": False,
+                        "reference_only": False,
+                        "usable_in_production": True,
+                        "topic_relevant": True,
+                        "attribution_required": True,
+                        "manual_visual_review_required": True,
+                        "publish_authorized": False,
+                        "usage_scope": "open_license_editorial_candidate",
+                    }
+                )
+        assets.sort(key=self._commons_photo_priority)
+        if not assets and first_error:
+            return self._error(first_error, network_used=True)
+        assets = assets[: self.max_results]
         return {"status": "ok", "network_used": True, "assets": assets}
 
 
 __all__ = [
     "COMMONS_API_ENDPOINT",
+    "COMMONS_MAX_QUERIES",
     "GOOGLE_CSE_ENDPOINT",
     "GOOGLE_RIGHTS_FILTER",
     "OpenMediaDiscoveryProvider",

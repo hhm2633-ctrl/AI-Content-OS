@@ -14,6 +14,7 @@ from modules.card_news.canvas_contract import (
     allowed_card_slide_count_label,
     is_allowed_card_slide_count,
 )
+from modules.media_intelligence.slide_asset_selector import SlideAssetSelector
 
 
 SCHEMA_VERSION = "selected_candidate_production_package_v1"
@@ -27,6 +28,12 @@ RENDERABLE_RIGHTS = {
     "official_reuse_allowed",
     "user_supplied_with_permission",
     "permission_granted",
+    "source_editorial_usable",
+    "source_attributed_review_only",
+    "owner_approved",
+    "license_verified",
+    "creative_commons",
+    "commons_license_confirmed",
 }
 
 
@@ -250,6 +257,26 @@ def build_selected_candidate_production_package(
         result["invalid_asset_ids"] = invalid_assets
         return result
 
+    slide_asset_selection = SlideAssetSelector().select(
+        slide_plan,
+        assets,
+        topic=title,
+        emotion=_text(production_plan.get("emotion")),
+        source_urls=sources,
+    )
+    selected_slide_plan = slide_asset_selection.get("slides")
+    if (
+        isinstance(selected_slide_plan, list)
+        and len(selected_slide_plan) == len(slide_plan)
+        and all(isinstance(item, Mapping) for item in selected_slide_plan)
+    ):
+        slide_plan = [copy.deepcopy(item) for item in selected_slide_plan]
+
+    assets_by_id = {
+        _text(asset.get("asset_id")): copy.deepcopy(dict(asset))
+        for asset in assets
+        if _text(asset.get("asset_id"))
+    }
     supplied_by_page = _copy_index(supplied_slides)
     if len(supplied_by_page) != len(slide_plan):
         return _blocked("slide_copy_incomplete", "every planned slide needs one copy result", candidate_id)
@@ -265,7 +292,29 @@ def build_selected_candidate_production_package(
             return _blocked("slide_copy_or_media_missing", f"slide {page} is incomplete", candidate_id)
         role = _text(planned.get("canonical_role")) or _text(planned.get("slide_role")) or "card"
         asset_refs = copy.deepcopy(planned.get("asset_refs")) if isinstance(planned.get("asset_refs"), list) else []
-        slides.append({"page": page, "role": role, "headline": headline, "body": body})
+        referenced_assets = [
+            copy.deepcopy(assets_by_id[asset_id])
+            for asset_id in asset_refs
+            if isinstance(asset_id, str) and asset_id in assets_by_id
+        ]
+        visual_spec = (
+            copy.deepcopy(dict(planned.get("visual_spec")))
+            if isinstance(planned.get("visual_spec"), Mapping)
+            else {}
+        )
+        if referenced_assets and not isinstance(
+            visual_spec.get("source_media_candidate"), Mapping
+        ):
+            source_media_candidate = referenced_assets[0]
+            if not _text(source_media_candidate.get("local_path")):
+                source_media_candidate["local_path"] = _text(
+                    source_media_candidate.get("locator")
+                )
+            visual_spec["source_media_candidate"] = source_media_candidate
+        slide = {"page": page, "role": role, "headline": headline, "body": body}
+        if visual_spec:
+            slide["visual_spec"] = visual_spec
+        slides.append(slide)
         media_plan.append(
             {
                 "page": page,
@@ -274,6 +323,7 @@ def build_selected_candidate_production_package(
                 "asset_refs": asset_refs,
                 "motion_ref": _text(planned.get("motion_ref")) or None,
                 "source_credit": copy.deepcopy(sources),
+                "source_media_candidates": referenced_assets,
             }
         )
 
@@ -289,7 +339,17 @@ def build_selected_candidate_production_package(
         if package_approved
         else _text(approval_gate.get("reason_code")) or "package_approval_required"
     )
-    renderer_ready = render_input_receipt.get("renderer_ready") is True
+    reference_v2_required = render_input_receipt.get("reference_v2_required") is True
+    reference_v2 = (
+        copy.deepcopy(dict(render_input_receipt.get("reference_v2")))
+        if isinstance(render_input_receipt.get("reference_v2"), Mapping)
+        else {}
+    )
+    reference_v2_ready = reference_v2.get("status") == "ready"
+    renderer_ready = (
+        render_input_receipt.get("renderer_ready") is True
+        and (not reference_v2_required or reference_v2_ready)
+    )
     render_gate_status = (
         "ready"
         if approval_gate["approved"] and renderer_ready and not non_renderable_assets
@@ -301,7 +361,12 @@ def build_selected_candidate_production_package(
         else (
             "reference_assets_require_replacement_or_reuse_confirmation"
             if non_renderable_assets
-            else _text(render_input_receipt.get("reason_code")) or "package_approval_required"
+            else (
+                _text(reference_v2.get("reason_code"))
+                if reference_v2_required and not reference_v2_ready
+                else _text(render_input_receipt.get("reason_code"))
+            )
+            or "package_approval_required"
         )
     )
     commerce = production_plan.get("commerce")
@@ -334,6 +399,18 @@ def build_selected_candidate_production_package(
         "feed_caption": feed_caption,
         "media_plan": media_plan,
         "commerce": commerce_value,
+        "reference_v2_required": reference_v2_required,
+        "reference_v2": reference_v2,
+        "production_learning_profile": copy.deepcopy(
+            render_input_receipt.get("production_learning_profile", {})
+        ),
+        "slide_asset_selection": copy.deepcopy(slide_asset_selection),
+        "real_comment_evidence": copy.deepcopy(
+            production_plan.get("real_comment_evidence", {})
+        ),
+        "story_comment_spotlight": copy.deepcopy(
+            production_plan.get("story_comment_spotlight", {})
+        ),
         "gates": {
             "package_approval": approval_gate,
             "render": {
@@ -356,6 +433,7 @@ def build_selected_candidate_production_package(
             "production_plan_schema": EXPECTED_PLAN_SCHEMA,
             "render_input_schema": EXPECTED_RENDER_SCHEMA,
             "render_input_status": _text(render_input_receipt.get("status")),
+            "reference_v2_status": _text(reference_v2.get("status")),
         },
     }
 

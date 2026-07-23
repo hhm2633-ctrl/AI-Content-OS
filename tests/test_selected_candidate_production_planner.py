@@ -121,6 +121,31 @@ class SelectedCandidateProductionPlannerTests(unittest.TestCase):
             1,
         )
 
+    def test_long_real_comment_is_excerpted_but_full_source_is_preserved(self):
+        original = ("이 문장은 실제 댓글 원문입니다. " * 20).strip()
+        result = build_selected_candidate_production_plan(
+            {"id": "b-long", "account": "B", "title": "후기"},
+            {
+                "status": "complete",
+                "summary": "원문 후기",
+                "source_refs": ["https://community.example/post"],
+                "assets": [image("story-source", origin="current_source")],
+                "comments": [
+                    {
+                        "comment_id": "real-long",
+                        "text": original,
+                        "is_real_comment": True,
+                        "identity_masked": True,
+                    }
+                ],
+            },
+        )
+        comment_slide = next(
+            slide for slide in result["slide_plan"] if slide["slide_role"] == "real_comment"
+        )
+        self.assertLessEqual(len(comment_slide["body"]), 171)
+        self.assertEqual(comment_slide["source_comment_text"], original)
+
     def test_style_product_gallery_becomes_one_motion_role(self):
         assets = [
             image("product-cover", origin="official"),

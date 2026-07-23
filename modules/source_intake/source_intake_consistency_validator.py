@@ -73,6 +73,22 @@ def _extract_plan_sources(payload: Optional[Dict[str, Any]]) -> List[str]:
     return _dedupe_ordered(source_ids)
 
 
+def _extract_plan_excluded_sources(payload: Optional[Dict[str, Any]]) -> List[str]:
+    if not isinstance(payload, dict):
+        return []
+    lanes = payload.get("lanes", [])
+    if not isinstance(lanes, list):
+        return []
+    source_ids: List[str] = []
+    for lane in lanes:
+        if not isinstance(lane, dict):
+            continue
+        for source in lane.get("excluded_sources", []) or []:
+            if isinstance(source, dict) and isinstance(source.get("source_id"), str):
+                source_ids.append(source["source_id"])
+    return _dedupe_ordered(source_ids)
+
+
 def _extract_shallow_sources(payload: Optional[Dict[str, Any]]) -> List[str]:
     if not isinstance(payload, dict):
         return []
@@ -229,6 +245,7 @@ def build_source_intake_consistency_report(
         payloads[artifact_name] = _read_json(path) if artifacts_present[artifact_name] else None
 
     plan_sources = _extract_plan_sources(payloads["daily_collection_plan.json"])
+    plan_excluded_sources = _extract_plan_excluded_sources(payloads["daily_collection_plan.json"])
     shallow_sources = _extract_shallow_sources(payloads["daily_shallow_collection.json"])
     gap_sources = _extract_gap_sources(payloads["collection_gap_report.json"])
     lane_summary_sources = _extract_lane_summary_sources(payloads["lane_collection_summary.json"])
@@ -254,6 +271,8 @@ def build_source_intake_consistency_report(
         mismatch_reasons.append(f"date_field_mismatch:{sorted(unique_dates)}")
 
     plan_set = set(plan_sources)
+    excluded_plan_set = set(plan_excluded_sources)
+    active_plan_set = plan_set - excluded_plan_set
     shallow_set = set(shallow_sources)
     gap_set = set(gap_sources)
     lane_set = set(lane_summary_sources)
@@ -262,9 +281,14 @@ def build_source_intake_consistency_report(
     if gap_set != plan_set:
         missing, extra = _set_diff(gap_sources, plan_sources)
         mismatch_reasons.append(f"source_ids_mismatch:plan_vs_gap_missing={missing}:extra={extra}")
-    if gap_set != shallow_set:
-        missing, extra = _set_diff(gap_sources, shallow_sources)
-        mismatch_reasons.append(f"source_ids_mismatch:shallow_vs_gap_missing={missing}:extra={extra}")
+    missing_active_sources = sorted(active_plan_set - shallow_set)
+    unexpected_shallow_sources = sorted(shallow_set - plan_set)
+    if missing_active_sources or unexpected_shallow_sources:
+        mismatch_reasons.append(
+            "source_ids_mismatch:"
+            f"shallow_vs_active_plan_missing={missing_active_sources}:"
+            f"extra={unexpected_shallow_sources}"
+        )
     if not spark_set.issubset(gap_set):
         missing, extra = _set_diff(spark_queue_sources, gap_sources)
         mismatch_reasons.append(f"source_ids_mismatch:spark_not_subset_of_gap_missing={missing}:extra={extra}")
@@ -329,6 +353,8 @@ def build_source_intake_consistency_report(
         "mismatches": mismatch_reasons,
         "source_ids": {
             "plan": plan_sources,
+            "plan_excluded": plan_excluded_sources,
+            "plan_active": [source_id for source_id in plan_sources if source_id not in excluded_plan_set],
             "shallow": shallow_sources,
             "gap": gap_sources,
             "lane_summary": lane_summary_sources,
@@ -336,6 +362,8 @@ def build_source_intake_consistency_report(
         },
         "counts": {
             "plan_source_count": len(plan_sources),
+            "plan_excluded_source_count": len(plan_excluded_sources),
+            "plan_active_source_count": len(active_plan_set),
             "shallow_source_count": len(shallow_sources),
             "gap_source_count": gap_source_count if gap_source_count is not None else len(gap_sources),
             "gap_status_count_sum": sum(gap_status_counts.values()),

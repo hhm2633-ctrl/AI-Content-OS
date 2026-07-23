@@ -59,7 +59,7 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         )
         self.assertTrue(result["network_used"])
         self.assertEqual(result["assets"], [])
-        self.assertEqual(len(transport.calls), 1)
+        self.assertEqual(len(transport.calls), 2)
 
     def test_google_image_search_sends_rights_filter(self):
         transport = RoutingTransport(
@@ -138,10 +138,15 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
                                 "imageinfo": [
                                     {
                                         "url": "https://upload.wikimedia.org/heat.jpg",
+                                        "thumburl": "https://upload.wikimedia.org/heat-1600.jpg",
                                         "descriptionurl": (
                                             "https://commons.wikimedia.org/wiki/"
                                             "File:Heat_wave.jpg"
                                         ),
+                                        "mime": "image/jpeg",
+                                        "mediatype": "BITMAP",
+                                        "width": 4096,
+                                        "height": 2731,
                                         "extmetadata": {
                                             "LicenseShortName": {"value": "CC BY-SA 4.0"},
                                             "Artist": {"value": "Example Photographer"},
@@ -164,10 +169,16 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         asset = result["assets"][0]
         self.assertEqual(
             asset["url"],
-            "https://upload.wikimedia.org/heat.jpg",
+            "https://upload.wikimedia.org/heat-1600.jpg",
         )
+        self.assertEqual(asset["original_url"], "https://upload.wikimedia.org/heat.jpg")
         self.assertEqual(asset["license"], "CC BY-SA 4.0")
         self.assertEqual(asset["attribution"], "Example Photographer")
+        self.assertEqual(asset["mime_type"], "image/jpeg")
+        self.assertEqual(asset["media_type"], "BITMAP")
+        self.assertEqual(asset["width"], 4096)
+        self.assertEqual(asset["height"], 2731)
+        self.assertEqual(asset["pixel_area"], 11186176)
         self.assertEqual(
             asset["source_url"],
             "https://commons.wikimedia.org/wiki/File:Heat_wave.jpg",
@@ -176,6 +187,120 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         self.assertFalse(asset["reference_only"])
         self.assertTrue(asset["usable_in_production"])
         self.assertFalse(asset["downloaded"])
+
+    def test_commons_excludes_document_media_and_prioritizes_raster_photos(self):
+        transport = RoutingTransport(
+            commons_body=json.dumps(
+                {
+                    "query": {
+                        "pages": [
+                            {
+                                "title": "File:Heat report.pdf",
+                                "imageinfo": [
+                                    {
+                                        "url": "https://upload.wikimedia.org/report.pdf",
+                                        "descriptionurl": "https://commons.wikimedia.org/wiki/report",
+                                        "mime": "application/pdf",
+                                        "mediatype": "OFFICE",
+                                        "width": 1200,
+                                        "height": 1600,
+                                        "extmetadata": {
+                                            "LicenseShortName": {"value": "CC BY 4.0"}
+                                        },
+                                    }
+                                ],
+                            },
+                            {
+                                "title": "File:Heat icon.svg",
+                                "imageinfo": [
+                                    {
+                                        "url": "https://upload.wikimedia.org/icon.svg",
+                                        "descriptionurl": "https://commons.wikimedia.org/wiki/icon",
+                                        "mime": "image/svg+xml",
+                                        "mediatype": "DRAWING",
+                                        "width": 800,
+                                        "height": 800,
+                                        "extmetadata": {
+                                            "LicenseShortName": {"value": "CC0"}
+                                        },
+                                    }
+                                ],
+                            },
+                            {
+                                "title": "File:Heat chart.png",
+                                "imageinfo": [
+                                    {
+                                        "url": "https://upload.wikimedia.org/chart.png",
+                                        "descriptionurl": "https://commons.wikimedia.org/wiki/chart",
+                                        "mime": "image/png",
+                                        "mediatype": "BITMAP",
+                                        "width": 2000,
+                                        "height": 1200,
+                                        "extmetadata": {
+                                            "LicenseShortName": {"value": "CC BY 4.0"}
+                                        },
+                                    }
+                                ],
+                            },
+                            {
+                                "title": "File:Heat street.jpg",
+                                "imageinfo": [
+                                    {
+                                        "url": "https://upload.wikimedia.org/street.jpg",
+                                        "descriptionurl": "https://commons.wikimedia.org/wiki/street",
+                                        "mime": "image/jpeg",
+                                        "mediatype": "BITMAP",
+                                        "width": 1800,
+                                        "height": 1200,
+                                        "extmetadata": {
+                                            "LicenseShortName": {"value": "CC BY-SA 4.0"}
+                                        },
+                                    }
+                                ],
+                            },
+                        ]
+                    }
+                }
+            )
+        )
+        result = provider_with(transport).discover(
+            "A",
+            "search_open_images",
+            {
+                **REQUEST,
+                "open_media_source": "wikimedia_commons",
+                "category": "",
+            },
+        )
+        self.assertEqual(
+            [asset["title"] for asset in result["assets"]],
+            ["File:Heat street.jpg", "File:Heat chart.png"],
+        )
+
+    def test_commons_expands_explicit_terms_title_and_category_with_a_hard_limit(self):
+        transport = RoutingTransport(commons_body=json.dumps({"query": {"pages": []}}))
+        result = provider_with(transport).discover(
+            "A",
+            "search_open_images",
+            {
+                **REQUEST,
+                "open_media_source": "wikimedia_commons",
+                "search_terms": ["서울 폭염 현장", "온열질환", "서울 폭염 현장", "기상청"],
+            },
+        )
+        self.assertEqual(
+            result["queries"],
+            ["서울 폭염 현장", "온열질환", "기상청"],
+        )
+        self.assertEqual(len(transport.calls), 3)
+        searches = [
+            parse_qs(urlparse(call["url"]).query)["gsrsearch"][0]
+            for call in transport.calls
+        ]
+        self.assertEqual(
+            searches,
+            ["file:서울 폭염 현장", "file:온열질환", "file:기상청"],
+        )
 
     def test_unsupported_operation_is_refused_without_network(self):
         transport = RoutingTransport()

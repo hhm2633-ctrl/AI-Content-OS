@@ -385,6 +385,12 @@ def build_collection_gap_report(collection_result_or_path: Any) -> Dict[str, Any
         STATUS_FAILED: len(failed),
         STATUS_OK: len(ok),
     }
+    source_status_by_readiness = {
+        "ready": ok,
+        "partial": fallback_only,
+        "blocked": failed,
+        "external_blocked": not_implemented,
+    }
 
     return {
         "schema_version": "collection_gap_report_v1",
@@ -398,6 +404,7 @@ def build_collection_gap_report(collection_result_or_path: Any) -> Dict[str, Any
             STATUS_OK: ok,
         },
         "source_status_by_status": all_statuses,
+        "source_status_by_readiness": source_status_by_readiness,
         "sources_sorted": [
             entry[1]
             for entry in sorted(status_order, key=lambda item: (VALID_STATUS_ORDER.index(item[0]), item[1]))

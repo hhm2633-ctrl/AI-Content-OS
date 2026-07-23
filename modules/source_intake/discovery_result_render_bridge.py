@@ -8,12 +8,24 @@ compact, deterministic media/source candidates for downstream render planning.
 from __future__ import annotations
 
 import copy
+import hashlib
+import os
+import re
+from pathlib import Path
 from typing import Any, Dict, List, Mapping, Sequence
+
+from modules.media_intelligence.source_editorial_localizer import (
+    localize_discovered_media_assets,
+)
+from modules.source_intake.workflow_media_discovery_bridge import (
+    run_workflow_media_discovery,
+)
 
 
 SCHEMA_VERSION = "discovery_result_render_bridge_v1"
 RENDER_BLOCK_STATUSES = frozenset({"rejected", "blocked", "invalid"})
 _AP_FIELDS = ("credit", "source", "provider", "agency", "publisher")
+_SAFE_PATH = re.compile(r"[^0-9A-Za-z._-]+")
 
 
 def _text(value: Any) -> str:
@@ -138,6 +150,10 @@ def _build_media_record(
             render_restrictions.append("ap_reference_only")
     if generated:
         render_restrictions.append("generated_synthetic")
+    if asset.get("render_allowed") is False:
+        render_restrictions.append("provider_render_denied")
+    if asset.get("usable_in_production") is False:
+        render_restrictions.append("production_use_denied")
     if asset.get("metadata_only") is True or artifact_role in {
         "article_body",
         "related_news",
@@ -431,8 +447,122 @@ def build_discovery_result_render_inputs(discovery_result: Any) -> Dict[str, Any
     return run_discovery_result_render_bridge(discovery_result)
 
 
+def run_discovery_result_render_bridge_with_supplements(
+    discovery_result: Any,
+) -> Dict[str, Any]:
+    """Add shortage-triggered media discovery before the pure render bridge."""
+
+    if not isinstance(discovery_result, Mapping):
+        return run_discovery_result_render_bridge(discovery_result)
+    enriched = copy.deepcopy(dict(discovery_result))
+    supplemental_diagnostics: List[Dict[str, Any]] = []
+
+    def enrich_candidate(account: str, candidate: Dict[str, Any]) -> None:
+        operations = candidate.get("operations")
+        operations = operations if isinstance(operations, list) else []
+        visual_count = 0
+        for operation in operations:
+            if not isinstance(operation, Mapping):
+                continue
+            for asset in _objects(operation.get("assets")):
+                if _first(asset, "local_path", "thumbnail_url", "remote_url", "media_url"):
+                    visual_count += 1
+        if visual_count >= 2:
+            return
+        request = {
+            "title": _text(candidate.get("title")),
+            "category": _text(candidate.get("category")),
+            "emotion": _text(candidate.get("emotion")),
+            "reaction_query": _text(candidate.get("reaction_query")),
+        }
+        discovery = run_workflow_media_discovery(request, account=account)
+        render_assets = discovery.get("render_assets")
+        local_assets = [
+            asset
+            for asset in render_assets
+            if isinstance(asset, Mapping)
+            and bool(_text(asset.get("local_path")))
+            and asset.get("render_allowed") is True
+        ] if isinstance(render_assets, list) else []
+        remote_assets = [
+            asset
+            for asset in render_assets
+            if isinstance(asset, Mapping)
+            and not _text(asset.get("local_path"))
+            and bool(_text(asset.get("remote_url")))
+            and asset.get("render_allowed") is True
+        ] if isinstance(render_assets, list) else []
+        candidate_key = _text(candidate.get("candidate_id") or candidate.get("id"))
+        safe_key = _SAFE_PATH.sub("-", candidate_key).strip("-")
+        if not safe_key:
+            safe_key = hashlib.sha256(
+                _text(candidate.get("title")).encode("utf-8")
+            ).hexdigest()[:16]
+        localization = localize_discovered_media_assets(
+            remote_assets,
+            Path(
+                os.getenv(
+                    "AI_CONTENT_OS_OPEN_MEDIA_DIR",
+                    r"F:\AI-Content-OS-Data\open_media",
+                )
+            )
+            / safe_key,
+            query=_text(candidate.get("title") or candidate.get("category")),
+            max_assets=max(1, 2 - visual_count),
+        )
+        localized_assets = localization.get("assets")
+        localized_assets = localized_assets if isinstance(localized_assets, list) else []
+        render_assets = [*local_assets, *localized_assets]
+        if render_assets:
+            operations.append(
+                {
+                    "operation": "search_supplemental_media",
+                    "artifact_role": "supplemental_visual",
+                    "assets": copy.deepcopy(render_assets),
+                }
+            )
+            candidate["operations"] = operations
+        supplemental_diagnostics.append(
+            {
+                "account": account,
+                "candidate_id": _text(candidate.get("candidate_id") or candidate.get("id")),
+                "status": discovery.get("status"),
+                "reason_code": discovery.get("reason_code"),
+                "asset_count": discovery.get("asset_count", 0),
+                "render_asset_count": discovery.get("render_asset_count", 0),
+                "localized_render_asset_count": len(localized_assets),
+                "local_reaction_asset_count": len(local_assets),
+                "localization": copy.deepcopy(localization),
+                "provider_diagnostics": copy.deepcopy(discovery.get("diagnostics", [])),
+            }
+        )
+
+    accounts = enriched.get("accounts")
+    if isinstance(accounts, Mapping):
+        for account, raw_account in accounts.items():
+            if not isinstance(raw_account, dict):
+                continue
+            for candidate in _objects(raw_account.get("results")):
+                if isinstance(candidate, dict):
+                    enrich_candidate(_text(account), candidate)
+    else:
+        for candidate in _objects(enriched.get("results")):
+            if isinstance(candidate, dict):
+                enrich_candidate(_text(enriched.get("account")), candidate)
+
+    result = run_discovery_result_render_bridge(enriched)
+    result["supplemental_media"] = {
+        "status": "completed",
+        "shortage_threshold": 2,
+        "all_accounts_eligible": True,
+        "diagnostics": supplemental_diagnostics,
+    }
+    return result
+
+
 __all__ = [
     "SCHEMA_VERSION",
     "run_discovery_result_render_bridge",
+    "run_discovery_result_render_bridge_with_supplements",
     "build_discovery_result_render_inputs",
 ]

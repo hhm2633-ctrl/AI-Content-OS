@@ -145,6 +145,7 @@ def _default_network_router() -> AccountProviderRouter:
         },
         operation_providers={
             ("C", "fetch_article_body"): article_provider,
+            ("B", "fetch_article_body"): article_provider,
             ("A", "search_related_news"): search_provider,
             ("A", "locate_embedded_or_broadcast_video"): search_provider,
             ("A", "search_open_images"): open_media_provider,

@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-23T15:04:49
+Updated at: 2026-07-24T08:19:05
 
 ## Execution Command
 
@@ -598,6 +598,7 @@ AI-Content-OS/
 |   |-- CARD_NEWS_RESULT_GALLERY_SPEC.md
 |   |-- CARD_NEWS_SEMANTIC_QA_SPEC.md
 |   |-- CARDNEWS_MULTI_ACCOUNT_DIRECTIVE.md
+|   |-- CARDNEWS_REFERENCE_DRIVEN_PIPELINE_V2.md
 |   |-- CHANGE_REQUESTS_REFACTORING_CANDIDATES.md
 |   |-- CLAUDE_SHORTS_PHASE_0_TASK.md
 |   |-- COMMERCE_PHASE_1_CONTRACT.md
@@ -1079,11 +1080,18 @@ AI-Content-OS/
 |   |   |-- highlight_engine.py
 |   |   |-- layout_rule_engine.py
 |   |   |-- layout_selector.py
+|   |   |-- learning_design_compiler.py
+|   |   |-- learning_driven_production_bridge.py
 |   |   |-- mobile_readability_checker.py
 |   |   |-- package_content_quality_gate.py
 |   |   |-- production_controller.py
 |   |   |-- production_package_pipeline.py
+|   |   |-- production_release_handoff.py
 |   |   |-- production_render_request_builder.py
+|   |   |-- reference_blueprint_adapter.py
+|   |   |-- reference_content_fit.py
+|   |   |-- reference_driven_production.py
+|   |   |-- reference_v2_satori_adapter.py
 |   |   |-- render_constants.py
 |   |   |-- selected_candidate_production_package.py
 |   |   |-- selected_candidate_production_planner.py
@@ -1091,10 +1099,12 @@ AI-Content-OS/
 |   |   |-- slide_designer.py
 |   |   |-- social_proof_selector.py
 |   |   |-- source_image_motion_montage.py
+|   |   |-- story_comment_spotlight.py
 |   |   |-- story_flow_planner.py
 |   |   |-- typography_rules.py
 |   |   |-- visual_qa_gate.py
-|   |   `-- visual_rhythm_selector.py
+|   |   |-- visual_rhythm_selector.py
+|   |   `-- workflow_production_preparation.py
 |   |-- commerce/
 |   |   |-- __init__.py
 |   |   |-- approval_gate.py
@@ -1167,10 +1177,14 @@ AI-Content-OS/
 |   |   |-- card_news_design_learning.py
 |   |   |-- contact_sheet_generator.py
 |   |   |-- instagram_feed_scan_importer.py
+|   |   |-- layout_blueprint_contract.py
 |   |   |-- layout_candidate_map.py
 |   |   |-- local_image_intake.py
 |   |   |-- owner_feedback_corpus.py
-|   |   `-- owner_source_learning.py
+|   |   |-- owner_source_learning.py
+|   |   |-- production_profile_compiler.py
+|   |   |-- reference_recipe_selector.py
+|   |   `-- reference_specimen_registry.py
 |   |-- image_generation/
 |   |   |-- __init__.py
 |   |   `-- image_generation_module.py
@@ -1223,7 +1237,10 @@ AI-Content-OS/
 |   |-- media_intelligence/
 |   |   |-- image_operations.py
 |   |   |-- local_media_pipeline.py
-|   |   `-- rembg_bbox.py
+|   |   |-- rembg_bbox.py
+|   |   |-- slide_asset_selector.py
+|   |   |-- source_editorial_localizer.py
+|   |   `-- source_media_quality_gate.py
 |   |-- pattern_engine/
 |   |   |-- __init__.py
 |   |   |-- cta_selector.py
@@ -1261,6 +1278,7 @@ AI-Content-OS/
 |   |   |-- candidate_evidence_bundle.py
 |   |   |-- candidate_risk_detector.py
 |   |   |-- candidate_selection_signal_normalizer.py
+|   |   |-- cardnews_collection_orchestrator.py
 |   |   |-- category_candidate_pipeline.py
 |   |   |-- category_specific_signal_builder.py
 |   |   |-- category_stage2_selector.py
@@ -1287,10 +1305,12 @@ AI-Content-OS/
 |   |   |-- naver_youtube_discovery_provider.py
 |   |   |-- news_category_profiles.py
 |   |   |-- newspaper4k_deep_discovery_provider.py
+|   |   |-- open_media_discovery_provider.py
 |   |   |-- origin_independence_resolver.py
 |   |   |-- owner_ranked_deep_dive_adapter.py
 |   |   |-- owner_ranked_final_candidate_selector.py
 |   |   |-- portfolio_candidate_selector.py
+|   |   |-- reaction_media_discovery_provider.py
 |   |   |-- reviewed_evidence_validator.py
 |   |   |-- reviewed_watch_promotion_gate.py
 |   |   |-- same_event_topic_clusterer.py
@@ -1314,7 +1334,8 @@ AI-Content-OS/
 |   |   |-- topic_input_quality_gate.py
 |   |   |-- validated_topic_candidate_pipeline.py
 |   |   |-- validated_topic_input_adapter.py
-|   |   `-- watch_candidate_review_queue.py
+|   |   |-- watch_candidate_review_queue.py
+|   |   `-- workflow_media_discovery_bridge.py
 |   |-- tool_adapters/
 |   |   |-- cardnews_renderer_runtime.py
 |   |   |-- intel_xpu_runtime.py
@@ -1648,6 +1669,7 @@ AI-Content-OS/
 |   |-- build_cardnews_production_packages.py
 |   |-- build_cardnews_render_request.py
 |   |-- build_category_publish_packages.py
+|   |-- build_learning_driven_cardnews_package.py
 |   |-- build_owner_candidate_report.py
 |   |-- build_owner_review_collection.py
 |   |-- build_selected_flow_production_packages.py
@@ -1671,6 +1693,7 @@ AI-Content-OS/
 |   |-- render_no_video_motion_samples.py
 |   |-- render_selected_cardnews_preupload.py
 |   |-- run_brandconnect_second_stage.py
+|   |-- run_cardnews_collection.py
 |   |-- run_cardnews_package_quality_loop.py
 |   |-- run_cardnews_production.py
 |   |-- run_local_image_intake.py
@@ -2006,7 +2029,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (668 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (689 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- manual_image_intake/
@@ -2071,7 +2094,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (128 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (135 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -2162,6 +2185,7 @@ AI-Content-OS/
 |   |-- test_card_news_rights_intake.py
 |   |-- test_card_news_rights_intake_fixture.py
 |   |-- test_card_news_topic_intelligence.py
+|   |-- test_cardnews_collection_orchestrator.py
 |   |-- test_cardnews_heavy_output_routing.py
 |   |-- test_cardnews_package_content_quality_gate.py
 |   |-- test_cardnews_production_controller.py
@@ -2245,9 +2269,13 @@ AI-Content-OS/
 |   |-- test_knowledge_registry.py
 |   |-- test_lane_collection_summary.py
 |   |-- test_lane_collection_summary_runner.py
+|   |-- test_layout_blueprint_contract.py
+|   |-- test_learning_design_compiler.py
+|   |-- test_learning_pattern_planner_bridge.py
 |   |-- test_local_media_image_operations.py
 |   |-- test_local_media_pipeline.py
 |   |-- test_manual_image_intake.py
+|   |-- test_media_rebalance_contract.py
 |   |-- test_mk_pick_collector.py
 |   |-- test_moneytoday_collector.py
 |   |-- test_musinsa_beauty_collector.py
@@ -2264,6 +2292,7 @@ AI-Content-OS/
 |   |-- test_newsis_collector.py
 |   |-- test_newspaper4k_deep_discovery_provider.py
 |   |-- test_oliveyoung_ranking_collector.py
+|   |-- test_open_media_discovery_provider.py
 |   |-- test_origin_independence_resolver.py
 |   |-- test_owner_feedback_corpus.py
 |   |-- test_owner_learning_conflict_resolution.py
@@ -2276,11 +2305,22 @@ AI-Content-OS/
 |   |-- test_portfolio_candidate_selector.py
 |   |-- test_ppomppu_collector.py
 |   |-- test_prepare_cardnews_local_media.py
+|   |-- test_production_profile_compiler.py
+|   |-- test_production_profile_pipeline_bridge.py
+|   |-- test_production_release_handoff.py
 |   |-- test_production_render_request_builder.py
 |   |-- test_publishing_image_gate.py
 |   |-- test_publishing_module_gaps.py
 |   |-- test_publishing_release_candidate.py
+|   |-- test_reaction_media_discovery_provider.py
+|   |-- test_reaction_media_rebalance.py
 |   |-- test_reevaluate_active_set_compliance.py
+|   |-- test_reference_blueprint_adapter.py
+|   |-- test_reference_content_fit.py
+|   |-- test_reference_driven_production.py
+|   |-- test_reference_recipe_selector.py
+|   |-- test_reference_specimen_registry.py
+|   |-- test_reference_v2_satori_adapter.py
 |   |-- test_relation_aware_candidate_matcher.py
 |   |-- test_relation_story_shard_validator.py
 |   |-- test_render_selected_cardnews_preupload.py
@@ -2301,7 +2341,10 @@ AI-Content-OS/
 |   |-- test_service_diagnostic.py
 |   |-- test_shorts_phase_1.py
 |   |-- test_shorts_phase_2a_exporter.py
+|   |-- test_slide_asset_selector.py
 |   |-- test_source_agreement.py
+|   |-- test_source_editorial_discovery_localizer.py
+|   |-- test_source_editorial_quality_gate_integration.py
 |   |-- test_source_health_dashboard.py
 |   |-- test_source_image_motion_montage.py
 |   |-- test_source_intake_artifact_index.py
@@ -2316,9 +2359,11 @@ AI-Content-OS/
 |   |-- test_source_intake_schema.py
 |   |-- test_source_intake_spark_task_queue.py
 |   |-- test_source_intake_status_bundle.py
+|   |-- test_source_media_quality_gate.py
 |   |-- test_stage2_format_router_bridge.py
 |   |-- test_stage2_review_calibrator.py
 |   |-- test_standard_workflow_production_gate.py
+|   |-- test_story_comment_spotlight.py
 |   |-- test_theqoo_collector.py
 |   |-- test_tool_adapter_cardnews_renderer_runtime.py
 |   |-- test_tool_adapter_intel_xpu_runtime.py
@@ -2343,7 +2388,9 @@ AI-Content-OS/
 |   |-- test_vogue_beauty_collector.py
 |   |-- test_wkorea_beauty_collector.py
 |   |-- test_workflow_card_news_output_receipts.py
+|   |-- test_workflow_media_discovery_bridge.py
 |   |-- test_workflow_planner_integration.py
+|   |-- test_workflow_production_preparation.py
 |   `-- test_yonhap_collector.py
 |-- tmp/
 |   `-- pdfs/
@@ -2407,10 +2454,6 @@ AI-Content-OS/
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.
 - Keep fallback-first workflow behavior intact.
-- Learned visual direction, emotion, and palette now override account defaults only when actually consumed; claimed-but-unused design learning is blocked.
-- Approved CardNews package creation now always runs F:-based source-media localization plus OCR/OpenCLIP relevance and perceptual-duplicate gates.
-- Missing bilingual visual labels, unavailable quality tools, irrelevant media, distractor dominance, OCR mismatch, or insufficient unique relevant media block rendering instead of filling slides.
-- This integration is implemented but has not yet been compile-, test-, workflow-, or real-render-verified.
 
 ## Protected Rules
 

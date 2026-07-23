@@ -78,8 +78,8 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         provider = Provider()
         result = run_selected_candidate_production_flow(_selection(6), provider, None)
         bucket = result["discovery"]["accounts"]["A"]
-        self.assertEqual(bucket["executed"], 4)
-        self.assertEqual(bucket["skipped_over_limit"], ["A-4", "A-5"])
+        self.assertEqual(bucket["executed"], 5)
+        self.assertEqual(bucket["skipped_over_limit"], ["A-5"])
 
     def test_stops_honestly_after_bridge_when_plan_builder_missing(self):
         bridge = lambda discovery: {"status": "ready", "items": ["traceable"]}
@@ -161,6 +161,23 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         )
         self.assertEqual(len(result["render_inputs"]), 1)
         self.assertFalse(result["render_inputs"][0]["publish_executed"])
+        assets = result["production_plans"][0].get("asset_inventory", [])
+        for asset in assets:
+            self.assertIn("license", asset)
+            self.assertIn("license_name", asset)
+            self.assertIn("attribution", asset)
+            self.assertIn("attribution_text", asset)
+            self.assertIn("attribution_required", asset)
+        self.assertTrue(result["render_inputs"][0]["reference_v2_required"])
+        self.assertEqual(
+            "owner_approved_reference_geometry_required",
+            result["render_inputs"][0]["reference_v2"]["reason_code"],
+        )
+        self.assertTrue(
+            result["render_inputs"][0]["production_learning_profile"][
+                "reference_candidate_receipt"
+            ]
+        )
 
     def test_reference_only_article_body_reaches_source_backed_plan(self):
         class ArticleBodyProvider:

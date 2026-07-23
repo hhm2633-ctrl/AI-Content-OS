@@ -384,6 +384,7 @@ def compile_learning_driven_blueprint(
     topic: Any,
     plan: Any,
     pattern_reference: Optional[Mapping[str, Any]] = None,
+    production_profile: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     if not isinstance(topic, Mapping) or not isinstance(plan, Mapping):
         return {
@@ -502,15 +503,77 @@ def compile_learning_driven_blueprint(
         plan,
         pattern_reference,
     )
+    compiled_profile = (
+        production_profile.get("production_profile")
+        if isinstance(production_profile, Mapping)
+        and isinstance(production_profile.get("production_profile"), Mapping)
+        else {}
+    )
+    compiled_profile = copy.deepcopy(dict(compiled_profile))
+    supported_layouts = {
+        "editorial_split",
+        "split",
+        "split_screen",
+        "centered_panel",
+        "centered",
+        "magazine_center",
+        "full_bleed",
+        "full_bleed_editorial",
+    }
+    supported_grammar = {"contain", "cover", "full_bleed", "source_editorial"}
+    supported_tones = {"urgent_warm", "warning", "calm", "bright", "romantic"}
+    executable_profile: Dict[str, Any] = {}
+    ignored_profile_fields: List[str] = []
+    for field, value in compiled_profile.items():
+        accepted = False
+        if field in {"palette", "typography", "composition"}:
+            accepted = isinstance(value, Mapping) and bool(value)
+        elif field == "layout_family":
+            accepted = _text(value).casefold() in supported_layouts
+        elif field == "image_grammar":
+            values = [value] if isinstance(value, str) else value if isinstance(value, list) else []
+            accepted = any(_text(item).casefold() in supported_grammar for item in values)
+        elif field == "emotional_tone":
+            accepted = _text(value).casefold() in supported_tones
+        elif field == "first_screen":
+            text = _text(value).casefold()
+            accepted = any(
+                token in text
+                for token in (
+                    "left",
+                    "right",
+                    "center",
+                    "full",
+                    "왼쪽",
+                    "오른쪽",
+                    "중앙",
+                    "전면",
+                )
+            )
+        elif field == "text_density":
+            accepted = bool(_text(value) or isinstance(value, Mapping))
+        if accepted:
+            executable_profile[field] = copy.deepcopy(value)
+        else:
+            ignored_profile_fields.append(field)
+    if executable_profile:
+        design_system["learned_profile"] = executable_profile
+        design_system["theme_priority"] = (
+            "learned_guidance_over_account_default"
+        )
     design_system["source_label"] = source_label
     learning_claimed = bool(
         plan.get("learning_guidance_consumed")
         or plan.get("learning_guidance")
         or pattern_reference
+        or production_profile
     )
     status = "ready"
     reason_code = "source_facts_and_learning_guidance_compiled"
-    if learning_claimed and not design_consumption["consumed"]:
+    profile_consumed = bool(executable_profile)
+    if learning_claimed and not (
+        design_consumption["consumed"] or profile_consumed
+    ):
         status = "design_guidance_not_consumed"
         reason_code = "learning_guidance_claimed_without_design_consumption"
     return {
@@ -534,6 +597,60 @@ def compile_learning_driven_blueprint(
             "reference_guidance_only": True,
             "measured_performance_claimed": False,
             "design_guidance": design_consumption,
+            "production_profile": {
+                "profile_id": (
+                    production_profile.get("profile_id")
+                    if isinstance(production_profile, Mapping)
+                    else None
+                ),
+                "status": (
+                    production_profile.get("status")
+                    if isinstance(production_profile, Mapping)
+                    else "not_supplied"
+                ),
+                "consumed": profile_consumed,
+                "consumed_fields": sorted(executable_profile),
+                "ignored_fields": sorted(ignored_profile_fields),
+                "role_top_k": copy.deepcopy(
+                    production_profile.get("role_top_k", {})
+                    if isinstance(production_profile, Mapping)
+                    else {}
+                ),
+                "provenance": copy.deepcopy(
+                    production_profile.get(
+                        "production_profile_provenance",
+                        {},
+                    )
+                    if isinstance(production_profile, Mapping)
+                    else {}
+                ),
+                "reference_candidates": copy.deepcopy(
+                    production_profile.get("reference_candidates", [])
+                    if isinstance(production_profile, Mapping)
+                    else []
+                ),
+                "approved_reference_specimen_candidates": copy.deepcopy(
+                    production_profile.get(
+                        "approved_reference_specimen_candidates",
+                        [],
+                    )
+                    if isinstance(production_profile, Mapping)
+                    else []
+                ),
+                "reference_v2_selectable_candidates": copy.deepcopy(
+                    production_profile.get(
+                        "reference_v2_selectable_candidates",
+                        [],
+                    )
+                    if isinstance(production_profile, Mapping)
+                    else []
+                ),
+                "reference_candidate_receipt": copy.deepcopy(
+                    production_profile.get("reference_candidate_receipt", {})
+                    if isinstance(production_profile, Mapping)
+                    else {}
+                ),
+            },
         },
         "render_executed": False,
         "publishing_executed": False,

@@ -8,6 +8,7 @@ from unittest import mock
 from modules.source_intake.source_intake_release_candidate import (
     RC_STATUS_GO,
     RC_STATUS_NO_GO,
+    _extract_readiness_status_by_source,
     run_source_intake_release_candidate,
 )
 
@@ -27,6 +28,28 @@ class TestSourceIntakeReleaseCandidate(unittest.TestCase):
 
     def tearDown(self):
         shutil.rmtree(self.root, ignore_errors=True)
+
+    def test_gap_status_summary_maps_to_readiness_contract(self):
+        result = _extract_readiness_status_by_source(
+            {
+                "status_summary": {
+                    "OK": [{"source_id": "ready_source"}],
+                    "FALLBACK_ONLY": [{"source_id": "partial_source"}],
+                    "FAILED": [{"source_id": "blocked_source"}],
+                    "NOT_IMPLEMENTED": [{"source_id": "external_source"}],
+                }
+            }
+        )
+
+        self.assertEqual(
+            result,
+            {
+                "ready_source": "ready",
+                "partial_source": "partial",
+                "blocked_source": "blocked",
+                "external_source": "external_blocked",
+            },
+        )
 
     @staticmethod
     def _write_json(path: str, payload) -> None:
@@ -194,7 +217,7 @@ class TestSourceIntakeReleaseCandidate(unittest.TestCase):
         self.assertIn("ready_source_not_callable:naver_news", result["preflight"].get("readiness_callability_mismatches", []))
         self.assertIn("naver_news", result["preflight"].get("mapped_unreachable", []))
 
-    def test_non_ready_sources_are_fail_closed_preflight(self):
+    def test_non_ready_only_sources_are_fail_closed_preflight(self):
         self._write_artifacts(
             {
                 "ready": [],
@@ -207,10 +230,30 @@ class TestSourceIntakeReleaseCandidate(unittest.TestCase):
         result = self.run_release_candidate(source_manager=object())
 
         self.assertEqual(result["status"], RC_STATUS_NO_GO)
-        self.assertEqual(result["reason_code"], "non_ready_sources_blocked")
+        self.assertEqual(result["reason_code"], "no_ready_sources")
         self.assertEqual(result["candidate_count"], 0)
         self.assertEqual(result["candidates"], [])
         self.assertEqual(result["preflight"]["readiness_counts"]["partial"], 1)
+
+    def test_non_ready_sources_are_isolated_while_ready_sources_continue(self):
+        self._write_artifacts(
+            {
+                "ready": [{"source_id": "daum_news"}],
+                "partial": [{"source_id": "news1"}],
+                "blocked": [],
+                "external_blocked": [],
+            }
+        )
+
+        result = self.run_release_candidate(source_manager=object())
+
+        self.assertEqual(result["status"], RC_STATUS_GO)
+        self.assertEqual(result["ready_source_ids"], ["daum_news"])
+        self.assertEqual(result["isolated_source_ids"], ["news1"])
+        self.assertEqual(
+            {item["source_id"] for item in result["eligible_collection"]["items"]},
+            {"daum_news"},
+        )
 
     def test_stale_and_malformed_artifacts_are_rejected(self):
         self._write_artifacts(

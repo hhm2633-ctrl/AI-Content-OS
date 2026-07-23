@@ -228,6 +228,12 @@ def build_source_intake_status_bundle(
     summary_payload = artifact_payloads["lane_collection_summary.json"]
 
     status_counts = _extract_status_counts(gap_payload)
+    readiness_status_counts = {
+        "ready": status_counts.get(STATUS_OK, 0),
+        "partial": status_counts.get(STATUS_FALLBACK_ONLY, 0),
+        "blocked": status_counts.get(STATUS_FAILED, 0),
+        "external_blocked": status_counts.get(STATUS_NOT_IMPLEMENTED, 0),
+    }
     weak_lanes: List[str] = []
     blocked_lanes: List[str] = []
     if isinstance(summary_payload, dict):
@@ -260,6 +266,8 @@ def build_source_intake_status_bundle(
         "artifacts_present": artifacts_present,
         "item_count": _extract_item_count(shallow_payload, gap_payload, queue_payload),
         "status_counts": status_counts,
+        "readiness_status_counts": readiness_status_counts,
+        "classification_source_count": sum(readiness_status_counts.values()),
         "weak_lanes": weak_lanes,
         "top_queue_sources": top_queue_sources,
         "blockers": {

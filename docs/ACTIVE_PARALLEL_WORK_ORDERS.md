@@ -1,6 +1,98 @@
 # Active Parallel Work Orders
 
-Updated: 2026-07-22
+Updated: 2026-07-24
+
+## Current Objective - Supplemental Meme / Reaction / GIF Pipeline
+
+Audit and connect the owner-approved supplemental-media path across all CardNews
+accounts: documented public sources, bounded retrieval, source/provenance,
+topic-emotion ranking, GIF frame handling, production selection, Satori
+rendering, and local QA. This work must not publish, upload, issue links, resume
+automation, or perform Git writes.
+
+## Lane A: CTO / Integration - Active
+
+Objective: own the executable contract, file boundaries, production selector
+integration, focused tests, current local render evidence, and final report.
+
+Owned files:
+
+- `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`
+- integration files selected after the two read-only audits
+- focused tests for those integration files
+
+Completion checks:
+
+- Every configured source is classified as documented, callable, or blocked.
+- Supplemental media is used only when primary topic media is insufficient.
+- Topic, emotion, source URL, license/rights scope, local path, and media type
+  remain attached through the render request.
+- Animated GIF input has an explicit static-card frame policy and future motion
+  metadata without pretending a static PNG is animated.
+- Current focused tests and one controlled local result prove the exact path.
+
+## Lane B: Popper - Read-only Source and Caller Audit
+
+Objective: identify public meme/GIF/reaction sources in owner learning records,
+configuration, collectors, selectors, and render consumers.
+
+Owned files: none.
+
+Handoff: source-by-source executable-status table and exact missing call links.
+
+## Lane C: Euler - Read-only Local Toolchain Audit
+
+Objective: classify installed GIF/image/video/search/ranking tools and their
+real production callers.
+
+Owned files: none.
+
+Handoff: installed/callable/connected matrix and exact missing dependencies.
+
+## Current Objective - Story Comment Spotlight Integration
+
+Connect the existing identity-masked community comment crops to the Account B
+cover-selection and render path. The first card must use one or two readable
+real-comment crops rather than a full community webpage screenshot.
+
+## Lane A: CTO / Integration - Active
+
+Objective: preserve comment screenshot provenance, rank eligible crops with
+bounded local OCR reaction evidence, compose the story cover, bind it to
+Reference V2, preserve package evidence, and produce one controlled local
+render.
+
+Owned files:
+
+- `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`
+- `modules/card_news/story_comment_spotlight.py`
+- `modules/source_intake/selected_candidate_production_flow.py`
+- `modules/card_news/selected_candidate_production_package.py`
+- focused tests for these files
+
+Prohibited actions:
+
+- Do not modify source screenshots.
+- Do not use unmasked or crop-ineligible comments.
+- Do not publish, upload, resume automation, or perform Git writes.
+
+Completion checks:
+
+- The cover media is a deterministic composite of one or two real masked
+  comment crops.
+- OCR reaction extraction is a ranking signal only; collected comment text
+  remains the copy source.
+- The package preserves all eligible comment evidence and the two spotlight
+  selections.
+- A current controlled render visibly excludes page chrome and advertising.
+
+## Lane B: Mendel - Completed Read-only Reuse Audit
+
+Objective: identify existing comment DOM crop, OCR, ranking, and production
+integration points without editing.
+
+Handoff accepted: DOM crop and masking already work; the missing contract was
+`screenshot_path` preservation, ranking, and Account B cover binding.
 
 ## Operating Contract
 
@@ -11,22 +103,25 @@ Updated: 2026-07-22
 
 ## Current Objective
 
-Build the owner-source design-learning foundation before further CardNews layout tuning: prepare
-immutable 10-image analysis batches from `F:/AI-Content-OS-Data/owner_source`, store full-image
-analysis as auditable candidates, build one shared A/B/C reference pool of up to 40 owner-approved
-fixed layout profiles, and let CardNews select them by account, issue context, mood, content
-structure, and available media. Batch size is not a layout-count limit.
+Replace the failed abstract-tag design path with the reference-driven geometry pipeline defined in
+`docs/CARDNEWS_REFERENCE_DRIVEN_PIPELINE_V2.md`. Existing owner analysis remains canonical. Runtime
+selection must choose an owner-approved primary reference specimen and carry its normalized regions,
+style tokens, media contract, and provenance to Satori without reducing it to labels such as
+`centered_panel` or `warning`. The shared A/B/C pool remains capped at 40 approved reference
+profiles; batch size is not a layout-count limit.
 
 ## Lane A: CTO / Integration - Active
 
-Objective: own the batch contract, analysis registry, approved-layout selector, CardNews integration,
-shared documents, final QA, and all Git approval gates.
+Objective: own the V2 specimen registry, geometry blueprint contract, approved-reference selector,
+CardNews integration, shared documents, final QA, and all Git approval gates.
 
 Owned files:
 
 - `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`
 - `modules/design_learning/`
 - `modules/card_news/layout_selector.py`
+- `modules/card_news/learning_design_compiler.py`
+- `modules/card_news/production_render_request_builder.py`
 - `modules/card_news/card_news_module.py`
 - design-learning CLI and focused tests explicitly added for this objective
 - shared project-status documents during final integration only
@@ -41,39 +136,46 @@ Prohibited actions:
 Completion checks:
 
 - Deterministic batches contain at most 10 unique source images and preserve source-relative paths.
-- One analysis record can preserve design, layout, palette, typography, body-content insight, and
-  project-use fields without collapsing them into a single label.
+- One analysis record preserves source identity, design, layout, palette, typography, body-content
+  insight, normalized regions, media contract, and project-use fields without collapsing them into
+  a single label.
 - Only owner-approved fixed layout profiles are eligible for runtime selection, with a shared
   A/B/C pool capped at 40 profiles rather than ten profiles.
+- Every rendered slide records one primary reference ID, blueprint version, geometry hash, and
+  directly consumed regions. Cross-reference field mixing is prohibited in V2.
+- Missing required geometry, text-fit failure, media-fit failure, source-topic contamination, or
+  unconsumed reference fields blocks the production render instead of falling back silently.
 - Missing/corrupt learning data fails soft to the existing CardNews layout selector.
 - Selection output explains account/context matches and never claims real performance evidence.
 
 Handoff: changed files, executable call chain, untested boundaries, focused QA result, and next
 10-image analysis gate.
 
-## Lane B: Claude - Read-only Contract Audit
+## Lane B: Cicero - Read-only Loss Audit
 
-Objective: independently identify missing fields and unsafe assumptions in the proposed owner-source
-batch, full-image analysis, approval, and runtime-selection contract.
+Objective: identify the exact functions where owner-reference structure is reduced to abstract
+fields before rendering, then report the smallest V2 correction surface.
 
 Owned files: none; read-only review.
 
 Required reading:
 
-- `modules/design_learning/local_image_intake.py`
-- `modules/design_learning/card_news_design_learning.py`
-- `modules/card_news/layout_selector.py`
-- `modules/card_news/card_news_module.py`
+- `modules/design_learning/production_profile_compiler.py`
+- `modules/card_news/learning_design_compiler.py`
+- `modules/card_news/production_render_request_builder.py`
+- relevant focused tests
 - `templates/card_news_layout_rules.json`
 
 Prohibited files/actions:
 
-- Do not edit any file, run Git, inspect screenshot pixels, or analyze all owner-source images.
+- Do not edit any file, run tests, render, run Git, inspect screenshot pixels, or analyze all
+  owner-source images.
 - Do not change WorkflowEngine or propose external API dependencies.
 
 Completion checks:
 
-- Report schema gaps, approval-boundary risks, runtime integration risks, and minimal corrections.
+- Report the field-to-loss-point-to-render-consumer chain, minimal changed files, and five
+  fail-closed contracts.
 
 Handoff: short Korean report with findings ordered by severity and exact file/function references.
 

@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import copy
 import base64
 import io
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Mapping
+
+from modules.card_news.reference_v2_satori_adapter import (
+    build_reference_v2_satori_tree,
+)
 from urllib.parse import urlparse
 
 from PIL import Image, ImageOps
@@ -23,6 +28,28 @@ VISUAL_TYPES = {
     "flow_summary",
     "evidence_card",
     "cta_prompt",
+}
+LEARNED_RENDER_FIELDS = (
+    "first_screen",
+    "layout_family",
+    "composition",
+    "palette",
+    "typography",
+    "image_grammar",
+    "text_density",
+    "emotional_tone",
+    "account_identity",
+)
+LEARNED_FIELD_ALIASES = {
+    "first_screen": ("first_screen", "first_frame", "opening_frame", "cover_strategy"),
+    "layout_family": ("layout_family", "layout", "layout_profile"),
+    "composition": ("composition", "composition_rule", "visual_composition"),
+    "palette": ("palette", "color_palette", "palette_intent"),
+    "typography": ("typography", "type_system", "font_direction"),
+    "image_grammar": ("image_grammar", "media_grammar", "visual_grammar"),
+    "text_density": ("text_density", "copy_density", "content_density"),
+    "emotional_tone": ("emotional_tone", "emotion", "mood", "tone"),
+    "account_identity": ("account_identity", "account_label", "brand_identity"),
 }
 ACCOUNT_THEMES = {
     "A": {
@@ -86,6 +113,22 @@ def _source_display_label(value: Any) -> str:
         "commons.wikimedia.org": "SOURCE · WIKIMEDIA COMMONS",
     }
     return labels.get(host, f"SOURCE · {host.upper()}" if host else "SOURCE RECORDED")
+
+
+def _source_attribution_label(candidate: Any) -> str:
+    if not isinstance(candidate, Mapping):
+        return ""
+    attribution = _text(
+        candidate.get("attribution_text") or candidate.get("attribution")
+    )
+    license_name = _text(
+        candidate.get("license_name") or candidate.get("license")
+    )
+    parts = [value for value in (attribution, license_name) if value]
+    if parts:
+        label = " · ".join(dict.fromkeys(parts))
+        return label if len(label) <= 96 else f"{label[:95].rstrip()}…"
+    return _source_display_label(candidate.get("source_url"))
 
 
 def _safe_path_segment(value: str) -> str:
@@ -171,7 +214,7 @@ def _theme(account: str) -> Mapping[str, Any]:
     return ACCOUNT_THEMES.get(account, ACCOUNT_THEMES["A"])
 
 
-def _design_system(account: str, supplied: Any) -> Dict[str, str]:
+def _design_system(account: str, supplied: Any) -> Dict[str, Any]:
     theme = _theme(account)
     raw = supplied if isinstance(supplied, Mapping) else {}
     palette = raw.get("palette") if isinstance(raw.get("palette"), Mapping) else {}
@@ -190,6 +233,290 @@ def _design_system(account: str, supplied: Any) -> Dict[str, str]:
     }
 
 
+def _present(value: Any) -> bool:
+    return value not in (None, "", [], {})
+
+
+def _learned_render_contract(
+    supplied: Any,
+    learning_trace: Any,
+) -> tuple[Dict[str, Any], Dict[str, Any]]:
+    raw = supplied if isinstance(supplied, Mapping) else {}
+    trace = learning_trace if isinstance(learning_trace, Mapping) else {}
+    trace_design = (
+        trace.get("design_guidance")
+        if isinstance(trace.get("design_guidance"), Mapping)
+        else {}
+    )
+    profile_containers: List[tuple[str, Mapping[str, Any]]] = []
+    for key in (
+        "learned_profile",
+        "learned_design_profile",
+        "learned_visual_guidance",
+        "design_profile",
+    ):
+        value = raw.get(key)
+        if isinstance(value, Mapping) and value:
+            profile_containers.append((f"design_system.{key}", value))
+
+    profile_present = bool(profile_containers) or (
+        _text(raw.get("theme_priority")) == "learned_guidance_over_account_default"
+    ) or trace_design.get("available") is True
+    search_sources = list(profile_containers)
+    for source_name, container in list(profile_containers):
+        visual_direction = container.get("visual_direction")
+        if isinstance(visual_direction, Mapping) and visual_direction:
+            search_sources.append(
+                (f"{source_name}.visual_direction", visual_direction)
+            )
+
+    learned_design: Dict[str, Any] = {}
+    consumed_paths: Dict[str, str] = {}
+    consumed_source_keys: set[str] = set()
+    for target_field, aliases in LEARNED_FIELD_ALIASES.items():
+        for source_name, container in reversed(search_sources):
+            matched_alias = next(
+                (alias for alias in aliases if _present(container.get(alias))),
+                "",
+            )
+            if not matched_alias:
+                continue
+            learned_design[target_field] = container[matched_alias]
+            consumed_paths[target_field] = f"{source_name}.{matched_alias}"
+            consumed_source_keys.add(f"{source_name}.{matched_alias}")
+            break
+
+    # A scalar learned visual direction is preserved as image grammar rather
+    # than silently disappearing between the compiler and renderer.
+    if "image_grammar" not in learned_design:
+        for source_name, container in reversed(profile_containers):
+            visual_direction = container.get("visual_direction")
+            if _present(visual_direction) and not isinstance(visual_direction, Mapping):
+                learned_design["image_grammar"] = visual_direction
+                consumed_paths["image_grammar"] = f"{source_name}.visual_direction"
+                consumed_source_keys.add(f"{source_name}.visual_direction")
+                break
+
+    available_paths: set[str] = set()
+    for source_name, container in search_sources:
+        for key, value in container.items():
+            if not str(key).startswith("_") and _present(value):
+                available_paths.add(f"{source_name}.{key}")
+    ignored_fields = sorted(available_paths - consumed_source_keys)
+    missing_fields = [
+        field for field in LEARNED_RENDER_FIELDS if field not in learned_design
+    ]
+    receipt = {
+        "profile_present": profile_present,
+        "status": (
+            "consumed"
+            if learned_design
+            else "not_consumed" if profile_present else "not_supplied"
+        ),
+        "consumed_fields": sorted(learned_design),
+        "consumed_paths": consumed_paths,
+        "ignored_fields": ignored_fields,
+        "missing_fields": missing_fields,
+        "core_consumed_count": len(learned_design),
+    }
+    return learned_design, receipt
+
+
+def _applied_render_style(
+    learned_design: Mapping[str, Any],
+    candidate_receipt: Mapping[str, Any],
+    design: Dict[str, Any],
+) -> tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any]]:
+    style: Dict[str, Any] = {
+        "font_family": "Pretendard",
+        "cover_panel_width": 470,
+        "cover_panel_left": 54,
+        "cover_text_align": "left",
+        "cover_headline_size": 58,
+        "cover_headline_line_height": 1.18,
+        "detail_headline_size": 60,
+        "detail_headline_line_height": 1.18,
+        "detail_body_size": 31,
+        "detail_body_line_height": 1.62,
+        "detail_text_align": "left",
+        "detail_gap": 44,
+        "media_height": 300,
+        "media_fit": "contain",
+    }
+    applied: Dict[str, Any] = {}
+
+    palette = learned_design.get("palette")
+    if isinstance(palette, Mapping):
+        updates = {
+            key: _text(palette.get(key))
+            for key in ("background", "ink", "accent", "muted", "panel")
+            if _text(palette.get(key))
+        }
+        if updates:
+            design.update(updates)
+            applied["palette"] = dict(palette)
+
+    first_screen = learned_design.get("first_screen")
+    first_screen_text = str(first_screen).casefold()
+    if _present(first_screen) and any(
+        token in first_screen_text
+        for token in (
+            "split",
+            "left",
+            "right",
+            "center",
+            "full",
+            "분할",
+            "왼쪽",
+            "오른쪽",
+            "중앙",
+            "전면",
+        )
+    ):
+        if "center" in first_screen_text or "중앙" in first_screen_text:
+            style["cover_panel_width"] = 760
+            style["cover_panel_left"] = 160
+            style["cover_text_align"] = "center"
+        elif "right" in first_screen_text or "오른쪽" in first_screen_text:
+            style["cover_panel_left"] = 556
+        elif "full" in first_screen_text or "전면" in first_screen_text:
+            style["cover_panel_width"] = 972
+        applied["first_screen"] = first_screen
+
+    layout_family = _text(learned_design.get("layout_family")).casefold()
+    if layout_family in {"editorial_split", "split", "split_screen"}:
+        style["cover_panel_width"] = min(style["cover_panel_width"], 440)
+        style["detail_text_align"] = "left"
+        applied["layout_family"] = learned_design["layout_family"]
+    elif layout_family in {"centered_panel", "centered", "magazine_center"}:
+        style["cover_panel_width"] = 760
+        style["cover_panel_left"] = 160
+        style["cover_text_align"] = "center"
+        style["detail_text_align"] = "center"
+        applied["layout_family"] = learned_design["layout_family"]
+    elif layout_family in {"full_bleed", "full_bleed_editorial"}:
+        style["cover_panel_width"] = 972
+        style["cover_panel_left"] = 54
+        applied["layout_family"] = learned_design["layout_family"]
+
+    composition = learned_design.get("composition")
+    if isinstance(composition, Mapping):
+        changed = False
+        image_ratio = composition.get("image_ratio")
+        if isinstance(image_ratio, (int, float)) and 0.3 <= image_ratio <= 0.8:
+            style["cover_panel_width"] = int(972 * (1.0 - float(image_ratio)))
+            style["media_height"] = int(520 * float(image_ratio))
+            changed = True
+        copy_anchor = _text(composition.get("copy_anchor")).casefold()
+        if copy_anchor in {"left", "center", "right"}:
+            style["cover_text_align"] = copy_anchor
+            style["detail_text_align"] = copy_anchor
+            if copy_anchor == "right":
+                style["cover_panel_left"] = 1080 - 54 - style["cover_panel_width"]
+            changed = True
+        if changed:
+            applied["composition"] = dict(composition)
+
+    typography = learned_design.get("typography")
+    if isinstance(typography, Mapping):
+        changed = False
+        family = _text(typography.get("font_family"))
+        if family:
+            style["font_family"] = family
+            changed = True
+        headline = _text(typography.get("headline")).casefold()
+        if headline == "bold_condensed":
+            style["cover_headline_size"] = 62
+            style["detail_headline_size"] = 64
+            style["headline_weight"] = 850
+            changed = True
+        body = _text(typography.get("body")).casefold()
+        if body == "short_korean":
+            style["detail_body_size"] = 33
+            style["detail_body_line_height"] = 1.52
+            changed = True
+        if changed:
+            applied["typography"] = dict(typography)
+
+    density = _text(learned_design.get("text_density")).casefold()
+    if density == "low":
+        style["cover_headline_size"] += 4
+        style["detail_headline_size"] += 4
+        style["detail_body_size"] += 2
+        style["detail_gap"] = 52
+        applied["text_density"] = learned_design["text_density"]
+    elif density == "medium":
+        applied["text_density"] = learned_design["text_density"]
+    elif density == "high":
+        style["cover_headline_size"] -= 6
+        style["detail_headline_size"] -= 6
+        style["detail_body_size"] -= 3
+        style["detail_gap"] = 34
+        applied["text_density"] = learned_design["text_density"]
+
+    tone = _text(learned_design.get("emotional_tone")).casefold()
+    tone_palettes = {
+        "urgent_warm": {"background": "#fff3df", "accent": "#df4b32"},
+        "warning": {"background": "#fff1df", "accent": "#d63d2f"},
+        "calm": {"background": "#edf3ef", "accent": "#4f7e6b"},
+        "bright": {"background": "#fff8df", "accent": "#ef8b2c"},
+        "romantic": {"background": "#fff0f1", "accent": "#d95e7e"},
+    }
+    if tone in tone_palettes:
+        design.update(tone_palettes[tone])
+        applied["emotional_tone"] = learned_design["emotional_tone"]
+
+    grammar = learned_design.get("image_grammar")
+    grammar_values = (
+        [grammar]
+        if isinstance(grammar, str)
+        else list(grammar) if isinstance(grammar, (list, tuple)) else []
+    )
+    supported_treatments = {
+        "contain": "contain",
+        "cover": "cover",
+        "full_bleed": "cover",
+        "source_editorial": "contain",
+    }
+    selected_treatment = next(
+        (
+            supported_treatments[_text(value).casefold()]
+            for value in grammar_values
+            if _text(value).casefold() in supported_treatments
+        ),
+        "",
+    )
+    if selected_treatment:
+        style["media_fit"] = selected_treatment
+        applied["image_grammar"] = grammar
+
+    consumed_fields = sorted(applied)
+    consumed_paths = {
+        field: candidate_receipt.get("consumed_paths", {}).get(field, "")
+        for field in consumed_fields
+    }
+    ignored_fields = set(candidate_receipt.get("ignored_fields", []))
+    for field, path in candidate_receipt.get("consumed_paths", {}).items():
+        if field not in applied and path:
+            ignored_fields.add(path)
+    receipt = {
+        "profile_present": candidate_receipt.get("profile_present") is True,
+        "status": (
+            "consumed"
+            if consumed_fields
+            else "not_consumed"
+            if candidate_receipt.get("profile_present") is True
+            else "not_supplied"
+        ),
+        "consumed_fields": consumed_fields,
+        "consumed_paths": consumed_paths,
+        "ignored_fields": sorted(ignored_fields),
+        "missing_fields": list(candidate_receipt.get("missing_fields", [])),
+        "core_consumed_count": len(consumed_fields),
+    }
+    return applied, style, receipt
+
+
 def _visual_spec(value: Any) -> Dict[str, Any]:
     if not isinstance(value, Mapping):
         return {}
@@ -203,8 +530,15 @@ def _cover_tree(
     image_uri: str,
     account: str,
     design: Mapping[str, str],
+    render_style: Mapping[str, Any],
+    source_label: str = "",
 ) -> Dict[str, Any]:
-    title_size = "48px" if len(title) > 42 else "58px"
+    configured_title_size = int(render_style.get("cover_headline_size", 58))
+    title_size = (
+        f"{min(configured_title_size, 48)}px"
+        if len(title) > 42
+        else f"{configured_title_size}px"
+    )
     return _node(
         "div",
         style={
@@ -214,7 +548,7 @@ def _cover_tree(
             "position": "relative",
             "overflow": "hidden",
             "backgroundColor": design["background"],
-            "fontFamily": "Pretendard",
+            "fontFamily": render_style.get("font_family", "Pretendard"),
         },
         children=[
             _node(
@@ -232,10 +566,10 @@ def _cover_tree(
                 "div",
                 style={
                     "position": "absolute",
-                    "left": "54px",
+                    "left": f"{int(render_style.get('cover_panel_left', 54))}px",
                     "top": "54px",
                     "bottom": "54px",
-                    "width": "470px",
+                    "width": f"{int(render_style.get('cover_panel_width', 470))}px",
                     "display": "flex",
                     "flexDirection": "column",
                     "justifyContent": "space-between",
@@ -273,11 +607,12 @@ def _cover_tree(
                         "div",
                         style={
                             "fontSize": title_size,
-                            "fontWeight": 800,
-                            "lineHeight": 1.18,
+                            "fontWeight": int(render_style.get("headline_weight", 800)),
+                            "lineHeight": float(render_style.get("cover_headline_line_height", 1.18)),
                             "letterSpacing": "-2.6px",
                             "color": design["ink"],
                             "wordBreak": "keep-all",
+                            "textAlign": render_style.get("cover_text_align", "left"),
                         },
                         children=title,
                     ),
@@ -291,7 +626,10 @@ def _cover_tree(
                         },
                         children=[
                             _node("div", children=design["footer_label"]),
-                            _node("div", children=design["source_label"]),
+                            _node(
+                                "div",
+                                children=source_label or design["source_label"],
+                            ),
                         ],
                     ),
                 ],
@@ -480,7 +818,9 @@ def _detail_tree(
     media_width: int = 0,
     media_height: int = 0,
     source_label: str = "",
+    render_style: Mapping[str, Any] | None = None,
 ) -> Dict[str, Any]:
+    render_style = render_style or {}
     theme = _theme(account)
     if supplied_design:
         background, ink, accent = design["background"], design["ink"], design["accent"]
@@ -503,11 +843,12 @@ def _detail_tree(
         _node(
             "div",
             style={
-                "fontSize": "60px",
-                "fontWeight": 800,
-                "lineHeight": 1.18,
+                "fontSize": f"{int(render_style.get('detail_headline_size', 60))}px",
+                "fontWeight": int(render_style.get("headline_weight", 800)),
+                "lineHeight": float(render_style.get("detail_headline_line_height", 1.18)),
                 "letterSpacing": "-2.4px",
                 "wordBreak": "keep-all",
+                "textAlign": render_style.get("detail_text_align", "left"),
             },
             children=heading,
         ),
@@ -525,11 +866,12 @@ def _detail_tree(
             _node(
                 "div",
                 style={
-                    "fontSize": "31px",
+                    "fontSize": f"{int(render_style.get('detail_body_size', 31))}px",
                     "fontWeight": 500,
-                    "lineHeight": 1.62,
+                    "lineHeight": float(render_style.get("detail_body_line_height", 1.62)),
                     "letterSpacing": "-0.7px",
                     "wordBreak": "keep-all",
+                    "textAlign": render_style.get("detail_text_align", "left"),
                 },
                 children=remainder[:330],
             )
@@ -540,11 +882,15 @@ def _detail_tree(
         media_box_height = (
             120
             if visual_type == "cta_prompt"
-            else 220 if copy_density > 180 else 300
+            else 220
+            if copy_density > 180
+            else int(render_style.get("media_height", 300))
         )
         media_box_height_px = f"{media_box_height}px"
         media_fit = (
-            "cover"
+            render_style.get("media_fit", "contain")
+            if render_style.get("media_fit")
+            else "cover"
             if media_width > 0 and media_height > 0 and media_width / media_height >= 1.2
             else "contain"
         )
@@ -586,7 +932,7 @@ def _detail_tree(
             "padding": "86px",
             "backgroundColor": background,
             "color": ink,
-            "fontFamily": "Pretendard",
+            "fontFamily": render_style.get("font_family", "Pretendard"),
         },
         children=[
             _node(
@@ -611,7 +957,11 @@ def _detail_tree(
             ),
             _node(
                 "div",
-                style={"display": "flex", "flexDirection": "column", "gap": "44px"},
+                style={
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "gap": f"{int(render_style.get('detail_gap', 44))}px",
+                },
                 children=[
                     _node(
                         "div",
@@ -671,12 +1021,49 @@ def build_production_render_request(
     if not asset_path.is_file():
         return _blocked("owned_asset_missing")
     image_uri, source_width, source_height = _image_data_uri(asset_path)
+    reference_v2_required = package.get("reference_v2_required") is True
+    reference_v2 = package.get("reference_v2")
+    reference_v2 = reference_v2 if isinstance(reference_v2, Mapping) else {}
+    reference_v2_rows = reference_v2.get("slides")
+    reference_v2_rows = (
+        [item for item in reference_v2_rows if isinstance(item, Mapping)]
+        if isinstance(reference_v2_rows, list)
+        else []
+    )
+    if reference_v2_required and reference_v2.get("status") != "ready":
+        blocked = _blocked(
+            _text(reference_v2.get("reason_code"))
+            or "owner_approved_reference_geometry_required"
+        )
+        blocked["reference_v2"] = dict(reference_v2)
+        return blocked
+    reference_v2_by_page = {
+        int(item.get("page") or index): item
+        for index, item in enumerate(reference_v2_rows, start=1)
+    }
     title = _text(candidate.get("title"))
     supplied_design = isinstance(package.get("design_system"), Mapping)
     design = _design_system(account, package.get("design_system"))
+    learned_candidates, candidate_receipt = _learned_render_contract(
+        package.get("design_system"),
+        package.get("learning_trace"),
+    )
+    learned_design, render_style, learning_receipt = _applied_render_style(
+        learned_candidates,
+        candidate_receipt,
+        design,
+    )
+    if (
+        learning_receipt["profile_present"]
+        and learning_receipt["core_consumed_count"] == 0
+    ):
+        blocked = _blocked("learned_design_profile_not_consumed")
+        blocked["learning_consumption_receipt"] = learning_receipt
+        return blocked
     profile = dict(CANVAS_PROFILES[PROFILE_ID])
     total = len(slides)
     request_slides: List[Dict[str, Any]] = []
+    attribution_receipts: List[Dict[str, Any]] = []
     for index, raw in enumerate(slides, start=1):
         if not isinstance(raw, Mapping):
             return _blocked("slide_invalid")
@@ -689,12 +1076,11 @@ def build_production_render_request(
         visual_spec = _visual_spec(raw.get("visual_spec"))
         source_candidate = visual_spec.get("source_media_candidate")
         source_candidate = source_candidate if isinstance(source_candidate, Mapping) else {}
+        attribution_candidate: Mapping[str, Any] = source_candidate
         source_path = Path(_text(source_candidate.get("local_path"))).resolve() if _text(
             source_candidate.get("local_path")
         ) else None
         source_editorial = (
-            not is_cover
-            and
             source_path is not None
             and source_path.is_file()
             and _text(source_candidate.get("rights_status")) in {
@@ -711,13 +1097,94 @@ def build_production_render_request(
             slide_asset_path,
             fit_cover=not source_editorial,
         )
+        reference_tree = None
+        reference_receipt = {}
+        if reference_v2_required:
+            reference_result = reference_v2_by_page.get(page, {})
+            adapted_slide = reference_result.get("adapted_slide")
+            adapted_slide = (
+                adapted_slide if isinstance(adapted_slide, Mapping) else {}
+            )
+            reference_media_bindings = adapted_slide.get("media_bindings")
+            reference_media_bindings = (
+                reference_media_bindings
+                if isinstance(reference_media_bindings, list)
+                else []
+            )
+            for media_binding in reference_media_bindings:
+                if not isinstance(media_binding, Mapping):
+                    continue
+                bound_asset = media_binding.get("asset")
+                if not isinstance(bound_asset, Mapping):
+                    continue
+                bound_path_text = _text(
+                    bound_asset.get("local_path") or bound_asset.get("path")
+                )
+                bound_rights = _text(bound_asset.get("rights_status")).lower()
+                bound_source_url = _text(bound_asset.get("source_url"))
+                if not bound_path_text and not bound_rights and not bound_source_url:
+                    continue
+                bound_path = Path(bound_path_text).resolve() if bound_path_text else None
+                if (
+                    bound_path is None
+                    or not bound_path.is_file()
+                    or not bound_source_url
+                    or bound_rights
+                    not in {
+                        "owned",
+                        "licensed",
+                        "public_domain",
+                        "official_reuse_allowed",
+                        "user_supplied_with_permission",
+                        "permission_granted",
+                        "source_editorial_usable",
+                        "source_attributed_review_only",
+                        "open_license",
+                    }
+                    or bound_asset.get("publish_authorized") is True
+                ):
+                    blocked = _blocked("reference_v2_media_not_renderable")
+                    blocked["reference_v2"] = dict(reference_result)
+                    return blocked
+                slide_image_uri, slide_source_width, slide_source_height = (
+                    _image_data_uri(bound_path)
+                )
+                attribution_candidate = bound_asset
+                break
+            reference_tree_result = build_reference_v2_satori_tree(
+                adapted_slide,
+                fallback_image_uri=slide_image_uri,
+            )
+            if reference_tree_result.get("status") != "ready":
+                blocked = _blocked(
+                    reference_tree_result.get("reason_code")
+                    or "reference_v2_tree_not_ready"
+                )
+                blocked["reference_v2"] = dict(reference_result)
+                return blocked
+            reference_tree = reference_tree_result["tree"]
+            reference_receipt = reference_tree_result.get(
+                "reference_consumption_receipt", {}
+            )
         request_slides.append(
             {
                 "page": page,
                 "width": profile["width"],
                 "height": profile["height"],
-                "tree": (
-                    _cover_tree(headline, body, slide_image_uri, account, design)
+                "tree": reference_tree or (
+                    _cover_tree(
+                        headline,
+                        body,
+                        slide_image_uri,
+                        account,
+                        design,
+                        render_style,
+                        (
+                            _source_attribution_label(attribution_candidate)
+                            if source_editorial
+                            else ""
+                        ),
+                    )
                     if is_cover
                     else _detail_tree(
                         page,
@@ -732,10 +1199,11 @@ def build_production_render_request(
                         slide_source_width if source_editorial else 0,
                         slide_source_height if source_editorial else 0,
                         (
-                            _source_display_label(source_candidate.get("source_url"))
+                            _source_attribution_label(attribution_candidate)
                             if source_editorial
                             else ""
                         ),
+                        render_style,
                     )
                 ),
                 "media_classification": (
@@ -745,6 +1213,14 @@ def build_production_render_request(
                     design["source_label"]
                     if source_editorial
                     else "AI 연출 이미지" if is_cover else "편집 디자인"
+                ),
+                "learned_design": dict(learned_design),
+                "learning_consumption": {
+                    "consumed_fields": list(learning_receipt["consumed_fields"]),
+                    "ignored_fields": list(learning_receipt["ignored_fields"]),
+                },
+                "reference_v2_consumption_receipt": copy.deepcopy(
+                    reference_receipt
                 ),
                 "assets": (
                     [
@@ -777,6 +1253,29 @@ def build_production_render_request(
                 ),
             }
         )
+        attribution_label = _source_attribution_label(attribution_candidate)
+        attribution_receipts.append(
+            {
+                "page": page,
+                "asset_id": _text(attribution_candidate.get("asset_id")),
+                "source_url": _text(attribution_candidate.get("source_url")),
+                "license": _text(attribution_candidate.get("license")),
+                "license_name": _text(
+                    attribution_candidate.get("license_name")
+                    or attribution_candidate.get("license")
+                ),
+                "attribution": _text(attribution_candidate.get("attribution")),
+                "attribution_text": _text(
+                    attribution_candidate.get("attribution_text")
+                    or attribution_candidate.get("attribution")
+                ),
+                "attribution_required": (
+                    attribution_candidate.get("attribution_required") is True
+                ),
+                "display_label": attribution_label,
+                "rendered_in_footer": bool(source_editorial and attribution_label),
+            }
+        )
 
     hashes = authorization.get("local_media_receipt_hashes")
     candidate_hashes = hashes.get(candidate_id) if isinstance(hashes, Mapping) else None
@@ -796,6 +1295,11 @@ def build_production_render_request(
         "output_root": str(output_root),
         "local_media_receipt_hashes": list(candidate_hashes),
         "canvas_profile": profile,
+        "learned_design": dict(learned_design),
+        "learning_consumption_receipt": learning_receipt,
+        "reference_v2_required": reference_v2_required,
+        "reference_v2": copy.deepcopy(dict(reference_v2)),
+        "attribution_receipt": copy.deepcopy(attribution_receipts),
         "slides": request_slides,
     }
     if package_path is not None:
@@ -804,6 +1308,8 @@ def build_production_render_request(
         "schema_version": SCHEMA_VERSION,
         "status": "ready",
         "reason_code": "source_bound_satori_request_built",
+        "learning_consumption_receipt": learning_receipt,
+        "attribution_receipt": attribution_receipts,
         "render_request": request,
     }
 

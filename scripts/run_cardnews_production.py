@@ -9,6 +9,7 @@ outputs cannot become manual-upload-ready before independent visual QA.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -42,11 +43,13 @@ from modules.card_news.production_controller import (
     validate_state,
 )
 from modules.card_news.visual_qa_gate import assess_visual_qa_receipt
+from modules.card_news.production_release_handoff import build_production_release_handoff
 from modules.tool_adapters.cardnews_renderer_runtime import (
     DEFAULT_RENDER_TIMEOUT_SECONDS,
     MAX_RENDER_TIMEOUT_SECONDS,
     CardNewsRendererRuntime,
 )
+from modules.publishing.publishing_module import PublishingModule
 from scripts.render_selected_cardnews_preupload import _fragment_digest
 
 
@@ -493,6 +496,39 @@ def _validate_subject_crop_guard(tooling: Mapping[str, Any]) -> Dict[str, Any]:
     return dict(guard)
 
 
+def _requests_require_subject_crop_guard(requests: Sequence[Mapping[str, Any]]) -> bool:
+    for request in requests:
+        slides = request.get("slides") if isinstance(request.get("slides"), list) else []
+        for slide in slides:
+            if not isinstance(slide, Mapping):
+                continue
+            assets = slide.get("assets") if isinstance(slide.get("assets"), list) else []
+            for asset in assets:
+                if not isinstance(asset, Mapping):
+                    continue
+                tokens = " ".join(
+                    _text(asset.get(key)).lower()
+                    for key in ("asset_type", "subject_kind", "media_role", "classification")
+                )
+                if any(
+                    token in tokens
+                    for token in ("person", "portrait", "human", "face", "model", "celebrity", "인물")
+                ):
+                    return True
+                subjects = asset.get("protected_subjects")
+                if isinstance(subjects, list) and subjects:
+                    return True
+    return False
+
+
+def _manifest_requires_subject_crop_guard(manifest: Mapping[str, Any]) -> bool:
+    return any(
+        record.get("subject_crop_guard_required") is True
+        for record in manifest.get("records", [])
+        if isinstance(record, Mapping)
+    )
+
+
 def _validate_comment_slide_contract(
     candidate_id: str,
     slides: List[Mapping[str, Any]],
@@ -607,7 +643,8 @@ def _validate_render_authorization(
             "render_authorization_tooling_invalid",
             "only the bounded Satori/resvg adapter is authorized",
         )
-    _validate_subject_crop_guard(tooling)
+    if _manifest_requires_subject_crop_guard(manifest):
+        _validate_subject_crop_guard(tooling)
     manifest_candidates = sorted({
         _text(row.get("candidate_id")) for row in manifest.get("records", [])
         if isinstance(row, Mapping) and _text(row.get("candidate_id"))
@@ -716,7 +753,8 @@ def _validate_adapter_authorization(
             "render_authorization_tooling_invalid",
             "only the bounded Satori/resvg adapter is authorized",
         )
-    _validate_subject_crop_guard(tooling)
+    if _requests_require_subject_crop_guard(requests):
+        _validate_subject_crop_guard(tooling)
     return token
 
 
@@ -766,6 +804,13 @@ def _validated_adapter_record(
         [dict(slide) if isinstance(slide, Mapping) else {} for slide in slides],
         package,
     )
+    rendered_asset_ids = sorted({
+        _text(asset.get("asset_id"))
+        for slide in slides
+        if isinstance(slide, Mapping)
+        for asset in (slide.get("assets") if isinstance(slide.get("assets"), list) else [])
+        if isinstance(asset, Mapping) and _text(asset.get("asset_id"))
+    })
     return {
         "candidate_id": candidate_id,
         "account": account_by_candidate.get(candidate_id, ""),
@@ -774,6 +819,10 @@ def _validated_adapter_record(
         "package_path": str(package_path),
         "real_comment_count": int(request.get("real_comment_count") or 0),
         "renderer_receipt": dict(receipt),
+        "rendered_asset_ids": rendered_asset_ids,
+        "attribution_receipt": copy.deepcopy(receipt.get("attribution_receipt", [])),
+        "attribution_receipt_hash": _text(receipt.get("attribution_receipt_hash")),
+        "subject_crop_guard_required": _requests_require_subject_crop_guard([request]),
     }
 
 
@@ -1312,6 +1361,30 @@ def command_accept_visual_qa(args: argparse.Namespace) -> Dict[str, Any]:
     )
 
 
+def command_build_release_handoff(args: argparse.Namespace) -> Dict[str, Any]:
+    result = build_production_release_handoff(
+        _load_state(args.state),
+        _read_json(args.manifest),
+        _read_json(args.packages),
+    )
+    if result.get("status") == "blocked":
+        raise ProductionControllerError(
+            _text(result.get("reason_code")) or "release_handoff_blocked",
+            "controller release handoff did not satisfy the canonical contract",
+        )
+    publishing_module = getattr(args, "publishing_module", None) or PublishingModule()
+    publishing_result = publishing_module.run(result)
+    if publishing_result.get("actual_publish") is not False:
+        raise ProductionControllerError(
+            "publishing_boundary_violated",
+            "release handoff may prepare only a manual upload package",
+        )
+    result["publishing_result"] = publishing_result
+    result["manual_upload_ready"] = publishing_result.get("publishing_ready") is True
+    _atomic_write(args.output, result)
+    return result
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1377,6 +1450,13 @@ def build_parser() -> argparse.ArgumentParser:
     qa.add_argument("--qa-receipt", type=Path, required=True)
     qa.add_argument("--receipt-id", required=True)
     qa.set_defaults(handler=command_accept_visual_qa)
+
+    handoff = sub.add_parser("build-release-handoff")
+    handoff.add_argument("--state", type=Path, required=True)
+    handoff.add_argument("--manifest", type=Path, required=True)
+    handoff.add_argument("--packages", type=Path, required=True)
+    handoff.add_argument("--output", type=Path, required=True)
+    handoff.set_defaults(handler=command_build_release_handoff)
 
     status = sub.add_parser("status")
     status.add_argument("--state", type=Path, required=True)

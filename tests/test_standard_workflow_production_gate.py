@@ -31,8 +31,10 @@ class StandardWorkflowProductionGateTest(unittest.TestCase):
         self.assertFalse(ImageGenerationModule._has_controller_authorization({"production_authorization": {"authorized": True}}))
 
     def test_standard_workflow_returns_blocked_non_publishing_results(self):
+        preparation = {"status": "prepared", "production_ready": False}
         card_news, publishing, manifest = WorkflowEngine._build_blocked_standard_production_results(
-            {"status": "image_generation_blocked"}
+            {"status": "image_generation_blocked"},
+            preparation,
         )
 
         self.assertEqual(card_news["cards"], [])
@@ -41,6 +43,7 @@ class StandardWorkflowProductionGateTest(unittest.TestCase):
         self.assertFalse(publishing["publishing_ready"])
         self.assertIsNone(manifest["output_set_id"])
         self.assertFalse(manifest["promoted"])
+        self.assertEqual(preparation, card_news["production_preparation"])
 
     def test_standard_workflow_completes_without_render_or_publish_side_effects(self):
         engine = WorkflowEngine.__new__(WorkflowEngine)

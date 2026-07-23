@@ -58,19 +58,40 @@ class RetryPolicyTest(unittest.TestCase):
         manager = TrendSourceManager.__new__(TrendSourceManager)
         manager.nate_pann_collector = NatePannCollector()
         manager.nate_pann_cache_path = None
+        manager.cache_ttl_seconds = 86400
         manager._read_json = lambda _path: {
+            "updated_at": "2026-07-11T00:00:00",
             "items": [
                 {"keyword": "톡커들의 선택 명예의 전당"},
                 {"keyword": "계란값 다들 인내심이 대단해졌네요"},
             ]
         }
         manager._now = lambda: "2026-07-11T00:00:00"
+        manager._cache_age_seconds = lambda _value: 0
 
         results = manager._load_nate_pann_cache(
             {"name": "네이트판", "type": "community", "tier": 1, "weight": 30}
         )
 
         self.assertEqual([item["keyword"] for item in results], ["계란값 다들 인내심이 대단해졌네요"])
+        self.assertEqual(results[0]["retry_owner"], "manager")
+
+    def test_expired_cache_is_excluded_from_candidates(self):
+        manager = TrendSourceManager.__new__(TrendSourceManager)
+        manager.nate_pann_collector = NatePannCollector()
+        manager.nate_pann_cache_path = None
+        manager.cache_ttl_seconds = 10
+        manager._read_json = lambda _path: {
+            "updated_at": "2026-07-10T00:00:00",
+            "items": [{"keyword": "유효해 보이지만 만료된 제목"}],
+        }
+        manager._cache_age_seconds = lambda _value: 11
+
+        results = manager._load_nate_pann_cache(
+            {"name": "네이트판", "type": "community", "tier": 1, "weight": 30}
+        )
+
+        self.assertEqual(results, [])
 
 
 if __name__ == "__main__":

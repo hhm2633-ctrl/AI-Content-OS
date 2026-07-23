@@ -19,6 +19,19 @@ class TestOwnerRankedDeepDiveAdapter(unittest.TestCase):
                     "title": "Title A",
                     "source_urls": ["https://example.com/a"],
                     "requested_media": ["원문 기사", "기사 이미지"],
+                    "editorial_target_slide_count": 8,
+                    "reference_specimens": [
+                        {
+                            "reference_id": "ref-owner-1",
+                            "approval_status": "owner_approved",
+                        }
+                    ],
+                    "reference_blueprints": {
+                        "bp-owner-1": {"blueprint_id": "bp-owner-1"}
+                    },
+                    "reference_v2_media": {
+                        "primary_media": [{"asset_id": "asset-owner-1"}]
+                    },
                     "source": "artifacts/latest/collection.json",
                     "status": "waiting_for_deep_discovery",
                 },
@@ -52,6 +65,23 @@ class TestOwnerRankedDeepDiveAdapter(unittest.TestCase):
         self.assertEqual(request["category"], "정치")
         self.assertEqual(request["source_urls"], ["https://example.com/a"])
         self.assertEqual(request["requested_media"], ["원문 기사", "기사 이미지"])
+        self.assertEqual(request["editorial_target_slide_count"], 8)
+        self.assertEqual(
+            request["reference_specimens"][0]["reference_id"],
+            "ref-owner-1",
+        )
+        self.assertEqual(
+            request["reference_blueprints"]["bp-owner-1"]["blueprint_id"],
+            "bp-owner-1",
+        )
+        self.assertEqual(
+            request["reference_v2_media"]["primary_media"][0]["asset_id"],
+            "asset-owner-1",
+        )
+        self.assertEqual(
+            request["owner_payload"]["reference_specimens"][0]["reference_id"],
+            "ref-owner-1",
+        )
         source_refs = request["source_refs"]
         kinds = {ref.get("kind") for ref in source_refs}
         values = {ref.get("value") for ref in source_refs}

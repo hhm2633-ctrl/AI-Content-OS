@@ -6,7 +6,7 @@ import {Resvg} from "@resvg/resvg-js";
 import satori from "satori";
 
 const MAX_STDIN_BYTES = 2 * 1024 * 1024;
-const MAX_SLIDES = 10;
+const MAX_SLIDES = 20;
 const ALLOWED_SIZES = new Set(["1080x566", "1080x1080", "1080x1350", "1080x1440"]);
 const REMOTE_PATTERN = /(?:https?|ftp):\/\//i;
 const PROTECTED_KINDS = new Set(["hair", "outfit", "product", "comment"]);

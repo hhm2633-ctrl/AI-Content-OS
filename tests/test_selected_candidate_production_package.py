@@ -38,6 +38,11 @@ def _plan(slide_count=5):
                 "locator": "C:/approved/news.jpg",
                 "source_url": "https://news.example/source",
                 "rights_status": "licensed",
+                "license": "CC BY-SA 4.0",
+                "license_name": "CC BY-SA 4.0",
+                "attribution": "Example Photographer",
+                "attribution_text": "Photo: Example Photographer",
+                "attribution_required": True,
             }
         ],
         "commerce": {"mode": "none", "required_for_readiness": False},
@@ -71,17 +76,40 @@ def _story(slide_count=5):
 class SelectedCandidateProductionPackageTests(unittest.TestCase):
     def test_composes_variable_hybrid_package_without_rendering(self):
         plan = _plan()
+        plan["real_comment_evidence"] = {
+            "status": "ready",
+            "selected": [{"comment_id": "comment-1"}],
+        }
+        plan["story_comment_spotlight"] = {
+            "status": "ready",
+            "output_path": "C:/approved/spotlight.png",
+        }
         result = build_selected_candidate_production_package(
             plan, _render_receipt(plan), _story()
         )
 
         self.assertEqual(result["status"], "production_package_pending_approval")
         self.assertEqual(result["reason_code"], "package_approval_required")
+        source_candidate = result["slides"][0]["visual_spec"]["source_media_candidate"]
+        self.assertEqual(source_candidate["asset_id"], "asset-1")
+        self.assertEqual(source_candidate["local_path"], "C:/approved/news.jpg")
+        self.assertEqual(
+            source_candidate["attribution_text"], "Photo: Example Photographer"
+        )
+        self.assertEqual(source_candidate["license_name"], "CC BY-SA 4.0")
         self.assertEqual(result["candidate"]["account"], "A")
         self.assertEqual(len(result["slides"]), 5)
         self.assertEqual(result["media_plan"][2]["media_type"], "video")
         self.assertEqual(result["feed_caption"], "슬라이드 문구와 분리된 피드 캡션")
         self.assertEqual(result["evidence"]["source_status"], "recorded")
+        self.assertEqual(
+            result["real_comment_evidence"]["selected"][0]["comment_id"],
+            "comment-1",
+        )
+        self.assertEqual(
+            result["story_comment_spotlight"]["status"],
+            "ready",
+        )
         self.assertEqual(result["gates"]["package_approval"]["status"], "pending")
         self.assertEqual(result["gates"]["render"]["status"], "blocked")
         self.assertFalse(result["receipts"]["render_executed"])

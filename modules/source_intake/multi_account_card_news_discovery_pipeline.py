@@ -21,6 +21,9 @@ from modules.card_news.account_variable_slide_planner import (
 from modules.card_news.learning_design_compiler import (
     compile_learning_driven_blueprint,
 )
+from modules.design_learning.production_profile_compiler import (
+    ProductionProfileCompiler,
+)
 from modules.source_intake.account_candidate_router import run_account_candidate_router
 from modules.source_intake.account_instagram_pattern_binder import (
     run_account_instagram_pattern_binder,
@@ -242,6 +245,7 @@ def _binding_for_topic(
 def _build_slide_plans(
     top_result: Mapping[str, Any],
     binder_result: Optional[Mapping[str, Any]],
+    production_profile_compiler: Optional[ProductionProfileCompiler] = None,
 ) -> Dict[str, List[Dict[str, Any]]]:
     plans: Dict[str, List[Dict[str, Any]]] = {}
     top_by_account = top_result.get("top_by_account")
@@ -254,12 +258,43 @@ def _build_slide_plans(
                 if not isinstance(topic, Mapping):
                     continue
                 binding, reference = _binding_for_topic(topic, binder_result)
+                profile = (
+                    production_profile_compiler.compile(
+                        {
+                            "account": (
+                                "news"
+                                if account_id == "account_a_news_incident"
+                                else "story"
+                                if account_id == "account_b_issue_story"
+                                else (
+                                    "beauty"
+                                    if "beauty"
+                                    in _text(topic.get("primary_category")).lower()
+                                    else "fashion"
+                                )
+                            ),
+                            "topic": _text(topic.get("title")),
+                            "season": _text(topic.get("season")),
+                            "emotion": _text(topic.get("emotion")),
+                            "issue_intensity": _text(
+                                topic.get("issue_intensity")
+                            ),
+                            "formats": ["card_news"],
+                            "keywords": copy.deepcopy(
+                                topic.get("keywords", [])
+                            ),
+                        }
+                    )
+                    if production_profile_compiler is not None
+                    else {}
+                )
                 plan = run_account_variable_slide_planner(
                     copy.deepcopy(dict(topic)),
                     instagram_pattern_binding=binding,
                 )
                 plan["instagram_binding_supplied"] = binding is not None
                 plan["instagram_pattern_reference"] = reference
+                plan["production_learning_profile"] = copy.deepcopy(profile)
                 plan["instagram_pattern_consumed"] = bool(
                     plan.get("learning_guidance_consumed")
                     or (
@@ -276,6 +311,7 @@ def _build_slide_plans(
                     topic,
                     plan,
                     pattern_reference=reference,
+                    production_profile=profile,
                 )
                 account_plans.append(plan)
         plans[str(account_id)] = account_plans
@@ -558,7 +594,11 @@ def run_multi_account_card_news_discovery_pipeline(
         )
         stages["instagram_pattern_binding"] = instagram_binding
 
-        slide_plans = _build_slide_plans(planning_selection, instagram_binding)
+        slide_plans = _build_slide_plans(
+            planning_selection,
+            instagram_binding,
+            ProductionProfileCompiler(),
+        )
         planned_count = sum(
             1
             for plans in slide_plans.values()
