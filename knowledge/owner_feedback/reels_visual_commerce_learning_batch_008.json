@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_008",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "external_programs_networks_and_platform_claims_are_unverified_until_checked": true
+  },
+  "items": [
+    {
+      "index": 71,
+      "file": "Screenshot_20260710_073919_Instagram.jpg",
+      "type": "business_role_framework_reference",
+      "domain": "sales and launch strategy",
+      "visible_roles": [
+        {"id": "revops", "purpose": "connect marketing and sales operations"},
+        {"id": "sales-enablement", "purpose": "prepare proposals, company introductions, and pitch material"},
+        {"id": "launch-strategy", "purpose": "plan product and feature launches"},
+        {"id": "pricing-strategy", "purpose": "design price and offer packaging"},
+        {"id": "competitor-alternatives", "purpose": "build competitor and alternative comparison material"}
+      ],
+      "project_value": [
+        "Useful future reference for packaging and selling an AI-Content-OS service or content product.",
+        "Launch, pricing, and competitor comparison should remain evidence-backed planning functions rather than generic agent labels."
+      ]
+    },
+    {
+      "index": 72,
+      "file": "Screenshot_20260710_073924_Instagram.jpg",
+      "type": "minimal_carousel_outro_reference",
+      "visible_copy": "클로드 코드로 34명 모두 고용하세요",
+      "design": "warm off-white field, tiny orange symbol, one centered black/orange promise, one support line, one highlighted comment keyword",
+      "project_value": [
+        "Reference for ending a detailed system carousel with one memorable summary and one action.",
+        "The visual quiet makes the CTA legible after many role-list slides."
+      ],
+      "guardrail": "The employment metaphor is marketing language; the screenshot does not prove 34 installed, useful, or autonomous workers."
+    },
+    {
+      "index": 73,
+      "file": "Screenshot_20260711_210212_Instagram.jpg",
+      "type": "news_first_screen_benchmark",
+      "account": "scanit_news",
+      "first_screen_impression": "broad issue-scanning feed with restrained visual branding",
+      "cover_system": [
+        "full-bleed source or contextual image",
+        "white centered headline near the lower portion",
+        "small SCAN IT label immediately above the headline",
+        "dark bottom gradient for readability",
+        "minimal graphic decoration despite varied topic categories"
+      ],
+      "content_range": ["business", "entertainment", "influencers", "relationships", "parenting", "culture and media"],
+      "project_value": [
+        "Alternative to the more urgent black-and-magenta news grammar: broader, calmer, and image-led.",
+        "Shows that a general issue account can preserve first-screen consistency using only label, headline position, and gradient."
+      ]
+    },
+    {
+      "index": 74,
+      "file": "Screenshot_20260712_071829_Threads.jpg",
+      "type": "affiliate_monetization_lead_list",
+      "visible_networks": [
+        "LinkPrice",
+        "AdPick",
+        "Tenping",
+        "LeadersCPA",
+        "DBDBDeep",
+        "Mobion",
+        "Adlix",
+        "Toss",
+        "Today's House Partners",
+        "Naver BrandConnect",
+        "AliExpress Affiliate",
+        "TEMU Affiliate",
+        "Amazon Associates",
+        "CJ Affiliate",
+        "Awin",
+        "Impact",
+        "Rakuten Advertising",
+        "ShareASale",
+        "FlexOffers"
+      ],
+      "project_value": [
+        "Research pool for revenue sources beyond Coupang Partners.",
+        "Networks should later be compared by supported country, product quality, commission model, attribution window, payout, data access, API availability, and fit with existing account categories.",
+        "Naver BrandConnect remains especially relevant because local product data is already part of the project context."
+      ],
+      "guardrail": "The list is not current enrollment, eligibility, approval, commission, or integration evidence; no affiliate enrollment or link issuance is authorized."
+    },
+    {
+      "index": 75,
+      "file": "Screenshot_20260712_073456_Threads.jpg",
+      "type": "naver_seo_commerce_prompt_reference",
+      "prompt_role": "Naver Blog monetization-oriented SEO content writer",
+      "objectives": [
+        "search visibility",
+        "longer useful reading time",
+        "natural advertising and affiliate conversion",
+        "credible human-review tone without exaggerated promotion"
+      ],
+      "voice_rules": [
+        "avoid stiff formulaic prose",
+        "avoid common AI filler phrases",
+        "mix short and long sentences",
+        "include concrete lived-in details and modest imperfections",
+        "do not list only advantages"
+      ],
+      "structure_start": [
+        "required product or place name and target keywords",
+        "natural introduction",
+        "why the writer selected the subject",
+        "the real situation or need",
+        "searcher intent alignment"
+      ],
+      "project_value": "High-value prompt reference for a future Naver blog and commerce evidence pipeline."
+    },
+    {
+      "index": 76,
+      "file": "Screenshot_20260712_073459_Threads.jpg",
+      "type": "naver_seo_commerce_prompt_reference",
+      "body_requirements": [
+        "purchase location or access method",
+        "target user characteristics",
+        "actual-use style observations",
+        "first impression, package, appearance, usability, texture, scent, convenience, before-and-after impression",
+        "both strengths and weaknesses",
+        "purchase points and best-fit user",
+        "reason to choose versus similar products",
+        "gift, repurchase, value, or premium positioning when supported"
+      ],
+      "media_plan": [
+        "suggest where each image belongs",
+        "minimum eight to twelve assets when the source evidence supports that many",
+        "representative, detail, use, comparison, and before-and-after roles",
+        "do not force the count when media is unavailable or adds no value"
+      ],
+      "claim_rules": [
+        "do not state efficacy as certainty",
+        "avoid medical, treatment, and exaggerated expressions",
+        "avoid phrases such as unconditional recommendation, perfect product, or guaranteed effect",
+        "prefer bounded wording such as helped, felt manageable, usability was acceptable, or worth continued use when source evidence supports it"
+      ]
+    },
+    {
+      "index": 77,
+      "file": "Screenshot_20260712_073501_Threads.jpg",
+      "type": "naver_seo_commerce_prompt_reference",
+      "conversion_and_packaging_rules": [
+        "mention repurchase intention or suitable recommendation target naturally",
+        "use a non-pushy ending",
+        "invite an appropriate comment, save, or purchase action without overstating urgency",
+        "produce five search-aware title candidates without clickbait",
+        "place the key search phrase toward the beginning when natural"
+      ],
+      "format_rules": [
+        "body target around 1,500 or more Korean characters when the topic warrants depth",
+        "include essential keywords naturally three to five times",
+        "keep paragraphs short enough for mobile reading",
+        "prepare Naver-blog-oriented hashtags as a separate output"
+      ],
+      "project_value": "Reusable prompt fragments for caption, blog, image plan, CTA, and compliance rather than one monolithic prompt."
+    },
+    {
+      "index": 78,
+      "file": "Screenshot_20260712_073504_Threads.jpg",
+      "type": "serialized_prompt_distribution_reference",
+      "observations": [
+        "A long prompt is split into numbered thread entries rather than forced into one unreadable block.",
+        "Repeated context protects each continuation from losing the task requirements, but creates duplication.",
+        "A saved project prompt should instead use reusable sections and compose only the needed fragments at runtime."
+      ],
+      "project_value": [
+        "Store voice, structure, media plan, claim limits, SEO, and CTA as independent prompt modules.",
+        "Generate a trace showing which prompt modules were used for each output."
+      ]
+    },
+    {
+      "index": 79,
+      "file": "Screenshot_20260712_073727_Threads.jpg",
+      "type": "local_toolchain_candidate",
+      "tool": "tokscale",
+      "visible_claims": [
+        "Rust rewrite with faster file discovery, JSON parsing, aggregation, and large-session handling",
+        "TUI views for Overview, Usage, Models, and Daily",
+        "filtering across opencode, Claude, Codex, Cursor, and Gemini",
+        "week and since time-range filters",
+        "GitHub login, leaderboard submission, and README usage cards"
+      ],
+      "project_value": [
+        "Potentially useful for understanding weekly token constraints and comparing model or session consumption.",
+        "Local read-only usage views are more relevant than public leaderboard or automatic submission features."
+      ],
+      "guardrail": "The tool has not been checked for installation, compatibility, data access, privacy behavior, or correctness."
+    },
+    {
+      "index": 80,
+      "file": "Screenshot_20260712_073731_Threads.jpg",
+      "type": "local_toolchain_candidate",
+      "tool": "tokscale",
+      "visible_claims": [
+        "real-time quota bars across several AI subscriptions",
+        "warning that Claude Code may delete sessions after a default period",
+        "one-line settings change suggested to prevent session deletion",
+        "GitHub repository identified as junhoyeo/tokscale"
+      ],
+      "project_value": [
+        "A bounded local audit could determine whether this helps prevent another token-limit handoff surprise.",
+        "If adopted, public submission and autosubmit should remain disabled unless explicitly approved.",
+        "Any session-retention setting must be checked against actual installed versions before modification."
+      ],
+      "state": "reference_only_not_installed_or_tested_in_this_batch"
+    }
+  ],
+  "cross_batch_learning": [
+    "Sales, launch, pricing, and competitor comparison complete the earlier marketing role framework.",
+    "A calm image-led issue account and an urgent quote-led news account are different valid first-screen systems.",
+    "Affiliate diversification is a research and eligibility problem before it is an integration problem.",
+    "Naver commerce prompts should be modular, evidence-aware, human-readable, media-aware, and claim-bounded.",
+    "A long reusable prompt should be stored as composable sections instead of copied as one repeated block.",
+    "Token-usage tooling is most useful when local and private; public leaderboards and automatic uploads are not required for this project's need."
+  ]
+}

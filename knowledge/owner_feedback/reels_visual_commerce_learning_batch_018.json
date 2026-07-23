@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_171_180",
+  "source_range": [171, 180],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "claude_plugin_reel_closing",
+      "items": [171],
+      "relationship": "A closing frame from the same hand-drawn Claude-related reel in the previous two batches."
+    },
+    {
+      "group": "firsthand_experience_content_carousel",
+      "items": [172, 173, 174],
+      "relationship": "Three slides from one carousel arguing that detailed, genuine experience remains valuable in AI-saturated search content."
+    },
+    {
+      "group": "audience_first_ai_business_carousel",
+      "items": [175, 176, 177],
+      "relationship": "Slides 5, 7, and 9 of a nine-slide carousel describing an audience-first business and content process assisted by AI."
+    },
+    {
+      "group": "blog_external_distribution_carousel",
+      "items": [178, 179, 180],
+      "relationship": "Slides 5 through 7 of a thirteen-slide carousel introducing external traffic and Threads as one distribution channel."
+    }
+  ],
+  "items": [
+    {
+      "id": 171,
+      "content": "A repeated project explanation is compressed and discarded while the visible phrase references project explanation; a preview frame suggests a claim about Claude remembering context.",
+      "design": "Crumpling paper and a trash bin convert repeated instructions into a simple visual problem, while the worried recurring presenter carries over the reel's identity.",
+      "project_use": "Use durable, bounded project context and structured handoff documents to reduce repeated explanations, while distinguishing saved documentation from actual model memory or runtime retrieval.",
+      "learning_rule": "Persistent context must have a known storage location, retrieval path, scope, and freshness state. A project file existing does not prove the current agent loaded or followed it.",
+      "risk": "The exact Claude feature and persistence mechanism are not visible, installed, connected, or tested."
+    },
+    {
+      "id": 172,
+      "content": "A strong information-post example uses a concrete situation, route, price, duration, tradeoffs, and tips based on an actual trial process.",
+      "design": "A pale-blue information panel combines a real food-photo example, side annotations, and a cheerful peach mascot; the mixture of evidence and rough 2D keeps the slide practical but friendly.",
+      "project_use": "For source-backed guides, capture concrete circumstances, decision criteria, costs, time, limitations, and evidence rather than producing generic recommendations.",
+      "learning_rule": "Specificity improves usefulness only when it comes from verified sources or genuine experience. Never invent visits, trials, prices, routes, or first-person claims.",
+      "risk": "The source example's current prices and travel times are not independently verified and should not be reused as live facts."
+    },
+    {
+      "id": 173,
+      "content": "The checklist calls for specific firsthand examples, failures and trial-and-error, concrete usage period and environment, and clear advertising or sponsorship disclosure.",
+      "design": "Large hand-drawn checkmarks inside a soft-blue block create a fast scan path; red underlining and a boxed conclusion establish hierarchy without polished corporate graphics.",
+      "project_use": "Add provenance fields that distinguish owner experience, quoted source experience, public comments, synthetic examples, and sponsored material.",
+      "learning_rule": "Firsthand experience, failed attempts, context, and disclosure cannot be synthesized and presented as authentic merely because AI can write a plausible narrative.",
+      "risk": "The phrase that AI can never create this area is rhetorical; AI can organize supplied evidence, but it cannot originate genuine human experience."
+    },
+    {
+      "id": 174,
+      "content": "The carousel concludes that increasingly generic AI content makes rare genuine experiences more valuable and encourages writing one's own experience.",
+      "design": "A large expressive mascot, speech bubbles, blush, and deliberately awkward pose turn a strategic content point into an emotional and memorable closing slide.",
+      "project_use": "Prioritize owner observations, verified community reactions, source-specific details, and real production lessons as differentiating material, while using AI for organization and adaptation.",
+      "learning_rule": "The project's advantage should come from source quality, owner feedback, real context, and editorial judgment rather than pretending generated prose is lived experience.",
+      "risk": "The competitive-effect claim is plausible but not performance-verified for AI-Content-OS."
+    },
+    {
+      "id": 175,
+      "content": "The business process begins by identifying whom the team can help before deciding what to sell, then narrows to advertisers seeking creators and uses AI to organize their needs and outsourcing criteria.",
+      "design": "A dense text slide uses a cream panel, black hand-drawn border, large numbered title, and a small mascot peeking from the corner to soften a serious business explanation.",
+      "project_use": "Use audience and problem definition before product or content production: account, target user, unmet need, available evidence, and natural offer fit should precede output generation.",
+      "learning_rule": "Do not start with a product and force a story around it. First define a real audience problem, then determine whether information-only content or a natural product connection is appropriate.",
+      "risk": "AI summaries of customer needs remain hypotheses unless supported by interviews, observed behavior, contracts, or reliable data."
+    },
+    {
+      "id": 176,
+      "content": "After defining the product and customer, the creator repeatedly produces content designed to attract the specific creators that advertisers actually need.",
+      "design": "The same bordered text template changes only the panel color and mascot position, creating series consistency with very low production complexity.",
+      "project_use": "For each account, create content for the intended audience and business purpose rather than maximizing broad reach with unrelated topics; use repeated themes only when they continue to solve the target need.",
+      "learning_rule": "Audience fit and useful repetition matter more than indiscriminate visibility. Repetition should vary examples, hooks, evidence, and scenes rather than duplicate one card.",
+      "risk": "The slide does not show measured acquisition quality, retention, or conversion."
+    },
+    {
+      "id": 177,
+      "content": "The closing slide claims that this AI-assisted sequence generated revenue quickly and offers the actual prompts through comments.",
+      "design": "Multiple speech bubbles, a worried large mascot, a small signboard, and a red emphasis box create a sales-oriented closing composition while preserving the rough 2D identity.",
+      "project_use": "Store the process idea but not the revenue promise: AI may accelerate research organization, positioning drafts, and content iteration, while real revenue depends on offer, audience, distribution, trust, and execution.",
+      "learning_rule": "Never convert an individual creator's income claim into an expected project result. Prompt access is not a substitute for evidence or operating capability.",
+      "risk": "Revenue, timeframe, causality, and prompt effectiveness are unverified promotional claims. No comment request or external contact was performed."
+    },
+    {
+      "id": 178,
+      "content": "A blog-growth carousel defines external inflow as a key strategy and compares waiting for readers with a bakery waiting passively for customers.",
+      "design": "Pastel yellow and pink panels, red marker underlines, comic burst shapes, and a purple rough 2D mascot turn a traffic concept into an approachable lesson.",
+      "project_use": "Treat distribution as a separate stage after useful content exists: prepare channel-specific excerpts, context, and links only when external promotion is approved and platform-appropriate.",
+      "learning_rule": "Strong content and distribution are separate requirements. Distribution cannot rescue irrelevant content, and promotion should not become repetitive spam.",
+      "risk": "The slide's traffic and income generalizations are not verified for this project."
+    },
+    {
+      "id": 179,
+      "content": "The carousel recommends promoting blog posts through external channels such as Naver Knowledge iN, cafes, and Threads and labels this external inflow.",
+      "design": "A megaphone-holding mascot makes the distribution action literal, while yellow emphasis and red underlines isolate the central term.",
+      "project_use": "Maintain a channel-adaptation concept: each destination needs a useful native summary and an honest reason to visit, not identical automated link drops.",
+      "learning_rule": "External distribution requires relevance, platform policy compliance, disclosure where needed, frequency control, and owner approval before posting.",
+      "risk": "No external promotion, posting, account action, or automation is approved or performed."
+    },
+    {
+      "id": 180,
+      "content": "The creator says Threads is the channel currently used for external inflow and recommends it to beginners because it feels easy to use.",
+      "design": "A large Threads mark, affectionate mascot pose, speech bubbles, and three reacting chicks create a friendly recommendation scene with several simple 2D characters.",
+      "project_use": "Keep Threads as one possible future distribution surface to evaluate against account audience, effort, policy, measurable referral quality, and operating approval.",
+      "learning_rule": "A channel should be selected by audience fit and observed referral value, not because one creator calls it easy.",
+      "risk": "The recommendation is subjective and temporally unstable; no Threads integration, account workflow, or referral measurement has been tested."
+    }
+  ],
+  "cross_item_learning": [
+    "Durable project context can reduce repeated explanation only when storage, retrieval, scope, and freshness are explicit; documentation is not the same as active model memory.",
+    "Genuine experience becomes useful through specific circumstances, attempts, failures, duration, environment, costs, tradeoffs, and disclosure. AI may organize supplied evidence but must not fabricate lived experience.",
+    "Audience and problem definition should precede product selection and content production. Natural commerce fit follows the need instead of being forced into every topic.",
+    "External distribution is a separate post-production concern requiring native channel adaptation, relevance, policy compliance, frequency control, and owner approval.",
+    "Blog learning must be separated by platform first, including Naver Blog and other blog ecosystems, and then compared across equivalent topics, intent, audience, freshness, and evidence level. Shared rules and platform-specific rules must be stored separately.",
+    "Rough hand-drawn 2D works beyond light technical explainers: it can carry serious experience, business, monetization, and distribution topics while reducing stiffness and strengthening account recognition.",
+    "Rough 2D can combine with real screenshots, evidence images, dense text, mascots, speech bubbles, and marker emphasis. It should remain readable and should not replace required factual imagery.",
+    "Creator revenue, traffic, AI effectiveness, and channel-performance claims in this batch are stored as unverified source claims, not project expectations."
+  ],
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "external_post_performed": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

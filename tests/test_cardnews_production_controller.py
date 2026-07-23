@@ -139,6 +139,21 @@ def _preserve_original_receipts(candidate_ids: list[str]) -> dict[str, list[dict
     return receipts
 
 
+def _source_editorial_receipts(candidate_ids: list[str]) -> dict[str, list[dict]]:
+    receipts = _local_media_receipts(candidate_ids)
+    for rows in receipts.values():
+        body = rows[0]
+        body["rights_cleared"] = False
+        body["source_editorial_usable"] = True
+        body["topic_relevant"] = True
+        body["attribution_required"] = True
+        body["source_url"] = "https://news.example.com/source-story"
+        body["publish_authorized"] = False
+        body.pop("receipt_hash")
+        body["receipt_hash"] = canonical_hash(body)
+    return receipts
+
+
 def _qa_receipts(
     candidate_ids: list[str],
     output_set_ids: dict[str, str],
@@ -317,6 +332,68 @@ class ProductionControllerTests(unittest.TestCase):
 
         self.assertEqual(authorized["state"], "representative_authorized")
         self.assertEqual(set(authorized["local_media_receipt_hashes"]), set(authorized["candidate_ids"]))
+
+    def test_source_editorial_receipts_authorize_with_attribution_but_not_publish(self) -> None:
+        state = self._bind_rules()
+        receipt = build_transition_receipt(
+            state,
+            AUTHORIZE_REPRESENTATIVES,
+            "representatives-source-editorial",
+            {
+                "representatives": {
+                    "A": "candidate-a",
+                    "B": "candidate-b",
+                    "C": "candidate-c",
+                },
+                "local_media_receipts": _source_editorial_receipts(
+                    ["candidate-a", "candidate-b", "candidate-c"]
+                ),
+            },
+        )
+
+        authorized = apply_transition(state, receipt)
+
+        self.assertEqual(authorized["state"], "representative_authorized")
+        self.assertEqual(set(authorized["local_media_receipt_hashes"]), set(authorized["candidate_ids"]))
+
+    def test_source_editorial_receipts_block_each_missing_contract_condition(self) -> None:
+        invalid_values = {
+            "source_editorial_usable": False,
+            "topic_relevant": False,
+            "attribution_required": False,
+            "source_url": "",
+            "publish_authorized": True,
+        }
+        for field, invalid in invalid_values.items():
+            with self.subTest(field=field):
+                state = self._bind_rules(receipt_id=f"rules-missing-{field}")
+                media = _source_editorial_receipts(
+                    ["candidate-a", "candidate-b", "candidate-c"]
+                )
+                target = media["candidate-a"][0]
+                target[field] = invalid
+                target.pop("receipt_hash")
+                target["receipt_hash"] = canonical_hash(target)
+                receipt = build_transition_receipt(
+                    state,
+                    AUTHORIZE_REPRESENTATIVES,
+                    f"representatives-missing-{field}",
+                    {
+                        "representatives": {
+                            "A": "candidate-a",
+                            "B": "candidate-b",
+                            "C": "candidate-c",
+                        },
+                        "local_media_receipts": media,
+                    },
+                )
+
+                with self.assertRaises(ProductionControllerError) as caught:
+                    apply_transition(state, receipt)
+                self.assertEqual(
+                    caught.exception.reason_code,
+                    "local_media_safety_gate_failed",
+                )
 
     def test_tools_executed_false_is_blocked_outside_narrow_passthrough(self) -> None:
         state = self._bind_rules()

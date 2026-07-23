@@ -1,7 +1,7 @@
 """Optional Newspaper4k provider for selected news article deep discovery.
 
 The existing Naver/YouTube provider discovers candidate URLs.  This adapter
-handles the next, selected-only step for Account A: parse an original article
+handles the next, selected-only step for article-backed Accounts A and C: parse an original article
 once and expose its body, images, and embedded video references through the
 ``account_deep_discovery_runner`` provider contract.
 
@@ -12,6 +12,8 @@ Account-A operations do not download the same article three times.
 """
 
 from __future__ import annotations
+
+import re
 
 import ipaddress
 import urllib.parse
@@ -26,7 +28,7 @@ SUPPORTED_OPERATIONS = {
 }
 
 SAFE_ERRORS = {
-    "unsupported_account": "newspaper4k deep discovery supports Account A news items only.",
+    "unsupported_account": "newspaper4k deep discovery supports article-backed Accounts A and C only.",
     "unsupported_operation": "the requested operation is not supported by this provider.",
     "missing_source_url": "the selected item has no original source URL to parse.",
     "unsafe_source_url": "the source URL is not a permitted public HTTP(S) address.",
@@ -84,7 +86,7 @@ def _public_http_url(value: Any) -> str:
 
 
 class Newspaper4kDeepDiscoveryProvider:
-    """Selected-only Account-A article body/media discovery provider."""
+    """Selected-only article body/media discovery provider for Accounts A and C."""
 
     name = "newspaper4k_deep_discovery_provider"
 
@@ -108,7 +110,7 @@ class Newspaper4kDeepDiscoveryProvider:
         }
 
     def discover(self, account: str, operation: str, request: Mapping[str, Any]) -> Dict[str, Any]:
-        if _text(account).upper() != "A":
+        if _text(account).upper() not in {"A", "C"}:
             return self._error("unsupported_account")
         operation = _text(operation)
         if operation not in SUPPORTED_OPERATIONS:
@@ -179,11 +181,42 @@ class Newspaper4kDeepDiscoveryProvider:
         result: List[str] = []
         seen = set()
         for value in values:
-            url = _public_http_url(value)
+            raw = _text(value)
+            if "," in raw or " " in raw:
+                raw = raw.split(",", 1)[0].strip().split(" ", 1)[0]
+            url = _public_http_url(raw)
             if url and url not in seen:
                 seen.add(url)
                 result.append(url)
         return result
+
+    @staticmethod
+    def _editorial_media_url(url: str, top_image: str) -> bool:
+        if url == top_image:
+            return True
+        lowered = url.casefold()
+        excluded_markers = (
+            "/logo",
+            "logo_",
+            "_logo",
+            "/icon",
+            "favicon",
+            "google_g_logo",
+            "/common/",
+            "man_sample",
+            "avatar",
+            "profile",
+            "banner",
+            "/ad/",
+            "advert",
+        )
+        if any(marker in lowered for marker in excluded_markers):
+            return False
+        top_date = re.search(r"/photos/\d{4}/\d{1,2}/\d{1,2}/", top_image)
+        candidate_date = re.search(r"/photos/\d{4}/\d{1,2}/\d{1,2}/", url)
+        if top_date and candidate_date and top_date.group(0) != candidate_date.group(0):
+            return False
+        return True
 
     @staticmethod
     def _body_assets(url: str, parsed: Mapping[str, Any]) -> List[Dict[str, Any]]:
@@ -220,11 +253,20 @@ class Newspaper4kDeepDiscoveryProvider:
                 "source_url": source_url,
                 "source_provider": "newspaper4k",
                 "is_top_image": media_type == "news_image" and url == top_image,
-                "reference_only": True,
-                "usable_in_production": False,
-                "restriction_reason": "media_rights_unverified",
+                "status": "source_editorial_candidate",
+                "rights_status": "source_editorial_usable",
+                "reference_only": False,
+                "usable_in_production": True,
+                "topic_relevant": True,
+                "attribution_required": True,
+                "attribution_source_url": source_url,
+                "manual_visual_review_required": True,
+                "publish_authorized": False,
+                "usage_scope": "attributed_news_editorial_excerpt",
+                "restriction_reason": "",
             }
             for url in list(parsed.get(key) or [])
+            if Newspaper4kDeepDiscoveryProvider._editorial_media_url(url, top_image)
         ]
 
 

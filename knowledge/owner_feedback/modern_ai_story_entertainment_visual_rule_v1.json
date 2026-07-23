@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "source_item": 73,
+  "reference_account": "scanit_news",
+  "owner_confirmed_use": "Primary visual-style reference for story, flirting and dating, relationships, entertainment, and broad social-issue content that may use AI-created imagery.",
+  "correction": "Do not classify this only as a calm general-news layout. Its stronger value is showing that AI-assisted story and issue imagery can feel current, cinematic, and native to a modern social feed rather than like an old editorial illustration.",
+  "modern_visual_traits": [
+    "vertical social-first framing rather than a horizontal article illustration placed inside a card",
+    "full-bleed scene with a strong subject or recognizable emotional situation",
+    "cinematic light, depth, crop, and atmosphere",
+    "realistic or polished contemporary stylization chosen per topic",
+    "minimal account branding that does not compete with the scene",
+    "short white headline placed directly over a darkened image area",
+    "consistent lower gradient and headline position across different media types",
+    "topic-dependent visual treatment instead of one repeated illustration renderer"
+  ],
+  "avoid_old_style": [
+    "cheap generic cartoon characters",
+    "flat clip-art scenes",
+    "dated newspaper-column illustration",
+    "thick decorative frames around every scene",
+    "long explanatory text inside the image",
+    "the same drawing style forced onto romance, celebrity, parenting, crime, and lifestyle topics",
+    "emotionless stock-like poses",
+    "AI gloss without believable scene context"
+  ],
+  "category_directions": [
+    {"category": "story", "visual_direction": "one believable moment with unresolved tension and a cinematic crop"},
+    {"category": "flirting_and_dating", "visual_direction": "subtle proximity, eye line, gesture, phone, message, or place cues; contemporary styling rather than romantic clip art"},
+    {"category": "relationships", "visual_direction": "emotion and distance expressed through body language, environment, and light"},
+    {"category": "entertainment", "visual_direction": "use actual connected media when available; otherwise use clearly generated contextual scenes without substituting an unrelated celebrity"},
+    {"category": "social_issue", "visual_direction": "recognizable context with restrained reenactment and an explicit generated or contextual-media distinction"}
+  ],
+  "first_screen_rules": [
+    "Keep the SCAN IT-like account marker, headline placement, and gradient logic stable.",
+    "Allow realistic footage, photos, contemporary illustration, and generated scenes to coexist.",
+    "Unify mixed media through crop, headline scale, label placement, and tonal grading rather than making every image look identical.",
+    "Judge the result as part of a three-by-three account grid, not only as a single generated image."
+  ],
+  "prompt_requirements": [
+    "state the exact emotional moment rather than requesting a generic mood",
+    "describe contemporary wardrobe and environment",
+    "specify vertical editorial composition and text-safe lower area",
+    "describe believable body language and eye line",
+    "use cinematic but natural lighting appropriate to the scene",
+    "exclude retro illustration, clip art, generic stock posing, and excessive beauty filtering"
+  ],
+  "state": {
+    "knowledge_saved": true,
+    "runtime_prompt_connected": false,
+    "grid_preview_tested": false,
+    "visual_quality_verified": false
+  }
+}

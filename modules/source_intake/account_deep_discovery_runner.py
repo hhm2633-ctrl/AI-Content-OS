@@ -17,16 +17,18 @@ MAX_REQUESTS_PER_ACCOUNT = 4
 SUPPORTED_ACCOUNTS = ("A", "B", "C")
 
 # Account-specific discovery operations and artifact roles. A: news evidence;
-# B: original capture / real comments / reconstruction facts; C: official
-# fashion-beauty assets only.
+# B: original capture / real comments / reconstruction facts; C: source article
+# copy evidence plus official fashion-beauty assets.
 ACCOUNT_DISCOVERY_PLANS: Dict[str, tuple] = {
     "A": (
         {"operation": "fetch_article_body", "artifact_role": "article_body"},
         {"operation": "collect_news_images", "artifact_role": "news_image"},
+        {"operation": "search_related_news", "artifact_role": "related_news"},
         {
             "operation": "locate_embedded_or_broadcast_video",
             "artifact_role": "broadcast_video",
         },
+        {"operation": "search_open_images", "artifact_role": "open_image"},
     ),
     "B": (
         {"operation": "capture_original_post", "artifact_role": "original_capture"},
@@ -37,6 +39,7 @@ ACCOUNT_DISCOVERY_PLANS: Dict[str, tuple] = {
         },
     ),
     "C": (
+        {"operation": "fetch_article_body", "artifact_role": "article_body"},
         {
             "operation": "collect_official_show_or_lookbook",
             "artifact_role": "official_show_lookbook",
@@ -48,7 +51,15 @@ ACCOUNT_DISCOVERY_PLANS: Dict[str, tuple] = {
 }
 
 _AP_PATTERN = re.compile(r"(^|\W)ap(\W|$)|associated\s+press", re.IGNORECASE)
-_AP_FIELDS = ("license", "source", "provider", "agency", "credit")
+_AP_FIELDS = (
+    "license",
+    "source",
+    "provider",
+    "publisher",
+    "agency",
+    "credit",
+    "source_api",
+)
 
 
 def _text(value: Any) -> str:
@@ -95,6 +106,8 @@ def _sanitize_assets(role: str, raw_assets: Any) -> Dict[str, List[Dict[str, Any
         if _is_ap_asset(raw):
             asset["reference_only"] = True
             asset["usable_in_production"] = False
+            asset["rights_status"] = "reference_only"
+            asset["publish_authorized"] = False
             asset["restriction_reason"] = "ap_reference_only"
         else:
             asset.setdefault("reference_only", False)

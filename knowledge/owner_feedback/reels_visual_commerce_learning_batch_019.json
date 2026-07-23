@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_181_190",
+  "source_range": [181, 190],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "blog_external_distribution_carousel_continued",
+      "items": [181],
+      "relationship": "Slide 11 of the thirteen-slide external-distribution carousel continued from the previous batch."
+    },
+    {
+      "group": "july_seasonal_content_matrix_carousel",
+      "items": [182, 183, 184, 185, 186, 187, 188, 189],
+      "relationship": "Slides 1, 2, 3, 4, 5, 7, 9, and 10 of one ten-slide carousel proposing July seasonal topics across eight categories."
+    },
+    {
+      "group": "advertising_framing_carousel",
+      "items": [190],
+      "relationship": "Slide 3 of a six-slide carousel explaining three advertising framing techniques."
+    }
+  ],
+  "items": [
+    {
+      "id": 181,
+      "content": "The blog-distribution carousel shows an AdSense dashboard, exchange-rate image, celebratory mascot, and a claim that external inflow sharply increases blog income.",
+      "design": "A dark navy celebration scene, fireworks, speech bubble, dashboard proof image, and intentionally comic wealthy-character parody create a high-energy payoff slide.",
+      "project_use": "Store as a visual pattern for presenting a claimed outcome with supporting evidence, but require date range, source ownership, baseline, traffic source, and causal uncertainty before using any performance result.",
+      "learning_rule": "A revenue screenshot can support only the account and period it belongs to. It does not prove that one distribution tactic caused the result or that the result transfers to another project.",
+      "risk": "Income, exchange-rate, growth, and causality claims are unverified. No AdSense connection or blog monetization result exists in AI-Content-OS."
+    },
+    {
+      "id": 182,
+      "content": "The first July topic slide lists travel and date ideas shaped by rain, heat, water activities, evening temperatures, budget, weekends, health-food season, city trips, and family travel.",
+      "design": "A beach photograph is reused as a full background under a large red hook banner, oversized white italic headline, and dense translucent list panel.",
+      "project_use": "Use weather, season, companion, budget, time, location, and activity as branching dimensions when expanding a timely topic into variable follow-up content.",
+      "learning_rule": "Seasonal planning should generate a candidate matrix, not a fixed publishing quota. Select only branches supported by current relevance, source material, account fit, and non-duplication.",
+      "risk": "The hook implies regret and the list is idea-level only; each recommendation needs current weather, location, availability, and source verification."
+    },
+    {
+      "id": 183,
+      "content": "The parenting slide expands July into vacation packing, heat outings, rainy-day indoor play, water-play preparation, summer sleep, travel-time activities, rainy-season laundry, vacation routines, home vacation play, and seasonal health food.",
+      "design": "The identical beach background and headline preserve series consistency, while only the category heading and ten-item list change.",
+      "project_use": "Learn context-to-problem branching: heat, rain, travel, sleep, laundry, food, and routine disruptions can connect naturally to practical information and, where justified, relevant products.",
+      "learning_rule": "Parenting advice needs age, environment, safety, and source context. Do not turn generic seasonal prompts into medical, safety, or nutrition claims.",
+      "risk": "The slide's tips are not developed or verified, and the dense text is difficult to consume on a small screen."
+    },
+    {
+      "id": 184,
+      "content": "The fashion slide proposes vacation capsule outfits, rainy travel looks, heat-friendly daily wear, airport alternatives, swimwear outfits, compact packing, sunglasses, sandals versus sneakers, indoor air-conditioning layers, and summer office wear.",
+      "design": "A fixed background and typography system make the carousel recognizable, but the single photograph is not evidence for every fashion subtopic and the list dominates the image.",
+      "project_use": "Build fashion topic branches from weather, destination, activity, luggage limits, footwear, accessories, indoor-outdoor temperature, and work context; connect products only when practical fit is clear.",
+      "learning_rule": "Fashion information should later replace the generic background with topic-connected outfits, official brand imagery, product detail, or an appropriate generated editorial scene.",
+      "risk": "No specific item, brand, fit, material, or current trend evidence is supplied."
+    },
+    {
+      "id": 185,
+      "content": "The beauty slide branches into pre-vacation skincare, water-resistant makeup, rainy-season base makeup, sunscreen reapplication, travel pouches, post-trip calming care, body care, summer nails, sebum care, and photo-friendly skin expression.",
+      "design": "The same dense matrix format efficiently catalogs ideas but provides little visual demonstration of textures, products, routines, or before-and-after differences.",
+      "project_use": "Use environmental triggers such as sun, water, heat, humidity, travel, packing, sebum, and photography to organize beauty candidates and natural product functions.",
+      "learning_rule": "Beauty branches require product evidence, use context, skin-condition caveats, and concise steps before production. A topical phrase is not yet a reliable recommendation.",
+      "risk": "Claims such as makeup not breaking down or fast calming are outcome claims requiring evidence and careful wording."
+    },
+    {
+      "id": 186,
+      "content": "The food slide covers easy health food, refrigerator clearing, rainy-day home meals, no-fire cooking, travel lunchboxes, shaved-ice desserts, popular summer menus, seasonal ingredients, late-night snacks, and school-break desserts.",
+      "design": "The fixed beach image provides seasonal mood but does not show the food, ingredients, or preparation steps described in the list.",
+      "project_use": "Expand food topics through season, leftover use, weather mood, cooking effort, travel, dessert, ingredients, time of day, and family schedule.",
+      "learning_rule": "A candidate list can guide research, but final food content needs actual recipe steps, ingredient evidence, imagery, and any relevant allergy or storage context.",
+      "risk": "Popularity, health, ease, and suitability claims are not established by this slide."
+    },
+    {
+      "id": 187,
+      "content": "The finance slide proposes vacation-budget checks, electricity savings, post-vacation card recovery, affordable trips, peak-season lodging, half-year spending reviews, savings goals, small investments, appliance purchase criteria, and app-based finance routines.",
+      "design": "The same lifestyle photograph softens a finance category, but the dense list and lack of quantitative examples weaken trust and instructional value.",
+      "project_use": "Use seasonal household events as research prompts for budgeting content, but separate practical expense tracking from investment or financial-product guidance.",
+      "learning_rule": "Financial topics require current sources, explicit assumptions, uncertainty, and no guaranteed savings or returns. High-stakes advice cannot be produced from an idea list alone.",
+      "risk": "Investment, savings, electricity-cost, and booking claims are temporally unstable and high stakes. None are verified here."
+    },
+    {
+      "id": 188,
+      "content": "The living and interior slide branches into vacation-at-home styling, humidity and odor control, summer appliance use, pre-trip tidying, post-trip organization, bedding changes, veranda styling, rainy-season laundry, home scent, and cooling through curtains or rugs.",
+      "design": "The repeated summer background unifies the series, but topic-specific room, storage, textile, or appliance imagery would communicate these ideas more effectively.",
+      "project_use": "Humidity, odor, heat, laundry, storage, textiles, energy use, and staycation atmosphere are strong lifestyle contexts for information and natural commerce matching.",
+      "learning_rule": "Product matching should follow function and situation, such as drying, dehumidifying, cooling, storing, cleaning, or scenting, rather than exact keyword overlap.",
+      "risk": "Energy-saving and environmental-control outcomes depend on the home and product; they require evidence rather than broad promises."
+    },
+    {
+      "id": 189,
+      "content": "The career and business slide covers pre-vacation handoff, second-half goals, half-year review, return-to-work routine, heat productivity, workation, seasonal marketing, customer-response setup, promotions, and rainy-season sales ideas.",
+      "design": "The same consumer-lifestyle visual language makes business topics approachable, although the background and list do not demonstrate an actual workflow.",
+      "project_use": "Use calendar transitions, absence, handoff, recovery, environment, campaigns, customer response, and weather demand as operational content branches.",
+      "learning_rule": "Seasonal business ideas should be tied to the actual account, customer problem, capacity, and approval boundaries; do not automate customer responses or promotions from a generic checklist.",
+      "risk": "The slide provides no operational evidence, performance result, or platform-specific constraints."
+    },
+    {
+      "id": 190,
+      "content": "The framing carousel presents loss framing, reframing, and risk-burden reversal using advertisement examples that emphasize expiring opportunity, reinterpret a drawback, or promise relief from failure risk.",
+      "design": "A white editorial grid compares three real-looking vertical ad examples with a short definition and example under each, plus a highlighted summary box.",
+      "project_use": "Use framing as an editorial option only when the underlying fact is true: explain the cost of inaction, provide a legitimate alternative interpretation, or reduce a real decision barrier with an actual policy or guarantee.",
+      "learning_rule": "Framing changes presentation, not evidence. Scarcity, loss, guarantees, discounts, risks, and product limitations must be factual, current, and source-backed.",
+      "risk": "The examples use aggressive scarcity and certainty. False deadlines, exaggerated danger, hidden drawbacks, or nonexistent guarantees would be deceptive and must not be generated."
+    }
+  ],
+  "cross_item_learning": [
+    "Seasonal content can branch across travel, parenting, fashion, beauty, food, finance, living, and work by combining weather, calendar, audience, activity, environment, budget, and practical problems.",
+    "A month is not the content topic itself. It is a parent context whose rain, humidity, heat, sunlight, vacation, school-break, food-season, and midyear-transition signals spread into different life problems and category-specific angles.",
+    "Seasonal spread should be modeled as context to environmental change to life problem or desire to affected person and behavior to category to content format to evidence and optional product function.",
+    "Events with progression, especially vacation, should branch across before, during, and after stages rather than being reduced to one preparation list.",
+    "A seasonal matrix is a candidate-generation tool, not a fixed publishing schedule or required slide count. Each branch still needs freshness, source support, account fit, media availability, and duplication checks.",
+    "The same seasonal event can support information-only posts, naturally matched commerce posts, or a variable topic series depending on available evidence and audience need.",
+    "A fixed background and headline create fast series consistency, but replacing topic-specific evidence with one generic image produces dense, weakly supported slides. Final production should use category-relevant visuals and less text.",
+    "Function and situation relationships such as humidity, drying, cooling, travel, storage, grooming, and routine disruption are stronger commerce signals than exact keyword matching alone.",
+    "Loss framing, reframing, and risk reversal are presentation techniques only; factual deadlines, limitations, guarantees, and risks must exist before the technique is used.",
+    "Revenue screenshots and visible engagement are source-account observations, not causal or transferable performance evidence."
+  ],
+  "deferred_cross_batch_work": {
+    "status": "deferred_until_all_owner_source_images_are_analyzed",
+    "scope": "Compare this seasonal matrix, blog distribution, framing, rough 2D, topic-series, and earlier context-based learning only after the full corpus analysis is complete."
+  },
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "financial_result_verified": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

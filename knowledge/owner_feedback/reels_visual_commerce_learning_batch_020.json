@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_191_200",
+  "source_range": [191, 200],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "advertising_framing_carousel_continued",
+      "items": [191],
+      "relationship": "Slide 5 of the six-slide advertising framing carousel continued from the previous batch."
+    },
+    {
+      "group": "reels_open_loop_carousel",
+      "items": [192, 193, 194, 195, 196, 197],
+      "relationship": "Slides 2, 3, 5, 6, 7, and 8 of one nine-slide carousel about structuring the opening seconds of a Reel."
+    },
+    {
+      "group": "successful_post_account_analysis_carousel",
+      "items": [198, 199],
+      "relationship": "Slides 2 and 4 of an eight-slide carousel about analyzing strong posts and one's own account patterns."
+    },
+    {
+      "group": "copyright_safe_shorts_source_reel_ad",
+      "items": [200],
+      "relationship": "A sponsored Reel frame claiming to teach how to find Japanese short-video sources without copyright concerns."
+    }
+  ],
+  "items": [
+    {
+      "id": 191,
+      "content": "The creator offers a downloadable hook-copy cheat sheet that appears to categorize hooks by psychological idea, formula, example, and suitable content type.",
+      "design": "A minimal white editorial slide uses an eye emoji, black headline, yellow highlight, overlapping document mockups, and a small profile-link instruction.",
+      "project_use": "Store hook categories as selectable writing patterns, including prohibition, loss, comparison, quantified result, audience callout, situation urgency, and insider knowledge, while generating topic-specific language rather than copying formulas verbatim.",
+      "learning_rule": "A hook taxonomy is a drafting aid, not proof that a hook works. Hook choice must match account, topic, evidence, audience emotion, and the content that follows.",
+      "risk": "The downloadable resource was not opened, and its formulas, rights, performance, and examples are not verified."
+    },
+    {
+      "id": 192,
+      "content": "The Reel-opening carousel argues that the first three seconds should create an intentional information gap rather than rely only on a provocative scene.",
+      "design": "A dark keyboard photograph, heavy bottom gradient, white hierarchy, green chapter marker, and green takeaway line create a serious professional identity.",
+      "project_use": "Open with a specific unresolved question, contradiction, consequence, missing step, or surprising verified result that the rest of the content actually resolves.",
+      "learning_rule": "The opening gap must be relevant and answerable. It should not hide essential context solely to manufacture confusion or fear.",
+      "risk": "The three-second threshold and psychological effect are creator advice, not verified universal performance rules."
+    },
+    {
+      "id": 193,
+      "content": "The source invokes the Zeigarnik effect, claiming that people keep thinking about unfinished information and want to complete it.",
+      "design": "A close-up of an incomplete puzzle visually embodies missing information, while green phrases isolate the named mechanism and conclusion.",
+      "project_use": "Learn the practical open-loop concept without treating the named psychological effect as guaranteed retention: introduce a bounded question and close it within the promised content.",
+      "learning_rule": "Curiosity should come from useful incompleteness, not fabricated danger, missing facts, or an answer postponed beyond the content.",
+      "risk": "The psychological explanation is simplified and does not establish causal performance for every audience or format."
+    },
+    {
+      "id": 194,
+      "content": "The carousel recommends showing the result first and moving the process later as a practical structure.",
+      "design": "A performance dashboard background makes the result-first lesson feel evidence-oriented, though the chart is decorative and not tied to the claim.",
+      "project_use": "For demonstrations, use result or consequence first, then reveal evidence, method, tradeoffs, and limitations in an order that preserves understanding.",
+      "learning_rule": "Result-first editing changes narrative order, not evidence requirements. Never present a result without showing enough context to understand what produced it.",
+      "risk": "A result-first pattern may fail for news or sensitive topics where context must precede interpretation."
+    },
+    {
+      "id": 195,
+      "content": "A cooking example contrasts a generic promise to make pasta with first showing completed pasta and stating that no water was used, creating a how-question.",
+      "design": "A warm food-photography background, white explanation, and green quoted hook demonstrate the structure in the same visual system.",
+      "project_use": "Use a verified constraint, unusual method, comparison, or result as the opening when it is genuinely central to the tutorial and later demonstrated.",
+      "learning_rule": "A surprising result must be literally true under the shown conditions. Do not omit a crucial ingredient, edit, or definition to create a false contradiction.",
+      "risk": "The example is illustrative; the water claim and cooking method are not verified here."
+    },
+    {
+      "id": 196,
+      "content": "A cleaning example replaces a generic sink-cleaning tip with a shiny result and a claim that an inexpensive unnamed item produced it.",
+      "design": "The bright sink image supplies immediate transformation evidence, while the low-price phrase in green creates a product-reveal open loop.",
+      "project_use": "When commerce fit is natural, open with a real problem, visible result, practical cost, and hidden-but-soon-revealed product function, then disclose the item and evidence promptly.",
+      "learning_rule": "Price, result, product identity, safety, and availability must be current and truthful. Do not prolong concealment solely to inflate watch time.",
+      "risk": "The item, method, safety, price, and before-and-after conditions are not visible or verified."
+    },
+    {
+      "id": 197,
+      "content": "The carousel concludes that opening design is about what to temporarily conceal, planting questions such as why, how, or what, rather than only what to show.",
+      "design": "An almost empty shadowed wall visually represents withheld information and creates a quiet closing contrast after the example slides.",
+      "project_use": "Design every open loop with three fields: concealed detail, explicit viewer question, and exact payoff location. The payoff must arrive within the content's natural length.",
+      "learning_rule": "Only conceal nonessential sequencing information. Do not conceal sponsorship, source, safety context, identity, material limitation, or facts required to interpret the opening honestly.",
+      "risk": "Overuse creates formulaic clickbait, audience fatigue, and reduced trust."
+    },
+    {
+      "id": 198,
+      "content": "The carousel recommends analyzing successful posts by why they worked rather than views alone, focusing on the first sentence, save-worthy points, and comment reactions.",
+      "design": "A warm paper texture, oversized black hand-lettered title, pink marker accents, clipped note cards, magnifier, and coffee illustration create a research-notebook mood.",
+      "project_use": "Analyze content as a structure: opening promise, information or emotional value worth saving, comment themes, evidence, media, pacing, and account fit. Keep visible counts as context rather than the sole quality score.",
+      "learning_rule": "Engagement metrics do not reveal causality by themselves. Qualitative reactions and content structure should be examined alongside current quantitative data when available.",
+      "risk": "Visible likes, comments, and shares are one observed snapshot and do not prove reach, retention, conversion, or repeatability."
+    },
+    {
+      "id": 199,
+      "content": "The next step is to analyze one's own account together with AI, not hand the account over, so recurring content patterns can be read collaboratively.",
+      "design": "The same notebook visual system adds a speech bubble, simple report graphic, and highlighted phrase to distinguish collaborative analysis from delegation.",
+      "project_use": "Use AI to organize owner-provided posts, metrics, comments, and corrections while the owner remains the authority on intent, audience nuance, and what should be retained or rejected.",
+      "learning_rule": "Account learning requires shared evidence and owner feedback. AI-generated pattern guesses are candidates until confirmed by source data or owner judgment.",
+      "risk": "No account data access, Instagram performance integration, or analysis result is demonstrated by this slide."
+    },
+    {
+      "id": 200,
+      "content": "A sponsored Reel claims to show a source-finding method for Japanese Shorts without copyright worries and displays YouTube's Creative Commons filter alongside a PDF lead magnet.",
+      "design": "A black header with white and neon-green text, screen-recording evidence, large captions, and a teal lead-magnet button use a direct tutorial-ad style.",
+      "project_use": "Store only as a source-discovery lead: license status, uploader authority, attribution, modification rights, embedded music, people, brands, territories, and current platform terms must be checked per asset before reuse.",
+      "learning_rule": "A Creative Commons search filter does not automatically make every video safe to reuse. Rights verification belongs to the exact asset and intended use.",
+      "risk": "The no-copyright-worry claim is overbroad. The PDF was not opened, no source was downloaded, and no media was reused or published."
+    }
+  ],
+  "cross_item_learning": [
+    "Hook categories are selectable narrative tools, not universal formulas. They must match topic, audience, account, evidence, and promised payoff.",
+    "A useful open loop specifies what is temporarily withheld, what question it creates, and where the answer is delivered.",
+    "Result-first storytelling can improve clarity for demonstrations, but context, evidence, limitations, and source truth remain mandatory.",
+    "Do not hide sponsorship, safety, material limitations, attribution, or facts needed to interpret the opening honestly.",
+    "Analyze successful posts through structure, save value, comment themes, evidence, media, and available metrics rather than visible views alone.",
+    "AI account analysis is collaborative pattern reading from owner-provided evidence and feedback, not autonomous control of the account.",
+    "Media-discovery filters and creator claims do not establish reuse rights; exact-asset licensing and intended use require verification."
+    ,"YouTube Creative Commons and Google Images usage-rights filters are approved media-discovery channels. Their results enter the candidate pool first and are promoted to production candidates only after source, license, attribution, commercial-use, modification, and embedded-rights checks are recorded."
+  ],
+  "deferred_cross_batch_work": {
+    "status": "deferred_until_all_owner_source_images_are_analyzed",
+    "scope": "Later compare this hook and account-analysis material with earlier framing, narrative, first-screen, comment, and learning examples."
+  },
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "media_downloaded_or_reused": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

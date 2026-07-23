@@ -71,10 +71,58 @@ class Newspaper4kDeepDiscoveryProviderTest(unittest.TestCase):
             "https://cdn.example.com/top.jpg",
             "https://cdn.example.com/gallery.jpg",
         })
-        self.assertTrue(all(item["restriction_reason"] == "media_rights_unverified" for item in images))
+        for image in images:
+            self.assertEqual(image["rights_status"], "source_editorial_usable")
+            self.assertTrue(image["topic_relevant"])
+            self.assertTrue(image["attribution_required"])
+            self.assertEqual(image["attribution_source_url"], REQUEST["source_urls"][0])
+            self.assertFalse(image["publish_authorized"])
+            self.assertFalse(image["reference_only"])
+            self.assertTrue(image["usable_in_production"])
 
         videos = operations["locate_embedded_or_broadcast_video"]["assets"]
         self.assertEqual([item["url"] for item in videos], ["https://www.youtube.com/embed/abc123"])
+        self.assertEqual(videos[0]["rights_status"], "source_editorial_usable")
+        self.assertFalse(videos[0]["publish_authorized"])
+
+    def test_ap_media_remains_reference_only_despite_editorial_candidate_fields(self):
+        class APProvider:
+            name = "ap_fixture"
+
+            def discover(self, account, operation, request):
+                return {
+                    "status": "ok",
+                    "network_used": False,
+                    "assets": [{
+                        "type": "news_image",
+                        "url": "https://ap.example.com/photo.jpg",
+                        "source_url": request["source_urls"][0],
+                        "provider": "Associated Press",
+                        "rights_status": "source_editorial_usable",
+                        "topic_relevant": True,
+                        "attribution_required": True,
+                        "publish_authorized": False,
+                        "reference_only": False,
+                        "usable_in_production": True,
+                    }],
+                }
+
+        result = run_account_deep_discovery(
+            {"accounts": {"A": {"selected": [REQUEST]}}},
+            APProvider(),
+        )
+        assets = [
+            asset
+            for operation in result["accounts"]["A"]["results"][0]["operations"]
+            for asset in operation["assets"]
+        ]
+
+        self.assertTrue(assets)
+        self.assertTrue(all(asset["reference_only"] for asset in assets))
+        self.assertTrue(all(asset["rights_status"] == "reference_only" for asset in assets))
+        self.assertTrue(all(asset["publish_authorized"] is False for asset in assets))
+        self.assertTrue(all(asset["usable_in_production"] is False for asset in assets))
+        self.assertTrue(all(asset["restriction_reason"] == "ap_reference_only" for asset in assets))
 
     def test_missing_and_unsafe_urls_do_not_call_parser(self):
         factory = RecordingFactory()
@@ -93,6 +141,16 @@ class Newspaper4kDeepDiscoveryProviderTest(unittest.TestCase):
         operation = provider.discover("A", "collect_real_comments", REQUEST)
         self.assertEqual(account["error_type"], "unsupported_account")
         self.assertEqual(operation["error_type"], "unsupported_operation")
+
+    def test_account_c_can_parse_article_body_for_copy_evidence(self):
+        factory = RecordingFactory()
+        provider = Newspaper4kDeepDiscoveryProvider(article_factory=factory)
+        result = provider.discover("C", "fetch_article_body", REQUEST)
+
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["assets"][0]["body"], FakeArticle.text)
+        self.assertTrue(result["assets"][0]["reference_only"])
+        self.assertEqual(len(factory.calls), 1)
 
     def test_dependency_and_parse_failures_are_safe(self):
         dependency = Newspaper4kDeepDiscoveryProvider(

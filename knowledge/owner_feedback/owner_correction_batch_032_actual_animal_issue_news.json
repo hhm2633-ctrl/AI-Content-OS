@@ -1,0 +1,16 @@
+{
+  "correction_id": "owner_correction_batch_032_actual_animal_issue_news",
+  "applies_to_sources": [316],
+  "status": "stored_not_runtime_verified",
+  "owner_intent": "이 자료는 민감한 개인 제보를 상품 연결 관점에서 보는 사례가 아니라 실제로 이슈가 된 뉴스 콘텐츠다.",
+  "standing_learning_rules": [
+    "실제로 보도되어 이슈가 된 사건은 뉴스 콘텐츠 후보로 분류한다.",
+    "현장 사진과 원보도 내용을 사용해 핵심 상황을 카드뉴스 또는 짧은 영상으로 재편집할 수 있다.",
+    "원보도의 사실, 인과관계와 전체 맥락을 왜곡하지 않는다.",
+    "방송사, 언론사 또는 확인 가능한 원출처를 유지한다.",
+    "확인된 현장 상황과 후속 조치를 시간순으로 전달할 수 있다.",
+    "이 사례의 핵심 학습점은 상품 연결이 아니라 실제 뉴스의 재구성과 전달이다."
+  ],
+  "runtime_connection": false,
+  "tested": false
+}

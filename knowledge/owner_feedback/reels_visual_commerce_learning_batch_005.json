@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_005",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "visible_metrics_are_observations_not_performance_proof": true,
+    "external_sites_are_references_not_connected_capabilities": true
+  },
+  "batch_character": {
+    "image_prompt_and_tone_selection": [41, 42, 43],
+    "channel_visual_benchmarks": [44, 45, 46, 47],
+    "monetization_ad_reference": [48],
+    "media_asset_sources": [49, 50]
+  },
+  "items": [
+    {
+      "index": 41,
+      "file": "Screenshot_20260705_054701_Instagram.jpg",
+      "type": "image_prompt_reference",
+      "learned_tones": [
+        {
+          "tone": "lifestyle_staging",
+          "fit": ["fashion", "home_interior", "food_and_beverage", "perfume"],
+          "conversion_logic": "sell the viewer a believable life containing the product",
+          "prompt_fragments": [
+            "emotionally warm natural light indoors",
+            "product naturally used in a real space",
+            "warm restrained color palette",
+            "shallow depth of field",
+            "softly blurred background",
+            "editorial magazine photography tone"
+          ]
+        },
+        {
+          "tone": "information_graphic",
+          "fit": ["B2B", "education", "functional_products", "offer_emphasis"],
+          "conversion_logic": "information clarity and proof carry more weight than decorative beauty",
+          "prompt_fragments": [
+            "key specification text overlaid on the product image",
+            "comparison or before-and-after composition",
+            "clean graphic system",
+            "numbers and benefits strongly emphasized",
+            "information readable at a glance"
+          ]
+        }
+      ],
+      "design_observation": "Reusable guide layout uses white cards, orange prompt boxes, bold hierarchy, and copy buttons to turn abstract style advice into executable prompt fragments."
+    },
+    {
+      "index": 42,
+      "file": "Screenshot_20260705_054705_Instagram.jpg",
+      "type": "creative_tone_decision_reference",
+      "decision_rules": [
+        {"condition": "high_consideration_or_premium", "recommended_tones": ["clean_studio", "lifestyle_staging"], "reason": "quality, trust, and considered desire drive the purchase"},
+        {"condition": "low_consideration_or_social_proof_driven", "recommended_tones": ["candid_ugc"], "reason": "believability and peer-like immediacy reduce friction"},
+        {"condition": "function_or_numeric_value_driven", "recommended_tones": ["information_graphic"], "reason": "specifications, benefits, comparisons, and offers are the buying reason"}
+      ],
+      "project_value": "Adds a deterministic tone-selection layer before image prompting instead of choosing a style by vague taste."
+    },
+    {
+      "index": 43,
+      "file": "Screenshot_20260705_054710_Instagram.jpg",
+      "type": "creative_experiment_reference",
+      "rules": [
+        "When two tones are genuinely plausible, prepare both as controlled A/B candidates.",
+        "Keep product, offer, audience, and message stable while changing only the creative tone where possible.",
+        "Let observed response data choose after publishing rather than promoting personal taste to a universal rule.",
+        "Retain the losing variant and context; it may fit a different account, category, or emotional state."
+      ],
+      "design_observation": "A large decision-rule panel converts a long style guide into a fast operational choice, followed by a prompt section for immediate use.",
+      "guardrail": "No response winner can be claimed until real account performance data exists."
+    },
+    {
+      "index": 44,
+      "file": "Screenshot_20260705_055323_YouTube.jpg",
+      "type": "channel_visual_benchmark",
+      "channel": "라이크무비2",
+      "observed_grid_grammar": [
+        "three-column repeated thumbnail system",
+        "black title band above a single expressive face or scene",
+        "white setup phrase followed by yellow punch phrase",
+        "large condensed bold text with very high contrast",
+        "embedded dialogue subtitle supplies a second curiosity layer",
+        "dark source/footer band separates footage from metadata"
+      ],
+      "hook_families": ["competence or backstory reveal", "unexpected visitor", "business curiosity", "rescue", "institutional conflict", "childhood hardship"],
+      "project_value": "Shows how one fixed visual grammar can support many story topics without making every post identical."
+    },
+    {
+      "index": 45,
+      "file": "Screenshot_20260705_055327_YouTube.jpg",
+      "type": "channel_identity_benchmark",
+      "channel": "라이크무비2",
+      "observations": [
+        "The profile repeats the exact thumbnail grammar seen in the grid, creating immediate account recognition.",
+        "Visible profile snapshot shows about 50.6K subscribers and 98 videos; this is a screenshot observation only.",
+        "The channel description is minimal, leaving the thumbnail system and story choices to define the brand."
+      ],
+      "project_value": "Account identity can be held by repeatable typography, color roles, crop logic, and story promise while individual scenes remain variable."
+    },
+    {
+      "index": 46,
+      "file": "Screenshot_20260705_055636_YouTube.jpg",
+      "type": "editorial_positioning_reference",
+      "channel": "몽테라스",
+      "visible_positioning": "이야기를 쌓고 시선을 올립니다. 드라마, 영화, 예능 그냥 보지 않습니다. 한 발 떨어져, 천천히 봅니다.",
+      "project_value": [
+        "Strong model for a story account promise: not merely replaying clips but adding observation, structure, and interpretation.",
+        "The short manifesto can guide topic selection, narration pace, and caption voice across the account."
+      ],
+      "observed_metric": "The screenshot displays 32,067,290 views; treat as a source observation, not a causal quality claim."
+    },
+    {
+      "index": 47,
+      "file": "Screenshot_20260705_055647_YouTube.jpg",
+      "type": "person_centered_entertainment_benchmark",
+      "subject": "Wonhee-focused entertainment grid",
+      "observed_grid_grammar": [
+        "one recurring person anchors account recognition",
+        "black title band with white setup and pink emotional keyword",
+        "expression-first frame selection",
+        "micro-stories vary across personality, habits, relationships, food, and reactions",
+        "small program identity appears consistently below footage"
+      ],
+      "hook_families": ["unexpected private life", "careful relationship behavior", "cute reaction", "health or food habit", "skill reveal", "contrast between desired image and actual personality"],
+      "project_value": "A person-centered stream can remain visually consistent while avoiding repetitive story angles."
+    },
+    {
+      "index": 48,
+      "file": "Screenshot_20260705_234710_Instagram.jpg",
+      "type": "monetization_ad_reference",
+      "visible_hook": "아직도 죽어라 쿠팡만 하세요? 3.3% 말고 33% 받아가세요!",
+      "ad_structure": [
+        "attack the familiar low-return behavior",
+        "use an extreme numeric contrast",
+        "place a familiar entertainment clip behind the interruption",
+        "insert a large locked-offer CTA panel",
+        "push the viewer to learn more"
+      ],
+      "project_value": [
+        "Reference for lead-generation ads around affiliate education or higher-margin partner programs.",
+        "Reference for number-contrast hooks, but the actual percentage must be verified before use."
+      ],
+      "quality_observation": "The screen is visually crowded; the hook is strong but the ad overlay competes with footage and subtitles.",
+      "guardrail": "Do not adopt the 33 percent claim or create an external campaign without verified terms and owner approval."
+    },
+    {
+      "index": 49,
+      "file": "Screenshot_20260707_061243_Instagram.jpg",
+      "type": "media_asset_source_reference",
+      "source": "Gifer",
+      "visible_claim": "Provides old memes through recent viral GIFs with easy downloads for editing use.",
+      "project_value": [
+        "Possible discovery source for reaction, meme, and short looping visual references.",
+        "Useful for concept and motion-reference lookup when a static card needs a motion variant."
+      ],
+      "design_observation": "Pastel field, oversized black condensed source name, centered rounded information card, highlighted text, and page-number badge form a highly reusable resource-list carousel.",
+      "current_state": "reference_only_not_connected_or_verified"
+    },
+    {
+      "index": 50,
+      "file": "Screenshot_20260707_061247_Instagram.jpg",
+      "type": "media_asset_source_reference",
+      "source": "Giphy",
+      "visible_claim": "Searches memes, reactions, stickers, and short clips on a widely known GIF platform.",
+      "project_value": [
+        "Possible discovery source for reaction and motion-reference assets.",
+        "Search vocabulary from the platform can help describe desired expressions and looping actions in generation prompts."
+      ],
+      "design_observation": "The carousel preserves one card system while switching the background from lavender to yellow, demonstrating controlled variety inside a fixed layout.",
+      "current_state": "reference_only_not_connected_or_verified"
+    }
+  ],
+  "cross_batch_learning": [
+    "Prompt generation should begin with a tone decision based on purchase psychology and information needs.",
+    "A/B testing is for genuine ambiguity and must preserve context before interpreting results.",
+    "Account consistency comes from stable typography, color roles, framing, and editorial promise rather than identical topics.",
+    "Person-centered entertainment can diversify through many micro-story families while maintaining one visual identity.",
+    "Monetization hooks require claim verification even when their rhetorical structure is reusable.",
+    "External GIF sites can be stored as discovery references without being represented as connected production assets."
+  ]
+}

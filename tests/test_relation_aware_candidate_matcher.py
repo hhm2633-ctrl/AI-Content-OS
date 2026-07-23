@@ -58,6 +58,39 @@ class RelationSignalExtractionTest(unittest.TestCase):
 
 
 class RelationAwareMatcherTest(unittest.TestCase):
+    def test_owner_reference_learns_indirect_reels_product_bridges(self):
+        cases = (
+            ("장원영 아이브 무대 비하인드", "아이브 공식 굿즈 다이어리", "fandom_merch"),
+            ("장인이 쇠를 망치질해 금속 팬을 만드는 과정", "스테인리스 프라이팬", "material_craft"),
+            ("침대에 누운 연예인의 맨발이 보이는 장면", "풋케어 발 보습 크림", "body_context"),
+            ("스타크래프트 컴퓨터 게임 명승부", "게이밍 키보드 마우스", "activity_tool"),
+            ("귀여운 수달 릴스", "수달 인형", "visual_similarity"),
+            ("공항에서 벌어진 영화 속 장면", "여행용 캐리어 여행가방", "scene_function"),
+            ("천하장사 강호동 과거 영상", "천하장사 소시지", "name_wordplay"),
+            ("자꾸 녹는 초콜릿", "초콜릿 쿠키 간식", "object_adjacent"),
+            ("아이돌 메이크업 백태 방지법", "컬러 캔디 사탕", "color_wordplay"),
+            ("안경 쓴 윤경호가 소지섭에게 서운했던 이유", "패션 안경 안경테", "visible_accessory"),
+            ("아이돌 그룹 RESCENE 이야기", "무선 노래방 마이크", "activity_tool"),
+        )
+        for index, (title, product_name, relation_type) in enumerate(cases):
+            with self.subTest(title=title):
+                products = normalize_brandconnect_catalog({"products": [{
+                    "product_id": f"P-OWNER-{index}",
+                    "name": product_name,
+                    "category": "생활",
+                }]})["products"]
+                outcome = match_candidate_with_relations(
+                    {"id": f"C-OWNER-{index}", "title": title, "category": "릴스"},
+                    products,
+                    relation_index=None,
+                )
+                self.assertEqual(outcome["match_status"], "matched")
+                self.assertIn(
+                    f"owner_association:{relation_type}",
+                    outcome["matches"][0]["match_basis"],
+                )
+                self.assertFalse(outcome["matches"][0]["link_issued"])
+
     def test_care_to_function_bridge_matches_via_relations(self):
         candidate = {"id": "C-1", "title": "운동화 세척과 신발 관리법 총정리", "category": "생활"}
         outcome = match_candidate_with_relations(candidate, PRODUCTS, RELATIONS)

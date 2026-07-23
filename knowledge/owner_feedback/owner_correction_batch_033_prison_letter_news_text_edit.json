@@ -1,0 +1,20 @@
+{
+  "correction_id": "owner_correction_batch_033_prison_letter_news_text_edit",
+  "applies_to": {
+    "batch_id": "reels_visual_commerce_learning_batch_033",
+    "source_ids": [325, 326, 327, 328]
+  },
+  "owner_correction": "저 자료는 사건 당사자가 감옥에 있어 편지로 전한 내용을 뉴스가 텍스트 중심으로 편집해 보도한 사례다.",
+  "supersedes": [
+    "논쟁형 서신 이슈라는 과도한 분류",
+    "별도의 사실 검증·상대방 입장·편집자 요약 구성을 이 사례의 핵심으로 본 해석"
+  ],
+  "standing_learning": [
+    "사건 당사자가 수감되어 직접 인터뷰하기 어려운 경우 편지 내용 자체가 뉴스의 중심 자료가 될 수 있다.",
+    "긴 편지 내용은 여러 텍스트 카드로 나누고 핵심 문장을 색상으로 강조해 보도할 수 있다.",
+    "편지의 의미를 바꾸거나 뉴스 편집자의 새로운 주장으로 확장하지 않고 보도된 내용 범위에서 편집한다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

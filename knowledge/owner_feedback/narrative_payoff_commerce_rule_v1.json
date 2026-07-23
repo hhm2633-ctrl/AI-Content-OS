@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "source_item": 27,
+  "rule": "Commerce matching must follow the complete narrative trajectory, not an isolated negative hook.",
+  "example": {
+    "hook": "한식을 좋아한다고 거짓말친 배우",
+    "hook_function": "negative misdirection that suggests the actor does not like Korean food",
+    "payoff": "거짓말 치다 걸린 배우... 사랑하시는구나",
+    "final_meaning": "the actor likes Korean food beyond ordinary liking",
+    "matched_product": "불고기",
+    "match_basis": "the final positive payoff, Korean-food love"
+  },
+  "runtime_guidance": [
+    "Parse hook, setup, development, reversal, and final emotional meaning before product selection.",
+    "Do not let a negated keyword override the later payoff.",
+    "Attach the product to the resolved meaning when a hook intentionally misdirects the viewer.",
+    "Store both the assistant's initial interpretation and the owner's human-context correction."
+  ]
+}

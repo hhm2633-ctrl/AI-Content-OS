@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_010",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "financial_tool_and_performance_claims_are_unverified_reference_material": true
+  },
+  "items": [
+    {
+      "index": 91,
+      "file": "Screenshot_20260712_075907_Threads.jpg",
+      "type": "agent_skill_standard_reference",
+      "visible_structure": [
+        "one folder represents one skill",
+        "SKILL.md with name and description is the minimum required definition",
+        "scripts, references, and assets are optional supporting folders",
+        "progressive disclosure loads identity first, full guidance after matching, and heavy resources only during execution",
+        "the format is intended to remain usable across multiple agent tools rather than one vendor"
+      ],
+      "project_value": [
+        "Confirms the value of the project's existing narrow skill folders and small context paths.",
+        "Useful rule for keeping hundreds of reusable references without loading all of them into every task.",
+        "The new owner-learning assets should be routed through matching skills instead of injected wholesale."
+      ],
+      "guardrail": "Visible adoption numbers were not independently verified."
+    },
+    {
+      "index": 92,
+      "file": "Screenshot_20260712_080016_Threads.jpg",
+      "type": "parallel_research_reference",
+      "source_project": "ai-berkshire",
+      "visible_claim": "Claude Code investment research using multiple methods and reported historical account results.",
+      "project_value": [
+        "Do not import investment advice or performance claims.",
+        "Extract only the method: parallel independent analysis, conflicting conclusions, and explicit evidence comparison.",
+        "A screenshot of returns is not evidence that the method caused the returns."
+      ]
+    },
+    {
+      "index": 93,
+      "file": "Screenshot_20260712_080020_Threads.jpg",
+      "type": "research_rigor_framework_reference",
+      "visible_methods": [
+        "four distinct analyst perspectives run in parallel and are allowed to disagree",
+        "numeric calculations use deterministic decimal handling and external verification",
+        "evidence is graded by confidence or source quality",
+        "red-line conditions reject a candidate regardless of an attractive score",
+        "reverse-thesis analysis asks what would make the current conclusion fail",
+        "research is decomposed into narrow reusable skills"
+      ],
+      "project_value": [
+        "Apply this structure to high-risk topic selection, source verification, product matching, and major architecture decisions.",
+        "Keep optimistic, skeptical, evidence, and operational perspectives separate until integration review.",
+        "Do not apply a rigid financial rubric to ordinary news or entertainment content."
+      ],
+      "guardrail": "Financial use is outside current project scope; only the research discipline is retained."
+    },
+    {
+      "index": 94,
+      "file": "Screenshot_20260712_080129_Threads.jpg",
+      "type": "codebase_intelligence_candidate",
+      "tool": "codebase-memory-mcp",
+      "visible_claims": [
+        "cross-service call relationships modeled through a shared graph store",
+        "HTTP, gRPC, GraphQL, tRPC, and Socket.IO event relationships extracted across languages",
+        "Docker and Kubernetes artifacts represented in the same dependency graph",
+        "automatic initial indexing and background re-indexing on Git changes",
+        "self-update command and reduced configuration burden"
+      ],
+      "project_value": [
+        "Potential reference for tracing WorkflowEngine, modules, services, and data contracts.",
+        "The project already exposes Graphify capability, so overlap and added maintenance must be assessed before another graph indexer is considered."
+      ],
+      "state": "candidate_not_installed_or_tested_in_this_batch"
+    },
+    {
+      "index": 95,
+      "file": "Screenshot_20260712_080156_Threads.jpg",
+      "type": "token_efficiency_candidate",
+      "tool": "caveman",
+      "visible_methods": [
+        "compress ordinary explanatory prose while preserving code, commands, and errors byte-for-byte",
+        "use task-specific compression levels from light filler removal to extreme shorthand",
+        "show before-and-after token counts"
+      ],
+      "project_value": [
+        "Potentially useful for long tool outputs, handoff summaries, and repetitive agent explanation during weekly token constraints.",
+        "Compression level should depend on whether the text is brainstorming, review, execution instructions, or an owner-facing report."
+      ],
+      "guardrail": "Reported quality and token reductions were not independently verified; compression must not remove uncertainty, approvals, evidence, or owner corrections."
+    },
+    {
+      "index": 96,
+      "file": "Screenshot_20260712_080200_Threads.jpg",
+      "type": "token_efficiency_candidate",
+      "tool": "caveman",
+      "visible_features": [
+        "real-time savings and estimated cost display",
+        "compression of long memory or instruction files",
+        "compression of MCP tool descriptions",
+        "automatic detection across several coding agents"
+      ],
+      "project_value": [
+        "Most useful as an optional transformation of duplicated prose, never as the canonical copy of project rules.",
+        "Canonical owner rules, safety boundaries, file paths, commands, and exact status must remain lossless."
+      ],
+      "state": "reference_only_not_installed_or_tested_in_this_batch"
+    },
+    {
+      "index": 97,
+      "file": "Screenshot_20260712_080325_Threads.jpg",
+      "type": "agent_isolation_candidate",
+      "tool": "CubeSandbox",
+      "visible_claims": [
+        "fast cold start and small per-instance footprint",
+        "high sandbox density on one node",
+        "guest-kernel and eBPF-based isolation",
+        "drop-in replacement path for an existing E2B-style SDK"
+      ],
+      "project_value": "Possible future reference for running untrusted or experimental agent code away from the owner workstation.",
+      "guardrail": "Isolation and performance claims require security review and local feasibility testing before use."
+    },
+    {
+      "index": 98,
+      "file": "Screenshot_20260712_080731_Threads.jpg",
+      "type": "web_research_collection_candidate",
+      "tool": "Firecrawl",
+      "visible_claims": [
+        "search, page collection, crawling, and structured extraction in one workflow",
+        "LLM-ready JSON or markdown outputs",
+        "competitor monitoring, lead collection, and research automation",
+        "reported official-document web coverage and latency metrics"
+      ],
+      "project_value": [
+        "Potential source adapter for bounded research collection when existing project collectors cannot access a needed site.",
+        "Useful output contract idea: source URL, extracted text, structured fields, crawl timestamp, and failure reason."
+      ],
+      "guardrail": "Do not replace stable source-specific parsers or start broad crawling based only on the screenshot."
+    },
+    {
+      "index": 99,
+      "file": "Screenshot_20260712_080735_Threads.jpg",
+      "type": "document_and_web_extraction_candidate",
+      "tool": "Firecrawl",
+      "visible_claims": [
+        "interacts with difficult webpages as part of collection",
+        "extracts web documents and includes PDF and DOCX parsing",
+        "GitHub source identified as firecrawl/firecrawl"
+      ],
+      "project_value": [
+        "Possible fallback for source pages, PDFs, or documents that current collectors cannot parse.",
+        "Any integration should preserve source attribution, cache behavior, retry limits, and diagnostic reasons."
+      ],
+      "state": "candidate_not_connected_or_tested_in_this_batch"
+    },
+    {
+      "index": 100,
+      "file": "Screenshot_20260712_080926_Threads.jpg",
+      "type": "external_connector_architecture_reference",
+      "tools": [
+        {"name": "OpenConnector", "visible_claim": "one gateway for many SaaS accounts through SDK, CLI, MCP, HTTP, or OpenAPI", "project_value": "reference for centralized connection, scope, and audit-log management rather than giving every agent raw credentials"},
+        {"name": "Graphify", "visible_claim": "turn a folder into a knowledge graph usable by a coding agent", "project_value": "directly relevant because Graphify capability is already available in the project environment, though it was not exercised in this batch"}
+      ],
+      "guardrail": "External SaaS writes, credentials, scopes, and connector installation require explicit review and approval."
+    }
+  ],
+  "cross_batch_learning": [
+    "Large learning libraries require progressive disclosure so only matching references enter task context.",
+    "Parallel analysis is valuable when perspectives are independent and disagreement survives until integration.",
+    "Numeric claims require deterministic calculation, evidence grading, and failure-oriented checks.",
+    "Token compression may remove redundancy but must never compress away canonical rules or approval boundaries.",
+    "New graph, crawler, sandbox, and connector tools should be evaluated against capabilities already present before installation.",
+    "External app access should be centralized through scopes and logs rather than raw credentials distributed to agents."
+  ]
+}

@@ -107,14 +107,59 @@ class LayoutRuleEngine:
         self.rules = self.template.get("layouts") or self.FALLBACK_RULES
         self.default_layout = self.template.get("default_layout", self.DEFAULT_LAYOUT)
 
-    def get_rule(self, layout_type: str) -> Dict[str, Any]:
+    SAFE_OVERRIDE_FIELDS = {
+        "highlight_color",
+        "background_tone",
+        "image_ratio",
+        "cta_position",
+    }
+
+    def get_rule(
+        self,
+        layout_type: str,
+        style_overrides: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         try:
-            return self._get_rule(str(layout_type or ""))
+            resolved = self._get_rule(str(layout_type or ""))
+            return self._apply_safe_overrides(resolved, style_overrides or {})
         except Exception:
             fallback_rule = dict(self.FALLBACK_RULES[self.DEFAULT_LAYOUT])
             fallback_rule["layout_type"] = self.DEFAULT_LAYOUT
             fallback_rule["fallback_used"] = True
             return fallback_rule
+
+    def _apply_safe_overrides(
+        self,
+        rule: Dict[str, Any],
+        style_overrides: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        resolved = dict(rule)
+        applied: Dict[str, Any] = {}
+        for key in self.SAFE_OVERRIDE_FIELDS:
+            value = style_overrides.get(key)
+            if not isinstance(value, str) or not value.strip():
+                continue
+            if key == "highlight_color":
+                text = value.strip()
+                if len(text) != 7 or not text.startswith("#"):
+                    continue
+                try:
+                    int(text[1:], 16)
+                except ValueError:
+                    continue
+                value = text.lower()
+            elif key == "background_tone":
+                allowed = {item.get("background_tone") for item in self.rules.values() if isinstance(item, dict)}
+                if value not in allowed:
+                    continue
+            elif key == "image_ratio" and value not in {"1:1", "4:5"}:
+                continue
+            elif key == "cta_position" and value not in {"bottom_left", "bottom_center", "bottom_right"}:
+                continue
+            resolved[key] = value
+            applied[key] = value
+        resolved["approved_style_overrides"] = applied
+        return resolved
 
     def _get_rule(self, layout_type: str) -> Dict[str, Any]:
         rule = self.rules.get(layout_type)

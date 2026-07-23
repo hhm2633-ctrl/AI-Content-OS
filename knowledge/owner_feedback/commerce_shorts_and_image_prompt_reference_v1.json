@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "status": "approved_learning_material",
+  "source_items": [36, 37, 39, 40],
+  "commerce_shorts_monetization": {
+    "source_items": [36, 37],
+    "pipeline": [
+      "select a naturally compatible topic and product",
+      "reuse approved local Brand Connect product data",
+      "resolve the product or affiliate URL only after approval",
+      "extract verifiable product images, functions, price, and evidence",
+      "choose UGC, comparison, demonstration, or lifestyle story format",
+      "produce script, storyboard, and short-form asset",
+      "adapt the same evidence into Reels, Shorts, and blog assets",
+      "publish or issue affiliate links only after owner approval",
+      "measure real clicks and conversions before promoting a pattern"
+    ],
+    "revenue_paths": [
+      "Coupang Partners as the first locally relevant route",
+      "Amazon Associates as a possible later international route",
+      "LinkPrice as a possible later domestic network route"
+    ],
+    "current_state": "reference_only_not_runtime_verified"
+  },
+  "image_prompt_library": {
+    "source_items": [39, 40],
+    "purpose": "Convert abstract design intent into reusable, concrete image-generation instructions.",
+    "prompt_dimensions": [
+      "category and price position",
+      "conversion intent and emotional tone",
+      "camera type, angle, distance, and composition",
+      "lighting direction, softness, and color temperature",
+      "background, negative space, and product placement",
+      "surface, material, texture, grain, and exposure",
+      "realism level and allowed imperfections",
+      "text-safe area and carousel crop requirements"
+    ],
+    "recipes": [
+      {
+        "id": "candid_ugc",
+        "fit": ["app", "lifestyle", "review", "low_price_consumer_goods"],
+        "prompt_fragments": [
+          "casual smartphone photo",
+          "natural available light and believable shadow",
+          "slight grain and mild exposure variation",
+          "unpolished but intentional framing",
+          "minor real-world imperfection",
+          "no heavy beauty filter",
+          "credible everyday setting"
+        ],
+        "avoid": ["perfect studio symmetry", "plastic skin", "overprocessed commercial gloss"]
+      },
+      {
+        "id": "clean_studio",
+        "fit": ["skincare", "jewelry", "technology", "premium_goods"],
+        "prompt_fragments": [
+          "minimal solid-color background",
+          "front-facing product hero composition",
+          "large controlled negative space",
+          "uniform softbox lighting",
+          "precise edge definition",
+          "clearly visible material and surface detail",
+          "restrained premium styling"
+        ],
+        "avoid": ["busy props", "muddy texture", "unclear product silhouette"]
+      },
+      {
+        "id": "lifestyle_staging",
+        "fit": ["fashion", "home_interior", "food_and_beverage", "perfume"],
+        "prompt_fragments": [
+          "product naturally placed in a believable lived-in space",
+          "warm ambient light",
+          "editorial but attainable lifestyle mood",
+          "environment supports the product function",
+          "spontaneous-looking composition with deliberate balance",
+          "sell the feeling of a life containing the product"
+        ],
+        "avoid": ["floating product with no context", "unrelated decorative props", "cold generic showroom"]
+      }
+    ],
+    "unknown_reference": "The source mentions four creative tones, but the fourth was not visible and remains intentionally unfilled.",
+    "current_state": "stored_prompt_reference_not_runtime_connected_or_tested"
+  }
+}

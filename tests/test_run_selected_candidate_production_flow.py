@@ -1,6 +1,9 @@
 import unittest
 
-from scripts.run_selected_candidate_production_flow import run_owner_selected_flow
+from scripts.run_selected_candidate_production_flow import (
+    AccountProviderRouter,
+    run_owner_selected_flow,
+)
 
 
 class LocalProvider:
@@ -27,6 +30,30 @@ class LocalProvider:
 
 
 class RunSelectedCandidateProductionFlowTest(unittest.TestCase):
+    def test_router_can_override_one_account_operation(self):
+        default = LocalProvider()
+        article = LocalProvider()
+        router = AccountProviderRouter(
+            {"C": default},
+            {("C", "fetch_article_body"): article},
+        )
+
+        router.discover("C", "fetch_article_body", {
+            "candidate_id": "beauty-1",
+            "title": "뷰티 기사",
+            "category": "beauty",
+            "source_urls": ["https://example.com/beauty"],
+        })
+        router.discover("C", "collect_official_video", {
+            "candidate_id": "beauty-1",
+            "title": "뷰티 기사",
+            "category": "beauty",
+            "source_urls": ["https://example.com/beauty"],
+        })
+
+        self.assertEqual(article.calls[0][1], "fetch_article_body")
+        self.assertEqual(default.calls[0][1], "collect_official_video")
+
     def test_owner_queue_reaches_deep_discovery_without_field_loss(self):
         queue = {
             "schema_version": "owner_ranked_deep_dive_queue_v1",
@@ -45,7 +72,7 @@ class RunSelectedCandidateProductionFlowTest(unittest.TestCase):
         result = run_owner_selected_flow(queue, provider)
 
         self.assertEqual("render_inputs_ready", result["status"])
-        self.assertEqual(3, len(provider.calls))
+        self.assertEqual(5, len(provider.calls))
         first_request = provider.calls[0][2]
         self.assertEqual("news-1", first_request["candidate_id"])
         self.assertEqual("검증 뉴스", first_request["title"])

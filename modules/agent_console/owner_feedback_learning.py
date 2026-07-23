@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 
-SCHEMA_VERSION = "cardnews_owner_learning_index_v3"
+SCHEMA_VERSION = "cardnews_owner_learning_index_v4"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_FEEDBACK_PATH = (
     REPOSITORY_ROOT / "knowledge" / "owner_feedback" / "cardnews_owner_feedback.jsonl"
@@ -47,6 +47,12 @@ _EXPLICIT_RULE_TYPE_TOKENS = (
 _TRACE_TEXT_FIELDS = (
     "job_id", "result_receipt_id", "result_status", "prompt_pack_sha256", "handoff_path",
 )
+_SEMANTIC_STOPWORDS = {
+    "owner", "corpus", "rule", "card", "news", "content", "project", "learning",
+    "카드뉴스", "콘텐츠", "프로젝트", "학습", "규칙", "적용", "사용", "한다",
+}
+_VARIABLE_COUNT_MARKERS = ("가변", "variable", "정보량", "자료량", "근거량", "고정하지")
+_FIXED_COUNT_RE = re.compile(r"(?:항상|무조건|고정).{0,12}(?:[0-9]{1,2}\s*장|슬라이드)|(?:4|5|10|20)\s*장\s*(?:고정|으로)")
 
 
 def _text(value: Any) -> str:
@@ -168,6 +174,9 @@ def _event_categories(event: Mapping[str, Any]) -> list[str]:
     if raw_category == "agent_orchestration":
         return []
     if raw_category == "multi_account":
+        for category in EXECUTION_CATEGORIES:
+            if category in applies:
+                categories.append(category)
         if "account_a" in applies:
             categories.append("news")
         if "account_b" in applies:
@@ -203,6 +212,37 @@ def _rule_text(event: Mapping[str, Any]) -> str:
     return " ".join(part for part in parts if part)[:1200]
 
 
+def _rule_semantic_tokens(value: Any) -> set[str]:
+    return {
+        token
+        for token in _tokens(value)
+        if token not in _SEMANTIC_STOPWORDS and len(token) >= 2
+    }
+
+
+def _rule_family_and_direction(rule: str) -> tuple[str | None, str | None]:
+    lowered = rule.casefold()
+    if any(marker in lowered for marker in _VARIABLE_COUNT_MARKERS):
+        return "slide_count", "variable"
+    if _FIXED_COUNT_RE.search(lowered):
+        return "slide_count", "fixed"
+    return None, None
+
+
+def _categories_overlap(left: Mapping[str, Any], right: Mapping[str, Any]) -> bool:
+    return bool(set(left.get("categories", [])) & set(right.get("categories", [])))
+
+
+def _semantic_duplicate(left: Mapping[str, Any], right: Mapping[str, Any]) -> bool:
+    if not _categories_overlap(left, right):
+        return False
+    left_tokens = set(left.get("semantic_tokens", []))
+    right_tokens = set(right.get("semantic_tokens", []))
+    common = left_tokens & right_tokens
+    union = left_tokens | right_tokens
+    return len(common) >= 6 and bool(union) and len(common) / len(union) >= 0.82
+
+
 def classify_feedback_event(event: Mapping[str, Any], *, sequence: int = 0) -> dict[str, Any]:
     """Return a deterministic staged learning record for one feedback event."""
 
@@ -218,6 +258,18 @@ def classify_feedback_event(event: Mapping[str, Any], *, sequence: int = 0) -> d
     candidate_only = feedback_type in _CANDIDATE_ONLY_TYPES
     hypothesis = status == "HYPOTHESIS_ONLY" or "hypothesis" in feedback_type
     rule = _rule_text(event)
+    rule_family, rule_direction = _rule_family_and_direction(rule)
+    semantic_tokens = sorted(
+        _rule_semantic_tokens(
+            " ".join(
+                [
+                    _text(event.get("title")),
+                    rule,
+                    " ".join(_string_list(event.get("applies_to"))),
+                ]
+            )
+        )
+    )
 
     if not event_id or not feedback_type:
         stage = "REJECTED_INVALID"
@@ -262,6 +314,9 @@ def classify_feedback_event(event: Mapping[str, Any], *, sequence: int = 0) -> d
         "categories": categories,
         "applies_to": _string_list(event.get("applies_to")),
         "rule": rule,
+        "rule_family": rule_family,
+        "rule_direction": rule_direction,
+        "semantic_tokens": semantic_tokens,
         "stage": stage,
         "active": active,
         "stage_reason": reason,
@@ -316,6 +371,44 @@ def build_owner_learning_index(rows: Iterable[Mapping[str, Any]]) -> dict[str, A
             prior["stage_reason"] = f"duplicate_replaced_by:{record['learning_id']}"
         newest_by_fingerprint[record["fingerprint"]] = record
 
+    semantic_duplicate_count = 0
+    active_records = [record for record in records if record["active"]]
+    for index, current in enumerate(active_records):
+        if not current["active"]:
+            continue
+        for prior in active_records[:index]:
+            if not prior["active"]:
+                continue
+            if _semantic_duplicate(prior, current):
+                prior["active"] = False
+                prior["stage"] = "SUPERSEDED_SEMANTIC_DUPLICATE"
+                prior["stage_reason"] = f"semantic_duplicate_replaced_by:{current['learning_id']}"
+                semantic_duplicate_count += 1
+
+    conflict_resolved_count = 0
+    for category in EXECUTION_CATEGORIES:
+        scoped = [
+            record
+            for record in records
+            if record["active"]
+            and category in record["categories"]
+            and record.get("rule_family") == "slide_count"
+            and record.get("rule_direction") in {"variable", "fixed"}
+        ]
+        if not scoped:
+            continue
+        winner = max(scoped, key=lambda record: int(record.get("sequence") or 0))
+        for record in scoped:
+            if record is winner or record.get("rule_direction") == winner.get("rule_direction"):
+                continue
+            record["active"] = False
+            record["stage"] = "SUPERSEDED_CONFLICT"
+            record["stage_reason"] = (
+                f"conflict:{category}:slide_count:{record.get('rule_direction')}"
+                f"_replaced_by_{winner.get('rule_direction')}:{winner['learning_id']}"
+            )
+            conflict_resolved_count += 1
+
     categories = {
         category: [
             record["learning_id"]
@@ -339,6 +432,8 @@ def build_owner_learning_index(rows: Iterable[Mapping[str, Any]]) -> dict[str, A
             "feedback_event_count": len(records),
             "active_owner_rule_count": sum(1 for record in records if record["active"]),
             "stage_counts": stage_counts,
+            "semantic_duplicate_count": semantic_duplicate_count,
+            "conflict_resolved_count": conflict_resolved_count,
         },
         "categories": categories,
         "records": records,

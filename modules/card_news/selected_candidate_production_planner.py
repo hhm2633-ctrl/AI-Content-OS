@@ -230,9 +230,22 @@ def _story_slides(
 def _style_slides(
     title: str,
     assets: Sequence[Mapping[str, Any]],
+    key_points: Sequence[str],
 ) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     slides = [_cover(title, assets)]
     motion_plan: List[Dict[str, Any]] = []
+    primary_asset_refs = list(slides[0].get("asset_refs") or [])
+    for position, key_point in enumerate(key_points[:19], start=1):
+        slides.append(
+            {
+                "slide_role": "source_context",
+                "media_type": "editorial",
+                "asset_refs": primary_asset_refs,
+                "copy_source": "deep_discovery_bundle.key_points",
+                "body": key_point,
+                "content_unit": position,
+            }
+        )
     gallery_images = [
         asset
         for asset in assets
@@ -385,7 +398,7 @@ def build_selected_candidate_production_plan(
         slide_plan = _story_slides(title, assets, scenes, comments)
         content_kind = "story_relationship_dopamine_entertainment"
     else:
-        slide_plan, motion_plan = _style_slides(title, assets)
+        slide_plan, motion_plan = _style_slides(title, assets, key_points)
         content_kind = "fashion_beauty_entertainment"
 
     if not is_allowed_card_slide_count(len(slide_plan)):

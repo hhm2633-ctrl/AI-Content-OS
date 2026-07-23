@@ -57,6 +57,16 @@ def execute(
         catalog,
         relation_index=function_relations["relations"],
     )
+    relation_index_supplied = bool(function_relations.get("relations"))
+    relation_signal_annotation_count = sum(
+        1
+        for item in brandconnect.get("annotations", [])
+        if isinstance(item, dict) and item.get("relation_signals_used")
+    )
+    relation_index_connected = (
+        relation_index_supplied
+        and relation_signal_annotation_count > 0
+    )
     selection = select_owner_ranked_final_candidates(queue, brandconnect)
 
     story_state = new_engine_state()
@@ -97,7 +107,9 @@ def execute(
             "network_used": brandconnect.get("network_used"),
             "link_issuance": brandconnect.get("link_issuance"),
             "publishing": brandconnect.get("publishing"),
-            "relation_index_connected": True,
+            "relation_index_supplied": relation_index_supplied,
+            "relation_index_connected": relation_index_connected,
+            "relation_signal_annotation_count": relation_signal_annotation_count,
             "relation_count": function_relations["relation_count"],
             "relation_profile_counts": function_relations["profile_counts"],
         },

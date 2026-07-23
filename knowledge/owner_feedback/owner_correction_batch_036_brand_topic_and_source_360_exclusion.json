@@ -1,0 +1,19 @@
+{
+  "correction_id": "owner_correction_batch_036_brand_topic_and_source_360_exclusion",
+  "applies_to": {
+    "batch_id": "reels_visual_commerce_learning_batch_036",
+    "source_ids": [351, 352, 353, 354, 355, 356, 357, 360]
+  },
+  "owner_correction": [
+    "패션·뷰티 계정에서 브랜드 소개 자체를 콘텐츠 주제로 사용할 수 있다.",
+    "360번 분석 내용은 학습자료에서 삭제한다."
+  ],
+  "standing_learning": [
+    "패션·뷰티 콘텐츠는 개별 상품뿐 아니라 브랜드 정체성, 성장, 가격 전략, 디자인 언어, 대표 제품과 추천 대상을 주제로 다룰 수 있다.",
+    "360번은 학습 대상에서 제외하며 원본 파일은 변경하지 않는다."
+  ],
+  "excluded_source_ids": [360],
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

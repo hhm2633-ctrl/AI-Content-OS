@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "rule_id": "licensed_media_discovery_scope_v1",
+  "status": "owner_confirmed_learning_rule",
+  "owner_intent": "Include YouTube Creative Commons and Google Images usage-rights results in the project's media research scope, while separating discovery candidates from assets verified for production use.",
+  "approved_discovery_channels": [
+    {
+      "channel": "YouTube Creative Commons",
+      "discovery_method": "Use YouTube's Creative Commons search filter to find videos marked with the Creative Commons Attribution license.",
+      "default_license_signal": "CC BY",
+      "candidate_uses": [
+        "topic and scene research",
+        "reference discovery",
+        "video or still-frame candidate discovery",
+        "source leads for Shorts, Reels, CardNews, blog, and editorial graphics"
+      ],
+      "required_candidate_checks": [
+        "Confirm the video's displayed license and description on the current source page.",
+        "Record title, uploader, source URL, license, access date, and required attribution.",
+        "Check whether the uploader appears to control the included video, audio, images, and other components.",
+        "Check embedded music, broadcasts, films, photographs, people, brands, privacy, and other third-party elements separately.",
+        "Confirm that the intended modification, commercial context, platform, and attribution comply with the license.",
+        "Keep reuse permission separate from YouTube reused-content monetization eligibility."
+      ],
+      "official_reference": "https://support.google.com/youtube/answer/2797468"
+    },
+    {
+      "channel": "Google Images usage rights",
+      "discovery_method": "Use Google Images Tools and Usage rights to find images with attached Creative Commons or commercial and other license information.",
+      "license_signals": ["Creative Commons licenses", "Commercial or other licenses"],
+      "candidate_uses": [
+        "topic-connected image research",
+        "photography, illustration, diagram, texture, and public-domain lead discovery",
+        "CardNews, blog, editorial graphic, thumbnail, and scene-reference candidate discovery"
+      ],
+      "required_candidate_checks": [
+        "Open License details instead of relying on the thumbnail or filter label.",
+        "Confirm the license with both the license provider and the host page.",
+        "Record creator, original host, source URL, license URL, access date, and attribution format.",
+        "Confirm commercial-use permission, modification permission, attribution, share-alike, and no-derivatives conditions where applicable.",
+        "Check whether the host or uploader has authority over the image and any recognizable person, artwork, logo, product, property, or embedded work.",
+        "Do not assume that free access or a Google result means unrestricted use."
+      ],
+      "official_reference": "https://support.google.com/websearch/answer/29508"
+    }
+  ],
+  "asset_record_fields": [
+    "discovery_channel",
+    "search_query",
+    "asset_title",
+    "creator_or_uploader",
+    "original_source_url",
+    "host_page_url",
+    "license_type",
+    "license_url",
+    "license_provider",
+    "commercial_use_allowed",
+    "modification_allowed",
+    "attribution_required",
+    "attribution_text",
+    "share_alike_or_other_conditions",
+    "embedded_audio_or_third_party_elements",
+    "recognizable_people_brands_or_property",
+    "accessed_at",
+    "verification_status",
+    "intended_project_use"
+  ],
+  "verification_states": [
+    {
+      "state": "discovered",
+      "meaning": "Found through a license-related search filter but source terms have not yet been checked."
+    },
+    {
+      "state": "license_page_checked",
+      "meaning": "The current license details and host page were opened and recorded."
+    },
+    {
+      "state": "component_risk_checked",
+      "meaning": "Embedded media, people, brands, attribution, modification, and intended-use conditions were reviewed."
+    },
+    {
+      "state": "production_candidate",
+      "meaning": "The asset has enough recorded evidence for owner review as a production candidate."
+    },
+    {
+      "state": "owner_approved_for_use",
+      "meaning": "The owner approved the exact asset and intended use; this does not by itself mean it was published."
+    },
+    {
+      "state": "used_with_attribution",
+      "meaning": "The exact licensed asset was used and its required attribution was preserved in the delivery record."
+    }
+  ],
+  "operating_rules": [
+    "Use both channels to widen legitimate media discovery, especially when topic-connected official imagery is unavailable.",
+    "Prefer the original creator, institution, official brand, broadcaster, or primary host over mirrors and reposts.",
+    "Do not download every search result; collect only relevant candidates with recorded source and license metadata.",
+    "Do not call an asset copyright-free when it is licensed with conditions. Use the exact license name and conditions.",
+    "Discovery and research may proceed within the approved source-analysis task, but downloading for production, modification, external upload, or publication follows the applicable owner approval gate.",
+    "License terms and platform policies can change, so verify them at the time of intended use."
+  ],
+  "runtime_connected": false,
+  "search_pipeline_implemented": false,
+  "tested": false,
+  "production_asset_verified": false
+}

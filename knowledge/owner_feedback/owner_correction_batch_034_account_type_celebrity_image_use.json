@@ -1,0 +1,20 @@
+{
+  "correction_id": "owner_correction_batch_034_account_type_celebrity_image_use",
+  "applies_to": {
+    "batch_id": "reels_visual_commerce_learning_batch_034",
+    "source_ids": [332, 333, 334, 335, 336, 337, 338, 339, 340]
+  },
+  "owner_correction": "332~337은 매거진 계정이고 338~340은 이슈짤·도파민툰 계정이다. 두 계정 모두 문제가 되지 않는 범위에서 연예인 이미지를 사용할 수 있다.",
+  "supersedes": [
+    "두 사례를 하나의 일반 연예 근황 유형으로 묶은 해석",
+    "계정별 편집 목적을 구분하지 않은 연예인 이미지 활용 규칙"
+  ],
+  "standing_learning": [
+    "매거진 계정은 연예인 이미지를 스타일, 분위기와 비주얼 큐레이션 중심으로 편집한다.",
+    "이슈짤·도파민툰 계정은 연예인 이미지를 강한 첫 장과 관련 장면의 이슈 전개에 활용한다.",
+    "두 계정 모두 콘텐츠 주제와 관련된 연예인 이미지는 문제가 되지 않는 범위에서 유연하게 사용할 수 있다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

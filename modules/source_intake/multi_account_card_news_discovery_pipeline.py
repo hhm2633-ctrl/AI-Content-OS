@@ -18,6 +18,9 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence
 from modules.card_news.account_variable_slide_planner import (
     run_account_variable_slide_planner,
 )
+from modules.card_news.learning_design_compiler import (
+    compile_learning_driven_blueprint,
+)
 from modules.source_intake.account_candidate_router import run_account_candidate_router
 from modules.source_intake.account_instagram_pattern_binder import (
     run_account_instagram_pattern_binder,
@@ -34,6 +37,11 @@ from modules.source_intake.watch_candidate_review_queue import (
 
 
 MULTI_ACCOUNT_DISCOVERY_PIPELINE_VERSION = "multi_account_card_news_discovery_pipeline_v1"
+DEEP_ACCOUNT_IDS = {
+    "account_a_news_incident": "A",
+    "account_b_issue_story": "B",
+    "account_c_beauty_fashion": "C",
+}
 
 
 def _text(value: Any) -> str:
@@ -152,11 +160,12 @@ def _binding_for_topic(
     topic: Mapping[str, Any],
     binder_result: Optional[Mapping[str, Any]],
 ) -> tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
-    """Return a consumable production binding and the full reference record.
+    """Return planner guidance and the full evidence reference record.
 
-    The current binder emits role-level evidence references rather than a full
-    slide-pattern definition.  Reference/CANDIDATE records are intentionally
-    not converted into a planner binding.
+    Role-level CANDIDATE/VERIFIED records remain reference-tier evidence, but
+    their approved guidance is no longer discarded before planning.  The
+    planner receives the guidance separately from a production pattern so it
+    cannot be mistaken for a promoted or performance-validated layout.
     """
 
     if not isinstance(binder_result, Mapping):
@@ -178,12 +187,55 @@ def _binding_for_topic(
         ):
             continue
         reference = copy.deepcopy(dict(raw_binding))
-        if raw_binding.get("production_planning_eligible") is not True:
+        role_guidance: Dict[str, Dict[str, Any]] = {}
+        roles = raw_binding.get("roles")
+        if isinstance(roles, Mapping):
+            for role, raw_role in roles.items():
+                if not isinstance(raw_role, Mapping) or raw_role.get("bound") is not True:
+                    continue
+                recommended_action = _text(raw_role.get("recommended_action"))
+                if not recommended_action:
+                    continue
+                role_guidance[str(role)] = {
+                    "pattern_id": copy.deepcopy(raw_role.get("pattern_id")),
+                    "pattern_name": copy.deepcopy(raw_role.get("pattern_name")),
+                    "pattern_status": copy.deepcopy(raw_role.get("pattern_status")),
+                    "binding_tier": copy.deepcopy(raw_role.get("binding_tier")),
+                    "recommended_action": recommended_action,
+                    "prohibited_actions": copy.deepcopy(raw_role.get("prohibited_actions", [])),
+                    "provenance": copy.deepcopy(raw_role.get("provenance", {})),
+                }
+                for field in (
+                    "visual_direction",
+                    "emotion",
+                    "mood",
+                    "palette",
+                    "palette_intent",
+                    "color_palette",
+                    "visual_relevance_labels",
+                ):
+                    if field in raw_role:
+                        role_guidance[str(role)][field] = copy.deepcopy(
+                            raw_role.get(field)
+                        )
+        if not role_guidance:
+            reference["planner_bridge_status"] = "no_role_guidance_available"
             return None, reference
-        # A future promoted binding still needs a concrete slide-pattern
-        # definition before the variable-slide planner may consume it.
-        reference["planner_bridge_status"] = "production_binding_requires_slide_pattern_definition"
-        return None, reference
+
+        binding = {
+            "status": "reference_guidance",
+            "mode": "reference_guidance",
+            "account_id": copy.deepcopy(raw_binding.get("account_id")),
+            "candidate_id": copy.deepcopy(raw_binding.get("candidate_id")),
+            "cluster_id": copy.deepcopy(raw_binding.get("cluster_id")),
+            "primary_category": copy.deepcopy(raw_binding.get("primary_category")),
+            "production_planning_eligible": raw_binding.get("production_planning_eligible") is True,
+            "reference_only": raw_binding.get("production_planning_eligible") is not True,
+            "role_guidance": role_guidance,
+        }
+        reference["planner_bridge_status"] = "reference_guidance_supplied"
+        reference["planner_guidance_roles"] = sorted(role_guidance)
+        return binding, reference
     return None, None
 
 
@@ -208,14 +260,212 @@ def _build_slide_plans(
                 )
                 plan["instagram_binding_supplied"] = binding is not None
                 plan["instagram_pattern_reference"] = reference
-                plan["instagram_pattern_consumed"] = binding is not None
+                plan["instagram_pattern_consumed"] = bool(
+                    plan.get("learning_guidance_consumed")
+                    or (
+                        binding is not None
+                        and plan.get("selected_pattern", {}).get("source")
+                        == "instagram_pattern_binding"
+                    )
+                )
                 if reference is not None and binding is None:
                     plan["instagram_pattern_nonconsumption_reason"] = (
-                        "reference_only_or_missing_concrete_slide_pattern"
+                        "no_usable_role_guidance_or_concrete_slide_pattern"
                     )
+                plan["production_blueprint"] = compile_learning_driven_blueprint(
+                    topic,
+                    plan,
+                    pattern_reference=reference,
+                )
                 account_plans.append(plan)
         plans[str(account_id)] = account_plans
     return plans
+
+
+def _source_urls(topic: Mapping[str, Any]) -> List[str]:
+    urls: List[str] = []
+    for value in (topic.get("link"), topic.get("url")):
+        text = _text(value)
+        if text and text not in urls:
+            urls.append(text)
+    for reference in topic.get("source_refs", []):
+        if not isinstance(reference, Mapping):
+            continue
+        text = _text(reference.get("link") or reference.get("url"))
+        if text and text not in urls:
+            urls.append(text)
+    return urls
+
+
+def _build_deep_discovery_requests(top_result: Mapping[str, Any]) -> Dict[str, Any]:
+    requests: List[Dict[str, Any]] = []
+    top_by_account = top_result.get("top_by_account")
+    if isinstance(top_by_account, Mapping):
+        for account_id, topics in top_by_account.items():
+            deep_account = DEEP_ACCOUNT_IDS.get(str(account_id))
+            if not deep_account or not isinstance(topics, list):
+                continue
+            for topic in topics:
+                if not isinstance(topic, Mapping):
+                    continue
+                candidate_id = _text(topic.get("candidate_id"))
+                if not candidate_id:
+                    continue
+                requests.append(
+                    {
+                        "account": deep_account,
+                        "candidate_id": candidate_id,
+                        "title": _text(topic.get("title")),
+                        "category": _text(topic.get("primary_category")),
+                        "source_urls": _source_urls(topic),
+                    }
+                )
+    return {
+        "schema_version": "account_deep_discovery_request_queue_v1",
+        "status": "ready" if requests else "empty",
+        "request_count": len(requests),
+        "requests": requests,
+        "network_executed": False,
+    }
+
+
+def _body_units(body: str) -> List[str]:
+    units: List[str] = []
+    for paragraph in body.splitlines():
+        normalized = " ".join(paragraph.split())
+        if normalized:
+            units.append(normalized)
+        if len(units) >= 19:
+            break
+    if not units and body.strip():
+        units.append(" ".join(body.split()))
+    return units
+
+
+def _merge_deep_discovery(
+    top_result: Mapping[str, Any],
+    deep_result: Optional[Mapping[str, Any]],
+) -> tuple[Dict[str, Any], Dict[str, Any]]:
+    enriched = copy.deepcopy(dict(top_result))
+    if not isinstance(deep_result, Mapping):
+        return enriched, {
+            "status": "not_supplied",
+            "reason_code": "existing_deep_discovery_result_required",
+            "matched_topic_count": 0,
+            "body_count": 0,
+            "usable_media_count": 0,
+        }
+    if (
+        deep_result.get("schema_version") != "account_deep_discovery_result_v1"
+        or deep_result.get("status") != "completed"
+    ):
+        return enriched, {
+            "status": "closed",
+            "reason_code": "invalid_or_incomplete_deep_discovery_result",
+            "matched_topic_count": 0,
+            "body_count": 0,
+            "usable_media_count": 0,
+        }
+
+    by_candidate: Dict[str, List[Mapping[str, Any]]] = {}
+    accounts = deep_result.get("accounts")
+    if isinstance(accounts, Mapping):
+        for account_data in accounts.values():
+            results = account_data.get("results") if isinstance(account_data, Mapping) else None
+            for result in results if isinstance(results, list) else []:
+                if not isinstance(result, Mapping):
+                    continue
+                candidate_id = _text(result.get("candidate_id"))
+                if candidate_id:
+                    by_candidate.setdefault(candidate_id, []).append(result)
+
+    matched = 0
+    body_count = 0
+    usable_media_count = 0
+    top_by_account = enriched.get("top_by_account")
+    if isinstance(top_by_account, Mapping):
+        for topics in top_by_account.values():
+            if not isinstance(topics, list):
+                continue
+            for topic in topics:
+                if not isinstance(topic, dict):
+                    continue
+                results = by_candidate.get(_text(topic.get("candidate_id")), [])
+                if not results:
+                    continue
+                article_bodies: List[Dict[str, Any]] = []
+                key_points: List[str] = []
+                assets: List[Dict[str, Any]] = []
+                related_sources: List[Dict[str, Any]] = []
+                comments: List[Dict[str, Any]] = []
+                reconstruction_scenes: List[Dict[str, Any]] = []
+                for result in results:
+                    for operation in result.get("operations", []):
+                        if not isinstance(operation, Mapping):
+                            continue
+                        role = _text(operation.get("artifact_role"))
+                        for raw_asset in operation.get("assets", []):
+                            if not isinstance(raw_asset, Mapping):
+                                continue
+                            asset = copy.deepcopy(dict(raw_asset))
+                            if role == "article_body":
+                                body = _text(asset.get("body"))
+                                if body:
+                                    article_bodies.append(asset)
+                                    key_points.extend(_body_units(body))
+                                continue
+                            if role == "real_comment":
+                                if asset.get("is_real_comment") is True:
+                                    comments.append(asset)
+                                continue
+                            if role == "related_news":
+                                related_url = _text(asset.get("url"))
+                                related_title = _text(asset.get("title"))
+                                if related_url and related_title:
+                                    related_sources.append(asset)
+                                    description = _text(asset.get("description"))
+                                    if description:
+                                        key_points.append(description)
+                                continue
+                            if role == "reconstruction_scene_fact":
+                                reconstruction_scenes.append(asset)
+                                continue
+                            if (
+                                asset.get("usable_in_production") is True
+                                and asset.get("reference_only") is not True
+                                and _text(asset.get("url") or asset.get("remote_url"))
+                            ):
+                                assets.append(asset)
+                if not (
+                    article_bodies
+                    or assets
+                    or related_sources
+                    or comments
+                    or reconstruction_scenes
+                ):
+                    continue
+                matched += 1
+                body_count += len(article_bodies)
+                usable_media_count += len(assets)
+                topic["article_bodies"] = article_bodies
+                topic["key_points"] = key_points[:19]
+                topic["assets"] = assets
+                topic["related_sources"] = related_sources
+                topic["comments"] = comments
+                topic["reconstruction_scenes"] = reconstruction_scenes
+                topic["deep_content_status"] = "ready"
+                topic["deep_content_provenance"] = {
+                    "schema_version": deep_result.get("schema_version"),
+                    "network_executed_by_pipeline": False,
+                }
+    return enriched, {
+        "status": "merged" if matched else "unmatched",
+        "reason_code": "ok" if matched else "no_deep_result_matched_top_topics",
+        "matched_topic_count": matched,
+        "body_count": body_count,
+        "usable_media_count": usable_media_count,
+        "network_executed_by_pipeline": False,
+    }
 
 
 def run_multi_account_card_news_discovery_pipeline(
@@ -224,6 +474,7 @@ def run_multi_account_card_news_discovery_pipeline(
     instagram_pattern_records: Optional[Sequence[Any]] = None,
     instagram_reference_time: Optional[str] = None,
     watch_review_records: Optional[Mapping[str, Any]] = None,
+    deep_discovery_result: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Connect completed standalone stages without external side effects."""
 
@@ -292,15 +543,22 @@ def run_multi_account_card_news_discovery_pipeline(
         stages["account_routing"] = account_routing
         top_selection = run_account_top_topic_selector(account_routing)
         stages["top_selection"] = top_selection
+        deep_requests = _build_deep_discovery_requests(top_selection)
+        stages["deep_discovery_requests"] = deep_requests
+        planning_selection, deep_bridge = _merge_deep_discovery(
+            top_selection,
+            deep_discovery_result,
+        )
+        stages["deep_content_bridge"] = deep_bridge
 
         instagram_binding = run_account_instagram_pattern_binder(
-            top_selection,
+            planning_selection,
             pattern_records=instagram_pattern_records,
             reference_time=instagram_reference_time,
         )
         stages["instagram_pattern_binding"] = instagram_binding
 
-        slide_plans = _build_slide_plans(top_selection, instagram_binding)
+        slide_plans = _build_slide_plans(planning_selection, instagram_binding)
         planned_count = sum(
             1
             for plans in slide_plans.values()
@@ -351,8 +609,10 @@ def run_multi_account_card_news_discovery_pipeline(
             "reason_code": reason_code,
             "reason": "standalone multi-account discovery stages connected",
             "stages": stages,
-            "top_topics": copy.deepcopy(top_selection.get("top_by_account", {})),
+            "top_topics": copy.deepcopy(planning_selection.get("top_by_account", {})),
             "slide_plans": slide_plans,
+            "deep_discovery_requests": copy.deepcopy(deep_requests),
+            "deep_content_bridge": copy.deepcopy(deep_bridge),
             "watch_review_queue": copy.deepcopy(watch_review_queue),
             "reviewed_watch_promotion": copy.deepcopy(reviewed_watch_promotion),
             "reviewed_watch_promoted_count": int(

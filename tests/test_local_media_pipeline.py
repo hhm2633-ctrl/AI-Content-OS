@@ -80,6 +80,50 @@ class TestLocalMediaPipeline(unittest.TestCase):
         self.assertEqual(not_cleared["reason_code"], "RIGHTS_CLEARANCE_REQUIRED")
         self.assert_no_tools_called()
 
+    def test_source_editorial_contract_allows_preparation_without_rights_cleared(self):
+        result = self.pipeline.prepare(
+            self.request(
+                rights_cleared=False,
+                source_editorial_usable=True,
+                topic_relevant=True,
+                attribution_required=True,
+                source_url="https://news.example.com/source-story",
+                publish_authorized=False,
+                operations=[{"operation": "preserve_original"}],
+            )
+        )
+
+        self.assertEqual(result["status"], "completed")
+        self.assertFalse(result["rights_cleared"])
+        self.assertTrue(result["source_editorial_usable"])
+        self.assertTrue(result["topic_relevant"])
+        self.assertTrue(result["attribution_required"])
+        self.assertEqual(result["source_url"], "https://news.example.com/source-story")
+        self.assertFalse(result["publish_authorized"])
+
+    def test_source_editorial_contract_blocks_each_missing_condition(self):
+        valid = {
+            "rights_cleared": False,
+            "source_editorial_usable": True,
+            "topic_relevant": True,
+            "attribution_required": True,
+            "source_url": "https://news.example.com/source-story",
+            "publish_authorized": False,
+            "operations": [{"operation": "preserve_original"}],
+        }
+        invalid_values = {
+            "source_editorial_usable": False,
+            "topic_relevant": False,
+            "attribution_required": False,
+            "source_url": "",
+            "publish_authorized": True,
+        }
+
+        for field, invalid in invalid_values.items():
+            with self.subTest(field=field):
+                result = self.pipeline.prepare(self.request(**{**valid, field: invalid}))
+                self.assertEqual(result["reason_code"], "RIGHTS_CLEARANCE_REQUIRED")
+
     def test_validate_only_fingerprints_but_never_calls_an_adapter(self):
         result = self.pipeline.prepare(
             self.request(execute=False, validate_only=True)

@@ -83,6 +83,35 @@ class NaverYoutubeDiscoveryProviderTest(unittest.TestCase):
         self.assertTrue(asset["metadata_only"])
         self.assertFalse(asset["downloaded"])
 
+    def test_related_news_uses_naver_and_stays_metadata_only(self):
+        body = json.dumps(
+            {
+                "items": [
+                    {
+                        "title": "<b>폭염</b> 관련 후속 보도",
+                        "originallink": "https://news.example.co.kr/follow-up",
+                        "link": "https://n.news.naver.com/follow-up",
+                        "description": "기상청 발표 이후 후속 보도",
+                        "pubDate": "Fri, 17 Jul 2026 10:00:00 +0900",
+                    }
+                ]
+            }
+        )
+        transport = RecordingTransport(body=body)
+        result = provider_with(transport).discover(
+            "A",
+            "search_related_news",
+            REQUEST,
+        )
+        self.assertEqual(result["status"], "ok")
+        self.assertTrue(result["network_used"])
+        self.assertEqual(result["endpoint"], "naver_news_search")
+        asset = result["assets"][0]
+        self.assertEqual(asset["url"], "https://news.example.co.kr/follow-up")
+        self.assertEqual(asset["source_api"], "naver_news_search")
+        self.assertTrue(asset["metadata_only"])
+        self.assertFalse(asset["downloaded"])
+
     def test_youtube_success_normalizes_video_metadata(self):
         body = json.dumps(
             {
@@ -107,6 +136,36 @@ class NaverYoutubeDiscoveryProviderTest(unittest.TestCase):
         self.assertEqual(asset["channel"], "Dior")
         self.assertEqual(asset["published_at"], "2026-07-16T10:00:00Z")
         self.assertEqual(asset["source_api"], "youtube_data_api_v3")
+
+    def test_account_a_broadcast_video_uses_youtube_metadata_contract(self):
+        body = json.dumps(
+            {
+                "items": [
+                    {
+                        "id": {"videoId": "news123"},
+                        "snippet": {
+                            "title": "폭염 특보 현장 연결",
+                            "description": "방송사 뉴스 영상",
+                            "publishedAt": "2026-07-17T01:00:00Z",
+                            "channelTitle": "Example News",
+                        },
+                    }
+                ]
+            }
+        )
+        transport = RecordingTransport(body=body)
+        result = provider_with(transport).discover(
+            "A",
+            "locate_embedded_or_broadcast_video",
+            REQUEST,
+        )
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["endpoint"], "youtube_search")
+        asset = result["assets"][0]
+        self.assertEqual(asset["url"], "https://www.youtube.com/watch?v=news123")
+        self.assertEqual(asset["channel"], "Example News")
+        self.assertTrue(asset["metadata_only"])
+        self.assertFalse(asset["downloaded"])
 
     def test_http_error_becomes_structured_failure(self):
         error = HTTPError("https://x", 403, "Forbidden", None, None)

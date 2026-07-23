@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule_extension",
+  "extends": "emotional_reaction_media_rule_v1",
+  "source": "Tenor",
+  "use_when": [
+    "story or relationship slides lack direct imagery",
+    "community comments need visible emotional reactions",
+    "entertainment copy needs a familiar social reaction",
+    "a punchline or emotional transition benefits from a short loop"
+  ],
+  "search_dimensions": ["emotion", "facial_action", "body_action", "intensity", "narrative_role"],
+  "state": {
+    "knowledge_saved": true,
+    "runtime_connected": false,
+    "tested": false
+  }
+}

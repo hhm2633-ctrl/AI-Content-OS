@@ -162,6 +162,28 @@ class SelectedCandidateProductionPlannerTests(unittest.TestCase):
         self.assertEqual(result["commerce"]["mode"], "not_applicable")
         self.assertFalse(result["commerce"]["required_for_readiness"])
 
+    def test_style_article_expands_by_source_backed_content_units(self):
+        result = build_selected_candidate_production_plan(
+            {"id": "c-article", "account": "C", "category": "뷰티", "title": "장마철 앞머리"},
+            {
+                "status": "complete",
+                "summary": "습한 날 앞머리 관리법을 정리했다.",
+                "source_refs": ["https://beauty.example/article"],
+                "key_points": [
+                    "헤어핀을 스타일 포인트로 활용한다.",
+                    "고정 전 백콤이나 텍스처 스프레이를 가볍게 쓴다.",
+                    "오일과 젤은 끝부분에 소량만 사용한다.",
+                ],
+            },
+        )
+
+        self.assertEqual(result["status"], "production_plan_ready")
+        self.assertEqual(result["slide_count"], 4)
+        self.assertEqual(
+            [slide["slide_role"] for slide in result["slide_plan"][1:]],
+            ["source_context", "source_context", "source_context"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,217 @@
+{
+  "record_type": "owner_source_cross_format_learning",
+  "batch": {
+    "start": 491,
+    "end": 510,
+    "source_root": "F:\\AI-Content-OS-Data\\owner_source",
+    "analyzed_at": "2026-07-23",
+    "source_policy": "read_only"
+  },
+  "standing_rules": [
+    "슬라이드 수는 소재와 정보량에 따라 가변으로 결정한다.",
+    "원본 사례를 카드뉴스에만 가두지 않고 Reels, Shorts, blog, commerce, account branding으로 재분배한다.",
+    "도구나 프롬프트의 성능 주장은 프로젝트 환경에서 검증되기 전까지 연결 또는 테스트 완료로 간주하지 않는다.",
+    "커뮤니티 원문, 댓글, 광고, 실용 정보는 출처와 성격을 분리하고 사실성 및 최신성을 확인한다."
+  ],
+  "items": [
+    {
+      "id": 491,
+      "pattern": "단계형 카드뉴스 생성 프롬프트",
+      "learning": "본문은 미리 정한 소제목과 사실을 기준으로 소량씩 생성하고 마지막 CTA는 한두 가지 행동과 짧은 버튼 문구로 끝낸다.",
+      "applications": ["card_news", "tutorial", "production_qa"],
+      "guardrail": "한 번에 두 장 생성은 품질 관리 사례이지 고정 규칙이 아니다."
+    },
+    {
+      "id": 492,
+      "pattern": "유지·변경·추가·금지 구조의 편집 프롬프트",
+      "learning": "인물과 행동 등 보존 요소, 배경과 조명 등 변경 요소, 새 효과, 금지 조건을 분리하면 이미지·영상 편집 의도가 선명해진다.",
+      "applications": ["image_prompt", "video_prompt", "prompt_library"]
+    },
+    {
+      "id": 493,
+      "pattern": "일상에서 충격 장면으로 전환되는 영상",
+      "learning": "초반의 평범한 상황을 짧게 유지한 뒤 사건, 파편, 카메라 흔들림, 음향으로 급전환하는 장면 설계다.",
+      "applications": ["reels", "shorts", "story_video"],
+      "guardrail": "얼굴·신체·행동 일관성과 실제 생성 품질은 별도 테스트가 필요하다."
+    },
+    {
+      "id": 494,
+      "pattern": "인물·포즈·소품 유지형 환경 전환",
+      "learning": "같은 인물과 커피 소품을 유지하면서 시간대와 도시 배경만 바꾸는 전환 예시다.",
+      "applications": ["fashion", "travel", "reels", "account_model"],
+      "guardrail": "예시상 유사해 보일 뿐 반복 생성의 동일 인물 유지 성능은 검증되지 않았다."
+    },
+    {
+      "id": 495,
+      "pattern": "스타일과 공간만 업그레이드하는 변신 영상",
+      "learning": "얼굴·체형·행동·손동작은 보존하고 헤어, 의상, 액세서리, 메이크업, 사무실, 조명, 촬영 질감만 고급화한다.",
+      "applications": ["fashion", "beauty", "business", "reels", "shorts"]
+    },
+    {
+      "id": 496,
+      "pattern": "색보정 전후 비교",
+      "learning": "같은 사진의 과도한 밝기와 녹색·청색을 절제된 색감으로 바꿔 색보정 효과를 즉시 비교한다.",
+      "applications": ["design_learning", "before_after", "preset_library"]
+    },
+    {
+      "id": 497,
+      "pattern": "풍경의 채도·색온도 조절",
+      "learning": "노란 기운과 높은 채도를 줄이고 차분한 색으로 이동해 풍경의 감성을 바꾼다.",
+      "applications": ["travel", "seasonal_content", "color_matching"]
+    },
+    {
+      "id": 498,
+      "pattern": "인물 사진의 부드러운 필름 색감",
+      "learning": "강한 분홍색과 대비를 낮춰 인물과 꽃의 분위기를 부드럽고 통일된 팔레트로 만든다.",
+      "applications": ["fashion", "beauty", "account_branding"]
+    },
+    {
+      "id": 499,
+      "pattern": "도시 사진의 필름형 색감 변환",
+      "learning": "따뜻한 주황색과 강한 대비를 낮춰 차분하고 서사적인 도시 분위기로 바꾼다.",
+      "applications": ["travel", "storytelling", "account_branding"]
+    },
+    {
+      "id": 500,
+      "pattern": "평범한 사진의 변화 가능성을 약속하는 표지",
+      "learning": "기기 탓이 아니라 색보정으로 갤러리 사진을 살릴 수 있다는 현실적인 변화 약속을 첫 장에 제시한다.",
+      "applications": ["tutorial_cover", "hook", "before_after"]
+    },
+    {
+      "id": 501,
+      "pattern": "재사용 가능한 모바일 색감 프리셋",
+      "learning": "스마트폰 사진에 Lightroom DNG 프리셋을 불러와 저장하고 반복 적용하는 운용 방식이다.",
+      "applications": ["design_system", "account_preset", "batch_color_grading"],
+      "guardrail": "외부 프리셋의 권리, 설치 상태, 일괄 처리 품질은 확인되지 않았다."
+    },
+    {
+      "id": 502,
+      "pattern": "투박한 손글씨형 관계 썰 표지",
+      "learning": "단색 배경과 손글씨만으로 감정 충돌의 이유를 궁금하게 만드는 인간적인 첫 화면이다.",
+      "applications": ["story_account", "community", "dopamine_hook"]
+    },
+    {
+      "id": 503,
+      "pattern": "익명 커뮤니티 원문 도입",
+      "learning": "관계의 배경과 화자의 불안을 원문 화면으로 보여줘 실제 제보 같은 질감을 만든다.",
+      "applications": ["community_story", "reels_script", "card_news"],
+      "guardrail": "개인정보와 계정 식별 정보는 제거하고 원문 출처를 관리한다."
+    },
+    {
+      "id": 504,
+      "pattern": "대화 갈등의 급격한 상승",
+      "learning": "반복 질문 뒤 욕설과 연락 단절이 발생하는 지점을 별도 장면으로 분리해 감정 고조를 만든다.",
+      "applications": ["story_arc", "reels", "shorts", "card_news"]
+    },
+    {
+      "id": 505,
+      "pattern": "미해결 결말과 독자 판단 요청",
+      "learning": "화자의 자기반성과 충격을 함께 남기고 해결을 단정하지 않은 채 독자 의견을 묻는다.",
+      "applications": ["engagement", "comment_prompt", "community_story"],
+      "guardrail": "네 장 구성은 해당 원문의 길이에 따른 결과이며 고정 템플릿이 아니다."
+    },
+    {
+      "id": 506,
+      "pattern": "짧은 직장·서비스업 일화",
+      "learning": "강한 제목과 짧은 원문 캡처로 직원이 소비자가 되었을 때의 행동을 전달한다.",
+      "applications": ["community", "work_story", "dopamine_account"],
+      "guardrail": "표지와 본문이 다른 게시물을 무분별하게 묶는 방식은 주제 일관성을 해친다."
+    },
+    {
+      "id": 507,
+      "pattern": "생활 밀착형 실용 팁",
+      "learning": "택시 분실물처럼 즉시 행동할 수 있는 절차를 원문 캡처로 전달한다.",
+      "applications": ["utility_card", "blog", "search_content"],
+      "guardrail": "전화번호와 메뉴 경로는 오래된 정보일 수 있으므로 게시 직전에 최신성을 검증한다."
+    },
+    {
+      "id": 508,
+      "pattern": "캐러셀 마지막 광고 삽입",
+      "learning": "커뮤니티 콘텐츠 뒤에 별도 광고 장을 넣고 광고임을 명확히 표시하는 수익화 사례다.",
+      "applications": ["monetization_reference", "commerce"],
+      "guardrail": "무관한 상품 광고 연결은 따라 하지 않으며 콘텐츠 맥락과 맞는 상품만 명확한 광고 표기와 함께 사용한다."
+    },
+    {
+      "id": 509,
+      "pattern": "페르소나·시간·기기·성과가 결합된 교육 표지",
+      "learning": "여행을 좋아하는 직장인, 퇴근 후 한 시간, 휴대전화, 영상 편집이라는 조건으로 대상과 기대 결과를 한 번에 설명한다.",
+      "applications": ["tutorial", "reels", "shorts", "education_carousel"],
+      "guardrail": "열네 장은 해당 교육 내용의 정보량에 따른 가변 결과다."
+    },
+    {
+      "id": 510,
+      "pattern": "실제 댓글을 교육 목차로 전환",
+      "learning": "편집 도구, 폰트, 촬영법, 효과에 대한 실제 질문을 사회적 증거이자 다음 설명 순서로 사용한다.",
+      "applications": ["topic_selection", "social_proof", "tutorial_outline"],
+      "guardrail": "댓글과 질문은 실제 자료만 사용하고 반응을 조작하거나 만들어내지 않는다."
+    }
+  ],
+  "cross_format_distribution": {
+    "card_news": [
+      "단계형 제작법과 색보정 전후 비교",
+      "익명 커뮤니티 원문 기반 가변형 이야기",
+      "댓글 질문을 목차로 쓰는 교육형 캐러셀"
+    ],
+    "reels_shorts": [
+      "일상에서 사건으로 급전환하는 장면",
+      "인물·행동을 유지한 배경 또는 스타일 변신",
+      "커뮤니티 갈등의 감정 곡선을 장면과 자막으로 재구성"
+    ],
+    "fashion_beauty": [
+      "얼굴과 체형은 유지하고 의상·헤어·액세서리·공간만 변화",
+      "아이템 소개와 착장 이미지에 계정별 색감 프리셋 적용",
+      "동일 AI 모델의 환경·스타일 변주 후보"
+    ],
+    "blog_search": [
+      "도구 사용법과 프리셋 적용 절차의 상세 설명",
+      "생활 팁은 최신 정보 검증 후 검색형 문서로 확장"
+    ],
+    "commerce": [
+      "본문과 자연스럽게 맞는 패션·뷰티 아이템만 연결",
+      "광고와 제휴 관계를 명확히 표시",
+      "무관한 마지막 장 광고 삽입은 배제"
+    ],
+    "common_operation": [
+      "유지·변경·추가·금지 프롬프트 스키마를 공통 라이브러리화",
+      "색감 프리셋을 계정·계절·감정별 메타데이터로 관리",
+      "댓글과 사용자 질문을 다음 소재 및 교육 순서에 연결"
+    ]
+  },
+  "tool_candidates": [
+    {
+      "name": "Adobe Lightroom",
+      "priority": "medium_high",
+      "project_use": "계정·계절·감정별 DNG 색감 프리셋과 사진 일괄 보정",
+      "overlap": "Pillow 기반 이미지 처리 및 기존 색상 보정 기능과 일부 중복",
+      "verification_needed": [
+        "로컬 설치 및 라이선스 상태",
+        "DNG 프리셋 가져오기와 내보내기",
+        "배치 처리 가능 범위",
+        "프로젝트 렌더러와 색상 일치"
+      ],
+      "installation_status": "not_checked",
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "name": "Google Omni video editing",
+      "priority": "medium",
+      "project_use": "인물과 행동을 유지하면서 배경·스타일·사건을 변경하는 이미지 기반 영상 편집",
+      "overlap": "기존 Veo·Flow 후보와 기능 중복 가능",
+      "verification_needed": [
+        "정확한 제품명과 현재 제공 범위",
+        "한국어 프롬프트 지원",
+        "동일 인물·포즈·손동작 유지율",
+        "비용과 상업적 사용 조건"
+      ],
+      "installation_status": "not_checked",
+      "runtime_connected": false,
+      "tested": false
+    }
+  ],
+  "connection_status": {
+    "documented": true,
+    "runtime_connected": false,
+    "tested": false
+  }
+}

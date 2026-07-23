@@ -23,6 +23,7 @@ from modules.brandconnect.brandconnect_candidate_matcher import (
     match_candidate_to_products,
     select_diverse_product_matches,
 )
+from modules.brandconnect.owner_association_learning import learned_association_signals
 
 RELATION_MATCH_THRESHOLD = 0.45
 RELATION_BONUS_CAP = 0.4
@@ -111,6 +112,57 @@ def _relation_candidate_text(candidate: Mapping[str, Any]) -> str:
     if isinstance(keywords, (list, tuple)):
         parts.extend(_text(item) for item in keywords)
     return " ".join(part for part in parts if part)
+
+
+def _association_terms(signals: List[Mapping[str, Any]]) -> set:
+    terms = set()
+    for signal in signals:
+        values = signal.get("association_terms")
+        if isinstance(values, (list, tuple)):
+            terms.update(_meaningful(_tokens(" ".join(_text(value) for value in values))))
+    return terms
+
+
+def _evaluate_owner_association(
+    signals: List[Mapping[str, Any]],
+    product: Mapping[str, Any],
+) -> Dict[str, Any]:
+    product_text = " ".join(
+        [
+            _text(product.get("name")),
+            _text(product.get("brand")),
+            _text(product.get("category")),
+            _text(product.get("product_family")),
+            " ".join(_text(item) for item in product.get("keywords", []) if isinstance(item, str)),
+        ]
+    )
+    product_tokens = _meaningful(_tokens(product_text))
+    best: Dict[str, Any] = {"score": 0.0, "terms": [], "signal": None}
+    relation_scores = {
+        "material_craft": 0.68,
+        "activity_tool": 0.68,
+        "scene_function": 0.65,
+        "body_context": 0.6,
+        "fandom_merch": 0.6,
+        "object_adjacent": 0.58,
+        "visual_similarity": 0.55,
+        "name_wordplay": 0.55,
+        "color_wordplay": 0.5,
+        "visible_accessory": 0.62,
+    }
+    for signal in signals:
+        signal_terms = _meaningful(
+            _tokens(" ".join(_text(item) for item in signal.get("association_terms", [])))
+        )
+        overlap = sorted(signal_terms & product_tokens)
+        if not overlap:
+            continue
+        score = relation_scores.get(_text(signal.get("relation_type")), 0.0)
+        if len(overlap) >= 2:
+            score = min(0.75, score + 0.05)
+        if score > best["score"]:
+            best = {"score": score, "terms": overlap, "signal": signal}
+    return best
 
 
 def _base_candidate_content_text(candidate: Mapping[str, Any]) -> str:
@@ -408,7 +460,9 @@ def match_candidate_with_relations(
         }
 
     text = _relation_candidate_text(candidate)
-    candidate_tokens = _meaningful(_tokens(text))
+    association_signals = learned_association_signals(candidate)
+    learned_terms = _association_terms(association_signals)
+    candidate_tokens = _meaningful(_tokens(text)) | learned_terms
     candidate_season = _tokens(text) & _SEASON_TOKENS
     candidate_families = _candidate_relation_families(candidate)
     prepared_relation_index = (
@@ -433,6 +487,10 @@ def match_candidate_with_relations(
         potential_product_ids.update(
             _lookup_relation_product_ids(candidate_tokens, term_lookup)
         )
+        for term in learned_terms:
+            potential_product_ids.update(
+                prepared_relation_index.get("base_term_to_product_ids", {}).get(term, set())
+            )
         product_by_id = prepared_relation_index.get("product_by_id", {})
         candidate_products = [
             product_by_id[product_id]
@@ -457,6 +515,7 @@ def match_candidate_with_relations(
             relations.get(product_id),
             product,
         )
+        owner_association = _evaluate_owner_association(association_signals, product)
 
         score = 0.0
         basis: List[str] = []
@@ -486,6 +545,18 @@ def match_candidate_with_relations(
             basis.extend(f"relation_term:{term}" for term in relation["overlaps"][:5])
             if relation["season_congruent"]:
                 basis.append("relation_season_congruent")
+        if owner_association["score"] > score:
+            score = owner_association["score"]
+        if owner_association["score"] > 0:
+            relation_used = True
+            signal = owner_association["signal"] or {}
+            basis.append(f"owner_association:{signal.get('relation_type')}")
+            basis.append(f"association_reference:{signal.get('reference_id')}")
+            basis.extend(
+                f"association_term:{term}" for term in owner_association["terms"][:5]
+            )
+            if signal.get("humor_allowed") is True:
+                basis.append("association_tone:playful_allowed")
 
         # Base exact matches already passed the base matcher's threshold and are
         # always kept; the stricter threshold gates relation-only matches.
@@ -510,6 +581,7 @@ def match_candidate_with_relations(
             "penalized": False,
             "matches": matches,
             "relation_signals_used": relation_used,
+            "owner_association_signals": association_signals,
         }
     return {
         "match_status": "unmatched",
@@ -517,6 +589,7 @@ def match_candidate_with_relations(
         "penalized": False,
         "matches": [],
         "relation_signals_used": relation_used,
+        "owner_association_signals": association_signals,
     }
 
 

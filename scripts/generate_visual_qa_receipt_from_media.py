@@ -417,7 +417,12 @@ def _analyze_slide(
     # We block if OCR reveals >12 lines or >260 characters on a single slide.
     # This is an initial conservative threshold and can be tuned after sample distribution review.
     copy_density_ok = (len(ocr_text) <= 260) and (len(ocr_lines) <= 12)
-    image_is_primary = bool(text_area_ratio < IMAGE_IS_PRIMARY_AREA_THRESHOLD)
+    media_type = _text(slide.get("media_type")).lower()
+    image_is_primary = (
+        True
+        if media_type == "editorial"
+        else bool(text_area_ratio < IMAGE_IS_PRIMARY_AREA_THRESHOLD)
+    )
     copy_readability = bool(ocr_text or non_blank)
     mobile_readability = bool(
         (ocr.success and ocr_avg >= 0.28)
@@ -535,6 +540,11 @@ def build_receipt_payload(
             findings["comment_readability"] = PASS if comment_ok else FAIL
         else:
             findings["comment_readability"] = NOT_APPLICABLE
+        findings["feed_caption_present"] = (
+            PASS
+            if _text(package.get("feed_caption") if isinstance(package, Mapping) else "")
+            else FAIL
+        )
 
         if any(value not in {PASS, NOT_APPLICABLE, FAIL} for value in findings.values()):
             raise RuntimeError("finding must be pass/not_applicable/fail")
@@ -601,6 +611,11 @@ def build_receipt_payload(
             "openclip_probe": openclip_probe,
         },
     }
+    if len(candidates) == 1:
+        package = package_by_candidate.get(candidates[0], {})
+        receipt["feed_caption"] = _text(
+            package.get("feed_caption") if isinstance(package, Mapping) else ""
+        )
 
     assessed = assess_visual_qa_receipt(
         receipt,

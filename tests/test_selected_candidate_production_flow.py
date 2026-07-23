@@ -4,6 +4,7 @@ import copy
 import unittest
 
 from modules.source_intake.selected_candidate_production_flow import (
+    _split_evidence_units,
     run_default_selected_candidate_production_flow,
     run_selected_candidate_production_flow,
 )
@@ -40,6 +41,20 @@ class Provider:
 
 
 class SelectedCandidateProductionFlowTest(unittest.TestCase):
+    def test_long_source_paragraph_splits_without_rewriting_sentences(self):
+        body = (
+            "첫 문장은 장마철 앞머리가 습기에 약한 이유를 설명합니다. "
+            "두 번째 문장은 핀을 고정하기 전에 텍스처를 더하는 방법을 설명합니다. "
+            "세 번째 문장은 오일과 젤을 소량만 사용해야 한다는 주의를 설명합니다. "
+            "네 번째 문장은 제품을 끝부분 위주로 사용하는 순서를 설명합니다. "
+            "다섯 번째 문장은 얼굴선을 또렷하게 보이게 하는 마무리를 설명합니다."
+        )
+        units = _split_evidence_units(body)
+
+        self.assertGreater(len(units), 1)
+        self.assertEqual(" ".join(units), body)
+        self.assertTrue(all(len(unit) <= 170 for unit in units))
+
     def test_closes_without_provider_and_does_not_call_bridge(self):
         calls = []
         result = run_selected_candidate_production_flow(
@@ -97,6 +112,24 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertEqual(result["reason_code"], "discovery_bridge_failed")
         self.assertEqual(result["failures"][-1]["stage"], "discovery_bridge")
+
+    def test_blocked_render_adapter_does_not_report_ready(self):
+        bridge = lambda discovery: {"status": "ready", "items": []}
+        plans = lambda selection, discovery, bridged: {
+            "plans": [{"candidate_id": "A-0", "schema_version": "test_plan"}]
+        }
+        render = lambda plan, copy_value: {
+            "status": "blocked",
+            "renderer_ready": False,
+            "candidate_id": plan["candidate_id"],
+        }
+        result = run_selected_candidate_production_flow(
+            _selection(), Provider(), bridge, plans, render
+        )
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["reason_code"], "render_inputs_blocked")
+        self.assertEqual(result["ready_render_input_count"], 0)
+        self.assertEqual(result["blocked_render_input_count"], 1)
 
     def test_default_components_are_wired_without_network_or_publish(self):
         class EvidenceProvider:
@@ -161,6 +194,10 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
             plan["copy_plan"]["key_points"],
         )
         self.assertEqual(["https://news.example/body"], plan["copy_plan"]["source_credit"])
+        rendered_slides = result["render_inputs"][0]["current_renderer_input"][
+            "content_result"
+        ]["slides"]
+        self.assertTrue(all(item["headline"] and item["body"] for item in rendered_slides))
 
     def test_default_flow_attaches_story_copy_feed_and_blog_inputs(self):
         selection = {

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "status": "approved_learning_material",
+  "source_items": [92, 93],
+  "rule": "For a high-risk decision, retain independent optimistic, skeptical, evidence-verification, and operational analyses until an integration review resolves them.",
+  "required_output": [
+    "claim and source",
+    "confidence grade",
+    "supporting evidence",
+    "contradicting evidence",
+    "calculation method when numbers are involved",
+    "red-line rejection conditions",
+    "reverse thesis or failure scenario",
+    "integration decision and unresolved uncertainty"
+  ],
+  "scope": ["major architecture", "high-risk source claims", "product-data integrity", "large-cost tool adoption", "sensitive publishing decisions"],
+  "do_not_apply_as_rigid_template": ["ordinary entertainment summaries", "simple visual selection", "low-risk editorial wording"],
+  "state": {
+    "knowledge_saved": true,
+    "runtime_connected": false,
+    "tested": false
+  }
+}

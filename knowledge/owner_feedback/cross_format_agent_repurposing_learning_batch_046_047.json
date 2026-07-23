@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_046_047",
+  "source_range": {
+    "start": 451,
+    "end": 470,
+    "count": 20
+  },
+  "status": "documented_not_runtime_connected",
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false,
+  "items": [
+    {
+      "source_no": 451,
+      "observation": "브랜드 가이드와 워크플로를 한 번 설정한 커스텀 Gemini를 반복 사용하고 팀과 공유해 톤과 품질을 유지한다는 구조다.",
+      "project_learning": "브랜드 지식, 금지 규칙, 포맷별 출력 계약을 계정 전용 에이전트 설정으로 관리하면 반복 프롬프트를 줄일 수 있다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "commerce", "account_branding", "common_operation"],
+      "caution": "Gemini Gems의 현재 공유·실행 범위는 확인하지 않았다."
+    },
+    {
+      "source_no": 452,
+      "observation": "Veo가 제품 홍보와 숏폼을 생성하고 등장인물 얼굴과 제품 형태의 일관성을 유지한다고 주장하며 장면별 스토리보드를 먼저 만들도록 제안한다.",
+      "project_learning": "영상 생성 전 장면별 스토리보드와 제품 형태 기준 이미지를 확정하는 원칙은 Reels·Shorts 제작에 유효하다.",
+      "format_use": ["reels", "shorts", "commerce"],
+      "caution": "인물과 제품의 끝까지 유지되는 일관성은 현재 연결·테스트되지 않았다."
+    },
+    {
+      "source_no": 453,
+      "observation": "한 번 등록한 가상 인물과 목소리를 브랜드 호스트로 반복 사용하고 에이전트가 여러 영상 버전을 만든다는 내용이다.",
+      "project_learning": "계정별 AI 진행자 기준과 영상별 변형 지시를 분리하고, 동일 정체성·목소리·말투를 공통 자산으로 관리하는 후보 구조다.",
+      "format_use": ["reels", "shorts", "account_branding"],
+      "caution": "재사용 가능한 동일 인물·목소리와 에이전트 편집 기능은 현재 검증되지 않았다."
+    },
+    {
+      "source_no": 454,
+      "observation": "웹사이트에서 컬러·태그라인·카탈로그를 분석해 SNS 소재, 제품 누끼·합성, 랜딩 페이지를 생성한다는 도구 소개다.",
+      "project_learning": "브랜드 분석 결과를 소셜 콘텐츠, Commerce 이미지, 랜딩 자산으로 공통 활용하는 연결 구조를 참고한다.",
+      "format_use": ["card_news", "blog", "commerce", "account_branding"],
+      "caution": "Google Polyphony의 명칭, 기능, 현재 제공 상태는 검증하지 않았다."
+    },
+    {
+      "source_no": 455,
+      "observation": "NotebookLM, Gemini, Gems, Veo, Flow, Polyphony를 하나의 마케팅 생태계처럼 묶는다.",
+      "project_learning": "도구 목록 자체보다 지식 저장, 전용 에이전트, 영상 생성, 브랜드 분석이라는 역할 분리가 중요하다.",
+      "format_use": ["common_operation"],
+      "caution": "표시된 도구들이 실제로 하나의 자동 파이프라인으로 연결되었다는 증거는 없다."
+    },
+    {
+      "source_no": 456,
+      "observation": "제품 사진 세 장으로 폰트·컬러·태그라인·브랜드 목소리를 포함한 브랜드 DNA를 만든다는 내용이다.",
+      "design_learning": "소수의 제품 사진에서도 색, 재질, 사용 장면을 추출할 수 있지만 브랜드 전략은 이미지 분석만으로 확정하지 않는다.",
+      "format_use": ["card_news", "commerce", "account_branding"],
+      "caution": "사진 세 장만으로 완전한 브랜드 DNA가 생성된다는 주장은 과장 가능성이 있다."
+    },
+    {
+      "source_no": 457,
+      "observation": "대기업급 마케팅, 브랜드 일관성, 시간 단축, 공식 도구라는 네 가지 이점을 2x2 카드로 보여준다.",
+      "design_learning": "한 장에서 네 가지 비교 포인트를 보여줄 때 동일 크기의 카드와 짧은 결과 라벨을 사용한다.",
+      "format_use": ["card_news", "blog", "common_operation"],
+      "caution": "비용 0원, 시간 90% 단축, 안정성 보장 등의 표현은 검증되지 않았다."
+    },
+    {
+      "source_no": 458,
+      "observation": "사이트 접속, 제품 사진과 사업 정보 입력, 브랜드 키트 생성, 웹사이트·캠페인 배포의 네 단계다.",
+      "project_learning": "브랜드 분석과 제작 사이에 owner 승인·수정 단계를 두고 한 업무부터 점진적으로 연결해야 한다.",
+      "format_use": ["commerce", "account_branding", "common_operation"],
+      "caution": "무료 도메인 연결과 자동 배포는 현재 프로젝트에서 승인되거나 확인된 기능이 아니다."
+    },
+    {
+      "source_no": 459,
+      "observation": "어두운 돈 이미지와 형광 연두·흰색 제목으로 돈 버는 사람들의 프롬프트 공식을 소개한다.",
+      "design_learning": "주제 이미지 위 하단 그라데이션과 두 색상의 대형 제목을 사용해 정보형 캐러셀의 첫 장을 강하게 만든다.",
+      "format_use": ["card_news", "reels", "shorts", "blog"]
+    },
+    {
+      "source_no": 460,
+      "observation": "반복·규칙 기반·수익성이 있는 일은 자동화하고 여러 단계의 복잡한 업무는 AI 에이전트에 맡긴다는 3R 기준을 제시한다.",
+      "project_learning": "결정이 명확한 반복 작업과 판단이 필요한 다단계 작업을 구분하는 분류 기준으로 활용한다.",
+      "format_use": ["common_operation", "automation"],
+      "caution": "고객에게 AI 사용 사실을 숨기라는 문구는 프로젝트 운영 원칙으로 채택하지 않는다."
+    },
+    {
+      "source_no": 461,
+      "observation": "반복 업무 세 가지를 찾고, 자동화 적합성을 판정한 뒤, 고객이 비용을 낼 문제부터 AI로 해결하라는 실행 순서다.",
+      "project_learning": "자동화 후보는 반복 빈도, 규칙 명확성, 실패 영향, owner 검수 비용, 실제 ROI로 우선순위를 정한다.",
+      "format_use": ["common_operation", "future_business"]
+    },
+    {
+      "source_no": 462,
+      "observation": "상품 소싱부터 마케팅까지 30분에 자동화한다는 이커머스 AI 훅이다.",
+      "project_learning": "Commerce 확장 후보는 시장 분석, 상품 데이터, 재고, 콘텐츠, 성과 분석으로 기능을 분해해 검토한다.",
+      "format_use": ["commerce", "future_business"],
+      "caution": "30분 자동화와 괴물 AI라는 홍보 표현은 실행 능력으로 받아들이지 않는다."
+    },
+    {
+      "source_no": 463,
+      "observation": "Accio Work를 시장 분석·상품 소싱·마케팅·재고·물류 에이전트가 팀처럼 움직이는 플랫폼으로 설명한다.",
+      "project_learning": "하나의 거대 에이전트보다 역할별 에이전트와 명확한 입력·출력 계약으로 나누는 구조를 참고한다.",
+      "format_use": ["commerce", "common_operation"],
+      "caution": "플랫폼의 실제 제공 범위와 현재 사용 가능성은 확인하지 않았다."
+    },
+    {
+      "source_no": 464,
+      "observation": "시장 분석, 상품 소싱, 스토어 운영, 광고·콘텐츠·성과 분석을 모두 자동 처리한다고 주장한다.",
+      "project_learning": "각 기능은 데이터 출처와 외부 쓰기 위험이 다르므로 분석, 제안, 실제 변경·구매·게시를 분리해야 한다.",
+      "format_use": ["commerce", "common_operation"],
+      "caution": "직원 없이 모든 기능이 자동 작동한다는 주장은 검증되지 않았다."
+    },
+    {
+      "source_no": 465,
+      "observation": "1인 사업자는 재고·리스팅·가격 같은 반복 업무부터 자동화하고 시장 분석과 마케팅으로 확장하라고 제안한다.",
+      "project_learning": "낮은 위험의 읽기·정리 작업부터 시작하고 외부 가격 변경, 광고 집행, 게시 작업은 승인 게이트를 유지한다.",
+      "format_use": ["commerce", "common_operation"]
+    },
+    {
+      "source_no": 466,
+      "observation": "AI 에이전트가 대기업 수준의 팀 역할을 대신한다는 메시지와 30분·조회수·무료 같은 숫자 훅을 배치한다.",
+      "design_learning": "대형 메시지와 세 개의 숫자 지표를 하단 카드로 분리하면 핵심 주장을 빠르게 읽게 한다.",
+      "format_use": ["card_news", "blog", "future_business"],
+      "caution": "30분, 188K 조회, 무료 시작은 맥락과 근거 확인 전 재사용하지 않는다."
+    },
+    {
+      "source_no": 467,
+      "observation": "한 업무만 선택해 에이전트를 배치하고 결과를 확인한 뒤 점진적으로 늘리라는 시작 절차다.",
+      "project_learning": "프로젝트에도 한 번에 전체 자동화를 붙이지 않고 읽기 전용 한 업무, 결과 검수, 실패 기준 확인 후 확장하는 원칙을 적용한다.",
+      "format_use": ["common_operation", "commerce", "future_business"]
+    },
+    {
+      "source_no": 468,
+      "observation": "긴 콘텐츠 하나를 Shorts, Reels, 글, 스레드 등 여러 포맷으로 재구성하는 AI 리퍼포징 개념이다.",
+      "project_learning": "하나의 근거와 주제를 카드뉴스·릴스·쇼츠·블로그·Threads로 재분배하되 단순 복제하지 않고 포맷별 문법으로 다시 편집한다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "common_operation"]
+    },
+    {
+      "source_no": 469,
+      "observation": "긴 영상에서 핵심 구간을 추출하고 플랫폼별 자막·포맷을 적용하며 글과 스레드로 변환한다고 설명한다.",
+      "project_learning": "원본에서 사실·핵심 장면·인용·감정 전환을 먼저 추출하고 포맷마다 훅, 길이, 화면, 본문을 별도로 설계한다.",
+      "format_use": ["reels", "shorts", "blog", "card_news", "common_operation"],
+      "caution": "50~70개 클립 자동 추출과 품질은 검증되지 않았다."
+    },
+    {
+      "source_no": 470,
+      "observation": "주 1~2회 긴 원본을 촬영해 Castmagic으로 주 250개 콘텐츠를 발행한다는 대량 리퍼포징 사례다.",
+      "project_learning": "촬영 횟수를 줄이는 것보다 원본 한 건의 근거 품질과 포맷별 사용 가능 소재 수를 측정하는 것이 중요하다.",
+      "format_use": ["reels", "shorts", "blog", "card_news", "common_operation"],
+      "caution": "주 250개, 성과 3배, 자동 최적화와 Castmagic 기능은 현재 검증되지 않았고 대량 생성이 품질을 보장하지 않는다."
+    }
+  ],
+  "cross_format_distribution": {
+    "shared_knowledge_layer": [
+      "계정별 브랜드 지식, 톤, 시각 규칙, 금지 범위, AI 진행자 기준을 공통 자산으로 저장한다.",
+      "공통 지식은 하나로 유지하되 카드뉴스·영상·블로그·Commerce 출력 계약은 분리한다.",
+      "도구별 커스텀 에이전트보다 프로젝트 자체의 검증 가능한 지식 인덱스가 우선이다."
+    ],
+    "card_news": [
+      "장문 원본의 핵심 근거와 단계만 추출해 가변 장수로 재구성한다.",
+      "대형 훅, 2x2 비교 카드, 숫자 카드, 단계형 목록 같은 다양한 레이아웃을 계정 브랜드 키트 안에서 사용한다.",
+      "과장된 자동화·수익 숫자는 그대로 재사용하지 않는다."
+    ],
+    "reels_shorts": [
+      "장문 영상에서 감정 전환과 핵심 장면을 찾고 플랫폼별 길이·자막·첫 3초 훅으로 다시 편집한다.",
+      "계정별 AI 진행자와 제품의 일관성은 기능 검증 후 사용하며 반복 생성으로 해결된 척하지 않는다.",
+      "스토리보드와 제품 기준 이미지를 영상 생성 전에 확정한다."
+    ],
+    "blog": [
+      "영상의 말을 그대로 옮기지 않고 근거, 맥락, 비교, 실행 단계를 추가한다.",
+      "Notebook형 지식 저장소에서 출처를 유지하고 포맷 변환 후에도 근거 연결을 보존한다."
+    ],
+    "commerce": [
+      "시장 분석·상품 소싱·재고·가격·마케팅을 독립 기능으로 나눈다.",
+      "읽기와 제안은 자동화 후보가 될 수 있지만 구매, 가격 변경, 광고 집행, 게시 등 외부 쓰기는 승인 게이트를 유지한다.",
+      "제품 이미지와 가상 모델의 형태·정체성 일관성은 현재 검증된 기능이 아니다."
+    ],
+    "automation_and_agents": [
+      "반복·규칙 기반 업무는 자동화 후보, 다단계 판단 업무는 제한된 에이전트 후보로 분류한다.",
+      "처음에는 한 업무만 연결하고 현재 결과, 실패율, 검수 비용을 확인한 뒤 확장한다.",
+      "Human on the loop은 무검수가 아니라 중요 결과와 외부 행동 직전의 명시적 검수를 뜻한다."
+    ]
+  },
+  "final_corpus_redistribution_targets": [
+    "전체 자료 종료 후 지식 저장, 브랜드 에이전트, 제작, 리퍼포징, QA, 게시 준비를 독립 계층으로 재분배한다.",
+    "카드뉴스·릴스·쇼츠·블로그·Commerce의 공통 원본 스키마와 포맷별 변환 규칙을 구분한다.",
+    "Gemini·Veo·Flow·Polyphony·Accio Work·Castmagic은 설치 후보가 아니라 비교 대상 목록으로만 유지한다.",
+    "기존 관계 인덱스와 shard가 공통 지식층에서 최종 선택기와 제작기로 전달되는지 마지막 통합 리테스트 대상으로 유지한다."
+  ]
+}

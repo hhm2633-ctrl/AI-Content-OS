@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "rule_id": "multi_blog_comparative_learning_v1",
+  "status": "owner_confirmed_learning_rule",
+  "owner_intent": "Learn from Naver Blog and multiple other blog ecosystems by separating them first and then comparing equivalent content, instead of treating all blogs as one format.",
+  "analysis_order": [
+    "Identify platform, account, post date, topic, content purpose, audience, and visible commercial relationship.",
+    "Analyze each platform group independently before creating cross-platform conclusions.",
+    "Within each platform, separate information, firsthand review, story, trend, product, local search, expert analysis, and conversion-oriented posts.",
+    "Compare only posts with similar topic, intent, audience, freshness, and evidence level.",
+    "Store shared principles separately from platform-specific patterns and account-specific style.",
+    "Record owner corrections, uncertainty, and claims requiring current platform verification."
+  ],
+  "platform_groups": [
+    {
+      "platform": "Naver Blog",
+      "focus": [
+        "search intent and title structure",
+        "opening answer and scan path",
+        "image and text rhythm",
+        "specific firsthand evidence",
+        "local, product, and practical-information usefulness",
+        "internal discovery and external inflow",
+        "advertising, sponsorship, and affiliate disclosure"
+      ]
+    },
+    {
+      "platform": "Tistory and independent Korean blogs",
+      "focus": [
+        "search-engine entry structure",
+        "long-form depth and information architecture",
+        "site navigation and related-post movement",
+        "external distribution and owned-audience value",
+        "advertising placement and readability"
+      ]
+    },
+    {
+      "platform": "Brunch and editorial essay platforms",
+      "focus": [
+        "author voice and narrative arc",
+        "editorial typography and whitespace",
+        "series continuity",
+        "expertise and emotional credibility",
+        "subscription or author-follow motivation"
+      ]
+    },
+    {
+      "platform": "WordPress and independent sites",
+      "focus": [
+        "owned structure and conversion path",
+        "topic clusters and archives",
+        "newsletter, product, or service connection",
+        "technical and visual customization",
+        "source transparency and maintenance burden"
+      ]
+    },
+    {
+      "platform": "International publishing platforms",
+      "focus": [
+        "headline and opening conventions",
+        "evidence and citation style",
+        "author authority and publication context",
+        "membership, subscription, and distribution mechanics",
+        "patterns that transfer to Korean audiences versus patterns that do not"
+      ]
+    }
+  ],
+  "comparison_dimensions": [
+    "hook and title promise",
+    "speed of answering reader intent",
+    "information depth and structure",
+    "firsthand experience and evidence provenance",
+    "image quantity, type, placement, and caption role",
+    "mobile readability and paragraph rhythm",
+    "tone, author identity, and emotional progression",
+    "comments, community response, and trust signals",
+    "search, recommendation, subscription, and external distribution path",
+    "natural commerce or service connection",
+    "disclosure and unsupported claim risk",
+    "repurposing value for CardNews, captions, Reels, or future blog output"
+  ],
+  "storage_contract": {
+    "platform_specific_patterns": "Keep platform-only findings separate and versioned.",
+    "cross_platform_patterns": "Promote only patterns repeatedly supported across comparable samples.",
+    "account_specific_patterns": "Do not universalize one successful account's voice, layout, or posting tactic.",
+    "negative_examples": "Store why a pattern failed or does not transfer, not only successful-looking examples.",
+    "source_status": "Separate owner-provided evidence, directly observed pages, secondary creator advice, and unverified claims."
+  },
+  "boundaries": [
+    "Do not combine all blog samples into one average template.",
+    "Do not compare unrelated topics or intents as if platform alone caused the difference.",
+    "Do not infer actual traffic, ranking, income, or conversion from design and visible engagement alone.",
+    "Do not fabricate firsthand experience or copy a creator's personal story.",
+    "Do not scrape, post, comment, or write externally without the applicable owner approval.",
+    "Platform algorithms and policies are temporally unstable and require current verification before operational use."
+  ],
+  "runtime_connected": false,
+  "tested": false,
+  "performance_verified": false
+}

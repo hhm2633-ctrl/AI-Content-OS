@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_004",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "do_not_force_commerce_on_project_reference_material": true,
+    "screenshots_are_reference_not_capability_or_performance_proof": true
+  },
+  "batch_character": {
+    "commerce_shortform_items": [31, 32, 33],
+    "project_intelligence_items": [34, 35, 36, 37, 38, 39, 40],
+    "reason": "The batch shifts from affiliate short-form examples to AI workflow, affiliate production, connector, and creative-tone references."
+  },
+  "items": [
+    {
+      "index": 31,
+      "file": "Screenshot_20260704_074004_YouTube.jpg",
+      "type": "commerce_shortform",
+      "visible_story": "A daughter returns to a cat after a provocative claim that the mother abandoned it; the cat is shown held close with the subtitle 바로 달려나옴.",
+      "layout": "black headline band, white/green two-color hook, emotional full-bleed animal footage, outlined subtitle, product area placed in lower vacancy",
+      "hook": "family conflict and apparent cruelty create concern before an emotional animal payoff",
+      "narrative_rule": "Do not decide the meaning from the accusation alone; inspect whether the footage resolves it as reunion, attachment, misunderstanding, or another reversal.",
+      "commerce_candidates": [
+        {"candidate": "cat-themed product or cat-face merchandise", "relation": "featured_animal_association", "confidence": "medium", "reason": "the cat is the emotional center and the product thumbnail appears cat-themed"},
+        {"candidate": "cat comfort or care item", "relation": "pet_care_context", "confidence": "low", "reason": "valid only if the full video establishes a care need"}
+      ],
+      "uncertainty": "The exact three listed products and full narrative resolution are not readable from this still."
+    },
+    {
+      "index": 32,
+      "file": "Screenshot_20260704_074217_YouTube.jpg",
+      "type": "commerce_shortform",
+      "visible_story": "An ice-bath butter-making technique with saffron and a reaction that the mixture is setting.",
+      "layout": "large process footage above, live reaction subtitle inside footage, white explanatory lower panel, oversized product cutout overlapping the panel",
+      "hook": "one simple ingredient action followed by a surprising result",
+      "commerce_candidates": [
+        {"candidate": "ghee or brown butter", "relation": "direct_recipe_product", "confidence": "high", "reason": "the product belongs to the demonstrated butter-making and cooking context"},
+        {"candidate": "saffron or cooking ingredients", "relation": "recipe_component", "confidence": "medium", "reason": "the ingredient is explicitly referenced in the on-screen instruction"},
+        {"candidate": "mixing bowl or kitchen tool", "relation": "process_tool", "confidence": "medium", "reason": "the visible technique can support tools required to reproduce it"}
+      ]
+    },
+    {
+      "index": 33,
+      "file": "Screenshot_20260704_074238_YouTube.jpg",
+      "type": "commerce_shortform",
+      "visible_story": "A buyer cannot set off after purchasing a very heavy motorcycle, emphasized by the 400 kg subtitle.",
+      "layout": "black title band, single yellow headline, full-height problem footage, high-contrast weight subtitle, product sticker anchored near the motorcycle part",
+      "hook": "post-purchase failure caused by an unexpectedly extreme physical specification",
+      "commerce_candidates": [
+        {"candidate": "motorcycle support, stand accessory, or maneuvering aid", "relation": "problem_solution_accessory", "confidence": "medium", "reason": "the item should address parking, support, or moving the heavy motorcycle"},
+        {"candidate": "riding or motorcycle accessory", "relation": "activity_equipment", "confidence": "low", "reason": "only retain if its function connects to the demonstrated problem"}
+      ],
+      "uncertainty": "The exact two product thumbnails are too small to identify reliably."
+    },
+    {
+      "index": 34,
+      "file": "Screenshot_20260704_105201_Instagram.jpg",
+      "type": "project_intelligence",
+      "topic": "Claude Code and Codex collaboration plugin claim",
+      "design": "dark technical carousel, abstract black/green hero visual, neon swipe button, restrained blue pagination, long evidence-style caption",
+      "project_value": [
+        "Reference for role-separated AI review workflows: review, adversarial review, rescue, and transfer.",
+        "Reference for dark technology carousel styling and explicit swipe navigation."
+      ],
+      "guardrail": "The post is not proof that the described plugin is installed, current, safe, or compatible with this project."
+    },
+    {
+      "index": 35,
+      "file": "Screenshot_20260705_052700_Instagram.jpg",
+      "type": "project_intelligence",
+      "topic": "Caveman coding skill that removes greetings and extra explanation",
+      "design": "minimal black video card with one centered statement; detailed explanation is moved into the caption",
+      "project_value": [
+        "Reference for concise agent output and token-efficient coding prompts.",
+        "Useful as an optional response style, not as a replacement for evidence, reasoning, or safety context."
+      ],
+      "guardrail": "Do not install or adopt solely from the screenshot; brevity must not hide uncertainty or failed checks."
+    },
+    {
+      "index": 36,
+      "file": "Screenshot_20260705_053907_Instagram.jpg",
+      "type": "project_intelligence",
+      "topic": "Higgsfield and Claude workflow article with affiliate-marketing platform explanation",
+      "design": "mobile long-form documentation page, numbered sections, platform logos, explanatory paragraphs",
+      "project_value": [
+        "Reference for product-link-to-short-form workflow planning.",
+        "Reference list for affiliate sources such as Coupang Partners, Amazon Associates, and LinkPrice."
+      ],
+      "guardrail": "This is roadmap/reference material only; it does not authorize affiliate-link issuance or prove an integration."
+    },
+    {
+      "index": 37,
+      "file": "Screenshot_20260705_053934_Instagram.jpg",
+      "type": "project_intelligence",
+      "topic": "Product URL supplied to a generative video workflow",
+      "design": "long-form tutorial with embedded prompt/result screenshots and explanatory text",
+      "project_value": [
+        "Pipeline reference: approved product URL -> verified product metadata -> content concept -> script/storyboard -> short-form render.",
+        "Shows why product evidence should be extracted before generation rather than allowing a model to invent product details."
+      ],
+      "guardrail": "Do not issue links, upload assets, or call external generation services without the required owner approval."
+    },
+    {
+      "index": 38,
+      "file": "Screenshot_20260705_054450_Instagram.jpg",
+      "type": "project_intelligence",
+      "topic": "Meta Ads MCP custom connector setup",
+      "design": "warm white tutorial card, orange numbered steps, code-style connector path, highlighted URL and warning box",
+      "project_value": [
+        "Reference for a future advertising-analysis connector and account-selection UX.",
+        "Strong reusable instructional layout: numbered action, exact path, highlighted input, caution immediately below."
+      ],
+      "guardrail": "The screenshot is not proof of availability or connection; external account login and API actions remain approval-gated."
+    },
+    {
+      "index": 39,
+      "file": "Screenshot_20260705_054651_Instagram.jpg",
+      "type": "creative_system_reference",
+      "topic": "Category-specific creative tones",
+      "design": "warm editorial guide, large section title, bold inline emphasis, rounded cards, orange prompt boxes",
+      "learned_tones": [
+        {"tone": "candid_ugc", "fit": ["app", "lifestyle", "review", "low_price"], "visual_rules": ["smartphone realism", "natural shadow", "slight grain", "minor overexposure", "unfiltered feel"], "conversion_logic": "believability over perfection"},
+        {"tone": "clean_studio", "fit": ["skincare", "jewelry", "technology", "premium"], "visual_rules": ["solid background", "front-facing product hero", "uniform softbox light", "ample negative space", "sharp material detail"], "conversion_logic": "clear detail supports quality and trust"}
+      ],
+      "project_value": "Creative tone must be selected by category and intent rather than using one universal visual style."
+    },
+    {
+      "index": 40,
+      "file": "Screenshot_20260705_054659_Instagram.jpg",
+      "type": "creative_system_reference",
+      "topic": "Continuation of category-specific creative tones",
+      "design": "same editorial system as item 39, preserving a consistent guide while varying each tone card",
+      "learned_tones": [
+        {"tone": "candid_ugc", "fit": ["app", "lifestyle", "review", "low_price"], "visual_rules": ["realistic phone capture", "imperfection as trust signal"]},
+        {"tone": "clean_studio", "fit": ["skincare", "jewelry", "technology", "premium"], "visual_rules": ["controlled light", "material detail", "minimal clutter"]},
+        {"tone": "lifestyle_staging", "fit": ["fashion", "home_interior", "food_and_beverage", "perfume"], "visual_rules": ["natural product placement in a believable space", "warmer than studio", "sell the life around the product"]}
+      ],
+      "uncertainty": "The page announces four tones, but the fourth tone is not visible in this screenshot and is therefore not invented."
+    }
+  ],
+  "cross_batch_learning": [
+    "Narrative resolution has priority over isolated hook polarity when matching products.",
+    "Commerce short-form references and project/tool references require separate learning paths.",
+    "A source post can teach visual grammar and pipeline ideas without proving that its tool claims work.",
+    "Creative tone should be selected from category, price position, trust need, and conversion intent.",
+    "Unknown product identity or unseen carousel content must remain explicitly uncertain."
+  ]
+}

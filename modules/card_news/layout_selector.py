@@ -1,4 +1,8 @@
-from typing import Any, Dict, List, Optional, Tuple
+import json
+from pathlib import Path
+from typing import Any, Dict, List, Mapping, Optional, Tuple
+
+from modules.common.external_storage import resolve_external_path
 
 
 class LayoutSelector:
@@ -92,6 +96,8 @@ class LayoutSelector:
     BRAND_PREFERENCE_WEIGHT = 0.3
     BRAND_VOICE_HEURISTIC_WEIGHT = 0.12
     SAFETY_OVERRIDE_LAYOUT_SCORE = 0.3
+    LEARNED_PROFILE_WEIGHT = 0.45
+    LEARNED_PROFILE_MIN_SCORE = 0.2
 
     DEFAULT_LAYOUT = "bold_ai"
     SAFE_LAYOUT = "notebook"
@@ -99,6 +105,13 @@ class LayoutSelector:
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
+        configured_path = self.config.get("approved_layout_registry_path")
+        self.approved_layout_registry_path = (
+            Path(configured_path)
+            if configured_path
+            else resolve_external_path("artifacts", "design_learning", "owner_source")
+            / "approved_layout_registry.json"
+        )
 
     def select(
         self,
@@ -106,6 +119,7 @@ class LayoutSelector:
         topic_intelligence: Optional[Dict[str, Any]] = None,
         brand_profile: Optional[Dict[str, Any]] = None,
         content_intelligence: Optional[Dict[str, Any]] = None,
+        design_learning_context: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         try:
             return self._select(
@@ -113,6 +127,7 @@ class LayoutSelector:
                 topic_intelligence or {},
                 brand_profile or {},
                 content_intelligence or {},
+                design_learning_context or {},
             )
         except Exception:
             return {
@@ -122,6 +137,8 @@ class LayoutSelector:
                 "fallback_used": True,
                 "layout_score": 0.0,
                 "layout_score_reason": "레이아웃 선택 실패로 0.0 처리함.",
+                "design_learning_used": False,
+                "selected_layout_profile_id": None,
             }
 
     def _select(
@@ -130,10 +147,26 @@ class LayoutSelector:
         topic_intelligence: Dict[str, Any],
         brand_profile: Dict[str, Any],
         content_intelligence: Dict[str, Any],
+        design_learning_context: Dict[str, Any],
     ) -> Dict[str, Any]:
         pattern_type = str(pattern_meta.get("pattern_type", ""))
 
         scores, reasons = self._score_layouts(pattern_type, topic_intelligence, brand_profile)
+
+        learned_profile, learned_score, learned_reasons = self._select_learned_profile(
+            design_learning_context,
+            topic_intelligence,
+        )
+        if learned_profile is not None and learned_score >= self.LEARNED_PROFILE_MIN_SCORE:
+            learned_layout = str(learned_profile.get("base_layout_id", ""))
+            if learned_layout in scores:
+                weight = round(min(self.LEARNED_PROFILE_WEIGHT, learned_score), 4)
+                scores[learned_layout] += weight
+                reasons.append(
+                    f"owner-approved profile '{learned_profile.get('profile_id')}'(+{weight:.4f}: "
+                    + ", ".join(learned_reasons)
+                    + ")"
+                )
 
         layout_type = max(scores, key=scores.get)
         top_score = scores[layout_type]
@@ -156,6 +189,13 @@ class LayoutSelector:
             reason = f"{risk_reason} 안전한 '{self.SAFE_LAYOUT}' 레이아웃으로 대체함."
             layout_score = self.SAFETY_OVERRIDE_LAYOUT_SCORE
 
+        profile_applied = bool(
+            learned_profile
+            and learned_score >= self.LEARNED_PROFILE_MIN_SCORE
+            and learned_profile.get("base_layout_id") == layout_type
+            and source != "safety_override"
+        )
+
         return {
             "layout_type": layout_type,
             "reason": reason,
@@ -163,7 +203,86 @@ class LayoutSelector:
             "fallback_used": source in ("default_fallback", "safety_override", "error_fallback"),
             "layout_score": layout_score,
             "layout_score_reason": reason,
+            "design_learning_used": profile_applied,
+            "selected_layout_profile_id": learned_profile.get("profile_id") if profile_applied else None,
+            "design_learning_match_score": round(learned_score, 4) if profile_applied else 0.0,
+            "style_overrides": dict(learned_profile.get("style_overrides") or {}) if profile_applied else {},
+            "design_learning_boundary": "owner_approved_reference_not_performance",
         }
+
+    def _load_approved_profiles(self) -> List[Dict[str, Any]]:
+        try:
+            payload = json.loads(self.approved_layout_registry_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError, TypeError):
+            return []
+        boundary = payload.get("learning_boundary") if isinstance(payload, dict) else None
+        if not isinstance(boundary, Mapping) or boundary.get("owner_approval_required") is not True:
+            return []
+        profiles = payload.get("profiles")
+        if not isinstance(profiles, list):
+            return []
+        return [
+            dict(profile)
+            for profile in profiles
+            if isinstance(profile, Mapping)
+            and profile.get("base_layout_id") in self.ALL_LAYOUTS
+            and (profile.get("owner_approval") or {}).get("approved_by") == "owner"
+            and profile.get("is_performance_evidence") is False
+        ]
+
+    @staticmethod
+    def _tokens(value: Any) -> set[str]:
+        if isinstance(value, (list, tuple, set)):
+            return {str(item).strip().casefold() for item in value if str(item).strip()}
+        text = str(value or "").strip()
+        return {text.casefold()} if text else set()
+
+    def _select_learned_profile(
+        self,
+        context: Mapping[str, Any],
+        topic_intelligence: Mapping[str, Any],
+    ) -> Tuple[Optional[Dict[str, Any]], float, List[str]]:
+        account_id = str(context.get("account_id") or "").strip().casefold()
+        categories = self._tokens(context.get("content_categories"))
+        categories |= self._tokens(context.get("category"))
+        categories |= self._tokens(topic_intelligence.get("category"))
+        moods = self._tokens(context.get("moods"))
+        issue_types = self._tokens(context.get("issue_types"))
+        media_conditions = self._tokens(context.get("media_conditions"))
+        best: Optional[Dict[str, Any]] = None
+        best_score = 0.0
+        best_reasons: List[str] = []
+        for profile in self._load_approved_profiles():
+            score = 0.0
+            reasons: List[str] = []
+            if account_id and account_id in self._tokens(profile.get("account_targets")):
+                score += 0.35
+                reasons.append("account")
+            elif "shared" in self._tokens(profile.get("account_targets")) or profile.get("reference_scope") == "shared":
+                score += 0.12
+                reasons.append("shared_a_b_c_pool")
+            for label, current, weight in (
+                ("category", categories, 0.2),
+                ("mood", moods, 0.15),
+                ("issue", issue_types, 0.15),
+                ("media", media_conditions, 0.1),
+            ):
+                profile_field = {
+                    "category": "content_categories",
+                    "mood": "moods",
+                    "issue": "issue_types",
+                    "media": "media_conditions",
+                }[label]
+                if current & self._tokens(profile.get(profile_field)):
+                    score += weight
+                    reasons.append(label)
+            if score > best_score or (
+                score == best_score
+                and best is not None
+                and str(profile.get("profile_id")) < str(best.get("profile_id"))
+            ):
+                best, best_score, best_reasons = profile, score, reasons
+        return best, min(1.0, best_score), best_reasons
 
     def _score_layouts(
         self,

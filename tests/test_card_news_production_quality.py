@@ -381,7 +381,7 @@ class TestLayoutHighlightInputGuards(unittest.TestCase):
         module._load_topic_intelligence = lambda: {}
         module._load_brand_profile = lambda: {}
         module.layout_selector.select = lambda **kwargs: {"layout_type": "notebook"}
-        module.layout_rule_engine.get_rule = lambda layout_type: {}
+        module.layout_rule_engine.get_rule = lambda layout_type, **kwargs: {}
         module.slide_designer.design = lambda slides, rule: []
 
         captured = {}

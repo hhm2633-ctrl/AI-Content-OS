@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "rule": "Retain all useful source analysis even when it is not immediately connected to runtime.",
+  "retention_scope": [
+    "design and layout observations",
+    "image-generation prompt phrases",
+    "camera, lighting, composition, texture, and color instructions",
+    "hook and narrative structures",
+    "commerce association logic",
+    "monetization and distribution ideas",
+    "pipeline and tool references",
+    "assistant interpretations",
+    "owner corrections and human-context explanations",
+    "uncertainties and unverified claims"
+  ],
+  "state_labels": [
+    "reference_only",
+    "approved_learning_material",
+    "runtime_connected",
+    "tested",
+    "performance_verified"
+  ],
+  "guardrail": "Saving a reference does not mean it is installed, connected, tested, or performance-proven."
+}

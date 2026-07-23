@@ -1041,3 +1041,32 @@
 - Separated automatic OCR/OpenCLIP evidence from owner visual approval and required owner identity/authority for representative and batch QA transitions.
 - Stored final batch owner visual receipt IDs alongside receipt hashes before manual-upload readiness.
 - QA: compile passed and 71 focused tests passed. No real network deep fetch, render, external API write, publish, automation, or Git operation was performed.
+
+## 2026-07-23 14:06:38
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-23 14:21:24
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-23 15:04:49
+
+- Change: Workflow completed and project snapshot refreshed.
+- Execution command: `py -m src.main`
+- Workflow result: `workflow_completed`
+
+## 2026-07-23 - Enforce learned design and source-media quality before render
+
+- Made learned visual direction, emotion, and palette take priority over default account themes and record the exact consumed fields.
+- Added fail-closed handling when learning is claimed but its design guidance is not consumed.
+- Preserved supplied bilingual relevance and distractor labels through the variable 1-20 slide blueprint without inventing missing translations.
+- Added a pre-render source-media gate using PaddleOCR, OpenCLIP, OCR context overlap, distractor scoring, and perceptual-hash duplicate rejection.
+- Removed metadata-only zero-score fallback and cyclic image reuse from source-media localization.
+- Made approved package building always use the F: source-media localization and quality-gate path, even when no media-root CLI option is supplied.
+- A failed or incomplete media gate now changes the package and render gate to `blocked`; tool scores remain internal quality proxies and never establish facts, rights, approval, or publish readiness.
+- Added focused regression coverage, but no tests, compile, workflow, render, external write, publish, automation, or Git operation was run for this change.

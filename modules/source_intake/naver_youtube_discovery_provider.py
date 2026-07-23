@@ -38,6 +38,7 @@ YOUTUBE_OPERATIONS = {
 NAVER_OPERATIONS = {
     "fetch_article_body",
     "collect_news_images",
+    "search_related_news",
     "capture_original_post",
     "extract_reconstruction_scene_facts",
     "collect_campaign_assets",
@@ -211,7 +212,7 @@ class NaverYoutubeDiscoveryProvider:
                     "description": _clean_text(raw.get("description")),
                     "published_at": str(raw.get("pubDate", "") or "").strip(),
                     "publisher": _hostname(url),
-                    "source_api": "naver_news_api_hub",
+                    "source_api": "naver_news_search",
                     "metadata_only": True,
                     "downloaded": False,
                 }
@@ -219,7 +220,7 @@ class NaverYoutubeDiscoveryProvider:
         return {
             "status": "ok",
             "network_used": True,
-            "endpoint": "naver_news",
+            "endpoint": "naver_news_search",
             "query": query,
             "assets": assets,
         }
@@ -258,6 +259,13 @@ class NaverYoutubeDiscoveryProvider:
             video_id = raw.get("id", {}).get("videoId") if isinstance(raw.get("id"), Mapping) else ""
             snippet = raw.get("snippet") if isinstance(raw.get("snippet"), Mapping) else {}
             title = _clean_text(snippet.get("title"))
+            thumbnails = snippet.get("thumbnails") if isinstance(snippet.get("thumbnails"), Mapping) else {}
+            thumbnail = ""
+            for quality in ("maxres", "standard", "high", "medium", "default"):
+                value = thumbnails.get(quality)
+                if isinstance(value, Mapping) and str(value.get("url") or "").strip():
+                    thumbnail = str(value["url"]).strip()
+                    break
             if not video_id or not title:
                 continue
             assets.append(
@@ -268,9 +276,20 @@ class NaverYoutubeDiscoveryProvider:
                     "description": _clean_text(snippet.get("description")),
                     "published_at": str(snippet.get("publishedAt", "") or "").strip(),
                     "channel": _clean_text(snippet.get("channelTitle")),
+                    "thumbnail_url": thumbnail,
                     "source_api": "youtube_data_api_v3",
                     "metadata_only": True,
                     "downloaded": False,
+                    "rights_status": "source_editorial_usable",
+                    "reference_only": False,
+                    "usable_in_production": bool(thumbnail),
+                    "topic_relevant": True,
+                    "attribution_required": True,
+                    "source_url": f"https://www.youtube.com/watch?v={video_id}",
+                    "remote_url": thumbnail,
+                    "manual_visual_review_required": True,
+                    "publish_authorized": False,
+                    "usage_scope": "attributed_youtube_thumbnail_editorial_candidate",
                 }
             )
         return {

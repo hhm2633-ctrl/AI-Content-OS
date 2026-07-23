@@ -1,0 +1,218 @@
+{
+  "batch_id": "reels_visual_commerce_learning_batch_035",
+  "source_range": {
+    "start": 341,
+    "end": 350
+  },
+  "status": "stored_not_runtime_verified",
+  "analysis_scope": [
+    "content",
+    "account_type",
+    "design_layout_color",
+    "narrative",
+    "project_application",
+    "uncertainty"
+  ],
+  "items": [
+    {
+      "source_id": 341,
+      "group": "current_affairs_magazine_film_policy_cards",
+      "account_type": "current_affairs_magazine",
+      "carousel_position": "1/7",
+      "observed_content": "영화 촬영 현장 사진 위에 '배우 출연료 정부에서 낮춘다'라는 제목을 크게 배치한다. 본문은 영진위와 문체부가 여러 연예기획사 등과 배우 출연료 관련 협약을 추진한다는 흐름으로 시작한다.",
+      "design_layout_color": "실제 영화 촬영 현장 사진을 전면에 사용하고 아래쪽을 어둡게 처리해 굵은 흰 제목을 두 줄로 배치한다.",
+      "narrative": "제작 현장이라는 직관적인 사진과 짧고 강한 정책 변화 제목으로 첫 장 관심을 확보한다.",
+      "project_application": [
+        "시사 매거진 계정은 정책 대상 산업의 실제 현장 이미지를 첫 장 배경으로 사용하고 핵심 변화를 짧은 제목으로 제시할 수 있다.",
+        "본문과 후속 장에서 첫 장의 압축된 표현을 구체적인 적용 대상과 조건으로 풀어준다."
+      ],
+      "uncertainty": [
+        "첫 장 제목만 보면 정부가 모든 배우 출연료를 직접 낮추는 것으로 오해할 수 있어 후속 장의 지원사업 조건과 자율협약 맥락이 필요하다."
+      ]
+    },
+    {
+      "source_id": 342,
+      "group": "current_affairs_magazine_film_policy_cards",
+      "account_type": "current_affairs_magazine",
+      "carousel_position": "4/7",
+      "observed_content": "중예산영화 제작지원 사업의 지원작은 주·조연급 출연료를 순제작비의 10% 미만으로 정하도록 협조한다는 내용을 설명한다.",
+      "design_layout_color": "키보드, 서류와 커피가 놓인 업무 장면을 어둡게 처리하고 중앙에 짧은 흰 문장을 세로로 나눈다.",
+      "narrative": "첫 장의 포괄적 제목을 지원사업 대상, 출연료 비율과 제작비 기준이라는 구체 조건으로 좁힌다.",
+      "project_application": [
+        "정책 카드에서는 적용 대상, 산식, 비율과 조건을 한 장에 하나씩 분리해 설명한다.",
+        "숫자는 제목의 자극을 뒷받침하는 핵심 정보이므로 기준이 되는 비용 항목까지 함께 적는다."
+      ],
+      "uncertainty": [
+        "2/7~3/7 화면이 없어 협약 참여 주체와 앞선 설명 전체는 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 343,
+      "group": "current_affairs_magazine_film_policy_cards",
+      "account_type": "current_affairs_magazine",
+      "carousel_position": "5/7",
+      "observed_content": "출연료 기준은 법적 강제력 없이 도덕적 합의로 운영된다고 설명한다.",
+      "design_layout_color": "악수하는 손과 계약 서류를 어두운 배경으로 사용하고 중앙에 흰 문장만 배치한다.",
+      "narrative": "비율 조건을 제시한 직후 강제 규제가 아니라 합의 방식이라는 중요한 한계를 알려 과도한 첫인상을 보정한다.",
+      "project_application": [
+        "정책 뉴스에서는 수치뿐 아니라 의무인지 권고인지, 법적 강제력이 있는지 같은 집행 성격을 반드시 같은 흐름 안에서 설명한다.",
+        "악수 이미지는 자율협약과 합의의 의미를 시각적으로 보조한다."
+      ],
+      "uncertainty": [
+        "화면은 합의의 구체적인 불이행 처리 방식까지 설명하지 않는다."
+      ]
+    },
+    {
+      "source_id": 344,
+      "group": "current_affairs_magazine_film_policy_cards",
+      "account_type": "current_affairs_magazine",
+      "carousel_position": "6/7",
+      "observed_content": "한상준 영진위 위원장이 제작비 구조 때문에 출발조차 못 하는 작품이 있다고 설명했다는 내용을 전한다.",
+      "design_layout_color": "사람들이 자료를 두고 논의하는 어두운 회의 장면 위에 중앙 정렬한 흰 문장을 배치한다.",
+      "narrative": "정책 조건과 운영 방식을 설명한 뒤 왜 이런 협약이 추진되는지 제작비 구조 문제를 관계자 발언으로 연결한다.",
+      "project_application": [
+        "정책 설명 뒤에 추진 배경을 관계자 발언으로 붙이면 숫자 규칙이 실제 산업 문제와 연결된다.",
+        "발언은 발언자에게 귀속시켜 뉴스 문장과 의견을 구분한다."
+      ],
+      "uncertainty": [
+        "현재 화면에는 발언의 전체 문맥과 구체 사례가 포함되지 않았다."
+      ]
+    },
+    {
+      "source_id": 345,
+      "group": "current_affairs_magazine_film_policy_cards",
+      "account_type": "current_affairs_magazine",
+      "carousel_position": "7/7",
+      "observed_content": "협약식이 7월 16일 오후 2시 국립현대미술관 서울관에서 열린다는 일정과 장소로 마무리한다.",
+      "design_layout_color": "현대적인 건물 내부를 어둡게 처리하고 중앙에 일정·장소를 세 줄 흰 문장으로 배치한다.",
+      "narrative": "정책 내용, 한계, 추진 배경을 거친 뒤 실제 협약식 정보로 끝내 뉴스의 구체성을 보강한다.",
+      "project_application": [
+        "정책·행사 뉴스는 마지막 장에 날짜, 시간과 장소를 정리하는 마감 구조를 사용할 수 있다.",
+        "이미 지난 일정이라면 발행 시점에 맞춰 예정 표현과 개최 표현을 구분한다."
+      ],
+      "uncertainty": [
+        "게시물의 실제 발행 시점과 협약식 개최 결과는 현재 자료만으로 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 346,
+      "group": "issue_meme_dopamine_toon_broadcast_interview_story",
+      "account_type": "issue_meme_dopamine_toon",
+      "carousel_position": "3/11",
+      "observed_content": "배우 오윤아로 소개된 인물이 방송 인터뷰에서 결혼 축하를 받으며 웃다가 눈물이 날 것 같다고 말하는 두 장면을 한 화면의 위아래에 배치한다. 본문은 재혼 발표 후 축하에 직접 감사 인사를 전했다고 설명한다.",
+      "design_layout_color": "같은 밝은 거실 인터뷰의 근접 표정과 전신 장면을 위아래로 쌓고, 방송 자막과 별도로 반투명 'trend' 계정 표식을 반복해서 넣는다. 이 표식은 영상 저작권 표시가 아니라 해당 계정이 장면을 보고 캡처·편집했다는 표시다.",
+      "narrative": "축하라는 밝은 상황에서 웃음과 눈물이 교차하는 표정을 먼저 보여 감정적 진입점을 만든다.",
+      "project_application": [
+        "이슈짤·도파민툰 계정은 문제가 되지 않는 범위에서 실제 연예인 방송 장면을 활용해 인터뷰의 감정 흐름을 전달할 수 있다.",
+        "한 장 안에 같은 인터뷰의 서로 다른 두 순간을 위아래로 배치하면 짧은 대화와 표정 변화를 동시에 보여줄 수 있다."
+      ],
+      "uncertainty": [
+        "1/11~2/11 화면이 없어 게시물의 최초 제목과 도입부는 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 347,
+      "group": "issue_meme_dopamine_toon_broadcast_interview_story",
+      "account_type": "issue_meme_dopamine_toon",
+      "carousel_position": "5/11",
+      "observed_content": "오랜 시간 아이를 혼자 키웠고 아이가 자신에게 가장 큰 우선순위였다는 인터뷰 자막을 보여준다. 아래 장면에는 인물과 아이로 보이는 사진을 작은 삽입 이미지로 함께 사용한다.",
+      "design_layout_color": "넓은 소파 인터뷰 장면과 근접 발언 장면을 위아래로 나누고, 가족 사진을 작은 보조 이미지로 겹친다.",
+      "narrative": "결혼 축하의 현재 감정에서 과거의 혼자 양육한 시간과 아이 중심의 삶으로 배경 이야기를 이동한다.",
+      "project_application": [
+        "연예인 인터뷰 서사는 현재 사건만 요약하지 않고 당사자가 직접 말한 과거 배경을 이어 감정의 이유를 보여줄 수 있다.",
+        "발언과 관련된 실제 가족 사진을 작은 보조 화면으로 넣어 자막의 대상을 이해시키는 구성을 학습한다."
+      ],
+      "uncertainty": [
+        "삽입 사진 속 인물 관계는 현재 화면의 문맥을 바탕으로 한 해석이다.",
+        "4/11 화면이 없어 축하 장면과 양육 이야기 사이의 연결 문장은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 348,
+      "group": "issue_meme_dopamine_toon_broadcast_interview_story",
+      "account_type": "issue_meme_dopamine_toon",
+      "carousel_position": "7/11",
+      "observed_content": "연애할 생각을 거의 하지 않았지만 정말 좋은 사람을 만나게 됐다는 인터뷰 자막과 표정을 위아래 장면으로 보여준다.",
+      "design_layout_color": "동일한 밝은 인터뷰 공간을 유지하면서 전신 발언 장면과 감정이 드러나는 근접 얼굴을 조합한다.",
+      "narrative": "아이를 우선했던 과거 → 연애를 생각하지 않음 → 좋은 사람을 만남으로 관계 변화의 전환점을 만든다.",
+      "project_application": [
+        "관계·연애·연예 이슈는 당사자 발언의 시간 순서를 유지해 과거 상황, 마음의 변화와 현재 결과를 단계적으로 구성할 수 있다.",
+        "같은 배경에서도 화면 크기를 달리해 서사 전환과 감정 강도를 표현한다."
+      ],
+      "uncertainty": [
+        "6/11 화면이 없어 만남의 구체적인 계기와 중간 발언은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 349,
+      "group": "issue_meme_dopamine_toon_broadcast_interview_story",
+      "account_type": "issue_meme_dopamine_toon",
+      "carousel_position": "8/11",
+      "observed_content": "상대방의 부모님이 좋은 분들이고 아이를 손자처럼 받아줬다는 취지의 인터뷰 자막을 보여준다.",
+      "design_layout_color": "동일한 위아래 분할 인터뷰 형식을 유지하고 상단은 설명, 하단은 핵심 감정 문장으로 이어진다.",
+      "narrative": "좋은 사람을 만난 개인 관계에서 상대 가족이 아이를 받아들인 가족 통합의 이야기로 확장한다.",
+      "project_application": [
+        "관계 서사에서 단순 결혼 발표보다 기존 가족 구성원이 어떻게 받아들여졌는지를 당사자 발언으로 보여주면 감정적 완결성이 커진다.",
+        "한 화면의 두 자막이 앞뒤 문장처럼 이어지도록 장면을 골라 읽는 흐름을 만든다."
+      ],
+      "uncertainty": [
+        "현재 화면의 작은 자막 일부는 해상도 때문에 정확한 조사와 어미 판독에 제한이 있다."
+      ]
+    },
+    {
+      "source_id": 350,
+      "group": "issue_meme_dopamine_toon_broadcast_interview_story",
+      "account_type": "issue_meme_dopamine_toon",
+      "carousel_position": "10/11",
+      "observed_content": "이 사람과 함께하는 가족 안에서 아이를 받아줬다는 취지로 감사와 관계의 의미를 설명하는 인터뷰 장면이다.",
+      "design_layout_color": "위아래 두 장면 모두 인물을 중앙에 두고 같은 소파와 밝은 창을 반복해 시리즈의 통일성을 유지한다.",
+      "narrative": "연애를 망설였던 과거에서 좋은 사람과 가족을 만나 아이까지 받아들여진 현재로 감정 서사를 마무리하는 구간이다.",
+      "project_application": [
+        "긴 인터뷰는 발언 전체를 빽빽하게 옮기지 않고 감정 단계별 핵심 문장을 골라 가변형 캐러셀로 구성한다.",
+        "연예인의 개인 이야기는 당사자가 공개 방송에서 직접 밝힌 내용과 표정을 중심으로 유연하게 편집할 수 있다."
+      ],
+      "uncertainty": [
+        "9/11과 11/11 화면이 없어 최종 감사 문장과 게시물의 정확한 결말은 확인되지 않았다."
+      ]
+    }
+  ],
+  "cross_item_learning": [
+    {
+      "pattern": "policy_hook_then_scope_and_limit",
+      "rule": "시사 매거진 정책 카드는 강한 첫 장 제목 뒤에 적용 대상, 수치 조건, 법적 강제력 여부, 추진 배경과 일정 순으로 범위를 구체화한다."
+    },
+    {
+      "pattern": "dark_context_background_centered_text",
+      "rule": "정책 설명 장은 내용과 관련된 업무·악수·회의·장소 사진을 어둡게 처리하고 중앙의 짧은 흰 문장에 집중시킨다."
+    },
+    {
+      "pattern": "two_interview_moments_in_one_slide",
+      "rule": "한 장 안에 같은 방송 인터뷰의 서로 다른 두 순간을 위아래로 쌓아 자막의 앞뒤 문장과 표정 변화를 연속해서 보여줄 수 있다."
+    },
+    {
+      "pattern": "capture_editor_account_mark",
+      "rule": "캡처 이미지에 반복되는 'trend' 같은 반투명 표식은 영상 저작권 보유 주장으로 해석하지 않고, 해당 계정이 그 장면을 보고 캡처·편집했다는 계정 표식으로 구분한다."
+    },
+    {
+      "pattern": "broadcast_interview_emotional_progression",
+      "rule": "이슈짤·도파민툰의 인터뷰 서사는 현재 감정 → 과거의 어려움 → 관계를 피한 이유 → 좋은 사람과의 만남 → 가족의 수용처럼 당사자 발언 순서로 감정을 단계적으로 전개한다."
+    },
+    {
+      "pattern": "account_specific_celebrity_image_use",
+      "rule": "이슈짤·도파민툰 계정은 문제가 되지 않는 범위에서 실제 주제와 관련된 연예인 방송 장면, 공개 사진과 자막을 활용해 이야기를 구성할 수 있다."
+    },
+    {
+      "pattern": "variable_slide_count_for_source_story",
+      "rule": "정책 정보와 긴 인터뷰 모두 정해진 장수에 맞추지 않고 실제 조건과 감정 단계 수에 따라 필요한 만큼 가변적으로 구성한다."
+    }
+  ],
+  "deferred_work": [
+    "341~345의 누락된 2/7~3/7 화면은 다른 원본이 나오면 보완한다.",
+    "346~350의 누락된 1/11~2/11, 4/11, 6/11, 9/11, 11/11 화면은 다른 원본이 나오면 보완한다.",
+    "정책 원문 확인, 방송 원본 확인, 런타임 연결과 외부 게시 작업은 현재 수행하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false
+}

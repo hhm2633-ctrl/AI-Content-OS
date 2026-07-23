@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_003",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "batch_size": 10,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "silence_does_not_discard_assistant_analysis": true,
+    "performance_claims_require_external_evidence": true
+  },
+  "shared_learning": {
+    "commerce_relation_patterns": [
+      "celebrity curation or ranked favorite -> featured beauty/lifestyle item",
+      "food scene or dialogue -> packaged equivalent or adjacent food",
+      "material or activity -> supplies used for that activity",
+      "practical hack -> same-function object or supporting tool",
+      "familiar product comparison -> upgraded substitute",
+      "celebrity first reaction -> tasted product or adjacent snack",
+      "cultural topic -> themed product while retaining scene-based alternatives",
+      "animal, name, or visual association -> toy or game",
+      "character or emotion cue -> mood-related product only when the bridge is explainable",
+      "problem and prevention story -> exact tool or hardware solution"
+    ],
+    "hook_patterns": [
+      "anti-consumption contradiction",
+      "celebrity bag reveal with ranking",
+      "overseas popularity as curiosity proof",
+      "manufacturer-shocked unexpected use",
+      "familiar item versus upgraded alternative",
+      "celebrity first-reaction reveal",
+      "lie or caught conflict",
+      "lifelong animal behavior curiosity",
+      "disaster or failure prevention"
+    ],
+    "design_patterns": [
+      "dark entertainment frame with oversized two-color headline",
+      "full-bleed footage with minimal subtitle and movable product sticker",
+      "white commerce-editorial product hero",
+      "community-post or search-result explainer frame",
+      "product sticker placement follows visual vacancy rather than a fixed corner",
+      "topic-first product placement can coexist with alternate scene-based candidates"
+    ],
+    "selection_rules": [
+      "Retain multiple understandable product candidates when the content supports them.",
+      "Record relation type and a viewer-understandable explanation for indirect matches.",
+      "Do not invent an exact bridge when a still image lacks enough context.",
+      "Treat visible views, likes, or reactions as observations, not verified performance evidence."
+    ]
+  },
+  "items": [
+    {
+      "index": 21,
+      "file": "Screenshot_20260704_071608_YouTube.jpg",
+      "content": "Karina bag-item reveal featuring a scalp or hair brush",
+      "layout": "full-bleed celebrity portrait, white/pink headline, yellow supporting text, lower-left product sticker",
+      "hook": "anti-consumption contradiction plus celebrity bag reveal and number-one ranking",
+      "commerce_candidates": [
+        {"candidate": "scalp or hair brush", "relation": "direct_featured_item", "confidence": "high", "reason": "the item is presented as the celebrity bag pick"},
+        {"candidate": "Karina or aespa merchandise", "relation": "fandom_association", "confidence": "medium", "reason": "the celebrity identity supports a secondary fandom route"}
+      ],
+      "account_fit": ["C", "B"]
+    },
+    {
+      "index": 22,
+      "file": "Screenshot_20260704_071624_YouTube.jpg",
+      "content": "entertainment scene centered on flirting with jajangmyeon",
+      "layout": "textured black frame, giant turquoise/white headline, centered scene, lower subtitle, lower-left product sticker",
+      "hook": "specific actor plus humorous food-scene superlative",
+      "commerce_candidates": [
+        {"candidate": "packaged jjajang ramen", "relation": "food_scene_substitution", "confidence": "high", "reason": "jajangmyeon dialogue is converted into an immediately purchasable equivalent"}
+      ],
+      "account_fit": ["B"]
+    },
+    {
+      "index": 23,
+      "file": "Screenshot_20260704_072458_YouTube.jpg",
+      "content": "novel paper and drawing demonstration described as popular overseas",
+      "layout": "black top band, oversized yellow/red rounded title, full-bleed hands-on footage, subtitle box, lower-right product sticker",
+      "hook": "overseas popularity plus mysterious new material",
+      "commerce_candidates": [
+        {"candidate": "notebook, memo paper, or art paper", "relation": "material_activity", "confidence": "high", "reason": "paper and drawing activity directly support paper supplies"},
+        {"candidate": "drawing tools", "relation": "activity_tool", "confidence": "medium", "reason": "the demonstrated action supports adjacent art tools"}
+      ],
+      "account_fit": ["A", "B"]
+    },
+    {
+      "index": 24,
+      "file": "Screenshot_20260704_072526_YouTube.jpg",
+      "content": "unexpected practical use presented as surprising even the manufacturer",
+      "layout": "beige/white community-post interface, explanatory copy, close-up hack footage, lower-left product sticker",
+      "hook": "manufacturer-shocked genius use",
+      "commerce_candidates": [
+        {"candidate": "visible pouch, bag, or same-function accessory", "relation": "practical_hack_object", "confidence": "medium", "reason": "the product should reproduce or support the shown use rather than merely share a keyword"},
+        {"candidate": "supporting tool used in the hack", "relation": "problem_solution_tool", "confidence": "medium", "reason": "a tool that enables the demonstrated result is also understandable"}
+      ],
+      "account_fit": ["A", "B"]
+    },
+    {
+      "index": 25,
+      "file": "Screenshot_20260704_072753_YouTube.jpg",
+      "content": "Korean Choco Pie compared with an upgraded foreign chocolate snack",
+      "layout": "white commerce-editorial card, small header, explanatory headline, large centered product pack, small lower-right commerce sticker",
+      "hook": "familiar domestic product versus upgraded substitute",
+      "commerce_candidates": [
+        {"candidate": "Dickmann's chocolate snack", "relation": "direct_product_hero", "confidence": "high", "reason": "the product itself is the subject and visual hero"},
+        {"candidate": "Choco Pie or similar chocolate snacks", "relation": "comparison_alternative", "confidence": "high", "reason": "the comparison naturally supports substitute shopping choices"}
+      ],
+      "account_fit": ["A", "C"],
+      "design_value": "strong distinct reference for product-centered buying-guide cards"
+    },
+    {
+      "index": 26,
+      "file": "Screenshot_20260704_073003_YouTube.jpg",
+      "content": "Jennie reacting to a snack combination for the first time",
+      "layout": "black header, white/pink two-line headline, celebrity reaction footage, heart accent, lower-left snack sticker",
+      "hook": "celebrity first reaction plus extreme taste claim",
+      "commerce_candidates": [
+        {"candidate": "the tasted snack combination", "relation": "celebrity_reaction_product", "confidence": "high", "reason": "the footage and reaction directly concern the snack"},
+        {"candidate": "adjacent snacks used to recreate the combination", "relation": "recreation_bundle", "confidence": "medium", "reason": "viewers can purchase the components to reproduce the experience"}
+      ],
+      "account_fit": ["B", "C"],
+      "claim_guardrail": "describe what is visible in the footage; do not expand it into an unsupported endorsement"
+    },
+    {
+      "index": 27,
+      "file": "Screenshot_20260704_073127_YouTube.jpg",
+      "content": "actor visiting Korea with a conflict hook about liking Korean food",
+      "layout": "black header, white/yellow accusation headline, airport footage and airplane illustration, lower subtitle, lower-left food sticker",
+      "hook": "lie-caught accusation plus first-visit context",
+      "commerce_candidates": [
+        {"candidate": "Korean meal or bulgogi product", "relation": "cultural_topic_food", "confidence": "high", "reason": "the main topic is Korean food"},
+        {"candidate": "suitcase or travel accessory", "relation": "airport_scene_association", "confidence": "medium", "reason": "the visible travel context provides a separate understandable route"}
+      ],
+      "account_fit": ["B"]
+    },
+    {
+      "index": 28,
+      "file": "Screenshot_20260704_073223_YouTube.jpg",
+      "content": "mole behavior footage",
+      "layout": "full-bleed animal footage, centered white subtitle, no title block, lower-right product sticker",
+      "hook": "curiosity about an animal's lifelong behavior",
+      "commerce_candidates": [
+        {"candidate": "whack-a-mole toy or game", "relation": "animal_name_play", "confidence": "high", "reason": "the mole creates an immediate visual and name association with the game"},
+        {"candidate": "mole plush", "relation": "animal_visual_association", "confidence": "medium", "reason": "the featured animal supports a direct character-product bridge"}
+      ],
+      "account_fit": ["A", "B"]
+    },
+    {
+      "index": 29,
+      "file": "Screenshot_20260704_073234_YouTube.jpg",
+      "content": "intense character scene with a warning about dealing with a psychopath",
+      "layout": "black header, white/blue conflict headline, extreme face close-up, bottom subtitle, upper-left colored plush sticker",
+      "hook": "danger warning and character conflict",
+      "commerce_candidates": [
+        {"candidate": "reversible mood octopus plush", "relation": "possible_emotion_visual_association", "confidence": "low", "reason": "the plush may relate to changing mood or dual-faced emotion, but the still alone does not prove the intended bridge"}
+      ],
+      "account_fit": ["B"],
+      "uncertainty": "Exact product bridge requires video context or owner clarification; do not promote this candidate as confirmed."
+    },
+    {
+      "index": 30,
+      "file": "Screenshot_20260704_073947_YouTube.jpg",
+      "content": "shipping or DIY method that uses hardware to prevent a failure",
+      "layout": "full-bleed close-up tutorial, centered subtitle, top-center hardware sticker, no dedicated title band",
+      "hook": "preventing a major mishap with a simple hardware solution",
+      "commerce_candidates": [
+        {"candidate": "the shown metal plate, bracket, or hardware", "relation": "exact_problem_solution_tool", "confidence": "high", "reason": "the hardware directly prevents the demonstrated shipping or DIY problem"},
+        {"candidate": "related packing or fastening tools", "relation": "adjacent_solution_tool", "confidence": "medium", "reason": "supporting tools are valid when their role in preventing the same problem is explainable"}
+      ],
+      "account_fit": ["A"]
+    }
+  ]
+}

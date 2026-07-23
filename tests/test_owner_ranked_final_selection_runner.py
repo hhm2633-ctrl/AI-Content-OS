@@ -55,7 +55,12 @@ class OwnerRankedFinalSelectionRunnerTests(unittest.TestCase):
             self.assertEqual(annotations["shampoo"]["commerce"]["commerce_status"], "matched")
             self.assertEqual(annotations["bangs"]["commerce"]["commerce_status"], "matched")
             self.assertTrue(annotations["bangs"]["commerce"]["relation_signals_used"])
+            self.assertTrue(result["brandconnect_summary"]["relation_index_supplied"])
             self.assertTrue(result["brandconnect_summary"]["relation_index_connected"])
+            self.assertGreater(
+                result["brandconnect_summary"]["relation_signal_annotation_count"],
+                0,
+            )
             briefs = {
                 item["candidate_id"]: item
                 for item in result["commerce_story_stage"]["story_briefs"]["candidates"]

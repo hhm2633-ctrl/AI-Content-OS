@@ -37,7 +37,7 @@ DEFAULT_SMOKE_TIMEOUT_SECONDS = 20.0
 MAX_RENDER_TIMEOUT_SECONDS = 90.0
 DEFAULT_RENDER_TIMEOUT_SECONDS = 60.0
 MAX_RENDER_REQUEST_BYTES = 2 * 1024 * 1024
-MAX_SLIDES = 10
+MAX_SLIDES = 20
 ALLOWED_CANVAS_SIZES = frozenset({(1080, 566), (1080, 1080), (1080, 1350), (1080, 1440)})
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _F_DRIVE_PATH = re.compile(r"^[Ff]:[\\/]")
@@ -583,7 +583,12 @@ class CardNewsRendererRuntime:
                 return self._blocked_render("carousel_canvas_profile_mismatch", f"slides[{position}]")
             if not isinstance(tree, Mapping) or self._contains_external_url(tree):
                 return self._blocked_render("slide_tree_invalid_or_external", f"slides[{position}]")
-            if classification not in {"source_evidence", "generated_editorial", "motion_graphic"}:
+            if classification not in {
+                "source_evidence",
+                "source_editorial",
+                "generated_editorial",
+                "motion_graphic",
+            }:
                 return self._blocked_render("media_classification_invalid", f"slides[{position}]")
             if classification != "source_evidence" and not label:
                 return self._blocked_render("generated_or_motion_label_missing", f"slides[{position}]")

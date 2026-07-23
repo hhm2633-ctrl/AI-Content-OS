@@ -151,7 +151,7 @@ function validate(request) {
     if (names.has(slide.output_filename)) fail("output_filename_duplicate");
     names.add(slide.output_filename);
     assertSafeTree(slide.tree);
-    if (!["source_evidence", "generated_editorial", "motion_graphic"].includes(slide.media_classification)) {
+    if (!["source_evidence", "source_editorial", "generated_editorial", "motion_graphic"].includes(slide.media_classification)) {
       fail("media_classification_invalid");
     }
     if (slide.media_classification !== "source_evidence" && !String(slide.display_label || "").trim()) {

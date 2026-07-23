@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-22 (full regression closure)
+Updated at: 2026-07-23T15:04:49
 
 ## Execution Command
 
@@ -9,27 +9,6 @@ py -m src.main
 ```
 
 Do not use `python -m src.main` for this project.
-
-## 2026-07-22 Production Safety Status
-
-- Staged local entrypoints now connect existing daily collection data to multi-account discovery and owner review, then connect an explicit owner-selected queue to deep discovery, final 1-20 slide planning, approval-gated packaging, Controller rendering, automatic evidence QA, and explicit owner visual approval.
-- Controller initialization rejects pending/unapproved production packages. Automatic OCR/OpenCLIP evidence cannot be accepted as owner visual approval, and final batch readiness retains owner visual receipt IDs and hashes.
-- This is current code/test evidence only: compile and all 2,601 unit/regression tests passed. No real candidate deep fetch, authorized production render, publish, external write, or automation resume was performed.
-
-- Standard Workflow remains available for planning/learning and can finish `workflow_completed`, but now emits blocked CardNews and publishing results unless controller authorization is supplied through the controlled production path.
-- Unapproved standard execution performs zero image API calls and zero CardNews renders.
-- Image generation authorization requires a future timezone-aware expiry, authorization ID, candidate ID, approver, controller-state hash, and `image_generation` scope.
-- Production packages cannot become ready from synthesized/default approval data. Explicit owner-bound approval receipts are mandatory.
-- Variable-slide production contract is 1-20 slides. Shallow planning preserves explicit/content signals, and selected-candidate production derives the final count from completed copy and usable media without silent truncation.
-- Variable-slide production path: approved package -> controller -> Satori/resvg -> automatic local OCR/OpenCLIP evidence QA -> owner visual approval pending.
-- Automatic visual QA is evidence only and cannot set owner approval, manual-upload readiness, publishing readiness, or actual publish state.
-- Sentence Transformers is operationally connected to same-event clustering. Intel XPU is probe-only; SeaweedFS, Mixpost, and TryPost remain outside the critical path/reference-only.
-- Safe final QA: `py -m compileall src modules scripts` passed; `py -m unittest discover -s tests -v` passed all 2,601 tests in 527.437 seconds.
-- Research claims now require an exact non-fallback source/topic/item-URL match. MoneyToday manager routing, news profiles, and Account C editorial capability metadata are synchronized.
-- Commerce approval remains fail-closed and target-bound. Brand Connect local catalog matching removes pack/size slot duplication without issuing links or performing external writes.
-- Full `py -m src.main` was intentionally not re-run after this gate change because other modules may call external LLM APIs. No real authorized post-change render or publish was performed.
-
-The stored workflow result below predates this final gate integration and is historical evidence, not proof of the current authorized production path.
 
 ## Workflow Result
 
@@ -45,8 +24,8 @@ The stored workflow result below predates this final gate integration and is his
 - Content generation: content_created
 - Image strategy selection: image_strategy_completed
 - Image prompt generation: image_prompts_created
-- Image generation: image_generation_completed
-- Card news rendering: card_news_completed
+- Image generation: image_generation_blocked
+- Card news rendering: card_news_production_blocked
 - Publishing preparation: publishing_blocked
 - Knowledge extraction: knowledge_extracted
 - Trend memory record: trend_memory_recorded
@@ -353,6 +332,7 @@ AI-Content-OS/
 |   |-- console-2026-07-15T01-38-12-952Z.log
 |   |-- console-2026-07-15T01-38-46-678Z.log
 |   |-- console-2026-07-17T05-26-07-508Z.log
+|   |-- console-2026-07-22T08-52-18-109Z.log
 |   |-- page-2026-07-10T10-34-46-213Z.yml
 |   |-- page-2026-07-10T10-58-22-784Z.yml
 |   |-- page-2026-07-10T11-00-19-174Z.yml
@@ -396,7 +376,9 @@ AI-Content-OS/
 |   |-- page-2026-07-17T05-26-10-177Z.yml
 |   |-- page-2026-07-17T05-26-54-152Z.yml
 |   |-- page-2026-07-17T05-27-35-362Z.yml
-|   `-- page-2026-07-17T05-27-47-584Z.yml
+|   |-- page-2026-07-17T05-27-47-584Z.yml
+|   |-- page-2026-07-22T08-52-20-288Z.yml
+|   `-- page-2026-07-22T08-52-33-109Z.yml
 |-- .tmp/
 |-- .tmp-amazon-cli-audit/
 |   |-- .gitignore
@@ -913,9 +895,87 @@ AI-Content-OS/
 |   |-- owner_directives/
 |   |   `-- cardnews_owner_directives.json
 |   |-- owner_feedback/
+|   |   |-- account_ai_presenter_identity_rule_v1.json
+|   |   |-- account_first_screen_system_rule_v1.json
+|   |   |-- cardnews_automation_human_editor_rule_v1.json
 |   |   |-- cardnews_owner_feedback.jsonl
 |   |   |-- cardnews_owner_learning_index.json
-|   |   `-- README.md
+|   |   |-- commerce_association_reference_v1.json
+|   |   |-- commerce_shorts_and_image_prompt_reference_v1.json
+|   |   |-- cross_format_agent_repurposing_learning_batch_046_047.json
+|   |   |-- cross_format_business_learning_batch_044_045.json
+|   |   |-- cross_format_design_distribution_learning_batch_048_049.json
+|   |   |-- cross_format_experiment_account_agent_tool_learning_batch_054_055.json
+|   |   |-- cross_format_prompt_color_story_learning_batch_050_051.json
+|   |   |-- cross_format_video_search_loop_learning_batch_052_053.json
+|   |   |-- emotional_reaction_media_rule_v1.json
+|   |   |-- licensed_media_discovery_scope_v1.json
+|   |   |-- modern_ai_story_entertainment_visual_rule_v1.json
+|   |   |-- multi_blog_comparative_learning_rule_v1.json
+|   |   |-- narrative_payoff_commerce_rule_v1.json
+|   |   |-- naver_seo_commerce_prompt_library_v1.json
+|   |   |-- owner_correction_batch_029_celebrity_clip_opinion.json
+|   |   |-- owner_correction_batch_031_knn_news_reediting.json
+|   |   |-- owner_correction_batch_032_actual_animal_issue_news.json
+|   |   |-- owner_correction_batch_032_multi_blog_experience_learning.json
+|   |   |-- owner_correction_batch_032_trending_product_real_use_review.json
+|   |   |-- owner_correction_batch_033_prison_letter_news_text_edit.json
+|   |   |-- owner_correction_batch_034_account_type_celebrity_image_use.json
+|   |   |-- owner_correction_batch_035_trend_capture_mark.json
+|   |   |-- owner_correction_batch_036_brand_topic_and_source_360_exclusion.json
+|   |   |-- owner_correction_batch_038_039_final_relation_index_retest_required.json
+|   |   |-- owner_correction_batch_040_041_repeated_ai_account_model.json
+|   |   |-- owner_correction_cross_format_learning_and_final_redistribution.json
+|   |   |-- owner_correction_fashion_item_visual_introduction_pattern.json
+|   |   |-- owner_correction_proactive_tool_candidate_registry.json
+|   |   |-- owner_correction_three_account_concept_split_537_540.json
+|   |   |-- owner_learning_taxonomy_v1.json
+|   |   |-- reaction_media_source_extension_tenor_v1.json
+|   |   |-- README.md
+|   |   |-- reels_visual_commerce_learning_batch_001_002.json
+|   |   |-- reels_visual_commerce_learning_batch_003.json
+|   |   |-- reels_visual_commerce_learning_batch_004.json
+|   |   |-- reels_visual_commerce_learning_batch_005.json
+|   |   |-- reels_visual_commerce_learning_batch_006.json
+|   |   |-- reels_visual_commerce_learning_batch_007.json
+|   |   |-- reels_visual_commerce_learning_batch_008.json
+|   |   |-- reels_visual_commerce_learning_batch_009.json
+|   |   |-- reels_visual_commerce_learning_batch_010.json
+|   |   |-- reels_visual_commerce_learning_batch_011.json
+|   |   |-- reels_visual_commerce_learning_batch_012.json
+|   |   |-- reels_visual_commerce_learning_batch_013.json
+|   |   |-- reels_visual_commerce_learning_batch_014.json
+|   |   |-- reels_visual_commerce_learning_batch_015.json
+|   |   |-- reels_visual_commerce_learning_batch_016.json
+|   |   |-- reels_visual_commerce_learning_batch_017.json
+|   |   |-- reels_visual_commerce_learning_batch_018.json
+|   |   |-- reels_visual_commerce_learning_batch_019.json
+|   |   |-- reels_visual_commerce_learning_batch_020.json
+|   |   |-- reels_visual_commerce_learning_batch_021.json
+|   |   |-- reels_visual_commerce_learning_batch_022.json
+|   |   |-- reels_visual_commerce_learning_batch_023.json
+|   |   |-- reels_visual_commerce_learning_batch_024.json
+|   |   |-- reels_visual_commerce_learning_batch_025.json
+|   |   |-- reels_visual_commerce_learning_batch_026.json
+|   |   |-- reels_visual_commerce_learning_batch_027.json
+|   |   |-- reels_visual_commerce_learning_batch_028.json
+|   |   |-- reels_visual_commerce_learning_batch_029.json
+|   |   |-- reels_visual_commerce_learning_batch_030.json
+|   |   |-- reels_visual_commerce_learning_batch_031.json
+|   |   |-- reels_visual_commerce_learning_batch_032.json
+|   |   |-- reels_visual_commerce_learning_batch_033.json
+|   |   |-- reels_visual_commerce_learning_batch_034.json
+|   |   |-- reels_visual_commerce_learning_batch_035.json
+|   |   |-- reels_visual_commerce_learning_batch_036.json
+|   |   |-- reels_visual_commerce_learning_batch_037.json
+|   |   |-- reels_visual_commerce_learning_batch_038_039.json
+|   |   |-- reels_visual_commerce_learning_batch_040_041.json
+|   |   |-- reels_visual_commerce_learning_batch_042_043.json
+|   |   |-- research_rigor_parallel_review_rule_v1.json
+|   |   |-- reusable_reference_retention_rule_v1.json
+|   |   |-- rough_2d_visual_language_rule_v1.json
+|   |   |-- seasonal_context_spread_learning_rule_v1.json
+|   |   `-- topic_series_expansion_rule_v1.json
 |   |-- patterns/
 |   |   |-- initial_patterns.jsonl
 |   |   |-- pattern_registry.jsonl
@@ -1001,6 +1061,7 @@ AI-Content-OS/
 |   |   |-- catalog_function_relation_builder.py
 |   |   |-- commerce_story_integration.py
 |   |   |-- incremental_commerce_story_engine.py
+|   |   |-- owner_association_learning.py
 |   |   |-- relation_aware_candidate_matcher.py
 |   |   `-- relation_story_shard_validator.py
 |   |-- card_news/
@@ -1022,6 +1083,7 @@ AI-Content-OS/
 |   |   |-- package_content_quality_gate.py
 |   |   |-- production_controller.py
 |   |   |-- production_package_pipeline.py
+|   |   |-- production_render_request_builder.py
 |   |   |-- render_constants.py
 |   |   |-- selected_candidate_production_package.py
 |   |   |-- selected_candidate_production_planner.py
@@ -1106,7 +1168,9 @@ AI-Content-OS/
 |   |   |-- contact_sheet_generator.py
 |   |   |-- instagram_feed_scan_importer.py
 |   |   |-- layout_candidate_map.py
-|   |   `-- local_image_intake.py
+|   |   |-- local_image_intake.py
+|   |   |-- owner_feedback_corpus.py
+|   |   `-- owner_source_learning.py
 |   |-- image_generation/
 |   |   |-- __init__.py
 |   |   `-- image_generation_module.py
@@ -1582,9 +1646,11 @@ AI-Content-OS/
 |   `-- research_prompt.md
 |-- scripts/
 |   |-- build_cardnews_production_packages.py
+|   |-- build_cardnews_render_request.py
 |   |-- build_category_publish_packages.py
 |   |-- build_owner_candidate_report.py
 |   |-- build_owner_review_collection.py
+|   |-- build_selected_flow_production_packages.py
 |   |-- build_source_health_dashboard.py
 |   |-- capture_selected_community_comments.py
 |   |-- claude_session_checkpoint.py
@@ -1608,7 +1674,10 @@ AI-Content-OS/
 |   |-- run_cardnews_package_quality_loop.py
 |   |-- run_cardnews_production.py
 |   |-- run_local_image_intake.py
+|   |-- run_multi_account_card_news_discovery.py
 |   |-- run_owner_ranked_final_selection.py
+|   |-- run_owner_source_design_learning.py
+|   |-- run_selected_candidate_production_flow.py
 |   |-- save_brandconnect_catalog_snapshot.py
 |   |-- update_project_snapshot.py
 |   `-- verify_cardnews_production_packages.py
@@ -1937,7 +2006,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (659 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (668 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- manual_image_intake/
@@ -2002,7 +2071,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (125 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (128 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -2078,6 +2147,8 @@ AI-Content-OS/
 |   |-- test_brandconnect_candidate_matcher.py
 |   |-- test_brandconnect_phase_1.py
 |   |-- test_build_cardnews_production_packages.py
+|   |-- test_build_owner_candidate_report.py
+|   |-- test_build_selected_flow_production_packages.py
 |   |-- test_campaign_compliance_checker.py
 |   |-- test_candidate_evidence_bundle.py
 |   |-- test_candidate_risk_detector.py
@@ -2194,14 +2265,18 @@ AI-Content-OS/
 |   |-- test_newspaper4k_deep_discovery_provider.py
 |   |-- test_oliveyoung_ranking_collector.py
 |   |-- test_origin_independence_resolver.py
+|   |-- test_owner_feedback_corpus.py
+|   |-- test_owner_learning_conflict_resolution.py
 |   |-- test_owner_ranked_deep_dive_adapter.py
 |   |-- test_owner_ranked_final_candidate_selector.py
 |   |-- test_owner_ranked_final_selection_runner.py
+|   |-- test_owner_source_design_learning.py
 |   |-- test_pattern_registry.py
 |   |-- test_performance_score_calculator.py
 |   |-- test_portfolio_candidate_selector.py
 |   |-- test_ppomppu_collector.py
 |   |-- test_prepare_cardnews_local_media.py
+|   |-- test_production_render_request_builder.py
 |   |-- test_publishing_image_gate.py
 |   |-- test_publishing_module_gaps.py
 |   |-- test_publishing_release_candidate.py
@@ -2215,6 +2290,8 @@ AI-Content-OS/
 |   |-- test_ruliweb_collector.py
 |   |-- test_run_cardnews_package_quality_loop.py
 |   |-- test_run_cardnews_production.py
+|   |-- test_run_multi_account_card_news_discovery.py
+|   |-- test_run_selected_candidate_production_flow.py
 |   |-- test_save_brandconnect_catalog_snapshot.py
 |   |-- test_selected_candidate_production_flow.py
 |   |-- test_selected_candidate_production_package.py
@@ -2241,6 +2318,7 @@ AI-Content-OS/
 |   |-- test_source_intake_status_bundle.py
 |   |-- test_stage2_format_router_bridge.py
 |   |-- test_stage2_review_calibrator.py
+|   |-- test_standard_workflow_production_gate.py
 |   |-- test_theqoo_collector.py
 |   |-- test_tool_adapter_cardnews_renderer_runtime.py
 |   |-- test_tool_adapter_intel_xpu_runtime.py
@@ -2302,6 +2380,7 @@ AI-Content-OS/
 |-- CURRENT_TASK.md
 |-- DECISIONS.md
 |-- DIRECTORY_STRUCTURE.md
+|-- godsengmom-cardnews-demo.png
 |-- ig_test_output.txt
 |-- MODULE_SPEC.md
 |-- MODULE_STATUS.md
@@ -2328,6 +2407,10 @@ AI-Content-OS/
 - Runtime storage directories are collapsed in the project tree instead of listing every generated file.
 - Runtime storage outputs are gitignored and excluded from commit targets.
 - Keep fallback-first workflow behavior intact.
+- Learned visual direction, emotion, and palette now override account defaults only when actually consumed; claimed-but-unused design learning is blocked.
+- Approved CardNews package creation now always runs F:-based source-media localization plus OCR/OpenCLIP relevance and perceptual-duplicate gates.
+- Missing bilingual visual labels, unavailable quality tools, irrelevant media, distractor dominance, OCR mismatch, or insufficient unique relevant media block rendering instead of filling slides.
+- This integration is implemented but has not yet been compile-, test-, workflow-, or real-render-verified.
 
 ## Protected Rules
 

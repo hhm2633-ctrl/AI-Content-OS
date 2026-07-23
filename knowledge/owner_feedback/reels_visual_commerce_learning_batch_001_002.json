@@ -1,0 +1,256 @@
+{
+  "schema_version": "reels_visual_commerce_learning_v1",
+  "status": "ACTIVE_DIRECTION",
+  "source_root": "F:/AI-Content-OS-Data/owner_source",
+  "source": "owner_provided_screenshots_with_assistant_visual_analysis",
+  "is_performance_evidence": false,
+  "asset_reuse_allowed": false,
+  "purpose": [
+    "reels_hook_design",
+    "reels_layout_reference",
+    "affiliate_product_association",
+    "product_sticker_placement",
+    "future_cardnews_visual_adaptation"
+  ],
+  "owner_direction": "Retain both owner-confirmed corrections and assistant-observed patterns because each may become useful in later production.",
+  "shared_patterns": {
+    "layout": [
+      "Reserve roughly the upper 20-30 percent for a short hook when the footage is visually busy.",
+      "Keep the primary footage or person dominant and place product cards in available edge space.",
+      "Use a white editorial frame for explanatory, community-post, or source-context content.",
+      "Use black framing for curiosity, conflict, comparison, entertainment, gaming, and transformation hooks.",
+      "Treat the product as a separate sticker card with white border, slight tilt, and shadow instead of merging it into factual footage."
+    ],
+    "color": [
+      "Use black or white as the stable base with one semantic accent color.",
+      "Yellow commonly marks curiosity, reason, surprise, or the key noun.",
+      "Blue or cyan supports gaming, technology, coolness, or explanatory contrast.",
+      "Red or pink supports conflict, celebrity, fashion, stage, or emotional emphasis.",
+      "Neon green supports beauty, transformation, or playful visual contrast."
+    ],
+    "typography": [
+      "Prefer a heavy condensed sans headline of one or two lines.",
+      "Color only the decisive keyword rather than the whole title.",
+      "Use stroke or shadow only where text overlays footage.",
+      "Keep scene subtitles to one short sentence and separate quotations or comments into a bar."
+    ],
+    "hook": [
+      "why_or_reason",
+      "unexpected_fact",
+      "reveal_or_secret",
+      "comparison_or_matchup",
+      "incident_or_conflict",
+      "transformation",
+      "strange_or_absurd_scene",
+      "nostalgia_or_archive"
+    ],
+    "commerce": [
+      "Generate direct product, activity tool, visible accessory, same-style item, fandom item, scene-function item, visual-similarity item, adjacent item, and wordplay item as separate candidates.",
+      "Do not force a single product when several understandable bridges exist.",
+      "Preserve the explanation and relation type for every indirect candidate.",
+      "A playful association is usable when viewers can immediately understand it and it does not interrupt the content flow."
+    ]
+  },
+  "records": [
+    {
+      "asset": "Screenshot_20260704_063514_YouTube.jpg",
+      "visual_profile": "portrait_full_bleed_black_hook",
+      "hook_pattern": "color_question",
+      "palette": "black_white_yellow_with_blue_keyword",
+      "product_placement": "lower_edge_sticker",
+      "commerce_relations": ["fandom_merch", "color_relation"],
+      "account_fit": ["account_c", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_063608_YouTube.jpg",
+      "visual_profile": "white_editorial_comment_strip",
+      "hook_pattern": "celebrity_reaction",
+      "palette": "white_navy_yellow",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["fandom_merch", "visible_context"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_063704_YouTube.jpg",
+      "visual_profile": "full_bleed_action_focus_marker",
+      "hook_pattern": "unexpected_behavior",
+      "palette": "natural_scene_pink_red_focus",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["visual_similarity"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_064638_YouTube.jpg",
+      "visual_profile": "black_header_story_footage",
+      "hook_pattern": "long_duration_reason",
+      "palette": "black_white_blue",
+      "product_placement": "upper_left_sticker",
+      "commerce_relations": ["scene_function"],
+      "account_fit": ["account_a", "account_b"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_064732_YouTube.jpg",
+      "visual_profile": "dark_game_matchup",
+      "hook_pattern": "versus_comparison",
+      "palette": "black_white_gold",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["activity_tool"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_064823_YouTube.jpg",
+      "visual_profile": "white_social_card_rounded_media",
+      "hook_pattern": "satisfying_process",
+      "palette": "white_black_red_brand_yellow_caption",
+      "product_placement": "lower_left_sticker",
+      "commerce_relations": ["material_craft"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_065228_YouTube.jpg",
+      "visual_profile": "community_post_simulation",
+      "hook_pattern": "obsession_problem",
+      "palette": "white_black_warm_food",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["object_adjacent"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_065318_YouTube.jpg",
+      "visual_profile": "black_sandwich_reaction",
+      "hook_pattern": "visual_observation",
+      "palette": "black_white_yellow",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["body_context"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_065403_YouTube.jpg",
+      "visual_profile": "white_header_split_screen_quote",
+      "hook_pattern": "nostalgia_wordplay",
+      "palette": "white_black_purple_red",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["name_wordplay"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_065613_YouTube.jpg",
+      "visual_profile": "black_neon_beauty_transformation",
+      "hook_pattern": "beauty_problem_solution",
+      "palette": "black_white_neon_green",
+      "product_placement": "lower_left_sticker",
+      "commerce_relations": ["color_wordplay"],
+      "account_fit": ["account_c"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_065625_YouTube.jpg",
+      "visual_profile": "black_reason_header_storefront",
+      "hook_pattern": "business_reason",
+      "palette": "black_white_yellow_red",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["direct_visible_product"],
+      "account_fit": ["account_a", "account_b", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_065649_YouTube.jpg",
+      "visual_profile": "dark_game_stat_hook",
+      "hook_pattern": "specific_number_unusual_play",
+      "palette": "black_white_cyan",
+      "product_placement": "lower_left_sticker",
+      "commerce_relations": ["activity_tool"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_065812_YouTube.jpg",
+      "visual_profile": "white_red_conflict_header",
+      "hook_pattern": "celebrity_conflict_reason",
+      "palette": "white_black_red_cyan_subtitle",
+      "product_placement": "upper_right_sticker",
+      "commerce_relations": ["visible_accessory"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "owner_confirmed"
+    },
+    {
+      "asset": "Screenshot_20260704_070151_YouTube.jpg",
+      "visual_profile": "white_brush_hook_portrait",
+      "hook_pattern": "secret_reveal",
+      "palette": "white_black_yellow_lilac",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["direct_mentioned_product"],
+      "account_fit": ["account_c"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_070455_YouTube.jpg",
+      "visual_profile": "dark_full_bleed_minimal_question",
+      "hook_pattern": "strange_scene_question",
+      "palette": "dark_natural_white",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["activity_tool", "target_object"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_071104_YouTube.jpg",
+      "visual_profile": "black_two_color_trend_header",
+      "hook_pattern": "trend_reason",
+      "palette": "black_yellow_blue",
+      "product_placement": "upper_left_sticker",
+      "commerce_relations": ["direct_used_product"],
+      "account_fit": ["account_c", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_071322_YouTube.jpg",
+      "visual_profile": "starfield_stage_fashion",
+      "hook_pattern": "stage_outfit_observation",
+      "palette": "black_white_pink",
+      "product_placement": "lower_center_sticker",
+      "commerce_relations": ["same_style_item", "fandom_merch"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_071418_YouTube.jpg",
+      "visual_profile": "white_social_explainer_card",
+      "hook_pattern": "archive_explanation",
+      "palette": "white_black_gray",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["activity_tool"],
+      "account_fit": ["account_b", "shared"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_071455_YouTube.jpg",
+      "visual_profile": "gradient_search_post",
+      "hook_pattern": "incident_search",
+      "palette": "pastel_gradient_white_black",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["visible_accessory"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "assistant_observed_owner_retained"
+    },
+    {
+      "asset": "Screenshot_20260704_071522_YouTube.jpg",
+      "visual_profile": "black_yellow_group_reason",
+      "hook_pattern": "creative_conflict_reason",
+      "palette": "black_white_yellow_blue",
+      "product_placement": "lower_right_sticker",
+      "commerce_relations": ["fandom_merch", "activity_tool"],
+      "account_fit": ["account_b", "account_c"],
+      "analysis_origin": "owner_confirmed"
+    }
+  ]
+}

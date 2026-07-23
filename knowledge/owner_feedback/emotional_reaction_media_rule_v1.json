@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "source_items": [49, 50],
+  "rule": "Actively use suitable memes, reaction images, short GIFs, and looping clips when variable-format content lacks enough directly relevant imagery.",
+  "priority_categories": [
+    "story",
+    "dating_and_relationships",
+    "entertainment",
+    "community_posts",
+    "text_threads",
+    "comments_and_public_reactions"
+  ],
+  "selection_flow": [
+    "identify each slide's narrative role",
+    "classify its emotion and intensity",
+    "search Gifer, Giphy, or another approved local/reference source using action and emotion vocabulary",
+    "choose a reaction that reinforces the exact sentence or comment",
+    "fit the asset into the variable slide structure rather than forcing a fixed media count",
+    "record source, query, intended emotion, and narrative role",
+    "fall back to typography or an editorial graphic when no reaction asset fits naturally"
+  ],
+  "emotion_query_map": {
+    "surprise": ["double take", "shocked reaction", "jaw drop", "wait what"],
+    "embarrassment": ["awkward smile", "hide face", "cringe reaction", "secondhand embarrassment"],
+    "affection": ["heart eyes", "soft smile", "hug reaction", "melting"],
+    "suspicion": ["side eye", "skeptical look", "raised eyebrow", "stare"],
+    "anger": ["frustrated reaction", "angry stare", "table slam", "speechless anger"],
+    "sadness": ["teary eyes", "trying not to cry", "lonely reaction", "heartbroken"],
+    "relief": ["deep breath", "relieved smile", "finally", "collapse in relief"],
+    "laughter": ["burst laughing", "cannot stop laughing", "wheeze", "rolling laugh"],
+    "confusion": ["confused reaction", "question marks", "blank stare", "what is happening"],
+    "agreement": ["nodding", "exactly", "applause", "this is true"]
+  },
+  "narrative_roles": [
+    "hook amplification",
+    "speaker or commenter reaction",
+    "emotional transition",
+    "punchline",
+    "public-opinion montage",
+    "ending aftertaste"
+  ],
+  "design_rules": [
+    "Do not repeat one reaction merely to fill slides.",
+    "Match visual energy to emotional intensity.",
+    "Keep text readable over moving or visually noisy assets.",
+    "Use short loops as motion layers and select a representative still for static delivery.",
+    "Preserve account typography and color treatment so mixed-source media still feels like one account.",
+    "Treat GIF and meme availability as a way to expand variable slide choices, not as a new fixed slide requirement."
+  ],
+  "source_roles": {
+    "Gifer": "meme, reaction, older and viral loop discovery",
+    "Giphy": "broad meme, reaction, sticker, and short-loop discovery"
+  },
+  "state": {
+    "knowledge_saved": true,
+    "runtime_connected": false,
+    "tested": false
+  }
+}

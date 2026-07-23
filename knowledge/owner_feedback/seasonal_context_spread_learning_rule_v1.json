@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "rule_id": "seasonal_context_spread_learning_v1",
+  "status": "owner_confirmed_learning_rule",
+  "owner_intent": "Learn how one seasonal context spreads across related life problems, categories, time stages, content formats, and naturally relevant product functions instead of treating a month as a flat keyword list.",
+  "core_model": [
+    "season_or_event",
+    "environmental_change",
+    "life_problem_or_desire",
+    "affected_person_and_situation",
+    "behavior_or_emotional_change",
+    "relevant_categories",
+    "content_angle_and_format",
+    "evidence_and_media",
+    "optional_product_function"
+  ],
+  "july_context_nodes": [
+    {
+      "node": "rain_and_humidity",
+      "changes": ["rain", "high humidity", "wet clothing", "odor", "mold", "indoor time"],
+      "category_spread": {
+        "travel_and_date": ["rain-safe routes", "indoor destinations", "schedule alternatives"],
+        "parenting": ["indoor play", "wet-clothing care", "rainy-day routines"],
+        "fashion": ["water-resistant footwear", "quick-dry clothing", "rain-friendly styling"],
+        "beauty": ["humidity-resistant makeup", "sebum care", "hair-frizz context"],
+        "food": ["rainy-day comfort food", "simple indoor meals"],
+        "living": ["laundry drying", "odor control", "mold prevention", "dehumidification"],
+        "finance": ["appliance electricity cost", "rainy-season household spending"],
+        "business": ["rain-related demand", "weather-aware customer communication"]
+      },
+      "natural_product_functions": ["drying", "dehumidifying", "waterproofing", "odor control", "storage", "hair care", "footwear care"]
+    },
+    {
+      "node": "heat_and_uv",
+      "changes": ["high temperature", "strong sunlight", "sweat", "sleep disruption", "cooling demand"],
+      "category_spread": {
+        "travel_and_date": ["night activities", "water activities", "cool indoor routes"],
+        "parenting": ["safe outings", "summer sleep environment", "hydration context"],
+        "fashion": ["breathable clothing", "indoor cooling layers", "sun accessories"],
+        "beauty": ["sun care", "makeup durability", "post-sun calming"],
+        "food": ["cold food", "hydrating food", "easy summer meals"],
+        "living": ["cooling", "bedding", "curtains", "air circulation"],
+        "finance": ["electricity cost", "cooling-appliance purchase criteria"],
+        "career": ["heat and concentration", "commute comfort", "work environment"]
+      },
+      "natural_product_functions": ["cooling", "sun protection", "hydration support", "ventilation", "lightweight clothing", "sleep comfort"]
+    },
+    {
+      "node": "vacation_and_travel",
+      "changes": ["planning", "movement", "temporary stay", "budget pressure", "return to routine"],
+      "time_spread": {
+        "before": ["planning", "booking", "packing", "home preparation", "work handoff"],
+        "during": ["movement", "outfits", "food", "children", "skin and body care", "spending"],
+        "after": ["laundry", "storage", "skin calming", "expense review", "work recovery"]
+      },
+      "natural_product_functions": ["packing", "travel storage", "portable care", "sun protection", "laundry", "organization", "mobility"]
+    },
+    {
+      "node": "school_break",
+      "changes": ["children at home", "meal changes", "activity demand", "sleep changes", "family schedule pressure"],
+      "category_spread": {
+        "parenting": ["play", "sleep", "outing", "travel preparation"],
+        "food": ["snacks", "simple meals", "family cooking"],
+        "travel": ["family destinations", "budget", "weather alternatives"],
+        "living": ["home organization", "activity zones", "laundry"],
+        "career": ["care and work scheduling", "vacation planning"]
+      },
+      "natural_product_functions": ["play", "meal preparation", "storage", "travel", "sleep environment"]
+    },
+    {
+      "node": "midyear_transition",
+      "changes": ["six-month review", "spending review", "goal reset", "work organization"],
+      "category_spread": {
+        "finance": ["expense review", "savings goals", "vacation budget"],
+        "career": ["handoff", "performance review", "second-half plan"],
+        "business": ["seasonal campaign", "customer response", "demand planning"],
+        "living": ["decluttering", "routine reset"]
+      },
+      "natural_product_functions": ["planning", "organization", "record keeping"],
+      "high_stakes_boundary": "Finance and investment branches require current authoritative evidence and must not promise savings or returns."
+    }
+  ],
+  "selection_logic": [
+    "Do not publish every branch merely because it exists.",
+    "Start from the strongest current seasonal or event signal and select only categories with real audience relevance, available evidence, suitable media, and no harmful duplication.",
+    "Use one-to-many spread when one context genuinely affects several categories.",
+    "Use many-to-one convergence when several contexts jointly explain one problem, such as heat plus humidity plus travel causing a beauty or clothing need.",
+    "Use before, during, and after stages when an event has meaningful temporal progression.",
+    "Keep slide count, episode count, category count, and product count variable.",
+    "Allow information-only output when no product connection is necessary."
+  ],
+  "content_quality_rules": [
+    "Replace a generic monthly background with topic-connected evidence, photography, product detail, editorial graphics, screenshots, memes, or an appropriate illustration style.",
+    "Turn lists into a useful narrative, comparison, checklist, demonstration, or variable series instead of placing every candidate on one dense card.",
+    "Distinguish current facts from seasonal expectations and verify weather, schedules, prices, availability, health claims, and financial claims when used.",
+    "Do not force all accounts or categories into the same seasonal event.",
+    "Keep the account portfolio separate while allowing one seasonal signal to produce different account-appropriate angles."
+  ],
+  "commerce_boundary": [
+    "Match through practical function and life context, not exact keywords alone.",
+    "Product matching follows the topic and problem; it does not determine the topic in advance.",
+    "Do not force products into runway, pure information, or weakly connected posts.",
+    "Price, availability, benefit, review, and affiliate-link facts require approved current data before use."
+  ],
+  "runtime_connected": false,
+  "tested": false,
+  "performance_verified": false
+}

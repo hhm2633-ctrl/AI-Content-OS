@@ -136,6 +136,29 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         )
         self.assertFalse(result["receipts"]["render_executed"])
 
+    def test_source_only_editorial_package_does_not_require_media_asset(self):
+        plan = _plan(3)
+        plan["asset_inventory"] = []
+        for slide in plan["slide_plan"]:
+            slide["media_type"] = "editorial"
+            slide["asset_refs"] = []
+            slide["motion_ref"] = None
+        render = _render_receipt(plan)
+        render.update({
+            "status": "renderer_input_ready",
+            "renderer_ready": True,
+            "reason_code": "legacy_static_contract_satisfied",
+        })
+
+        result = build_selected_candidate_production_package(
+            plan, render, _story(3)
+        )
+
+        self.assertEqual(result["status"], "production_package_pending_approval")
+        self.assertEqual(result["evidence"]["rights_status"], "source_only_editorial")
+        self.assertEqual(result["evidence"]["sources"], ["https://news.example/source"])
+        self.assertEqual(result["evidence"]["assets"], [])
+
     def test_approval_requires_identity_candidate_scope_and_receipt_fields(self):
         plan = _plan(4)
         render = _render_receipt(plan)

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "source_items": [81, 82],
+  "rule": "Automate CardNews drafting and assembly, but preserve human editorial judgment and account-specific variation.",
+  "pipeline": [
+    "select a relevant, evidence-supported topic",
+    "choose account and narrative intent",
+    "determine variable slide count from available story and media",
+    "generate a structured draft",
+    "strengthen the first-slide hook without distorting the source",
+    "edit each slide for one clear role and mobile readability",
+    "verify facts, numbers, names, quotes, and sources",
+    "remove repeated AI rhythm and generic filler",
+    "check save, share, comment, or follow value",
+    "review the result inside the account's first-screen grid"
+  ],
+  "do_not": [
+    "force eight slides because the source example used eight",
+    "reuse product introduction plus three benefits plus purchase CTA for every topic",
+    "invent numbers or details to fill a slide",
+    "treat generated copy as final without editorial review",
+    "make every slide sound identical",
+    "confuse information density with usefulness"
+  ],
+  "state": {
+    "knowledge_saved": true,
+    "runtime_connected": false,
+    "tested": false
+  }
+}

@@ -411,9 +411,19 @@ def _validated_local_media_receipts(
                 raise ProductionControllerError(
                     "local_media_not_prepared", f"{field} is not a completed pre-render preparation"
                 )
+            source_editorial_usable = (
+                receipt.get("source_editorial_usable") is True
+                and receipt.get("topic_relevant") is True
+                and receipt.get("attribution_required") is True
+                and bool(_text(receipt.get("source_url")))
+                and receipt.get("publish_authorized") is False
+            )
             if (
                 receipt.get("owner_selected") is not True
-                or receipt.get("rights_cleared") is not True
+                or (
+                    receipt.get("rights_cleared") is not True
+                    and not source_editorial_usable
+                )
                 or receipt.get("source_modified") is not False
                 or receipt.get("implicit_execution") is not False
             ):

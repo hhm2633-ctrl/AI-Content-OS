@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_201_210",
+  "source_range": [201, 210],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "agent_token_and_context_tool_reel",
+      "items": [201, 202, 203],
+      "relationship": "Consecutive frames from one Reel introducing Caveman, Context Mode, and Token Savior as coding-agent token or context optimization tools."
+    },
+    {
+      "group": "owner_project_operation_failure_capture",
+      "items": [204],
+      "relationship": "An owner-provided ChatGPT/Codex conversation capture showing an incorrect or premature work-status report and owner correction."
+    },
+    {
+      "group": "fable_cost_strategy_infographic",
+      "items": [205],
+      "relationship": "A Notion-hosted infographic proposing five Fable 5 cost and token strategies."
+    },
+    {
+      "group": "prompt_to_small_app_examples",
+      "items": [206],
+      "relationship": "A mobile webpage offering copyable prompts for three small utility apps."
+    },
+    {
+      "group": "thirty_day_content_routine_guide",
+      "items": [207, 208, 209, 210],
+      "relationship": "A Notion-hosted guide showing hook selection, carousel conversion, density control, and recent-account performance analysis."
+    }
+  ],
+  "items": [
+    {
+      "id": 201,
+      "content": "A Reel introduces Caveman, described on a repository page as a Claude Code skill or plugin and Codex plugin that compresses communication into terse language to reduce token usage.",
+      "design": "A talking-head Reel places a large repository screenshot over the creator's face and uses a short Korean bridge caption, relying on the tool page as visual proof.",
+      "project_use": "Keep as a candidate for later toolchain evaluation only if token reduction remains a measured project bottleneck and technical meaning, Korean instructions, and handoff accuracy can be preserved.",
+      "learning_rule": "Compression is useful only when it reduces tokens without losing task scope, approval gates, file ownership, evidence state, or owner corrections.",
+      "risk": "The repository's percentage claims, compatibility, security, maintenance, and output quality are not verified. Nothing was installed or executed."
+    },
+    {
+      "id": 202,
+      "content": "Context Mode is described as storing large web-scraping or GitHub tool results separately and showing Claude only a shorter summary.",
+      "design": "A black background, centered product-page capture, orange product name, and large white explanation make a technical context-management idea understandable in one frame.",
+      "project_use": "The architectural idea is relevant: retain raw evidence outside the active prompt, pass bounded summaries and references into the model, and retrieve raw data only when needed.",
+      "learning_rule": "Summarization must preserve source links, omissions, uncertainty, dates, and retrieval paths. A summary must not silently replace evidence needed for a decision.",
+      "risk": "The tool's data storage, privacy, retrieval accuracy, context savings, compatibility, and failure behavior are not tested."
+    },
+    {
+      "id": 203,
+      "content": "Token Savior is presented as a tool that retrieves only a requested function instead of reading an entire file, accompanied by benchmark claims for token, time, and task-score improvements.",
+      "design": "The Reel centers a benchmark screenshot, uses an orange product title and large white one-sentence benefit, and keeps the rest of the frame empty for focus.",
+      "project_use": "Store the narrow-retrieval principle: inspect only the necessary symbol, section, or bounded record when the task allows, while retaining surrounding context when behavior depends on it.",
+      "learning_rule": "Selective retrieval is an efficiency tactic, not a universal replacement for file or workflow context. Benchmark methodology and project fit must be reviewed before adoption.",
+      "risk": "The benchmark, version, model, tasks, security, dependency behavior, and claimed perfect score are unverified secondary-source claims."
+    },
+    {
+      "id": 204,
+      "content": "The project conversation capture shows the assistant reporting that two agent lanes were working, followed by an owner correction indicating that one lane had finished and no follow-up instruction had been sent.",
+      "design": "A dark mobile chat capture presents the operational failure directly through chronological messages rather than an abstract retrospective.",
+      "project_use": "Treat as a negative operating example: report only directly observed agent status, return to the owner immediately after dispatch, and collect results at the next check instead of claiming work continues automatically.",
+      "learning_rule": "Dispatched, running, completed, collected, integrated, tested, and connected are separate states. Never infer a later state from an earlier dispatch.",
+      "risk": "The screenshot contains conversational context, not proof that any referenced implementation was correct, integrated, or tested."
+    },
+    {
+      "id": 205,
+      "content": "An infographic proposes lowering model effort, separating architect and executor roles, using token-compression tools, assigning research and planning to different model levels, and using an advisor mode for review.",
+      "design": "A dense blue-and-white one-page infographic combines five numbered panels, charts, flow diagrams, tool names, examples, and a source-warning section.",
+      "project_use": "Retain the general cost-governance ideas: match effort to task risk, separate planning from execution when useful, keep expensive judgment bounded, and compare quality as well as cost.",
+      "learning_rule": "Do not route work by price alone. Scope complexity, evidence needs, tool access, failure cost, and integration ownership determine the appropriate model and workflow.",
+      "risk": "Fable features, command syntax, model names, savings percentages, and benchmark results are not verified or connected to the project."
+    },
+    {
+      "id": 206,
+      "content": "A guide offers copyable prompts for a daily AI-tip card app, AI-subscription monthly-cost calculator, and a small tool that fills blanks for a repeated task.",
+      "design": "A clean mobile webpage uses large rounded cards, purple accents, and repeated copy buttons; it is functional but visually close to a generic AI-app template.",
+      "project_use": "Learn the product-discovery pattern: begin with one repeated user task, one input-output contract, and one useful screen before considering a broader app.",
+      "learning_rule": "A prompt-generated prototype demonstrates an idea, not a reliable connected product. Data persistence, calculations, accessibility, security, and workflow integration still require implementation and testing.",
+      "risk": "No app was copied, generated, connected, or tested, and the visible design should not become the project's default visual language."
+    },
+    {
+      "id": 207,
+      "content": "A content routine evaluates fifteen candidate hooks and selects three based on concreteness, audience-recognition signals, and an unresolved question.",
+      "design": "A dark Notion table compares hook, angle, and reason, followed by three practical selection checks in large text.",
+      "project_use": "Generate several hook candidates, then rank them by specific language, account audience fit, factual support, emotional relevance, and honest incompleteness before production.",
+      "learning_rule": "Candidate count and word count are flexible. The useful principle is comparative selection using explicit reasons, not always generating fifteen or forcing an eight-word hook.",
+      "risk": "The guide's selected hooks and performance assumptions are not validated against the project's accounts."
+    },
+    {
+      "id": 208,
+      "content": "The guide asks Claude to convert one hook into a seven-slide CardNews, with one hook slide, five single-point slides, and a CTA, while removing weak material instead of padding.",
+      "design": "A dark documentation page uses a copyable prompt block with pink token highlights and a short explanation above it.",
+      "project_use": "Retain one-message-per-slide and remove-weak-content principles, but determine slide count from available evidence, narrative progression, media, and account needs.",
+      "learning_rule": "Seven slides and twenty words are examples, not project limits. CardNews remains variable and should not add or remove material merely to hit a preset count.",
+      "risk": "The source's claim that this format sells better is unsupported by visible performance evidence."
+    },
+    {
+      "id": 209,
+      "content": "A seven-slide example explains a monthly topic-selection system and explicitly notes that a weak sixth point was removed so the sequence became five content points rather than filling the planned structure.",
+      "design": "A text-heavy Notion example demonstrates editing logic transparently, including the removed point and common density mistakes.",
+      "project_use": "Use the editing rule directly: preserve narrative density, remove weak points, keep each slide focused, and let the final length change according to content strength.",
+      "learning_rule": "Do not confuse one-message-per-slide with one fixed number of slides. A strong sequence can become shorter or longer as evidence and narrative require.",
+      "risk": "The statement that all slides must remain under one word limit is a creator preference, not a universal readability guarantee."
+    },
+    {
+      "id": 210,
+      "content": "The guide proposes analyzing ten recent posts using views, saves, shares, and DM counts to identify which topics and hook types drive saves or sales, then generating adjacent ideas and stopping low-value content.",
+      "design": "A dark prompt block uses pink highlights for input fields and metrics, with a bold step title and practical explanation.",
+      "project_use": "When actual account metrics become available, compare posts at the same grain and separate attention, saves, shares, comments, profile actions, link actions, and verified conversions before proposing adjacent topics.",
+      "learning_rule": "Saves and sales may come from different posts and cannot be merged into one success score. AI can surface patterns, but owner context and sufficient sample size are required before changing strategy.",
+      "risk": "AI-Content-OS currently has no verified Instagram Graph performance feed or DM-sales dataset for this analysis. Visible prompt examples are not runtime capability."
+    }
+  ],
+  "cross_item_learning": [
+    "Token and context optimization should preserve task contracts, evidence, owner corrections, approval gates, and retrieval paths; cheaper or shorter is not automatically better.",
+    "Raw evidence may be stored outside active context and summarized, but summaries need traceable sources, uncertainty, omissions, and a path back to the original data.",
+    "Agent status reporting must distinguish dispatched, running, completed, collected, integrated, tested, and connected states using directly observed evidence.",
+    "Small tools should begin with one repeated problem and a clear input-output contract rather than a broad prompt-generated application.",
+    "Hook generation benefits from multiple candidates and explicit selection reasons, but candidate counts and word counts remain variable.",
+    "CardNews uses one clear message per slide and removes weak material; it never forces seven slides or a fixed text count.",
+    "Account learning should separate attention, saves, shares, comments, profile actions, links, and verified conversion metrics rather than collapsing them into one score.",
+    "Caveman, Context Mode, Token Savior, Fable, and the visible app-builder workflow remain uninstalled, unconnected, and untested candidates."
+  ],
+  "deferred_cross_batch_work": {
+    "status": "deferred_until_all_owner_source_images_are_analyzed",
+    "scope": "Later compare the token/context tools with the local toolchain and compare the content routine with earlier variable-slide, hook, account-learning, and performance-evidence rules."
+  },
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "tool_installed": false,
+    "instagram_metrics_connected": false,
+    "external_write_performed": false
+  }
+}

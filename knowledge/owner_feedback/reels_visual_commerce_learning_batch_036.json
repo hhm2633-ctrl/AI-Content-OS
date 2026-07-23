@@ -1,0 +1,240 @@
+{
+  "batch_id": "reels_visual_commerce_learning_batch_036",
+  "source_range": {
+    "start": 351,
+    "end": 360
+  },
+  "excluded_source_ids": [360],
+  "status": "stored_not_runtime_verified",
+  "analysis_scope": [
+    "content",
+    "account_type",
+    "design_layout_color",
+    "narrative",
+    "prompt_library",
+    "project_application",
+    "uncertainty"
+  ],
+  "items": [
+    {
+      "source_id": 351,
+      "group": "fashion_business_analysis_report",
+      "account_type": "fashion_business_magazine",
+      "carousel_position": "3/10",
+      "observed_content": "패션 산업의 가격 인상 패턴을 설명한다. 화면은 2019~2023년 성장의 80% 이상이 가격에서 나왔고 가방·지갑 등 아이코닉 제품 가격이 최대 50~100% 올랐으며, 2023~2025년에도 비슷한 가격 인상 패턴이 반복됐다는 논지를 제시한다.",
+      "design_layout_color": "흰 배경에 검정 대제목, 파란 영문 섹션명과 타임라인, 분홍색 핵심어 강조, 하단 파란 세로선 결론 박스를 사용한 보고서형 레이아웃이다.",
+      "narrative": "현재 현상을 단발성 사건이 아니라 이전 청구서와 최근 청구서를 비교한 반복 패턴으로 설명하고, 산업 성장률보다 가격표가 성장을 밀어 올렸다는 결론을 강조한다.",
+      "project_application": [
+        "패션 계정에서 브랜드 이미지뿐 아니라 가격, 성장률과 기간 비교를 이용한 비즈니스 분석 콘텐츠를 만들 수 있다.",
+        "패션·뷰티 계정에서는 개별 상품뿐 아니라 브랜드의 역사, 성장, 가격 전략과 정체성 자체를 하나의 콘텐츠 주제로 사용할 수 있다.",
+        "데이터형 카드는 섹션 번호, 핵심 문장, 짧은 설명, 타임라인과 한 줄 결론으로 정보 위계를 명확히 한다.",
+        "기간별 수치와 인과 해석은 자료 출처가 연결된 경우에만 실제 콘텐츠 근거로 사용한다."
+      ],
+      "uncertainty": [
+        "현재 화면에는 수치의 원자료, 조사 범위와 계산 방식이 표시되지 않았다.",
+        "1/10~2/10 및 4/10~10/10 화면이 없어 전체 분석 주제와 결론은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 352,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "2/20",
+      "observed_content": "앞으로 기대되는 국내 브랜드 모음 중 NESS를 소개한다. 재팬 메이드 품질에 대한 고집, 일본 원단과 제작, 일본 브랜드를 좋아하는 사람에게 맞는 요소를 설명한다.",
+      "design_layout_color": "브랜드 착장을 입은 거리 사진을 어둡게 처리하고 중앙에 흰 브랜드명, 하단에 세 줄 흰 글머리표를 배치한다.",
+      "narrative": "브랜드 이름만 나열하지 않고 제조 방식, 원단과 취향 적합성을 짧게 요약해 발견과 선택을 돕는다.",
+      "project_application": [
+        "패션 브랜드 큐레이션은 브랜드별 대표 착장 한 장과 소재·제작·스타일·추천 대상 세 줄로 통일할 수 있다.",
+        "패션·뷰티 계정에서 주목할 브랜드 소개, 신생 브랜드 발견과 브랜드별 특징 비교를 독립적인 콘텐츠 주제로 운영할 수 있다.",
+        "브랜드의 제조국과 원단 관련 설명은 공식 정보나 확인 가능한 자료가 있을 때 사용한다."
+      ],
+      "uncertainty": [
+        "현재 화면만으로 제조와 원단 설명의 공식 출처는 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 353,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "11/20",
+      "observed_content": "A.R로 표시된 브랜드를 빈티지 연구를 바탕으로 전개하고, 원단·부자재의 완성도가 높으며 빈티지 디자인을 세련되게 풀어낸다고 소개한다.",
+      "design_layout_color": "거친 벽과 빈티지 셔츠 착장 사진 위에 필기체 브랜드명을 중앙 배치하고 하단에 흰 글머리표를 둔다.",
+      "narrative": "브랜드의 연구 기반과 완성도를 제시한 뒤 어떤 옷처럼 느껴지는지 감각적 평가로 마무리한다.",
+      "project_application": [
+        "브랜드 큐레이션에서 빈티지, 원단, 부자재와 재해석 방식처럼 브랜드의 디자인 언어를 짧게 분류할 수 있다.",
+        "객관 정보와 큐레이터의 감상은 문장 톤으로 구분한다."
+      ],
+      "uncertainty": [
+        "브랜드의 전체 명칭과 공식 설명은 현재 화면에서 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 354,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "13/20",
+      "observed_content": "Naughty Savage를 빈티지 요소를 현대적인 감각으로 잘 풀어내고, 제품마다 개성이 있으며 개성적인 모자·후드·플리스 취향에 맞는 브랜드로 소개한다.",
+      "design_layout_color": "검은 오버사이즈 착장과 모자 사진을 회색 배경에 두고 중앙에 흰 필기체 브랜드명, 하단에 세 줄 설명을 배치한다.",
+      "narrative": "브랜드의 공통 디자인 언어와 대표 아이템을 연결해 독자가 자기 취향과 빠르게 비교하게 한다.",
+      "project_application": [
+        "브랜드 설명에는 추상적인 분위기뿐 아니라 모자, 후드, 플리스처럼 실제 대표 품목을 함께 넣는다.",
+        "오버사이즈 실루엣과 어두운 색조를 브랜드 카드의 시각적 정체성과 맞춘다."
+      ],
+      "uncertainty": [
+        "세부 추천 품목의 정확한 제품명은 현재 화면에 없다."
+      ]
+    },
+    {
+      "source_id": 355,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "16/20",
+      "observed_content": "Äsien을 레이어드 스타일을 생각할 때 먼저 떠오르는 브랜드로 소개하며 감각적인 컬러감의 이너 티셔츠와 짧은 후드, 독특한 코디를 선호하는 사람에게 맞는다고 설명한다.",
+      "design_layout_color": "녹색 잔디에 앉은 차분한 회색 착장을 배경으로 중앙 흰 브랜드명과 하단 흰 글머리표를 사용한다.",
+      "narrative": "스타일링 방식에서 출발해 추천 아이템과 취향 대상을 좁힌다.",
+      "project_application": [
+        "브랜드를 제품명만으로 분류하지 않고 레이어드, 색 조합과 실루엣 같은 실제 코디 기능으로 연결한다.",
+        "자연 배경과 낮은 채도의 착장을 함께 써 브랜드의 차분한 무드를 전달한다."
+      ],
+      "uncertainty": [
+        "브랜드 표기와 일부 작은 문장은 화면 해상도상 판독에 제한이 있다."
+      ]
+    },
+    {
+      "source_id": 356,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "18/20",
+      "observed_content": "그래픽과 빈티지 무드를 결합한 스트리트·서브컬처 계열 브랜드를 소개하고 여름 포인트용 모자와 티셔츠를 추천한다.",
+      "design_layout_color": "그래피티 벽과 그래픽 티셔츠 착장 위에 스티커형 브랜드 그래픽을 중앙에 겹치고 하단에 흰 글머리표를 둔다.",
+      "narrative": "그래픽 취향과 서브컬처 관심을 여름철 실제 구매 품목으로 연결한다.",
+      "project_application": [
+        "브랜드 카드의 로고가 스티커형이면 사진 위 그래픽 요소로 활용해 스트리트 무드를 강화할 수 있다.",
+        "시즌에 맞춰 브랜드 전체가 아니라 당장 활용하기 좋은 모자·티셔츠 같은 품목을 추천한다."
+      ],
+      "uncertainty": [
+        "화면의 스티커형 로고 때문에 브랜드명을 정확히 판독하지 못했다."
+      ]
+    },
+    {
+      "source_id": 357,
+      "group": "domestic_fashion_brand_discovery_gallery",
+      "account_type": "fashion_curator",
+      "carousel_position": "20/20",
+      "observed_content": "HISHANDER를 일상과 잘 어울리는 여유로운 실루엣, 대중적으로 무난한 디자인과 여유로운 핏의 데님 팬츠가 강점인 브랜드로 소개한다.",
+      "design_layout_color": "짙은 녹색 식물 벽과 검은 재킷 착장을 배경으로 중앙에 자간이 넓은 흰 브랜드명, 하단에 흰 설명을 둔다.",
+      "narrative": "강한 개성의 브랜드들을 거친 뒤 일상 활용성과 편안한 실루엣을 가진 브랜드로 큐레이션을 마무리한다.",
+      "project_application": [
+        "20장처럼 긴 브랜드 모음도 각 장의 브랜드명·착장·세 줄 설명 형식을 고정해 탐색 피로를 줄인다.",
+        "마지막에는 일상 활용도가 높은 브랜드를 배치해 다양한 취향을 포괄할 수 있다."
+      ],
+      "uncertainty": [
+        "3/20~10/20, 12/20, 14/20~15/20, 17/20, 19/20 화면이 없어 전체 브랜드 목록은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 358,
+      "group": "reusable_content_prompt_library",
+      "account_type": "creator_education_comment_funnel",
+      "carousel_position": "7/11",
+      "observed_content": "디자인은 완성됐지만 썸네일 문구가 막힐 때 쓰는 '썸네일 카피' 프롬프트를 제공한다. 내용 요약을 입력하고 대카피 6자 이내와 소카피 한 줄, 저장 욕구를 자극하는 문구, 숫자나 구체 표현을 우선해 8개 후보와 클릭 이유를 표로 받는 구조다.",
+      "design_layout_color": "연한 크림·분홍색 별 패턴 배경, 픽셀 고양이와 반짝이 아이콘, 굵은 남색 제목, 분홍색 프롬프트 박스와 검은 설명 박스를 사용한다.",
+      "prompt_library": {
+        "name": "thumbnail_copy_candidates",
+        "input": "content_summary",
+        "request": "이 콘텐츠의 썸네일에 넣을 카피를 8개 생성",
+        "constraints": [
+          "대카피 6자 이내",
+          "소카피 한 줄",
+          "저장하고 싶게 만드는 손해 회피형 표현",
+          "숫자나 구체 표현 우선"
+        ],
+        "output_columns": [
+          "대카피",
+          "소카피",
+          "선택될 가능성이 높은 이유"
+        ]
+      },
+      "project_application": [
+        "카드뉴스 첫 장 후보를 하나로 즉시 확정하지 않고 여러 카피 후보와 선택 이유를 생성한 뒤 계정 톤에 맞게 고를 수 있다.",
+        "손해 회피 표현을 모든 주제에 고정하지 않고 정보·패션·연예 등 계정 성격과 내용 강도에 맞춰 조절한다.",
+        "이 프롬프트를 나중에 찾아 쓸 수 있는 재사용 자료로 보존한다."
+      ],
+      "uncertainty": [
+        "프롬프트 결과의 실제 품질과 프로젝트 런타임 연결 상태는 테스트되지 않았다."
+      ]
+    },
+    {
+      "source_id": 359,
+      "group": "reusable_content_prompt_library",
+      "account_type": "creator_education_comment_funnel",
+      "carousel_position": "10/11",
+      "observed_content": "상위 버전 프롬프트 묶음의 일부를 보여준다. 주요 타깃과 채널 톤을 입력해 검색창에는 쓰지 않지만 속으로 궁금해하는 질문을 찾고, 감정·불안·욕망, 현재 시즌·트렌드 연결과 시리즈 가능성을 표로 정리한다. 이어 카드뉴스·릴스의 첫 3초 훅 문장 10개와 심리 트리거 설명을 생성하는 프롬프트를 제시하며 댓글에 '콘텐츠'를 남기면 자료를 보내겠다고 안내한다.",
+      "design_layout_color": "358과 같은 파스텔 별 배경에 큰 검은 제목, 실제 프롬프트 캡처, 픽셀 말풍선과 검은 캐릭터를 겹쳐 정보량이 많은 화면을 친근하게 만든다.",
+      "prompt_library": {
+        "name": "hidden_questions_and_first_three_second_hooks",
+        "inputs": [
+          "primary_target",
+          "channel_tone",
+          "topic"
+        ],
+        "hidden_question_constraints": [
+          "단순 정보보다 감정·불안·욕망이 담긴 질문",
+          "현재 시즌이나 트렌드와 연결 가능한 질문 우선",
+          "시리즈로 묶을 수 있는 질문에 시리즈 태그"
+        ],
+        "hidden_question_output": [
+          "숨은 질문",
+          "릴스 훅 문장",
+          "콘텐츠 유형",
+          "시리즈 여부"
+        ],
+        "hook_request": "주제에 맞는 릴스·카드뉴스 첫 3초용 훅 문장 10개와 심리 트리거 설명"
+      },
+      "project_application": [
+        "후보 주제 선정 뒤 타깃의 숨은 질문과 감정 동기를 찾아 첫 장 카피와 시리즈 확장 가능성을 함께 설계할 수 있다.",
+        "프롬프트 결과를 그대로 발행하지 않고 실제 근거, 계정 톤, 중복 주제와 자연스러운 문장 여부를 후속 판단한다.",
+        "댓글 키워드로 프롬프트 자료를 제공하는 교육형 리드 수집 구조도 별도 수익화 패턴으로 저장한다."
+      ],
+      "uncertainty": [
+        "화면에는 전체 상위 버전 프롬프트 묶음 중 일부만 보인다.",
+        "실제 자동 DM 전달 방식과 제공 자료 전체는 확인되지 않았다."
+      ]
+    }
+  ],
+  "cross_item_learning": [
+    {
+      "pattern": "fashion_business_report_card",
+      "rule": "패션 콘텐츠는 스타일 이미지뿐 아니라 가격, 기간별 변화와 산업 성장 구조를 보고서형 카드로 설명할 수 있으며 수치 출처를 연결해야 한다."
+    },
+    {
+      "pattern": "long_form_brand_discovery_gallery",
+      "rule": "다수 브랜드 큐레이션은 장수를 억지로 줄이지 않고 브랜드별 대표 착장, 브랜드명과 세 가지 특징을 같은 형식으로 반복해 20장까지도 탐색 가능한 구조로 만든다."
+    },
+    {
+      "pattern": "brand_function_and_taste_matching",
+      "rule": "패션 브랜드는 이름뿐 아니라 소재, 제작, 실루엣, 레이어드, 그래픽, 계절 품목과 선호 취향을 연결해 추천한다."
+    },
+    {
+      "pattern": "fashion_beauty_brand_as_content_topic",
+      "rule": "패션·뷰티 계정에서는 상품 소개뿐 아니라 브랜드 자체를 주제로 삼아 브랜드 정체성, 성장, 가격, 디자인 언어, 대표 제품과 추천 대상을 콘텐츠로 구성할 수 있다."
+    },
+    {
+      "pattern": "prompt_assets_are_searchable_learning_material",
+      "rule": "외부 자료의 유용한 프롬프트는 단순 요약으로 끝내지 않고 입력값, 제약 조건과 출력 형식을 구조화해 나중에 찾아 쓸 수 있는 프롬프트 라이브러리로 보존한다."
+    },
+    {
+      "pattern": "candidate_generation_before_selection",
+      "rule": "썸네일과 첫 3초 훅은 하나를 바로 확정하지 않고 여러 후보와 선택 이유를 만든 뒤 계정 톤, 근거와 주제에 맞는 후보를 선택한다."
+    }
+  ],
+  "deferred_work": [
+    "351의 나머지 9장과 352~357의 누락된 브랜드 장면은 다른 원본이 나오면 보완한다.",
+    "358~359의 전체 11장 프롬프트 묶음은 다른 원본이 나오면 프롬프트 라이브러리를 확장한다.",
+    "프롬프트 런타임 연결, 테스트와 외부 DM 전송은 현재 수행하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false
+}

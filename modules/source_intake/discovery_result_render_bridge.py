@@ -100,10 +100,11 @@ def _build_media_record(
     )
     media_url = _first(
         asset,
+        "local_path",
+        "thumbnail_url",
+        "remote_url",
         "media_url",
         "url",
-        "remote_url",
-        "local_path",
         "locator",
         "path",
     )
@@ -137,6 +138,11 @@ def _build_media_record(
             render_restrictions.append("ap_reference_only")
     if generated:
         render_restrictions.append("generated_synthetic")
+    if asset.get("metadata_only") is True or artifact_role in {
+        "article_body",
+        "related_news",
+    }:
+        render_restrictions.append("metadata_only")
     if source_url is None:
         render_restrictions.append("source_url_missing")
         _append_diagnostic(

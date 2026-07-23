@@ -1,0 +1,208 @@
+{
+  "batch_id": "reels_visual_commerce_learning_batch_034",
+  "source_range": {
+    "start": 331,
+    "end": 340
+  },
+  "status": "stored_not_runtime_verified",
+  "analysis_scope": [
+    "content",
+    "design_layout_color",
+    "narrative",
+    "commerce_monetization",
+    "project_application",
+    "uncertainty"
+  ],
+  "items": [
+    {
+      "source_id": 331,
+      "group": "affiliate_comment_funnel_food_product",
+      "carousel_position": "4/4",
+      "observed_content": "앞선 단백질 국수 게시물의 마지막 화면과 본문이다. 팔로우 후 '국수' 댓글을 남기거나 프로필 링크 1285번으로 정보를 확인하도록 안내하고, 밤 10시 야식 부담, 곤약면·두부면과 다른 쫄깃한 식감, 살얼음 육수와 양념의 조합을 장점으로 설명한다.",
+      "design_layout_color": "초록색 면과 진한 육수를 크게 보여주는 음식 접사를 상단에 두고, 검은 인스타그램 본문 영역에 이모지와 짧은 소제목으로 장점을 구분한다.",
+      "narrative": "야식 고민 제시 → 대체면의 식감 불만 해소 → 시원한 육수와 맛 묘사 → 댓글 키워드·프로필 링크 행동 유도의 순서다.",
+      "commerce_monetization": [
+        "문제 상황과 식감·맛 장점을 본문에서 구체화한 뒤 댓글 키워드와 프로필 번호 링크로 상품 정보에 연결한다.",
+        "저장 수요가 높은 레시피처럼 포장해 재방문과 전환을 함께 유도한다."
+      ],
+      "project_application": [
+        "상품형 콘텐츠는 표지 문구만이 아니라 본문에서 사용 상황, 기존 대안의 불편, 핵심 차이, 섭취 장면과 CTA를 연결한다.",
+        "실제 상품 데이터가 연결되면 제품명, 성분, 조리법과 제휴 상태를 근거로 본문을 작성한다.",
+        "직접 먹어본 근거가 없으면 맛·식감·포만감 경험을 프로젝트의 실제 사용후기로 만들지 않는다."
+      ],
+      "uncertainty": [
+        "제품명, 실제 영양 성분, 조리법, 제휴 관계와 작성자의 실사용 여부는 현재 화면만으로 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 332,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "1/9",
+      "observed_content": "배우 한소희의 휴대전화 거울 셀카를 크게 배치하고 '진짜 한소희만 줄 수 있는 느낌'이라는 제목으로 시작한다. 본문은 내추럴한 셀카부터 화려한 드레스까지 시크함과 우아함이 공존하는 근황을 모았다고 설명한다.",
+      "design_layout_color": "얼굴과 하늘색 휴대전화가 화면을 채우며 하단을 검게 그라데이션 처리해 굵은 흰 제목을 올린다. 하단 중앙에는 BUNNEY MAG 로고를 둔다.",
+      "narrative": "인물의 가장 강한 근접 이미지를 첫 장 훅으로 사용하고 이후 여러 분위기의 사진을 보게 만든다.",
+      "project_application": [
+        "매거진 계정에서는 실제 인물과 관련된 연예인 이미지를 문제가 되지 않는 범위에서 활용해 한 인물의 스타일 변화와 분위기를 사진 중심으로 큐레이션할 수 있다.",
+        "첫 장에만 짧고 큰 제목을 사용하고 이후 장은 사진 자체의 분위기를 살리는 구조를 학습한다."
+      ],
+      "uncertainty": [
+        "사진의 원출처와 촬영 시점은 현재 화면에 표시되지 않았다."
+      ]
+    },
+    {
+      "source_id": 333,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "2/9",
+      "observed_content": "차량 안으로 보이는 공간에서 선글라스를 쓴 한소희의 옆얼굴을 가까이 보여준다.",
+      "design_layout_color": "검은 선글라스와 짙은 머리카락, 밝은 피부의 대비가 중심이며 별도 문구 없이 사진을 전면 사용한다.",
+      "narrative": "제목이 있는 첫 장 다음에 자연스러운 이동 중 모습을 배치해 화보와 일상의 중간 분위기로 전환한다.",
+      "project_application": [
+        "사진 갤러리는 모든 장에 텍스트를 넣지 않고 표정, 거리, 장소와 스타일이 다른 장면을 번갈아 배치해 리듬을 만든다."
+      ],
+      "uncertainty": [
+        "화면만으로 정확한 장소와 상황은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 334,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "4/9",
+      "observed_content": "검은 가죽 재킷을 입은 한소희가 금색 조형물 옆에서 거울 셀카를 찍는 장면이다.",
+      "design_layout_color": "검정 의상과 금색 조형물의 강한 대비, 인물과 조형물의 세로 실루엣을 함께 사용해 독특하고 예술적인 분위기를 만든다.",
+      "narrative": "근접 셀카에서 전신과 공간이 함께 보이는 장면으로 넓혀 인물의 스타일뿐 아니라 장소의 개성도 보여준다.",
+      "project_application": [
+        "인물 큐레이션에서 의상 색과 배경 오브제의 대비가 강한 사진을 중간 변주로 사용할 수 있다.",
+        "패션 설명이 필요한 경우 가죽 재킷, 실루엣, 색 대비처럼 화면에서 직접 보이는 요소를 중심으로 쓴다."
+      ],
+      "uncertainty": [
+        "조형물과 장소의 정보는 현재 화면으로 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 335,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "6/9",
+      "observed_content": "검은 끈 상의를 입고 머리를 올린 한소희가 턱을 괴고 휴대전화를 보는 근접 셀카다.",
+      "design_layout_color": "밝은 피부, 검은 머리와 의상의 대비가 강하고 얼굴과 어깨선을 중심으로 단순하게 구성한다.",
+      "narrative": "공간과 의상을 보여준 장면 뒤에 다시 표정 중심의 가까운 셀카를 배치해 친밀감을 높인다.",
+      "project_application": [
+        "인물 갤러리는 전신·공간 사진과 근접 셀카를 교차해 단조로움을 줄일 수 있다."
+      ],
+      "uncertainty": [
+        "사진의 촬영 시점과 공개 맥락은 현재 화면으로 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 336,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "8/9",
+      "observed_content": "검은 모자와 검은 털 질감 의상을 착용한 한소희가 흰 난초 앞에서 거울 셀카를 찍는다.",
+      "design_layout_color": "검은 의상과 흰 꽃을 전경과 배경으로 겹쳐 배치하고, 주황색 휴대전화 케이스를 작은 포인트 색으로 사용한다.",
+      "narrative": "인물만 보여주지 않고 꽃을 큰 전경 요소로 넣어 계절감과 공간감을 보강한다.",
+      "project_application": [
+        "전경 오브제를 활용하면 같은 인물 중심 갤러리에서도 깊이와 색 대비를 만들 수 있다.",
+        "검정·흰색 중심 장면에 작은 포인트 컬러를 남기는 조합을 디자인 참고로 저장한다."
+      ],
+      "uncertainty": [
+        "의상 소재와 장소는 화면을 바탕으로 한 시각적 추정이다."
+      ]
+    },
+    {
+      "source_id": 337,
+      "group": "magazine_account_celebrity_style_gallery",
+      "carousel_position": "9/9",
+      "observed_content": "같은 검은 모자와 질감 있는 상의를 입고 은색 숄더백을 멘 한소희의 야외 전신 사진으로 갤러리를 마무리한다.",
+      "design_layout_color": "검은 상·하의와 은색 가방을 녹색 식물, 갈색 가구와 대비시킨다. 인물을 중앙에 두되 주변 환경을 충분히 남긴다.",
+      "narrative": "앞 장의 근접 거울 셀카와 동일한 스타일을 전신 사진으로 확장해 최종 착장과 실루엣을 보여준다.",
+      "project_application": [
+        "같은 착장의 근접 사진과 전신 사진을 연속 또는 후반부에 배치하면 디테일과 전체 실루엣을 함께 전달할 수 있다.",
+        "연예 이슈와 패션 큐레이션이 겹치는 콘텐츠에서는 인물 근황을 훅으로 삼고 실제 보이는 스타일 요소를 자연스럽게 설명할 수 있다."
+      ],
+      "uncertainty": [
+        "3/9, 5/9, 7/9 화면이 없어 전체 갤러리의 모든 전환은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 338,
+      "group": "issue_meme_dopamine_toon_celebrity_post",
+      "carousel_position": "1/7",
+      "observed_content": "홍진영으로 소개된 인물의 얼굴을 흐리게 처리한 야외 장면 위에 '몰라보게 달라진 미모에 글래머 몸매 난리난 여가수'라는 큰 제목을 올린다. 본문 첫 줄은 SNS를 통해 볼락 생선구이 먹방을 공개했다고 적는다.",
+      "design_layout_color": "밝은 초록 인조잔디를 배경으로 굵은 흰 글자와 매우 두꺼운 검은 외곽선을 사용해 모바일 첫 화면에서 제목이 가장 먼저 보이게 한다.",
+      "narrative": "인물의 최근 모습과 외모 변화를 자극적인 질문형 훅으로 제시한 뒤 개인 SNS 장면을 근거 이미지처럼 이어간다.",
+      "project_application": [
+        "이슈짤·도파민툰 계정은 주제와 관련된 연예인 이미지를 문제가 되지 않는 범위에서 활용해 최근 근황이나 화제 장면을 전달할 수 있다.",
+        "첫 장의 흰색·검은 외곽선 제목은 복잡한 실사 배경에서도 높은 가독성을 만든다.",
+        "강한 이슈형 제목 뒤에 실제 공개된 활동, 음식, 장소와 근황 장면을 이어 붙여 내용을 전개한다."
+      ],
+      "uncertainty": [
+        "현재 스크린샷만으로 원본 게시물, 촬영 시점과 얼굴 흐림 처리가 원본인지 재편집인지 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 339,
+      "group": "issue_meme_dopamine_toon_celebrity_post",
+      "carousel_position": "4/7",
+      "observed_content": "홍진영으로 소개된 인물이 모자를 쓰고 식당 테이블에 앉아 음식과 함께 촬영되는 장면이다.",
+      "design_layout_color": "베이지색 상의와 따뜻한 목재 식당 배경을 사용하며 화면 중앙 아래에 반투명 'trend' 계정 표식이 있다. 이는 영상 저작권 표시가 아니라 해당 계정이 장면을 보고 캡처·편집했다는 표시로 사용된다.",
+      "narrative": "강한 첫 장 제목 뒤에 실제 먹방 상황을 보여주어 인물의 공개 근황이라는 맥락을 보강한다.",
+      "project_application": [
+        "첫 장에만 제목을 두고 중간 장에서는 식사 장소와 행동이 보이는 원장면을 충분히 보여주는 구성을 학습한다.",
+        "동일 인물의 실제 공개 장면을 사용할 때 음식·활동·장소처럼 제목을 뒷받침하는 맥락을 함께 남긴다."
+      ],
+      "uncertainty": [
+        "이 화면이 정지 사진인지 영상의 특정 장면인지는 스크린샷만으로 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 340,
+      "group": "issue_meme_dopamine_toon_celebrity_post",
+      "carousel_position": "7/7",
+      "observed_content": "같은 야외 공간에서 검은 민소매 옷과 모자를 착용한 홍진영으로 소개된 인물이 양손으로 모자를 잡는 장면이다.",
+      "design_layout_color": "검은 의상과 밝은 초록 잔디의 대비가 강하며 마지막 장은 별도 제목 없이 인물 동작과 표정을 전면에 둔다.",
+      "narrative": "식사 장면과 야외 모습을 거쳐 인물의 자연스러운 동작이 담긴 화면으로 갤러리를 끝낸다.",
+      "project_application": [
+        "동일한 외출에서 나온 여러 장면은 첫 장 훅, 활동 맥락, 자연스러운 마무리 장면의 순서로 구성할 수 있다.",
+        "한 게시물 안에서도 제목 카드와 텍스트 없는 실사 장면을 섞어 정보와 현장감을 조절한다."
+      ],
+      "uncertainty": [
+        "2/7, 3/7, 5/7, 6/7 화면이 없어 전체 게시물의 세부 전개는 확인되지 않았다.",
+        "이 화면이 정지 사진인지 영상의 특정 장면인지는 스크린샷만으로 확인되지 않았다."
+      ]
+    }
+  ],
+  "cross_item_learning": [
+    {
+      "pattern": "commerce_caption_closes_the_funnel",
+      "rule": "상품 퍼널은 이미지 훅에서 끝나지 않고 본문에서 사용 상황, 기존 대안의 불편, 제품 차이와 댓글·프로필 CTA를 이어 전환 구조를 완성한다."
+    },
+    {
+      "pattern": "magazine_account_celebrity_gallery",
+      "rule": "매거진 계정은 가장 강한 인물 사진과 짧은 제목을 첫 장에 두고 이후에는 텍스트를 줄인 근접·전신·공간 사진을 교차해 스타일과 분위기를 큐레이션한다."
+    },
+    {
+      "pattern": "same_outfit_detail_to_full_view",
+      "rule": "동일 착장의 근접 사진과 전신 사진을 함께 사용하면 얼굴·소재·액세서리 디테일과 전체 실루엣을 동시에 전달할 수 있다."
+    },
+    {
+      "pattern": "issue_meme_dopamine_toon_celebrity_gallery",
+      "rule": "이슈짤·도파민툰 계정은 강한 첫 장 제목 뒤에 연예인의 식사, 장소, 행동과 표정이 보이는 관련 장면을 배치해 화제의 맥락을 이어간다."
+    },
+    {
+      "pattern": "do_not_infer_motion_from_screenshot",
+      "rule": "인스타그램 스크린샷만으로 각 항목이 정지 사진인지 영상 구간인지 단정하지 않고 확인된 캐러셀 위치와 화면 구성만 저장한다."
+    },
+    {
+      "pattern": "account_specific_flexible_celebrity_image_use",
+      "rule": "매거진 계정과 이슈짤·도파민툰 계정 모두 콘텐츠 주제와 관련된 연예인 이미지는 문제가 되지 않는 범위에서 유연하게 사용할 수 있으며, 계정에 따라 매거진식 스타일 큐레이션과 이슈형 전개를 구분한다."
+    }
+  ],
+  "deferred_work": [
+    "332~337의 누락된 3/9, 5/9, 7/9 화면은 다른 원본이 나오면 보완한다.",
+    "338~340의 누락된 2/7, 3/7, 5/7, 6/7 화면은 다른 원본이 나오면 보완한다.",
+    "제품 정보 확인, 원본 게시물 확인, 런타임 연결과 실제 외부 게시 작업은 현재 수행하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false
+}

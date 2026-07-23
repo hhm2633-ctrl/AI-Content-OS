@@ -155,6 +155,7 @@ def run_from_paths(
     input_path: Path,
     output_path: Path,
     *,
+    deep_input_path: Path | None = None,
     pipeline_runner: Callable[..., Dict[str, Any]] = run_multi_account_card_news_discovery_pipeline,
 ) -> Dict[str, Any]:
     input_path = Path(input_path)
@@ -180,7 +181,30 @@ def run_from_paths(
         output_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         return result
 
-    pipeline_result = pipeline_runner(payload)
+    deep_payload = None
+    if deep_input_path is not None:
+        try:
+            deep_payload = json.loads(Path(deep_input_path).read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            result = _closed_result(
+                input_path,
+                output_path,
+                f"deep_input_read_failed:{type(exc).__name__}",
+            )
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(
+                json.dumps(result, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            return result
+
+    if deep_payload is None:
+        pipeline_result = pipeline_runner(payload)
+    else:
+        pipeline_result = pipeline_runner(
+            payload,
+            deep_discovery_result=deep_payload,
+        )
     if not isinstance(pipeline_result, Mapping):
         pipeline_result = {
             "status": "closed",
@@ -203,6 +227,7 @@ def run_from_paths(
         "pipeline_called": True,
         "external_collection_performed": False,
         "deep_fetch_performed": False,
+        "existing_deep_result_consumed": deep_payload is not None,
         "owner_selection_performed": False,
         "render_performed": False,
         "publishing_performed": False,
@@ -226,8 +251,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--deep-input", type=Path)
     args = parser.parse_args()
-    result = run_from_paths(args.input, args.output)
+    result = run_from_paths(
+        args.input,
+        args.output,
+        deep_input_path=args.deep_input,
+    )
     sys.stdout.reconfigure(encoding="utf-8")
     print(json.dumps({
         "status": result["status"],

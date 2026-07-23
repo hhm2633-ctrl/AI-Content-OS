@@ -43,7 +43,9 @@ def _create_temp_image() -> Path:
 
 
 class GenerateVisualQaCopyDensityTests(TestCase):
-    def _analyze_copy_density(self, text: str, lines: list[str]) -> dict:
+    def _analyze_copy_density(
+        self, text: str, lines: list[str], media_type: str = "image"
+    ) -> dict:
         image_path = _create_temp_image()
 
         class FakeOpenClipRuntime:
@@ -60,6 +62,7 @@ class GenerateVisualQaCopyDensityTests(TestCase):
             "image_path": str(image_path),
             "account": "C",
             "template_crop_window": None,
+            "media_type": media_type,
         }
 
         package = {
@@ -119,3 +122,10 @@ class GenerateVisualQaCopyDensityTests(TestCase):
         self.assertEqual("fail", result["findings"]["copy_density_ok"])
         self.assertEqual(280, result["analysis"]["ocr"]["text_char_count"])
         self.assertEqual(13, result["analysis"]["ocr"]["line_count"])
+
+    def test_editorial_text_card_does_not_fail_image_primary_rule(self):
+        result = self._analyze_copy_density(
+            _build_text(280), _build_lines(13), media_type="editorial"
+        )
+        self.assertEqual("pass", result["findings"]["image_is_primary"])
+        self.assertEqual("fail", result["findings"]["copy_density_ok"])

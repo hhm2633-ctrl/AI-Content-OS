@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_131_140",
+  "source_root": "F:\\AI-Content-OS-Data\\owner_source",
+  "analysis_status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "source_groups": [
+    {
+      "group_id": "cardnews_growth_prompt_carousel",
+      "indices": [131, 132],
+      "relationship": "same Instagram carousel, slides 5 and 6 of 7"
+    },
+    {
+      "group_id": "ai_video_prompt_framework_carousel",
+      "indices": [134, 135, 136, 137, 138],
+      "relationship": "same Instagram carousel, non-contiguous slides from an 18-slide prompt framework"
+    },
+    {
+      "group_id": "coupang_search_exposure_carousel",
+      "indices": [139, 140],
+      "relationship": "same external carousel, slides 3 and 4 of 10"
+    }
+  ],
+  "items": [
+    {
+      "index": 131,
+      "file": "Screenshot_20260714_051216_Instagram.jpg",
+      "content": "팔로우 증가를 목표로 한 7페이지 카드뉴스 구성 프롬프트",
+      "design": "종이 질감과 빨간 필기형 선으로 썸네일, 공감, 핵심, 실전, 추가 통찰, CTA의 흐름을 한 장에 도식화",
+      "project_use": ["문제 공감 뒤 핵심 내용과 적용 방법을 배치", "각 장에 제목, 핵심 문장, 짧은 본문, 다음 장 연결 문장을 부여"],
+      "learning_rule": "7페이지는 사례일 뿐 고정하지 않고 근거량과 독자 흐름에 맞춰 장수를 가변 결정",
+      "caution": "팔로우 증가를 모든 게시물의 목표로 강제하지 않고 저장, 공유, 이해, 전환 등 게시물 목적에 맞춘다"
+    },
+    {
+      "index": 132,
+      "file": "Screenshot_20260714_051218_Instagram.jpg",
+      "content": "댓글, 팔로우, DM을 유도하는 CTA 변형 프롬프트",
+      "design": "노트 배경과 빨간 손글씨 도식으로 댓글에서 팔로우와 DM까지의 행동 경로를 표현",
+      "project_use": ["CTA는 행동 명령만 쓰지 않고 독자가 얻는 이득을 설명", "댓글형, 팔로우형, DM형 CTA를 게시물 목적에 맞게 선택"],
+      "learning_rule": "CTA는 한 게시물에 여러 행동을 과하게 요구하지 않고 가장 자연스러운 다음 행동 하나를 우선",
+      "risk_or_gate": "자동 DM이나 외부 메시지 전송은 승인 없이 실행하지 않음"
+    },
+    {
+      "index": 133,
+      "file": "Screenshot_20260714_051447_Instagram.jpg",
+      "content": "AI 티를 줄이는 프론트엔드 디자인 관련 스킬 5개 소개",
+      "design": "검정 배경, 흰색 대형 제목, 낮은 채도의 기능 목록으로 기술 계정의 간결한 편집 스타일을 유지",
+      "candidate_tools": ["frontend-design", "taste-skill", "animate", "playwright-mcp", "figma-mcp"],
+      "project_use": ["디자인 생성, 취향 조정, 모션, 브라우저 검수, 디자인 도구 연결을 서로 다른 역할로 분리", "한 번에 모두 설치하지 않고 실제 병목과 중복 기능을 비교한 뒤 선택"],
+      "risk_or_gate": "각 스킬의 출처, 보안, 라이선스, 현재 설치 여부와 프로젝트 호환성은 미검증"
+    },
+    {
+      "index": 134,
+      "file": "Screenshot_20260714_051629_Instagram.jpg",
+      "content": "AI 영상 프롬프트를 인물, 공간, 행동, 카메라, 조명의 다섯 요소로 구체화하는 방법",
+      "design": "상단에 5칸 입력 도식, 하단에 검정 배경 설명을 배치해 구조와 해설을 분리",
+      "project_use": ["인물 또는 대상", "공간", "행동", "카메라 위치와 렌즈감", "조명과 색온도"],
+      "learning_rule": "추상적 분위기만 지시하지 않고 장면을 구성하는 관찰 가능한 요소를 명시"
+    },
+    {
+      "index": 135,
+      "file": "Screenshot_20260714_051645_Instagram.jpg",
+      "content": "인물과 공간을 함께 고정해 장면 연결감을 높인다는 원칙",
+      "design": "동일 인물의 여러 구도 이미지를 2x2로 보여준 뒤 하단에 짧은 설명을 배치",
+      "project_use": ["얼굴만 아니라 복장, 공간, 소품, 포즈, 반복 특징을 하나의 캐릭터 패키지로 관리", "계정별 AI 진행자의 시각 정체성 설계 참고"],
+      "capability_boundary": "이 원칙은 참고 지식이며 현재 이미지 경로가 동일 얼굴과 신체를 안정적으로 유지한다고 증명하지 않음"
+    },
+    {
+      "index": 136,
+      "file": "Screenshot_20260714_051649_Instagram.jpg",
+      "content": "광고 영상의 첫 1초에 제품, 인물 행동, 시선 이동을 설계하라는 원칙",
+      "design": "얼굴 클로즈업을 크게 사용하고 검정 설명 영역과 강하게 대비해 즉시 시선을 붙잡음",
+      "project_use": ["첫 화면에서 무엇을 먼저 보게 할지 결정", "제품 등장 시점, 인물 행동, 시선 유도 방향을 사전 설계"],
+      "learning_rule": "초기 이탈 방지는 우연한 자극보다 주제에 맞는 시각 우선순위 설계로 해결"
+    },
+    {
+      "index": 137,
+      "file": "Screenshot_20260714_051701_Instagram.jpg",
+      "content": "시네마틱 영상의 무게를 조명, 공기, 렌즈감, 카메라 움직임으로 만든다는 원칙",
+      "design": "눈의 극단적 클로즈업과 전기 효과를 사용해 주제인 빛과 긴장감을 즉시 시각화",
+      "project_use": ["배경 규모만 키우지 않고 빛의 방향과 질감, 대기, 렌즈, 움직임을 함께 설계", "장르와 감정에 맞춘 현대적 영상 프롬프트 강화"],
+      "learning_rule": "시네마틱은 큰 배경이라는 단일 형용사가 아니라 여러 촬영 요소의 조합"
+    },
+    {
+      "index": 138,
+      "file": "Screenshot_20260714_051705_Instagram.jpg",
+      "content": "생성 후 무엇을 검수할지 기준을 프롬프트 단계부터 세우라는 원칙",
+      "design": "따뜻한 작업 공간과 체크리스트 홀로그램을 결합해 제작 후 검수 개념을 시각화",
+      "project_use": ["인물 일관성", "제품 또는 핵심 대상 노출", "장면 연결", "텍스트 가독성", "조명과 색", "금지 요소", "사실성"],
+      "learning_rule": "완성 기준과 실패 조건을 생성 전에 정의하고 결과를 해당 기준으로 평가"
+    },
+    {
+      "index": 139,
+      "file": "Screenshot_20260714_052053_Instagram.jpg",
+      "content": "쿠팡 검색 노출을 검색 진입, 필터 통과, 클릭 전환, 구매 전환의 네 단계로 설명",
+      "design": "검정 배경과 파란 퍼널 도형으로 검색 노출 과정을 단계적으로 시각화",
+      "project_use": ["상품 검색 가능성", "필터 속성 적합성", "대표 이미지, 가격, 리뷰의 클릭 기여", "구매 성과를 서로 다른 단계로 분리"],
+      "learning_rule": "노출 문제를 한 점수로 뭉치지 않고 어느 단계에서 이탈하는지 진단",
+      "risk_or_gate": "쿠팡 검색 알고리즘에 대한 게시물 주장은 공식 문서 또는 실제 데이터 확인 전 가설로만 사용"
+    },
+    {
+      "index": 140,
+      "file": "Screenshot_20260714_052056_Instagram.jpg",
+      "content": "상품명을 브랜드, 상품명, 상품군, 특징, 옵션 요소로 구성하고 핵심 검색어를 반영하라는 팁",
+      "design": "다섯 요소를 파란 블록으로 구분하고 감점 사례와 핵심 인사이트를 별도 상자로 분리",
+      "project_use": ["상품 메타데이터에서 브랜드, 상품군, 기능, 옵션, 소재, 크기를 구조화", "콘텐츠 매칭에서도 상품명만 보지 않고 기능과 상황 데이터를 함께 사용"],
+      "learning_rule": "검색어 수를 기계적으로 채우지 않고 검증된 상품 속성과 고객이 이해할 명칭을 우선",
+      "risk_or_gate": "15개 이상 키워드 같은 수치 규칙은 공식 확인 전 강제하지 않음"
+    }
+  ],
+  "cross_item_learning": [
+    "카드뉴스 구성과 CTA는 고정 장수 또는 팔로우만을 목표로 하지 않고 게시물의 실제 목적에 맞춰 가변 설계한다.",
+    "AI 장면 프롬프트는 인물, 공간, 행동, 카메라, 조명을 기본 축으로 삼고 장르에 따라 대기, 렌즈감, 움직임을 추가한다.",
+    "계정별 AI 진행자는 얼굴뿐 아니라 복장, 공간, 소품, 포즈의 반복 특징을 함께 설계하지만 현재 생성 경로의 지속적 동일 인물 재현은 검증되지 않았다.",
+    "생성 전에 품질 기준과 실패 조건을 정의해야 반복 생성이 아닌 수정 가능한 학습이 된다.",
+    "쿠팡 노출은 검색, 필터, 클릭, 구매 단계로 나눠 진단하고 상품명보다 구조화된 기능과 속성 데이터를 함께 활용한다."
+  ]
+}

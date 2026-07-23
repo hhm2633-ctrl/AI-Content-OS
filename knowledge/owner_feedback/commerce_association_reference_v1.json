@@ -1,0 +1,122 @@
+{
+  "schema_version": "commerce_association_reference_v1",
+  "status": "ACTIVE_OWNER_RULE",
+  "recorded_at": "2026-07-22T00:00:00+09:00",
+  "source": "human_owner_chat",
+  "is_performance_evidence": false,
+  "purpose": "Reels affiliate-product association learning from owner-provided references",
+  "decision_rule": "Allow indirect product candidates when a viewer can immediately understand the scene, fandom, object, function, visual similarity, or wordplay bridge. A playful bridge is acceptable when it is understandable and does not break the content flow.",
+  "allowed_relation_types": [
+    "fandom_merch",
+    "material_craft",
+    "body_context",
+    "activity_tool",
+    "visual_similarity",
+    "scene_function",
+    "name_wordplay",
+    "object_adjacent",
+    "color_wordplay"
+    ,"visible_accessory"
+  ],
+  "references": [
+    {
+      "reference_id": "owner_assoc_idol_fandom",
+      "relation_type": "fandom_merch",
+      "trigger_terms": ["아이브", "장원영", "에스파", "윈터"],
+      "min_trigger_matches": 1,
+      "association_terms": ["아이돌 굿즈", "다이어리", "포토카드"],
+      "explanation": "아이돌 인물과 팬덤을 관련 굿즈나 다이어리로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_metal_craft_pan",
+      "relation_type": "material_craft",
+      "trigger_terms": ["장인", "망치질", "금속", "쇠", "스테인리스"],
+      "min_trigger_matches": 2,
+      "association_terms": ["스테인리스 프라이팬", "프라이팬"],
+      "explanation": "금속을 두드려 만드는 장면을 같은 재료와 제작 맥락의 조리도구로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_bare_feet",
+      "relation_type": "body_context",
+      "trigger_terms": ["맨발", "발이 보이는", "발 노출"],
+      "min_trigger_matches": 1,
+      "association_terms": ["발 관리", "풋케어", "발 보습"],
+      "explanation": "화면에 드러난 맨발을 발 관리 상품으로 연결",
+      "humor_allowed": true
+    },
+    {
+      "reference_id": "owner_assoc_pc_game",
+      "relation_type": "activity_tool",
+      "trigger_terms": ["스타크래프트", "컴퓨터 게임", "PC 게임"],
+      "min_trigger_matches": 1,
+      "association_terms": ["키보드", "마우스", "게이밍 장비"],
+      "explanation": "컴퓨터 게임 장면을 실제 플레이 도구로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_otter_plush",
+      "relation_type": "visual_similarity",
+      "trigger_terms": ["수달"],
+      "min_trigger_matches": 1,
+      "association_terms": ["수달 인형", "동물 인형"],
+      "explanation": "등장 동물과 닮은 인형으로 연결",
+      "humor_allowed": true
+    },
+    {
+      "reference_id": "owner_assoc_airport_luggage",
+      "relation_type": "scene_function",
+      "trigger_terms": ["공항", "출국", "입국", "수하물"],
+      "min_trigger_matches": 1,
+      "association_terms": ["캐리어", "여행가방"],
+      "explanation": "공항 장면을 그 장소에서 사용하는 여행 상품으로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_kangho_sausage",
+      "relation_type": "name_wordplay",
+      "trigger_terms": ["강호동", "천하장사"],
+      "min_trigger_matches": 1,
+      "association_terms": ["천하장사 소시지", "소시지"],
+      "explanation": "인물의 천하장사 이미지와 동명 상품을 언어유희로 연결",
+      "humor_allowed": true
+    },
+    {
+      "reference_id": "owner_assoc_chocolate_cookie",
+      "relation_type": "object_adjacent",
+      "trigger_terms": ["초콜릿", "초코"],
+      "min_trigger_matches": 1,
+      "association_terms": ["초콜릿 쿠키", "쿠키", "간식"],
+      "explanation": "화면의 음식과 함께 소비되는 인접 간식 상품으로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_makeup_color_candy",
+      "relation_type": "color_wordplay",
+      "trigger_terms": ["백태", "아이돌 메이크업", "컬러 메이크업"],
+      "min_trigger_matches": 1,
+      "association_terms": ["컬러 캔디", "사탕"],
+      "explanation": "색상과 메이크업 소재를 컬러 상품에 가볍게 연결",
+      "humor_allowed": true
+    },
+    {
+      "reference_id": "owner_assoc_visible_glasses",
+      "relation_type": "visible_accessory",
+      "trigger_terms": ["안경 쓴", "안경 착용", "안경테"],
+      "min_trigger_matches": 1,
+      "association_terms": ["안경", "안경테", "패션 안경"],
+      "explanation": "화면에서 인물이 착용한 안경을 유사한 패션 안경 상품으로 연결",
+      "humor_allowed": false
+    },
+    {
+      "reference_id": "owner_assoc_singer_microphone",
+      "relation_type": "activity_tool",
+      "trigger_terms": ["가수", "아이돌 그룹", "리센느", "RESCENE"],
+      "min_trigger_matches": 1,
+      "association_terms": ["마이크", "노래방 마이크", "무선 마이크"],
+      "explanation": "가수와 아이돌 콘텐츠를 직업과 무대 활동에 사용하는 마이크로 연결",
+      "humor_allowed": true
+    }
+  ]
+}

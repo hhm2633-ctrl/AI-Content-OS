@@ -32,20 +32,38 @@
   "accounts": {
     "account_a_news_incident": {
       "categories": ["major_news_policy", "incident_conflict", "economy_market"],
-      "allowed_pattern_domains": ["content_pattern"],
+      "allowed_pattern_domains": ["content_pattern", "cta"],
       "role_bindings": [
         {
           "role": "hook_strategy",
           "pattern_id": "pattern.instagram_learning.content_pattern.quote_reversal_hook",
           "applicable_categories": ["major_news_policy", "incident_conflict", "economy_market"],
           "applicability_basis": "Quote/reversal headline with a person photo was observed on news/issue-style covers; hypothesis_only (n=1), reference tier only."
+        },
+        {
+          "role": "story_structure",
+          "pattern_id": "pattern.owner_corpus.content_pattern.source_form_preserving_editorial",
+          "applicable_categories": ["major_news_policy", "incident_conflict", "economy_market"],
+          "applicability_basis": "Owner corrections require news and reported material to preserve the source form and factual boundary. This is CANDIDATE reference only, not measured performance."
+        },
+        {
+          "role": "visual_direction",
+          "pattern_id": "pattern.owner_corpus.content_pattern.account_specific_first_screen",
+          "applicable_categories": ["major_news_policy", "incident_conflict", "economy_market"],
+          "applicability_basis": "Owner-directed account grammar requires news first frames to preserve the news account promise instead of reusing one universal cover."
+        },
+        {
+          "role": "cta_strategy",
+          "pattern_id": "pattern.owner.cardnews.direct_low_friction_cta",
+          "applicable_categories": ["major_news_policy", "incident_conflict", "economy_market"],
+          "applicability_basis": "Owner-approved CTA asks one immediate topic-specific question without forcing controversy or generic engagement copy."
         }
       ],
       "slide_count_hint_bindings": []
     },
     "account_b_issue_story": {
       "categories": ["entertainment_relationship", "community_buzz"],
-      "allowed_pattern_domains": ["content_pattern", "engagement_mechanic"],
+      "allowed_pattern_domains": ["content_pattern", "engagement_mechanic", "cta"],
       "role_bindings": [
         {
           "role": "hook_strategy",
@@ -60,10 +78,28 @@
           "applicability_basis": "Numbered curation list structure (repeated same-format items) was observed across humor/issue and lifestyle accounts; benchmark_observed (n=3), reference tier only."
         },
         {
+          "role": "story_structure",
+          "pattern_id": "pattern.owner_corpus.content_pattern.variable_length_emotional_story",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Owner-directed story learning uses only the scenes needed for emotional progression and evidence. CANDIDATE reference only; no fixed slide count or performance claim."
+        },
+        {
+          "role": "visual_direction",
+          "pattern_id": "pattern.owner_corpus.content_pattern.emotion_reaction_media_fallback",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Owner-directed fallback allows emotion-matched reaction media when direct topic media is sparse, while forbidding unrelated real people and factual-footage confusion."
+        },
+        {
           "role": "cta_strategy",
           "pattern_id": "pattern.instagram_learning.engagement_mechanic.dm_keyword_cta",
           "applicable_categories": ["entertainment_relationship", "community_buzz"],
           "applicability_basis": "Comment-keyword DM CTA is the only observed CTA pattern, but it carries manipulation_risk/funnel_risk flags and its own record forbids default use; the binder's role risk gate is expected to block it, leaving cta_strategy explicitly unavailable rather than silently bound."
+        },
+        {
+          "role": "cta_strategy",
+          "pattern_id": "pattern.owner.cardnews.direct_low_friction_cta",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "applicability_basis": "Owner-approved CTA asks one colloquial topic-specific question and replaces the blocked DM-funnel mechanic as the safe reference guidance."
         }
       ],
       "slide_count_hint_bindings": [
@@ -72,22 +108,60 @@
           "hint_type": "variable_length_list_supported",
           "applicable_categories": ["entertainment_relationship", "community_buzz"],
           "basis": "Evidence shows repeated same-format list items with a variable item count; no measured slide-count distribution exists, so only variable-length support is asserted and no slide number is produced."
+        },
+        {
+          "pattern_id": "pattern.owner_corpus.content_pattern.variable_length_emotional_story",
+          "hint_type": "variable_length_list_supported",
+          "applicable_categories": ["entertainment_relationship", "community_buzz"],
+          "basis": "Owner correction explicitly rejects fixed slide counts. The hint asserts variable length only and produces no slide count or range."
         }
       ]
     },
     "account_c_beauty_fashion": {
       "categories": ["beauty_fashion"],
-      "allowed_pattern_domains": ["content_pattern"],
-      "role_bindings": [],
-      "slide_count_hint_bindings": []
+      "allowed_pattern_domains": ["content_pattern", "cta"],
+      "role_bindings": [
+        {
+          "role": "hook_strategy",
+          "pattern_id": "pattern.owner_corpus.content_pattern.account_specific_first_screen",
+          "applicable_categories": ["beauty_fashion"],
+          "applicability_basis": "Owner-directed fashion and beauty first frames must communicate the account promise through the actual item, look, or trend rather than a universal news-style cover."
+        },
+        {
+          "role": "story_structure",
+          "pattern_id": "pattern.owner_corpus.content_pattern.fashion_item_visual_sequence",
+          "applicable_categories": ["beauty_fashion"],
+          "applicability_basis": "Owner-approved direction: introduce an item through available product, worn, angle, detail, styling, and information assets without forcing a fixed count. CANDIDATE reference only."
+        },
+        {
+          "role": "visual_direction",
+          "pattern_id": "pattern.owner_corpus.content_pattern.account_specific_first_screen",
+          "applicable_categories": ["beauty_fashion"],
+          "applicability_basis": "Owner-directed account grammar requires fashion/beauty first frames to preserve their own visual promise rather than reuse the news or story cover. CANDIDATE reference only."
+        },
+        {
+          "role": "cta_strategy",
+          "pattern_id": "pattern.owner.cardnews.direct_low_friction_cta",
+          "applicable_categories": ["beauty_fashion"],
+          "applicability_basis": "Owner-approved CTA asks for an immediately answerable item, look, or preference choice without overstating editorial authority."
+        }
+      ],
+      "slide_count_hint_bindings": [
+        {
+          "pattern_id": "pattern.owner_corpus.content_pattern.fashion_item_visual_sequence",
+          "hint_type": "variable_length_list_supported",
+          "applicable_categories": ["beauty_fashion"],
+          "basis": "The number of item views follows available useful media and information. No fixed slide number or measured distribution is asserted."
+        }
+      ]
     }
   },
   "notes": [
     "Account ids and category vocabulary mirror config/source_intake_account_routing.json and config/source_intake_account_top_selection.json.",
     "Only pattern ids that already exist in knowledge/patterns/pattern_registry.jsonl may appear in role_bindings; the binder verifies existence and never invents patterns.",
     "All currently registered Instagram-learning patterns are CANDIDATE, so every possible binding today is reference_only and production_planning_eligible stays false until real promotion per knowledge/patterns/promotion_policy.md.",
-    "account_c_beauty_fashion has no role bindings because no observed beauty/fashion pattern exists in the registry yet; its topics deterministically report pattern_unavailable instead of borrowing another account's patterns.",
+    "account_c_beauty_fashion now has owner-corpus CANDIDATE reference bindings for item sequencing and account-specific first frames; these remain reference_only until promotion gates are met.",
     "pattern.instagram_learning.content_pattern.regional_institution_notice_style and healthcare_public_character_illustration are intentionally unmapped: their observed contexts (regional/institutional notice accounts, hospital/public accounts) do not match any current account portfolio.",
-    "visual_direction is unmapped for every account because no registered pattern's observed context matches the current portfolios; it reports pattern_unavailable rather than a stretched binding."
+    "Every account now has an owner-corpus visual direction and direct low-friction CTA reference. These remain CANDIDATE guidance and are not represented as measured performance or PROMOTED production patterns."
   ]
 }

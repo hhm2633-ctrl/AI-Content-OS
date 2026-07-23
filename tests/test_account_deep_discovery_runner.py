@@ -111,9 +111,9 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
                 }
             ],
         )
-        self.assertEqual(bucket["duplicate_operations_eliminated"], 3)
-        self.assertEqual(bucket["provider_calls_without_dedupe"], 12)
-        self.assertEqual(bucket["provider_calls_planned"], 12)
+        self.assertEqual(bucket["duplicate_operations_eliminated"], 5)
+        self.assertEqual(bucket["provider_calls_without_dedupe"], 20)
+        self.assertEqual(bucket["provider_calls_planned"], 20)
         self.assertEqual(bucket["provider_call_reduction"], 0)
         self.assertEqual(len(provider.calls), 4 * len(ACCOUNT_DISCOVERY_PLANS["A"]))
         duplicate_calls = [call for call in provider.calls if call[2] == "A-duplicate"]
@@ -156,10 +156,10 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
         result = run_account_deep_discovery(repeated, provider)
         bucket = result["accounts"]["A"]
 
-        self.assertEqual(bucket["provider_calls_without_dedupe"], 12)
-        self.assertEqual(bucket["provider_calls_planned"], 3)
-        self.assertEqual(bucket["provider_call_reduction"], 9)
-        self.assertEqual(len(provider.calls), 3)
+        self.assertEqual(bucket["provider_calls_without_dedupe"], 20)
+        self.assertEqual(bucket["provider_calls_planned"], 5)
+        self.assertEqual(bucket["provider_call_reduction"], 15)
+        self.assertEqual(len(provider.calls), 5)
 
     def test_account_specific_operations_and_artifact_roles(self):
         provider = FakeProvider()
@@ -179,6 +179,32 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
         roles_b = [op["artifact_role"] for op in result["accounts"]["B"]["results"][0]["operations"]]
         self.assertIn("real_comment", roles_b)
         self.assertIn("reconstruction_scene_fact", roles_b)
+
+    def test_account_a_includes_bounded_auxiliary_media_discovery_contract(self):
+        plan = {
+            step["operation"]: step["artifact_role"]
+            for step in ACCOUNT_DISCOVERY_PLANS["A"]
+        }
+        self.assertEqual(plan["search_related_news"], "related_news")
+        self.assertEqual(
+            plan["locate_embedded_or_broadcast_video"],
+            "broadcast_video",
+        )
+        self.assertEqual(plan["search_open_images"], "open_image")
+
+        provider = FakeProvider()
+        result = run_account_deep_discovery(_selection("A", 1), provider)
+        operations = {
+            operation["operation"]: operation
+            for operation in result["accounts"]["A"]["results"][0]["operations"]
+        }
+        for operation in (
+            "search_related_news",
+            "locate_embedded_or_broadcast_video",
+            "search_open_images",
+        ):
+            self.assertIn(operation, operations)
+            self.assertEqual(operations[operation]["status"], "empty")
 
     def test_provider_failure_is_additive_and_safe(self):
         provider = FakeProvider(errors={"collect_news_images": RuntimeError("timeout")})
@@ -215,6 +241,28 @@ class AccountDeepDiscoveryRunnerTest(unittest.TestCase):
             self.assertEqual(by_url[url]["restriction_reason"], "ap_reference_only")
         self.assertFalse(by_url["https://img/3"]["reference_only"])
         self.assertTrue(by_url["https://img/3"]["usable_in_production"])
+
+    def test_ap_related_news_assets_remain_reference_only(self):
+        provider = FakeProvider(
+            results={
+                "search_related_news": [
+                    {
+                        "url": "https://example.com/ap-coverage",
+                        "publisher": "Associated Press",
+                        "metadata_only": True,
+                    }
+                ]
+            }
+        )
+        result = run_account_deep_discovery(_selection("A", 1), provider)
+        operations = {
+            operation["operation"]: operation
+            for operation in result["accounts"]["A"]["results"][0]["operations"]
+        }
+        asset = operations["search_related_news"]["assets"][0]
+        self.assertTrue(asset["reference_only"])
+        self.assertFalse(asset["usable_in_production"])
+        self.assertEqual(asset["restriction_reason"], "ap_reference_only")
 
     def test_real_comments_require_provider_verification_flag(self):
         provider = FakeProvider(

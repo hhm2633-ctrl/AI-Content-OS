@@ -144,6 +144,16 @@ class LocalMediaPipeline:
         path = Path(value).expanduser()
         return path.resolve() if path.is_absolute() else None
 
+    @staticmethod
+    def _source_editorial_usable(request: Mapping[str, Any]) -> bool:
+        return (
+            request.get("source_editorial_usable") is True
+            and request.get("topic_relevant") is True
+            and request.get("attribution_required") is True
+            and bool(str(request.get("source_url") or "").strip())
+            and request.get("publish_authorized") is False
+        )
+
     def _validate(
         self, request: Mapping[str, Any] | None
     ) -> tuple[Mapping[str, Any], Path, Path, str, list[dict[str, Any]]] | Dict[str, Any]:
@@ -155,10 +165,11 @@ class LocalMediaPipeline:
                 "owner_selected must be explicitly true",
                 request=request,
             )
-        if request.get("rights_cleared") is not True:
+        source_editorial_usable = self._source_editorial_usable(request)
+        if request.get("rights_cleared") is not True and not source_editorial_usable:
             return self._blocked(
                 "RIGHTS_CLEARANCE_REQUIRED",
-                "rights_cleared must be explicitly true",
+                "rights_cleared or an attributed, topic-relevant source editorial scope is required",
                 request=request,
             )
         for field in ("request_id", "asset_id"):
@@ -461,7 +472,12 @@ class LocalMediaPipeline:
                     "request_id": str(valid_request["request_id"]).strip(),
                     "asset_id": str(valid_request["asset_id"]).strip(),
                     "owner_selected": True,
-                    "rights_cleared": True,
+                    "rights_cleared": valid_request.get("rights_cleared") is True,
+                    "source_editorial_usable": self._source_editorial_usable(valid_request),
+                    "topic_relevant": valid_request.get("topic_relevant") is True,
+                    "attribution_required": valid_request.get("attribution_required") is True,
+                    "source_url": str(valid_request.get("source_url") or "").strip(),
+                    "publish_authorized": False,
                     "source": source_record,
                     "output_root": str(output_root),
                     "operations": planned_operations,
@@ -522,7 +538,12 @@ class LocalMediaPipeline:
                 "request_id": str(valid_request["request_id"]).strip(),
                 "asset_id": str(valid_request["asset_id"]).strip(),
                 "owner_selected": True,
-                "rights_cleared": True,
+                "rights_cleared": valid_request.get("rights_cleared") is True,
+                "source_editorial_usable": self._source_editorial_usable(valid_request),
+                "topic_relevant": valid_request.get("topic_relevant") is True,
+                "attribution_required": valid_request.get("attribution_required") is True,
+                "source_url": str(valid_request.get("source_url") or "").strip(),
+                "publish_authorized": False,
                 "source": source_record,
                 "output_root": str(output_root),
                 "operations": operation_receipts,

@@ -1,0 +1,399 @@
+{
+  "batch_id": "reels_visual_commerce_learning_batch_040_041",
+  "source_range": {
+    "start": 391,
+    "end": 410
+  },
+  "status": "stored_not_runtime_verified",
+  "analysis_scope": [
+    "content",
+    "account_type",
+    "design_layout_color",
+    "workflow_pattern",
+    "character_consistency",
+    "video_postproduction",
+    "project_application",
+    "uncertainty"
+  ],
+  "items": [
+    {
+      "source_id": 391,
+      "group": "external_ai_social_operation_workflow",
+      "account_type": "ai_marketing_education_comment_funnel",
+      "carousel_position": "7/7",
+      "observed_content": "SNS 마케팅 자동화 실전 가이드의 마지막 장으로, 댓글에 특정 키워드를 남기면 마스터 가이드북을 제공한다고 유도한다.",
+      "design_layout_color": "검은 배경, 흰색·형광 연두 대제목, 형광 연두 CTA 박스와 작은 계정 워터마크를 사용한다.",
+      "project_application": [
+        "교육형 시리즈의 마지막 장을 핵심 약속, 한 줄 설명과 단일 행동 CTA로 마무리하는 구조를 참고한다.",
+        "댓글 자동 전달이나 SNS 자동 운영은 현재 프로젝트에 연결된 기능으로 간주하지 않는다."
+      ],
+      "uncertainty": [
+        "가이드북 내용과 댓글 자동 전달 방식은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 392,
+      "group": "persistent_ai_work_instruction",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "5/9",
+      "observed_content": "AI가 사용자 업무를 이해하도록 업종, 고객, 말투, 질문 우선 원칙과 출력 형식을 짧은 업무 설명서 파일에 작성하는 방법을 제시한다.",
+      "design_layout_color": "흰 배경, 굵은 검은 제목, 형광 연두 단계 라벨, 검은 예시 코드 박스와 하단 다음 페이지 버튼으로 구성한다.",
+      "workflow_pattern": [
+        "업무와 고객 설명",
+        "계정 말투와 금지 표현",
+        "작업 전 질문 규칙",
+        "결과 출력 형식"
+      ],
+      "project_application": [
+        "계정별 Brand DNA와 운영 규칙을 구조화된 설명서로 저장해 모든 생성 단계가 같은 기준을 읽도록 한다.",
+        "처음부터 완벽하게 쓰기보다 작은 규칙으로 시작하고 owner feedback으로 버전 관리한다."
+      ],
+      "uncertainty": [
+        "게시물의 예시는 범용 안내이며 AI-Content-OS에 이미 연결됐다는 증거가 아니다."
+      ]
+    },
+    {
+      "source_id": 393,
+      "group": "persistent_ai_work_instruction",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "6/9",
+      "observed_content": "작성한 업무 설명서를 ChatGPT 프로젝트, Claude 프로젝트 지식, Gemini Gem 지침 등에 넣고 새 대화에서 먼저 읽게 하는 사용법을 설명한다.",
+      "design_layout_color": "392와 같은 흰색·검정·형광 연두 시스템을 유지해 단계 연속성을 만든다.",
+      "workflow_pattern": [
+        "설명서 파일 저장",
+        "사용 AI의 프로젝트 지식에 등록",
+        "새 작업 시작 시 설명서를 먼저 읽도록 지시"
+      ],
+      "project_application": [
+        "AI-Content-OS의 운영 규칙, 계정별 스타일과 금지 범위를 단일 진실 소스에서 읽게 하는 구조와 같은 맥락으로 보존한다.",
+        "문서가 존재하는 것과 실제 각 실행 모듈이 문서를 읽는 것은 별도 상태로 관리하고 최종 호출 경로를 테스트해야 한다."
+      ],
+      "uncertainty": [
+        "각 서비스의 현재 파일 보존 방식과 적용 범위는 이번 분석에서 확인하지 않았다."
+      ]
+    },
+    {
+      "source_id": 394,
+      "group": "ai_speech_cleanup_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "1/7",
+      "observed_content": "영상을 여러 번 재촬영하지 않고 AI가 말실수와 불필요한 구간을 편집해 한 번에 찍은 것처럼 만드는 방법을 소개한다.",
+      "design_layout_color": "생성형 인물과 반투명 영상 창을 배경으로 사용하고 하단 암부 위에 흰색·형광 연두 제목을 크게 올린다.",
+      "project_application": [
+        "영상 교육 콘텐츠 표지는 문제 상황과 해결 약속을 한 문장으로 대비시키는 구조를 참고한다.",
+        "현재 CardNews 우선순위를 유지하며 영상 후처리는 Shorts 승인 이후의 참고자료로만 보존한다."
+      ],
+      "uncertainty": [
+        "표지의 인물·작업 화면은 실제 결과인지 생성된 콘셉트 이미지인지 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 395,
+      "group": "ai_speech_cleanup_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "3/7",
+      "observed_content": "기존 자동 컷은 필러 단어를 삭제하면서 영상이 끊기는 반면 Speech Cleanup은 삭제 구간의 프레임을 재구성해 한 테이크처럼 연결하고 침묵·문장 재시작·배경 소음도 처리한다고 주장한다.",
+      "design_layout_color": "흰 배경에 기존 방식과 제안 방식을 검정·형광 연두 비교 박스로 나눈다.",
+      "project_application": [
+        "도구 소개형 카드에서는 기존 방식의 문제와 새 방식의 차이를 동일 화면에서 비교하는 레이아웃을 사용할 수 있다.",
+        "후처리 평가는 단어 삭제 여부뿐 아니라 시각 점프, 입 모양, 배경 연속성과 음질을 함께 확인해야 한다."
+      ],
+      "uncertainty": [
+        "Speech Cleanup의 실제 프레임 재구성 품질과 한국어 처리 성능은 현재 테스트되지 않았다."
+      ]
+    },
+    {
+      "source_id": 396,
+      "group": "ai_speech_cleanup_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "4/7",
+      "observed_content": "제품 설명, 예약·공지, 릴스용 토킹헤드처럼 얼굴을 보며 말하는 콘텐츠에 AI 말실수 보정이 적합하다고 설명한다.",
+      "design_layout_color": "넓은 흰 여백에 큰 검은 제목과 짧은 본문만 배치해 적용 대상을 빠르게 읽게 한다.",
+      "project_application": [
+        "기술 기능은 모든 영상에 적용하지 않고 얼굴·말 중심 콘텐츠처럼 효과가 큰 형식에만 선택적으로 사용한다.",
+        "우리 프로젝트에서는 향후 가상 진행자나 제품 설명형 Shorts의 후보 후처리 단계로 분류한다."
+      ],
+      "uncertainty": [
+        "실제 제품별 지원 형식, 길이와 비용 조건은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 397,
+      "group": "ai_speech_cleanup_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "5/7",
+      "observed_content": "촬영 중 실수해도 중단하지 않고 끝까지 찍은 뒤 짧은 클립으로 먼저 AI Speech Cleanup 결과와 톤을 확인하는 실행 순서를 제시한다.",
+      "design_layout_color": "형광 연두 소제목, 큰 검은 행동 문구, 시간·비용 아이콘과 짧은 주의 문장으로 실행성을 높인다.",
+      "workflow_pattern": [
+        "촬영을 멈추지 않고 원본 확보",
+        "짧은 샘플 클립으로 품질 확인",
+        "문제가 없을 때 긴 영상으로 확대"
+      ],
+      "project_application": [
+        "새 외부 도구는 전체 자산에 바로 적용하지 않고 짧은 대표 샘플로 품질·톤·비용을 먼저 검증한다.",
+        "실패 허용 촬영은 콘텐츠 빈도를 높일 수 있지만 원본 보존과 사람 검수는 유지한다."
+      ],
+      "uncertainty": [
+        "게시물에 적힌 과금 방식과 무료 조건은 현재 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 398,
+      "group": "ai_speech_cleanup_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "6/7",
+      "observed_content": "완벽하게 촬영해야 한다는 부담을 줄이면 촬영을 미루지 않고 제작 빈도를 높일 수 있다는 효용을 설명한다.",
+      "design_layout_color": "흰 배경, 큰 문제 해결형 제목과 두 문단의 짧은 설명으로 감정적 장벽과 실무 효과를 연결한다.",
+      "project_application": [
+        "자동화의 가치는 기능 수가 아니라 재촬영·편집 부담 감소와 실제 제작 지속성으로 평가한다.",
+        "품질을 희생한 대량 생산이 아니라 짧은 검증을 통과한 보조 기능으로만 사용한다."
+      ],
+      "uncertainty": [
+        "제작 빈도 증가에 대한 정량 성과는 제시되지 않았다."
+      ]
+    },
+    {
+      "source_id": 399,
+      "group": "platform_generated_person_feature",
+      "account_type": "ai_marketing_news_education",
+      "carousel_position": "1/7",
+      "observed_content": "공개 계정을 태그해 그 사람처럼 보이는 AI 사진을 만들 수 있었다고 소개하는 Muse Image 관련 게시물 표지다.",
+      "design_layout_color": "가상 인물, 깨진 유리 효과와 댓글 캡처를 조합하고 하단 암부 위에 흰색·형광 연두 제목을 배치한다.",
+      "project_application": [
+        "플랫폼 AI 기능 이슈를 기능 화면, 반응 캡처와 강한 제목으로 설명하는 뉴스형 구성으로 참고한다.",
+        "실존 인물의 얼굴을 무관한 콘텐츠에 생성·사용하는 기능은 우리 계정의 AI 모델 전략으로 채택하지 않는다."
+      ],
+      "uncertainty": [
+        "해당 기능의 실제 동작, 공개 범위와 철회 상태는 이번 분석에서 외부 확인하지 않았다."
+      ]
+    },
+    {
+      "source_id": 400,
+      "group": "platform_generated_person_feature",
+      "account_type": "ai_marketing_news_education",
+      "carousel_position": "3/7",
+      "observed_content": "Meta가 Muse Image를 출시해 공개 계정 태그로 인물 이미지를 만들게 했으나 반발 이후 기능을 철회했다고 설명한다.",
+      "design_layout_color": "흰 배경, 큰 검은 제목과 날짜 순 설명, 형광 연두 다음 페이지 버튼을 사용한다.",
+      "project_application": [
+        "새 플랫폼 기능은 출시 사실만이 아니라 반응, 변경과 철회까지 시간 순서로 추적해야 한다.",
+        "일시적 기능을 프로젝트의 안정적 파이프라인 전제로 삼지 않는다."
+      ],
+      "uncertainty": [
+        "출시일, 철회일과 기능 범위는 현재 사실 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 401,
+      "group": "platform_generated_person_feature",
+      "account_type": "ai_marketing_news_education",
+      "carousel_position": "5/7",
+      "observed_content": "플랫폼 AI 기능은 기본값으로 켜질 수 있으므로 공개 계정 운영자는 설정 메뉴의 AI 관련 항목을 정기적으로 확인해야 한다는 교훈을 제시한다.",
+      "design_layout_color": "400과 같은 흰 배경과 대형 검은 제목을 유지해 하나의 설명 시리즈로 묶는다.",
+      "project_application": [
+        "플랫폼 변화 수집 시 기능 출시뿐 아니라 기본 설정, 옵트아웃과 계정 영향 항목을 함께 기록한다.",
+        "현재 프로젝트의 실제 설정 상태나 권한 상태로 해석하지 않는다."
+      ],
+      "uncertainty": [
+        "현재 Instagram 설정 메뉴와 기본값은 이번 분석에서 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 402,
+      "group": "ai_character_animation_channel",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "1/9",
+      "observed_content": "AI 키즈 캐릭터로 애니메이션 채널을 만드는 실전 가이드의 표지다.",
+      "design_layout_color": "밝고 둥근 3D 캐릭터 장면 위 하단 암부에 흰색·형광 연두 제목을 크게 배치한다.",
+      "project_application": [
+        "AI 캐릭터 채널은 주제마다 다른 인물을 만드는 방식이 아니라 동일 캐릭터 세계관과 시각 스타일을 축적하는 참고 사례다.",
+        "키즈 채널 구현이나 Shorts 확장은 승인 전 진행하지 않는다."
+      ],
+      "uncertainty": [
+        "표지 캐릭터의 실제 제작 도구와 일관성 수준은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 403,
+      "group": "ai_character_animation_channel",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "4/9",
+      "observed_content": "캐릭터 설계, 대본을 장면 영상으로 생성, 음악·립싱크, 영상·보컬·반주 합성과 자막 추가의 전체 흐름을 제시한다.",
+      "design_layout_color": "형광 연두 번호 블록과 세로 연결선을 사용한 네 단계 프로세스 카드다.",
+      "workflow_pattern": [
+        "메인 캐릭터·캐릭터 시트·스타일 프롬프트",
+        "대본과 장면별 영상",
+        "음악·보컬·립싱크",
+        "최종 조립과 자막"
+      ],
+      "project_application": [
+        "고정 AI 모델이나 캐릭터 운영은 외형 정의, 장면 계약, 음성·음악과 최종 편집을 분리해 관리해야 한다.",
+        "캐릭터 시트와 스타일 프롬프트만으로 일관성이 보장된다고 말하지 않고 실제 결과를 테스트한다."
+      ],
+      "uncertainty": [
+        "전체 파이프라인의 실제 제작 시간, 비용과 반복 일관성은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 404,
+      "group": "ai_character_animation_channel",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "5/9",
+      "observed_content": "먼저 메인 캐릭터, 여러 각도의 캐릭터 시트, 조연과 배경, 애니메이션 스타일 프롬프트를 만들라고 안내한다.",
+      "design_layout_color": "흰 배경, STEP 1/3 형광 연두 라벨과 큰 검은 제목, 도구 설명과 주의 문장을 배치한다.",
+      "project_application": [
+        "계정별 고정 AI 모델을 설계할 때 얼굴만이 아니라 체형, 의상, 색, 표정, 각도, 배경과 스타일 규칙을 하나의 캐릭터 시트로 관리한다.",
+        "도구명이 아니라 재현 가능한 캐릭터 사양과 결과 검증을 핵심 자산으로 본다."
+      ],
+      "uncertainty": [
+        "게시물에 적힌 Nano Banana Pro와 GPT Image 2의 현재 기능명·성능은 확인되지 않았다.",
+        "현재 AI-Content-OS에는 고정 얼굴·몸 일관성이 연결·검증되지 않았다."
+      ]
+    },
+    {
+      "source_id": 405,
+      "group": "ai_character_animation_channel",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "6/9",
+      "observed_content": "대본을 장면별 생성 프롬프트로 바꾸고 캐릭터 시트, 배경 이미지와 음성 참조를 사용해 장면 영상을 만든다고 설명한다.",
+      "design_layout_color": "404와 같은 단계형 흰 카드 시스템을 유지한다.",
+      "project_application": [
+        "대본에서 장면을 나눌 때 인물, 행동, 배경, 카메라, 길이, 대사와 참조 자산을 명시하는 장면 계약을 참고한다.",
+        "음성 참조와 캐릭터 자산 사용은 동의·저장 위치·서비스 반출 여부를 구분한다."
+      ],
+      "uncertainty": [
+        "게시물에 적힌 Higgsfield Seedance 2와 Claude 프레임워크의 실제 연결 방식은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 406,
+      "group": "ai_character_animation_channel",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "7/9",
+      "observed_content": "AI로 동요 스타일 음악을 만들고 보컬 트랙을 추출해 캐릭터 립싱크에 사용한 뒤 영상, 보컬, 반주와 자막을 합쳐 마무리한다고 설명한다.",
+      "design_layout_color": "큰 번호형 제목과 두 개의 실행 항목을 위아래로 배치한 흰색 프로세스 카드다.",
+      "project_application": [
+        "음악·보컬·립싱크·자막은 서로 다른 자산과 검수 단계로 분리해야 한다.",
+        "음악 생성과 영상 확장은 승인 전 로드맵 참고로만 보존한다."
+      ],
+      "uncertainty": [
+        "Suno, 립싱크와 Premiere Pro 경로의 라이선스·비용·품질은 현재 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 407,
+      "group": "ai_video_motion_graphics_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "1/8",
+      "observed_content": "Gemini와 Google Flow에 원본 영상을 넣어 자막 효과와 모션그래픽을 자동으로 붙인다는 게시물의 소개 문구와 표지 일부다.",
+      "design_layout_color": "실사형 가상 인물 배경 위 하단 암부와 대형 흰 제목을 사용하며 계정의 형광 연두 브랜드 라벨을 반복한다.",
+      "project_application": [
+        "편집 자동화 주제는 완성 결과 이미지와 핵심 편익을 첫 장에 함께 보여주는 표지 구조를 참고한다.",
+        "한 게시물의 캡션, 표지와 후속 단계가 함께 보일 때 화면 단위가 아니라 게시물 단위로 묶어 학습한다."
+      ],
+      "uncertainty": [
+        "Gemini·Google Flow의 자동 자막·모션그래픽 기능과 무료 조건은 현재 테스트되지 않았다."
+      ]
+    },
+    {
+      "source_id": 408,
+      "group": "ai_video_motion_graphics_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "1/9",
+      "observed_content": "동일한 가상 인물과 주방 배경을 사용해 자동 자막·모션그래픽 영상 편집을 소개하는 표지다.",
+      "design_layout_color": "가까운 얼굴 구도, 따뜻한 실내광, 하단 검은 그라데이션, 흰색 대제목과 형광 연두 계정명을 사용한다.",
+      "project_application": [
+        "같은 계정의 교육 콘텐츠는 비슷한 인물, 조명과 타이포 위치를 유지해 피드 통일성을 만들 수 있다.",
+        "동일 인물처럼 보인다는 시각적 인상만으로 실제 고정 캐릭터 기술이 연결됐다고 판단하지 않는다."
+      ],
+      "uncertainty": [
+        "407과 408의 인물이 실제로 동일한 생성 정체성을 유지한 것인지 별도 이미지를 유사하게 만든 것인지 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 409,
+      "group": "ai_video_motion_graphics_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "3/9",
+      "observed_content": "원본 영상만 넣으면 Google AI 도구가 자막 효과와 모션그래픽을 자동으로 붙인다고 설명한다.",
+      "design_layout_color": "흰 배경, 검은 제목 중 도구명을 형광 연두 박스로 강조하고 짧은 설명과 다음 페이지 버튼을 둔다.",
+      "project_application": [
+        "영상 편집 자동화 후보를 평가할 때 자막 정확도, 자막 스타일, 모션의 맥락 적합성, 수정 가능성과 렌더 비용을 분리해 본다.",
+        "원본 하나만으로 완성된다는 홍보 문구를 현재 실행 능력으로 받아들이지 않는다."
+      ],
+      "uncertainty": [
+        "도구별 기능 경계, 입력 형식과 출력 편집 가능성은 확인되지 않았다."
+      ]
+    },
+    {
+      "source_id": 410,
+      "group": "ai_video_motion_graphics_workflow",
+      "account_type": "ai_marketing_education",
+      "carousel_position": "4/9",
+      "observed_content": "10초 단위 촬영·분할, 원하는 자막·모션 레퍼런스 수집, AI로 편집 프롬프트 작성, Google Flow 편집, 클립 조립과 사운드 추가의 전체 순서를 제시한다.",
+      "design_layout_color": "형광 연두 번호 블록과 세로 연결선으로 다섯 단계 작업을 한 장에 정리한다.",
+      "workflow_pattern": [
+        "짧은 단위로 원본 촬영·분할",
+        "자막·모션 레퍼런스 수집",
+        "편집 프롬프트 생성",
+        "AI 편집",
+        "클립 조립과 사운드"
+      ],
+      "project_application": [
+        "레퍼런스는 단순 분위기 이미지가 아니라 자막 위치, 등장 타이밍, 움직임, 크기와 지속시간을 구조화해 저장한다.",
+        "긴 영상을 한 번에 처리하기보다 짧은 클립 단위로 결과를 확인하고 최종 조립하는 방식은 향후 Shorts QA 참고로 보존한다."
+      ],
+      "uncertainty": [
+        "해당 워크플로의 실제 자동화 수준, 처리 시간과 품질은 현재 프로젝트에서 테스트되지 않았다."
+      ]
+    }
+  ],
+  "cross_item_learning": [
+    {
+      "pattern": "persistent_instruction_requires_runtime_read",
+      "rule": "업무 설명서, Brand DNA와 스타일 문서는 저장만으로 학습이 완료되지 않으며 실제 생성·선정 모듈이 현재 버전을 읽고 최종 결과에 반영하는지 테스트해야 한다."
+    },
+    {
+      "pattern": "account_identity_as_structured_contract",
+      "rule": "계정별 정체성은 고객, 말투, 금지 표현, 출력 형식, 색상, 타이포, 레이아웃과 캐릭터 사양을 구조화한 계약으로 관리한다."
+    },
+    {
+      "pattern": "small_sample_before_batch_processing",
+      "rule": "새 AI 후처리 도구는 전체 자료에 적용하기 전에 짧은 대표 샘플로 품질, 비용, 속도와 수정 가능성을 확인한다."
+    },
+    {
+      "pattern": "automation_value_is_reduced_rework",
+      "rule": "자동화의 우선 가치는 기능 과시가 아니라 재촬영, 반복 편집과 운영 부담을 줄이면서 승인 품질을 유지하는 데 있다."
+    },
+    {
+      "pattern": "fixed_character_requires_more_than_a_face",
+      "rule": "계정별 AI 모델이나 캐릭터는 얼굴뿐 아니라 체형, 의상, 색, 표정, 각도, 배경, 음성과 스타일을 함께 정의하고 실제 반복 결과로 일관성을 검증한다."
+    },
+    {
+      "pattern": "reference_as_timed_motion_spec",
+      "rule": "영상 레퍼런스는 정지 화면의 분위기만 저장하지 않고 자막·그래픽의 위치, 등장 시점, 움직임, 크기와 지속시간까지 프레임 단위 사양으로 해석한다."
+    },
+    {
+      "pattern": "external_feature_claims_require_current_verification",
+      "rule": "게시물에 적힌 무료, 자동, 고정 캐릭터, 립싱크와 일관성 주장은 현재 도구·버전·환경에서 직접 테스트하기 전에는 참고 정보로만 취급한다."
+    },
+    {
+      "pattern": "platform_features_are_unstable_dependencies",
+      "rule": "플랫폼 자체 AI 기능은 출시 뒤 변경·철회될 수 있으므로 안정적인 핵심 파이프라인 의존성으로 사용하지 않는다."
+    },
+    {
+      "pattern": "variable_assets_fixed_identity",
+      "rule": "레이아웃과 장수는 콘텐츠에 따라 가변이어도 계정의 말투, 색상 체계, 타이포, 워터마크와 캐릭터 정체성은 일관된 범위 안에서 유지한다."
+    }
+  ],
+  "deferred_work": [
+    "전체 원본 분석이 끝난 뒤 업무 설명서·Brand DNA·스타일 지식이 실제 최종 생성·선정 호출 경로에서 읽히는지 비교하고 테스트한다.",
+    "영상 후처리, 고정 캐릭터와 모션그래픽 후보 도구는 Shorts 승인 이후에만 기존 로컬 도구, 비용, 데이터 반출과 품질을 비교한다.",
+    "고정 AI 모델은 동일 얼굴·몸·스타일의 반복 결과를 현재 테스트하기 전에는 연결 또는 사용 가능으로 판정하지 않는다.",
+    "391~410에서 언급된 외부 서비스는 설치·연결·실행하지 않는다.",
+    "런타임 연결, 테스트, 외부 쓰기와 Git은 현재 수행하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false
+}

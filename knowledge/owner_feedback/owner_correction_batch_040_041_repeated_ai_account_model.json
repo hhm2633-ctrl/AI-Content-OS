@@ -1,0 +1,41 @@
+{
+  "correction_id": "owner_correction_batch_040_041_repeated_ai_account_model",
+  "related_source_range": {
+    "start": 394,
+    "end": 410
+  },
+  "status": "stored_not_runtime_verified",
+  "owner_observation": "mktg.with.ai 계정은 동일한 얼굴 인상, 밝은 금발, 연두색 의상과 현대적인 분위기의 AI 여성 모델을 여러 게시물에서 반복 사용한다.",
+  "corrected_interpretation": [
+    "각 이미지를 서로 무관한 가상 인물 예시로만 보면 안 된다.",
+    "이 계정은 반복 AI 모델을 계정 전용 진행자이자 시각적 브랜드 자산으로 운용하는 사례다.",
+    "게시물 주제와 배경은 달라져도 인물 정체성, 대표 색상과 타이포를 반복해 피드 통일성과 인지도를 만든다.",
+    "동일 인물처럼 보이는 운영 패턴은 관찰됐지만 사용한 고정 얼굴·몸 기술과 실제 재현 정확도는 현재 확인되지 않았다."
+  ],
+  "project_learning": [
+    {
+      "pattern": "account_specific_ai_presenter",
+      "rule": "AI-Content-OS도 계정 성격에 맞는 전용 AI 모델을 설계하고, 관련 게시물의 표지·설명·리액션 장면에 반복 등장시켜 계정의 진행자처럼 활용할 수 있다."
+    },
+    {
+      "pattern": "identity_fixed_context_variable",
+      "rule": "모델의 핵심 얼굴 인상, 체형 범위, 헤어, 대표 의상 색과 분위기는 유지하되 주제에 따라 배경, 소품, 포즈, 표정과 카메라 구도는 가변적으로 바꾼다."
+    },
+    {
+      "pattern": "presenter_is_not_unrelated_celebrity",
+      "rule": "계정 전용 AI 진행자는 무관한 실제 연예인 이미지를 대신하는 허구 인물이어야 하며 실제 사건 장면이나 실존 인물로 오인되게 사용하지 않는다."
+    },
+    {
+      "pattern": "observed_brand_pattern_not_technical_proof",
+      "rule": "여러 게시물에서 동일 모델처럼 보이는 것은 계정 운영 전략의 근거지만, 특정 생성 기술이나 현재 프로젝트의 정체성 일관성이 연결·검증됐다는 증거는 아니다."
+    }
+  ],
+  "future_validation": [
+    "전체 원본 분석 후 계정별 AI 진행자 후보의 얼굴·체형·헤어·의상·색상·표정·포즈·배경 규칙을 캐릭터 시트로 정리한다.",
+    "실제 도구 비교 시 여러 주제와 카메라 구도에서 같은 인물로 인식되는지 반복 생성 결과로 검사한다.",
+    "현재 테스트를 통과하기 전에는 고정 AI 모델이 사용 가능하거나 연결됐다고 보고하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

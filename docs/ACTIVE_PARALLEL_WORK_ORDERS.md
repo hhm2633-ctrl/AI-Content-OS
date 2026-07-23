@@ -11,10 +11,78 @@ Updated: 2026-07-22
 
 ## Current Objective
 
-Connect the already implemented CardNews planning, authorization, rendering, media-QA, and fallback
-components into one fail-closed production path. New feature expansion is out of scope.
+Build the owner-source design-learning foundation before further CardNews layout tuning: prepare
+immutable 10-image analysis batches from `F:/AI-Content-OS-Data/owner_source`, store full-image
+analysis as auditable candidates, build one shared A/B/C reference pool of up to 40 owner-approved
+fixed layout profiles, and let CardNews select them by account, issue context, mood, content
+structure, and available media. Batch size is not a layout-count limit.
 
-## Lane A: CTO / Integration
+## Lane A: CTO / Integration - Active
+
+Objective: own the batch contract, analysis registry, approved-layout selector, CardNews integration,
+shared documents, final QA, and all Git approval gates.
+
+Owned files:
+
+- `docs/ACTIVE_PARALLEL_WORK_ORDERS.md`
+- `modules/design_learning/`
+- `modules/card_news/layout_selector.py`
+- `modules/card_news/card_news_module.py`
+- design-learning CLI and focused tests explicitly added for this objective
+- shared project-status documents during final integration only
+
+Prohibited actions:
+
+- Do not modify, move, rename, or delete files under `F:/AI-Content-OS-Data/owner_source`.
+- Do not treat screenshot observations as measured Instagram performance.
+- Do not auto-promote a learned layout without explicit owner approval evidence.
+- Do not render, publish, resume automation, call an external write API, or perform Git writes.
+
+Completion checks:
+
+- Deterministic batches contain at most 10 unique source images and preserve source-relative paths.
+- One analysis record can preserve design, layout, palette, typography, body-content insight, and
+  project-use fields without collapsing them into a single label.
+- Only owner-approved fixed layout profiles are eligible for runtime selection, with a shared
+  A/B/C pool capped at 40 profiles rather than ten profiles.
+- Missing/corrupt learning data fails soft to the existing CardNews layout selector.
+- Selection output explains account/context matches and never claims real performance evidence.
+
+Handoff: changed files, executable call chain, untested boundaries, focused QA result, and next
+10-image analysis gate.
+
+## Lane B: Claude - Read-only Contract Audit
+
+Objective: independently identify missing fields and unsafe assumptions in the proposed owner-source
+batch, full-image analysis, approval, and runtime-selection contract.
+
+Owned files: none; read-only review.
+
+Required reading:
+
+- `modules/design_learning/local_image_intake.py`
+- `modules/design_learning/card_news_design_learning.py`
+- `modules/card_news/layout_selector.py`
+- `modules/card_news/card_news_module.py`
+- `templates/card_news_layout_rules.json`
+
+Prohibited files/actions:
+
+- Do not edit any file, run Git, inspect screenshot pixels, or analyze all owner-source images.
+- Do not change WorkflowEngine or propose external API dependencies.
+
+Completion checks:
+
+- Report schema gaps, approval-boundary risks, runtime integration risks, and minimal corrections.
+
+Handoff: short Korean report with findings ordered by severity and exact file/function references.
+
+## Previous Objective - Completed 2026-07-22
+
+Connect the already implemented CardNews planning, authorization, rendering, media-QA, and fallback
+components into one fail-closed production path. New feature expansion was out of scope.
+
+## Previous Lane A: CTO / Integration
 
 Objective: disable the unapproved legacy Workflow render path, integrate worker handoffs, run final QA,
 and own shared status documents and Git approval gates.
@@ -38,7 +106,7 @@ Completion checks:
 
 Handoff: report current user-visible state, accepted/rejected worker outputs, tests, and next integration gate.
 
-## Lane B: Euclid - Approval Truth
+## Previous Lane B: Euclid - Approval Truth
 
 Objective: correct production-package status so unapproved packages cannot appear ready.
 
@@ -66,7 +134,7 @@ Prohibited files/actions:
 
 Handoff: changed file, confirmed fields used, proposed UI states, unresolved CTO gates, and confirmation that no other file changed.
 
-## Lane C: Heisenberg - CardNews Skill Contract
+## Previous Lane C: Heisenberg - CardNews Skill Contract
 
 Objective: replace the stale fixed-four-slide skill instruction with the approved variable-slide contract.
 
@@ -86,7 +154,7 @@ Completion checks:
 
 Handoff: changed files, manifest schema, test results, fallback behavior, and out-of-scope findings.
 
-## Lane D: Completed Read-only Toolchain Audit
+## Previous Lane D: Completed Read-only Toolchain Audit
 
 Objective: classify installed tools by real caller and production status.
 

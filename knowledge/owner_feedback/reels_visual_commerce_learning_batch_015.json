@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_141_150",
+  "source_range": [141, 150],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "coupang_search_exposure_carousel",
+      "items": [141, 142, 143],
+      "relationship": "The same commerce carousel continued from the previous batch; visible slides are 5, 7, and 8 of 10."
+    },
+    {
+      "group": "notion_workers_carousel",
+      "items": [144, 145],
+      "relationship": "A tool-introduction carousel about connecting Notion data, agents, and automation through a CLI/API layer."
+    },
+    {
+      "group": "harley_marketing_automation_carousel",
+      "items": [146, 147, 148, 149, 150],
+      "relationship": "Slides 3 through 7 describing modular reporting, design export, advertising drafts, video rough cuts, and screenshot classification."
+    }
+  ],
+  "items": [
+    {
+      "id": 141,
+      "content": "Commerce search-term guidance recommends combining product terms with function, use, recipient, and situation terms rather than repeating near-identical keywords. It presents numerical recommendations and exposure claims.",
+      "design": "Black and deep-blue professional carousel with a numbered progress marker, compact examples, and highlighted numeric claims.",
+      "project_use": "Use function and situation semantics when generating evidence-backed product discovery or caption keywords, while keeping keyword count variable according to the item and source evidence.",
+      "learning_rule": "Prefer distinct intent coverage such as use case, situation, recipient, and function over mechanical keyword duplication. Never turn source-specific counts into a fixed project rule without verification.",
+      "risk": "The suggested minimum count, maximum count, exposure multiplier, and seller-ranking claims are unverified platform advice and must not be represented as proven facts."
+    },
+    {
+      "id": 142,
+      "content": "The carousel attributes product performance to price competitiveness, shipping conditions, inventory management, and customer-inquiry response in addition to search exposure.",
+      "design": "The same dark commerce template uses four operational factors as a checklist, making a complex seller-operations topic easy to scan.",
+      "project_use": "When commerce work is later approved, separate content quality from seller operational readiness and surface missing operational evidence instead of promising conversion from content alone.",
+      "learning_rule": "Commerce outcomes are multi-factor results. Content, keywords, price, fulfillment, inventory, and support should be modeled as separate evidence fields.",
+      "risk": "AI-Content-OS currently must not automate or claim seller operations that are outside the approved project scope."
+    },
+    {
+      "id": 143,
+      "content": "The source describes a no-purchase/no-exposure loop and suggests an initial real purchase while warning against bots, macros, fake clicks, fake reviews, and sudden artificial volume.",
+      "design": "A warning-focused dark slide contrasts a proposed action with a clear prohibited-behavior list.",
+      "project_use": "Retain the explicit prohibition against fabricated engagement, reviews, purchases, or traffic. Only real, attributable performance data may feed learning or reporting.",
+      "learning_rule": "Never manufacture platform signals. Treat performance-learning inputs as valid only when their source and authenticity are known.",
+      "risk": "The claim that an external initial purchase is required is unverified and may cross platform-manipulation boundaries; it is not an approved project tactic."
+    },
+    {
+      "id": 144,
+      "content": "A Notion Workers introduction presents Notion CLI as a bridge among cloud agents, workspace data, and automation.",
+      "design": "Blue pixel and ASCII-inspired technical artwork creates a recognizable developer-tool identity while keeping the message minimal.",
+      "project_use": "Keep as a future candidate for centralized knowledge or task access only if it offers a clear advantage over the project's existing local documentation and storage contracts.",
+      "learning_rule": "A new orchestration tool is useful only when it reduces an identified workflow gap; visual novelty or broad integration claims are not sufficient.",
+      "risk": "This is a secondary promotional source. The tool is not installed, connected, security-reviewed, or tested in AI-Content-OS."
+    },
+    {
+      "id": 145,
+      "content": "The carousel shows agent names and session-style POST/GET examples, implying that multiple coding or service agents can interact with Notion-backed work.",
+      "design": "A dark terminal-like panel inside the blue carousel makes API concepts legible to a non-specialist audience.",
+      "project_use": "Use the conceptual pattern of explicit session creation and retrieval when evaluating agent handoffs, but retain existing ownership, approval, and external-write controls.",
+      "learning_rule": "Agent integrations require explicit session scope, file ownership, auditability, and approval boundaries rather than an unrestricted shared workspace.",
+      "risk": "The comment-for-link call to action is not primary documentation; endpoints, capabilities, costs, and access controls require later verification if evaluation is approved."
+    },
+    {
+      "id": 146,
+      "content": "A marketing-report routine collects multiple channel inputs, processes them through a local script, writes a Google Sheet report, and sends a desktop alert on a scheduler.",
+      "design": "White and pink tutorial layout combines a simple flow diagram with a short explanatory caption and visible slide numbering.",
+      "project_use": "Reference architecture for separating channel collection, normalization, report generation, and notification. Any real API read, Sheet write, or scheduler activation remains approval-gated.",
+      "learning_rule": "Build analytics automation as observable stages with source status and failure reasons, not as one opaque script.",
+      "risk": "This is an individual's workflow example, not a project-connected or reliability-tested implementation."
+    },
+    {
+      "id": 147,
+      "content": "A Figma plugin workflow exports a design, including its component elements, as video with one action.",
+      "design": "The repeated white-pink system uses a large action headline and embedded interface evidence to explain the workflow quickly.",
+      "project_use": "Store as a possible future bridge from approved layout assets to motion output, particularly when design consistency must survive video conversion.",
+      "learning_rule": "When converting layouts to motion, preserve editable layers and account identity instead of flattening everything too early.",
+      "risk": "The plugin name, export fidelity, licensing, and compatibility are not verified; nothing has been installed or connected."
+    },
+    {
+      "id": 148,
+      "content": "A Meta advertising skill takes a local creative asset and prepares naming conventions, UTM values, and a draft campaign setup.",
+      "design": "A concise input-to-draft diagram turns several advertising setup tasks into a visible modular skill.",
+      "project_use": "Learn the draft-first pattern: prepare structured names, tracking metadata, and reviewable configuration without executing an external campaign.",
+      "learning_rule": "External-write automation should stop at a reviewable draft and require owner approval before publication, spending, or account mutation.",
+      "risk": "No Meta API writes, ad creation, budget changes, or campaign activation are approved. Platform credentials and policies have not been evaluated."
+    },
+    {
+      "id": 149,
+      "content": "A video-editing skill produces a first cut and subtitles, after which a human performs the second editing pass; outputs include an edited video and SRT file.",
+      "design": "The tutorial slide clearly divides machine and human roles, reducing the impression of fully autonomous creative production.",
+      "project_use": "Preserve as a future Shorts/Reels production reference: AI assembles a traceable rough cut and subtitle draft, while a human controls pacing, taste, factual checks, and final approval.",
+      "learning_rule": "For subjective media quality, automation should accelerate assembly rather than replace the final editorial pass.",
+      "risk": "Shorts expansion is not currently approved, and the referenced editing integration is not installed, connected, or tested."
+    },
+    {
+      "id": 150,
+      "content": "A screenshot classifier tags collected screenshots, groups them into collections, and transfers selected collections into Figma.",
+      "design": "A white background, pink headline band, and interface screenshot communicate a practical organization workflow with low visual complexity.",
+      "project_use": "Directly applicable to the owner_source corpus: index each image by account, content type, layout, color, mood, hook, narrative, commerce link, prompt value, and uncertainty so references can later be retrieved as purposeful collections.",
+      "learning_rule": "Screenshot learning must produce searchable tags and reusable collections, not only prose summaries. Collections may mix all three accounts when their design or narrative function matches.",
+      "risk": "Automated classification can misread context, irony, product association, or account intent; owner corrections remain higher-priority learning evidence."
+    }
+  ],
+  "cross_item_learning": [
+    "Commerce discovery terms should cover distinct semantic intents such as function, situation, recipient, and use, but numeric keyword counts remain variable and evidence-dependent.",
+    "Commerce performance depends on operational factors beyond content. AI-Content-OS must not fabricate engagement, purchases, reviews, traffic, or performance evidence.",
+    "Modular automation should generate inspectable drafts or intermediate artifacts and stop before external writes, publishing, spending, or account changes until owner approval.",
+    "The owner_source screenshot corpus should become a tag-based reference registry with retrievable collections for layout, color, mood, hook, narrative, commerce, prompt, and account-fit decisions.",
+    "Notion CLI, Figma video export, Meta advertising skills, Premiere rough-cut skills, and screenshot-classification tools remain candidates only; none are installed, connected, tested, or performance-verified."
+  ],
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

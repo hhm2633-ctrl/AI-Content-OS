@@ -1,0 +1,20 @@
+{
+  "correction_id": "owner_correction_batch_038_039_final_relation_index_retest_required",
+  "applies_to": {
+    "batch_id": "reels_visual_commerce_learning_batch_038_039",
+    "source_ids": [372]
+  },
+  "owner_instruction": "전체 자료 분석 마지막에 relation_index와 학습 shard를 최종 선택기에 연결하고 반드시 재테스트해 실제 사용 가능하게 만든다.",
+  "required_final_work": [
+    "relation_index가 최종 상품 선택기에서 실제 호출되는지 확인하고 미연결이면 연결한다.",
+    "제품 기능·파생 주제·계절 스토리 shard가 실행 경로와 점수 계산에 반영되도록 연결한다.",
+    "정확 키워드가 없어도 기능·상황 관계로 자연스러운 상품이 선택되는지 재테스트한다.",
+    "기능 매칭, 계절 상황, 상품 선정 근거가 최종 결과에 남는지 확인한다.",
+    "현재 실패 사례를 회귀 테스트로 만들고 통과 여부를 확인한다.",
+    "성공한 현재 테스트 결과가 있을 때만 사용 가능 또는 연결 완료로 보고한다."
+  ],
+  "execution_timing": "after_full_owner_source_analysis",
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

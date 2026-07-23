@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_009",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "external_tool_claims_are_reference_only_until_locally_checked": true
+  },
+  "items": [
+    {
+      "index": 81,
+      "file": "Screenshot_20260712_074042_Threads.jpg",
+      "type": "cardnews_automation_workflow_reference",
+      "visible_workflow": [
+        "select one clear topic or niche",
+        "generate a multi-slide copy draft in one pass",
+        "human editor fixes the hook, problem-solution logic, length, and repetitive tone",
+        "retain facts only, verify sources, and remove AI-sounding language"
+      ],
+      "visible_principles": ["topic quality is half the work", "trust is the foundation", "automation handles drafting rather than final judgment"],
+      "project_value": [
+        "Direct reference for our CardNews planning and editorial QA flow.",
+        "The source's eight-page example is a batch shape, not a fixed slide requirement for this project."
+      ]
+    },
+    {
+      "index": 82,
+      "file": "Screenshot_20260712_074856_Threads.jpg",
+      "type": "generic_generation_failure_reference",
+      "visible_problem": "A vague request such as make an Instagram card-news post produces the same product-introduction, three-benefit, purchase-prompt structure repeatedly.",
+      "failure_modes": [
+        "weak first-slide hook",
+        "same structure across products and topics",
+        "insufficient reason to save or share",
+        "information summary without narrative, evidence, or account character"
+      ],
+      "project_value": "Useful negative reference explaining why a generic generation prompt cannot be the production pipeline."
+    },
+    {
+      "index": 83,
+      "file": "Screenshot_20260712_075200_Threads.jpg",
+      "type": "agent_toolchain_candidate",
+      "tools": [
+        {"name": "OpenShell sandbox", "visible_claim": "launch Claude, OpenCode, Codex, or Copilot in an isolated container using a similar CLI form", "possible_value": "reduce environment collision and bound experimental agents"},
+        {"name": "SkillOpt", "visible_claim": "treat skill text as optimization parameters, propose add/delete/replace changes, and apply only changes that improve evaluation scores", "possible_value": "reference architecture for evidence-based skill evolution instead of manual prompt drift"}
+      ],
+      "guardrail": "Neither tool was inspected, installed, connected, or evaluated in this batch."
+    },
+    {
+      "index": 84,
+      "file": "Screenshot_20260712_075238_Threads.jpg",
+      "type": "local_toolchain_candidate",
+      "tools": [
+        {"name": "pocket-tts", "visible_claim": "CPU-only text-to-speech with fast first audio output and long-text processing", "possible_value": "future local narration fallback for approved Shorts work"},
+        {"name": "OmniRoute", "visible_claim": "gateway aggregating many model providers", "possible_value": "possible provider routing and fallback abstraction"}
+      ],
+      "guardrail": "Shorts expansion, model-provider routing, and external API use remain approval-gated; visible performance numbers are unverified."
+    },
+    {
+      "index": 85,
+      "file": "Screenshot_20260712_075249_Threads.jpg",
+      "type": "provider_gateway_reference",
+      "tool": "OmniRoute",
+      "visible_claims": [
+        "many free-tier and paid providers collected behind one dashboard",
+        "pool and deduplication logic for reported free token availability",
+        "automatic routing when one provider reaches a limit"
+      ],
+      "project_value": [
+        "Architectural reference for a provider-neutral fallback layer.",
+        "Could reduce one-provider lock-in only if privacy, keys, data routing, reliability, and cost controls pass review."
+      ],
+      "guardrail": "Do not connect unknown free providers or route project data through them without a security and approval review."
+    },
+    {
+      "index": 86,
+      "file": "Screenshot_20260712_075314_Threads.jpg",
+      "type": "document_automation_candidate",
+      "tool": "OfficeCLI",
+      "visible_claims": [
+        "one-line CLI workflow for presentations and office documents",
+        "agent skill installation for Claude Code, Cursor, Windsurf, and Copilot",
+        "unifies python-pptx, openpyxl, and python-docx style workflows"
+      ],
+      "project_value": [
+        "Reference for export automation and polished report or deck delivery.",
+        "The sample slide demonstrates strong geometric color blocking, negative space, and concise data chips."
+      ],
+      "guardrail": "Current project and workspace document tooling should be checked before adding a duplicate dependency."
+    },
+    {
+      "index": 87,
+      "file": "Screenshot_20260712_075413_Threads.jpg",
+      "type": "cloud_agent_architecture_reference",
+      "topic": "Cowork cloud execution and usage data claims",
+      "visible_claims": [
+        "sessions continue with their context rather than receiving only remote instructions",
+        "reported usage is concentrated in business processes and content creation",
+        "cloud agent tools are shifting toward non-developer business users"
+      ],
+      "project_value": "Reference for separating persistent work sessions from one-shot remote commands and for designing owner-friendly operations.",
+      "guardrail": "The dataset and product claims were not independently checked."
+    },
+    {
+      "index": 88,
+      "file": "Screenshot_20260712_075416_Threads.jpg",
+      "type": "cloud_continuity_reference",
+      "topic": "Cowork cloud session persistence and background work",
+      "visible_claims": [
+        "sessions and files are stored with the account and continue across devices",
+        "scheduled work may run while the local computer is off",
+        "execution moves from local desktop dependency to cloud infrastructure"
+      ],
+      "project_value": [
+        "Useful conceptual reference for continuity across CTO handoffs and device state.",
+        "Any cloud move would require explicit data-boundary, cost, approval, and reliability decisions."
+      ]
+    },
+    {
+      "index": 89,
+      "file": "Screenshot_20260712_075443_Threads.jpg",
+      "type": "visual_qa_tool_candidate",
+      "tool": "claude-real-video",
+      "visible_claims": [
+        "contact-sheet grid combines keyframes into three images",
+        "local viewer shows video, keyframes, and transcript in one screen",
+        "viewer.html provides one-entry review",
+        "GitHub repository shown as HUANGCHIHUNGLeo/claude-real-video"
+      ],
+      "project_value": [
+        "High-value reference for future Shorts review and current visual-asset inspection.",
+        "A contact sheet reduces repeated opening of individual frames and helps compare narrative progression quickly.",
+        "The same concept can be adapted to CardNews three-by-three grid previews and variable-slide contact sheets."
+      ],
+      "state": "candidate_not_installed_or_tested_in_this_batch"
+    },
+    {
+      "index": 90,
+      "file": "Screenshot_20260712_075652_Threads.jpg",
+      "type": "persistent_planning_reference",
+      "tool": "planning-with-files",
+      "visible_structure": ["task_plan.md", "findings.md", "progress.md"],
+      "visible_value": "Persist plan, discoveries, and progress on disk so a later session can continue after context loss.",
+      "project_value": [
+        "Directly relevant to preventing another handoff where work exists only in chat context.",
+        "This project already has operating, work-order, status, and handoff documents; the concept should map into those files instead of creating conflicting duplicate status systems."
+      ],
+      "guardrail": "Do not install a second planning convention or let workers overwrite CTO-owned status documents without an integration decision."
+    }
+  ],
+  "cross_batch_learning": [
+    "CardNews automation should accelerate research-backed drafts, not remove editorial judgment.",
+    "Generic create-a-card-news prompts produce repetitive low-save-value output.",
+    "Skill evolution is valuable only when evaluation evidence controls promotion.",
+    "Provider aggregation can improve resilience but creates security, privacy, and data-routing risk.",
+    "Contact sheets and unified visual viewers can reduce review effort for both variable CardNews and future Shorts.",
+    "Persistent work files are essential, but this project should preserve one authoritative status-document system."
+  ]
+}

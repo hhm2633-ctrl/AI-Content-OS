@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_151_160",
+  "source_range": [151, 160],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "harley_marketing_automation_carousel_closing",
+      "items": [151],
+      "relationship": "The closing slide of the marketing automation carousel continued from the previous batch."
+    },
+    {
+      "group": "ai_content_and_workflow_examples",
+      "items": [152, 153, 154, 155],
+      "relationship": "Separate examples covering AI-assisted writing review, virtual customer validation, full-page visual analysis, and editable Canva handoff."
+    },
+    {
+      "group": "claude_plugin_reel_sequence",
+      "items": [156, 157, 158, 159, 160],
+      "relationship": "Consecutive frames from one reel promoting Claude-related plugins or tools for testing, implementation, and reducing generic design output."
+    }
+  ],
+  "items": [
+    {
+      "id": 151,
+      "content": "The creator closes a monthly Claude Code workflow carousel with a short self-introduction, follow request, and promise to keep sharing practical usage notes.",
+      "design": "A high-whitespace closing card uses a bold identity statement, lighter supporting copy, coral call to action, and a downward arrow to finish the carousel cleanly.",
+      "project_use": "Reference for a final carousel slide when an account needs a consistent creator voice, follow reason, or series continuity without overcrowding the content.",
+      "learning_rule": "A closing slide should explain why the account is worth following and what recurring value it provides; it should not merely repeat a generic follow request.",
+      "risk": "Visible engagement and creator claims belong to the source account and are not evidence of equivalent project performance."
+    },
+    {
+      "id": 152,
+      "content": "A blog-publishing checklist asks whether the title contains the reader's concrete situation and purpose, a scannable summary table, genuine experience data, and transparent expertise or compensation disclosure.",
+      "design": "A real desk-and-keyboard photograph supplies authenticity while large white text overlays the four checks with strong contrast and a numbered scan path.",
+      "project_use": "Apply the same review dimensions to captions, blog derivatives, and information cards: reader context, quick scan structure, source-backed experience, and transparent relationship disclosure.",
+      "learning_rule": "Before publication, verify audience intent, scannability, evidence provenance, and disclosure separately. Never turn generic guidelines into fabricated personal experience.",
+      "risk": "The post itself is secondary advice. Exact platform SEO effects are not demonstrated, and project content must not claim first-hand use unless it occurred."
+    },
+    {
+      "id": 153,
+      "content": "A creator demonstrates a prototype that uses virtual Korean customer personas and discussion to estimate market reaction to a one-person business idea before launch.",
+      "design": "A filmed monitor and large white text boxes create a casual build-in-public reel; the visible score and panel interface make the experiment feel tangible.",
+      "project_use": "Use only as an internal idea-screening concept: generate multiple audience objections, needs, and purchase barriers before investing in production, while labeling all output as simulated hypotheses.",
+      "learning_rule": "Synthetic personas can broaden questions and expose assumptions, but they cannot prove demand, conversion, or real customer preference.",
+      "risk": "The displayed score and panel verdict are not real market validation. Token simulation and persona debate must never be reported as observed customer data."
+    },
+    {
+      "id": 154,
+      "content": "The post recommends capturing a long webpage, saving it as PNG or PDF, uploading it to an AI system, and asking for analysis of the overall flow when direct page access fails.",
+      "design": "A hand-drawn four-step infographic uses bright marker colors, arrows, icons, and a mascot to make a technical workaround approachable.",
+      "project_use": "Directly supports bounded reference analysis: preserve the complete visual sequence when layout, hierarchy, and page flow matter, then analyze both text and design rather than extracting isolated fragments.",
+      "learning_rule": "When direct access is unavailable, a complete visual capture is useful evidence for structure and design, but text legibility and missing interactive behavior must be disclosed.",
+      "risk": "Screenshots may omit hidden, dynamic, linked, or inaccessible content and can contain copyrighted or sensitive material; they are not equivalent to a live-page technical test."
+    },
+    {
+      "id": 155,
+      "content": "An AI-generated image is handed off through an Edit in Canva action so the creator can continue adjusting the result in an editable design environment.",
+      "design": "A clean tutorial slide centers the generated travel card, circles the handoff button in red, and uses a small reaction image to keep the explanation informal.",
+      "project_use": "Learn the editable-handoff principle: generated visuals should become material for controlled layout refinement, typography correction, account styling, and human review rather than immutable final output.",
+      "learning_rule": "AI generation and final design are separate stages. Preserve an editable path whenever text, spacing, brand identity, or factual labels need correction.",
+      "risk": "The Canva integration shown is not installed or tested in AI-Content-OS, and a visible button does not establish export quality or automation reliability."
+    },
+    {
+      "id": 156,
+      "content": "A reel frame pairs a checklist, laboratory test tube, and code sample with the phrase that the tool makes the work testable.",
+      "design": "A sparse white canvas uses hand-drawn icons and a recurring illustrated presenter, allowing one technical idea to occupy each frame.",
+      "project_use": "Reinforce the distinction among documented behavior, implemented behavior, tested behavior, and performance-verified behavior in every project status report.",
+      "learning_rule": "A tool or agent output is not complete merely because code exists; its contract needs a bounded check before it can be described as working.",
+      "risk": "The exact plugin and its test mechanism are not identifiable from this frame alone, so no capability is attributed or adopted."
+    },
+    {
+      "id": 157,
+      "content": "The next reel frame uses a brightly emphasized toolbox and states that its performance is strong.",
+      "design": "Primary red, blue, and yellow create an immediate visual metaphor for a useful toolkit, while the presenter changes pose to maintain motion across the sequence.",
+      "project_use": "Store the communication pattern of one benefit per scene and a recurring presenter, not the unsupported performance claim.",
+      "learning_rule": "Tool performance must be demonstrated in the project's own bounded task before recommendation; promotional adjectives are not evidence.",
+      "risk": "No benchmark, task definition, version, or observed result supports the performance statement."
+    },
+    {
+      "id": 158,
+      "content": "A grayscale wireframe transforms into a colorful interface as the presenter introduces a second tool or capability.",
+      "design": "The before-and-after icon communicates transformation instantly; the recurring presenter and large central text maintain continuity with minimal production complexity.",
+      "project_use": "Use wireframe-to-styled comparison as a visual explanation format for design evolution, especially when demonstrating how account identity changes a generic structure.",
+      "learning_rule": "Layout structure and visual styling should be evaluated separately: first information hierarchy, then account-specific color, type, imagery, rhythm, and mood.",
+      "risk": "The frame does not prove that the referenced tool produces the shown interface or that the transformation quality is repeatable."
+    },
+    {
+      "id": 159,
+      "content": "An eraser removes part of a generic interface while the spoken sentence begins to describe eliminating a predictable quality.",
+      "design": "A literal eraser metaphor and intentionally simple drawing make an abstract criticism of generic design understandable without dense text.",
+      "project_use": "Add an anti-generic review pass to layout selection: reject interchangeable compositions, default visual hierarchy, repetitive card structures, and styling that ignores account, issue, mood, or source material.",
+      "learning_rule": "Improvement is not only adding decoration; removing predictable patterns can create a clearer and more distinctive account expression.",
+      "risk": "Removing convention indiscriminately can damage readability and usability. Distinctiveness must preserve mobile comprehension."
+    },
+    {
+      "id": 160,
+      "content": "The final visible phrase completes the claim that the tool removes a generic or predictable feeling, with the same erased-interface illustration and presenter.",
+      "design": "The sentence is split across sequential frames to create retention, while consistent character placement, whitespace, and hand-drawn styling make the reel recognizable.",
+      "project_use": "Use a recurring account model or presenter, consistent illustration grammar, and progressive sentence delivery as one possible reel identity system, while varying scenes and layouts according to topic.",
+      "learning_rule": "Account consistency can come from a recurring presenter, drawing language, typography, and pacing rather than repeating one fixed layout. Topic-specific variation remains necessary.",
+      "risk": "The specific plugin name and output are not visible enough to verify. No plugin has been installed, connected, or tested from this reference."
+    }
+  ],
+  "cross_item_learning": [
+    "Closing cards work best when they state the account's recurring value and creator identity, not only a generic follow request.",
+    "Content review should separately inspect reader situation, scan structure, evidence provenance, and disclosure; synthetic or copied experience must not be presented as real experience.",
+    "Virtual personas are hypothesis generators, not customer validation or demand evidence.",
+    "Complete visual captures can preserve page flow for analysis when direct access fails, but they do not reproduce dynamic behavior or live technical verification.",
+    "Generated assets should pass into an editable human-review stage for typography, layout, identity, and factual correction.",
+    "Design learning should separate structure from styling and include an anti-generic pass while retaining readability.",
+    "A recurring presenter and visual grammar can provide account consistency without fixing every post to the same layout.",
+    "All visible tools, integrations, and plugins in this batch remain reference candidates only; none are installed, connected, tested, or performance-verified."
+  ],
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

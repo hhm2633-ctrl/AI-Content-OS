@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "proactive_tool_candidate_registry",
+  "status": "documented_not_runtime_connected",
+  "owner_rule": [
+    "원자료에서 프로젝트에 유용한 AI 도구가 발견되면 owner가 별도로 묻기 전에도 후보 목록에 올린다.",
+    "도구 이름만 저장하지 않고 적용 위치, 기대효과, 기존 기능과의 중복, 검증 필요사항, 우선순위와 현재 상태를 기록한다.",
+    "문서에 등장한 도구와 실제 도입 후보를 구분한다.",
+    "설치, 계정 연결, API 연결, 외부 쓰기와 유료 사용은 기존 승인 게이트를 유지한다."
+  ],
+  "required_per_batch_fields": [
+    "tool_name",
+    "candidate_status",
+    "project_layer",
+    "possible_use",
+    "overlap_to_check",
+    "verification_needed",
+    "priority",
+    "installed",
+    "runtime_connected",
+    "tested"
+  ],
+  "current_candidates_from_451_470": [
+    {
+      "tool_name": "Gemini + NotebookLM",
+      "candidate_status": "shortlisted_for_comparison",
+      "project_layer": "shared_knowledge",
+      "possible_use": "owner 자료, 브랜드 규칙, 제품 정보와 출처를 축적하고 카드뉴스·영상·블로그·Commerce에 공통 공급",
+      "overlap_to_check": "기존 owner feedback, 관계 인덱스, shard, research context",
+      "verification_needed": "출처 보존, 대량 자료 처리, 검색 정확도, 내보내기와 로컬 파이프라인 연결성",
+      "priority": "high",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "tool_name": "Gemini Gems",
+      "candidate_status": "shortlisted_for_comparison",
+      "project_layer": "account_brand_agent",
+      "possible_use": "계정별 톤, 브랜드 키트, 금지 규칙과 포맷별 출력 계약을 반복 적용",
+      "overlap_to_check": "기존 계정 프로필, prompt registry, pattern registry",
+      "verification_needed": "설정 공유, 버전 관리, 규칙 우선순위, 팀 재현성",
+      "priority": "medium_high",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "tool_name": "Google Veo + Flow",
+      "candidate_status": "deferred_video_candidate",
+      "project_layer": "reels_shorts_generation",
+      "possible_use": "스토리보드 기반 장면 생성, 제품 광고와 계정별 AI 진행자 영상",
+      "overlap_to_check": "현재 이미지·영상 로컬 툴체인과 향후 Shorts 설계",
+      "verification_needed": "인물·제품 일관성, 한국어 지시, 비용, 워터마크, 상업 이용, API 제공 범위",
+      "priority": "medium",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "tool_name": "Castmagic",
+      "candidate_status": "shortlisted_for_comparison",
+      "project_layer": "content_repurposing",
+      "possible_use": "긴 영상·팟캐스트의 전사, 핵심 구간 추출과 포맷별 초안 생성",
+      "overlap_to_check": "현재 로컬 전사·요약·리퍼포징 도구",
+      "verification_needed": "한국어 전사, 장면 경계, 사실 보존, 포맷별 품질, 비용",
+      "priority": "medium",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "tool_name": "Google Polyphony",
+      "candidate_status": "watchlist_unverified",
+      "project_layer": "brand_content_generation",
+      "possible_use": "웹사이트 기반 브랜드 분석과 소셜·Commerce 자산 생성",
+      "overlap_to_check": "기존 브랜드 키트와 CardNews 제작기",
+      "verification_needed": "도구의 실제 존재·접근 경로·기능·가격",
+      "priority": "low",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    },
+    {
+      "tool_name": "Accio Work",
+      "candidate_status": "future_commerce_watchlist",
+      "project_layer": "commerce_operations",
+      "possible_use": "시장 분석, 상품 소싱, 재고와 마케팅 업무 분리 참고",
+      "overlap_to_check": "Brand Connect와 향후 Commerce 운영 범위",
+      "verification_needed": "실제 기능, 데이터 출처, 한국 시장 적합성, 외부 쓰기 통제",
+      "priority": "low",
+      "installed": false,
+      "runtime_connected": false,
+      "tested": false
+    }
+  ]
+}

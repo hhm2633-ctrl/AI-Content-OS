@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "owner_intent": "The account screenshots were collected to teach how each account should present its first screen and cover grid, not merely to collect isolated image styles.",
+  "rule": "Design the first-screen experience as an account-level system before designing an individual post.",
+  "first_screen_components": [
+    "account promise visible across the first nine tiles",
+    "stable cover typography and text position",
+    "account-specific accent color roles",
+    "repeatable image crop and subject hierarchy",
+    "controlled variation across photo, illustration, diagram, screenshot, and generated media",
+    "thumbnail readability before the post is opened",
+    "clear distinction from the other project accounts"
+  ],
+  "reference_account_grammars": [
+    {
+      "reference": "chatplace.global",
+      "first_screen_impression": "high-energy social automation service",
+      "cover_rules": ["oversized white promise", "purple, pink, cream, black, and neon accents", "people, diagrams, UI, and platform icons mixed across the grid", "result-oriented claims visible immediately"],
+      "best_use": "service, automation, promotion, and product-system content"
+    },
+    {
+      "reference": "ai.favmag",
+      "first_screen_impression": "cinematic AI news magazine",
+      "cover_rules": ["full-bleed cinematic visual", "small restrained watermark", "short white lower-left headline", "minimal decoration", "visual genre may vary while text position stays fixed"],
+      "best_use": "news, trends, technology, and visual discovery"
+    },
+    {
+      "reference": "adu.aihub",
+      "first_screen_impression": "premium editorial knowledge account",
+      "cover_rules": ["dark cinematic imagery", "white lower-left headline", "one lavender key phrase", "small rounded label", "symbolic object or solitary subject"],
+      "best_use": "analysis, professional knowledge, prompts, and workflow guidance"
+    },
+    {
+      "reference": "biggie_ai",
+      "first_screen_impression": "fast, practical AI tutorial channel",
+      "cover_rules": ["large outlined Korean headline", "white text with yellow key result", "central mascot, person, comparison, or output", "tool icons used as fast context", "energetic color variation"],
+      "best_use": "tutorials, tool comparisons, generated results, and creator tips"
+    },
+    {
+      "reference": "woojooboss_",
+      "first_screen_impression": "organized prompt and resource library",
+      "cover_rules": ["off-white paper texture", "orange highlight strip", "bold black editorial headline", "clean 3D metaphor or before-and-after hero", "strong three-column order"],
+      "best_use": "prompt packs, resource collections, skills, and step-by-step guides"
+    },
+    {
+      "reference": "라이크무비2",
+      "first_screen_impression": "high-contrast film-story channel",
+      "cover_rules": ["black title band", "white setup plus yellow punch phrase", "one expressive face or scene", "dialogue subtitle as secondary hook", "stable source footer"],
+      "best_use": "film, drama, conflict, rescue, and character backstory"
+    },
+    {
+      "reference": "Wonhee-centered grid",
+      "first_screen_impression": "one-person entertainment and personality stream",
+      "cover_rules": ["recurring person in every main tile", "black title band", "white setup plus pink emotion phrase", "expression-first crop", "micro-story variation around one identity"],
+      "best_use": "named-person entertainment, reactions, habits, relationships, and personality stories"
+    }
+  ],
+  "application_rules": [
+    "Select an account grammar before selecting a layout for an individual post.",
+    "Judge a candidate cover both alone and inside a simulated three-by-three first-screen grid.",
+    "Keep the account's typography, accent roles, and crop logic stable while varying topic, mood, and media.",
+    "Do not collapse all accounts into one universal cover style.",
+    "Do not copy a reference account literally; extract its system and adapt it to the project's own identity.",
+    "A strong single cover may still be rejected if it breaks the account's first-screen rhythm."
+  ],
+  "state": {
+    "knowledge_saved": true,
+    "runtime_connected": false,
+    "grid_preview_tested": false
+  }
+}

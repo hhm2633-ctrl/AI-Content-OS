@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_044_045",
+  "source_range": {
+    "start": 431,
+    "end": 450,
+    "count": 20
+  },
+  "status": "documented_not_runtime_connected",
+  "runtime_connection": false,
+  "tested": false,
+  "fact_checked": false,
+  "external_write": false,
+  "items": [
+    {
+      "source_no": 431,
+      "source_observation": "제품, 인물, 사용 장면을 한 보드에 모아 운동화 브랜드의 시각 방향을 구성하고 디자이너 없이 AI로 브랜딩한다는 훅을 사용한다.",
+      "design_learning": "제품 단독 이미지보다 제품·타깃 인물·사용 맥락·운동 장면을 함께 묶은 무드보드가 브랜드 방향 전달에 유리하다.",
+      "format_use": ["card_news", "reels", "shorts", "commerce", "account_branding"]
+    },
+    {
+      "source_no": 432,
+      "source_observation": "타깃, 브랜드 성격, 시각적 목표를 문장으로 입력해 로고 콘셉트, 컬러, 타이포그래피 가이드를 제안받는 단계다.",
+      "project_use": "계정과 캠페인의 디자인을 만들기 전에 타깃·성격·시각 목표를 구조화된 입력값으로 고정한다.",
+      "format_use": ["account_branding", "common_operation"]
+    },
+    {
+      "source_no": 433,
+      "source_observation": "선택한 로고·컬러·폰트 시스템을 브랜드 키트로 저장하고 이후 제작물의 기준으로 삼는다.",
+      "project_use": "계정별 브랜드 키트를 단일 기준 자료로 저장하되 콘텐츠 분위기와 이슈에 따라 허용 범위 안에서 변주한다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "commerce", "account_branding", "common_operation"]
+    },
+    {
+      "source_no": 434,
+      "source_observation": "저장된 브랜드 키트를 게시물, 출시 예고, 홍보 이미지, 제품 목업과 패키지로 확장한다.",
+      "project_use": "하나의 브랜드 기준을 포맷별 산출물에 재사용하되 각 포맷의 화면 비율과 정보량은 별도로 최적화한다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "commerce", "account_branding"]
+    },
+    {
+      "source_no": 435,
+      "source_observation": "AI 영상의 화면 깨짐과 왜곡을 줄이고 처음부터 4K로 생성한다는 영상 모델 홍보 내용이다.",
+      "project_use": "향후 영상 도구 비교 시 업스케일 결과와 네이티브 출력 결과를 구분해 평가한다.",
+      "caution": "네이티브 4K와 상업 광고 수준이라는 주장은 현재 검증되지 않았다.",
+      "format_use": ["reels", "shorts", "commerce"]
+    },
+    {
+      "source_no": 436,
+      "source_observation": "영상 품질을 모션 안정성, 빛과 그림자, 금속 반사, 제품 가장자리, 섬유, 피부 질감으로 세분화한다.",
+      "project_use": "영상과 생성 이미지 QA를 막연한 고화질이 아니라 소재별 관찰 항목으로 나누는 기준으로 활용한다.",
+      "format_use": ["reels", "shorts", "card_news", "commerce", "common_operation"]
+    },
+    {
+      "source_no": 437,
+      "source_observation": "BytePlus API의 비용, 속도, 대량 자동화 장점을 주장하며 Make와 n8n 연동을 예로 든다.",
+      "project_use": "향후 도구 비교 시 API 단가, 대기열, 대량 처리, 자동화 연결성, 실패 비용을 함께 검토한다.",
+      "caution": "가격·속도·공식 API·외부 자동화 연동은 현재 확인하지 않았고 프로젝트에 연결되지 않았다.",
+      "format_use": ["reels", "shorts", "commerce", "common_operation"]
+    },
+    {
+      "source_no": 438,
+      "source_observation": "콘솔에서 모델, 참조 이미지·오디오, 비율, 4K, 길이, 오디오 출력을 선택하는 사용 절차다.",
+      "project_use": "영상 생성 작업 계약에 모델·참조·비율·길이·오디오·출력 품질을 명시하는 참고 구조로 사용한다.",
+      "caution": "표시된 UI와 옵션은 현재 사용 가능성이 검증되지 않았다.",
+      "format_use": ["reels", "shorts", "commerce"]
+    },
+    {
+      "source_no": 439,
+      "source_observation": "AI 드랍쉬핑으로 큰 수익을 낸다는 강한 금액형 훅과 제품을 개봉하는 남성 장면을 결합한다.",
+      "content_learning": "금액과 결과를 첫 화면에 배치하면 주목도는 높지만 근거 없는 수익 약속으로 이어지기 쉽다.",
+      "project_use": "수익 숫자는 검증 가능한 근거가 있을 때만 사용하고 이미지 속 인물과 제품의 실제 관계를 확인한다.",
+      "format_use": ["reels", "shorts", "card_news", "commerce"]
+    },
+    {
+      "source_no": 440,
+      "source_observation": "하루 매출 수치와 성공 사례를 전면에 세워 드랍쉬핑 전략을 소개한다.",
+      "project_use": "사례형 콘텐츠에서는 매출과 수익, 기간, 광고비, 출처를 분리해 저장해야 한다.",
+      "caution": "5,500만 원과 사례 설명은 원문 검증 전 사실로 채택하지 않는다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "commerce"]
+    },
+    {
+      "source_no": 441,
+      "source_observation": "상품, 광고 소재, 퍼널을 사업 성패의 세 요소로 나누고 광고 소재와 퍼널을 더 중요한 차별점으로 강조한다.",
+      "project_use": "Commerce에서는 제품 매칭만 끝내지 않고 콘텐츠 훅, 설명 구조, 이동 이후 경험을 하나의 흐름으로 본다.",
+      "format_use": ["commerce", "card_news", "reels", "shorts", "blog", "common_operation"]
+    },
+    {
+      "source_no": 442,
+      "source_observation": "경쟁사 광고를 클릭해 쿠키를 학습시키고 SimilarWeb 방문량으로 상품성을 판단하라는 방법을 소개한다.",
+      "project_use": "경쟁 분석은 공개 광고 소재와 시장 신호를 관찰하는 수준으로 제한하고 해당 조작적 쿠키 방식은 프로젝트 규칙으로 채택하지 않는다.",
+      "caution": "방문자 수만으로 시장성이 완전히 검증된다는 주장도 사용하지 않는다.",
+      "format_use": ["commerce", "research_intelligence"]
+    },
+    {
+      "source_no": 443,
+      "source_observation": "클릭 광고, 프리셀 기사, 판매 페이지, 결제, 원타임 업셀로 이어지는 퍼널 구조를 설명한다.",
+      "project_use": "콘텐츠가 관심, 이해, 상품 확인, 행동으로 이어지는 단계는 참고하되 위장 기사나 무의식적 설득을 재현하지 않는다.",
+      "caution": "AI로 고전환 페이지를 1시간 만에 만든다는 주장은 검증되지 않았다.",
+      "format_use": ["commerce", "blog", "common_operation"]
+    },
+    {
+      "source_no": 444,
+      "source_observation": "밝은 반응 표정의 AI 여성과 강한 텍스트를 사용해 재고·배송·리스크 없는 디지털 상품 부업을 소개한다.",
+      "design_learning": "계정의 형광 연두 타이포그래피는 유지하면서 주제에 맞는 표정과 색조로 첫 장 감정을 강화한다.",
+      "account_model_learning": "기존 금발 AI 진행자와 유사한 인물을 다른 헤어·조명·표정으로 변주한 것으로 보이지만 동일 인물 메커니즘은 확인할 수 없다.",
+      "format_use": ["card_news", "reels", "shorts", "commerce", "account_branding"]
+    },
+    {
+      "source_no": 445,
+      "source_observation": "코딩과 디자인 없이 디지털 상품 판매 페이지를 빠르게 만든다는 단계형 안내다.",
+      "project_use": "향후 자체 가이드나 템플릿 상품을 운영할 경우 상품 파일, 판매 페이지, 결제, 고객 지원을 별도 구성요소로 분석한다.",
+      "caution": "10분 완성과 특정 플랫폼·도메인의 효과는 검증하지 않았다.",
+      "format_use": ["commerce", "blog"]
+    },
+    {
+      "source_no": 446,
+      "source_observation": "얼굴을 노출하지 않는 텍스트·이미지 채널과 AI 콘텐츠 도구로 디지털 상품 유입을 만든다는 방식이다.",
+      "project_use": "카드뉴스·Threads·블로그·릴스는 각각 독립 결과가 아니라 동일 주제의 유입 채널로 교차 활용할 수 있다.",
+      "caution": "무료 운영이나 자동 트래픽을 보장하는 내용으로 해석하지 않는다.",
+      "format_use": ["card_news", "reels", "shorts", "blog", "commerce", "common_operation"]
+    },
+    {
+      "source_no": 447,
+      "source_observation": "강한 단색 배경과 짧은 문장으로 가이드북 댓글 유도를 마무리한다.",
+      "design_learning": "캐러셀 마지막 장은 본문을 반복하지 않고 제공 가치, 행동 문구, 계정 표식을 크게 분리한다.",
+      "format_use": ["card_news", "reels", "shorts", "commerce", "account_branding"]
+    },
+    {
+      "source_no": 448,
+      "source_observation": "기업 전화를 대신 받아 문의 응대와 예약 확인을 처리하는 AI 음성 에이전트 사업 사례다.",
+      "project_use": "현재 콘텐츠 제작 범위와 직접 연결하지 않고 향후 B2B 자동화 또는 별도 수익화 후보로 보존한다.",
+      "caution": "동시 수백 통 통화와 사업성은 검증되지 않았으며 현재 프로젝트 기능이 아니다.",
+      "format_use": ["future_business", "blog", "card_news"]
+    },
+    {
+      "source_no": 449,
+      "source_observation": "카메라 없이 가상 인물이 제품을 사용하는 AI UGC 광고를 제작해 납품한다는 사업 사례다.",
+      "project_use": "향후 Commerce 영상에서 가상 모델 사용 장면을 만들 가능성은 있으나 생성·재연 표시, 제품 형태 보존, 실제 사용후기와의 구분이 필요하다.",
+      "caution": "건당 가격, 대량 납품, 초현실적 품질과 인물·제품 일관성은 현재 검증되지 않았다.",
+      "format_use": ["reels", "shorts", "commerce", "future_business"]
+    },
+    {
+      "source_no": 450,
+      "source_observation": "NotebookLM에 제품·고객·이미지 자료를 축적하고 Gemini로 템플릿 기반 본문과 배너를 생성해 문서로 내보내는 흐름이다.",
+      "project_use": "브랜드 지식 저장소, 콘텐츠 생성, 이미지 제작, 문서 전달을 연결하는 구조는 프로젝트의 학습 인덱스와 포맷별 제작 파이프라인에 비교할 가치가 있다.",
+      "caution": "해당 도구들이 이미지와 문서까지 표시된 방식으로 연결되는지는 현재 확인하지 않았다.",
+      "format_use": ["blog", "card_news", "commerce", "account_branding", "common_operation"]
+    }
+  ],
+  "cross_format_distribution": {
+    "card_news": [
+      "브랜드 키트를 기준으로 계정별 컬러·폰트·로고를 유지하고 주제별로 분위기를 변주한다.",
+      "첫 장의 강한 결과 훅, 단계별 본문, 마지막 행동 카드 구조를 활용하되 과장 수익은 제거한다.",
+      "영상 품질 평가 항목을 생성 이미지와 제품 카드의 세부 QA에도 적용한다."
+    ],
+    "reels_shorts": [
+      "브랜드 키트와 동일 AI 진행자 개념을 영상 표지·자막·장면 톤에 연결한다.",
+      "모션 안정성, 조명, 반사, 가장자리, 섬유, 피부를 영상 QA 항목으로 사용한다.",
+      "AI UGC는 실제 사용후기가 아니라 생성된 광고 장면으로 명확히 구분한다."
+    ],
+    "blog": [
+      "브랜드 지식과 근거를 저장한 뒤 템플릿에 맞춰 장문 콘텐츠로 확장한다.",
+      "카드뉴스의 요약을 그대로 늘리지 않고 사례, 근거, 과정, 비교를 추가한다.",
+      "광고성 프리셀과 일반 정보성 글을 혼동시키지 않는다."
+    ],
+    "commerce": [
+      "상품, 광고 소재, 콘텐츠 이후 이동 경험을 하나의 흐름으로 분석한다.",
+      "디지털 상품, 가이드, 템플릿과 AI UGC는 별도 수익화 후보로 분류한다.",
+      "매출 주장보다 실제 상품 데이터, 비용, 전환, 반품·지원 부담을 우선한다."
+    ],
+    "account_branding": [
+      "계정마다 타깃, 성격, 시각 목표, 로고, 컬러, 폰트, AI 진행자 기준을 저장한다.",
+      "브랜드 키트는 고정된 한 레이아웃이 아니라 다양한 포맷에 통일성을 주는 기준이다.",
+      "동일 인물처럼 보이는 결과와 실제로 정체성이 고정된 모델은 구분한다."
+    ],
+    "common_operation": [
+      "도구 홍보 자료의 성능·가격·수익 수치는 검증 전 실행 근거로 사용하지 않는다.",
+      "하나의 지식 기반에서 카드뉴스·영상·블로그·커머스 결과를 포맷별로 재구성한다.",
+      "자동 생성보다 브랜드 기준, 근거, QA, 선별 비용을 공통 계약으로 둔다."
+    ]
+  },
+  "deferred_for_final_corpus_analysis": [
+    "현재 계정별 브랜드 키트 저장 구조와 owner feedback 학습 인덱스의 연결 가능성을 비교한다.",
+    "영상 생성 API 후보는 전체 자료 분석 후 기능 중복, 비용, 품질, 제품 보존, 인물 일관성, 로컬 연결성으로 재평가한다.",
+    "디지털 상품, AI UGC, AI 음성 에이전트는 현재 우선 기능과 분리해 향후 수익화 후보로 재분배한다.",
+    "NotebookLM·Gemini 사례를 기존 관계 인덱스·shard·최종 선택기 구조와 비교하되 설치나 연결은 별도 승인 후 결정한다."
+  ]
+}

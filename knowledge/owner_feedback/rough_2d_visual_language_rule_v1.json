@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "rule_id": "rough_2d_visual_language_v1",
+  "status": "owner_confirmed_learning_rule",
+  "owner_intent": "Treat rough, simple, hand-drawn 2D imagery as one valid visual option instead of assuming that only polished or photorealistic images indicate quality.",
+  "approved_principles": [
+    "Rough 2D can be intentionally selected for friendly explanations, humor, technical education, light commentary, reactions, and recurring account characters.",
+    "Rough 2D is also valid for serious experience, business, monetization, and distribution topics when its friendliness improves comprehension without trivializing the subject.",
+    "Simple line work, primary colors, imperfect proportions, sparse backgrounds, and repeated poses can create recognizable account identity.",
+    "Visual quality is judged by topic fit, readability, emotional fit, account consistency, and communication effectiveness, not by rendering complexity alone.",
+    "The same rough 2D grammar may vary scene composition, props, facial expressions, camera framing, and color emphasis according to the narrative.",
+    "A recurring 2D presenter can provide consistency while layouts and scene counts remain variable."
+  ],
+  "selection_conditions": [
+    "Use when approachable or humorous delivery is more useful than realism.",
+    "Use when an abstract process can be explained more clearly with icons, metaphors, or a presenter character.",
+    "Use alongside real screenshots, evidence photos, checklists, or dense explanatory text when a mascot can soften the information and guide attention.",
+    "Use when real source imagery is unavailable and a clearly non-factual explanatory visual is appropriate.",
+    "Use when the account's established visual identity supports deliberately handmade or naive illustration."
+  ],
+  "rejection_conditions": [
+    "Do not use rough 2D as a universal default for every account or topic.",
+    "Do not use it when real topic-connected people, products, runway images, evidence, or news visuals are required.",
+    "Do not present an illustrated reconstruction as factual footage.",
+    "Do not confuse intentional simplicity with careless typography, poor hierarchy, unreadable text, or unrelated imagery."
+  ],
+  "runtime_connected": false,
+  "tested": false,
+  "performance_verified": false
+}

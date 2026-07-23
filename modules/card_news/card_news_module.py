@@ -2222,15 +2222,25 @@ class CardNewsModule(BaseModule):
         content_intelligence = content_result.get("content_intelligence") or {}
         pattern_meta = content_result.get("pattern_prompt_meta") or {}
 
+        design_learning_context = self._build_design_learning_context(
+            content_result,
+            topic_intelligence,
+            slides,
+        )
+
         selection = self.layout_selector.select(
             pattern_meta=pattern_meta,
             topic_intelligence=topic_intelligence,
             brand_profile=brand_profile,
             content_intelligence=content_intelligence,
+            design_learning_context=design_learning_context,
         )
         layout_type = selection.get("layout_type", "bold_ai")
 
-        rule = self.layout_rule_engine.get_rule(layout_type)
+        rule = self.layout_rule_engine.get_rule(
+            layout_type,
+            style_overrides=selection.get("style_overrides") or {},
+        )
         slide_designs = self.slide_designer.design(slides, rule)
         highlight_content = dict(content_result)
         highlight_content["slides"] = slides
@@ -2251,6 +2261,54 @@ class CardNewsModule(BaseModule):
             "layout_score": float(selection.get("layout_score", 0.0) or 0.0),
             "layout_score_reason": selection.get("layout_score_reason", ""),
             "highlight_score": float(highlight_result.get("highlight_score", 0.0) or 0.0),
+            "design_learning_used": bool(selection.get("design_learning_used")),
+            "selected_layout_profile_id": selection.get("selected_layout_profile_id"),
+            "design_learning_match_score": float(selection.get("design_learning_match_score", 0.0) or 0.0),
+            "design_learning_boundary": selection.get("design_learning_boundary"),
+            "approved_style_overrides": rule.get("approved_style_overrides", {}),
+        }
+
+    def _build_design_learning_context(
+        self,
+        content_result: Dict[str, Any],
+        topic_intelligence: Dict[str, Any],
+        slides: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        content_intelligence = content_result.get("content_intelligence") or {}
+        account_id = (
+            content_result.get("account_id")
+            or content_result.get("account")
+            or content_intelligence.get("account_id")
+            or ""
+        )
+        category = (
+            content_result.get("primary_category")
+            or topic_intelligence.get("category")
+            or content_intelligence.get("category")
+            or ""
+        )
+        moods = content_intelligence.get("moods") or content_intelligence.get("mood") or []
+        issue_types = (
+            content_intelligence.get("issue_types")
+            or content_intelligence.get("issue_type")
+            or content_result.get("topic_signature")
+            or []
+        )
+        media_conditions = content_result.get("media_conditions") or []
+        if not media_conditions:
+            media_conditions = ["image_available"] if content_result.get("image_available") else ["media_unknown"]
+        return {
+            "account_id": account_id,
+            "category": category,
+            "content_categories": [category] if category else [],
+            "moods": moods if isinstance(moods, list) else [moods],
+            "issue_types": issue_types if isinstance(issue_types, list) else [issue_types],
+            "media_conditions": media_conditions if isinstance(media_conditions, list) else [media_conditions],
+            "slide_roles": [
+                slide.get("semantic_role") or slide.get("role")
+                for slide in slides
+                if isinstance(slide, dict) and (slide.get("semantic_role") or slide.get("role"))
+            ],
         }
 
     def _default_layout_result(self, slides: Optional[List[Dict[str, Any]]]) -> Dict[str, Any]:

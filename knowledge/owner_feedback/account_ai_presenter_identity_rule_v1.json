@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "status": "active_owner_rule",
+  "source_item": 62,
+  "owner_intent": "Create one fictional AI presenter suited to each account and reuse that same presenter as the account's recognizable model instead of attaching unrelated celebrity images.",
+  "correction": "The mixed grid in item 62 is primarily a reference for a recurring presenter anchoring different information and video formats, not merely an example of visual inconsistency.",
+  "rules": [
+    "Do not use an unrelated celebrity or real person's image as generic decoration.",
+    "Assign one clearly fictional generated presenter identity to an account when a human anchor benefits that account.",
+    "Reuse the same presenter across covers, explanations, demonstrations, reactions, and short-form scenes.",
+    "Let the presenter stabilize account recognition while layout, clothing, pose, location, and topic vary within account rules.",
+    "Keep news evidence and factual source imagery separate from fictional presenter scenes.",
+    "Label generated or reenacted presenter media where viewers could mistake it for factual footage."
+  ],
+  "per_account_identity_spec": [
+    "account role and audience",
+    "presenter age range and overall presence",
+    "face, hair, body, and distinguishing features",
+    "wardrobe palette and styling boundaries",
+    "speaking tone and emotional range",
+    "allowed settings and recurring props",
+    "cover crop and camera preferences",
+    "expressions required for the account's common story types",
+    "prohibited resemblance and topic contexts"
+  ],
+  "asset_plan": [
+    "identity brief",
+    "approved reference portrait",
+    "front, three-quarter, and profile reference views",
+    "expression sheet",
+    "wardrobe and color sheet",
+    "approved cover crops",
+    "generation prompt core",
+    "rejected-output examples",
+    "version and approval history"
+  ],
+  "account_fit_examples": [
+    {"account_type": "fashion_and_beauty", "presenter_role": "editorial model and product explainer", "visual_direction": "polished but approachable, trend-aware, product-compatible"},
+    {"account_type": "story_relationship_dopamine", "presenter_role": "narrator and emotional reaction anchor", "visual_direction": "expressive, warm, relatable, capable of comedy and empathy"},
+    {"account_type": "news", "presenter_role": "optional studio guide for summaries only", "visual_direction": "neutral and restrained; never substituted for source evidence"}
+  ],
+  "identity_consistency_gate": {
+    "requirement": "Do not claim reliable same-face or same-body identity until the exact generation path passes a current multi-scene consistency test.",
+    "fallback": "If consistency is not reliable, use the approved reference only in bounded presenter cards or use non-human account symbols, typography, and editorial graphics instead of generating misleading variants."
+  },
+  "state": {
+    "knowledge_saved": true,
+    "identity_mechanism_selected": false,
+    "runtime_connected": false,
+    "consistency_tested": false
+  }
+}

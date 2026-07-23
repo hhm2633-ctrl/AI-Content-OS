@@ -207,8 +207,22 @@ def build_selected_candidate_production_package(
     if not sources:
         return _blocked("evidence_sources_missing", "at least one recorded evidence source is required", candidate_id)
 
+    slide_plan = _objects(production_plan.get("slide_plan"))
+    if not slide_plan or production_plan.get("slide_count") != len(slide_plan):
+        return _blocked("slide_plan_malformed", "variable slide plan and slide_count must agree", candidate_id)
+    if not is_allowed_card_slide_count(len(slide_plan)):
+        return _blocked(
+            "slide_count_out_of_bounds",
+            f"production package requires {allowed_card_slide_count_label()} slides",
+            candidate_id,
+        )
+
     assets = _objects(production_plan.get("asset_inventory"))
-    if not assets:
+    source_only_editorial = bool(slide_plan) and all(
+        _text(slide.get("media_type")).lower() == "editorial"
+        for slide in slide_plan
+    )
+    if not assets and not source_only_editorial:
         return _blocked("evidence_assets_missing", "at least one evidence asset is required", candidate_id)
     invalid_assets: List[str] = []
     non_renderable_assets: List[str] = []
@@ -236,15 +250,6 @@ def build_selected_candidate_production_package(
         result["invalid_asset_ids"] = invalid_assets
         return result
 
-    slide_plan = _objects(production_plan.get("slide_plan"))
-    if not slide_plan or production_plan.get("slide_count") != len(slide_plan):
-        return _blocked("slide_plan_malformed", "variable slide plan and slide_count must agree", candidate_id)
-    if not is_allowed_card_slide_count(len(slide_plan)):
-        return _blocked(
-            "slide_count_out_of_bounds",
-            f"production package requires {allowed_card_slide_count_label()} slides",
-            candidate_id,
-        )
     supplied_by_page = _copy_index(supplied_slides)
     if len(supplied_by_page) != len(slide_plan):
         return _blocked("slide_copy_incomplete", "every planned slide needs one copy result", candidate_id)
@@ -317,7 +322,11 @@ def build_selected_candidate_production_package(
             "source_status": "recorded",
             "sources": copy.deepcopy(sources),
             "assets": copy.deepcopy(assets),
-            "rights_status": "renderable" if not non_renderable_assets else "reference_only_present",
+            "rights_status": (
+                "source_only_editorial"
+                if not assets and source_only_editorial
+                else "renderable" if not non_renderable_assets else "reference_only_present"
+            ),
             "non_renderable_asset_ids": non_renderable_assets,
         },
         "story": copy.deepcopy(dict(story)),

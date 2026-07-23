@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "reels_visual_commerce_learning_batch_006",
+  "source_scope": "F:/AI-Content-OS-Data/owner_source",
+  "source_policy": {
+    "originals_are_read_only": true,
+    "assistant_analysis_is_retained": true,
+    "owner_feedback_augments_or_corrects_analysis": true,
+    "external_sources_and_claims_remain_unverified_until_checked": true
+  },
+  "items": [
+    {
+      "index": 51,
+      "file": "Screenshot_20260707_061250_Instagram.jpg",
+      "type": "active_reaction_media_source",
+      "source": "Tenor",
+      "visible_value": "Large collection of emotion-expression reaction GIFs commonly used in KakaoTalk, Discord, and social media.",
+      "project_use": [
+        "Add Tenor to Gifer and Giphy as an active discovery source when story imagery is insufficient.",
+        "Search by emotion, facial action, body reaction, punchline role, and intensity.",
+        "Use loops for Reels or motion cards and representative frames for static carousel slides."
+      ],
+      "state": "approved_learning_source_not_runtime_connected"
+    },
+    {
+      "index": 52,
+      "file": "Screenshot_20260707_061257_Instagram.jpg",
+      "type": "opening_motion_source_reference",
+      "source": "Transitional Hooks",
+      "visible_value": "Collection of free first-three-second hooking videos intended to create a viral-style opening.",
+      "project_use": [
+        "Reference source for opening movement, handoff transitions, reveals, camera wipes, and visual interruption patterns.",
+        "Use only when the motion reinforces the actual topic and does not become a generic unrelated hook.",
+        "Store each useful hook by motion type, required crop, duration, energy, and suitable emotion."
+      ],
+      "state": "reference_only_not_connected_or_verified"
+    },
+    {
+      "index": 53,
+      "file": "Screenshot_20260707_061259_Instagram.jpg",
+      "type": "carousel_outro_reference",
+      "visible_copy": "정리본 필요하면 '넬스' 팔로우하고 아무 댓글이나!",
+      "design": "soft multicolor gradient, one centered oversized black statement, generous empty space, no competing imagery",
+      "project_use": [
+        "Reference for a visually quiet final slide after information-dense resource cards.",
+        "CTA should state one benefit and one action rather than stacking multiple requests.",
+        "The final slide may simplify radically while retaining the carousel's typography."
+      ]
+    },
+    {
+      "index": 54,
+      "file": "Screenshot_20260707_075939_Instagram.jpg",
+      "type": "monetization_reference",
+      "visible_hook": "지금 99%가 모르는 인스타그램 사진 보너스",
+      "visible_offer": "ordinary room photo to Instagram bonus explanation with a watch-now CTA",
+      "funnel_structure": [
+        "large knowledge-gap claim",
+        "demonstrate an ordinary low-effort input",
+        "promise a hidden monetization outcome",
+        "overlay a compact explainer card and direct CTA"
+      ],
+      "project_use": [
+        "Potential future income-research topic for monetizing original visual posts in addition to affiliate content.",
+        "Reusable educational-ad structure for explaining a verified platform opportunity."
+      ],
+      "guardrail": "The screenshot does not prove current Instagram bonus eligibility, region coverage, payout, or account access; verify before planning or claiming revenue.",
+      "state": "monetization_lead_not_verified"
+    },
+    {
+      "index": 55,
+      "file": "Screenshot_20260708_194520_Instagram.jpg",
+      "type": "competitor_product_benchmark",
+      "account": "chatplace.global",
+      "visible_topics": [
+        "Instagram AI agent",
+        "AI carousel creation",
+        "Instagram promotion automation",
+        "Claude-connected Instagram workflow",
+        "bundled AI-tool subscription",
+        "personal Reels producer",
+        "viral Instagram content analysis"
+      ],
+      "design_learning": [
+        "mix purple, pink, cream, black, and neon accents while repeating oversized white headline typography",
+        "alternate person-led videos, diagrams, carousel covers, and software screenshots to avoid one-note grids",
+        "use recognizable platform and tool icons as navigation cues",
+        "make each tile's promise understandable before opening the post"
+      ],
+      "project_use": "Competitor reference for packaging an end-to-end social-content system as understandable user outcomes rather than internal modules.",
+      "guardrail": "Visible tool and approval claims are not evidence that equivalent capabilities are connected here."
+    },
+    {
+      "index": 56,
+      "file": "Screenshot_20260708_194530_Instagram.jpg",
+      "type": "ai_news_account_benchmark",
+      "account": "ai.favmag",
+      "grid_grammar": [
+        "cinematic full-bleed image or video",
+        "small restrained account watermark",
+        "short white headline anchored to the lower-left",
+        "minimal decoration and no heavy title box",
+        "varied visual genres held together by one text placement system"
+      ],
+      "project_use": [
+        "Strong alternative news layout for technology and AI topics when the source image is visually compelling.",
+        "Shows that grid consistency can come from headline placement and type treatment without forcing one image style."
+      ],
+      "guardrail": "Headlines visible in the grid remain source observations and were not fact-checked in this batch."
+    },
+    {
+      "index": 57,
+      "file": "Screenshot_20260708_195101_Instagram.jpg",
+      "type": "editable_template_system_reference",
+      "source": "Figma card-news sharing board",
+      "visible_structure": [
+        "cover variants with transparent image placeholders",
+        "text-only explanation cards",
+        "comment or community-post style cards",
+        "follow and closing cards",
+        "setup notes and usage instructions beside the template family"
+      ],
+      "project_use": [
+        "Reference for maintaining a reusable editable layout family instead of generating every layout from zero.",
+        "Reference for separating image placeholders, typography, content blocks, and onboarding notes.",
+        "A template can remain fixed structurally while image, copy length, color, and slide count vary."
+      ],
+      "state": "visual_reference_only_not_imported"
+    },
+    {
+      "index": 58,
+      "file": "Screenshot_20260708_195154_Instagram.jpg",
+      "type": "knowledge_account_visual_benchmark",
+      "account": "adu.aihub",
+      "grid_grammar": [
+        "dark cinematic or monochrome imagery",
+        "white headline in the lower-left",
+        "lavender accent on one key phrase",
+        "small rounded account label",
+        "short supporting line below the headline",
+        "objects and solitary people used as metaphors for technical topics"
+      ],
+      "image_prompt_learning": [
+        "cinematic editorial still with one symbolic subject",
+        "low-key lighting and restrained color",
+        "negative space reserved in the lower-left for headline",
+        "subtle film grain and architectural depth",
+        "one accent color repeated in typography and small UI elements"
+      ],
+      "project_use": "Reference for premium AI and knowledge-account visuals that feel editorial rather than like generic software screenshots."
+    },
+    {
+      "index": 59,
+      "file": "Screenshot_20260708_195226_Instagram.jpg",
+      "type": "ai_tutorial_account_benchmark",
+      "account": "biggie_ai",
+      "grid_grammar": [
+        "large outlined Korean thumbnail text",
+        "white main text with yellow key phrase",
+        "one central mascot, person, comparison, or result image",
+        "tool icons quickly establish the workflow",
+        "high variation in color and subject while headline treatment remains stable"
+      ],
+      "project_use": [
+        "Reference for tutorials where the promised result must be understood at thumbnail size.",
+        "Mascots, before-and-after details, and tool-icon equations can explain otherwise abstract AI workflows."
+      ],
+      "quality_note": "High attention value, but dense text and many icons should be reduced when mobile readability suffers."
+    },
+    {
+      "index": 60,
+      "file": "Screenshot_20260708_195302_Instagram.jpg",
+      "type": "prompt_resource_account_benchmark",
+      "account": "woojooboss_",
+      "grid_grammar": [
+        "white textured paper background",
+        "orange or ochre highlight strip",
+        "bold black Korean editorial headline",
+        "clean 3D symbolic object or a clear before-and-after hero",
+        "minimal footer handle and strong three-column consistency"
+      ],
+      "image_prompt_learning": [
+        "isolated 3D symbolic object on subtly textured off-white paper",
+        "soft studio shadow directly beneath the object",
+        "warm orange accent element",
+        "front-facing editorial composition",
+        "large clean text-safe region",
+        "playful but controlled clay or polished-plastic material",
+        "one visual metaphor representing the tutorial topic"
+      ],
+      "content_learning": [
+        "package prompt resources into numbered practical collections",
+        "use a visual example to explain the output before exposing the prompt",
+        "cover stickers, hooks, AI skills, LEGO style, image effects, learning resources, and workflow guides as searchable libraries"
+      ],
+      "project_use": "High-value reference for our reusable prompt library and for visually explaining abstract workflow or knowledge topics."
+    }
+  ],
+  "cross_batch_learning": [
+    "Tenor joins Gifer and Giphy as an active emotion-media discovery source.",
+    "The first three seconds can use a transition pattern, but it must remain semantically connected to the story.",
+    "A final CTA slide benefits from visual quiet after dense informational slides.",
+    "Platform monetization claims are research leads until eligibility and payout are verified.",
+    "Template families should separate stable structure from variable media, copy, color, and slide count.",
+    "News, knowledge, and tutorial accounts need different image grammars even when all cover AI topics.",
+    "Prompt libraries become more useful when each prompt is paired with category fit, composition rules, and an example output."
+  ]
+}

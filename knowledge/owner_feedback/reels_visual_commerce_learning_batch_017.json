@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "owner_source_161_170",
+  "source_range": [161, 170],
+  "status": "stored_not_runtime_verified",
+  "installation_performed": false,
+  "runtime_connected": false,
+  "performance_verified": false,
+  "source_groups": [
+    {
+      "group": "claude_plugin_reel_sequence_continued",
+      "items": [161, 162, 163, 164, 165, 166, 167, 168, 169, 170],
+      "relationship": "All ten screenshots are consecutive frames from the same hand-drawn reel continued from the previous batch. The sequence promotes several code-oriented agents or plugins, but the exact product names and full sentences are not visible in every frame."
+    }
+  ],
+  "items": [
+    {
+      "id": 161,
+      "content": "The reel identifies a review capability while showing several magnifiers inspecting different parts of one source file.",
+      "design": "Color-coded magnifiers create an immediate metaphor for examining one artifact from multiple angles; the recurring presenter anchors the lower half.",
+      "project_use": "Use multiple review dimensions for meaningful changes: behavior, evidence integrity, fallback behavior, external-write safety, account fit, and production quality. Do not equate many reviewers with successful verification.",
+      "learning_rule": "A useful review defines independent concerns and produces traceable findings against the same contract rather than repeating one generic opinion.",
+      "risk": "The exact review tool, its access level, and its findings are not visible or tested."
+    },
+    {
+      "id": 162,
+      "content": "Five differently colored robot agents are shown inspecting, repairing, checking, debugging, and annotating code, while the text states that there are five agents.",
+      "design": "Distinct colors and props give each agent a recognizable role without requiring a dense role list.",
+      "project_use": "Reference for bounded work lanes only when concerns and file ownership are genuinely independent; each lane needs an objective, owned files, prohibited files, completion checks, and a handoff.",
+      "learning_rule": "Agent count is not a quality target. Use only as many independent lanes as the work can safely support, with one writer per file and one integration owner.",
+      "risk": "The source does not demonstrate that five agents improve correctness, prevent overlap, or complete successfully."
+    },
+    {
+      "id": 163,
+      "content": "The same five-agent illustration accompanies a statement that the agents inspect code.",
+      "design": "The reel holds the illustration across adjacent frames and advances only the sentence, improving comprehension and retention with low visual churn.",
+      "project_use": "Use progressive narration when one diagram needs several short explanations, but keep each frame meaningful when viewed independently or captured as a screenshot.",
+      "learning_rule": "Code review should yield specific, severity-ranked findings or a clear no-finding result; merely saying that agents looked at code is not evidence of quality.",
+      "risk": "No actual code, review result, severity, test output, or corrected defect is shown."
+    },
+    {
+      "id": 164,
+      "content": "A ladybug, ruler, and branch graph introduce Git or a Git-related capability in the sequence.",
+      "design": "Three familiar symbols combine bug detection, measurement, and history into a compact visual explanation of source-control work.",
+      "project_use": "Retain source-control concepts as audit support: change scope, history, ownership, and reviewability. Actual Git writes remain owner-approval gated.",
+      "learning_rule": "Git records changes; it does not prove that code works. Commit state, test state, runtime state, and production-quality state must remain separate.",
+      "risk": "The frame does not identify the exact feature or confirm any repository action."
+    },
+    {
+      "id": 165,
+      "content": "The Git illustration remains while the sentence completes across the next frame, but only a fragment is visible.",
+      "design": "Reusing the same illustration across a sentence break keeps continuity, though the isolated screenshot loses semantic completeness.",
+      "project_use": "When producing reels, avoid splitting indispensable meaning so narrowly that a captured frame becomes misleading; place a small persistent topic label or subtitle when needed.",
+      "learning_rule": "Sequential pacing may be variable, but each important claim should remain recoverable from the full sequence and should not depend on a single ambiguous fragment.",
+      "risk": "The missing beginning of the spoken sentence prevents a reliable claim about the Git feature."
+    },
+    {
+      "id": 166,
+      "content": "A code folder protected by a shield and wrench introduces the fourth capability.",
+      "design": "The shield communicates protection, the wrench communicates repair, and the folder grounds both in a codebase rather than abstract cybersecurity imagery.",
+      "project_use": "Model security work as a distinct review concern with bounded scope, findings, severity, and remediation status rather than a decorative quality label.",
+      "learning_rule": "Security review is separate from general correctness and should not be claimed from compilation or ordinary unit tests alone.",
+      "risk": "No scanner, rule set, dependency database, version, or finding is identified."
+    },
+    {
+      "id": 167,
+      "content": "The sequence explicitly labels the fourth capability as security.",
+      "design": "A single English keyword between a large icon and recurring presenter gives the segment a clear chapter marker.",
+      "project_use": "Use short chapter labels in educational reels so viewers can orient within a longer list without forcing every scene into a dense numbered card.",
+      "learning_rule": "A security label must be accompanied by an actual checked scope and result before project status can say security was verified.",
+      "risk": "This is a promotional label, not evidence of a completed security review."
+    },
+    {
+      "id": 168,
+      "content": "A flashlight highlights a warning in source code as the presenter begins a statement about checking before deployment.",
+      "design": "The warning triangle and flashlight create a strong preflight-inspection metaphor; the presenter's worried expression adds emotional progression.",
+      "project_use": "Adopt the concept of a pre-release gate for code destined for external execution, while retaining the project's explicit owner approvals for deployment and external writes.",
+      "learning_rule": "Pre-deployment checks should be risk-based and report concrete findings; they do not replace owner approval or production observation.",
+      "risk": "No deployment occurred and no current tool result supports the implied detection capability."
+    },
+    {
+      "id": 169,
+      "content": "The sentence continues by referring to codebase problems, using the same warning-focused illustration.",
+      "design": "The two-frame sentence progression preserves visual continuity and moves from timing, before deployment, to target, codebase problems.",
+      "project_use": "Keep detected issues tied to a specific codebase, file, severity, evidence, and resolution state instead of generating broad warnings with no actionable location.",
+      "learning_rule": "A potential issue, confirmed defect, applied fix, passed test, and production observation are different states and must be reported separately.",
+      "risk": "The reel shows no actual finding and cannot validate the accuracy or coverage of the referenced tool."
+    },
+    {
+      "id": 170,
+      "content": "Six chat windows connect to a central processor while the text introduces a fifth Claude-related capability, suggesting coordinated conversations or agents.",
+      "design": "A hub-and-spoke diagram with colored connections explains orchestration more effectively than a paragraph, while the recurring presenter preserves account identity.",
+      "project_use": "Use central orchestration only when it preserves lane scope, ownership, handoff evidence, and one integration authority. Multiple chats must not silently become conflicting writers.",
+      "learning_rule": "Parallel agent coordination needs explicit contracts and integration review; a central model icon alone does not provide concurrency safety or shared truth.",
+      "risk": "The exact Claude feature, session behavior, context sharing, cost, and reliability are not shown. Nothing from this frame is installed or connected."
+    }
+  ],
+  "cross_item_learning": [
+    "Multi-agent review is valuable only when review concerns are independent, outputs are traceable, and file ownership prevents overlap; five agents is an example, not a fixed target.",
+    "Review, Git history, security inspection, tests, runtime completion, and production quality are separate evidence states.",
+    "Pre-deployment checks should identify concrete scope, findings, severity, and remediation, while deployment and external writes remain owner-approval gated.",
+    "Agent orchestration requires bounded work orders, one writer per file, one integration owner, and explicit handoff evidence.",
+    "For reel design, recurring presenters, chapter labels, expressive props, and progressive narration can create continuity without using a fixed layout for every scene.",
+    "A deliberately rough hand-drawn 2D style is a valid production language, not automatically a low-quality fallback. Simple outlines, primary colors, imperfect shapes, and a recurring character can create warmth, speed, humor, and strong account recognition when matched to the topic and audience.",
+    "Do not force photorealistic or polished AI imagery onto every topic. Choose among photography, editorial graphics, memes, screenshots, refined illustration, and rough 2D according to the content's emotional tone, explanatory need, account identity, and available evidence.",
+    "Critical claims should not be split so narrowly across frames that individual captures become misleading or semantically incomplete.",
+    "The source demonstrates communication patterns and proposed capabilities only. No plugin, agent, security tool, or Claude integration from this batch is installed, connected, tested, or performance-verified."
+  ],
+  "project_boundary": {
+    "stored_knowledge": true,
+    "runtime_connected": false,
+    "tested": false,
+    "git_write_performed": false,
+    "external_write_performed": false,
+    "install_decision_deferred": true
+  }
+}

@@ -8,7 +8,9 @@ production package.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Dict, Mapping
@@ -24,11 +26,23 @@ from modules.source_intake.selected_candidate_production_flow import (
 class AccountProviderRouter:
     name = "account_deep_discovery_provider_router"
 
-    def __init__(self, providers: Mapping[str, Any]) -> None:
+    def __init__(
+        self,
+        providers: Mapping[str, Any],
+        operation_providers: Mapping[tuple[str, str], Any] | None = None,
+    ) -> None:
         self.providers = {str(key).upper(): value for key, value in providers.items()}
+        self.operation_providers = {
+            (str(account).upper(), str(operation)): provider
+            for (account, operation), provider in (operation_providers or {}).items()
+        }
 
     def discover(self, account: str, operation: str, request: Mapping[str, Any]) -> Dict[str, Any]:
-        provider = self.providers.get(str(account).upper())
+        normalized_account = str(account).upper()
+        provider = self.operation_providers.get(
+            (normalized_account, str(operation)),
+            self.providers.get(normalized_account),
+        )
         if provider is None or not callable(getattr(provider, "discover", None)):
             return {
                 "status": "error",
@@ -39,22 +53,103 @@ class AccountProviderRouter:
         return provider.discover(account, operation, request)
 
 
+class CachedAccountProviderRouter(AccountProviderRouter):
+    def __init__(
+        self,
+        providers: Mapping[str, Any],
+        operation_providers: Mapping[tuple[str, str], Any] | None = None,
+        cache_root: Path | None = None,
+    ) -> None:
+        super().__init__(providers, operation_providers)
+        self.cache_root = cache_root or Path(
+            os.getenv(
+                "AI_CONTENT_OS_DEEP_CACHE_ROOT",
+                r"F:\AI-Content-OS-Data\cache\source_intake\deep_discovery",
+            )
+        )
+
+    def _cache_path(
+        self,
+        account: str,
+        operation: str,
+        request: Mapping[str, Any],
+    ) -> Path:
+        body = json.dumps(
+            {
+                "account": str(account).upper(),
+                "operation": str(operation),
+                "candidate_id": str(request.get("candidate_id") or ""),
+                "title": str(request.get("title") or ""),
+                "source_urls": list(request.get("source_urls") or []),
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        digest = hashlib.sha256(body.encode("utf-8")).hexdigest()
+        return self.cache_root / str(account).upper() / f"{digest}.json"
+
+    def discover(self, account: str, operation: str, request: Mapping[str, Any]) -> Dict[str, Any]:
+        result = super().discover(account, operation, request)
+        cache_path = self._cache_path(account, operation, request)
+        assets = result.get("assets") if isinstance(result, Mapping) else None
+        if result.get("status") == "ok" and isinstance(assets, list) and assets:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = cache_path.with_suffix(".tmp")
+            temporary.write_text(
+                json.dumps(result, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            temporary.replace(cache_path)
+            return {**result, "cache_status": "refreshed", "fallback_used": False}
+        if cache_path.is_file():
+            try:
+                cached = json.loads(cache_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                return result
+            if isinstance(cached, Mapping) and isinstance(cached.get("assets"), list):
+                return {
+                    **dict(cached),
+                    "network_used": bool(result.get("network_used")),
+                    "cache_status": "fallback_hit",
+                    "fallback_used": True,
+                    "fallback_reason": str(result.get("error_type") or result.get("status") or "empty"),
+                }
+        return {**result, "cache_status": "miss", "fallback_used": False}
+
+
 def _default_network_router() -> AccountProviderRouter:
+    from dotenv import load_dotenv
+
     from modules.source_intake.community_comment_capture_provider import (
         CommunityCommentCaptureProvider,
     )
     from modules.source_intake.naver_youtube_discovery_provider import (
         NaverYoutubeDiscoveryProvider,
     )
+    from modules.source_intake.open_media_discovery_provider import (
+        OpenMediaDiscoveryProvider,
+    )
     from modules.source_intake.newspaper4k_deep_discovery_provider import (
         Newspaper4kDeepDiscoveryProvider,
     )
 
-    return AccountProviderRouter({
-        "A": Newspaper4kDeepDiscoveryProvider(),
-        "B": CommunityCommentCaptureProvider(),
-        "C": NaverYoutubeDiscoveryProvider(),
-    })
+    load_dotenv(dotenv_path=Path(__file__).resolve().parents[1] / ".env")
+    article_provider = Newspaper4kDeepDiscoveryProvider()
+    search_provider = NaverYoutubeDiscoveryProvider()
+    open_media_provider = OpenMediaDiscoveryProvider()
+    return CachedAccountProviderRouter(
+        {
+            "A": article_provider,
+            "B": CommunityCommentCaptureProvider(),
+            "C": NaverYoutubeDiscoveryProvider(),
+        },
+        operation_providers={
+            ("C", "fetch_article_body"): article_provider,
+            ("A", "search_related_news"): search_provider,
+            ("A", "locate_embedded_or_broadcast_video"): search_provider,
+            ("A", "search_open_images"): open_media_provider,
+        },
+    )
 
 
 def run_owner_selected_flow(owner_queue: Any, provider: Any) -> Dict[str, Any]:

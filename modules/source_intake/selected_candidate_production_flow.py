@@ -9,6 +9,7 @@ instead of fabricating production plans or evidence.
 from __future__ import annotations
 
 import copy
+import re
 from typing import Any, Callable, Dict, List, Mapping
 
 from modules.card_news.selected_candidate_render_input_adapter import (
@@ -33,6 +34,7 @@ from modules.source_intake.discovery_result_render_bridge import (
 
 
 SCHEMA_VERSION = "selected_candidate_production_flow_v1"
+MAX_EVIDENCE_UNIT_CHARS = 170
 
 
 def _normalize_selection(selection: Any) -> Any:
@@ -102,6 +104,60 @@ def _plans(value: Any) -> List[Mapping[str, Any]]:
         if value.get("schema_version") == "selected_candidate_production_plan_v1":
             return [value]
     return []
+
+
+def _source_backed_resolved_copy(plan: Mapping[str, Any]) -> List[Dict[str, str]]:
+    """Fill renderer copy gaps using only text already approved by the plan."""
+
+    raw_slides = plan.get("slide_plan")
+    slides = [item for item in raw_slides if isinstance(item, Mapping)] if isinstance(raw_slides, list) else []
+    copy_plan = plan.get("copy_plan") if isinstance(plan.get("copy_plan"), Mapping) else {}
+    title = str(plan.get("title") or "").strip()
+    feed_body = str(copy_plan.get("feed_body") or "").strip()
+    raw_points = copy_plan.get("key_points")
+    key_points = [
+        str(item).strip()
+        for item in raw_points
+        if isinstance(item, str) and item.strip()
+    ] if isinstance(raw_points, list) else []
+
+    resolved: List[Dict[str, str]] = []
+    for index, slide in enumerate(slides):
+        headline = str(slide.get("headline") or "").strip() or title
+        body = str(slide.get("body") or "").strip()
+        if not body and key_points:
+            body = key_points[min(index, len(key_points) - 1)]
+        if not body:
+            body = feed_body
+        resolved.append({"headline": headline, "body": body})
+    return resolved
+
+
+def _split_evidence_units(body: str) -> List[str]:
+    """Split source text into readable units without rewriting its claims."""
+
+    units: List[str] = []
+    for raw_paragraph in str(body or "").splitlines():
+        paragraph = re.sub(r"\s+", " ", raw_paragraph).strip()
+        if not paragraph:
+            continue
+        sentences = [
+            value.strip()
+            for value in re.split(r"(?<=[.!?。！？])\s+", paragraph)
+            if value.strip()
+        ]
+        if not sentences:
+            sentences = [paragraph]
+        current = ""
+        for sentence in sentences:
+            if current and len(current) + 1 + len(sentence) > MAX_EVIDENCE_UNIT_CHARS:
+                units.append(current)
+                current = sentence
+            else:
+                current = f"{current} {sentence}".strip()
+        if current:
+            units.append(current)
+    return units
 
 
 def _candidate_index(selection: Any) -> Dict[str, Dict[str, Any]]:
@@ -199,10 +255,9 @@ def _default_production_plans(
                 )
 
         for body in article_bodies:
-            for paragraph in body.splitlines():
-                paragraph = paragraph.strip()
-                if paragraph and paragraph not in evidence_points:
-                    evidence_points.append(paragraph)
+            for unit in _split_evidence_units(body):
+                if unit not in evidence_points:
+                    evidence_points.append(unit)
 
         for position, media in enumerate(media_rows, start=1):
             raw = media.get("raw_source_asset")
@@ -210,10 +265,24 @@ def _default_production_plans(
             source_url = str(media.get("source_url") or "").strip()
             media_url = str(media.get("media_url") or "").strip()
             raw_type = str(media.get("media_type") or "").lower()
-            media_type = {
-                "youtube_video": "video",
-                "news_article": "editorial",
-            }.get(raw_type, raw_type or "editorial")
+            artifact_role = str(media.get("operation_artifact_role") or "")
+            has_static_thumbnail = bool(
+                str(raw.get("thumbnail_url") or raw.get("remote_url") or "").strip()
+            )
+            if (
+                raw_type in {"image", "news_image", "open_image", "thumbnail"}
+                or artifact_role in {"news_image", "open_image"}
+                or (
+                    has_static_thumbnail
+                    and ("video" in raw_type or "video" in artifact_role)
+                )
+            ):
+                media_type = "image"
+            else:
+                media_type = {
+                    "youtube_video": "video",
+                    "news_article": "editorial",
+                }.get(raw_type, raw_type or "editorial")
             assets.append(
                 {
                     "asset_id": f"{candidate_id}-source-{position}",
@@ -223,7 +292,7 @@ def _default_production_plans(
                     "remote_url": media_url,
                     "source_url": source_url,
                     "rights_status": str(media.get("rights_status") or "unrecorded"),
-                    "role_hint": str(media.get("operation_artifact_role") or "source_context"),
+                    "role_hint": artifact_role or "source_context",
                     "reference_only": bool(media.get("reference_only")),
                 }
             )
@@ -360,7 +429,7 @@ def run_selected_candidate_production_flow(
     render_inputs: List[Dict[str, Any]] = []
     for plan in plans:
         try:
-            rendered = render_input_builder(plan, None)
+            rendered = render_input_builder(plan, _source_backed_resolved_copy(plan))
             render_inputs.append(copy.deepcopy(dict(rendered)))
         except Exception as error:
             failures.append(
@@ -371,13 +440,26 @@ def run_selected_candidate_production_flow(
                 }
             )
 
+    ready_render_input_count = sum(
+        1
+        for item in render_inputs
+        if item.get("renderer_ready") is True
+        or item.get("status") in {"ready", "renderer_input_ready"}
+    )
+    blocked_render_input_count = len(render_inputs) - ready_render_input_count
+    all_render_inputs_ready = bool(render_inputs) and blocked_render_input_count == 0
+
     return {
         "schema_version": SCHEMA_VERSION,
-        "status": "render_inputs_ready" if render_inputs else "partial",
+        "status": "render_inputs_ready" if all_render_inputs_ready else "partial",
         "reason_code": (
             "selected_discovery_render_flow_completed"
-            if render_inputs
-            else "no_render_inputs_built"
+            if all_render_inputs_ready
+            else (
+                "render_inputs_blocked"
+                if render_inputs
+                else "no_render_inputs_built"
+            )
         ),
         "network_executed": bool(discovery.get("network_executed")),
         "normalized_selection": normalized_selection,
@@ -385,6 +467,8 @@ def run_selected_candidate_production_flow(
         "bridge": copy.deepcopy(bridged),
         "production_plans": copy.deepcopy(plans),
         "render_inputs": render_inputs,
+        "ready_render_input_count": ready_render_input_count,
+        "blocked_render_input_count": blocked_render_input_count,
         "failures": failures,
     }
 

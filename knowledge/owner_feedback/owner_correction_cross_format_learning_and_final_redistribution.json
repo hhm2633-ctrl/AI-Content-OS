@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "cross_format_learning_and_final_redistribution",
+  "status": "documented_not_runtime_connected",
+  "owner_intent": [
+    "AI-Content-OS는 카드뉴스만 만드는 프로젝트가 아니다.",
+    "원자료를 분석할 때 owner가 별도로 지시할 때까지 기다리지 말고 전체 프로젝트의 활용 가능성을 선제적으로 분석한다.",
+    "각 학습 항목을 카드뉴스, 릴스, 쇼츠, 블로그, 커머스, 계정 브랜딩, 공통 운영 원칙으로 세분화한다.",
+    "전체 원자료 분석이 끝나면 지금까지 저장된 학습 내용을 통합 분석해 중복을 제거하고 형식별 전용 규칙과 공통 규칙으로 재분배한다."
+  ],
+  "per_batch_required_analysis": {
+    "preserve_original_meaning": true,
+    "classify_format_fit": [
+      "card_news",
+      "reels",
+      "shorts",
+      "blog",
+      "commerce",
+      "account_branding",
+      "common_operation"
+    ],
+    "record_fields": [
+      "source_observation",
+      "design_learning",
+      "content_structure_learning",
+      "format_specific_use",
+      "cross_format_use",
+      "commercialization_use",
+      "risk_or_limitation",
+      "runtime_connection_status",
+      "test_status"
+    ]
+  },
+  "current_batch_411_430_classification": {
+    "reels_shorts_priority": [
+      "411: 긴 영상을 짧은 장면 단위로 분해",
+      "413: 원본 영상과 시각 레퍼런스를 함께 사용한 편집 프롬프트",
+      "414: 편집된 클립 재조립과 반복 유형 템플릿화",
+      "417: 제품 사진에서 광고 영상으로 이어지는 단계형 구조",
+      "418: 제품의 정면·사선 등 복수 시점 확보",
+      "419: 가상 모델의 중립 배경 기준 이미지",
+      "420: 추상어가 아닌 관찰 가능한 동작 지시"
+    ],
+    "card_news_immediate_use": [
+      "412: 추상적인 디자인 지시 대신 실제 시각 레퍼런스 사용",
+      "421: 동일 AI 진행자와 반복되는 계정 시각 정체성",
+      "422: 주제가 아니라 훅·순위·전개 포맷을 벤치마킹",
+      "423~427: 완벽한 결과보다 관점·과정·선택 이유를 콘텐츠화",
+      "428: 실사진·스톡·생성 이미지의 목적별 선택",
+      "429~430: 생성 시간 외 선별 시간·폐기율·실패 비용 평가"
+    ],
+    "common_cross_format": [
+      "계정별 고유 관점과 시각 문법을 유지한다.",
+      "시각 스타일은 형용사만으로 지시하지 않고 실제 레퍼런스와 연결한다.",
+      "AI를 무조건 사용하지 않고 실사진·스톡·생성 이미지 중 정확도와 효율이 높은 방식을 선택한다.",
+      "자동화 효율은 생성 속도가 아니라 선별·검수·재시도까지 포함해 측정한다.",
+      "하나의 원본 소재를 형식별로 그대로 복제하지 않고 카드뉴스·영상·블로그·커머스 목적에 맞게 재구성한다."
+    ],
+    "capability_boundary": [
+      "동일 AI 인물의 얼굴·체형 일관성은 현재 실행 가능하다고 확인되지 않았다.",
+      "영상 도구 설치, Shorts·Reels 런타임 연결과 외부 서비스 사용은 승인 전 진행하지 않는다.",
+      "현재 내용은 학습자료로 저장된 상태이며 최종 선택기나 제작 파이프라인에 자동 연결되었다는 뜻이 아니다."
+    ]
+  },
+  "final_corpus_actions": [
+    "전체 항목을 소재 발굴, 훅, 서사, 디자인, 이미지, 영상, 계정 모델, 커머스, 게시 형식, 운영 효율로 재분류한다.",
+    "카드뉴스 전용, 릴스·쇼츠 전용, 블로그 전용, 커머스 전용, 전 형식 공통 규칙을 분리한다.",
+    "서로 중복되거나 충돌하는 규칙은 owner correction을 최우선으로 통합한다.",
+    "학습자료, 런타임 연결, 현재 테스트 통과 상태를 각각 분리해 보고한다.",
+    "프로젝트에 실제 연결할 항목과 추가 설치가 필요한 항목은 전체 분석 종료 후 우선순위와 승인 게이트를 붙여 제안한다."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "correction_id": "owner_correction_batch_035_trend_capture_mark",
+  "applies_to": {
+    "batch_ids": [
+      "reels_visual_commerce_learning_batch_034",
+      "reels_visual_commerce_learning_batch_035"
+    ],
+    "source_ids": [339, 340, 346, 347, 348, 349, 350]
+  },
+  "owner_correction": "이미지에 반복해서 들어간 'trend'는 영상 저작권 표시가 아니라 해당 계정이 그 영상을 보고 캡처했다는 정도의 표식이다.",
+  "supersedes": [
+    "'trend' 표식을 영상 저작권 워터마크로 해석하는 방식"
+  ],
+  "standing_learning": [
+    "원본 방송 로고·자막과 캡처·편집 계정의 표식을 구분한다.",
+    "'trend' 같은 반투명 계정 표식은 해당 계정이 장면을 캡처·편집했다는 표시로 학습한다.",
+    "계정 표식만으로 해당 계정이 원본 영상 저작권을 보유한다고 판단하지 않는다."
+  ],
+  "runtime_connection": false,
+  "tested": false,
+  "external_write": false
+}

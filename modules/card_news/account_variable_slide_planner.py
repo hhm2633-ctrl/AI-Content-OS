@@ -217,6 +217,105 @@ def _normalize_binding(binding: Any) -> Dict[str, Any]:
     return copy.deepcopy(binding) if isinstance(binding, Mapping) else {}
 
 
+def _reference_guidance(binding: Mapping[str, Any]) -> Dict[str, Dict[str, Any]]:
+    if _text(binding.get("mode")) != "reference_guidance":
+        return {}
+    raw_guidance = binding.get("role_guidance")
+    if not isinstance(raw_guidance, Mapping):
+        return {}
+    normalized: Dict[str, Dict[str, Any]] = {}
+    for role, raw_role in raw_guidance.items():
+        if not isinstance(raw_role, Mapping):
+            continue
+        action = _text(raw_role.get("recommended_action"))
+        if not action:
+            continue
+        normalized_role = {
+            "guidance_role": str(role),
+            "pattern_id": copy.deepcopy(raw_role.get("pattern_id")),
+            "pattern_name": copy.deepcopy(raw_role.get("pattern_name")),
+            "pattern_status": copy.deepcopy(raw_role.get("pattern_status")),
+            "binding_tier": copy.deepcopy(raw_role.get("binding_tier")),
+            "recommended_action": action,
+            "prohibited_actions": copy.deepcopy(raw_role.get("prohibited_actions", [])),
+            "provenance": copy.deepcopy(raw_role.get("provenance", {})),
+        }
+        for field in (
+            "visual_direction",
+            "emotion",
+            "mood",
+            "palette",
+            "palette_intent",
+            "color_palette",
+            "visual_relevance_labels",
+        ):
+            if field in raw_role:
+                normalized_role[field] = copy.deepcopy(raw_role.get(field))
+        normalized[str(role)] = normalized_role
+    return normalized
+
+
+def _guidance_for_semantic_role(
+    semantic_role: str,
+    guidance: Mapping[str, Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    role_map = {
+        "cover": ("hook_strategy", "visual_direction"),
+        "context": ("story_structure", "visual_direction"),
+        "problem": ("story_structure", "visual_direction"),
+        "evidence": ("story_structure", "visual_direction"),
+        "explanation": ("story_structure", "visual_direction"),
+        "social_proof": ("story_structure", "visual_direction"),
+        "counterpoint": ("story_structure", "visual_direction"),
+        "conclusion": ("cta_strategy", "visual_direction"),
+        "debate_cta": ("cta_strategy", "visual_direction"),
+    }
+    return [
+        copy.deepcopy(guidance[role])
+        for role in role_map.get(semantic_role, ())
+        if role in guidance
+    ]
+
+
+def _visual_relevance_labels(
+    guidance: Sequence[Mapping[str, Any]],
+) -> Tuple[Optional[Any], str]:
+    for item in guidance:
+        if "visual_relevance_labels" not in item:
+            continue
+        labels = item.get("visual_relevance_labels")
+        if labels not in (None, "", [], {}):
+            return copy.deepcopy(labels), "supplied"
+    return None, "missing"
+
+
+def _slide_with_learning_guidance(
+    item: Mapping[str, Any],
+    reference_guidance: Mapping[str, Dict[str, Any]],
+) -> Dict[str, Any]:
+    guidance = _guidance_for_semantic_role(
+        _text(item.get("semantic_role")),
+        reference_guidance,
+    )
+    labels, labels_status = _visual_relevance_labels(guidance)
+    slide = {
+        "order": item.get("slide_order"),
+        "canonical_role": item.get("canonical_role"),
+        "semantic_role": item.get("semantic_role"),
+        "purpose": item.get("purpose"),
+        "content_budget": item.get("content_budget"),
+        "content_budget_overrides_clamped": item.get(
+            "content_budget_overrides_clamped"
+        )
+        or [],
+        "learning_guidance": guidance,
+        "visual_relevance_labels_status": labels_status,
+    }
+    if labels_status == "supplied":
+        slide["visual_relevance_labels"] = labels
+    return slide
+
+
 def _is_binding_recent(binding: Mapping[str, Any], ttl_days: float, now: datetime) -> bool:
     status = _text(binding.get("status")).lower()
     if status and status not in {"active", "bound", "validated", "ok", "ready"}:
@@ -593,7 +692,33 @@ def _plan_slides(
     if chosen_count == 1:
         selected = [selected[0]]
     elif chosen_count < len(selected):
-        selected = [selected[0], *selected[1:-1][: max(0, chosen_count - 2)], selected[-1]]
+        interior = selected[1:-1]
+        required_pattern_roles = [
+            _text(value)
+            for value in pattern.get("required_roles", [])
+            if _text(value) in SEMANTIC_ROLES
+        ]
+        prioritized: List[Dict[str, Any]] = []
+        for required_role in required_pattern_roles:
+            match = next(
+                (
+                    item
+                    for item in interior
+                    if item.get("semantic_role") == required_role
+                    and item not in prioritized
+                ),
+                None,
+            )
+            if match is not None:
+                prioritized.append(match)
+        prioritized.extend(item for item in interior if item not in prioritized)
+        selected = [
+            selected[0],
+            *prioritized[: max(0, chosen_count - 2)],
+            selected[-1],
+        ]
+        if required_pattern_roles:
+            notes.append("required_pattern_roles_preserved_during_dynamic_reduction")
     elif chosen_count > len(selected):
         closing = selected.pop() if len(selected) > 1 else None
         expansion_roles = ("evidence", "solution", "counterpoint")
@@ -747,6 +872,7 @@ def run_account_variable_slide_planner(
         pattern_provenance: Dict[str, Any] = {}
 
         binding = _normalize_binding(instagram_pattern_binding)
+        reference_guidance = _reference_guidance(binding)
         bound_pattern, bound_provenance, bound_reasons = (
             None,
             None,
@@ -807,6 +933,17 @@ def run_account_variable_slide_planner(
             fallback_used = not bound_pattern
             if fallback_used:
                 reasons.append("instagram_pattern_binding_stale_or_unavailable; configured_fallback_used")
+        if reference_guidance:
+            reasons.append("reference_learning_guidance_applied")
+            pattern_provenance["reference_guidance_pattern_ids"] = sorted(
+                {
+                    str(item.get("pattern_id"))
+                    for item in reference_guidance.values()
+                    if item.get("pattern_id")
+                }
+            )
+            if pattern_provenance.get("source") == "configured_fallback":
+                pattern_provenance["source"] = "configured_structure_with_reference_guidance"
 
         pattern_id = _text(selected_pattern.get("pattern_id"))
         pattern_validate_reasons = _validate_pattern(selected_pattern, supported_layouts, bounds)
@@ -852,6 +989,8 @@ def run_account_variable_slide_planner(
                     "requested_count": None,
                     "count_basis": count_basis,
                 },
+                "learning_guidance_consumed": bool(reference_guidance),
+                "learning_guidance": copy.deepcopy(reference_guidance),
                 "slides": [],
                 "reasons": [*reasons, "slide_count_not_guessed_from_topic_type_or_image_count"],
                 "missing_requirements": ["deep_content_and_media_inventory"],
@@ -978,16 +1117,11 @@ def run_account_variable_slide_planner(
                 "count_basis": count_basis,
             },
             "slides": [
-                {
-                    "order": item.get("slide_order"),
-                    "canonical_role": item.get("canonical_role"),
-                    "semantic_role": item.get("semantic_role"),
-                    "purpose": item.get("purpose"),
-                    "content_budget": item.get("content_budget"),
-                    "content_budget_overrides_clamped": item.get("content_budget_overrides_clamped") or [],
-                }
+                _slide_with_learning_guidance(item, reference_guidance)
                 for item in slides
             ],
+            "learning_guidance_consumed": bool(reference_guidance),
+            "learning_guidance": copy.deepcopy(reference_guidance),
             "pattern_provenance": {
                 "source": pattern_provenance.get("source", "unknown"),
                 "chosen_from": pattern_provenance.get("chosen_from"),
@@ -996,6 +1130,10 @@ def run_account_variable_slide_planner(
                 "binding_status": pattern_provenance.get("binding_status"),
                 "bound_at": pattern_provenance.get("bound_at"),
                 "provider": pattern_provenance.get("provider"),
+                "reference_guidance_pattern_ids": pattern_provenance.get(
+                    "reference_guidance_pattern_ids",
+                    [],
+                ),
             },
             "reasons": reasons,
             "missing_requirements": [],

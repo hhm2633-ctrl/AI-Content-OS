@@ -826,6 +826,12 @@ def _expected_slides(manifest: Mapping[str, Any]) -> List[Dict[str, Any]]:
         template_crop_windows = record.get("template_crop_windows")
         if isinstance(template_crop_windows, list):
             template_crop_windows = [item for item in template_crop_windows if isinstance(item, Mapping)]
+        media_plan = package.get("media_plan") if isinstance(package, Mapping) else None
+        media_by_page = {
+            int(item.get("page")): _text(item.get("media_type")).lower()
+            for item in media_plan if isinstance(item, Mapping)
+            if isinstance(item.get("page"), int)
+        } if isinstance(media_plan, list) else {}
         for page, raw_path in enumerate(record.get("outputs", []), start=1):
             path = Path(_text(raw_path))
             if not path.is_file():
@@ -841,6 +847,7 @@ def _expected_slides(manifest: Mapping[str, Any]) -> List[Dict[str, Any]]:
                 "image_path": str(path),
                 "image_sha256": _sha256(path),
                 "requires_comment_readability": page in comment_pages,
+                "media_type": media_by_page.get(page, ""),
             }
             if template_crop_window:
                 row["template_crop_window"] = template_crop_window
