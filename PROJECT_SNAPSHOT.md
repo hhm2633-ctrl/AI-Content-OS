@@ -1,6 +1,6 @@
 # AI-Content-OS Project Snapshot
 
-Updated at: 2026-07-24T08:19:05
+Updated at: 2026-07-24T13:39:30
 
 ## Execution Command
 
@@ -898,6 +898,7 @@ AI-Content-OS/
 |   |-- owner_feedback/
 |   |   |-- account_ai_presenter_identity_rule_v1.json
 |   |   |-- account_first_screen_system_rule_v1.json
+|   |   |-- approved_reference_v2_registry.json
 |   |   |-- cardnews_automation_human_editor_rule_v1.json
 |   |   |-- cardnews_owner_feedback.jsonl
 |   |   |-- cardnews_owner_learning_index.json
@@ -1034,7 +1035,8 @@ AI-Content-OS/
 |   |   |-- analytics_history.py
 |   |   |-- analytics_interface.py
 |   |   |-- analytics_predictor.py
-|   |   `-- analytics_storage.py
+|   |   |-- analytics_storage.py
+|   |   `-- promotion_candidate_builder.py
 |   |-- audit_engine/
 |   |   |-- __init__.py
 |   |   |-- audit_checks.py
@@ -1183,6 +1185,8 @@ AI-Content-OS/
 |   |   |-- owner_feedback_corpus.py
 |   |   |-- owner_source_learning.py
 |   |   |-- production_profile_compiler.py
+|   |   |-- reference_geometry_draft_builder.py
+|   |   |-- reference_geometry_visual_gate.py
 |   |   |-- reference_recipe_selector.py
 |   |   `-- reference_specimen_registry.py
 |   |-- image_generation/
@@ -1224,6 +1228,10 @@ AI-Content-OS/
 |   |   |-- knowledge_ranker.py
 |   |   |-- knowledge_score.py
 |   |   `-- knowledge_storage.py
+|   |-- learning/
+|   |   |-- __init__.py
+|   |   |-- performance_ledger.py
+|   |   `-- promotion_controller.py
 |   |-- learning_engine/
 |   |   |-- __init__.py
 |   |   |-- content_performance_history.py
@@ -1680,6 +1688,7 @@ AI-Content-OS/
 |   |-- extract_cardnews_video_clip.py
 |   |-- generate_visual_qa_receipt_from_media.py
 |   |-- import_design_candidates_to_owner_feedback.py
+|   |-- import_external_performance.py
 |   |-- import_instagram_learning_patterns.py
 |   |-- knowledge_query.py
 |   |-- knowledge_validate.py
@@ -2029,7 +2038,7 @@ AI-Content-OS/
 |   |   |-- learning_memory.json
 |   |   `-- learning_statistics.json
 |   |-- llm_logs/
-|   |   `-- (689 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   `-- (701 runtime file(s) omitted; gitignored, see .gitignore)
 |   |-- logs/
 |   |   `-- .gitkeep
 |   |-- manual_image_intake/
@@ -2094,7 +2103,7 @@ AI-Content-OS/
 |   |   `-- trend_memory_history.json
 |   |-- trends/
 |   |   |-- snapshots/
-|   |   |   `-- (135 runtime file(s) omitted; gitignored, see .gitignore)
+|   |   |   `-- (139 runtime file(s) omitted; gitignored, see .gitignore)
 |   |   |-- .gitkeep
 |   |   |-- collector_statistics.json
 |   |   |-- last_safe_trend_result.json
@@ -2241,6 +2250,7 @@ AI-Content-OS/
 |   |-- test_edaily_collector.py
 |   |-- test_external_cardnews_publish_paths.py
 |   |-- test_external_deep_dive_store.py
+|   |-- test_external_performance_learning.py
 |   |-- test_external_storage.py
 |   |-- test_fashionbiz_collector.py
 |   |-- test_fashionn_collector.py
@@ -2294,6 +2304,7 @@ AI-Content-OS/
 |   |-- test_oliveyoung_ranking_collector.py
 |   |-- test_open_media_discovery_provider.py
 |   |-- test_origin_independence_resolver.py
+|   |-- test_owner_feedback_bridge.py
 |   |-- test_owner_feedback_corpus.py
 |   |-- test_owner_learning_conflict_resolution.py
 |   |-- test_owner_ranked_deep_dive_adapter.py
@@ -2318,7 +2329,11 @@ AI-Content-OS/
 |   |-- test_reference_blueprint_adapter.py
 |   |-- test_reference_content_fit.py
 |   |-- test_reference_driven_production.py
+|   |-- test_reference_geometry_draft_builder.py
+|   |-- test_reference_geometry_visual_gate.py
+|   |-- test_reference_geometry_visual_gate_adapter.py
 |   |-- test_reference_recipe_selector.py
+|   |-- test_reference_registry_profile_lookup.py
 |   |-- test_reference_specimen_registry.py
 |   |-- test_reference_v2_satori_adapter.py
 |   |-- test_relation_aware_candidate_matcher.py
@@ -2331,6 +2346,7 @@ AI-Content-OS/
 |   |-- test_run_cardnews_package_quality_loop.py
 |   |-- test_run_cardnews_production.py
 |   |-- test_run_multi_account_card_news_discovery.py
+|   |-- test_run_owner_source_design_learning.py
 |   |-- test_run_selected_candidate_production_flow.py
 |   |-- test_save_brandconnect_catalog_snapshot.py
 |   |-- test_selected_candidate_production_flow.py
@@ -2382,6 +2398,7 @@ AI-Content-OS/
 |   |-- test_trend_collector_ranking.py
 |   |-- test_trend_memory_checker.py
 |   |-- test_trend_retry_policy.py
+|   |-- test_two_candidate_preupload_dry_run.py
 |   |-- test_validated_topic_candidate_pipeline.py
 |   |-- test_validated_topic_input_adapter.py
 |   |-- test_verify_cardnews_production_packages.py

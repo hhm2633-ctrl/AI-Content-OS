@@ -14,6 +14,11 @@ import re
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from modules.design_learning.reference_specimen_registry import (
+    is_visual_gate_pass_receipt,
+    load_reference_v2_registry,
+)
+
 
 SCHEMA_VERSION = "production_profile_compiler_v1"
 MAX_REFERENCE_CANDIDATES = 40
@@ -485,10 +490,16 @@ class ProductionProfileCompiler:
         feedback_root: str | Path = DEFAULT_FEEDBACK_ROOT,
         taxonomy_path: str | Path = DEFAULT_TAXONOMY_PATH,
         index_path: str | Path = DEFAULT_INDEX_PATH,
+        reference_registry_path: str | Path | None = None,
     ) -> None:
         self.feedback_root = Path(feedback_root)
         self.taxonomy_path = Path(taxonomy_path)
         self.index_path = Path(index_path)
+        self.reference_registry_path = (
+            Path(reference_registry_path)
+            if reference_registry_path is not None
+            else self.taxonomy_path.parent / "approved_reference_v2_registry.json"
+        )
         self._record_cache: list[dict[str, Any]] | None = None
 
     def _load_records(self) -> list[dict[str, Any]]:
@@ -636,6 +647,9 @@ class ProductionProfileCompiler:
                     ),
                     "reference_only": False,
                     "blueprint_id": _as_text(record.get("blueprint_id")),
+                    "geometry_visual_gate_receipt": copy.deepcopy(
+                        record.get("geometry_visual_gate_receipt", {})
+                    ),
                 }
             )
 
@@ -726,6 +740,9 @@ class ProductionProfileCompiler:
 
     def compile(self, topic_context: Mapping[str, Any]) -> dict[str, Any]:
         context = self._context(topic_context)
+        reference_v2_registry = load_reference_v2_registry(
+            self.reference_registry_path
+        )
         reference_candidates, reference_candidate_receipt = (
             self._reference_candidates(context)
         )
@@ -839,12 +856,22 @@ class ProductionProfileCompiler:
             for candidate in reference_candidates
             if candidate.get("approval_status") == "owner_approved"
             and candidate.get("reference_only") is False
+            and is_visual_gate_pass_receipt(
+                candidate.get("geometry_visual_gate_receipt"),
+                reference_id=_as_text(candidate.get("reference_id")),
+                blueprint_id=_as_text(candidate.get("blueprint_id")),
+            )
         ]
         reference_v2_selectable_candidates = [
             copy.deepcopy(candidate)
             for candidate in approved_reference_specimen_candidates
             if _as_text(candidate.get("blueprint_id"))
             and _as_text(candidate.get("owner_approval_receipt_id"))
+            and is_visual_gate_pass_receipt(
+                candidate.get("geometry_visual_gate_receipt"),
+                reference_id=_as_text(candidate.get("reference_id")),
+                blueprint_id=_as_text(candidate.get("blueprint_id")),
+            )
         ]
 
         render_field_map = {
@@ -900,6 +927,7 @@ class ProductionProfileCompiler:
             },
             "reference_candidates": reference_candidates,
             "reference_candidate_receipt": reference_candidate_receipt,
+            "reference_v2_registry": reference_v2_registry,
         }
         fingerprint = hashlib.sha256(
             json.dumps(
@@ -927,6 +955,7 @@ class ProductionProfileCompiler:
             "approved_reference_specimen_candidates": approved_reference_specimen_candidates,
             "reference_v2_selectable_candidates": reference_v2_selectable_candidates,
             "reference_candidate_receipt": reference_candidate_receipt,
+            "reference_v2_registry": reference_v2_registry,
             "missing_fields": [
                 field for field in PROFILE_FIELDS if fields[field]["status"] == "missing"
             ],

@@ -1,8 +1,9 @@
-"""Select bounded per-account finalists from the owner-ranked review queue.
+"""Select bounded per-account finalists with optional owner-grade evidence.
 
-This is a data-only bridge. It preserves every reviewed candidate, reuses the
+This is a data-only bridge. It preserves every candidate, reuses the
 conservative same-event clusterer, and treats Brand Connect as an optional
-positive tie-break for account C. Missing signals are recorded, never invented.
+positive tie-break for account C. Automatic selection evidence remains primary;
+owner grades are optional reference tie-breaks, never required approval.
 """
 
 from __future__ import annotations
@@ -18,6 +19,7 @@ from modules.agent_console.owner_feedback_learning import DEFAULT_INDEX_PATH, en
 SCHEMA_VERSION = "cardnews_final_selection_v1"
 ACCOUNTS = ("A", "B", "C")
 GRADES = {"1": 0, "2": 1, "3": 2}
+SELECTION_STATUS_PRIORITY = {"TOP": 0, "BACKUP": 1, "HOLD": 2, "WATCH": 3}
 TOPIC_STOPWORDS = {
     "출시", "예고", "개최", "공개", "근황", "최신", "직접", "이유", "이렇게", "요즘",
     "담은", "선보였다", "나왔다", "없었다", "있었다", "관련", "소식", "포토",
@@ -49,13 +51,26 @@ def _commerce_score(annotation: Mapping[str, Any]) -> float:
 
 
 def _rank_key(candidate: Mapping[str, Any]) -> tuple[Any, ...]:
+    grade = _text(candidate.get("grade"))
     return (
-        GRADES[_text(candidate.get("grade"))],
+        SELECTION_STATUS_PRIORITY.get(_text(candidate.get("selection_status")).upper(), 1),
+        -float(candidate.get("automatic_selection_score") or 0.0),
+        GRADES.get(grade, 4 if grade == "exclude" else 3),
         -float(candidate.get("commerce_tie_break") or 0.0),
         -int(candidate.get("observed_source_count") or 0),
         int(candidate.get("owner_queue_index") or 0),
         _text(candidate.get("candidate_id")),
     )
+
+
+def _automatic_selection_score(value: Any) -> float:
+    if isinstance(value, Mapping):
+        value = value.get("score")
+    if isinstance(value, bool):
+        return 0.0
+    if isinstance(value, (int, float)):
+        return float(value)
+    return 0.0
 
 
 def _category_bucket(account: str, category: str) -> str:
@@ -209,14 +224,14 @@ def select_owner_ranked_final_candidates(
         account = _text(raw.get("account")).upper()
         grade = _text(raw.get("grade"))
         title = _text(raw.get("title"))
-        if not candidate_id or account not in ACCOUNTS or grade not in GRADES or not title:
+        if not candidate_id or account not in ACCOUNTS or (grade and grade not in {*GRADES, "exclude"}) or not title:
             excluded.append(
                 {
                     "candidate_id": candidate_id or None,
                     "account": account or None,
                     "grade": grade or None,
                     "owner_queue_index": index,
-                    "reason_code": "invalid_or_excluded_owner_label",
+                    "reason_code": "invalid_candidate_identity_or_optional_grade",
                 }
             )
             continue
@@ -244,7 +259,12 @@ def select_owner_ranked_final_candidates(
                 "account": account,
                 "category": _text(raw.get("category")) or "unknown",
                 "title": title,
-                "grade": grade,
+                "grade": grade or None,
+                "owner_grade_signal_present": bool(grade),
+                "owner_grade_role": "optional_reference_tiebreak",
+                "owner_feedback_provenance": copy.deepcopy(
+                    raw.get("owner_feedback_provenance", [])
+                ),
                 "source_urls": source_urls,
                 "requested_media": copy.deepcopy(raw.get("requested_media", [])) if isinstance(raw.get("requested_media"), list) else [],
                 "owner_queue_index": index,
@@ -252,6 +272,14 @@ def select_owner_ranked_final_candidates(
                 "commerce": annotation,
                 "commerce_tie_break": commerce_tie_break,
                 "category_bucket": _category_bucket(account, _text(raw.get("category")) or "unknown"),
+                "selection_status": _text(raw.get("selection_status")).upper() or "BACKUP",
+                "automatic_selection_score": _automatic_selection_score(
+                    raw.get("selection_score")
+                ),
+                "automatic_production_eligible": (
+                    raw.get("production_eligible") is not False
+                    and _text(raw.get("selection_status")).upper() not in {"HOLD", "WATCH"}
+                ),
             }
         )
 
@@ -259,7 +287,13 @@ def select_owner_ranked_final_candidates(
     total_selected = 0
     duplicate_count = 0
     for account in ACCOUNTS:
-        candidates = prepared[account]
+        all_candidates = prepared[account]
+        candidates = [
+            item for item in all_candidates if item["automatic_production_eligible"]
+        ]
+        held_candidates = [
+            item for item in all_candidates if not item["automatic_production_eligible"]
+        ]
         cluster_input = [
             {
                 "candidate_id": item["candidate_id"],
@@ -319,7 +353,14 @@ def select_owner_ranked_final_candidates(
             item["cluster_id"] = group_ids[root]
 
         representatives: List[Dict[str, Any]] = []
-        not_selected: List[Dict[str, Any]] = []
+        not_selected: List[Dict[str, Any]] = [
+            {
+                **copy.deepcopy(item),
+                "selection_status": "not_selected",
+                "reason_code": "not_automatic_production_eligible",
+            }
+            for item in held_candidates
+        ]
         grouped: Dict[str, List[Dict[str, Any]]] = {}
         for item in candidates:
             grouped.setdefault(item["cluster_id"], []).append(item)
@@ -341,32 +382,14 @@ def select_owner_ranked_final_candidates(
         selected: List[Dict[str, Any]] = []
         deferred: List[Dict[str, Any]] = []
         category_counts: Dict[str, int] = {}
-        # A soft diversity rule may reorder candidates inside the same owner
-        # grade, but it must never promote a lower grade ahead of an available
-        # higher-grade candidate.
-        for grade in ("1", "2", "3"):
-            grade_items = [item for item in ranked if item["grade"] == grade]
-            grade_deferred: List[Dict[str, Any]] = []
-            for item in grade_items:
-                bucket = item["category_bucket"]
-                category_full = category_counts.get(bucket, 0) >= category_soft_limit
-                if len(selected) < per_account_limit and not category_full:
-                    selected.append(item)
-                    category_counts[bucket] = category_counts.get(bucket, 0) + 1
-                else:
-                    grade_deferred.append(item)
-            if len(selected) < per_account_limit:
-                # Fill from the same grade before considering the next grade.
-                for item in grade_deferred:
-                    if len(selected) >= per_account_limit:
-                        break
-                    selected.append(item)
-                    bucket = item["category_bucket"]
-                    category_counts[bucket] = category_counts.get(bucket, 0) + 1
-            deferred.extend(item for item in grade_deferred if item not in selected)
-            if len(selected) >= per_account_limit:
-                deferred.extend(item for item in ranked if GRADES[item["grade"]] > GRADES[grade])
-                break
+        for item in ranked:
+            bucket = item["category_bucket"]
+            category_full = category_counts.get(bucket, 0) >= category_soft_limit
+            if len(selected) < per_account_limit and not category_full:
+                selected.append(item)
+                category_counts[bucket] = category_counts.get(bucket, 0) + 1
+            else:
+                deferred.append(item)
         if len(selected) < per_account_limit:
             fill = [item for item in deferred if item not in selected][: per_account_limit - len(selected)]
             selected.extend(fill)
@@ -374,7 +397,13 @@ def select_owner_ranked_final_candidates(
 
         selected_entries: List[Dict[str, Any]] = []
         for rank, item in enumerate(selected, 1):
-            reasons = ["owner_grade_priority", "same_event_deduplicated", "account_category_balance"]
+            reasons = [
+                "automatic_policy_score",
+                "same_event_deduplicated",
+                "account_category_balance",
+            ]
+            if item["owner_grade_signal_present"]:
+                reasons.append("owner_grade_used_as_optional_tiebreak")
             if account == "C" and item["commerce_tie_break"] > 0:
                 reasons.append("natural_brandconnect_match_used_as_same_grade_tiebreak")
             selected_entries.append(
@@ -396,7 +425,7 @@ def select_owner_ranked_final_candidates(
         not_selected.sort(key=lambda item: int(item.get("owner_queue_index") or 0))
         total_selected += len(selected_entries)
         accounts[account] = {
-            "candidate_count": len(candidates),
+            "candidate_count": len(all_candidates),
             "selected_count": len(selected_entries),
             "not_selected_count": len(not_selected),
             "selected": selected_entries,
@@ -419,6 +448,9 @@ def select_owner_ranked_final_candidates(
             "limit_status": "owner_operating_hypothesis_not_permanent_rule",
             "category_soft_limit": category_soft_limit,
             "commerce_scope": "account_C_same_grade_positive_tiebreak_only",
+            "owner_grade_role": "optional_reference_tiebreak",
+            "owner_grade_required": False,
+            "automatic_selection_is_not_owner_approval": True,
             "matched_product_use_is_optional_not_forced": True,
             "unmatched_or_editorial_bypass_penalty": False,
             "cross_account_entertainment_overlap_allowed": True,
@@ -435,6 +467,11 @@ def select_owner_ranked_final_candidates(
         "not_selected_count": sum(bucket["not_selected_count"] for bucket in accounts.values()),
         "duplicate_suppressed_count": duplicate_count,
         "excluded_invalid_or_ungraded": excluded,
+        "owner_grade_required": False,
+        "owner_approval_required_at": "pre_upload_manual_upload_ready",
+        "manual_upload_ready": False,
+        "actual_publish": False,
+        "upload_executed": False,
         "accounts": accounts,
         "execution_enabled": False,
         "network_executed": False,

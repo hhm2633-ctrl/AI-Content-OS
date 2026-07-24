@@ -89,6 +89,14 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
         }
 
     requests = payload.get("requests")
+    automatic_handoff = False
+    if not isinstance(requests, list):
+        production_handoff = payload.get("production_handoff")
+        if isinstance(production_handoff, Mapping) and isinstance(
+            production_handoff.get("candidates"), list
+        ):
+            requests = production_handoff["candidates"]
+            automatic_handoff = True
     if not isinstance(requests, list):
         return {
             "status": "closed",
@@ -107,10 +115,24 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
             continue
         candidate_id = _text(request.get("candidate_id")) or _text(request.get("request_id")).split(":", 1)[-1]
         grade = _text(request.get("grade"))
-        if grade not in ALLOWED_GRADES or not candidate_id:
+        if not candidate_id or (
+            not automatic_handoff and grade not in ALLOWED_GRADES
+        ):
             continue
 
-        route_score = GRADE_ROUTE_SCORES[grade]
+        selection_score = request.get("selection_score")
+        automatic_score = (
+            selection_score.get("score")
+            if isinstance(selection_score, Mapping)
+            else request.get("route_score")
+        )
+        route_score = (
+            float(automatic_score)
+            if automatic_handoff
+            and isinstance(automatic_score, (int, float))
+            and not isinstance(automatic_score, bool)
+            else GRADE_ROUTE_SCORES.get(grade, 1.0)
+        )
 
         selected.append(
             {
@@ -119,11 +141,27 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
                 "category_id": _text(request.get("category")),
                 "route_score": route_score,
                 "route_confidence": 1.0,
-                "risk_status": "reviewed",
-                "evidence_status": "owner_reviewed_queue",
+                "risk_status": "safe" if automatic_handoff else "reviewed",
+                "risk_clearance_source": (
+                    "automatic_stage2_production_eligibility"
+                    if automatic_handoff
+                    else "owner_reviewed_queue"
+                ),
+                "evidence_status": (
+                    "automatic_stage2_selection_handoff"
+                    if automatic_handoff
+                    else "owner_reviewed_queue"
+                ),
                 "source_refs": _source_refs(request),
                 "owner_payload": {
                     "grade": grade,
+                    "owner_grade_required": not automatic_handoff,
+                    "selection_authority": (
+                        "automatic_account_policy"
+                        if automatic_handoff
+                        else "owner_grade"
+                    ),
+                    "owner_approval_required_at": "pre_upload_manual_upload_ready",
                     "account": _text(request.get("account")),
                     "category": _text(request.get("category")),
                     "title": _text(request.get("title")),
@@ -183,6 +221,15 @@ def adapt_owner_ranked_queue_to_selective_contract(payload: Any) -> Dict[str, An
         request["title"] = _text(owner_payload.get("title"))
         request["summary"] = _text(owner_payload.get("summary"))
         request["grade"] = _text(owner_payload.get("grade"))
+        request["owner_grade_required"] = (
+            owner_payload.get("owner_grade_required") is True
+        )
+        request["selection_authority"] = _text(
+            owner_payload.get("selection_authority")
+        )
+        request["owner_approval_required_at"] = _text(
+            owner_payload.get("owner_approval_required_at")
+        )
         request["category"] = _text(owner_payload.get("category"))
         request["source_urls"] = _list(owner_payload.get("source_urls"))
         request["requested_media"] = _list(owner_payload.get("requested_media"))

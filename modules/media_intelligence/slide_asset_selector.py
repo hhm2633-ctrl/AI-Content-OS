@@ -14,6 +14,7 @@ from typing import Any
 
 
 SCHEMA_VERSION = "slide_asset_selector_v1"
+MIN_RELEVANCE_SCORE = 0.20
 RENDERABLE_RIGHTS = frozenset(
     {
         "owned",
@@ -135,8 +136,17 @@ def _eligible(asset: Mapping[str, Any]) -> tuple[bool, str]:
     if asset.get("usable_in_production") is False:
         return False, "production_use_explicitly_blocked"
     gate = asset.get("quality_gate")
-    if isinstance(gate, Mapping) and gate.get("passed") is False:
+    if not isinstance(gate, Mapping):
+        return False, "quality_gate_required"
+    if gate.get("passed") is not True:
         return False, _text(gate.get("reason_code")) or "quality_gate_blocked"
+    relevant_score = gate.get("relevant_score")
+    if (
+        isinstance(relevant_score, bool)
+        or not isinstance(relevant_score, (int, float))
+        or float(relevant_score) < MIN_RELEVANCE_SCORE
+    ):
+        return False, "minimum_relevance_not_met"
     return True, ""
 
 
@@ -235,6 +245,12 @@ class SlideAssetSelector:
                 slide["source_media_candidate"] = copy.deepcopy(asset)
                 receipt["page"] = int(slide.get("page") or page)
                 receipt["slide_role"] = role
+                receipt["selection_receipt_id"] = hashlib.sha256(
+                    (
+                        f"{receipt['page']}|{receipt['slide_role']}|"
+                        f"{receipt['asset_id']}|{receipt['score']}"
+                    ).encode("utf-8")
+                ).hexdigest()
                 receipts.append(receipt)
             else:
                 slide["asset_refs"] = []
@@ -276,6 +292,7 @@ def select_slide_assets(
 
 __all__ = [
     "RENDERABLE_RIGHTS",
+    "MIN_RELEVANCE_SCORE",
     "SCHEMA_VERSION",
     "SlideAssetSelector",
     "select_slide_assets",

@@ -33,7 +33,7 @@ class ProductionReleaseHandoffTests(unittest.TestCase):
     def test_owner_approved_controller_builds_manual_only_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
             image = Path(directory) / "page-001.png"
-            Image.new("RGB", (1080, 1350)).save(image)
+            Image.new("RGB", (1080, 1440)).save(image)
             state = {
                 "state": "manual_upload_ready",
                 "manual_upload_ready": True,

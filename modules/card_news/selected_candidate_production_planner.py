@@ -9,9 +9,12 @@ roles are actually supported by the available material.
 from __future__ import annotations
 
 import copy
+from difflib import SequenceMatcher
+import re
 from typing import Any, Dict, List, Mapping, Sequence
 
 from modules.card_news.canvas_contract import (
+    DEFAULT_CARD_NEWS_PROFILE_ID,
     allowed_card_slide_count_label,
     is_allowed_card_slide_count,
 )
@@ -23,6 +26,32 @@ COMPLETE_STATUSES = {"complete", "completed", "ready", "evidence_ready"}
 BLOCKED_ASSET_STATUSES = {"blocked", "rejected", "invalid", "reference_only"}
 EDITORIAL_CONTENT_TYPES = {"runway", "season_collection", "brand_editorial"}
 EMOTION_ARC = ("관심", "불편함", "의심", "대립", "충격", "결심")
+NEWS_BASIC_KEY_POINT_LIMIT = 5
+NEWS_RICH_EVIDENCE_THRESHOLD = 3
+NEWS_AGREEMENT_PATTERN = re.compile(
+    r"협약|MOU|투자\s*양해각서|투자양해각서|양해각서|"
+    r"투자\s*협정|투자협정|체결",
+    re.IGNORECASE,
+)
+NEWS_TOKEN_SUFFIXES = (
+    "으로",
+    "에서",
+    "에게",
+    "까지",
+    "부터",
+    "은",
+    "는",
+    "이",
+    "가",
+    "을",
+    "를",
+    "와",
+    "과",
+    "의",
+    "에",
+    "로",
+    "도",
+)
 
 
 def _text(value: Any) -> str:
@@ -194,6 +223,284 @@ def _cover(title: str, assets: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
     }
 
 
+def _news_tokens(value: str) -> set[str]:
+    tokens: set[str] = set()
+    for raw in re.findall(r"[가-힣A-Za-z0-9%]+", value.lower()):
+        token = raw
+        for suffix in NEWS_TOKEN_SUFFIXES:
+            if len(token) > len(suffix) + 1 and token.endswith(suffix):
+                token = token[: -len(suffix)]
+                break
+        if len(token) >= 2:
+            tokens.add(token)
+    return tokens
+
+
+def _news_point_signals(value: str) -> set[str]:
+    signals: set[str] = set()
+    if re.search(r"\d|%|억|조|만\s*명|원", value):
+        signals.add("number")
+    if re.search(r"말했|밝혔|설명했|강조했|전했|언급했|발언|인터뷰", value):
+        signals.add("statement")
+    if re.search(r"대비|보다|증가|감소|상승|하락|차이|비교|전년|지난해", value):
+        signals.add("comparison")
+    if re.search(r"향후|앞으로|예정|계획|추진|후속|착수|완료|목표", value):
+        signals.add("follow_up")
+    if re.search(r"배경|이유|때문|계기|기존|그동안", value):
+        signals.add("background")
+    return signals
+
+
+def _news_point_score(value: str) -> int:
+    signals = _news_point_signals(value)
+    return (
+        1
+        + (2 if "number" in signals else 0)
+        + (3 if "statement" in signals else 0)
+        + (3 if "comparison" in signals else 0)
+        + (3 if "follow_up" in signals else 0)
+        + (1 if "background" in signals else 0)
+    )
+
+
+def _simple_investment_agreement(title: str, points: Sequence[str]) -> bool:
+    combined = " ".join([title, *points])
+    title_has_investment_context = bool(
+        re.search(r"투자|재투자|\d[\d,.]*\s*(?:억|조)\s*원", title)
+    )
+    points_have_investment_context = any(
+        re.search(r"투자|재투자|\d[\d,.]*\s*(?:억|조)\s*원", point)
+        for point in points
+    )
+    agreement_signal = any(
+        NEWS_AGREEMENT_PATTERN.search(point)
+        for point in points
+    ) or bool(NEWS_AGREEMENT_PATTERN.search(title))
+    if not (
+        agreement_signal
+        and (title_has_investment_context or points_have_investment_context)
+    ):
+        return False
+    if re.search(
+        r"여러\s*(?:기업|지역|협약)|복수\s*(?:기업|지역|협약)|"
+        r"\d+\s*개\s*(?:기업|지역|협약)|각각\s*(?:투자|협약|체결)",
+        combined,
+    ):
+        return False
+    investment_amounts = {
+        re.sub(r"\s+", "", value)
+        for value in re.findall(
+            r"\d[\d,.]*\s*(?:억|조)\s*원",
+            combined,
+        )
+    }
+    if len(investment_amounts) > 1:
+        return False
+    investor_subjects = {
+        subject
+        for subject in re.findall(
+            r"([가-힣A-Za-z0-9·]{2,20})(?:은|는)"
+            r"[^.!?]{0,80}?(?:재투자|투자)"
+            r"[^.!?]{0,50}?(?:결정|계획|투입|진행|신설|증설)",
+            combined,
+        )
+        if not subject.endswith(("시", "도", "군", "구"))
+    }
+    return len(investor_subjects) <= 1
+
+
+def _agreement_priority(value: str) -> tuple[str, int]:
+    if NEWS_AGREEMENT_PATTERN.search(value) or re.search(r"체결|맺었", value):
+        return "agreement", 50 + _news_point_score(value)
+    if re.search(r"고용|일자리|채용", value):
+        return "employment", 40 + _news_point_score(value)
+    if re.search(
+        r"\d[\d,.]*\s*(?:억|조)\s*원|"
+        r"\d{4}\s*년|기간|시설|공장|산업단지|증설|신설|투입",
+        value,
+    ):
+        return "investment_detail", 45 + _news_point_score(value)
+    if re.search(r"지원|인허가|행정|재정|약속|밝혔|말했|시장|도지사", value):
+        return "support_statement", 35 + _news_point_score(value)
+    if re.search(r"이유|배경|수요|공급망|입지|인프라|결정", value):
+        return "reason_background", 30 + _news_point_score(value)
+    return "other", _news_point_score(value)
+
+
+def _select_simple_agreement_points(points: Sequence[str]) -> List[str]:
+    selected_indexes: List[int] = []
+    priority_groups = (
+        "agreement",
+        "investment_detail",
+        "employment",
+        "reason_background",
+        "support_statement",
+    )
+    classified = [
+        (index, *_agreement_priority(point))
+        for index, point in enumerate(points)
+    ]
+    for group in priority_groups:
+        candidates = [
+            (score, len(points[index]), -index, index)
+            for index, point_group, score in classified
+            if point_group == group and index not in selected_indexes
+        ]
+        if candidates:
+            selected_indexes.append(max(candidates)[-1])
+    if len(selected_indexes) < NEWS_BASIC_KEY_POINT_LIMIT:
+        remaining = [
+            (_agreement_priority(points[index])[1], len(points[index]), -index, index)
+            for index in range(len(points))
+            if index not in selected_indexes
+        ]
+        for _, _, _, index in sorted(remaining, reverse=True):
+            selected_indexes.append(index)
+            if len(selected_indexes) == NEWS_BASIC_KEY_POINT_LIMIT:
+                break
+    return [points[index] for index in selected_indexes]
+
+
+def _news_fact_markers(value: str) -> Dict[str, set[str]]:
+    compact = value.lower()
+    return {
+        "numbers": set(
+            re.findall(r"\d[\d,.]*(?:%|억|조|만|원|명|건|개)?", compact)
+        ),
+        "ordinals": set(
+            re.findall(
+                r"(?:첫|두|세|네|다섯|여섯|일곱|여덟|아홉|열)\s*번째",
+                compact,
+            )
+        ),
+        "times": set(
+            re.findall(
+                r"(?:오늘|내일|이번\s*(?:달|주|분기|해)|"
+                r"다음\s*(?:달|주|분기|해)|향후|앞으로|"
+                r"\d{1,4}\s*(?:년|월|일|분기))",
+                compact,
+            )
+        ),
+        "actions": set(
+            re.findall(
+                r"(?:체결|투자|증설|착공|완공|고용|지원|심의|"
+                r"점검|발표|시작|추진|확대|축소|인상|인하|"
+                r"증가|감소|상승|하락|개선|협의)",
+                compact,
+            )
+        ),
+    }
+
+
+def _meaningfully_repeats(left: str, right: str) -> bool:
+    left_compact = re.sub(r"\W+", "", left.lower())
+    right_compact = re.sub(r"\W+", "", right.lower())
+    if not left_compact or not right_compact:
+        return False
+    if left_compact in right_compact or right_compact in left_compact:
+        return min(len(left_compact), len(right_compact)) >= 8
+    left_markers = _news_fact_markers(left)
+    right_markers = _news_fact_markers(right)
+    for marker_type in ("numbers", "ordinals", "times", "actions"):
+        left_values = left_markers[marker_type]
+        right_values = right_markers[marker_type]
+        if left_values and right_values and left_values.isdisjoint(right_values):
+            return False
+    ratio = SequenceMatcher(None, left_compact, right_compact).ratio()
+    left_tokens = _news_tokens(left)
+    right_tokens = _news_tokens(right)
+    union = left_tokens | right_tokens
+    overlap = len(left_tokens & right_tokens) / len(union) if union else 0.0
+    shared_fact_marker = any(
+        left_markers[marker_type] & right_markers[marker_type]
+        for marker_type in ("numbers", "times", "actions")
+    )
+    return (
+        ratio >= 0.84
+        or overlap >= 0.80
+        or (shared_fact_marker and ratio >= 0.70 and overlap >= 0.62)
+    )
+
+
+def _consolidate_news_key_points(
+    title: str,
+    key_points: Sequence[str],
+) -> List[str]:
+    simple_agreement = _simple_investment_agreement(title, key_points)
+    consolidated: List[str] = []
+    for point in key_points:
+        if _meaningfully_repeats(title, point):
+            continue
+        duplicate_index = next(
+            (
+                index
+                for index, existing in enumerate(consolidated)
+                if _meaningfully_repeats(existing, point)
+            ),
+            None,
+        )
+        if duplicate_index is None:
+            consolidated.append(point)
+            continue
+        existing = consolidated[duplicate_index]
+        if (_news_point_score(point), len(point)) > (
+            _news_point_score(existing),
+            len(existing),
+        ):
+            consolidated[duplicate_index] = point
+
+    if simple_agreement:
+        return _select_simple_agreement_points(consolidated)
+
+    independent_evidence = [
+        point
+        for point in consolidated
+        if _news_point_signals(point)
+        & {"statement", "comparison", "follow_up"}
+    ]
+    independent_signal_types = set().union(
+        *(
+            _news_point_signals(point)
+            & {"statement", "comparison", "follow_up"}
+            for point in independent_evidence
+        )
+    ) if independent_evidence else set()
+    evidence_signatures = {
+        (
+            tuple(sorted(_news_point_signals(point))),
+            tuple(sorted(_news_fact_markers(point)["numbers"])),
+            tuple(sorted(_news_fact_markers(point)["times"])),
+            tuple(sorted(_news_fact_markers(point)["actions"])),
+        )
+        for point in independent_evidence
+    }
+    rich_evidence = (
+        len(independent_evidence) >= NEWS_RICH_EVIDENCE_THRESHOLD
+        and len(independent_signal_types) >= 2
+    ) or (
+        len(independent_evidence) >= 4
+        and len(evidence_signatures) == len(independent_evidence)
+    )
+    limit = (
+        19
+        if rich_evidence
+        else NEWS_BASIC_KEY_POINT_LIMIT
+    )
+    if len(consolidated) <= limit:
+        return consolidated
+
+    ranked_indexes = sorted(
+        range(len(consolidated)),
+        key=lambda index: (
+            _news_point_score(consolidated[index]),
+            len(consolidated[index]),
+            -index,
+        ),
+        reverse=True,
+    )[:limit]
+    return [consolidated[index] for index in sorted(ranked_indexes)]
+
+
 def _news_slides(
     title: str,
     assets: Sequence[Mapping[str, Any]],
@@ -201,13 +508,45 @@ def _news_slides(
 ) -> List[Dict[str, Any]]:
     slides = [_cover(title, assets)]
     remaining_assets = list(assets[1:])
-    for position, key_point in enumerate(key_points[:19], start=1):
-        asset = remaining_assets.pop(0) if remaining_assets else None
+    closing_index = len(key_points) - 1
+    closing_candidates = [
+        index
+        for index, point in enumerate(key_points)
+        if _news_point_signals(point) & {"follow_up", "comparison", "background"}
+    ]
+    if closing_candidates:
+        closing_index = closing_candidates[-1]
+    ordered_points = [
+        point
+        for index, point in enumerate(key_points)
+        if index != closing_index
+    ]
+    if key_points:
+        ordered_points.append(key_points[closing_index])
+    # Deep discovery may provide distinct visuals from related reporting,
+    # official video, and open-media sources. Expand only as far as those
+    # post-discovery visuals support; never fill the gap with text-only cards.
+    supported_points = ordered_points[: min(19, len(remaining_assets))]
+    for position, key_point in enumerate(supported_points, start=1):
+        asset = remaining_assets.pop(0)
+        signals = _news_point_signals(key_point)
+        if position == len(ordered_points):
+            slide_role = "meaning_next_action"
+        elif "number" in signals:
+            slide_role = "key_number"
+        elif "background" in signals:
+            slide_role = "background"
+        elif "statement" in signals:
+            slide_role = "person_statement"
+        elif "comparison" in signals:
+            slide_role = "comparison"
+        else:
+            slide_role = "key_fact"
         slides.append(
             {
-                "slide_role": "source_context",
-                "media_type": asset["media_type"] if asset else "editorial",
-                "asset_refs": [asset["asset_id"]] if asset else [],
+                "slide_role": slide_role,
+                "media_type": asset["media_type"],
+                "asset_refs": [asset["asset_id"]],
                 "copy_source": "deep_discovery_bundle.key_points",
                 "body": key_point,
                 "content_unit": position,
@@ -422,6 +761,11 @@ def build_selected_candidate_production_plan(
     scenes = _objects(deep_dive_bundle.get("reconstruction_scenes"))
     comments = _real_comments(deep_dive_bundle)
     key_points = _strings(deep_dive_bundle.get("key_points"))
+    news_key_points = (
+        _consolidate_news_key_points(title, key_points)
+        if account == "A"
+        else key_points
+    )
     if not assets and not completed_slides and not key_points and not (account == "B" and scenes):
         result = _blocked(
             "usable_media_missing",
@@ -440,7 +784,7 @@ def build_selected_candidate_production_plan(
             "C": "fashion_beauty_entertainment",
         }[account]
     elif account == "A":
-        slide_plan = _news_slides(title, assets, key_points)
+        slide_plan = _news_slides(title, assets, news_key_points)
         content_kind = "news"
     elif account == "B":
         slide_plan = _story_slides(title, assets, scenes, comments)
@@ -476,7 +820,7 @@ def build_selected_candidate_production_plan(
         "summary_source": "deep_discovery_bundle",
         "card_footer": _text(deep_dive_bundle.get("card_footer")),
         "feed_body": _text(deep_dive_bundle.get("feed_body")) or summary,
-        "key_points": _strings(deep_dive_bundle.get("key_points")),
+        "key_points": news_key_points if account == "A" else key_points,
         "source_credit": source_refs,
         "source_credit_placement": "caption_end" if account in {"A", "C"} else "internal_record",
         "final_human_copy_review_required": True,
@@ -499,6 +843,7 @@ def build_selected_candidate_production_plan(
         "execution_enabled": False,
         "render_executed": False,
         "publish_executed": False,
+        "canvas_profile_id": DEFAULT_CARD_NEWS_PROFILE_ID,
         "slide_count": len(slide_plan),
         "slide_count_bounds": {"min": 1, "max": 20},
         "slide_plan": slide_plan,

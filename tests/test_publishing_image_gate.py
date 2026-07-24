@@ -131,7 +131,7 @@ class PublishingImageGateTest(unittest.TestCase):
         self.assertFalse(result["actual_publish"])
 
     def test_card_png_set_accepts_allowed_canvas_sizes_and_rejects_arbitrary_size(self):
-        for size in ((1080, 1080), (1080, 1350), (1080, 1440)):
+        for size in ((1080, 1080), (1080, 1440)):
             with self.subTest(size=size):
                 with tempfile.TemporaryDirectory() as temp_dir:
                     paths = []

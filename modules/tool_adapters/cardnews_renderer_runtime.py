@@ -19,6 +19,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, Mapping, Optional, Sequence
 
+from modules.card_news.canvas_contract import (
+    ALLOWED_CARD_CANVAS_SIZES,
+    CARD_NEWS_CANVAS_PROFILES,
+)
 from modules.card_news.production_controller import (
     BATCH_AUTHORIZED,
     REPRESENTATIVE_AUTHORIZED,
@@ -39,54 +43,13 @@ MAX_RENDER_TIMEOUT_SECONDS = 90.0
 DEFAULT_RENDER_TIMEOUT_SECONDS = 60.0
 MAX_RENDER_REQUEST_BYTES = 2 * 1024 * 1024
 MAX_SLIDES = 20
-ALLOWED_CANVAS_SIZES = frozenset({(1080, 566), (1080, 1080), (1080, 1350), (1080, 1440)})
+ALLOWED_CANVAS_SIZES = ALLOWED_CARD_CANVAS_SIZES
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _F_DRIVE_PATH = re.compile(r"^[Ff]:[\\/]")
 _SAFE_OUTPUT_NAME = re.compile(r"^[0-9A-Za-z._-]+\.png$")
 _REMOTE_OR_FILE_URL = re.compile(r"(?:https?|ftp)://|file://", re.IGNORECASE)
 
-CANVAS_PROFILES: Mapping[str, Mapping[str, Any]] = {
-    "instagram_portrait_4_5": {
-        "profile_id": "instagram_portrait_4_5",
-        "width": 1080,
-        "height": 1350,
-        "aspect_ratio": "4:5",
-        "safe_previews": {
-            "central_square": {"x": 0, "y": 135, "width": 1080, "height": 1080},
-            "profile_grid_3_4": {"x": 30, "y": 0, "width": 1020, "height": 1350},
-        },
-    },
-    "instagram_square_1_1": {
-        "profile_id": "instagram_square_1_1",
-        "width": 1080,
-        "height": 1080,
-        "aspect_ratio": "1:1",
-        "safe_previews": {
-            "central_square": {"x": 0, "y": 0, "width": 1080, "height": 1080},
-            "profile_grid_3_4": {"x": 135, "y": 0, "width": 810, "height": 1080},
-        },
-    },
-    "instagram_landscape_1_91_1": {
-        "profile_id": "instagram_landscape_1_91_1",
-        "width": 1080,
-        "height": 566,
-        "aspect_ratio": "1.91:1",
-        "safe_previews": {
-            "central_square": {"x": 257, "y": 0, "width": 566, "height": 566},
-            "profile_grid_3_4": {"x": 328, "y": 0, "width": 424, "height": 566},
-        },
-    },
-    "instagram_portrait_3_4": {
-        "profile_id": "instagram_portrait_3_4",
-        "width": 1080,
-        "height": 1440,
-        "aspect_ratio": "3:4",
-        "safe_previews": {
-            "central_square": {"x": 0, "y": 180, "width": 1080, "height": 1080},
-            "profile_grid_3_4": {"x": 0, "y": 0, "width": 1080, "height": 1440},
-        },
-    },
-}
+CANVAS_PROFILES = CARD_NEWS_CANVAS_PROFILES
 PROTECTED_SUBJECT_KINDS = frozenset({"hair", "outfit", "product", "comment"})
 
 ENGINE_PACKAGES: Mapping[str, tuple[str, ...]] = {
@@ -629,6 +592,61 @@ class CardNewsRendererRuntime:
                 }
             )
 
+        rendered_asset_ids = request.get("rendered_asset_ids")
+        rendered_asset_ids_supplied = isinstance(rendered_asset_ids, Mapping)
+        if not rendered_asset_ids_supplied:
+            rendered_asset_ids = {}
+        normalized_rendered_asset_ids: Dict[str, list[str]] = {}
+        for slide in normalized_slides:
+            page_key = str(slide["page"])
+            actual = [
+                str(asset.get("asset_id") or "").strip()
+                for asset in slide["assets"]
+                if str(asset.get("asset_id") or "").strip()
+            ]
+            declared = (
+                rendered_asset_ids.get(page_key, [])
+                if rendered_asset_ids_supplied
+                else actual
+            )
+            if not isinstance(declared, list) or any(
+                not isinstance(value, str) or not value.strip()
+                for value in declared
+            ):
+                return self._blocked_render(
+                    "rendered_asset_ids_invalid", page_key
+                )
+            if sorted(declared) != sorted(actual):
+                return self._blocked_render(
+                    "rendered_asset_metadata_mismatch", page_key
+                )
+            normalized_rendered_asset_ids[page_key] = sorted(actual)
+
+        selection_receipts = request.get("asset_selection_receipts")
+        selection_receipts = (
+            [
+                copy.deepcopy(dict(item))
+                for item in selection_receipts
+                if isinstance(item, Mapping)
+            ]
+            if isinstance(selection_receipts, list)
+            else []
+        )
+        for receipt in selection_receipts:
+            asset_id = str(receipt.get("asset_id") or "").strip()
+            page = receipt.get("page")
+            if not asset_id:
+                continue
+            if (
+                isinstance(page, bool)
+                or not isinstance(page, int)
+                or asset_id not in normalized_rendered_asset_ids.get(str(page), [])
+            ):
+                return self._blocked_render(
+                    "selection_receipt_rendered_asset_mismatch",
+                    str(page),
+                )
+
         render_request_id = str(request.get("render_request_id") or "").strip()
         output_set_id = str(request.get("output_set_id") or "").strip()
         if not render_request_id or not output_set_id:
@@ -667,6 +685,8 @@ class CardNewsRendererRuntime:
             "slides": normalized_slides,
             "attribution_receipt": attribution_receipt,
             "attribution_receipt_hash": attribution_receipt_hash,
+            "asset_selection_receipts": selection_receipts,
+            "rendered_asset_ids": normalized_rendered_asset_ids,
         }
         stdin_json = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
         if len(stdin_json.encode("utf-8")) > MAX_RENDER_REQUEST_BYTES:
@@ -687,6 +707,8 @@ class CardNewsRendererRuntime:
             "canvas_profile_hash": canvas_profile_hash,
             "attribution_receipt": copy.deepcopy(attribution_receipt),
             "attribution_receipt_hash": attribution_receipt_hash,
+            "asset_selection_receipts": copy.deepcopy(selection_receipts),
+            "rendered_asset_ids": copy.deepcopy(normalized_rendered_asset_ids),
             "invoked_engines": ["satori", "resvg"],
             "capability_only_engines": ["fabric", "motion_canvas"],
         }
@@ -837,6 +859,12 @@ class CardNewsRendererRuntime:
             preserved_receipt["attribution_receipt_hash"] = expected.get(
                 "attribution_receipt_hash"
             )
+            preserved_receipt["asset_selection_receipts"] = copy.deepcopy(
+                expected.get("asset_selection_receipts", [])
+            )
+            preserved_receipt["rendered_asset_ids"] = copy.deepcopy(
+                expected.get("rendered_asset_ids", {})
+            )
         return {
             **base,
             "schema_version": RENDER_RECEIPT_SCHEMA,
@@ -847,6 +875,12 @@ class CardNewsRendererRuntime:
             "receipt": preserved_receipt,
             "attribution_receipt": copy.deepcopy(expected.get("attribution_receipt", [])),
             "attribution_receipt_hash": expected.get("attribution_receipt_hash"),
+            "asset_selection_receipts": copy.deepcopy(
+                expected.get("asset_selection_receipts", [])
+            ),
+            "rendered_asset_ids": copy.deepcopy(
+                expected.get("rendered_asset_ids", {})
+            ),
             "authorization_id": expected["authorization"]["authorization_id"],
             "outputs": [
                 str(Path(expected["output_root"]) / item["output_filename"])

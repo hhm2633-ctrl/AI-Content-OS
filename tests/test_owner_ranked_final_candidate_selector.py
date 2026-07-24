@@ -85,6 +85,32 @@ class OwnerRankedFinalCandidateSelectorTests(unittest.TestCase):
         result = select_owner_ranked_final_candidates(queue, {"annotations": []})
         self.assertEqual({item["grade"] for item in result["accounts"]["B"]["selected"]}, {"1"})
 
+    def test_grade_none_is_optional_and_reaches_automatic_selection(self):
+        queue = self._queue()
+        for index, request in enumerate(queue["requests"]):
+            request["grade"] = None
+            request["selection_status"] = "TOP" if index % 6 < 4 else "BACKUP"
+            request["production_eligible"] = True
+            request["selection_score"] = {"score": 1.0 - (index % 6) / 10}
+        result = select_owner_ranked_final_candidates(queue, {"annotations": []})
+        self.assertEqual(result["status"], "selected")
+        self.assertEqual(result["selected_count"], 12)
+        self.assertFalse(result["owner_grade_required"])
+        self.assertEqual(
+            result["owner_approval_required_at"],
+            "pre_upload_manual_upload_ready",
+        )
+        self.assertFalse(result["manual_upload_ready"])
+        self.assertFalse(result["actual_publish"])
+        self.assertFalse(result["upload_executed"])
+        self.assertTrue(
+            all(
+                item["grade"] is None
+                for account in result["accounts"].values()
+                for item in account["selected"]
+            )
+        )
+
     def test_account_c_matches_are_not_arbitrarily_capped(self):
         queue = self._queue()
         annotations = [

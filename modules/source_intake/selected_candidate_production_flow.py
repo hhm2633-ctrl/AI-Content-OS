@@ -521,7 +521,7 @@ def _default_production_plans(
             "B": "story",
             "C": "beauty" if "beauty" in str(candidate.get("category") or "").lower() else "fashion",
         }.get(str(candidate.get("account") or "").upper(), "news")
-        plan["production_learning_profile"] = ProductionProfileCompiler().compile(
+        production_learning_profile = ProductionProfileCompiler().compile(
             {
                 "account": profile_account,
                 "topic": str(candidate.get("title") or ""),
@@ -531,13 +531,56 @@ def _default_production_plans(
                 "emotion": str(candidate.get("emotion") or ""),
             }
         )
+        plan["production_learning_profile"] = production_learning_profile
         plan["reference_v2_required"] = True
+        profile_registry = production_learning_profile.get("reference_v2_registry")
+        profile_registry = (
+            profile_registry if isinstance(profile_registry, Mapping) else {}
+        )
+        selectable_reference_ids = {
+            str(value).strip()
+            for value in profile_registry.get("selectable_reference_ids", [])
+            if str(value).strip()
+        }
+        registry_specimens = [
+            copy.deepcopy(dict(item))
+            for item in profile_registry.get("specimens", [])
+            if isinstance(item, Mapping)
+            and str(item.get("reference_id") or "").strip()
+            in selectable_reference_ids
+        ]
+        candidate_specimens = candidate.get("reference_specimens")
+        candidate_blueprints = candidate.get("reference_blueprints")
         plan["reference_specimens"] = copy.deepcopy(
-            candidate.get("reference_specimens", [])
+            candidate_specimens
+            if isinstance(candidate_specimens, list) and candidate_specimens
+            else registry_specimens
         )
         plan["reference_blueprints"] = copy.deepcopy(
-            candidate.get("reference_blueprints", {})
+            candidate_blueprints
+            if isinstance(candidate_blueprints, Mapping) and candidate_blueprints
+            else profile_registry.get("blueprints", {})
         )
+        plan["reference_v2_registry_consumption"] = {
+            "status": (
+                "consumed"
+                if plan["reference_specimens"] and plan["reference_blueprints"]
+                else "unavailable"
+            ),
+            "source": (
+                "candidate_payload"
+                if isinstance(candidate_specimens, list) and candidate_specimens
+                else "production_learning_profile_registry"
+            ),
+            "selectable_reference_ids": sorted(selectable_reference_ids),
+            "consumed_reference_ids": [
+                str(item.get("reference_id") or "").strip()
+                for item in plan["reference_specimens"]
+                if isinstance(item, Mapping)
+                and str(item.get("reference_id") or "").strip()
+            ],
+            "auto_approval_performed": False,
+        }
         plan["reference_v2_media"] = copy.deepcopy(
             candidate.get("reference_v2_media", {})
         )
@@ -801,6 +844,12 @@ def run_selected_candidate_production_flow(
                             for value in slide_media.values()
                             if isinstance(value, list)
                         )
+                        if media_count == 0 and (
+                            str(raw_slide.get("media_type") or "").lower()
+                            in {"image", "photo", "screenshot"}
+                            or bool(raw_slide.get("asset_refs"))
+                        ):
+                            media_count = 1
                         result = produce_reference_driven_slide(
                             specimens=specimens,
                             blueprints=blueprints,
@@ -847,6 +896,10 @@ def run_selected_candidate_production_flow(
                     "legacy_renderer_fallback_allowed": False,
                     "slides": reference_slides,
                 }
+                if reference_status != "ready":
+                    rendered["status"] = "blocked"
+                    rendered["reason_code"] = reference_reason
+                    rendered["renderer_ready"] = False
                 rendered["production_learning_profile"] = copy.deepcopy(
                     plan.get("production_learning_profile", {})
                 )

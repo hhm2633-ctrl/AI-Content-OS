@@ -115,7 +115,7 @@ class TestCardNewsOutputSetTransaction(unittest.TestCase):
                 Image.new("RGB", (1080, 1080), (2, 2, 3)).save(self.root / self.paths[1])
 
     def test_allowed_canvas_sizes_are_accepted_and_arbitrary_size_fails(self):
-        for size in ((1080, 1080), (1080, 1350), (1080, 1440)):
+        for size in ((1080, 1080), (1080, 1440)):
             with self.subTest(size=size):
                 for index, relative_path in enumerate(self.paths, start=1):
                     Image.new("RGB", size, (index, 2, 3)).save(self.root / relative_path)

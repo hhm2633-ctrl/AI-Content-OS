@@ -86,10 +86,8 @@ class ProductionProfilePipelineBridgeTest(unittest.TestCase):
         )
         self.assertEqual(
             [
-                "account_identity",
                 "emotional_tone",
                 "first_screen",
-                "image_grammar",
                 "layout_family",
                 "palette",
                 "text_density",
@@ -98,6 +96,17 @@ class ProductionProfilePipelineBridgeTest(unittest.TestCase):
             blueprint["learning_trace"]["production_profile"][
                 "consumed_fields"
             ],
+        )
+        self.assertEqual(
+            ["account_identity", "image_grammar"],
+            blueprint["learning_trace"]["production_profile"][
+                "ignored_fields"
+            ],
+        )
+        self.assertFalse(
+            blueprint["learning_trace"]["production_profile"][
+                "render_contract_receipt"
+            ]["render_execution_claimed"]
         )
         self.assertEqual(
             ["learning-layout-001"],

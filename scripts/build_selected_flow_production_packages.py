@@ -12,6 +12,10 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, Mapping
 
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 from modules.card_news.selected_candidate_production_package import (
     build_selected_candidate_production_package,
 )

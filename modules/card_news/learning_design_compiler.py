@@ -530,9 +530,6 @@ def compile_learning_driven_blueprint(
             accepted = isinstance(value, Mapping) and bool(value)
         elif field == "layout_family":
             accepted = _text(value).casefold() in supported_layouts
-        elif field == "image_grammar":
-            values = [value] if isinstance(value, str) else value if isinstance(value, list) else []
-            accepted = any(_text(item).casefold() in supported_grammar for item in values)
         elif field == "emotional_tone":
             accepted = _text(value).casefold() in supported_tones
         elif field == "first_screen":
@@ -650,6 +647,53 @@ def compile_learning_driven_blueprint(
                     if isinstance(production_profile, Mapping)
                     else {}
                 ),
+                "reference_v2_registry": copy.deepcopy(
+                    production_profile.get("reference_v2_registry", {})
+                    if isinstance(production_profile, Mapping)
+                    else {}
+                ),
+                "render_contract_receipt": {
+                    "consumed_fields": sorted(executable_profile),
+                    "ignored_fields": sorted(ignored_profile_fields),
+                    "consumption_stage": "learning_design_compiler",
+                    "render_execution_claimed": False,
+                },
+                "reference_registry_receipt": {
+                    "status": (
+                        production_profile.get("reference_v2_registry", {}).get(
+                            "status", "not_supplied"
+                        )
+                        if isinstance(production_profile, Mapping)
+                        and isinstance(
+                            production_profile.get("reference_v2_registry"),
+                            Mapping,
+                        )
+                        else "not_supplied"
+                    ),
+                    "registry_path": (
+                        production_profile.get("reference_v2_registry", {}).get(
+                            "registry_path"
+                        )
+                        if isinstance(production_profile, Mapping)
+                        and isinstance(
+                            production_profile.get("reference_v2_registry"),
+                            Mapping,
+                        )
+                        else None
+                    ),
+                    "selectable_reference_ids": copy.deepcopy(
+                        production_profile.get("reference_v2_registry", {}).get(
+                            "selectable_reference_ids", []
+                        )
+                        if isinstance(production_profile, Mapping)
+                        and isinstance(
+                            production_profile.get("reference_v2_registry"),
+                            Mapping,
+                        )
+                        else []
+                    ),
+                    "auto_approval_performed": False,
+                },
             },
         },
         "render_executed": False,

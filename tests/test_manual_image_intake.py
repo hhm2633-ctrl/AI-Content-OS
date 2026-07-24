@@ -111,7 +111,7 @@ class ManualImageIntakeLoaderTests(unittest.TestCase):
         self.assertIn("rights_record", result[1])
 
     def test_allowed_canvas_sizes_are_accepted_and_arbitrary_size_rejected(self):
-        for size in ((1080, 1080), (1080, 1350), (1080, 1440)):
+        for size in ((1080, 1080), (1080, 1440)):
             with self.subTest(size=size):
                 _make_png(Path("real_images/card_1.png"), size=size)
                 self._write_intake(

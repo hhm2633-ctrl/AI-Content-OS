@@ -59,7 +59,7 @@ class SelectedCandidateProductionPlannerTests(unittest.TestCase):
         self.assertEqual(result["status"], "production_plan_ready")
         self.assertEqual(result["slide_count"], 1)
 
-    def test_news_with_one_image_and_multiple_content_units_expands(self):
+    def test_news_with_one_image_keeps_details_in_feed_caption(self):
         result = build_selected_candidate_production_plan(
             {"id": "a-rich", "account": "A", "category": "국내뉴스", "title": "설명이 필요한 뉴스"},
             {
@@ -71,8 +71,119 @@ class SelectedCandidateProductionPlannerTests(unittest.TestCase):
             },
         )
         self.assertEqual(result["status"], "production_plan_ready")
-        self.assertEqual(result["slide_count"], 4)
-        self.assertEqual(len(result["slide_plan"]), 4)
+        self.assertEqual(result["slide_count"], 1)
+        self.assertEqual(len(result["slide_plan"]), 1)
+        self.assertEqual(
+            ["첫 번째 핵심", "두 번째 핵심", "세 번째 핵심"],
+            result["copy_plan"]["key_points"],
+        )
+
+    def test_simple_agreement_news_keeps_one_visual_and_caption_details(self):
+        title = "기업과 지자체, 2600억원 투자협약 체결"
+        result = build_selected_candidate_production_plan(
+            {
+                "id": "agreement-news",
+                "account": "A",
+                "category": "경제",
+                "title": title,
+            },
+            {
+                "status": "completed",
+                "summary": "한 기업의 지역 투자협약 내용을 정리했다.",
+                "source_refs": ["https://news.example/agreement"],
+                "assets": [image("agreement")],
+                "key_points": [
+                    "기업과 지자체가 2600억원 규모 투자협약을 체결했다.",
+                    "이번 협약의 투자 규모는 총 2600억원이다.",
+                    "기업은 지역 산업단지에 생산시설을 증설한다.",
+                    "생산시설 증설은 단계적으로 진행된다.",
+                    "투자가 완료되면 신규 고용이 늘어날 전망이다.",
+                    "지자체는 인허가와 기반시설을 지원한다.",
+                    "사업은 관련 절차를 거쳐 순차적으로 추진할 예정이다.",
+                    "협약은 지역 산업 경쟁력 강화가 목표다.",
+                ],
+            },
+        )
+
+        self.assertEqual("production_plan_ready", result["status"])
+        self.assertEqual(result["slide_count"], 1)
+        self.assertEqual("cover", result["slide_plan"][0]["slide_role"])
+        self.assertGreater(len(result["copy_plan"]["key_points"]), 0)
+
+    def test_real_single_investment_agreement_uses_one_visual(self):
+        key_points = [
+            "구미시는 월덱스의 대규모 투자를 유치하며 반도체 특화단지 입지를 강화했습니다.",
+            "세 기관은 시청에서 반도체 공정 부품 생산시설 증설을 위한 양해각서를 체결했습니다.",
+            "월덱스는 구미국가5산업단지에 실리콘 파츠 등 핵심 부품 생산공장을 신설할 계획입니다.",
+            "이번 투자 과정에서 370명 이상의 신규 고용이 창출될 전망입니다.",
+            "월덱스는 공급망 안정과 글로벌 수요 대응을 위해 구미 재투자를 결정했습니다.",
+            "기존 사업장 인프라와 구미시의 신속한 인허가 지원이 투자 결정에 영향을 줬습니다.",
+            "김장호 시장은 안정적인 성장을 위한 행정·재정 지원을 이어가겠다고 밝혔습니다.",
+        ]
+        result = build_selected_candidate_production_plan(
+            {
+                "id": "single-investment-agreement",
+                "account": "A",
+                "category": "경제",
+                "title": "구미에 2600억원 반도체 투자",
+            },
+            {
+                "status": "completed",
+                "summary": "단일 기업의 생산시설 증설 투자협약이다.",
+                "source_refs": ["https://news.example/investment-agreement"],
+                "assets": [image("investment-agreement")],
+                "key_points": key_points,
+            },
+        )
+
+        self.assertEqual("production_plan_ready", result["status"])
+        self.assertEqual(1, result["slide_count"])
+        self.assertEqual(
+            "구미에 2600억원 반도체 투자",
+            result["title"],
+        )
+        self.assertEqual(5, len(result["copy_plan"]["key_points"]))
+        self.assertTrue(
+            any(
+                "양해각서" in point
+                for point in result["copy_plan"]["key_points"]
+            )
+        )
+        self.assertTrue(
+            any("370명" in point for point in result["copy_plan"]["key_points"])
+        )
+        self.assertEqual(
+            1,
+            sum(
+                any(marker in point for marker in ("입지", "공급망", "인프라"))
+                for point in result["copy_plan"]["key_points"]
+            ),
+        )
+
+    def test_news_with_many_evidence_types_does_not_create_text_only_slides(self):
+        key_points = [
+            "감사 결과에서 첫 번째 수치가 전년 대비 12% 증가했다.",
+            "두 번째 지표는 지난해보다 9% 감소한 것으로 확인됐다.",
+            "책임자는 첫 번째 개선 계획을 다음 달 시작한다고 밝혔다.",
+            "현장 관계자는 별도 지원책이 필요하다고 말했다.",
+            "기관은 후속 점검을 오는 9월 추진할 예정이다.",
+            "세 지역의 결과를 비교하면 격차가 각각 다르게 나타났다.",
+            "추가 예산안은 다음 회의에서 심의할 계획이다.",
+        ]
+        result = build_selected_candidate_production_plan(
+            {"id": "evidence-rich", "account": "A", "title": "감사 결과 발표"},
+            {
+                "status": "completed",
+                "summary": "독립된 수치와 발언, 후속 조치가 함께 공개됐다.",
+                "source_refs": ["https://news.example/audit"],
+                "assets": [image("audit")],
+                "key_points": key_points,
+            },
+        )
+
+        self.assertEqual("production_plan_ready", result["status"])
+        self.assertEqual(result["slide_count"], 1)
+        self.assertEqual(len(key_points), len(result["copy_plan"]["key_points"]))
 
     def test_twenty_completed_slides_are_preserved_and_twenty_one_are_blocked(self):
         def bundle(count):

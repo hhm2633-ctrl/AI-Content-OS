@@ -70,6 +70,53 @@ class OwnerRankedFinalSelectionRunnerTests(unittest.TestCase):
             self.assertFalse(result["commerce_story_stage"]["network_used"])
             self.assertTrue(output_path.exists())
 
+    def test_ungraded_queue_reaches_production_handoff_without_publish_or_upload(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            queue_path = root / "queue.json"
+            catalog_path = root / "catalog.json"
+            output_path = root / "result.json"
+            queue_path.write_text(json.dumps({
+                "schema_version": "owner_ranked_deep_dive_queue_v1",
+                "requests": [{
+                    "request_id": "candidate_review:ungraded",
+                    "candidate_id": "ungraded",
+                    "account": "A",
+                    "category": "국내뉴스",
+                    "title": "등급 없이 자동 선정되는 후보",
+                    "grade": None,
+                    "selection_status": "TOP",
+                    "production_eligible": True,
+                    "selection_score": {"score": 0.91},
+                    "source_urls": ["https://example.com/ungraded"],
+                }],
+            }, ensure_ascii=False), encoding="utf-8")
+            catalog_path.write_text(
+                json.dumps({"products": []}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            result = execute(
+                repository_root=Path(__file__).resolve().parents[1],
+                queue_path=queue_path,
+                catalog_path=catalog_path,
+                console_root=root / "console",
+                output_path=output_path,
+            )
+            self.assertEqual(result["selection"]["selected_count"], 1)
+            self.assertEqual(result["production_handoff"]["status"], "ready")
+            self.assertFalse(result["production_handoff"]["owner_grade_required"])
+            self.assertTrue(
+                result["production_handoff"]["automatic_selection_is_not_owner_approval"]
+            )
+            self.assertEqual(
+                result["production_handoff"]["owner_approval_required_at"],
+                "pre_upload_manual_upload_ready",
+            )
+            self.assertFalse(result["manual_upload_ready"])
+            self.assertFalse(result["actual_publish"])
+            self.assertFalse(result["upload_executed"])
+            self.assertFalse(result["agent_console"]["owner_review_gate_used"])
+
 
 if __name__ == "__main__":
     unittest.main()

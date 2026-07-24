@@ -15,6 +15,10 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, Mapping
 
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
 from modules.source_intake.owner_ranked_deep_dive_adapter import (
     adapt_owner_ranked_queue_to_selective_contract,
 )
@@ -76,10 +80,12 @@ class CachedAccountProviderRouter(AccountProviderRouter):
     ) -> Path:
         body = json.dumps(
             {
+                "cache_contract_version": "deep_discovery_v2_topic_bound_open_media",
                 "account": str(account).upper(),
                 "operation": str(operation),
                 "candidate_id": str(request.get("candidate_id") or ""),
                 "title": str(request.get("title") or ""),
+                "category": str(request.get("category") or ""),
                 "source_urls": list(request.get("source_urls") or []),
             },
             ensure_ascii=False,

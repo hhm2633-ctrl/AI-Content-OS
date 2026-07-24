@@ -6,6 +6,11 @@ from modules.card_news.reference_driven_production import (
     produce_reference_driven_slide,
 )
 from modules.design_learning.layout_blueprint_contract import with_geometry_hash
+from modules.design_learning.reference_specimen_registry import (
+    INDEPENDENT_REVALIDATION_SCHEMA_VERSION,
+    VISUAL_GATE_ADAPTER_SCHEMA_VERSION,
+    VISUAL_GATE_SCHEMA_VERSION,
+)
 
 
 def make_blueprint():
@@ -90,7 +95,31 @@ def make_blueprint():
     )
 
 
-def make_specimen(reference_only=False):
+def make_visual_gate_receipt(geometry_hash):
+    return {
+        "schema_version": VISUAL_GATE_SCHEMA_VERSION,
+        "adapter_schema_version": VISUAL_GATE_ADAPTER_SCHEMA_VERSION,
+        "independent_revalidation_schema_version": (
+            INDEPENDENT_REVALIDATION_SCHEMA_VERSION
+        ),
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-fixture-001",
+        "source_receipt_path": "tests/fixtures/visual-gate-fixture-001.json",
+        "source_receipt_sha256": "fixture-source-receipt-sha256",
+        "reference_id": "ref-owner-001",
+        "blueprint_id": "bp-owner-001",
+        "geometry_hash": geometry_hash,
+        "gate_result_hash": "fixture-gate-result-hash",
+        "confidence_used_as_pass": False,
+        "auto_owner_approval": False,
+        "production_approval_granted": False,
+    }
+
+
+def make_specimen(reference_only=False, geometry_hash=None):
+    if geometry_hash is None:
+        geometry_hash = make_blueprint()["geometry_hash"]
     return {
         "reference_id": "ref-owner-001",
         "source_claim_ids": ["claim-001"],
@@ -113,13 +142,15 @@ def make_specimen(reference_only=False):
         "owner_approval_receipt_id": "owner-receipt-001",
         "reference_only": reference_only,
         "measured_performance_claimed": False,
+        "geometry_visual_gate_receipt": make_visual_gate_receipt(geometry_hash),
     }
 
 
 def make_request():
+    blueprint = make_blueprint()
     return {
-        "specimens": [make_specimen()],
-        "blueprints": {"bp-owner-001": make_blueprint()},
+        "specimens": [make_specimen(geometry_hash=blueprint["geometry_hash"])],
+        "blueprints": {"bp-owner-001": blueprint},
         "context": {
             "account": "news",
             "slide_role": "hook",

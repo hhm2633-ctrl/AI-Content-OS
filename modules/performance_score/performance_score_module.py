@@ -75,6 +75,12 @@ class PerformanceScoreModule(BaseModule):
             "status": "performance_score_completed",
             **scores,
             **planner_summary,
+            "measurement_class": "internal_proxy",
+            "performance_provenance": {
+                "source": "pre_publish_quality_signals",
+                "external_measured": False,
+                "eligible_for_pattern_promotion": False,
+            },
             "fallback_used": False,
             "created_at": datetime.now().isoformat(),
         }
@@ -184,6 +190,12 @@ class PerformanceScoreModule(BaseModule):
             "planner_helpful": False,
             "planner_rejected": False,
             "planner_reason": "Performance Score 계산 실패로 Planner 적용 여부를 판정하지 않음.",
+            "measurement_class": "internal_proxy",
+            "performance_provenance": {
+                "source": "pre_publish_quality_signals",
+                "external_measured": False,
+                "eligible_for_pattern_promotion": False,
+            },
             "fallback_used": True,
             "reason": reason,
             "created_at": datetime.now().isoformat(),

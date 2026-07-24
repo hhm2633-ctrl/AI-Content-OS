@@ -11,10 +11,18 @@ import copy
 from typing import Any, Dict, List, Mapping
 
 from modules.card_news.canvas_contract import (
+    DEFAULT_CARD_NEWS_PROFILE_ID,
     allowed_card_slide_count_label,
+    get_card_canvas_profile,
     is_allowed_card_slide_count,
 )
 from modules.media_intelligence.slide_asset_selector import SlideAssetSelector
+from modules.card_news.reference_driven_production import (
+    produce_reference_driven_slide,
+)
+from modules.design_learning.reference_specimen_registry import (
+    is_visual_gate_pass_receipt,
+)
 
 
 SCHEMA_VERSION = "selected_candidate_production_package_v1"
@@ -140,6 +148,52 @@ def _approval_gate(approval_receipt: Any, candidate_id: str) -> Dict[str, Any]:
     }
 
 
+def _learning_contract(
+    production_plan: Mapping[str, Any],
+    render_input_receipt: Mapping[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    candidates: List[Mapping[str, Any]] = []
+    for root in (render_input_receipt, production_plan):
+        if not isinstance(root, Mapping):
+            continue
+        candidates.append(root)
+        preserved = root.get("full_plan_preserved")
+        if isinstance(preserved, Mapping):
+            candidates.append(preserved)
+        for parent in (root, preserved):
+            if not isinstance(parent, Mapping):
+                continue
+            blueprint = parent.get("production_blueprint")
+            if isinstance(blueprint, Mapping):
+                candidates.append(blueprint)
+    design_system: dict[str, Any] = {}
+    learning_trace: dict[str, Any] = {}
+    production_profile: dict[str, Any] = {}
+    for candidate in candidates:
+        if not isinstance(candidate, Mapping):
+            continue
+        if not design_system and isinstance(candidate.get("design_system"), Mapping):
+            design_system = copy.deepcopy(dict(candidate["design_system"]))
+        if not learning_trace and isinstance(candidate.get("learning_trace"), Mapping):
+            learning_trace = copy.deepcopy(dict(candidate["learning_trace"]))
+        if not production_profile and isinstance(
+            candidate.get("production_learning_profile"), Mapping
+        ):
+            production_profile = copy.deepcopy(
+                dict(candidate["production_learning_profile"])
+            )
+        trace = candidate.get("learning_trace")
+        trace = trace if isinstance(trace, Mapping) else {}
+        trace_profile = trace.get("production_profile")
+        if not production_profile and isinstance(trace_profile, Mapping):
+            production_profile = copy.deepcopy(dict(trace_profile))
+    if not production_profile:
+        raw = render_input_receipt.get("production_learning_profile")
+        if isinstance(raw, Mapping):
+            production_profile = copy.deepcopy(dict(raw))
+    return design_system, learning_trace, production_profile
+
+
 def build_selected_candidate_production_package(
     production_plan: Any,
     render_input_receipt: Any,
@@ -214,6 +268,17 @@ def build_selected_candidate_production_package(
     if not sources:
         return _blocked("evidence_sources_missing", "at least one recorded evidence source is required", candidate_id)
 
+    canvas_profile_id = (
+        _text(production_plan.get("canvas_profile_id"))
+        or DEFAULT_CARD_NEWS_PROFILE_ID
+    )
+    if get_card_canvas_profile(canvas_profile_id) is None:
+        return _blocked(
+            "canvas_profile_invalid",
+            "production plan must select one approved feed/carousel canvas profile",
+            candidate_id,
+        )
+
     slide_plan = _objects(production_plan.get("slide_plan"))
     if not slide_plan or production_plan.get("slide_count") != len(slide_plan):
         return _blocked("slide_plan_malformed", "variable slide plan and slide_count must agree", candidate_id)
@@ -285,8 +350,8 @@ def build_selected_candidate_production_package(
     media_plan: List[Dict[str, Any]] = []
     for page, planned in enumerate(slide_plan, start=1):
         supplied = supplied_by_page.get(page, {})
-        headline = _text(planned.get("headline")) or _text(supplied.get("headline"))
-        body = _text(planned.get("body")) or _text(supplied.get("body"))
+        headline = _text(supplied.get("headline")) or _text(planned.get("headline"))
+        body = _text(supplied.get("body")) or _text(planned.get("body"))
         media_type = _text(planned.get("media_type"))
         if not headline or not body or not media_type:
             return _blocked("slide_copy_or_media_missing", f"slide {page} is incomplete", candidate_id)
@@ -311,7 +376,13 @@ def build_selected_candidate_production_package(
                     source_media_candidate.get("locator")
                 )
             visual_spec["source_media_candidate"] = source_media_candidate
-        slide = {"page": page, "role": role, "headline": headline, "body": body}
+        slide = {
+            "page": page,
+            "role": role,
+            "headline": headline,
+            "body": body,
+            "asset_refs": asset_refs,
+        }
         if visual_spec:
             slide["visual_spec"] = visual_spec
         slides.append(slide)
@@ -327,6 +398,209 @@ def build_selected_candidate_production_package(
             }
         )
 
+    design_system, learning_trace, production_learning_profile = (
+        _learning_contract(production_plan, render_input_receipt)
+    )
+    registry = production_learning_profile.get("reference_v2_registry")
+    if not isinstance(registry, Mapping):
+        registry = (
+            learning_trace.get("production_profile", {}).get(
+                "reference_v2_registry", {}
+            )
+            if isinstance(learning_trace.get("production_profile"), Mapping)
+            else {}
+        )
+    registry = registry if isinstance(registry, Mapping) else {}
+    if registry.get("auto_approval_performed") is True:
+        return _blocked(
+            "reference_registry_auto_approval_forbidden",
+            "reference registry cannot grant production approval",
+            candidate_id,
+        )
+    selectable_reference_ids = registry.get("selectable_reference_ids")
+    if registry.get("status") == "ready" and (
+        not isinstance(selectable_reference_ids, list)
+        or not selectable_reference_ids
+    ):
+        return _blocked(
+            "reference_registry_selectable_ids_missing",
+            "ready registry must identify owner-approved selectable references",
+            candidate_id,
+        )
+    registry_specimens = {
+        _text(item.get("reference_id")): item
+        for item in registry.get("specimens", [])
+        if isinstance(item, Mapping) and _text(item.get("reference_id"))
+    }
+    for reference_id in (
+        selectable_reference_ids
+        if isinstance(selectable_reference_ids, list)
+        else []
+    ):
+        specimen = registry_specimens.get(_text(reference_id), {})
+        if not is_visual_gate_pass_receipt(
+            specimen.get("geometry_visual_gate_receipt"),
+            reference_id=_text(reference_id),
+            blueprint_id=_text(specimen.get("blueprint_id")),
+        ):
+            return _blocked(
+                "reference_visual_gate_pass_receipt_missing",
+                "registry selectable reference requires visual gate pass evidence",
+                candidate_id,
+            )
+    auto_reference_rows: List[Dict[str, Any]] = []
+    auto_reference_attempts: List[Dict[str, Any]] = []
+    if (
+        registry.get("status") == "ready"
+        and isinstance(registry.get("specimens"), list)
+        and isinstance(registry.get("blueprints"), Mapping)
+    ):
+        for slide, media in zip(slides, media_plan):
+            result = produce_reference_driven_slide(
+                specimens=registry["specimens"],
+                blueprints=registry["blueprints"],
+                context={
+                    "account": account,
+                    "format": "card_news",
+                    "topic": title,
+                    "slide_role": slide["role"],
+                    "emotion": _text(production_plan.get("emotion")),
+                    "media_count": (
+                        len(media.get("source_media_candidates", []))
+                        if isinstance(media.get("source_media_candidates"), list)
+                        else 0
+                    )
+                    or (
+                        1
+                        if _text(media.get("media_type")).lower()
+                        in {"image", "photo", "screenshot"}
+                        or bool(media.get("asset_refs"))
+                        else 0
+                    ),
+                },
+                content={
+                    "headline": slide["headline"],
+                    "body": slide["body"],
+                },
+                media=media.get("source_media_candidates", []),
+            )
+            auto_reference_attempts.append(
+                {
+                    "page": slide["page"],
+                    "status": result.get("status"),
+                    "reason_code": result.get("reason_code"),
+                }
+            )
+            if result.get("status") == "ready":
+                selected_reference_id = _text(
+                    result.get("selection", {}).get(
+                        "primary_reference_id"
+                    )
+                    if isinstance(result.get("selection"), Mapping)
+                    else ""
+                )
+                selected_specimen = registry_specimens.get(
+                    selected_reference_id, {}
+                )
+                auto_reference_rows.append(
+                    {
+                        "page": slide["page"],
+                        **copy.deepcopy(result),
+                        "geometry_visual_gate_receipt": copy.deepcopy(
+                            selected_specimen.get(
+                                "geometry_visual_gate_receipt", {}
+                            )
+                        ),
+                    }
+                )
+
+    production_profile_trace = learning_trace.get("production_profile")
+    production_profile_trace = (
+        production_profile_trace
+        if isinstance(production_profile_trace, Mapping)
+        else {}
+    )
+    render_contract_receipt = production_profile_trace.get(
+        "render_contract_receipt"
+    )
+    render_contract_receipt = (
+        render_contract_receipt
+        if isinstance(render_contract_receipt, Mapping)
+        else {}
+    )
+    consumed_reference_ids = sorted(
+        {
+            _text(row.get("selection", {}).get("primary_reference_id"))
+            for row in auto_reference_rows
+            if isinstance(row.get("selection"), Mapping)
+            and _text(row.get("selection", {}).get("primary_reference_id"))
+        }
+    )
+    learning_pipeline_consumption_receipt = {
+        "status": "package_consumption_recorded",
+        "profile_id": _text(
+            production_learning_profile.get("profile_id")
+            or production_profile_trace.get("profile_id")
+        ),
+        "profile_consumed_fields": sorted(
+            {
+                _text(field)
+                for field in render_contract_receipt.get(
+                    "consumed_fields", []
+                )
+                if _text(field)
+            }
+        ),
+        "profile_ignored_fields": sorted(
+            {
+                _text(field)
+                for field in render_contract_receipt.get(
+                    "ignored_fields", []
+                )
+                if _text(field)
+            }
+        ),
+        "registry_status": _text(registry.get("status")) or "not_supplied",
+        "registry_path": registry.get("registry_path"),
+        "selectable_reference_ids": copy.deepcopy(
+            selectable_reference_ids
+            if isinstance(selectable_reference_ids, list)
+            else []
+        ),
+        "reference_attempts": copy.deepcopy(auto_reference_attempts),
+        "reference_consumed_ids": consumed_reference_ids,
+        "asset_selection_receipt_ids": sorted(
+            {
+                _text(row.get("selection_receipt_id"))
+                for row in slide_asset_selection.get(
+                    "selection_receipts", []
+                )
+                if isinstance(row, Mapping)
+                and _text(row.get("selection_receipt_id"))
+            }
+        ),
+        "visual_gate_receipt_ids": sorted(
+            {
+                _text(
+                    row.get("geometry_visual_gate_receipt", {}).get(
+                        "receipt_id"
+                    )
+                )
+                for row in auto_reference_rows
+                if isinstance(
+                    row.get("geometry_visual_gate_receipt"), Mapping
+                )
+                and _text(
+                    row.get("geometry_visual_gate_receipt", {}).get(
+                        "receipt_id"
+                    )
+                )
+            }
+        ),
+        "auto_approval_performed": False,
+        "render_execution_claimed": False,
+    }
+
     approval_gate = _approval_gate(approval_receipt, candidate_id)
     package_approved = approval_gate["approved"] is True
     package_status = (
@@ -339,12 +613,63 @@ def build_selected_candidate_production_package(
         if package_approved
         else _text(approval_gate.get("reason_code")) or "package_approval_required"
     )
-    reference_v2_required = render_input_receipt.get("reference_v2_required") is True
+    reference_v2_required = (
+        render_input_receipt.get("reference_v2_required") is True
+        or bool(auto_reference_rows)
+    )
     reference_v2 = (
         copy.deepcopy(dict(render_input_receipt.get("reference_v2")))
         if isinstance(render_input_receipt.get("reference_v2"), Mapping)
         else {}
     )
+    if auto_reference_rows and not reference_v2:
+        reference_v2 = {
+            "status": "ready",
+            "reason_code": "owner_approved_registry_auto_selected",
+            "slides": auto_reference_rows,
+            "registry_path": registry.get("registry_path"),
+            "selection_attempts": auto_reference_attempts,
+            "auto_approval_performed": False,
+        }
+    if reference_v2.get("status") == "ready":
+        reference_rows = reference_v2.get("slides")
+        reference_rows = (
+            reference_rows if isinstance(reference_rows, list) else []
+        )
+        for row in reference_rows:
+            if not isinstance(row, dict) or isinstance(
+                row.get("geometry_visual_gate_receipt"), Mapping
+            ):
+                continue
+            selection = row.get("selection")
+            selection = selection if isinstance(selection, Mapping) else {}
+            selected_specimen = registry_specimens.get(
+                _text(selection.get("primary_reference_id")), {}
+            )
+            receipt = selected_specimen.get("geometry_visual_gate_receipt")
+            if isinstance(receipt, Mapping):
+                row["geometry_visual_gate_receipt"] = copy.deepcopy(dict(receipt))
+        for row in reference_rows:
+            row = row if isinstance(row, Mapping) else {}
+            adapted = row.get("adapted_slide")
+            adapted = adapted if isinstance(adapted, Mapping) else {}
+            selection = row.get("selection")
+            selection = selection if isinstance(selection, Mapping) else {}
+            if not is_visual_gate_pass_receipt(
+                row.get("geometry_visual_gate_receipt"),
+                reference_id=_text(
+                    selection.get("primary_reference_id")
+                ),
+                geometry_hash=(
+                    _text(row.get("geometry_hash"))
+                    or _text(adapted.get("geometry_hash"))
+                ),
+            ):
+                return _blocked(
+                    "reference_visual_gate_pass_receipt_missing",
+                    "ready Reference V2 row requires geometry-bound visual pass evidence",
+                    candidate_id,
+                )
     reference_v2_ready = reference_v2.get("status") == "ready"
     renderer_ready = (
         render_input_receipt.get("renderer_ready") is True
@@ -382,6 +707,7 @@ def build_selected_candidate_production_package(
             "category": category,
             "title": title,
         },
+        "canvas_profile_id": canvas_profile_id,
         "evidence": {
             "status": "ready",
             "source_status": "recorded",
@@ -401,10 +727,13 @@ def build_selected_candidate_production_package(
         "commerce": commerce_value,
         "reference_v2_required": reference_v2_required,
         "reference_v2": reference_v2,
-        "production_learning_profile": copy.deepcopy(
-            render_input_receipt.get("production_learning_profile", {})
-        ),
+        "production_learning_profile": production_learning_profile,
+        "design_system": design_system,
+        "learning_trace": learning_trace,
         "slide_asset_selection": copy.deepcopy(slide_asset_selection),
+        "learning_pipeline_consumption_receipt": (
+            learning_pipeline_consumption_receipt
+        ),
         "real_comment_evidence": copy.deepcopy(
             production_plan.get("real_comment_evidence", {})
         ),

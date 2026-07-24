@@ -145,10 +145,21 @@ class ReferenceDrivenProductionOrchestrator:
             selector_blueprint["blueprint_version"] = str(
                 selector_blueprint["blueprint_version"]
             )
+        selector_context = dict(safe_input["context"])
+        media_rows = safe_input["media"]
+        selector_context.setdefault(
+            "media_count",
+            len(media_rows) if isinstance(media_rows, list) else 0,
+        )
+        selector_context.setdefault(
+            "copy_char_count",
+            len(str(safe_input["content"].get("headline") or ""))
+            + len(str(safe_input["content"].get("body") or "")),
+        )
         selection = self._selector.select(
             specimens=selectable,
             blueprints=selector_blueprints,
-            context=safe_input["context"],
+            context=selector_context,
         )
         if selection.get("status") != "selected":
             return _blocked(

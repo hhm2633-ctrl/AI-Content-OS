@@ -10,10 +10,11 @@ from typing import Any, Callable, Dict, List, Mapping, Sequence
 
 from PIL import Image, ImageDraw, ImageOps
 
+from modules.card_news.canvas_contract import DEFAULT_CARD_CANVAS_SIZE
 from modules.tool_adapters.paddleocr_runtime import extract_korean_text
 
 
-CANVAS_SIZE = (1080, 1350)
+CANVAS_SIZE = DEFAULT_CARD_CANVAS_SIZE
 MAX_OCR_CANDIDATES = 4
 SPOTLIGHT_COUNT = 2
 
@@ -82,7 +83,7 @@ def _fit_comment(source: Image.Image, max_width: int, max_height: int) -> Image.
 def _compose(selected: Sequence[Mapping[str, Any]], output_path: Path) -> None:
     canvas = Image.new("RGB", CANVAS_SIZE, "#F8EEE8")
     draw = ImageDraw.Draw(canvas)
-    draw.rectangle((0, 0, 1080, 1350), fill="#F8EEE8")
+    draw.rectangle((0, 0, CANVAS_SIZE[0], CANVAS_SIZE[1]), fill="#F8EEE8")
     draw.rounded_rectangle((44, 205, 1036, 930), radius=42, fill="#241D21")
     draw.rounded_rectangle((70, 225, 1010, 910), radius=30, fill="#FFF9F5")
     draw.rectangle((70, 225, 1010, 239), fill="#F07191")
@@ -102,7 +103,7 @@ def _compose(selected: Sequence[Mapping[str, Any]], output_path: Path) -> None:
 
     # The approved cover blueprint overlaps its white headline with the lower
     # edge of the media region. Preserve contrast inside the source image.
-    draw.rectangle((0, 980, 1080, 1350), fill="#171717")
+    draw.rectangle((0, 1070, CANVAS_SIZE[0], CANVAS_SIZE[1]), fill="#171717")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(output_path, format="PNG", optimize=True)

@@ -1,0 +1,5563 @@
+{
+  "schema_version": "owner_reference_v2_registry_v1",
+  "status": "ready",
+  "specimens": [
+    {
+      "reference_id": "owner-ref-048be919bf32b433d876",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0004"
+      ],
+      "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111342_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0004"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-048be919bf32b433d876",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:bf32b433d876",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-ae61b002a4fbc2b4785e2cf1",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-048be919bf32b433d876",
+        "blueprint_id": "bp-owner-048be919bf32b433d876",
+        "geometry_hash": "daeae82613bc9f334e76a5bd125d2990ff4fa3b4ef46d215adea5422a4baeb1d",
+        "gate_result_hash": "2d48c3fda76227b21f4b5d2a587e5ddcc83d815aa02da433fb28acb6a5199275",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-3024626ebcf36f56cb2f",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0004"
+      ],
+      "source_relative_path": "owner_source/batch_046/Screenshot_20260719_111814_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0004"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-3024626ebcf36f56cb2f",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:bcf36f56cb2f",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-9c2985c68ac19264376befeb",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-3024626ebcf36f56cb2f",
+        "blueprint_id": "bp-owner-3024626ebcf36f56cb2f",
+        "geometry_hash": "49f616cd5ea329b4756a9982742fc73c860dc79a9fbcfd502ec4924ef87d905b",
+        "gate_result_hash": "a12eb7c411a00e328898136b10752b5328781867bde65eba3a1550b8b30d828c",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-53e886bf03da1c53b3fb",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0014"
+      ],
+      "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111728_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0014"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-53e886bf03da1c53b3fb",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:03da1c53b3fb",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-fe6391d6963ab931f40cefe3",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-53e886bf03da1c53b3fb",
+        "blueprint_id": "bp-owner-53e886bf03da1c53b3fb",
+        "geometry_hash": "337cc2bc5166b511ddbe3a7236ef460a6404e2305094cbd5c23419f90cba26f1",
+        "gate_result_hash": "dfcf1bdfcbdce3303951cbe5ace2dbd16b6eee4cc824f45cea49e9ecca00ee4e",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-5c905426902b18e27d61",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0009"
+      ],
+      "source_relative_path": "owner_source/batch_046/Screenshot_20260719_111834_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0009"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-5c905426902b18e27d61",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:902b18e27d61",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-d4bf7099e3015d89ec58f25b",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-5c905426902b18e27d61",
+        "blueprint_id": "bp-owner-5c905426902b18e27d61",
+        "geometry_hash": "caeefcf2c65dddb24f7ba256061d249748a88d35c3dc1f3432250b25598eebf2",
+        "gate_result_hash": "dfcf1bdfcbdce3303951cbe5ace2dbd16b6eee4cc824f45cea49e9ecca00ee4e",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-5cbcc5369af5f0f7b0f7",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0006"
+      ],
+      "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111401_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0006"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-5cbcc5369af5f0f7b0f7",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:9af5f0f7b0f7",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-969075b4da7581a251901054",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-5cbcc5369af5f0f7b0f7",
+        "blueprint_id": "bp-owner-5cbcc5369af5f0f7b0f7",
+        "geometry_hash": "30748ed2a183cf1967cf93b1f38f50a84416c2ce60c96f36752c5ed26f93c809",
+        "gate_result_hash": "a12eb7c411a00e328898136b10752b5328781867bde65eba3a1550b8b30d828c",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-7011b7d62f27c86d64f5",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0009"
+      ],
+      "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111445_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0009"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-7011b7d62f27c86d64f5",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:2f27c86d64f5",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-92504738e29dcbb0c432aed8",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-7011b7d62f27c86d64f5",
+        "blueprint_id": "bp-owner-7011b7d62f27c86d64f5",
+        "geometry_hash": "cda6d82e3c54e20f4f6c418fd4181f023baec1b09d6d23397ba6ade202ee9c42",
+        "gate_result_hash": "dfcf1bdfcbdce3303951cbe5ace2dbd16b6eee4cc824f45cea49e9ecca00ee4e",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-8381728e0225a1480841",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0020"
+      ],
+      "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111807_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0020"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-8381728e0225a1480841",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:0225a1480841",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-1f7feba1f08c1206375ce8cc",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-8381728e0225a1480841",
+        "blueprint_id": "bp-owner-8381728e0225a1480841",
+        "geometry_hash": "17c8f187a965b78ca01ab595dec7baef0c4c98b1db708a1f3f330b52de72913c",
+        "gate_result_hash": "4df1900a0508cb793dd46ef5a3ae79ba5f0f79dfb90d658306d293c047b187f6",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-90486c8f4042c067dcfe",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0004"
+      ],
+      "source_relative_path": "owner_source/batch_048/Screenshot_20260719_112033_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0004"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-90486c8f4042c067dcfe",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:4042c067dcfe",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-80396c297ed885683e40fb0f",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-90486c8f4042c067dcfe",
+        "blueprint_id": "bp-owner-90486c8f4042c067dcfe",
+        "geometry_hash": "fc67796686639bca4a9952732f70d200cdd6df183ba1adf0ad221a7825f53fd7",
+        "gate_result_hash": "31c3c77caf0a4911b69297031ecb78e79b1f6f34739081046971466e36294630",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-968bd4d92614cadc6738",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0010"
+      ],
+      "source_relative_path": "owner_source/batch_048/Screenshot_20260720_080640_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0010"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-968bd4d92614cadc6738",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:2614cadc6738",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-a7f2985d4de06911f5994047",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-968bd4d92614cadc6738",
+        "blueprint_id": "bp-owner-968bd4d92614cadc6738",
+        "geometry_hash": "0a2fe6a573e9dce84948ee26631dd4b7c496eb2f15f956824641af49758ddffc",
+        "gate_result_hash": "96009533ba3ce87aa6f7ed87360539d5b5944006ac66583bb2386306b11bc3f2",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-c29dbd8df8eea1811549",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0016"
+      ],
+      "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111737_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0016"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-c29dbd8df8eea1811549",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:f8eea1811549",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-01c94c0b91f514fe6fa09add",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-c29dbd8df8eea1811549",
+        "blueprint_id": "bp-owner-c29dbd8df8eea1811549",
+        "geometry_hash": "a53ec93ae859aec9e6514e93a593dde8b253326e86edf4306270d40039f31f0d",
+        "gate_result_hash": "f85784eddab1d559fb0233b9c10e6e651d959ec7e84ece1f7a616a5247f1cd07",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-d934c135ccad0889aa5c",
+      "source_claim_ids": [
+        "owner-feedback:reels_visual_commerce_learning_batch_042_043:item_0017"
+      ],
+      "source_relative_path": "owner_source/batch_043/Screenshot_20260719_111300_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:reels_visual_commerce_learning_batch_042_043:item_0017"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-d934c135ccad0889aa5c",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:ccad0889aa5c",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-858b29678fc892426ef43ea9",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-d934c135ccad0889aa5c",
+        "blueprint_id": "bp-owner-d934c135ccad0889aa5c",
+        "geometry_hash": "3953c335a5c245730f532ae3fec4a950663bce808985fe7feae3dd865124c81b",
+        "gate_result_hash": "cfe699fa323b538c153db65e674e639bf4161e72fa9405077184a62ba064f259",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    },
+    {
+      "reference_id": "owner-ref-e29a44b9006e496c2c5a",
+      "source_claim_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0003"
+      ],
+      "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111340_Instagram.jpg",
+      "analysis_record_ids": [
+        "owner-feedback:cross_format_business_learning_batch_044_045:item_0003"
+      ],
+      "account_fit": [
+        "a",
+        "b",
+        "c"
+      ],
+      "format_fit": [
+        "card_news"
+      ],
+      "slide_role_fit": [
+        "cover",
+        "source_context",
+        "open_image",
+        "card",
+        "hook",
+        "detail"
+      ],
+      "topic_fit": [
+        "general_editorial"
+      ],
+      "emotion_fit": [
+        "context_dependent"
+      ],
+      "media_requirements": {
+        "required_count": 1,
+        "aspect_ratios": [
+          "1440:1800"
+        ],
+        "source": "approved_blueprint_canvas"
+      },
+      "blueprint_id": "bp-owner-e29a44b9006e496c2c5a",
+      "approval_status": "owner_approved",
+      "owner_approval_receipt_id": "owner-approval-20260724-8872b40bdef9be3cc1c5:006e496c2c5a",
+      "reference_only": false,
+      "measured_performance_claimed": false,
+      "geometry_visual_gate_receipt": {
+        "schema_version": "reference_geometry_visual_gate.v1",
+        "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+        "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+        "status": "pass",
+        "visual_status": "visual_geometry_pass",
+        "receipt_id": "visual-gate-d031eb3287148dc010c1d05e",
+        "source_receipt_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\independent_visual_revalidation_receipt.json",
+        "source_receipt_sha256": "408bbb03a2cc33580ea8312325ea94e36cd4a558f5fef142f9f91ba2043b6820",
+        "reference_id": "owner-ref-e29a44b9006e496c2c5a",
+        "blueprint_id": "bp-owner-e29a44b9006e496c2c5a",
+        "geometry_hash": "970498de4a6c54355c7b3fa2940259c2e9512ed60163d49290945eb1f5bf157e",
+        "gate_result_hash": "a12eb7c411a00e328898136b10752b5328781867bde65eba3a1550b8b30d828c",
+        "confidence_used_as_pass": false,
+        "auto_owner_approval": false,
+        "production_approval_granted": false
+      },
+      "owner_approval_provenance": {
+        "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+        "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+        "approval_date": "2026-07-24",
+        "scope": "preupload_pipeline_no_publish",
+        "explicit_user_approval": true,
+        "actual_publish_authorized": false,
+        "upload_authorized": false,
+        "auto_approval_performed": false
+      },
+      "production_scope": "preupload_pipeline_no_publish",
+      "actual_publish_authorized": false,
+      "approval_provenance": {}
+    }
+  ],
+  "blueprints": {
+    "bp-owner-3024626ebcf36f56cb2f": {
+      "blueprint_id": "bp-owner-3024626ebcf36f56cb2f",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.217361,
+            0.102222,
+            0.280556,
+            0.022222
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "GOOGLE POLYPHONY",
+          "ocr_confidence": 0.9835464954376221
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.054167,
+            0.139444,
+            0.126389,
+            0.101667
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "05",
+          "ocr_confidence": 0.9997107982635498
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "headline",
+          "box_norm": [
+            0.2125,
+            0.147778,
+            0.501389,
+            0.057222
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "웹사이트 주소만 넣으면",
+          "ocr_confidence": 0.997706949710846
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.215278,
+            0.2,
+            0.452083,
+            0.053333
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "온브랜드 콘텐츠 완성",
+          "ocr_confidence": 0.9977913498878479
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.175,
+            0.329444,
+            0.131944,
+            0.023333
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP 01",
+          "ocr_confidence": 0.9523564577102661
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.175694,
+            0.370556,
+            0.35,
+            0.043333
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "비즈니스 DNA분석",
+          "ocr_confidence": 0.9920307397842407
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.177778,
+            0.418333,
+            0.645833,
+            0.033889
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "웹사이트 주소만 입력하면 컬러·태그라인·제품",
+          "ocr_confidence": 0.9866419434547424
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.177083,
+            0.454444,
+            0.63125,
+            0.033333
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "카탈로그를 스스로 분석 해 브랜드 프로필 세팅",
+          "ocr_confidence": 0.9785889983177185
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.173611,
+            0.531667,
+            0.135417,
+            0.026667
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP 02",
+          "ocr_confidence": 0.9471259713172913
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.175694,
+            0.576667,
+            0.472222,
+            0.041667
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "원클릭SNS 콘텐츠&촬영",
+          "ocr_confidence": 0.9708220362663269
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.177778,
+            0.622222,
+            0.546528,
+            0.032222
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "시즌 캠페인용 소셜콘텐츠와 고품질제품",
+          "ocr_confidence": 0.9985917806625366
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.176389,
+            0.656667,
+            0.557639,
+            0.035
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "누끼·합성 컷을 클릭 한 번으로 무한 생성",
+          "ocr_confidence": 0.9939045906066895
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.174306,
+            0.736111,
+            0.134722,
+            0.025
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP 03",
+          "ocr_confidence": 0.9573121070861816
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.178472,
+            0.790556,
+            0.375694,
+            0.042222
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "팀 워크플로우 표준화",
+          "ocr_confidence": 0.9883508682250977
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.177778,
+            0.837222,
+            0.386111,
+            0.031667
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "브랜드 아이덴티티가 반영된",
+          "ocr_confidence": 0.998505175113678
+        },
+        {
+          "region_id": "ocr-text-016",
+          "role": "body",
+          "box_norm": [
+            0.177778,
+            0.873889,
+            0.522917,
+            0.031667
+          ],
+          "z_index": 25,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "기능형 랜딩 페이지까지 순식간에 완성",
+          "ocr_confidence": 0.9825702905654907
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "49f616cd5ea329b4756a9982742fc73c860dc79a9fbcfd502ec4924ef87d905b",
+      "provenance": {
+        "reference_id": "owner-ref-3024626ebcf36f56cb2f",
+        "source_relative_path": "owner_source/batch_046/Screenshot_20260719_111814_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-3024626ebcf36f56cb2f.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 515,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.993874,
+        "original_sha256": "8092c02ce4bbadedfaa3d0c8af0a07d954add74ccb3af5d090497616d601ecc0",
+        "crop_sha256": "8f2856ab79db03eb6d7e9060f2d337ca68409b727600de895d897911d4377ee9",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0004"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0004"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-5c905426902b18e27d61": {
+      "blueprint_id": "bp-owner-5c905426902b18e27d61",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.068056,
+            0.671667,
+            0.227778,
+            0.025556
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9506032466888428
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.057639,
+            0.7,
+            0.361806,
+            0.090556
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "진짜A로",
+          "ocr_confidence": 0.9993224143981934
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "headline",
+          "box_norm": [
+            0.054861,
+            0.774444,
+            0.621528,
+            0.100556
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "돈 번는 사람들의",
+          "ocr_confidence": 0.9422851204872131
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.05625,
+            0.856111,
+            0.745139,
+            0.092222
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "4가지 프롬프트 공식",
+          "ocr_confidence": 0.9769380688667297
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.9125,
+            0.930556,
+            0.040278,
+            0.032222
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "2",
+          "ocr_confidence": 0.30538222193717957
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "caeefcf2c65dddb24f7ba256061d249748a88d35c3dc1f3432250b25598eebf2",
+      "provenance": {
+        "reference_id": "owner-ref-5c905426902b18e27d61",
+        "source_relative_path": "owner_source/batch_046/Screenshot_20260719_111834_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-5c905426902b18e27d61.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 620,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.967089,
+        "original_sha256": "5eb17ff1b8a9e2f18f7317223500151e115a9d74d46e59fcbb0deeaba8f98d4f",
+        "crop_sha256": "444e210a32290f60f22af1fe5c3f1ab597c62dbc0a9a856800d510f63edb3120",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0009"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_agent_repurposing_learning_batch_046_047:item_0009"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-e29a44b9006e496c2c5a": {
+      "blueprint_id": "bp-owner-e29a44b9006e496c2c5a",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.0875,
+            0.085556,
+            0.2375,
+            0.028889
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9864097237586975
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.080556,
+            0.139444,
+            0.386806,
+            0.071667
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "04. Step 2.",
+          "ocr_confidence": 0.970461905002594
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "headline",
+          "box_norm": [
+            0.078472,
+            0.197222,
+            0.761806,
+            0.08
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "브랜드 키트(Brand Kit)",
+          "ocr_confidence": 0.9707804322242737
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.079167,
+            0.264444,
+            0.151389,
+            0.076667
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "저장",
+          "ocr_confidence": 0.9997671842575073
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.084722,
+            0.365,
+            0.822222,
+            0.042778
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "마음에 드는 로고와 컬러,폰트 시스템을'브랜드 키",
+          "ocr_confidence": 0.9779210090637207
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.086806,
+            0.413889,
+            0.288194,
+            0.041111
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "트'에 저장하세요.",
+          "ocr_confidence": 0.9250872731208801
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.084722,
+            0.507222,
+            0.191667,
+            0.042778
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "기준이 되다",
+          "ocr_confidence": 0.9578008055686951
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.088194,
+            0.562778,
+            0.815972,
+            0.035556
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "이렇게 저장된 에셋들은 향후 제작할 모든 마케팅 콘텐츠",
+          "ocr_confidence": 0.9736946225166321
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.0875,
+            0.608889,
+            0.033333,
+            0.03
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "의",
+          "ocr_confidence": 0.9998514652252197
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.134722,
+            0.605,
+            0.374306,
+            0.037778
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "'기준(Source of Truth)'",
+          "ocr_confidence": 0.96161949634552
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.501389,
+            0.605556,
+            0.159028,
+            0.037222
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "이 됩니다.",
+          "ocr_confidence": 0.8748508095741272
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.496528,
+            0.615,
+            0.014583,
+            0.014444
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "자동으로반영",
+          "ocr_confidence": 0.0
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.691111,
+            0.222222,
+            0.038889
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "앞으로A가 만들모든작업물에 이브랜드 아이덴티티가",
+          "ocr_confidence": 0.9970698356628418
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.084722,
+            0.743333,
+            0.821528,
+            0.038333
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "자동으로 녹아듭니다.",
+          "ocr_confidence": 0.9296936392784119
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.788889,
+            0.316667,
+            0.035556
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "다음 페이지 →",
+          "ocr_confidence": 0.97124844789505
+        },
+        {
+          "region_id": "ocr-text-016",
+          "role": "body",
+          "box_norm": [
+            0.688889,
+            0.877778,
+            0.197917,
+            0.032778
+          ],
+          "z_index": 25,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "L)",
+          "ocr_confidence": 0.8870457410812378
+        },
+        {
+          "region_id": "ocr-text-017",
+          "role": "body",
+          "box_norm": [
+            0.915278,
+            0.932778,
+            0.036806,
+            0.024444
+          ],
+          "z_index": 26,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "",
+          "ocr_confidence": 0.36964648962020874
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "970498de4a6c54355c7b3fa2940259c2e9512ed60163d49290945eb1f5bf157e",
+      "provenance": {
+        "reference_id": "owner-ref-e29a44b9006e496c2c5a",
+        "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111340_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-e29a44b9006e496c2c5a.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 517,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.994906,
+        "original_sha256": "278717d5b50e2b9ec99784701fc7e51e6114364f40ba68a5f3f30984a7931184",
+        "crop_sha256": "02bdfd5ce5019530651587b63cf284d649affb3332166a7d0b779ab613fe1bd2",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0003"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0003"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-048be919bf32b433d876": {
+      "blueprint_id": "bp-owner-048be919bf32b433d876",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.0875,
+            0.085556,
+            0.2375,
+            0.028889
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9686181545257568
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.078472,
+            0.138333,
+            0.394444,
+            0.073889
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "05. Step 3.",
+          "ocr_confidence": 0.9575061202049255
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "headline",
+          "box_norm": [
+            0.079861,
+            0.197778,
+            0.51875,
+            0.078889
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "마케팅 에셋 제작",
+          "ocr_confidence": 0.9397065043449402
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.086111,
+            0.3,
+            0.820139,
+            0.045
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "'소셜 미디어 스킬'을 활용해 인스타그램 포스트,출",
+          "ocr_confidence": 0.964802086353302
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.086111,
+            0.351111,
+            0.820139,
+            0.039444
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "시 예고 그래픽,홍보용 이미지를터치 몇 번으로제",
+          "ocr_confidence": 0.916655957698822
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.398333,
+            0.161111,
+            0.041667
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "작합니다.",
+          "ocr_confidence": 0.9952613115310669
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.0875,
+            0.492778,
+            0.219444,
+            0.038889
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "일관된 브랜딩",
+          "ocr_confidence": 0.973267674446106
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.086111,
+            0.545,
+            0.784722,
+            0.038333
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "앞서 지정한 브랜드 키트 덕분에 따로 설정하지 않아도",
+          "ocr_confidence": 0.8916141390800476
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.088194,
+            0.591667,
+            0.740972,
+            0.033889
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "컬러와 폰트가 완벽하게 유지되어 통일감을 줍니다.",
+          "ocr_confidence": 0.9574436545372009
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.081944,
+            0.672222,
+            0.115278,
+            0.043889
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "확장성",
+          "ocr_confidence": 0.9999095797538757
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.084028,
+            0.727222,
+            0.80625,
+            0.038333
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "제품 목업(Mockup)이나 패키지 디자인까지 확장 가능!",
+          "ocr_confidence": 0.9385311603546143
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.688194,
+            0.877778,
+            0.197917,
+            0.032778
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "다음 페이지 →",
+          "ocr_confidence": 0.9542533755302429
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.915278,
+            0.932778,
+            0.036806,
+            0.024444
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "42",
+          "ocr_confidence": 0.34631556272506714
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "daeae82613bc9f334e76a5bd125d2990ff4fa3b4ef46d215adea5422a4baeb1d",
+      "provenance": {
+        "reference_id": "owner-ref-048be919bf32b433d876",
+        "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111342_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-048be919bf32b433d876.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 517,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.970996,
+        "original_sha256": "092357385523ddf03838d01eb23d26c0528b31841b9b0a5d5b39fbe833e445cb",
+        "crop_sha256": "42524f055f25a386fb75e343a90df4b4774230a96aa5b02baf0a1f52e137b52c",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0004"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0004"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-5cbcc5369af5f0f7b0f7": {
+      "blueprint_id": "bp-owner-5cbcc5369af5f0f7b0f7",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.118056,
+            0.072222,
+            0.235417,
+            0.026667
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9752092957496643
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "headline",
+          "box_norm": [
+            0.109722,
+            0.115,
+            0.432639,
+            0.077222
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "비교불가능한",
+          "ocr_confidence": 0.999809741973877
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.107639,
+            0.177222,
+            0.563889,
+            0.080556
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "6가지 디테일 혁신",
+          "ocr_confidence": 0.9530192613601685
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.181944,
+            0.273333,
+            0.141667,
+            0.029444
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "모션 안정성",
+          "ocr_confidence": 0.9906619191169739
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.184028,
+            0.308333,
+            0.504167,
+            0.025
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "움직임중에도 깜빡임이나 왜곡없이 선명함 유지",
+          "ocr_confidence": 0.9389398097991943
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.182639,
+            0.350556,
+            0.142361,
+            0.028889
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "빛과 그림자",
+          "ocr_confidence": 0.9455196857452393
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.185417,
+            0.386111,
+            0.547917,
+            0.022778
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "매끄러운 빛 전환과 자연스러운 음영으로 깊이감 연출",
+          "ocr_confidence": 0.958041787147522
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.18125,
+            0.426111,
+            0.11875,
+            0.031111
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "금속 반사",
+          "ocr_confidence": 0.9027582406997681
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.184028,
+            0.462222,
+            0.54375,
+            0.024444
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "하이라이트와 반사를 정확하게 표현해 생동감 극대화",
+          "ocr_confidence": 0.9488616585731506
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.183333,
+            0.505556,
+            0.164583,
+            0.027222
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "제품 가장자리",
+          "ocr_confidence": 0.9896377921104431
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.185417,
+            0.539444,
+            0.403472,
+            0.025
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "경계선이 칼로 자른 듯 선명하고 정교함",
+          "ocr_confidence": 0.9675126671791077
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.182639,
+            0.581667,
+            0.140972,
+            0.029444
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "섬유 디테일",
+          "ocr_confidence": 0.9568418860435486
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.184028,
+            0.616667,
+            0.46875,
+            0.024444
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "옷감의 질감과 바느질선까지 사실적으로 묘사",
+          "ocr_confidence": 0.9602102041244507
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.18125,
+            0.657778,
+            0.11875,
+            0.030556
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "피부질감",
+          "ocr_confidence": 0.9910919666290283
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.183333,
+            0.693333,
+            0.54375,
+            0.025
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "미세한 피부결까지 보존하여 프로페셔널한 연출 가능",
+          "ocr_confidence": 0.9846224188804626
+        },
+        {
+          "region_id": "ocr-text-016",
+          "role": "body",
+          "box_norm": [
+            0.659722,
+            0.878889,
+            0.197222,
+            0.031111
+          ],
+          "z_index": 25,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "다음 페이지 →",
+          "ocr_confidence": 0.9432579278945923
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "30748ed2a183cf1967cf93b1f38f50a84416c2ce60c96f36752c5ed26f93c809",
+      "provenance": {
+        "reference_id": "owner-ref-5cbcc5369af5f0f7b0f7",
+        "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111401_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-5cbcc5369af5f0f7b0f7.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 630,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 1.0,
+        "original_sha256": "425b71b0e683436c76d15fa57f503f8447885e4efcdad7c705ea34ee7eea0ce9",
+        "crop_sha256": "f08f99bc156e8ee2628d8a498ac3f49997be157f282194f54075dc482f0ff6b8",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0006"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0006"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-7011b7d62f27c86d64f5": {
+      "blueprint_id": "bp-owner-7011b7d62f27c86d64f5",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.066667,
+            0.691111,
+            0.226389,
+            0.028333
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9908895492553711
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "headline",
+          "box_norm": [
+            0.054861,
+            0.722222,
+            0.595833,
+            0.093333
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "AI드랍쉬핑으로",
+          "ocr_confidence": 0.9948221445083618
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.05625,
+            0.8,
+            0.725,
+            0.092222
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "하루 5500만원 버는",
+          "ocr_confidence": 0.964643657207489
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.059722,
+            0.880556,
+            0.528472,
+            0.088889
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "이 남자의 전략",
+          "ocr_confidence": 0.9682878255844116
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.914583,
+            0.953889,
+            0.036806,
+            0.028333
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Q",
+          "ocr_confidence": 0.7821455597877502
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "cda6d82e3c54e20f4f6c418fd4181f023baec1b09d6d23397ba6ade202ee9c42",
+      "provenance": {
+        "reference_id": "owner-ref-7011b7d62f27c86d64f5",
+        "source_relative_path": "owner_source/batch_044/Screenshot_20260719_111445_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-7011b7d62f27c86d64f5.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 335,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.933256,
+        "original_sha256": "6cd32610612868f3fe6791eb40137db06711aac9fb35d9bb5307d4fc9817d603",
+        "crop_sha256": "7e24dcfac491eb6603f601d6e6951ce4a834f0a000d7f6a3720dc1da05640fd5",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0009"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0009"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-53e886bf03da1c53b3fb": {
+      "blueprint_id": "bp-owner-53e886bf03da1c53b3fb",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.06875,
+            0.670556,
+            0.222222,
+            0.025556
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9862508177757263
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "headline",
+          "box_norm": [
+            0.057639,
+            0.701111,
+            0.821528,
+            0.088333
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "재고·배송·리스크 0%",
+          "ocr_confidence": 0.9635306000709534
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.061806,
+            0.780556,
+            0.755556,
+            0.087778
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "클로드로 디지털 부업",
+          "ocr_confidence": 0.9691708087921143
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.061111,
+            0.858889,
+            0.554167,
+            0.086667
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "시작하는 4단계",
+          "ocr_confidence": 0.9606735706329346
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.913889,
+            0.931667,
+            0.0375,
+            0.028889
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Q",
+          "ocr_confidence": 0.6734618544578552
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "337cc2bc5166b511ddbe3a7236ef460a6404e2305094cbd5c23419f90cba26f1",
+      "provenance": {
+        "reference_id": "owner-ref-53e886bf03da1c53b3fb",
+        "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111728_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-53e886bf03da1c53b3fb.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 431,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.904595,
+        "original_sha256": "e4f4c4c7c4f4d2bcd3d3a1a2e12cba627dc9ed31867d75302fad99ae4a11dada",
+        "crop_sha256": "35c2e06b3f637ee32aa3e42cd03d63a5b3c6ff841d1260af3adad9ae81d29d0a",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0014"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0014"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-c29dbd8df8eea1811549": {
+      "blueprint_id": "bp-owner-c29dbd8df8eea1811549",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.0875,
+            0.087222,
+            0.379861,
+            0.026667
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP 3· MKTG WITH AI",
+          "ocr_confidence": 0.9528877139091492
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "headline",
+          "box_norm": [
+            0.082639,
+            0.135556,
+            0.619444,
+            0.071111
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "털끝 하나 안 보여주고",
+          "ocr_confidence": 0.9562666416168213
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.2,
+            0.321528,
+            0.064444
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "마케팅하기",
+          "ocr_confidence": 0.9998076558113098
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.288889,
+            0.260417,
+            0.046111
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "인플루언서가",
+          "ocr_confidence": 0.9998258948326111
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.093056,
+            0.338889,
+            0.314583,
+            0.045556
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "아니어도 됩니다",
+          "ocr_confidence": 0.9957733750343323
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.138889,
+            0.424444,
+            0.418056,
+            0.036667
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "대세는'페이스리스'마케팅",
+          "ocr_confidence": 0.9995949864387512
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.1375,
+            0.472778,
+            0.746528,
+            0.035
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "내 얼굴을 전혀 드러내지 않고도 브랜드를 키울 수 있",
+          "ocr_confidence": 0.988082766532898
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.136806,
+            0.516111,
+            0.113889,
+            0.036111
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "습니다.",
+          "ocr_confidence": 0.9755718111991882
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.136806,
+            0.578889,
+            0.461806,
+            0.037778
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "무료 텍스트·이미지 채널 개설",
+          "ocr_confidence": 0.9839672446250916
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.140278,
+            0.629444,
+            0.759722,
+            0.033333
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Threads,인스타그램 카드뉴스 같은 채널이면 비용 0",
+          "ocr_confidence": 0.9675686359405518
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.1375,
+            0.672222,
+            0.145833,
+            0.035556
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "원입니다.",
+          "ocr_confidence": 0.9995787739753723
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.136806,
+            0.736111,
+            0.525694,
+            0.035556
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "AI 마케팅 툴로 무료 트래픽 모으기",
+          "ocr_confidence": 0.9924076199531555
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.138194,
+            0.783333,
+            0.749306,
+            0.036111
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "카루셀·트렌딩 글을 생성하는 툴로 콘텐츠 부담을 없",
+          "ocr_confidence": 0.9974397420883179
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.1375,
+            0.827222,
+            0.113194,
+            0.036111
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "앱니다.",
+          "ocr_confidence": 0.969950258731842
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.665278,
+            0.878889,
+            0.21875,
+            0.030556
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "마지막 페이지 →",
+          "ocr_confidence": 0.9311522245407104
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "a53ec93ae859aec9e6514e93a593dde8b253326e86edf4306270d40039f31f0d",
+      "provenance": {
+        "reference_id": "owner-ref-c29dbd8df8eea1811549",
+        "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111737_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-c29dbd8df8eea1811549.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 431,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.90596,
+        "original_sha256": "abd5057eb4f75ddb98443dfa7168e0308a8b2b4230ced7b0ae20d40ca01ca7f9",
+        "crop_sha256": "c46022baae39f436879fc762d601ea56e2deacf49b3300ac934ef0033c040643",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0016"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0016"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-8381728e0225a1480841": {
+      "blueprint_id": "bp-owner-8381728e0225a1480841",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.229861,
+            0.080556,
+            0.338194,
+            0.022222
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "GEMINI + NOTEBOOKLM",
+          "ocr_confidence": 0.9620147347450256
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.075,
+            0.11,
+            0.114583,
+            0.1
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "01",
+          "ocr_confidence": 0.9998180866241455
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "headline",
+          "box_norm": [
+            0.222917,
+            0.12,
+            0.474306,
+            0.067222
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "텍스트부터 이미지,",
+          "ocr_confidence": 0.9972031712532043
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.225694,
+            0.181111,
+            0.543056,
+            0.058889
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "문서 연동까지 한 번에",
+          "ocr_confidence": 0.9591559767723083
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.164583,
+            0.305556,
+            0.075694,
+            0.020556
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP",
+          "ocr_confidence": 0.9950829744338989
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.23125,
+            0.306667,
+            0.050694,
+            0.019444
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "01",
+          "ocr_confidence": 0.9274228811264038
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.164583,
+            0.337222,
+            0.372917,
+            0.039444
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "브랜드 맞춤 정보 학습",
+          "ocr_confidence": 0.9961757659912109
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.165972,
+            0.380556,
+            0.763889,
+            0.031667
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "핵심 제품·고객 인사이트·이미지를 노트북LM에 담아두면",
+          "ocr_confidence": 0.963847279548645
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.165278,
+            0.416111,
+            0.440278,
+            0.031667
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "제미나이가 그대로 기억하고 반영",
+          "ocr_confidence": 0.9957623481750488
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.164583,
+            0.521667,
+            0.076389,
+            0.021667
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP",
+          "ocr_confidence": 0.9912533760070801
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.230556,
+            0.522222,
+            0.052083,
+            0.020556
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "02",
+          "ocr_confidence": 0.977169394493103
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.165972,
+            0.560556,
+            0.363194,
+            0.043333
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "스마트한 콘텐츠 생성",
+          "ocr_confidence": 0.9988475441932678
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.165278,
+            0.605556,
+            0.544444,
+            0.033333
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "내가 설정한 템플릿에 맞취 블로그 포스트",
+          "ocr_confidence": 0.9749599099159241
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.166667,
+            0.642222,
+            0.334722,
+            0.03
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "초안을 단 몇 초 만에 작성",
+          "ocr_confidence": 0.9815061688423157
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.163889,
+            0.746111,
+            0.119444,
+            0.021667
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "STEP 03",
+          "ocr_confidence": 0.915022075176239
+        },
+        {
+          "region_id": "ocr-text-016",
+          "role": "body",
+          "box_norm": [
+            0.165278,
+            0.787778,
+            0.40625,
+            0.041111
+          ],
+          "z_index": 25,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "이미지 제작+문서 연동",
+          "ocr_confidence": 0.9560059905052185
+        },
+        {
+          "region_id": "ocr-text-017",
+          "role": "body",
+          "box_norm": [
+            0.167361,
+            0.833333,
+            0.438889,
+            0.03
+          ],
+          "z_index": 26,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "어울리는 배너까지 함께 생성하고",
+          "ocr_confidence": 0.9878613948822021
+        },
+        {
+          "region_id": "ocr-text-018",
+          "role": "body",
+          "box_norm": [
+            0.167361,
+            0.868889,
+            0.422917,
+            0.03
+          ],
+          "z_index": 27,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "구글 문서로 바로 내보내 팀 협업",
+          "ocr_confidence": 0.9871186017990112
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "17c8f187a965b78ca01ab595dec7baef0c4c98b1db708a1f3f330b52de72913c",
+      "provenance": {
+        "reference_id": "owner-ref-8381728e0225a1480841",
+        "source_relative_path": "owner_source/batch_045/Screenshot_20260719_111807_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-8381728e0225a1480841.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 515,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.993874,
+        "original_sha256": "54f0cef3b13ab0c398428f7ff127bc6d7dc1e532b200793491bd21987ec08005",
+        "crop_sha256": "f3414eff6593b56560c1852d97f5cad63675ec7bf78810390e815c12f1cd2a7e",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0020"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_business_learning_batch_044_045:item_0020"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-90486c8f4042c067dcfe": {
+      "blueprint_id": "bp-owner-90486c8f4042c067dcfe",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.06875,
+            0.671667,
+            0.227083,
+            0.025556
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9742187857627869
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.064583,
+            0.706111,
+            0.171528,
+            0.08
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "사진",
+          "ocr_confidence": 0.9999383091926575
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.233333,
+            0.705556,
+            0.254861,
+            0.078333
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "하나로",
+          "ocr_confidence": 0.9998075366020203
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "headline",
+          "box_norm": [
+            0.058333,
+            0.778333,
+            0.560417,
+            0.092222
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "힙한 각도 10장",
+          "ocr_confidence": 0.9549247026443481
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.060417,
+            0.858889,
+            0.588889,
+            0.086111
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "만드는 프롬프트",
+          "ocr_confidence": 0.9858249425888062
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.913194,
+            0.931667,
+            0.039583,
+            0.030556
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Q",
+          "ocr_confidence": 0.7117192149162292
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "fc67796686639bca4a9952732f70d200cdd6df183ba1adf0ad221a7825f53fd7",
+      "provenance": {
+        "reference_id": "owner-ref-90486c8f4042c067dcfe",
+        "source_relative_path": "owner_source/batch_048/Screenshot_20260719_112033_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-90486c8f4042c067dcfe.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 553,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.965356,
+        "original_sha256": "bfca51fe517d49d633af6baf54081822903d2dd9b089c80571a2cf723a558ca4",
+        "crop_sha256": "064c28735260ff73455734e11baa3dee7c7d5d0e3988d4760861ad5d2fbd109e",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0004"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0004"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-968bd4d92614cadc6738": {
+      "blueprint_id": "bp-owner-968bd4d92614cadc6738",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.085417,
+            0.377222,
+            0.335417,
+            0.032222
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "IMAGE PROMPT",
+          "ocr_confidence": 0.995168924331665
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "body",
+          "box_norm": [
+            0.081944,
+            0.455,
+            0.805556,
+            0.027778
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "A close-up portrait captures a young East Asian woman with a fair",
+          "ocr_confidence": 0.9833820462226868
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.083333,
+            0.485,
+            0.513889,
+            0.024444
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "complexion, luminous skin, and striking,s",
+          "ocr_confidence": 0.983608603477478
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "headline",
+          "box_norm": [
+            0.579861,
+            0.483333,
+            0.310417,
+            0.027222
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "symmetrical, model-like",
+          "ocr_confidence": 0.9877715706825256
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.510556,
+            0.813889,
+            0.027222
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "facial features. Her long, dark hair flows around her face, partially",
+          "ocr_confidence": 0.9838784337043762
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.082639,
+            0.540556,
+            0.776389,
+            0.025
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "wind-swept, with a few strands lightly crossing her cheeks. She",
+          "ocr_confidence": 0.9799597859382629
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.567778,
+            0.763194,
+            0.027778
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "gazes directly into the camera with natural, glossy lips, subtle",
+          "ocr_confidence": 0.97554612159729
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.082639,
+            0.596667,
+            0.815972,
+            0.025556
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "makeup emphasizing her full eyebrows, and softly flushed cheeks.",
+          "ocr_confidence": 0.9762962460517883
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.080556,
+            0.623889,
+            0.772222,
+            0.027778
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "The woman is wearing a thin-strapped top, the minimal visible",
+          "ocr_confidence": 0.9773064851760864
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.651667,
+            0.815278,
+            0.028333
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "detail giving a sense of understated elegance. The background is a",
+          "ocr_confidence": 0.9833275675773621
+        },
+        {
+          "region_id": "ocr-text-011",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.678889,
+            0.739583,
+            0.028889
+          ],
+          "z_index": 20,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "featureless, seamless white backdrop with diffuse, high-key",
+          "ocr_confidence": 0.9830781817436218
+        },
+        {
+          "region_id": "ocr-text-012",
+          "role": "body",
+          "box_norm": [
+            0.083333,
+            0.71,
+            0.773611,
+            0.024444
+          ],
+          "z_index": 21,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "lighting that eliminates shadows and creates even illumination",
+          "ocr_confidence": 0.9899240732192993
+        },
+        {
+          "region_id": "ocr-text-013",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.737222,
+            0.782639,
+            0.026111
+          ],
+          "z_index": 22,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "across her face, giving the image a polished, editorial aesthetic.",
+          "ocr_confidence": 0.9560090899467468
+        },
+        {
+          "region_id": "ocr-text-014",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.765,
+            0.829167,
+            0.025556
+          ],
+          "z_index": 23,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Colors are subdued, dominated by neutral skin tones and dark hair,",
+          "ocr_confidence": 0.981290876865387
+        },
+        {
+          "region_id": "ocr-text-015",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.792778,
+            0.795139,
+            0.026667
+          ],
+          "z_index": 24,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "while the shallow depth of field keeps her eyes and lips crisply in",
+          "ocr_confidence": 0.9915142059326172
+        },
+        {
+          "region_id": "ocr-text-016",
+          "role": "body",
+          "box_norm": [
+            0.081944,
+            0.822222,
+            0.825,
+            0.025556
+          ],
+          "z_index": 25,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "focus, with the rest of the image softly rendered. The shot presents",
+          "ocr_confidence": 0.9709240198135376
+        },
+        {
+          "region_id": "ocr-text-017",
+          "role": "body",
+          "box_norm": [
+            0.08125,
+            0.850556,
+            0.797222,
+            0.026111
+          ],
+          "z_index": 26,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "a modern, fashion-forward look, exuding a serene, intimate, and",
+          "ocr_confidence": 0.9827768206596375
+        },
+        {
+          "region_id": "ocr-text-018",
+          "role": "body",
+          "box_norm": [
+            0.083333,
+            0.878889,
+            0.263889,
+            0.024444
+          ],
+          "z_index": 27,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "contemporary mood.",
+          "ocr_confidence": 0.9988739490509033
+        },
+        {
+          "region_id": "ocr-text-019",
+          "role": "body",
+          "box_norm": [
+            0.915972,
+            0.932222,
+            0.034028,
+            0.026667
+          ],
+          "z_index": 28,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "Q",
+          "ocr_confidence": 0.4372882544994354
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "0a2fe6a573e9dce84948ee26631dd4b7c496eb2f15f956824641af49758ddffc",
+      "provenance": {
+        "reference_id": "owner-ref-968bd4d92614cadc6738",
+        "source_relative_path": "owner_source/batch_048/Screenshot_20260720_080640_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-968bd4d92614cadc6738.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 500,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.833333,
+        "original_sha256": "83eb195314958e3ff1542b491c725bfa481c907d1fc0cb661806ad6f886c572a",
+        "crop_sha256": "0bb236f95a4db08352fba6bf663498429f39caaf69b016a9c55a7645cf45c51c",
+        "source_claim_ids": [
+          "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0010"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:cross_format_design_distribution_learning_batch_048_049:item_0010"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    },
+    "bp-owner-d934c135ccad0889aa5c": {
+      "blueprint_id": "bp-owner-d934c135ccad0889aa5c",
+      "blueprint_version": "draft-1",
+      "canvas": {
+        "width": 1440,
+        "height": 1800
+      },
+      "layout_family": "ocr_observed_geometry_draft",
+      "regions": [
+        {
+          "region_id": "ocr-text-001",
+          "role": "body",
+          "box_norm": [
+            0.086111,
+            0.085,
+            0.240278,
+            0.030556
+          ],
+          "z_index": 10,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "MKTG WITH AI",
+          "ocr_confidence": 0.9777180552482605
+        },
+        {
+          "region_id": "ocr-text-002",
+          "role": "headline",
+          "box_norm": [
+            0.079861,
+            0.133333,
+            0.565278,
+            0.080556
+          ],
+          "z_index": 11,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": true,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "heuristic_headline_semantic_geometry_v2",
+          "recognized_text": "이것만 기억하세요",
+          "ocr_confidence": 0.9965002536773682
+        },
+        {
+          "region_id": "ocr-text-003",
+          "role": "body",
+          "box_norm": [
+            0.199306,
+            0.250556,
+            0.222917,
+            0.040556
+          ],
+          "z_index": 12,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "완벽보다관점",
+          "ocr_confidence": 0.9994246363639832
+        },
+        {
+          "region_id": "ocr-text-004",
+          "role": "body",
+          "box_norm": [
+            0.119444,
+            0.265,
+            0.028472,
+            0.029444
+          ],
+          "z_index": 13,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "1",
+          "ocr_confidence": 0.9998472929000854
+        },
+        {
+          "region_id": "ocr-text-005",
+          "role": "body",
+          "box_norm": [
+            0.198611,
+            0.337778,
+            0.268056,
+            0.04
+          ],
+          "z_index": 14,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "과정 공유가 신뢰",
+          "ocr_confidence": 0.9784987568855286
+        },
+        {
+          "region_id": "ocr-text-006",
+          "role": "body",
+          "box_norm": [
+            0.11875,
+            0.353889,
+            0.027778,
+            0.026111
+          ],
+          "z_index": 15,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "2",
+          "ocr_confidence": 0.9993175268173218
+        },
+        {
+          "region_id": "ocr-text-007",
+          "role": "body",
+          "box_norm": [
+            0.2,
+            0.426111,
+            0.35625,
+            0.038333
+          ],
+          "z_index": 16,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "오늘10%더솔직하게",
+          "ocr_confidence": 0.966213047504425
+        },
+        {
+          "region_id": "ocr-text-008",
+          "role": "body",
+          "box_norm": [
+            0.120139,
+            0.442778,
+            0.024306,
+            0.023889
+          ],
+          "z_index": 17,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "3",
+          "ocr_confidence": 0.9997349381446838
+        },
+        {
+          "region_id": "ocr-text-009",
+          "role": "body",
+          "box_norm": [
+            0.688194,
+            0.877778,
+            0.198611,
+            0.032778
+          ],
+          "z_index": 18,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "다음 페이지 →",
+          "ocr_confidence": 0.8984009027481079
+        },
+        {
+          "region_id": "ocr-text-010",
+          "role": "body",
+          "box_norm": [
+            0.91875,
+            0.935,
+            0.027778,
+            0.016111
+          ],
+          "z_index": 19,
+          "alignment": "left",
+          "padding_norm": 0.0,
+          "background": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "border": {
+            "status": "unmeasured_draft",
+            "production_token": false
+          },
+          "radius_norm": 0.0,
+          "overlap_policy": "draft_observed_ocr_overlap_allowed",
+          "required": false,
+          "detection_source": "paddleocr_box",
+          "role_assignment": "unverified_text_body",
+          "recognized_text": "6",
+          "ocr_confidence": 0.5292989611625671
+        }
+      ],
+      "style_tokens": {
+        "status": "draft_unmeasured",
+        "source": "ocr_geometry_only"
+      },
+      "fit_constraints": {
+        "required_roles": [
+          "headline"
+        ],
+        "status": "draft_pending_owner_approval"
+      },
+      "geometry_hash": "3953c335a5c245730f532ae3fec4a950663bce808985fe7feae3dd865124c81b",
+      "provenance": {
+        "reference_id": "owner-ref-d934c135ccad0889aa5c",
+        "source_relative_path": "owner_source/batch_043/Screenshot_20260719_111300_Instagram.jpg",
+        "crop_path": "F:\\AI-Content-OS-Data\\artifacts\\design_learning\\reference_geometry_cropped_drafts_rework_20260724\\crops\\owner-ref-d934c135ccad0889aa5c.png",
+        "crop_box_original_px": {
+          "x": 0,
+          "y": 601,
+          "width": 1440,
+          "height": 1800
+        },
+        "crop_method": "instagram_full_width_4x5_alternate_edges_ui_avoidance_v2",
+        "crop_confidence": 0.956331,
+        "original_sha256": "b71f3fc2db937948202242595ea61c3b90954193f6d9b8800d3dc1227733b17a",
+        "crop_sha256": "4d46dc641a455d4bff1d34fc82b40cadf52eede4e6dd1a5581bbced3a20a5bce",
+        "source_claim_ids": [
+          "owner-feedback:reels_visual_commerce_learning_batch_042_043:item_0017"
+        ],
+        "analysis_record_ids": [
+          "owner-feedback:reels_visual_commerce_learning_batch_042_043:item_0017"
+        ],
+        "geometry_source": "paddleocr_boxes_and_image_dimensions",
+        "owner_approved": false,
+        "production_selectable": false
+      }
+    }
+  },
+  "selectable_reference_ids": [
+    "owner-ref-048be919bf32b433d876",
+    "owner-ref-3024626ebcf36f56cb2f",
+    "owner-ref-53e886bf03da1c53b3fb",
+    "owner-ref-5c905426902b18e27d61",
+    "owner-ref-5cbcc5369af5f0f7b0f7",
+    "owner-ref-7011b7d62f27c86d64f5",
+    "owner-ref-8381728e0225a1480841",
+    "owner-ref-90486c8f4042c067dcfe",
+    "owner-ref-968bd4d92614cadc6738",
+    "owner-ref-c29dbd8df8eea1811549",
+    "owner-ref-d934c135ccad0889aa5c",
+    "owner-ref-e29a44b9006e496c2c5a"
+  ],
+  "errors": [],
+  "approval_policy": "owner_approved_with_receipt_only",
+  "auto_approval_performed": false,
+  "owner_approval_event": {
+    "approval_event_id": "owner-approval-20260724-8872b40bdef9be3cc1c5",
+    "exact_owner_instruction": "업로드 직전까지 승인 후 결과물 브리핑",
+    "approval_date": "2026-07-24",
+    "scope": "preupload_pipeline_no_publish",
+    "explicit_user_approval": true,
+    "actual_publish_authorized": false,
+    "upload_authorized": false,
+    "auto_approval_performed": false
+  },
+  "source_smoke_result": "F:\\AI-Content-OS-Data\\qa\\reference_geometry_visual_gate_smoke_20260724\\result.json",
+  "excluded": {
+    "visual_rework_reference_ids": [
+      "owner-ref-74023508e304b3d1648f",
+      "owner-ref-bbb5208d516f076a79bb",
+      "owner-ref-aaa256b7bf66abdb8fb5",
+      "owner-ref-1f403868b00c076a7f7d",
+      "owner-ref-bbe26d20e88dc0410748",
+      "owner-ref-5f902d4da89c8ac9b4d1",
+      "owner-ref-2c8bd9bfbedbd1798fb9",
+      "owner-ref-1bf7952e85940f184c2a",
+      "owner-ref-e9a2b24f7c26c6925e3f",
+      "owner-ref-767dea3469ff657a5bf0",
+      "owner-ref-0be70b07c41af4c29aa7",
+      "owner-ref-0b01923b29697e7c90a7",
+      "owner-ref-0f0667745c0d1c717de7",
+      "owner-ref-69900e6b1c37c0508ae5",
+      "owner-ref-4c62b90c2044802f3ee5",
+      "owner-ref-3a6b1c08913ae125d132",
+      "owner-ref-61a28d7bc4bb14f649b4",
+      "owner-ref-1922730c13332266eb4a"
+    ],
+    "visual_rework_count": 18,
+    "upstream_blocked_count": 2,
+    "included_from_excluded_sets": 0
+  },
+  "actual_publish": false,
+  "upload_executed": false
+}

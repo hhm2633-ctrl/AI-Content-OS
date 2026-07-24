@@ -7,14 +7,13 @@ import satori from "satori";
 
 const MAX_STDIN_BYTES = 2 * 1024 * 1024;
 const MAX_SLIDES = 20;
-const ALLOWED_SIZES = new Set(["1080x566", "1080x1080", "1080x1350", "1080x1440"]);
+const ALLOWED_SIZES = new Set(["1080x566", "1080x1080", "1080x1440"]);
 const REMOTE_PATTERN = /(?:https?|ftp):\/\//i;
 const PROTECTED_KINDS = new Set(["hair", "outfit", "product", "comment"]);
 const CANVAS_PROFILES = {
-  instagram_portrait_4_5: {profile_id: "instagram_portrait_4_5", width: 1080, height: 1350, aspect_ratio: "4:5", safe_previews: {central_square: {x: 0, y: 135, width: 1080, height: 1080}, profile_grid_3_4: {x: 30, y: 0, width: 1020, height: 1350}}},
-  instagram_square_1_1: {profile_id: "instagram_square_1_1", width: 1080, height: 1080, aspect_ratio: "1:1", safe_previews: {central_square: {x: 0, y: 0, width: 1080, height: 1080}, profile_grid_3_4: {x: 135, y: 0, width: 810, height: 1080}}},
-  instagram_landscape_1_91_1: {profile_id: "instagram_landscape_1_91_1", width: 1080, height: 566, aspect_ratio: "1.91:1", safe_previews: {central_square: {x: 257, y: 0, width: 566, height: 566}, profile_grid_3_4: {x: 328, y: 0, width: 424, height: 566}}},
-  instagram_portrait_3_4: {profile_id: "instagram_portrait_3_4", width: 1080, height: 1440, aspect_ratio: "3:4", safe_previews: {central_square: {x: 0, y: 180, width: 1080, height: 1080}, profile_grid_3_4: {x: 0, y: 0, width: 1080, height: 1440}}},
+  instagram_square_1_1: {profile_id: "instagram_square_1_1", surface: "feed", width: 1080, height: 1080, aspect_ratio: "1:1", carousel_compatible: true, safe_previews: {central_square: {x: 0, y: 0, width: 1080, height: 1080}, profile_grid_3_4: {x: 135, y: 0, width: 810, height: 1080}}},
+  instagram_landscape_1_91_1: {profile_id: "instagram_landscape_1_91_1", surface: "feed", width: 1080, height: 566, aspect_ratio: "1.91:1", carousel_compatible: true, safe_previews: {central_square: {x: 257, y: 0, width: 566, height: 566}, profile_grid_3_4: {x: 328, y: 0, width: 424, height: 566}}},
+  instagram_portrait_3_4: {profile_id: "instagram_portrait_3_4", surface: "feed", width: 1080, height: 1440, aspect_ratio: "3:4", carousel_compatible: true, safe_previews: {central_square: {x: 0, y: 180, width: 1080, height: 1080}, profile_grid_3_4: {x: 0, y: 0, width: 1080, height: 1440}}},
 };
 
 function fail(message) {

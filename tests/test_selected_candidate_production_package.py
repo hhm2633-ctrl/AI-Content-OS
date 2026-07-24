@@ -43,6 +43,10 @@ def _plan(slide_count=5):
                 "attribution": "Example Photographer",
                 "attribution_text": "Photo: Example Photographer",
                 "attribution_required": True,
+                "quality_gate": {
+                    "passed": True,
+                    "relevant_score": 0.9,
+                },
             }
         ],
         "commerce": {"mode": "none", "required_for_readiness": False},
@@ -114,6 +118,19 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         self.assertEqual(result["gates"]["render"]["status"], "blocked")
         self.assertFalse(result["receipts"]["render_executed"])
         self.assertFalse(result["receipts"]["publish_executed"])
+
+    def test_story_slide_copy_is_the_single_final_copy_source(self):
+        plan = _plan(1)
+        plan["slide_plan"][0]["headline"] = "플래너의 긴 제목"
+        plan["slide_plan"][0]["body"] = "플래너의 긴 원문 본문"
+        story = _story(1)
+
+        result = build_selected_candidate_production_package(
+            plan, _render_receipt(plan), story
+        )
+
+        self.assertEqual("제목 1", result["slides"][0]["headline"])
+        self.assertEqual("본문 1", result["slides"][0]["body"])
 
     def test_valid_package_approval_does_not_execute_or_authorize_publish(self):
         plan = _plan(4)
@@ -267,6 +284,52 @@ class SelectedCandidateProductionPackageTests(unittest.TestCase):
         self.assertEqual(20, len(accepted["slides"]))
         self.assertEqual("blocked", rejected["status"])
         self.assertEqual("slide_count_out_of_bounds", rejected["reason_code"])
+
+    def test_nested_blueprint_learning_contract_reaches_package_receipt(self):
+        plan = _plan(1)
+        plan["production_blueprint"] = {
+            "design_system": {
+                "learned_profile": {
+                    "layout_family": "editorial_split",
+                    "palette": {"accent": "#d63d2f"},
+                }
+            },
+            "learning_trace": {
+                "production_profile": {
+                    "profile_id": "production-profile:nested",
+                    "render_contract_receipt": {
+                        "consumed_fields": ["layout_family", "palette"],
+                        "ignored_fields": ["image_grammar"],
+                    },
+                    "reference_v2_registry": {
+                        "status": "no_owner_approved_references",
+                        "selectable_reference_ids": [],
+                        "auto_approval_performed": False,
+                    },
+                }
+            },
+        }
+        render = _render_receipt(plan)
+
+        result = build_selected_candidate_production_package(
+            plan, render, _story(1)
+        )
+
+        self.assertEqual(1, len(result["slides"]))
+        self.assertEqual(
+            "editorial_split",
+            result["design_system"]["learned_profile"]["layout_family"],
+        )
+        receipt = result["learning_pipeline_consumption_receipt"]
+        self.assertEqual(
+            ["layout_family", "palette"],
+            receipt["profile_consumed_fields"],
+        )
+        self.assertEqual(
+            "no_owner_approved_references",
+            receipt["registry_status"],
+        )
+        self.assertFalse(receipt["render_execution_claimed"])
 
 
 if __name__ == "__main__":

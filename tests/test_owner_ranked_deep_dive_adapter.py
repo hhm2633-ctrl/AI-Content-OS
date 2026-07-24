@@ -101,6 +101,40 @@ class TestOwnerRankedDeepDiveAdapter(unittest.TestCase):
         self.assertEqual(result["status"], "closed")
         self.assertEqual(result["request_count"], 0)
 
+    def test_automatic_production_handoff_accepts_ungraded_selected_candidates(self):
+        payload = {
+            "production_handoff": {
+                "schema_version": "automatic_production_handoff_v1",
+                "status": "automatic_production_handoff_ready",
+                "owner_grade_required": False,
+                "owner_approval_required_at": "pre_upload_manual_upload_ready",
+                "candidates": [
+                    {
+                        "candidate_id": "auto-1",
+                        "account": "B",
+                        "category": "community_buzz",
+                        "title": "자동 선정 후보",
+                        "grade": None,
+                        "source_urls": ["https://example.com/auto"],
+                    }
+                ],
+            }
+        }
+
+        result = adapt_owner_ranked_queue_to_selective_contract(payload)
+
+        self.assertEqual(result["status"], "queue_ready")
+        self.assertEqual(result["request_count"], 1)
+        request = result["requests"][0]
+        self.assertEqual(request["candidate_id"], "auto-1")
+        self.assertEqual(request["grade"], "")
+        self.assertFalse(request["owner_grade_required"])
+        self.assertEqual(request["selection_authority"], "automatic_account_policy")
+        self.assertEqual(
+            request["owner_approval_required_at"],
+            "pre_upload_manual_upload_ready",
+        )
+
     def test_malformed_input_fails_safely(self):
         result = adapt_owner_ranked_queue_to_selective_contract("not-a-dict")
         self.assertEqual(result["status"], "closed")

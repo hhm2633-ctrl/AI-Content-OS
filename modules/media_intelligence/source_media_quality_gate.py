@@ -9,7 +9,10 @@ from __future__ import annotations
 from dataclasses import asdict, is_dataclass
 import math
 from pathlib import Path
+from queue import Empty, Queue
 import re
+from threading import Thread
+from time import monotonic
 from typing import Any, Callable, Mapping, Sequence
 
 from PIL import Image
@@ -67,6 +70,35 @@ def _hamming(left: int, right: int) -> int:
     return (left ^ right).bit_count()
 
 
+def _bounded_call(
+    callback: Callable[[], Any],
+    timeout_seconds: float,
+) -> tuple[bool, Any, BaseException | None]:
+    """Run a tool call behind a hard wall-clock boundary.
+
+    Tool adapters receive their own timeout as well, but an adapter or native
+    dependency can fail to honor it.  A daemon worker prevents that defect from
+    holding the production flow open indefinitely.
+    """
+
+    result: Queue[tuple[bool, Any]] = Queue(maxsize=1)
+
+    def execute() -> None:
+        try:
+            result.put((True, callback()))
+        except BaseException as exc:
+            result.put((False, exc))
+
+    Thread(target=execute, daemon=True, name="source-media-quality-tool").start()
+    try:
+        succeeded, value = result.get(timeout=max(0.001, float(timeout_seconds)))
+    except Empty:
+        return False, None, None
+    if succeeded:
+        return True, value, None
+    return True, None, value
+
+
 def _labels(
     headline: str,
     body: str,
@@ -106,18 +138,24 @@ class SourceMediaQualityGate:
     def __init__(
         self,
         *,
-        ocr_extractor: Callable[..., Any] = extract_korean_text,
+        ocr_extractor: Callable[..., Any] | None = None,
         openclip: Any | None = None,
         ocr_timeout_seconds: float = 30.0,
         openclip_timeout_seconds: float = 30.0,
+        evaluation_timeout_seconds: float = 30.0,
         minimum_relevant_score: float = 0.18,
         distractor_margin: float = 0.02,
         duplicate_hamming_threshold: int = 6,
     ) -> None:
-        self.ocr_extractor = ocr_extractor
+        self.ocr_extractor = (
+            ocr_extractor if ocr_extractor is not None else extract_korean_text
+        )
         self.openclip = openclip if openclip is not None else OpenClipRuntime()
         self.ocr_timeout_seconds = ocr_timeout_seconds
         self.openclip_timeout_seconds = openclip_timeout_seconds
+        self.evaluation_timeout_seconds = max(
+            0.001, float(evaluation_timeout_seconds)
+        )
         self.minimum_relevant_score = minimum_relevant_score
         self.distractor_margin = distractor_margin
         self.duplicate_hamming_threshold = duplicate_hamming_threshold
@@ -175,6 +213,7 @@ class SourceMediaQualityGate:
         relevant_labels: Sequence[str],
         distractor_labels: Sequence[str],
         context_tokens: set[str],
+        deadline: float,
     ) -> tuple[dict[str, Any], int | None]:
         record = dict(candidate)
         raw_path = str(record.get("local_path") or "").strip()
@@ -200,49 +239,81 @@ class SourceMediaQualityGate:
                 },
             }, None
 
-        try:
-            ocr = _receipt(
-                self.ocr_extractor(path, timeout_seconds=self.ocr_timeout_seconds)
-            )
-        except TimeoutError:
+        remaining = max(0.0, deadline - monotonic())
+        ocr_budget = min(float(self.ocr_timeout_seconds), remaining)
+        ocr_completed, ocr_value, ocr_exception = _bounded_call(
+            lambda: self.ocr_extractor(path, timeout_seconds=ocr_budget),
+            ocr_budget,
+        )
+        if not ocr_completed:
             ocr = {"status": "timed_out", "success": False, "reason": "ocr_timeout"}
-        except Exception as exc:
+        elif ocr_exception is not None:
+            if isinstance(ocr_exception, TimeoutError):
+                ocr = {
+                    "status": "timed_out",
+                    "success": False,
+                    "reason": "ocr_timeout",
+                }
+            else:
+                ocr = {
+                    "status": "failed",
+                    "success": False,
+                    "reason": (
+                        f"dependency_exception:{type(ocr_exception).__name__}"
+                    ),
+                }
+        else:
+            ocr = _receipt(ocr_value)
+        if not ocr_completed and remaining <= 0:
             ocr = {
-                "status": "failed",
+                "status": "timed_out",
                 "success": False,
-                "reason": f"dependency_exception:{type(exc).__name__}",
+                "reason": "quality_gate_evaluation_timeout",
             }
         ocr_required = self._ocr_required(record)
         ocr_failure = self._tool_failure("ocr", ocr)
-        if ocr_failure and ocr_required:
+        if ocr_failure:
             return {
                 **record,
                 "quality_gate": {
                     "passed": False,
                     "reason_code": ocr_failure,
-                    "ocr_required": True,
+                    "ocr_required": ocr_required,
                     "ocr": ocr,
                     "proxy_boundary": dict(PROXY_BOUNDARY),
                 },
             }, perceptual_hash
 
         topics = list(relevant_labels) + list(distractor_labels)
-        try:
-            clip = _receipt(
-                self.openclip.score_image_topics(
+        remaining = max(0.0, deadline - monotonic())
+        clip_budget = min(float(self.openclip_timeout_seconds), remaining)
+        clip_completed, clip_value, clip_exception = _bounded_call(
+            lambda: self.openclip.score_image_topics(
                     path,
                     topics,
-                    timeout_seconds=self.openclip_timeout_seconds,
-                )
-            )
-        except TimeoutError:
+                    timeout_seconds=clip_budget,
+                ),
+            clip_budget,
+        )
+        if not clip_completed:
             clip = {"status": "timeout", "passed": False, "reason": "score_timeout"}
-        except Exception as exc:
-            clip = {
-                "status": "failed",
-                "passed": False,
-                "reason": f"dependency_exception:{type(exc).__name__}",
-            }
+        elif clip_exception is not None:
+            if isinstance(clip_exception, TimeoutError):
+                clip = {
+                    "status": "timeout",
+                    "passed": False,
+                    "reason": "score_timeout",
+                }
+            else:
+                clip = {
+                    "status": "failed",
+                    "passed": False,
+                    "reason": (
+                        f"dependency_exception:{type(clip_exception).__name__}"
+                    ),
+                }
+        else:
+            clip = _receipt(clip_value)
         clip_failure = self._tool_failure("openclip", clip)
         if clip_failure:
             return {
@@ -283,7 +354,6 @@ class SourceMediaQualityGate:
         ocr_overlap = sorted(context_tokens & ocr_tokens)
         if (
             not reason
-            and ocr_required
             and len("".join(ocr_tokens)) >= 4
             and not ocr_overlap
         ):
@@ -296,7 +366,7 @@ class SourceMediaQualityGate:
                 "reason_code": reason or None,
                 "ocr_required": ocr_required,
                 "ocr_diagnostic_only": not ocr_required,
-                "ocr_failure_ignored": bool(ocr_failure and not ocr_required),
+                "ocr_failure_ignored": False,
                 "perceptual_hash": f"{perceptual_hash:016x}",
                 "ocr_context_overlap": ocr_overlap,
                 "relevant_score": relevant_score,
@@ -346,10 +416,24 @@ class SourceMediaQualityGate:
             }
 
         context_tokens = _tokens(f"{headline} {body} {' '.join(relevant)}")
+        deadline = monotonic() + self.evaluation_timeout_seconds
         passed: list[dict[str, Any]] = []
         rejected: list[dict[str, Any]] = []
         accepted_hashes: list[tuple[int, str]] = []
         for index, candidate in enumerate(candidates):
+            if monotonic() >= deadline:
+                rejected.append(
+                    {
+                        **(dict(candidate) if isinstance(candidate, Mapping) else {}),
+                        "candidate_index": index,
+                        "quality_gate": {
+                            "passed": False,
+                            "reason_code": "quality_gate_evaluation_timeout",
+                            "proxy_boundary": dict(PROXY_BOUNDARY),
+                        },
+                    }
+                )
+                continue
             if not isinstance(candidate, Mapping):
                 rejected.append(
                     {
@@ -367,6 +451,7 @@ class SourceMediaQualityGate:
                 relevant_labels=relevant,
                 distractor_labels=distractors,
                 context_tokens=context_tokens,
+                deadline=deadline,
             )
             gate = evaluated["quality_gate"]
             if gate["passed"] and perceptual_hash is not None:

@@ -1,4 +1,4 @@
-"""Run CardNews collection through a pending owner-review queue."""
+"""Run CardNews collection through an automatic production handoff."""
 
 from __future__ import annotations
 
@@ -41,14 +41,21 @@ def main() -> int:
                 "reason_code": result.get("reason_code"),
                 "owner_queue_path": result.get("owner_queue_path"),
                 "owner_review_count": result.get("owner_review_queue", {}).get("request_count", 0),
+                "category_review_artifact_path": result.get("category_review_artifact_path"),
+                "production_handoff_path": result.get("production_handoff_path"),
+                "production_handoff_count": result.get("production_handoff", {}).get("candidate_count", 0),
+                "owner_grade_required": result.get("production_handoff", {}).get("owner_grade_required"),
                 "owner_selection_performed": result.get("owner_selection_performed", False),
                 "production_performed": result.get("production_performed", False),
+                "manual_upload_ready": result.get("production_handoff", {}).get("manual_upload_ready", False),
+                "actual_publish": False,
+                "upload_executed": False,
             },
             ensure_ascii=False,
             indent=2,
         )
     )
-    return 0 if result.get("status") == "owner_review_ready" else 2
+    return 0 if result.get("status") == "production_handoff_ready" else 2
 
 
 if __name__ == "__main__":

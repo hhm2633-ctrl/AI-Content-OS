@@ -61,7 +61,7 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
             self.assertEqual(
                 result["attribution_receipt"], request["attribution_receipt"]
             )
-            self.assertEqual(request["canvas_profile"], CANVAS_PROFILES["instagram_portrait_4_5"])
+            self.assertEqual(request["canvas_profile"], CANVAS_PROFILES["instagram_portrait_3_4"])
             self.assertTrue(
                 request["slides"][0]["tree"]["props"]["children"][0]["props"]["src"].startswith(
                     "data:image/jpeg;base64,"
@@ -71,7 +71,7 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
             self.assertTrue(request["package_path"].endswith("package.json"))
             self.assertNotIn("https://", str(request["slides"]))
 
-    def test_open_license_cover_renders_attribution_in_footer_and_receipt(self):
+    def test_open_license_cover_keeps_attribution_out_of_image_tree_and_in_receipt(self):
         with tempfile.TemporaryDirectory() as temp:
             asset = Path(temp) / "commons.png"
             Image.new("RGB", (1200, 800), "#9aa9b3").save(asset)
@@ -117,16 +117,22 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
             receipt = result["attribution_receipt"][0]
             self.assertEqual("Example Photographer", receipt["attribution_text"])
             self.assertEqual("CC BY-SA 4.0", receipt["license_name"])
-            self.assertTrue(receipt["rendered_in_footer"])
-            self.assertIn(
+            self.assertFalse(receipt["rendered_in_footer"])
+            self.assertEqual(
+                "feed_caption_or_internal_source_record",
+                receipt["delivery"],
+            )
+            self.assertNotIn(
                 "Example Photographer · CC BY-SA 4.0",
                 str(result["render_request"]["slides"][0]["tree"]),
             )
 
-    def test_reference_v2_geometry_replaces_legacy_tree_and_preserves_receipt(self):
+    def test_reference_v2_page_one_builds_full_canvas_cover_lower_third_and_preserves_receipt(
+        self,
+    ):
         with tempfile.TemporaryDirectory() as temp:
             asset = Path(temp) / "owned.png"
-            Image.new("RGB", (1080, 1350), "#d8d2c4").save(asset)
+            Image.new("RGB", (1080, 1440), "#d8d2c4").save(asset)
             candidate_id = "A-v2"
             adapted_slide = {
                 "status": "adapted",
@@ -149,7 +155,7 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
                     {"region_id": "photo", "asset": {}}
                 ],
                 "content_bindings": [
-                    {"region_id": "title", "content": "승인 레이아웃 제목"}
+                    {"region_id": "title", "content": "오래된 플래너 제목"}
                 ],
                 "reference_consumption_receipt": {
                     "geometry_hash": "geometry-v2",
@@ -178,6 +184,24 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
                         {
                             "page": 1,
                             "status": "ready",
+                            "geometry_hash": "geometry-v2",
+                            "geometry_visual_gate_receipt": {
+                                "schema_version": "reference_geometry_visual_gate.v1",
+                                "adapter_schema_version": "reference_geometry_visual_gate_adapter_v1",
+                                "independent_revalidation_schema_version": "reference_geometry_independent_revalidation_v1",
+                                "status": "pass",
+                                "visual_status": "visual_geometry_pass",
+                                "receipt_id": "visual-gate-v2",
+                                "source_receipt_path": "F:/qa/independent_visual_revalidation_receipt.json",
+                                "source_receipt_sha256": "a" * 64,
+                                "reference_id": "owner-ref-v2",
+                                "blueprint_id": "bp-owner-v2",
+                                "geometry_hash": "geometry-v2",
+                                "gate_result_hash": "b" * 64,
+                                "confidence_used_as_pass": False,
+                                "auto_owner_approval": False,
+                                "production_approval_granted": False,
+                            },
                             "adapted_slide": adapted_slide,
                         }
                     ],
@@ -192,10 +216,32 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
 
             self.assertEqual("ready", result["status"])
             slide = result["render_request"]["slides"][0]
-            self.assertEqual(
-                "62.000000%",
-                slide["tree"]["props"]["children"][0]["props"]["style"]["height"],
+            children = slide["tree"]["props"]["children"]
+            cover_image = children[0]
+            self.assertEqual("img", cover_image["type"])
+            self.assertTrue(
+                cover_image["props"]["src"].startswith("data:image/")
             )
+            self.assertIn("승인 레이아웃 제목", str(slide["tree"]))
+            self.assertNotIn("오래된 플래너 제목", str(slide["tree"]))
+            self.assertEqual("100%", cover_image["props"]["style"]["width"])
+            self.assertEqual("100%", cover_image["props"]["style"]["height"])
+
+            lower_third = next(
+                child
+                for child in children
+                if child.get("type") == "div"
+                and child.get("props", {})
+                .get("style", {})
+                .get("backgroundColor")
+                == "rgba(11,31,36,0.90)"
+            )
+            lower_third_style = lower_third["props"]["style"]
+            self.assertEqual("4.444444%", lower_third_style["left"])
+            self.assertEqual("64.444444%", lower_third_style["top"])
+            self.assertEqual("91.111111%", lower_third_style["width"])
+            self.assertEqual("28.888889%", lower_third_style["height"])
+            self.assertEqual("18px", lower_third_style["borderRadius"])
             self.assertEqual(
                 "owner-receipt-v2",
                 slide["reference_v2_consumption_receipt"][
@@ -204,6 +250,51 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
             )
             self.assertFalse(
                 slide["reference_v2_consumption_receipt"]["geometry_modified"]
+            )
+
+    def test_reference_v2_without_visual_gate_receipt_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            asset = Path(temp) / "owned.png"
+            Image.new("RGB", (1080, 1440), "#d8d2c4").save(asset)
+            candidate_id = "A-v2-no-visual"
+            package = {
+                "status": "production_package_ready",
+                "candidate": {
+                    "candidate_id": candidate_id,
+                    "account": "A",
+                    "title": "시각 검증 누락",
+                },
+                "slides": [
+                    {
+                        "page": 1,
+                        "headline": "시각 검증 누락",
+                        "body": "visual gate receipt가 없습니다.",
+                    }
+                ],
+                "reference_v2_required": True,
+                "reference_v2": {
+                    "status": "ready",
+                    "slides": [
+                        {
+                            "page": 1,
+                            "status": "ready",
+                            "geometry_hash": "geometry-missing",
+                            "adapted_slide": {
+                                "geometry_hash": "geometry-missing",
+                            },
+                        }
+                    ],
+                },
+            }
+            result = build_production_render_request(
+                package,
+                self._authorization(candidate_id),
+                asset,
+            )
+            self.assertEqual(result["status"], "blocked")
+            self.assertEqual(
+                result["reason_code"],
+                "reference_visual_gate_pass_receipt_missing",
             )
 
     def test_renderer_and_builder_share_twenty_slide_limit(self):
@@ -336,7 +427,6 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
                 "NEWS DESK",
                 "DATA CHANGE",
                 "ECONOMY FILE",
-                "SOURCE DATA",
                 "20대",
                 "10.6%p",
                 "하락",
@@ -347,6 +437,7 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
                 "#fffaf0",
             ):
                 self.assertIn(supplied, request_text)
+            self.assertNotIn("SOURCE DATA", request_text)
             self.assertNotIn("STYLE / BEAUTY FILE", request_text)
             self.assertNotIn("STYLE DETAIL", request_text)
             self.assertNotIn("ALLURE KOREA", request_text)
@@ -554,4 +645,103 @@ class ProductionRenderRequestBuilderTests(unittest.TestCase):
             )
             self.assertEqual(
                 result["learning_consumption_receipt"]["core_consumed_count"], 0
+            )
+
+    def test_blocks_when_selected_asset_is_replaced_before_render(self):
+        with tempfile.TemporaryDirectory() as temp:
+            owned = Path(temp) / "owned.png"
+            Image.new("RGB", (1200, 1500), "#eeeeee").save(owned)
+            candidate_id = "B-asset-mismatch"
+            package = {
+                "status": "production_package_ready",
+                "candidate": {
+                    "candidate_id": candidate_id,
+                    "account": "B",
+                    "title": "선택 이미지 대조",
+                },
+                "slides": [
+                    {
+                        "page": 1,
+                        "headline": "선택 이미지 대조",
+                        "body": "선택된 이미지와 렌더 이미지가 달라졌습니다.",
+                        "asset_refs": ["selected-1"],
+                    }
+                ],
+                "slide_asset_selection": {
+                    "selection_receipts": [
+                        {
+                            "page": 1,
+                            "asset_id": "selected-1",
+                            "selection_receipt_id": "receipt-1",
+                        }
+                    ]
+                },
+            }
+
+            result = build_production_render_request(
+                package,
+                self._authorization(candidate_id),
+                owned,
+            )
+
+            self.assertEqual(result["status"], "blocked")
+            self.assertEqual(
+                result["reason_code"], "selected_asset_render_mismatch"
+            )
+            self.assertEqual(
+                result["asset_mismatch"]["rendered_asset_id"],
+                f"{candidate_id}-owned-editorial-1",
+            )
+
+    def test_blocks_when_upstream_profile_field_is_not_in_render_contract(self):
+        with tempfile.TemporaryDirectory() as temp:
+            owned = Path(temp) / "owned.png"
+            Image.new("RGB", (1200, 1500), "#eeeeee").save(owned)
+            candidate_id = "A-profile-mismatch"
+            package = {
+                "status": "production_package_ready",
+                "candidate": {
+                    "candidate_id": candidate_id,
+                    "account": "A",
+                    "title": "프로필 소비 대조",
+                },
+                "design_system": {
+                    "learned_profile": {
+                        "palette": {
+                            "background": "#f4f1e8",
+                            "accent": "#d44a2f",
+                        }
+                    }
+                },
+                "learning_pipeline_consumption_receipt": {
+                    "profile_consumed_fields": [
+                        "palette",
+                        "typography",
+                    ],
+                    "reference_consumed_ids": [],
+                    "auto_approval_performed": False,
+                },
+                "slides": [
+                    {
+                        "page": 1,
+                        "headline": "프로필 소비 대조",
+                        "body": "상류 소비 기록과 실제 렌더 입력을 비교합니다.",
+                    }
+                ],
+            }
+
+            result = build_production_render_request(
+                package,
+                self._authorization(candidate_id),
+                owned,
+            )
+
+            self.assertEqual(result["status"], "blocked")
+            self.assertEqual(
+                result["reason_code"],
+                "production_profile_render_consumption_mismatch",
+            )
+            self.assertEqual(
+                result["learning_consumption_mismatch"]["missing_fields"],
+                ["typography"],
             )

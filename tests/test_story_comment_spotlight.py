@@ -60,7 +60,7 @@ class StoryCommentSpotlightTests(unittest.TestCase):
             self.assertFalse(result["source_modified"])
             self.assertFalse(result["publish_authorized"])
             with Image.open(output) as rendered:
-                self.assertEqual(rendered.size, (1080, 1350))
+                self.assertEqual(rendered.size, (1080, 1440))
 
     def test_rejects_unmasked_or_missing_comment_crops(self):
         result = build_story_comment_spotlight(

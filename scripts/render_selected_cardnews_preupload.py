@@ -14,6 +14,7 @@ import json
 import math
 import re
 import shutil
+import sys
 import urllib.request
 from urllib.parse import urljoin
 from datetime import datetime
@@ -22,16 +23,20 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from modules.card_news.production_controller import (
     BATCH_AUTHORIZED,
     REPRESENTATIVE_AUTHORIZED,
     ProductionControllerError,
     validate_state,
 )
+from modules.card_news.canvas_contract import DEFAULT_CARD_CANVAS_SIZE
 
 
-CANVAS = (1080, 1350)
-REPO_ROOT = Path(__file__).resolve().parents[1]
+CANVAS = DEFAULT_CARD_CANVAS_SIZE
 DEFAULT_INPUT = REPO_ROOT / "artifacts" / "cardnews_preupload_2026-07-19" / "fragments"
 DEFAULT_OUTPUT = Path("F:/AI-Content-OS-Data/card_news/2026-07-19/preupload")
 LEGACY_RENDERER_DISABLED_REASON = (

@@ -1,8 +1,9 @@
-"""Operational CardNews collection entrypoint up to owner review.
+"""Operational CardNews collection entrypoint through production handoff.
 
 Connects shallow collection, source-intake artifacts, release-candidate, and
-multi-account discovery. It stops before owner ranking, deep discovery,
-production, rendering, and publishing.
+multi-account discovery. Owner feedback is optional selection evidence. The
+orchestrator may create a data-only production handoff, but never renders,
+publishes, or marks a package ready for upload.
 """
 
 from __future__ import annotations
@@ -36,7 +37,7 @@ from modules.trend_collector.trend_source_manager import TrendSourceManager
 
 SCHEMA_VERSION = "cardnews_collection_orchestrator_v1"
 OWNER_REVIEW_QUEUE_SCHEMA = "owner_ranked_deep_dive_queue_v1"
-MAX_OWNER_REVIEW_REQUESTS_PER_ACCOUNT = 5
+MAX_OWNER_REVIEW_REQUESTS_PER_ACCOUNT = 5  # Legacy display hint, not a storage cap.
 ACCOUNT_IDS = {
     "account_a_news_incident": "A",
     "account_b_issue_story": "B",
@@ -126,91 +127,202 @@ def _source_urls(topic: Mapping[str, Any]) -> list[str]:
     return urls
 
 
+def _candidate_lookup(discovery: Mapping[str, Any]) -> Dict[str, Dict[str, Any]]:
+    lookup: Dict[str, Dict[str, Any]] = {}
+    stages = discovery.get("stages")
+    stages = stages if isinstance(stages, Mapping) else {}
+    routing = stages.get("account_routing")
+    routing = routing if isinstance(routing, Mapping) else {}
+    portfolios = routing.get("portfolios")
+    portfolios = portfolios if isinstance(portfolios, Mapping) else {}
+    category = stages.get("category_stage2")
+    category = category if isinstance(category, Mapping) else {}
+    groups = list(portfolios.values()) + [category.get("items", [])]
+    for group in groups:
+        for item in group if isinstance(group, list) else []:
+            if not isinstance(item, Mapping):
+                continue
+            candidate_id = str(item.get("candidate_id") or "").strip()
+            if candidate_id:
+                lookup[candidate_id] = copy.deepcopy(dict(item))
+    return lookup
+
+
+def _review_sources(discovery: Mapping[str, Any]) -> Dict[str, Mapping[str, Any]]:
+    stages = discovery.get("stages")
+    stages = stages if isinstance(stages, Mapping) else {}
+    selection = stages.get("top_selection")
+    selection = selection if isinstance(selection, Mapping) else {}
+    top = selection.get("top_by_account")
+    if not isinstance(top, Mapping):
+        top = discovery.get("top_topics")
+    return {
+        "TOP": top if isinstance(top, Mapping) else {},
+        "BACKUP": selection.get("backup_by_account")
+        if isinstance(selection.get("backup_by_account"), Mapping)
+        else {},
+        "HOLD": selection.get("hold_by_account")
+        if isinstance(selection.get("hold_by_account"), Mapping)
+        else {},
+        "WATCH": (
+            discovery.get("watch_review_queue", {}).get("queue_by_account", {})
+            if isinstance(discovery.get("watch_review_queue"), Mapping)
+            else {}
+        ),
+    }
+
+
 def build_owner_review_queue(discovery: Mapping[str, Any]) -> Dict[str, Any]:
-    """Build a pending queue without inferring an owner grade."""
+    """Preserve every selection bucket while keeping owner feedback optional."""
 
-    requests = []
-    seen_candidate_ids = set()
-    top_topics = discovery.get("top_topics")
-    top_topics = top_topics if isinstance(top_topics, Mapping) else {}
-    watch_queue = discovery.get("watch_review_queue")
-    watch_queue = watch_queue if isinstance(watch_queue, Mapping) else {}
-    watch_by_account = watch_queue.get("queue_by_account")
-    watch_by_account = watch_by_account if isinstance(watch_by_account, Mapping) else {}
-    for logical_account, account in ACCOUNT_IDS.items():
-        topics = top_topics.get(logical_account)
-        account_request_count = 0
-        for topic in topics if isinstance(topics, list) else []:
-            if not isinstance(topic, Mapping):
-                continue
-            candidate_id = str(topic.get("candidate_id") or "").strip()
-            title = str(topic.get("title") or "").strip()
-            if not candidate_id or not title or candidate_id in seen_candidate_ids:
-                continue
-            requests.append(
-                {
-                    "request_id": f"owner_review:{candidate_id}",
-                    "candidate_id": candidate_id,
-                    "account": account,
-                    "category": str(topic.get("primary_category") or "unknown"),
-                    "title": title,
-                    "grade": None,
-                    "review_state": "pending_owner_grade",
-                    "source_urls": _source_urls(topic),
-                    "requested_media": [],
-                    "selection_score": copy.deepcopy(topic.get("selection_score")),
-                    "automatic_owner_selection": False,
-                    "review_track": "top_topic_grade",
-                    "stage2_decision": "GO",
-                    "watch_promotion_required": False,
-                    "production_eligible": False,
-                }
-            )
-            seen_candidate_ids.add(candidate_id)
-            account_request_count += 1
-            if account_request_count >= MAX_OWNER_REVIEW_REQUESTS_PER_ACCOUNT:
-                break
+    requests: list[Dict[str, Any]] = []
+    seen_candidate_ids: set[str] = set()
+    lookup = _candidate_lookup(discovery)
+    sources = _review_sources(discovery)
+    hidden_records: list[Dict[str, Any]] = []
+    status_counts = {status: 0 for status in sources}
+    by_category: Dict[str, list[Dict[str, Any]]] = {}
 
-        watch_topics = watch_by_account.get(logical_account)
-        for topic in watch_topics if isinstance(watch_topics, list) else []:
-            if account_request_count >= MAX_OWNER_REVIEW_REQUESTS_PER_ACCOUNT:
-                break
-            if not isinstance(topic, Mapping):
-                continue
-            candidate_id = str(topic.get("candidate_id") or "").strip()
-            title = str(topic.get("title") or "").strip()
-            if not candidate_id or not title or candidate_id in seen_candidate_ids:
-                continue
-            requests.append(
-                {
-                    "request_id": f"owner_review:{candidate_id}",
-                    "candidate_id": candidate_id,
+    for selection_status in ("TOP", "BACKUP", "HOLD", "WATCH"):
+        buckets = sources[selection_status]
+        for logical_account, account in ACCOUNT_IDS.items():
+            topics = buckets.get(logical_account)
+            for raw_topic in topics if isinstance(topics, list) else []:
+                if not isinstance(raw_topic, Mapping):
+                    hidden_records.append(
+                        {
+                            "account": account,
+                            "selection_status": selection_status,
+                            "reason_code": "candidate_must_be_object",
+                            "raw": copy.deepcopy(raw_topic),
+                        }
+                    )
+                    continue
+                candidate_id = str(raw_topic.get("candidate_id") or "").strip()
+                hydrated = copy.deepcopy(lookup.get(candidate_id, {}))
+                hydrated.update(copy.deepcopy(dict(raw_topic)))
+                title = str(
+                    hydrated.get("title") or hydrated.get("representative_title") or ""
+                ).strip()
+                category = str(hydrated.get("primary_category") or "unknown")
+                artifact_entry = {
+                    "candidate_id": candidate_id or None,
                     "account": account,
-                    "category": str(topic.get("primary_category") or "unknown"),
-                    "title": title,
-                    "grade": None,
-                    "review_state": "pending_watch_approval",
-                    "source_urls": _source_urls(topic),
-                    "requested_media": [],
-                    "selection_score": copy.deepcopy(topic.get("score_diagnostics")),
-                    "automatic_owner_selection": False,
-                    "review_track": "watch_promotion",
-                    "stage2_decision": "WATCH",
-                    "watch_promotion_required": True,
-                    "production_eligible": False,
+                    "category": category,
+                    "title": title or None,
+                    "selection_status": selection_status,
+                    "production_eligible": selection_status == "TOP",
+                    "raw": hydrated,
                 }
-            )
-            seen_candidate_ids.add(candidate_id)
-            account_request_count += 1
+                status_counts[selection_status] += 1
+                by_category.setdefault(category, []).append(copy.deepcopy(artifact_entry))
+                if not candidate_id or not title:
+                    hidden_records.append(
+                        {
+                            **artifact_entry,
+                            "reason_code": "identity_or_title_missing",
+                        }
+                    )
+                    continue
+                if candidate_id in seen_candidate_ids:
+                    hidden_records.append(
+                        {
+                            **artifact_entry,
+                            "reason_code": "duplicate_candidate_preserved_in_category_artifact",
+                        }
+                    )
+                    continue
+                seen_candidate_ids.add(candidate_id)
+                is_watch = selection_status == "WATCH"
+                requests.append(
+                    {
+                        "request_id": f"candidate_review:{candidate_id}",
+                        "candidate_id": candidate_id,
+                        "account": account,
+                        "category": category,
+                        "title": title,
+                        "grade": None,
+                        "review_state": "optional_owner_feedback",
+                        "source_urls": _source_urls(hydrated),
+                        "requested_media": [],
+                        "selection_score": copy.deepcopy(
+                            hydrated.get("selection_score")
+                            or hydrated.get("score_diagnostics")
+                        ),
+                        "selection_status": selection_status,
+                        "selection_authority": "automatic_account_policy",
+                        "owner_grade_required": False,
+                        "owner_grade_role": "optional_reference_signal",
+                        "automatic_owner_selection": False,
+                        "review_track": (
+                            "watch_promotion"
+                            if is_watch
+                            else "optional_candidate_feedback"
+                        ),
+                        "stage2_decision": "WATCH" if is_watch else "GO",
+                        "watch_promotion_required": is_watch,
+                        "production_eligible": selection_status == "TOP",
+                    }
+                )
+
+    category_review_artifact = {
+        "schema_version": "cardnews_category_review_artifact_v1",
+        "status": "ready" if by_category or hidden_records else "empty",
+        "candidate_count": sum(status_counts.values()),
+        "status_counts": status_counts,
+        "categories": by_category,
+        "unaddressable_or_duplicate_records": hidden_records,
+        "owner_feedback_optional": True,
+        "automatic_selection_is_not_owner_approval": True,
+    }
     return {
         "schema_version": OWNER_REVIEW_QUEUE_SCHEMA,
-        "status": "pending_owner_review" if requests else "empty",
+        "status": "automatic_selection_ready" if requests else "empty",
         "requests": requests,
         "request_count": len(requests),
+        "category_review_artifact": category_review_artifact,
         "owner_grades_inferred": False,
+        "owner_grade_required": False,
+        "owner_feedback_optional": True,
         "owner_selection_performed": False,
+        "automatic_selection_performed": bool(
+            any(item.get("production_eligible") is True for item in requests)
+        ),
         "deep_discovery_performed": False,
         "production_performed": False,
+        "publishing_performed": False,
+        "actual_publish": False,
+        "upload_executed": False,
+    }
+
+
+def build_automatic_production_handoff(owner_queue: Mapping[str, Any]) -> Dict[str, Any]:
+    """Create a data-only handoff from automatic TOP selections."""
+
+    candidates = [
+        {
+            **copy.deepcopy(dict(item)),
+            "grade": item.get("grade"),
+            "owner_grade_consumed": item.get("grade") is not None,
+            "selection_authority": "automatic_account_policy",
+        }
+        for item in owner_queue.get("requests", [])
+        if isinstance(item, Mapping) and item.get("production_eligible") is True
+    ]
+    return {
+        "schema_version": "cardnews_automatic_production_handoff_v1",
+        "status": "ready" if candidates else "empty",
+        "candidate_count": len(candidates),
+        "candidates": candidates,
+        "selection_authority": "automatic_account_policy",
+        "owner_grade_required": False,
+        "owner_feedback_optional": True,
+        "owner_approval_required_at": "pre_upload_manual_upload_ready",
+        "manual_upload_ready": False,
+        "actual_publish": False,
+        "upload_executed": False,
+        "production_performed": False,
+        "render_performed": False,
         "publishing_performed": False,
     }
 
@@ -230,7 +342,7 @@ def run_cardnews_collection_orchestrator(
     rc_runner: Callable[..., Dict[str, Any]] = run_source_intake_release_candidate,
     discovery_runner: Callable[..., Dict[str, Any]] = run_multi_account_card_news_discovery_pipeline,
 ) -> Dict[str, Any]:
-    """Run collection through a pending owner-review queue, then stop."""
+    """Run collection through an automatic data-only production handoff."""
 
     today_str = _coerce_today(today)
     root = output_root or SOURCE_INTAKE_STORAGE_ROOT
@@ -239,6 +351,7 @@ def run_cardnews_collection_orchestrator(
     stages: Dict[str, Any] = {}
     flags = {
         "owner_selection_performed": False,
+        "automatic_selection_performed": False,
         "deep_discovery_performed": False,
         "production_performed": False,
         "render_performed": False,
@@ -300,6 +413,7 @@ def run_cardnews_collection_orchestrator(
                 "today": today_str,
                 "stages": stages,
                 "owner_review_queue": build_owner_review_queue({}),
+                "production_handoff": build_automatic_production_handoff({}),
                 **flags,
             }
 
@@ -309,20 +423,35 @@ def run_cardnews_collection_orchestrator(
         discovery = discovery_runner(eligible_collection)
         stages["multi_account_discovery"] = discovery
         owner_queue = build_owner_review_queue(discovery)
+        production_handoff = build_automatic_production_handoff(owner_queue)
         resolved_queue_path = (
             Path(owner_queue_path) if owner_queue_path else day_root / "owner_review_queue.json"
         )
+        review_artifact_path = day_root / "category_review_artifact.json"
+        handoff_path = day_root / "automatic_production_handoff.json"
         _write_json(resolved_queue_path, owner_queue)
+        _write_json(review_artifact_path, owner_queue["category_review_artifact"])
+        _write_json(handoff_path, production_handoff)
         return {
             "schema_version": SCHEMA_VERSION,
-            "status": "owner_review_ready" if owner_queue["request_count"] else "closed",
-            "reason_code": "pending_owner_grade" if owner_queue["request_count"] else "no_owner_review_candidates",
+            "status": "production_handoff_ready"
+            if production_handoff["candidate_count"]
+            else "closed",
+            "reason_code": "automatic_selection_ready_owner_feedback_optional"
+            if production_handoff["candidate_count"]
+            else "no_production_handoff_candidates",
             "today": today_str,
             "output_root": str(day_root),
             "owner_queue_path": str(resolved_queue_path),
+            "category_review_artifact_path": str(review_artifact_path),
+            "production_handoff_path": str(handoff_path),
             "stages": stages,
             "owner_review_queue": owner_queue,
-            **flags,
+            "production_handoff": production_handoff,
+            **{
+                **flags,
+                "automatic_selection_performed": production_handoff["candidate_count"] > 0,
+            },
         }
     except Exception as error:
         return {
@@ -333,6 +462,7 @@ def run_cardnews_collection_orchestrator(
             "today": today_str,
             "stages": stages,
             "owner_review_queue": build_owner_review_queue({}),
+            "production_handoff": build_automatic_production_handoff({}),
             **flags,
         }
 
@@ -342,6 +472,7 @@ __all__ = [
     "MAX_OWNER_REVIEW_REQUESTS_PER_ACCOUNT",
     "OWNER_REVIEW_QUEUE_SCHEMA",
     "SCHEMA_VERSION",
+    "build_automatic_production_handoff",
     "build_owner_review_queue",
     "run_cardnews_collection_orchestrator",
 ]

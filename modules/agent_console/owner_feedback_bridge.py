@@ -57,7 +57,7 @@ def record_owner_grade(
     event_digest = hashlib.sha256(
         f"{candidate_id}|{clean_grade}|{recorded_at}".encode("utf-8")
     ).hexdigest()[:20]
-    return append_owner_review_feedback(
+    result = append_owner_review_feedback(
         {
             "event_id": f"owner-review-{event_digest}",
             "recorded_at": recorded_at,
@@ -67,13 +67,32 @@ def record_owner_grade(
             "category": str(category).strip(),
             "title": str(title).strip(),
             "owner_decision": f"GRADE_{clean_grade.upper()}",
-            "owner_reason": f"Owner assigned grade {clean_grade} in the CardNews review workspace.",
-            "applies_to": [str(account).strip(), "candidate_selection", "owner_grading"],
+            "owner_reason": (
+                f"Owner assigned grade {clean_grade} as optional CardNews quality feedback. "
+                "This grade is not selection approval, production approval, or upload approval."
+            ),
+            "applies_to": [
+                str(account).strip(),
+                "candidate_selection",
+                "owner_grading",
+                "optional_reference_signal",
+                "not_selection_gate",
+                "not_production_gate",
+                "pre_upload_approval_only",
+            ],
         },
         execution_context=_job_trace(state, str(candidate_id).strip()),
         feedback_path=feedback_path,
         index_path=index_path,
     )
+    result["signal_contract"] = {
+        "role": "optional_reference_signal",
+        "selection_gate": False,
+        "production_gate": False,
+        "upload_approval": False,
+        "approval_gate_stage": "pre_upload_manual_upload_ready",
+    }
+    return result
 
 
 def main() -> int:

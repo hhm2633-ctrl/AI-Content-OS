@@ -59,7 +59,7 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         )
         self.assertTrue(result["network_used"])
         self.assertEqual(result["assets"], [])
-        self.assertEqual(len(transport.calls), 2)
+        self.assertEqual(len(transport.calls), 1)
 
     def test_google_image_search_sends_rights_filter(self):
         transport = RoutingTransport(
@@ -277,7 +277,7 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
             ["File:Heat street.jpg", "File:Heat chart.png"],
         )
 
-    def test_commons_expands_explicit_terms_title_and_category_with_a_hard_limit(self):
+    def test_commons_prioritizes_title_then_explicit_terms_with_a_hard_limit(self):
         transport = RoutingTransport(commons_body=json.dumps({"query": {"pages": []}}))
         result = provider_with(transport).discover(
             "A",
@@ -290,7 +290,7 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         )
         self.assertEqual(
             result["queries"],
-            ["서울 폭염 현장", "온열질환", "기상청"],
+            ["폭염 경보 확산", "서울 폭염 현장", "온열질환"],
         )
         self.assertEqual(len(transport.calls), 3)
         searches = [
@@ -299,8 +299,24 @@ class OpenMediaDiscoveryProviderTest(unittest.TestCase):
         ]
         self.assertEqual(
             searches,
-            ["file:서울 폭염 현장", "file:온열질환", "file:기상청"],
+            ["file:폭염 경보 확산", "file:서울 폭염 현장", "file:온열질환"],
         )
+
+    def test_internal_category_is_not_used_as_a_topic_when_title_exists(self):
+        transport = RoutingTransport(commons_body=json.dumps({"query": {"pages": []}}))
+        result = provider_with(transport).discover(
+            "A",
+            "search_open_images",
+            {
+                "title": "제주 스타트업 첫 투자",
+                "category": "economy_market",
+                "search_terms": ["economy_market"],
+                "open_media_source": "wikimedia_commons",
+            },
+        )
+
+        self.assertEqual(result["queries"], ["제주 스타트업 첫 투자"])
+        self.assertEqual(result["query"], "제주 스타트업 첫 투자")
 
     def test_unsupported_operation_is_refused_without_network(self):
         transport = RoutingTransport()

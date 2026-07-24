@@ -12,15 +12,22 @@ from typing import Any, Dict, List, Mapping
 from modules.card_news.reference_v2_satori_adapter import (
     build_reference_v2_satori_tree,
 )
+from modules.design_learning.reference_specimen_registry import (
+    is_visual_gate_pass_receipt,
+)
 from urllib.parse import urlparse
 
 from PIL import Image, ImageOps
 
-from modules.tool_adapters.cardnews_renderer_runtime import CANVAS_PROFILES
+from modules.card_news.canvas_contract import (
+    DEFAULT_CARD_CANVAS_SIZE,
+    DEFAULT_CARD_NEWS_PROFILE_ID,
+    get_card_canvas_profile,
+)
 
 
 SCHEMA_VERSION = "cardnews_renderer_request_v1"
-PROFILE_ID = "instagram_portrait_4_5"
+PROFILE_ID = DEFAULT_CARD_NEWS_PROFILE_ID
 MAX_SLIDES = 20
 VISUAL_TYPES = {
     "cover_editorial",
@@ -104,6 +111,62 @@ def _text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
 
 
+def _reference_text_role(value: Any) -> str:
+    role = _text(value).casefold()
+    if role in {"headline", "title", "hook", "hook_headline"}:
+        return "headline"
+    if role in {
+        "body",
+        "description",
+        "supporting_text",
+        "summary",
+        "caption",
+        "detail",
+    }:
+        return "body"
+    return role
+
+
+def _rebind_reference_copy(
+    adapted_slide: Mapping[str, Any],
+    current_slide: Mapping[str, Any],
+) -> Dict[str, Any]:
+    rebound = copy.deepcopy(dict(adapted_slide))
+    regions = rebound.get("regions")
+    bindings = rebound.get("content_bindings")
+    if not isinstance(regions, list) or not isinstance(bindings, list):
+        return rebound
+    role_by_region = {
+        _text(region.get("region_id")): _reference_text_role(region.get("role"))
+        for region in regions
+        if isinstance(region, Mapping) and _text(region.get("region_id"))
+    }
+    final_copy = {
+        "headline": _text(current_slide.get("headline")),
+        "body": _text(current_slide.get("body")),
+    }
+    rebound["content_bindings"] = [
+        {
+            **copy.deepcopy(dict(binding)),
+            "content": final_copy.get(
+                role_by_region.get(_text(binding.get("region_id")), ""),
+                _text(binding.get("content")),
+            ),
+        }
+        if isinstance(binding, Mapping)
+        else copy.deepcopy(binding)
+        for binding in bindings
+    ]
+    nested_slide = (
+        copy.deepcopy(dict(rebound.get("slide")))
+        if isinstance(rebound.get("slide"), Mapping)
+        else {}
+    )
+    nested_slide.update(copy.deepcopy(dict(current_slide)))
+    rebound["slide"] = nested_slide
+    return rebound
+
+
 def _source_display_label(value: Any) -> str:
     host = (urlparse(_text(value)).hostname or "").casefold().removeprefix("www.")
     labels = {
@@ -145,14 +208,19 @@ def _blocked(reason: str) -> Dict[str, Any]:
     }
 
 
-def _image_data_uri(path: Path, *, fit_cover: bool = True) -> tuple[str, int, int]:
+def _image_data_uri(
+    path: Path,
+    *,
+    fit_cover: bool = True,
+    target_size: tuple[int, int] = DEFAULT_CARD_CANVAS_SIZE,
+) -> tuple[str, int, int]:
     with Image.open(path) as source:
         source = ImageOps.exif_transpose(source).convert("RGB")
         source_width, source_height = source.size
         prepared = (
             ImageOps.fit(
                 source,
-                (1080, 1350),
+                target_size,
                 method=Image.Resampling.LANCZOS,
                 centering=(0.62, 0.46),
             )
@@ -524,6 +592,37 @@ def _visual_spec(value: Any) -> Dict[str, Any]:
     return dict(value) if visual_type in VISUAL_TYPES else {}
 
 
+def _strip_visible_source_labels(
+    tree: Any,
+    *,
+    labels: tuple[str, ...] = (),
+) -> Any:
+    """Remove source/credit copy from image trees while preserving metadata."""
+    blocked = {_text(label).casefold() for label in labels if _text(label)}
+    if isinstance(tree, Mapping):
+        return {
+            key: _strip_visible_source_labels(value, labels=labels)
+            for key, value in tree.items()
+        }
+    if isinstance(tree, list):
+        return [
+            _strip_visible_source_labels(value, labels=labels)
+            for value in tree
+        ]
+    if isinstance(tree, str):
+        normalized = _text(tree).casefold()
+        if (
+            normalized in blocked
+            or normalized.startswith("source")
+            or normalized.startswith("출처")
+            or normalized.startswith("참고:")
+            or normalized.startswith("http://")
+            or normalized.startswith("https://")
+        ):
+            return ""
+    return tree
+
+
 def _cover_tree(
     title: str,
     body: str,
@@ -543,7 +642,7 @@ def _cover_tree(
         "div",
         style={
             "width": "1080px",
-            "height": "1350px",
+            "height": f"{DEFAULT_CARD_CANVAS_SIZE[1]}px",
             "display": "flex",
             "position": "relative",
             "overflow": "hidden",
@@ -558,7 +657,7 @@ def _cover_tree(
                     "position": "absolute",
                     "inset": "0px",
                     "width": "1080px",
-                    "height": "1350px",
+                    "height": f"{DEFAULT_CARD_CANVAS_SIZE[1]}px",
                     "objectFit": "cover",
                 },
             ),
@@ -573,9 +672,10 @@ def _cover_tree(
                     "display": "flex",
                     "flexDirection": "column",
                     "justifyContent": "space-between",
-                    "padding": "52px",
-                    "backgroundColor": design["panel"],
-                    "borderRadius": "28px",
+                    "padding": "0px",
+                    "backgroundColor": "transparent",
+                    "borderRadius": "0px",
+                    "textShadow": "0 3px 18px rgba(0,0,0,0.72)",
                 },
                 children=[
                     _node(
@@ -626,10 +726,6 @@ def _cover_tree(
                         },
                         children=[
                             _node("div", children=design["footer_label"]),
-                            _node(
-                                "div",
-                                children=source_label or design["source_label"],
-                            ),
                         ],
                     ),
                 ],
@@ -925,7 +1021,7 @@ def _detail_tree(
         "div",
         style={
             "width": "1080px",
-            "height": "1350px",
+            "height": f"{DEFAULT_CARD_CANVAS_SIZE[1]}px",
             "display": "flex",
             "flexDirection": "column",
             "justifyContent": "space-between",
@@ -987,7 +1083,6 @@ def _detail_tree(
                 },
                 children=[
                     _node("div", children=design["footer_label"]),
-                    _node("div", children=source_label or design["source_label"]),
                 ],
             ),
         ],
@@ -1020,7 +1115,16 @@ def build_production_render_request(
     asset_path = Path(owned_asset_path).resolve()
     if not asset_path.is_file():
         return _blocked("owned_asset_missing")
-    image_uri, source_width, source_height = _image_data_uri(asset_path)
+    profile_id = _text(package.get("canvas_profile_id")) or PROFILE_ID
+    central_profile = get_card_canvas_profile(profile_id)
+    if central_profile is None:
+        return _blocked("canvas_profile_invalid")
+    profile = dict(central_profile)
+    target_size = (int(profile["width"]), int(profile["height"]))
+    image_uri, source_width, source_height = _image_data_uri(
+        asset_path,
+        target_size=target_size,
+    )
     reference_v2_required = package.get("reference_v2_required") is True
     reference_v2 = package.get("reference_v2")
     reference_v2 = reference_v2 if isinstance(reference_v2, Mapping) else {}
@@ -1041,6 +1145,20 @@ def build_production_render_request(
         int(item.get("page") or index): item
         for index, item in enumerate(reference_v2_rows, start=1)
     }
+    selection = package.get("slide_asset_selection")
+    selection_receipts = (
+        selection.get("selection_receipts", [])
+        if isinstance(selection, Mapping)
+        and isinstance(selection.get("selection_receipts"), list)
+        else []
+    )
+    selected_asset_by_page = {
+        int(item.get("page")): _text(item.get("asset_id"))
+        for item in selection_receipts
+        if isinstance(item, Mapping)
+        and isinstance(item.get("page"), int)
+        and _text(item.get("asset_id"))
+    }
     title = _text(candidate.get("title"))
     supplied_design = isinstance(package.get("design_system"), Mapping)
     design = _design_system(account, package.get("design_system"))
@@ -1060,10 +1178,42 @@ def build_production_render_request(
         blocked = _blocked("learned_design_profile_not_consumed")
         blocked["learning_consumption_receipt"] = learning_receipt
         return blocked
-    profile = dict(CANVAS_PROFILES[PROFILE_ID])
+    upstream_consumption = package.get(
+        "learning_pipeline_consumption_receipt"
+    )
+    upstream_consumption = (
+        copy.deepcopy(dict(upstream_consumption))
+        if isinstance(upstream_consumption, Mapping)
+        else {}
+    )
+    if upstream_consumption.get("auto_approval_performed") is True:
+        return _blocked("reference_registry_auto_approval_forbidden")
+    expected_profile_fields = {
+        _text(field)
+        for field in upstream_consumption.get(
+            "profile_consumed_fields", []
+        )
+        if _text(field)
+    }
+    actual_profile_fields = set(learning_receipt["consumed_fields"])
+    missing_profile_fields = sorted(
+        expected_profile_fields - actual_profile_fields
+    )
+    if missing_profile_fields:
+        blocked = _blocked(
+            "production_profile_render_consumption_mismatch"
+        )
+        blocked["learning_consumption_mismatch"] = {
+            "expected_fields": sorted(expected_profile_fields),
+            "actual_fields": sorted(actual_profile_fields),
+            "missing_fields": missing_profile_fields,
+        }
+        return blocked
     total = len(slides)
     request_slides: List[Dict[str, Any]] = []
     attribution_receipts: List[Dict[str, Any]] = []
+    rendered_asset_ids: Dict[str, List[str]] = {}
+    rendered_reference_ids: set[str] = set()
     for index, raw in enumerate(slides, start=1):
         if not isinstance(raw, Mapping):
             return _blocked("slide_invalid")
@@ -1093,18 +1243,46 @@ def build_production_render_request(
             and source_candidate.get("publish_authorized") is False
         )
         slide_asset_path = source_path if source_editorial else asset_path
+        rendered_asset_id = (
+            _text(source_candidate.get("asset_id"))
+            if source_editorial
+            else f"{candidate_id}-owned-editorial-1"
+        )
         slide_image_uri, slide_source_width, slide_source_height = _image_data_uri(
             slide_asset_path,
             fit_cover=not source_editorial,
+            target_size=target_size,
         )
         reference_tree = None
         reference_receipt = {}
-        if reference_v2_required:
+        if reference_v2_required and page in reference_v2_by_page:
             reference_result = reference_v2_by_page.get(page, {})
+            visual_gate_receipt = reference_result.get(
+                "geometry_visual_gate_receipt"
+            )
             adapted_slide = reference_result.get("adapted_slide")
             adapted_slide = (
                 adapted_slide if isinstance(adapted_slide, Mapping) else {}
             )
+            adapted_slide = _rebind_reference_copy(adapted_slide, raw)
+            selection = reference_result.get("selection")
+            selection = selection if isinstance(selection, Mapping) else {}
+            reference_geometry_hash = (
+                _text(reference_result.get("geometry_hash"))
+                or _text(adapted_slide.get("geometry_hash"))
+            )
+            if not is_visual_gate_pass_receipt(
+                visual_gate_receipt,
+                reference_id=_text(
+                    selection.get("primary_reference_id")
+                ),
+                geometry_hash=reference_geometry_hash,
+            ):
+                blocked = _blocked(
+                    "reference_visual_gate_pass_receipt_missing"
+                )
+                blocked["reference_v2"] = dict(reference_result)
+                return blocked
             reference_media_bindings = adapted_slide.get("media_bindings")
             reference_media_bindings = (
                 reference_media_bindings
@@ -1147,13 +1325,15 @@ def build_production_render_request(
                     blocked["reference_v2"] = dict(reference_result)
                     return blocked
                 slide_image_uri, slide_source_width, slide_source_height = (
-                    _image_data_uri(bound_path)
+                    _image_data_uri(bound_path, target_size=target_size)
                 )
                 attribution_candidate = bound_asset
+                rendered_asset_id = _text(bound_asset.get("asset_id"))
                 break
             reference_tree_result = build_reference_v2_satori_tree(
                 adapted_slide,
                 fallback_image_uri=slide_image_uri,
+                page=page,
             )
             if reference_tree_result.get("status") != "ready":
                 blocked = _blocked(
@@ -1166,45 +1346,62 @@ def build_production_render_request(
             reference_receipt = reference_tree_result.get(
                 "reference_consumption_receipt", {}
             )
+            rendered_reference_id = _text(
+                reference_receipt.get("reference_id")
+                or reference_receipt.get("primary_reference_id")
+            )
+            if rendered_reference_id:
+                rendered_reference_ids.add(rendered_reference_id)
+        selected_asset_id = selected_asset_by_page.get(page, "")
+        if selected_asset_id and selected_asset_id != rendered_asset_id:
+            blocked = _blocked("selected_asset_render_mismatch")
+            blocked["asset_mismatch"] = {
+                "page": page,
+                "selected_asset_id": selected_asset_id,
+                "rendered_asset_id": rendered_asset_id,
+            }
+            return blocked
+        rendered_asset_ids[str(page)] = (
+            [rendered_asset_id]
+            if rendered_asset_id and (is_cover or source_editorial)
+            else []
+        )
         request_slides.append(
             {
                 "page": page,
                 "width": profile["width"],
                 "height": profile["height"],
-                "tree": reference_tree or (
-                    _cover_tree(
-                        headline,
-                        body,
-                        slide_image_uri,
-                        account,
-                        design,
-                        render_style,
-                        (
-                            _source_attribution_label(attribution_candidate)
-                            if source_editorial
-                            else ""
-                        ),
-                    )
-                    if is_cover
-                    else _detail_tree(
-                        page,
-                        total,
-                        headline,
-                        body,
-                        account,
-                        visual_spec,
-                        design,
-                        supplied_design,
-                        slide_image_uri if source_editorial else "",
-                        slide_source_width if source_editorial else 0,
-                        slide_source_height if source_editorial else 0,
-                        (
-                            _source_attribution_label(attribution_candidate)
-                            if source_editorial
-                            else ""
-                        ),
-                        render_style,
-                    )
+                "tree": _strip_visible_source_labels(
+                    reference_tree or (
+                        _cover_tree(
+                            headline,
+                            body,
+                            slide_image_uri,
+                            account,
+                            design,
+                            render_style,
+                        )
+                        if is_cover
+                        else _detail_tree(
+                            page,
+                            total,
+                            headline,
+                            body,
+                            account,
+                            visual_spec,
+                            design,
+                            supplied_design,
+                            slide_image_uri if source_editorial else "",
+                            slide_source_width if source_editorial else 0,
+                            slide_source_height if source_editorial else 0,
+                            "",
+                            render_style,
+                        )
+                    ),
+                    labels=(
+                        design["source_label"],
+                        _source_attribution_label(attribution_candidate),
+                    ),
                 ),
                 "media_classification": (
                     "source_editorial" if source_editorial else "generated_editorial"
@@ -1222,17 +1419,26 @@ def build_production_render_request(
                 "reference_v2_consumption_receipt": copy.deepcopy(
                     reference_receipt
                 ),
+                "geometry_visual_gate_receipt": copy.deepcopy(
+                    visual_gate_receipt
+                    if reference_v2_required
+                    and page in reference_v2_by_page
+                    else {}
+                ),
                 "assets": (
                     [
                         {
                             "asset_id": (
-                                _text(source_candidate.get("asset_id"))
-                                if source_editorial
-                                else f"{candidate_id}-owned-editorial-1"
+                                rendered_asset_id
                             ),
                             "source_width": slide_source_width,
                             "source_height": slide_source_height,
-                            "target_bounds": {"x": 0, "y": 0, "width": 1080, "height": 1350},
+                            "target_bounds": {
+                                "x": 0,
+                                "y": 0,
+                                "width": profile["width"],
+                                "height": profile["height"],
+                            },
                             "focus_bounds": {"x": 0.36, "y": 0.14, "width": 0.6, "height": 0.72},
                             "crop_strategy": "contain",
                             "protected_subjects": (
@@ -1273,9 +1479,37 @@ def build_production_render_request(
                     attribution_candidate.get("attribution_required") is True
                 ),
                 "display_label": attribution_label,
-                "rendered_in_footer": bool(source_editorial and attribution_label),
+                "rendered_in_footer": False,
+                "delivery": "feed_caption_or_internal_source_record",
             }
         )
+
+    expected_reference_ids = {
+        _text(reference_id)
+        for reference_id in upstream_consumption.get(
+            "reference_consumed_ids", []
+        )
+        if _text(reference_id)
+    }
+    missing_reference_ids = sorted(
+        expected_reference_ids - rendered_reference_ids
+    )
+    if missing_reference_ids:
+        blocked = _blocked("reference_render_consumption_mismatch")
+        blocked["reference_consumption_mismatch"] = {
+            "expected_reference_ids": sorted(expected_reference_ids),
+            "rendered_reference_ids": sorted(rendered_reference_ids),
+            "missing_reference_ids": missing_reference_ids,
+        }
+        return blocked
+    final_consumption_receipt = {
+        **upstream_consumption,
+        "status": "satori_render_contract_consumption_verified",
+        "actual_profile_consumed_fields": sorted(actual_profile_fields),
+        "rendered_reference_ids": sorted(rendered_reference_ids),
+        "rendered_asset_ids": copy.deepcopy(rendered_asset_ids),
+        "render_execution_claimed": False,
+    }
 
     hashes = authorization.get("local_media_receipt_hashes")
     candidate_hashes = hashes.get(candidate_id) if isinstance(hashes, Mapping) else None
@@ -1300,6 +1534,11 @@ def build_production_render_request(
         "reference_v2_required": reference_v2_required,
         "reference_v2": copy.deepcopy(dict(reference_v2)),
         "attribution_receipt": copy.deepcopy(attribution_receipts),
+        "asset_selection_receipts": copy.deepcopy(selection_receipts),
+        "rendered_asset_ids": copy.deepcopy(rendered_asset_ids),
+        "learning_pipeline_consumption_receipt": (
+            final_consumption_receipt
+        ),
         "slides": request_slides,
     }
     if package_path is not None:
@@ -1310,6 +1549,11 @@ def build_production_render_request(
         "reason_code": "source_bound_satori_request_built",
         "learning_consumption_receipt": learning_receipt,
         "attribution_receipt": attribution_receipts,
+        "asset_selection_receipts": copy.deepcopy(selection_receipts),
+        "rendered_asset_ids": copy.deepcopy(rendered_asset_ids),
+        "learning_pipeline_consumption_receipt": (
+            final_consumption_receipt
+        ),
         "render_request": request,
     }
 

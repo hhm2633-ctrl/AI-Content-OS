@@ -1,4 +1,4 @@
-"""Replay the saved owner queue through commerce matching and final selection."""
+"""Replay the candidate queue through commerce matching and automatic selection."""
 
 from __future__ import annotations
 
@@ -6,14 +6,12 @@ import argparse
 import json
 from pathlib import Path
 import sys
-from typing import Any, Dict
+from typing import Any, Dict, Mapping
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
-from modules.agent_console.console import AgentConsole
-from modules.agent_console.cardnews_flow_bridge import sync_selected_cardnews_candidates
 from modules.brandconnect.brandconnect_product_catalog import normalize_brandconnect_catalog
 from modules.brandconnect.brandconnect_second_stage import run_brandconnect_second_stage
 from modules.brandconnect.catalog_function_relation_builder import build_catalog_function_relations
@@ -27,6 +25,38 @@ from modules.source_intake.owner_ranked_final_candidate_selector import select_o
 
 def _read(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _build_production_handoff(selection: Mapping[str, Any]) -> Dict[str, Any]:
+    candidates = []
+    accounts = selection.get("accounts")
+    accounts = accounts if isinstance(accounts, Mapping) else {}
+    for account in ("A", "B", "C"):
+        bucket = accounts.get(account)
+        bucket = bucket if isinstance(bucket, Mapping) else {}
+        for item in bucket.get("selected", []):
+            if not isinstance(item, Mapping):
+                continue
+            candidates.append(
+                {
+                    **dict(item),
+                    "selection_authority": "automatic_policy",
+                    "owner_grade_consumed": item.get("grade") is not None,
+                }
+            )
+    return {
+        "schema_version": "cardnews_automatic_production_handoff_v1",
+        "status": "ready" if candidates else "empty",
+        "candidate_count": len(candidates),
+        "candidates": candidates,
+        "owner_grade_required": False,
+        "owner_feedback_optional": True,
+        "automatic_selection_is_not_owner_approval": True,
+        "owner_approval_required_at": "pre_upload_manual_upload_ready",
+        "manual_upload_ready": False,
+        "actual_publish": False,
+        "upload_executed": False,
+    }
 
 
 def execute(
@@ -50,7 +80,11 @@ def execute(
         }
         for item in requests
     ]
-    ratings = {str(item.get("candidate_id")): {"grade": item.get("grade")} for item in requests}
+    ratings = {
+        str(item.get("candidate_id")): {"grade": item.get("grade")}
+        for item in requests
+        if str(item.get("grade") or "").strip()
+    }
     brandconnect = run_brandconnect_second_stage(
         candidates,
         ratings,
@@ -68,6 +102,7 @@ def execute(
         and relation_signal_annotation_count > 0
     )
     selection = select_owner_ranked_final_candidates(queue, brandconnect)
+    production_handoff = _build_production_handoff(selection)
 
     story_state = new_engine_state()
     story_ingestion = ingest_relation_shard(
@@ -77,20 +112,6 @@ def execute(
         function_relations["story_rows"],
     )
     story_briefs = build_candidate_story_briefs(story_state, brandconnect.get("annotations", []))
-
-    console = AgentConsole(console_root, repository_root=repository_root)
-    bridge = sync_selected_cardnews_candidates(
-        selection,
-        console,
-        owner_queue=queue,
-        execution_approved=True,
-    )
-    snapshot = console.snapshot()
-    status_counts: Dict[str, int] = {}
-    for job in snapshot.get("jobs", []):
-        if job.get("source") == "owner_review":
-            status = str(job.get("status"))
-            status_counts[status] = status_counts.get(status, 0) + 1
 
     payload = {
         "schema_version": "owner_ranked_final_selection_run_v1",
@@ -122,13 +143,18 @@ def execute(
             "publishing": False,
         },
         "selection": selection,
+        "production_handoff": production_handoff,
         "agent_console": {
-            "bridge": bridge,
-            "sync": bridge.get("sync", {}),
-            "reconciliation": bridge.get("reconciliation"),
-            "owner_review_status_counts": status_counts,
+            "status": "not_used_as_owner_selection_gate",
+            "console_root": str(console_root),
+            "owner_review_gate_used": False,
+            "automatic_selection_is_not_owner_approval": True,
+            "owner_review_status_counts": {},
             "execution_started": False,
         },
+        "manual_upload_ready": False,
+        "actual_publish": False,
+        "upload_executed": False,
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -155,6 +181,11 @@ def main() -> int:
         "selected_count": result["selection"]["selected_count"],
         "not_selected_count": result["selection"]["not_selected_count"],
         "agent_console": result["agent_console"]["owner_review_status_counts"],
+        "production_handoff_count": result["production_handoff"]["candidate_count"],
+        "owner_grade_required": result["production_handoff"]["owner_grade_required"],
+        "manual_upload_ready": result["manual_upload_ready"],
+        "actual_publish": result["actual_publish"],
+        "upload_executed": result["upload_executed"],
         "output": str(Path(args.output).resolve()),
     }, ensure_ascii=False))
     return 0

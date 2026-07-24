@@ -185,24 +185,50 @@ class Newspaper4kDeepDiscoveryProvider:
             if "," in raw or " " in raw:
                 raw = raw.split(",", 1)[0].strip().split(" ", 1)[0]
             url = _public_http_url(raw)
-            if url and url not in seen:
-                seen.add(url)
+            key = Newspaper4kDeepDiscoveryProvider._media_identity(url)
+            if url and key not in seen:
+                seen.add(key)
                 result.append(url)
         return result
+
+    @staticmethod
+    def _media_identity(url: str) -> str:
+        """Collapse publisher resize/proxy URLs that point to the same image."""
+
+        if not url:
+            return ""
+        parsed = urllib.parse.urlparse(url)
+        query = urllib.parse.parse_qs(parsed.query)
+        proxied = _public_http_url(urllib.parse.unquote(_text((query.get("url") or [""])[0])))
+        return proxied or url
 
     @staticmethod
     def _editorial_media_url(url: str, top_image: str) -> bool:
         if url == top_image:
             return True
+        parsed = urllib.parse.urlparse(url)
         lowered = url.casefold()
+        path = parsed.path.casefold()
+        extension = path.rsplit(".", 1)[-1] if "." in path.rsplit("/", 1)[-1] else ""
+        if extension in {"svg", "ico"}:
+            return False
         excluded_markers = (
             "/logo",
             "logo_",
             "_logo",
             "/icon",
+            "_icon",
+            "icon-",
             "favicon",
             "google_g_logo",
             "/common/",
+            "/assets/",
+            "/menu",
+            "sns_",
+            "/sns/",
+            "search_",
+            "floating",
+            "img.youtube.com/",
             "man_sample",
             "avatar",
             "profile",
@@ -211,6 +237,8 @@ class Newspaper4kDeepDiscoveryProvider:
             "advert",
         )
         if any(marker in lowered for marker in excluded_markers):
+            return False
+        if "/cdn-cgi/image/" in path and "." not in path.rsplit("/", 1)[-1]:
             return False
         top_date = re.search(r"/photos/\d{4}/\d{1,2}/\d{1,2}/", top_image)
         candidate_date = re.search(r"/photos/\d{4}/\d{1,2}/\d{1,2}/", url)

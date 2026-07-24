@@ -12,6 +12,7 @@ from PIL import Image
 
 from scripts.run_cardnews_production import (
     _expected_slides,
+    _run_post_render_local_qa,
     command_accept_visual_qa,
     command_bind_rules,
     command_execute_render_adapter,
@@ -215,7 +216,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
             self.render_calls += 1
             output = Path(request["output_root"]) / "page-001.png"
             output.parent.mkdir(parents=True, exist_ok=True)
-            Image.new("RGB", (1080, 1350), "white").save(output)
+            Image.new("RGB", (1080, 1440), "white").save(output)
             digest = hashlib.sha256(output.read_bytes()).hexdigest()
             return {
                 "status": "passed",
@@ -327,6 +328,8 @@ class RunCardnewsProductionTests(unittest.TestCase):
 
             self.assertEqual(len(calls), 1)
             self.assertEqual(calls[0][0]["records"][0]["candidate_id"], "candidate-a")
+            self.assertNotIn("representative_receipt_ids", calls[0][1])
+            self.assertNotIn("feed_caption_by_candidate", calls[0][1])
             automatic = manifest["automatic_visual_qa"]
             self.assertEqual(automatic["status"], "completed_pending_owner_visual_approval")
             self.assertTrue(automatic["automatic_qa_passed"])
@@ -335,6 +338,68 @@ class RunCardnewsProductionTests(unittest.TestCase):
             self.assertFalse(automatic["publishing_ready"])
             self.assertEqual(automatic["evidence"]["decision"], "evidence_only")
             self.assertNotIn("receipt_id", automatic["evidence"])
+
+    def test_batch_post_render_qa_passes_candidate_metadata_to_builder(self):
+        calls = []
+
+        def build_evidence(manifest, **kwargs):
+            calls.append((manifest, kwargs))
+            return (
+                {
+                    "schema_version": "cardnews_visual_qa_receipt_v1",
+                    "receipt_id": "automatic-batch-receipt",
+                    "decision": "evidence_only",
+                    "slides": [],
+                },
+                {"visual_qa_passed": True, "failures": []},
+                {"candidate_count": 2, "slide_count": 2},
+            )
+
+        manifest = {
+            "render_mode": "batch",
+            "records": [
+                {"candidate_id": "candidate-a"},
+                {"candidate_id": "candidate-b"},
+            ],
+        }
+        renderer_results = [
+            {"receipt": {"invoked_engines": ["satori", "resvg"]}},
+            {"receipt": {"invoked_engines": ["satori", "resvg"]}},
+        ]
+        result = _run_post_render_local_qa(
+            manifest,
+            renderer_results,
+            SimpleNamespace(
+                post_render_local_qa=True,
+                visual_qa_builder=build_evidence,
+            ),
+            controller_state={
+                "representative_qa_receipt_ids": {
+                    "A": "qa-representative-a",
+                    "B": "qa-representative-b",
+                }
+            },
+            candidate_requests=[
+                {"candidate_id": "candidate-a", "feed_caption": "Caption A"},
+                {"candidate_id": "candidate-b", "feed_caption": "Caption B"},
+            ],
+        )
+
+        self.assertEqual(
+            {
+                "A": "qa-representative-a",
+                "B": "qa-representative-b",
+            },
+            calls[0][1]["representative_receipt_ids"],
+        )
+        self.assertEqual(
+            {
+                "candidate-a": "Caption A",
+                "candidate-b": "Caption B",
+            },
+            calls[0][1]["feed_caption_by_candidate"],
+        )
+        self.assertTrue(result["automatic_qa_passed"])
 
     def test_execute_render_adapter_blocks_automatic_qa_failure_without_unlocking_output(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -376,7 +441,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
             root = Path(temp)
             state_path, authorization_path, authorization, output_root = self._authorized_single_candidate(root)
             bad_comment = root / "comment_001_UNMASKED_FAILED.png"
-            Image.new("RGB", (1080, 1350), "black").save(bad_comment)
+            Image.new("RGB", (1080, 1440), "black").save(bad_comment)
             package_path = self._comment_package(root / "package-a.json", bad_comment, eligible=False, account="A")
             request = self._adapter_request(root, authorization, package_path)
             request["slides"] = [{"page": 1, "role": "real_comment", "media": f"{bad_comment.name}"}]
@@ -405,10 +470,13 @@ class RunCardnewsProductionTests(unittest.TestCase):
             root = Path(temp)
             state_path, _, authorization, _ = self._authorized_single_candidate(root)
             package_path = self._write(root / "package-a.json", _package("A"))
-            request_path = self._write(
-                root / "render-request.json",
-                self._adapter_request(root, authorization, package_path),
-            )
+            request = self._adapter_request(root, authorization, package_path)
+            request["slides"][0]["assets"] = [{
+                "asset_id": "person-a",
+                "subject_kind": "person",
+                "protected_subjects": ["person-a"],
+            }]
+            request_path = self._write(root / "render-request.json", request)
 
             missing_guard_auth = dict(authorization)
             tooling = dict(missing_guard_auth.get("tooling_authorization", {}))
@@ -419,6 +487,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
             missing_guard_auth["authorization_id"] = f"render-{canonical_hash(unhashed)[:24]}"
             missing_guard_auth_path = self._write(root / "missing-subject-crop-guard.json", missing_guard_auth)
 
+            runtime = self._PassingRendererRuntime()
             with self.assertRaises(ProductionControllerError) as caught:
                 command_execute_render_adapter(SimpleNamespace(
                     state=state_path,
@@ -426,19 +495,24 @@ class RunCardnewsProductionTests(unittest.TestCase):
                     render_request=request_path,
                     manifest=root / "manifest.json",
                     timeout_seconds=7.0,
-                    renderer_runtime=self._PassingRendererRuntime(),
+                    renderer_runtime=runtime,
                 ))
             self.assertEqual(caught.exception.reason_code, "render_authorization_subject_crop_guard_missing")
+            self.assertEqual(runtime.contract_calls, 0)
+            self.assertEqual(runtime.render_calls, 0)
 
     def test_execute_render_adapter_fails_when_subject_crop_guard_tampered(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             state_path, _, authorization, _ = self._authorized_single_candidate(root)
             package_path = self._write(root / "package-a.json", _package("A"))
-            request_path = self._write(
-                root / "render-request.json",
-                self._adapter_request(root, authorization, package_path),
-            )
+            request = self._adapter_request(root, authorization, package_path)
+            request["slides"][0]["assets"] = [{
+                "asset_id": "portrait-a",
+                "classification": "portrait",
+                "protected_subjects": {"primary": "person-a"},
+            }]
+            request_path = self._write(root / "render-request.json", request)
 
             tampered_auth = dict(authorization)
             tooling = dict(tampered_auth.get("tooling_authorization", {}))
@@ -451,6 +525,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
             tampered_auth["authorization_id"] = f"render-{canonical_hash(unhashed)[:24]}"
             tampered_auth_path = self._write(root / "tampered-subject-crop-guard.json", tampered_auth)
 
+            runtime = self._PassingRendererRuntime()
             with self.assertRaises(ProductionControllerError) as caught:
                 command_execute_render_adapter(SimpleNamespace(
                     state=state_path,
@@ -458,17 +533,19 @@ class RunCardnewsProductionTests(unittest.TestCase):
                     render_request=request_path,
                     manifest=root / "manifest.json",
                     timeout_seconds=7.0,
-                    renderer_runtime=self._PassingRendererRuntime(),
+                    renderer_runtime=runtime,
                 ))
             self.assertEqual(caught.exception.reason_code, "render_authorization_subject_crop_guard_invalid")
+            self.assertEqual(runtime.contract_calls, 0)
+            self.assertEqual(runtime.render_calls, 0)
 
     def test_expected_slides_rejects_ineligible_comment_crop(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             image = root / "01.png"
-            Image.new("RGB", (1080, 1350), "white").save(image)
+            Image.new("RGB", (1080, 1440), "white").save(image)
             bad_comment = root / "comment_001_UNMASKED_FAILED.png"
-            Image.new("RGB", (1080, 1350), "black").save(bad_comment)
+            Image.new("RGB", (1080, 1440), "black").save(bad_comment)
             package = self._comment_package(root / "package.json", bad_comment, eligible=False, account="B")
             record = {
                 "candidate_id": "candidate-b",
@@ -580,7 +657,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             image = root / "01.png"
-            Image.new("RGB", (1080, 1350), "white").save(image)
+            Image.new("RGB", (1080, 1440), "white").save(image)
             record = {
                 "candidate_id": "candidate-b",
                 "account": "B",
@@ -652,7 +729,7 @@ class RunCardnewsProductionTests(unittest.TestCase):
                 candidate_dir = output / candidate
                 candidate_dir.mkdir(parents=True)
                 image = candidate_dir / "01.png"
-                Image.new("RGB", (1080, 1350), "white").save(image)
+                Image.new("RGB", (1080, 1440), "white").save(image)
                 package_path = self._write(candidate_dir / "package.json", _package(account))
                 records.append({
                     "candidate_id": candidate,

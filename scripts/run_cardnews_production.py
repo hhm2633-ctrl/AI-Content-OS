@@ -24,6 +24,10 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from modules.agent_console.package_completion_gate import assess_package_completion
+from modules.card_news.canvas_contract import (
+    DEFAULT_CARD_CANVAS_SIZE,
+    DEFAULT_CARD_NEWS_PROFILE_ID,
+)
 from modules.card_news.production_controller import (
     ACCEPT_BATCH_QA,
     ACCEPT_REPRESENTATIVE_QA,
@@ -58,7 +62,7 @@ DEFAULT_DIRECTIVES = REPO_ROOT / "knowledge" / "owner_directives" / "cardnews_ow
 SUBJECT_CROP_GUARD_POLICY_VERSION = "subject_crop_guard_template_frame_v1"
 SUBJECT_CROP_GUARD_POLICY_MODE = "template_crop_subject_loss"
 SUBJECT_CROP_GUARD_SCOPE = "template_frame_only"
-SUBJECT_CROP_GUARD_FRAME_PROFILE = "instagram_portrait_1080x1350"
+SUBJECT_CROP_GUARD_FRAME_PROFILE = DEFAULT_CARD_NEWS_PROFILE_ID
 SUBJECT_CROP_GUARD_BBOX_SOURCE = "rembg_alpha_v1"
 SUBJECT_CROP_GUARD_MAX_SUBJECT_OUTSIDE_RATIO = 0.06
 SUBJECT_CROP_GUARD_MIN_SUBJECT_KEPT_RATIO = 0.94
@@ -148,7 +152,7 @@ def _evaluate_subject_crop_guard(
     subject_bbox: Mapping[str, Any],
     source_size: tuple[int, int],
     *,
-    template_size: tuple[int, int] = (1080, 1350),
+    template_size: tuple[int, int] = DEFAULT_CARD_CANVAS_SIZE,
     template_crop_window: Mapping[str, Any] | None = None,
     metric_precision: int = SUBJECT_CROP_GUARD_METRIC_PRECISION,
     max_subject_outside_ratio: float = SUBJECT_CROP_GUARD_MAX_SUBJECT_OUTSIDE_RATIO,
@@ -502,13 +506,35 @@ def _requests_require_subject_crop_guard(requests: Sequence[Mapping[str, Any]]) 
         for slide in slides:
             if not isinstance(slide, Mapping):
                 continue
+            slide_subjects = slide.get("protected_subjects")
+            if (
+                isinstance(slide_subjects, Mapping)
+                and bool(slide_subjects)
+            ) or (
+                isinstance(slide_subjects, (list, tuple, set))
+                and bool(slide_subjects)
+            ) or _text(slide_subjects):
+                return True
             assets = slide.get("assets") if isinstance(slide.get("assets"), list) else []
             for asset in assets:
                 if not isinstance(asset, Mapping):
                     continue
+                metadata = (
+                    asset.get("metadata")
+                    if isinstance(asset.get("metadata"), Mapping)
+                    else {}
+                )
                 tokens = " ".join(
-                    _text(asset.get(key)).lower()
-                    for key in ("asset_type", "subject_kind", "media_role", "classification")
+                    _text(value).lower()
+                    for value in (
+                        asset.get("asset_type"),
+                        asset.get("subject_kind"),
+                        asset.get("media_role"),
+                        asset.get("classification"),
+                        asset.get("type"),
+                        metadata.get("subject_kind"),
+                        metadata.get("classification"),
+                    )
                 )
                 if any(
                     token in tokens
@@ -516,7 +542,15 @@ def _requests_require_subject_crop_guard(requests: Sequence[Mapping[str, Any]]) 
                 ):
                     return True
                 subjects = asset.get("protected_subjects")
-                if isinstance(subjects, list) and subjects:
+                if subjects is None:
+                    subjects = metadata.get("protected_subjects")
+                if (
+                    isinstance(subjects, Mapping)
+                    and bool(subjects)
+                ) or (
+                    isinstance(subjects, (list, tuple, set))
+                    and bool(subjects)
+                ) or _text(subjects):
                     return True
     return False
 
@@ -1135,6 +1169,8 @@ def command_execute_render_adapter(args: argparse.Namespace) -> Dict[str, Any]:
             manifest,
             results,
             args,
+            controller_state=state,
+            candidate_requests=requests,
         )
         manifest["adapter_execution_hash"] = canonical_hash(manifest)
         _atomic_write(args.manifest, manifest)
@@ -1163,6 +1199,9 @@ def _run_post_render_local_qa(
     manifest: Mapping[str, Any],
     renderer_results: Sequence[Mapping[str, Any]],
     args: argparse.Namespace,
+    *,
+    controller_state: Mapping[str, Any] | None = None,
+    candidate_requests: Sequence[Mapping[str, Any]] = (),
 ) -> Dict[str, Any]:
     """Collect local OCR/OpenCLIP evidence without granting visual approval."""
 
@@ -1203,15 +1242,42 @@ def _run_post_render_local_qa(
 
         builder = build_receipt_payload
 
-    try:
-        receipt, assessed, metrics = builder(
-            manifest,
-            candidate_filter=None,
-            maker_id="cardnews_renderer_runtime",
-            reviewer_id="local-ocr-openclip-auto",
-            openclip_timeout=float(getattr(args, "post_render_openclip_timeout", 30.0)),
-            ocr_timeout=float(getattr(args, "post_render_ocr_timeout", 30.0)),
+    builder_kwargs: Dict[str, Any] = {
+        "candidate_filter": None,
+        "maker_id": "cardnews_renderer_runtime",
+        "reviewer_id": "local-ocr-openclip-auto",
+        "openclip_timeout": float(
+            getattr(args, "post_render_openclip_timeout", 30.0)
+        ),
+        "ocr_timeout": float(getattr(args, "post_render_ocr_timeout", 30.0)),
+    }
+    if _text(manifest.get("render_mode")).lower() == "batch":
+        state = controller_state if isinstance(controller_state, Mapping) else {}
+        representative_receipt_ids = state.get("representative_qa_receipt_ids")
+        if not isinstance(representative_receipt_ids, Mapping):
+            representative_receipt_ids = {}
+
+        records = (
+            manifest.get("records")
+            if isinstance(manifest.get("records"), list)
+            else []
         )
+        feed_caption_by_candidate: Dict[str, str] = {}
+        for record, request in zip(records, candidate_requests):
+            if not isinstance(record, Mapping) or not isinstance(request, Mapping):
+                continue
+            candidate_id = _text(record.get("candidate_id"))
+            caption = _text(request.get("feed_caption"))
+            if candidate_id and caption:
+                feed_caption_by_candidate[candidate_id] = caption
+
+        builder_kwargs["representative_receipt_ids"] = dict(
+            representative_receipt_ids
+        )
+        builder_kwargs["feed_caption_by_candidate"] = feed_caption_by_candidate
+
+    try:
+        receipt, assessed, metrics = builder(manifest, **builder_kwargs)
     except Exception as exc:
         return {
             **base,

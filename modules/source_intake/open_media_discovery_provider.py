@@ -161,21 +161,21 @@ class OpenMediaDiscoveryProvider:
     @staticmethod
     def _expanded_queries(request: Mapping[str, Any]) -> List[str]:
         candidates: List[str] = []
+        title = _text(request.get("title"))
+        if title:
+            candidates.append(title)
         candidates.extend(_iter_search_terms(request.get("search_terms")))
         candidates.extend(_iter_search_terms(request.get("search_query")))
         candidates.extend(_iter_search_terms(request.get("keywords")))
-        candidates.extend(
-            value
-            for value in (
-                _text(request.get("title")),
-                _text(request.get("category")),
-            )
-            if value
-        )
+        category = _text(request.get("category"))
+        if category and not title:
+            candidates.append(category)
         queries: List[str] = []
         seen = set()
         for candidate in candidates:
             normalized = candidate.casefold()
+            if title and category and normalized == category.casefold():
+                continue
             if normalized in seen:
                 continue
             seen.add(normalized)

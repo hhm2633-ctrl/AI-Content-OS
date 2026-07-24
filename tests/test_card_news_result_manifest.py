@@ -102,7 +102,7 @@ class TestCardNewsResultManifest(unittest.TestCase):
         self.assertTrue(all(item["valid"] for item in manifest["release_guard"]["card_artifacts"]))
 
     def test_allowed_canvas_sizes_are_ready_and_arbitrary_size_is_blocked(self):
-        for size in ((1080, 1080), (1080, 1350), (1080, 1440)):
+        for size in ((1080, 566), (1080, 1080), (1080, 1440)):
             with self.subTest(size=size):
                 self._write_ready_fixture(size=size)
                 manifest = build_card_news_result_manifest(self.root)

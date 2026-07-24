@@ -13,6 +13,24 @@ from typing import Any, Mapping, Sequence
 
 SCHEMA_VERSION = "reference_recipe_selector_v2"
 
+_SLIDE_ROLE_FAMILIES = {
+    "cover": frozenset({"cover", "hook", "open_image"}),
+    "detail": frozenset(
+        {
+            "card",
+            "detail",
+            "evidence",
+            "evidence_brief",
+            "key_fact",
+            "key_number",
+            "meaning_next_action",
+            "progression",
+            "quote",
+            "source_context",
+        }
+    ),
+}
+
 
 def _text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
@@ -50,6 +68,17 @@ def _stable_hash(value: Any) -> str:
         separators=(",", ":"),
     ).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def _slide_role_matches(slide_role: str, role_fit: set[str]) -> bool:
+    if not slide_role or not role_fit:
+        return False
+    if slide_role in role_fit:
+        return True
+    return any(
+        slide_role in family and bool(role_fit & family)
+        for family in _SLIDE_ROLE_FAMILIES.values()
+    )
 
 
 def _blueprint_complete(value: Any) -> bool:
@@ -137,14 +166,23 @@ class ReferenceRecipeSelector:
                 if isinstance(specimen.get("media_requirements"), Mapping)
                 else {}
             )
+            declared_media = max(0, int(media.get("required_count") or 0))
             min_media = max(0, int(media.get("min_count") or 0))
-            max_media = max(min_media, int(media.get("max_count") or min_media))
-            aspects = _strings(media.get("aspects"))
+            max_media = max(
+                min_media,
+                int(media.get("max_count") or max(1, declared_media, min_media)),
+            )
+            aspects = _strings(media.get("aspects") or media.get("aspect_ratios"))
             max_copy = max(0, int(specimen.get("max_copy_char_count") or 0))
+            blueprint_regions = blueprints[blueprint_id].get("regions", [])
+            region_count = len(blueprint_regions) if isinstance(blueprint_regions, list) else 0
+            image_dominant_geometry = 1 <= region_count <= 6
 
             components = {
                 "account_match": 1.0 if account and account in account_fit else 0.0,
-                "slide_role_match": 1.0 if slide_role and slide_role in role_fit else 0.0,
+                "slide_role_match": (
+                    1.0 if _slide_role_matches(slide_role, role_fit) else 0.0
+                ),
                 "media_fit": (
                     1.0
                     if min_media <= required_media_count <= max_media
@@ -152,6 +190,12 @@ class ReferenceRecipeSelector:
                     else 0.0
                 ),
                 "copy_fit": 1.0 if not max_copy or copy_size <= max_copy else 0.0,
+                "visual_layout_fit": (
+                    1.0
+                    if (required_media_count > 0 and image_dominant_geometry)
+                    or (required_media_count == 0 and not image_dominant_geometry)
+                    else 0.0
+                ),
                 "topic_fit": (
                     len(topic_tokens & topic_fit) / max(1, len(topic_tokens))
                     if topic_tokens
@@ -194,12 +238,13 @@ class ReferenceRecipeSelector:
                 continue
 
             weights = {
-                "account_match": 0.24,
-                "slide_role_match": 0.24,
-                "media_fit": 0.18,
-                "copy_fit": 0.12,
+                "account_match": 0.20,
+                "slide_role_match": 0.20,
+                "media_fit": 0.14,
+                "copy_fit": 0.10,
+                "visual_layout_fit": 0.16,
                 "topic_fit": 0.10,
-                "emotion_fit": 0.08,
+                "emotion_fit": 0.06,
                 "season_fit": 0.04,
             }
             score = round(

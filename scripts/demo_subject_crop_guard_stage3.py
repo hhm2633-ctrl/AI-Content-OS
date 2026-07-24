@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from modules.media_intelligence.rembg_bbox import extract_subject_bbox_from_alpha
+from modules.card_news.canvas_contract import DEFAULT_CARD_CANVAS_SIZE
 from scripts.run_cardnews_production import (
     SUBJECT_CROP_GUARD_MAX_SUBJECT_OUTSIDE_RATIO,
     SUBJECT_CROP_GUARD_METRIC_PRECISION,
@@ -55,7 +56,7 @@ def _find_crop_window_for_ratio(
         metric = _evaluate_subject_crop_guard(
             subject_bbox,
             source_size,
-            template_size=(1080, 1350),
+            template_size=DEFAULT_CARD_CANVAS_SIZE,
             template_crop_window=window,
             max_subject_outside_ratio=SUBJECT_CROP_GUARD_MAX_SUBJECT_OUTSIDE_RATIO,
             metric_precision=SUBJECT_CROP_GUARD_METRIC_PRECISION,
@@ -153,7 +154,7 @@ def main() -> None:
             metric = _evaluate_subject_crop_guard(
                 subject_bbox,
                 (src_w, src_h),
-                template_size=(1080, 1350),
+                template_size=DEFAULT_CARD_CANVAS_SIZE,
                 template_crop_window=full_window,
                 max_subject_outside_ratio=SUBJECT_CROP_GUARD_MAX_SUBJECT_OUTSIDE_RATIO,
                 metric_precision=SUBJECT_CROP_GUARD_METRIC_PRECISION,

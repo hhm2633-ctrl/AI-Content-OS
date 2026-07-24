@@ -164,6 +164,35 @@ class Newspaper4kDeepDiscoveryProviderTest(unittest.TestCase):
         self.assertNotIn("secret response details", str(parse))
         self.assertEqual(parse["error_type"], "parse_failed")
 
+    def test_news_images_exclude_publisher_ui_and_proxy_duplicates(self):
+        class NoisyArticle(FakeArticle):
+            top_image = "https://cdn.example.com/photos/2026/7/24/lead.jpg"
+            images = {
+                top_image,
+                (
+                    "https://news.example.com/_next/image?"
+                    "url=https%3A%2F%2Fcdn.example.com%2Fphotos%2F2026%2F7%2F24%2Flead.jpg"
+                    "&w=640&q=75"
+                ),
+                "https://news.example.com/assets/search_icon.svg",
+                "https://news.example.com/assets/sns_youtube.svg",
+                "https://img.youtube.com/vi/unrelated/maxresdefault.jpg",
+                "https://cdn.example.com/photos/2026/7/24/scene.jpg",
+            }
+
+        provider = Newspaper4kDeepDiscoveryProvider(
+            article_factory=RecordingFactory(article=NoisyArticle())
+        )
+        result = provider.discover("A", "collect_news_images", REQUEST)
+
+        self.assertEqual(
+            {item["url"] for item in result["assets"]},
+            {
+                NoisyArticle.top_image,
+                "https://cdn.example.com/photos/2026/7/24/scene.jpg",
+            },
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

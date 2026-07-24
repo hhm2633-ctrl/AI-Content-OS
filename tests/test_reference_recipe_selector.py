@@ -135,6 +135,37 @@ class ReferenceRecipeSelectorTest(unittest.TestCase):
         self.assertEqual("owner-ref-a", first["primary_reference_id"])
         self.assertEqual(first["selection_hash"], second["selection_hash"])
 
+    def test_detail_reference_accepts_semantic_news_slide_roles(self):
+        specimen = _specimen()
+        specimen["slide_role_fit"] = ["card", "detail", "source_context"]
+        context = dict(self.context)
+        context["slide_role"] = "key_number"
+
+        result = self.selector.select(
+            specimens=[specimen],
+            blueprints={"bp-news-cover": _blueprint()},
+            context=context,
+        )
+
+        self.assertEqual("selected", result["status"])
+        self.assertEqual(1.0, result["selection_reasons"]["slide_role_match"])
+
+    def test_cover_reference_does_not_match_detail_slide(self):
+        context = dict(self.context)
+        context["slide_role"] = "meaning_next_action"
+
+        result = self.selector.select(
+            specimens=[_specimen()],
+            blueprints={"bp-news-cover": _blueprint()},
+            context=context,
+        )
+
+        self.assertEqual("blocked", result["status"])
+        self.assertEqual(
+            "slide_role_incompatible",
+            result["rejection_reasons"][0]["reason_code"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

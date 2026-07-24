@@ -1,8 +1,15 @@
 """Focused tests for the selected-candidate production flow."""
 
 import copy
+import tempfile
+import time
 import unittest
+from pathlib import Path
+from unittest import mock
 
+from PIL import Image
+
+from modules.media_intelligence.source_media_quality_gate import SourceMediaQualityGate
 from modules.source_intake.selected_candidate_production_flow import (
     _split_evidence_units,
     run_default_selected_candidate_production_flow,
@@ -41,6 +48,32 @@ class Provider:
 
 
 class SelectedCandidateProductionFlowTest(unittest.TestCase):
+    @staticmethod
+    def _isolated_learning_profile(*, production_ready=False):
+        registry = {
+            "selectable_reference_ids": [],
+            "specimens": [],
+            "blueprints": {},
+        }
+        if production_ready:
+            registry = {
+                "selectable_reference_ids": ["fixture-reference"],
+                "specimens": [
+                    {
+                        "reference_id": "fixture-reference",
+                        "blueprint_id": "fixture-blueprint",
+                    }
+                ],
+                "blueprints": {"fixture-blueprint": {"fixture": True}},
+            }
+        return {
+            "reference_candidate_receipt": {
+                "status": "fixture",
+                "external_state_consumed": False,
+            },
+            "reference_v2_registry": registry,
+        }
+
     def test_long_source_paragraph_splits_without_rewriting_sentences(self):
         body = (
             "첫 문장은 장마철 앞머리가 습기에 약한 이유를 설명합니다. "
@@ -101,7 +134,10 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         result = run_selected_candidate_production_flow(
             _selection(), Provider(), bridge, plans, render
         )
-        self.assertEqual(result["status"], "render_inputs_ready")
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["reason_code"], "render_inputs_blocked")
+        self.assertEqual(result["ready_render_input_count"], 0)
+        self.assertEqual(result["blocked_render_input_count"], 1)
         self.assertEqual(result["render_inputs"][0]["candidate_id"], "A-0")
 
     def test_bridge_failure_is_additive(self):
@@ -132,6 +168,20 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
         self.assertEqual(result["blocked_render_input_count"], 1)
 
     def test_default_components_are_wired_without_network_or_publish(self):
+        class DeterministicOpenClip:
+            def score_image_topics(self, path, topics, timeout_seconds):
+                return {
+                    "status": "passed",
+                    "passed": True,
+                    "ranked_topics": [
+                        {
+                            "topic": topic,
+                            "cosine_similarity": 0.9 if index == 0 else 0.1,
+                        }
+                        for index, topic in enumerate(topics)
+                    ],
+                }
+
         class EvidenceProvider:
             name = "evidence_provider"
 
@@ -150,10 +200,27 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
                     ],
                 }
 
-        result = run_default_selected_candidate_production_flow(
-            _selection(), EvidenceProvider()
-        )
-        self.assertEqual(result["status"], "render_inputs_ready")
+        with mock.patch(
+            "modules.media_intelligence.source_media_quality_gate.extract_korean_text",
+            return_value={
+                "status": "completed",
+                "success": True,
+                "input_unchanged": True,
+                "text": "뉴스 기사 핵심 설명",
+            },
+        ), mock.patch(
+            "modules.media_intelligence.source_media_quality_gate.OpenClipRuntime",
+            return_value=DeterministicOpenClip(),
+        ), mock.patch(
+            "modules.source_intake.selected_candidate_production_flow."
+            "ProductionProfileCompiler.compile",
+            return_value=self._isolated_learning_profile(),
+        ):
+            result = run_default_selected_candidate_production_flow(
+                _selection(), EvidenceProvider()
+            )
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["reason_code"], "render_inputs_blocked")
         self.assertFalse(result["network_executed"])
         self.assertEqual(len(result["production_plans"]), 1)
         self.assertEqual(
@@ -173,10 +240,50 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
             "owner_approved_reference_geometry_required",
             result["render_inputs"][0]["reference_v2"]["reason_code"],
         )
+        self.assertFalse(result["render_inputs"][0]["renderer_ready"])
         self.assertTrue(
             result["render_inputs"][0]["production_learning_profile"][
                 "reference_candidate_receipt"
             ]
+        )
+
+    def test_source_media_quality_gate_enforces_hard_evaluation_timeout(self):
+        def stalled_ocr(path, timeout_seconds):
+            time.sleep(2.0)
+            return {
+                "status": "completed",
+                "success": True,
+                "input_unchanged": True,
+                "text": "늦게 끝난 결과",
+            }
+
+        with tempfile.TemporaryDirectory() as temporary:
+            image_path = Path(temporary) / "comment.png"
+            Image.new("RGB", (32, 32), "white").save(image_path)
+            gate = SourceMediaQualityGate(
+                ocr_extractor=stalled_ocr,
+                evaluation_timeout_seconds=0.05,
+                ocr_timeout_seconds=10.0,
+            )
+            started = time.monotonic()
+            result = gate.evaluate(
+                [
+                    {
+                        "candidate_id": "comment-1",
+                        "media_type": "comment_screenshot",
+                        "local_path": str(image_path.resolve()),
+                    }
+                ],
+                headline="댓글 반응",
+                body="실제 댓글 화면",
+            )
+            elapsed = time.monotonic() - started
+
+        self.assertLess(elapsed, 0.5)
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(
+            result["rejected_candidates"][0]["quality_gate"]["reason_code"],
+            "ocr_timeout",
         )
 
     def test_reference_only_article_body_reaches_source_backed_plan(self):
@@ -200,11 +307,30 @@ class SelectedCandidateProductionFlowTest(unittest.TestCase):
                     ],
                 }
 
-        result = run_default_selected_candidate_production_flow(
-            _selection(), ArticleBodyProvider()
-        )
+        with mock.patch(
+            "modules.source_intake.selected_candidate_production_flow."
+            "ProductionProfileCompiler.compile",
+            return_value=self._isolated_learning_profile(production_ready=True),
+        ), mock.patch(
+            "modules.source_intake.selected_candidate_production_flow."
+            "produce_reference_driven_slide",
+            return_value={
+                "status": "ready",
+                "outcome": "fit",
+                "legacy_renderer_fallback_allowed": False,
+            },
+        ):
+            result = run_default_selected_candidate_production_flow(
+                _selection(), ArticleBodyProvider()
+            )
 
         self.assertEqual("render_inputs_ready", result["status"])
+        self.assertEqual(
+            "selected_discovery_render_flow_completed",
+            result["reason_code"],
+        )
+        self.assertEqual(1, result["ready_render_input_count"])
+        self.assertEqual(0, result["blocked_render_input_count"])
         plan = result["production_plans"][0]
         self.assertEqual(
             ["첫 번째 확인된 사실", "두 번째 확인된 사실"],
